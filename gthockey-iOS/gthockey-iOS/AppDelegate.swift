@@ -16,7 +16,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let layout = UICollectionViewFlowLayout()
+
+        
+        let scheduleTabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "ScheduleIcon"), tag: 0)
+        let scheduleCollectionViewController = ScheduleCollectionViewController(collectionViewLayout: layout)
+        scheduleCollectionViewController.tabBarItem = scheduleTabBarItem
+        
+        let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "HomeIcon"), tag: 1)
+        let homeCollectionViewController = HomeCollectionViewController(collectionViewLayout: layout)
+        homeCollectionViewController.tabBarItem = homeTabBarItem
+        
+        let rosterTabBarItem = UITabBarItem(title: "Roster", image: UIImage(named: "RosterIcon"), tag: 2)
+        let rosterCollectionViewController = RosterCollectionViewController(collectionViewLayout: layout)
+        rosterCollectionViewController.tabBarItem = rosterTabBarItem
+        
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers([scheduleCollectionViewController, homeCollectionViewController, rosterCollectionViewController], animated: true)
+        
+        self.window?.rootViewController = tabBarController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

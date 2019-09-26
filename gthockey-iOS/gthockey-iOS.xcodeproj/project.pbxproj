@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82D971AE233D54A500BFD322 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971AD233D54A500BFD322 /* HomeCollectionViewController.swift */; };
+		82D971B0233D54BE00BFD322 /* ScheduleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971AF233D54BE00BFD322 /* ScheduleCollectionViewController.swift */; };
+		82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */; };
 		82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DCB478233C402200BDE2FE /* AppDelegate.swift */; };
-		82DCB47B233C402200BDE2FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DCB47A233C402200BDE2FE /* ViewController.swift */; };
-		82DCB47E233C402200BDE2FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB47C233C402200BDE2FE /* Main.storyboard */; };
 		82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82DCB47F233C402200BDE2FE /* gthockey_iOS.xcdatamodeld */; };
 		82DCB483233C402300BDE2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB482233C402300BDE2FE /* Assets.xcassets */; };
 		82DCB486233C402300BDE2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		82D971AD233D54A500BFD322 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
+		82D971AF233D54BE00BFD322 /* ScheduleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewController.swift; sourceTree = "<group>"; };
+		82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewController.swift; sourceTree = "<group>"; };
 		82DCB475233C402200BDE2FE /* gthockey-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gthockey-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DCB478233C402200BDE2FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		82DCB47A233C402200BDE2FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		82DCB47D233C402200BDE2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82DCB480233C402200BDE2FE /* gthockey_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = gthockey_iOS.xcdatamodel; sourceTree = "<group>"; };
 		82DCB482233C402300BDE2FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82DCB485233C402300BDE2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -37,6 +39,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82D971B3233D609E00BFD322 /* HomeFlow */ = {
+			isa = PBXGroup;
+			children = (
+				82D971AD233D54A500BFD322 /* HomeCollectionViewController.swift */,
+			);
+			path = HomeFlow;
+			sourceTree = "<group>";
+		};
+		82D971B4233D60A500BFD322 /* ScheduleFlow */ = {
+			isa = PBXGroup;
+			children = (
+				82D971AF233D54BE00BFD322 /* ScheduleCollectionViewController.swift */,
+			);
+			path = ScheduleFlow;
+			sourceTree = "<group>";
+		};
+		82D971B5233D60B000BFD322 /* RosterFlow */ = {
+			isa = PBXGroup;
+			children = (
+				82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */,
+			);
+			path = RosterFlow;
+			sourceTree = "<group>";
+		};
 		82DCB46C233C402200BDE2FE = {
 			isa = PBXGroup;
 			children = (
@@ -56,9 +82,10 @@
 		82DCB477233C402200BDE2FE /* gthockey-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				82D971B4233D60A500BFD322 /* ScheduleFlow */,
+				82D971B3233D609E00BFD322 /* HomeFlow */,
+				82D971B5233D60B000BFD322 /* RosterFlow */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
-				82DCB47A233C402200BDE2FE /* ViewController.swift */,
-				82DCB47C233C402200BDE2FE /* Main.storyboard */,
 				82DCB482233C402300BDE2FE /* Assets.xcassets */,
 				82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */,
 				82DCB487233C402300BDE2FE /* Info.plist */,
@@ -127,7 +154,6 @@
 			files = (
 				82DCB486233C402300BDE2FE /* LaunchScreen.storyboard in Resources */,
 				82DCB483233C402300BDE2FE /* Assets.xcassets in Resources */,
-				82DCB47E233C402200BDE2FE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +164,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82DCB47B233C402200BDE2FE /* ViewController.swift in Sources */,
+				82D971AE233D54A500BFD322 /* HomeCollectionViewController.swift in Sources */,
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
+				82D971B0233D54BE00BFD322 /* ScheduleCollectionViewController.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
+				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		82DCB47C233C402200BDE2FE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				82DCB47D233C402200BDE2FE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
