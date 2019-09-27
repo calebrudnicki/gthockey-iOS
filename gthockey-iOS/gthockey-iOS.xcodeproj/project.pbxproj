@@ -17,7 +17,6 @@
 		C58AE6FDEF374C9B1B0751D2 /* Pods_gthockey_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */; };
 		F00CC9B1233E59F900071E7D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00CC9B0233E59F900071E7D /* Player.swift */; };
 		F00CC9B3233E5B3700071E7D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00CC9B2233E5B3700071E7D /* Game.swift */; };
-		F011A30C233E5E2800E910D3 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F011A30B233E5E2800E910D3 /* News.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,7 +34,6 @@
 		D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gthockey_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00CC9B0233E59F900071E7D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		F00CC9B2233E5B3700071E7D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		F011A30B233E5E2800E910D3 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +103,6 @@
 		82DCB477233C402200BDE2FE /* gthockey-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F011A30A233E5DB900E910D3 /* NewsFlow */,
 				82D971B4233D60A500BFD322 /* ScheduleFlow */,
 				82D971B3233D609E00BFD322 /* HomeFlow */,
 				82D971B5233D60B000BFD322 /* RosterFlow */,
@@ -125,14 +122,6 @@
 				0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		F011A30A233E5DB900E910D3 /* NewsFlow */ = {
-			isa = PBXGroup;
-			children = (
-				F011A30B233E5E2800E910D3 /* News.swift */,
-			);
-			path = NewsFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +222,6 @@
 			files = (
 				82D971AE233D54A500BFD322 /* HomeCollectionViewController.swift in Sources */,
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
-				F011A30C233E5E2800E910D3 /* News.swift in Sources */,
 				F00CC9B3233E5B3700071E7D /* Game.swift in Sources */,
 				82D971B0233D54BE00BFD322 /* ScheduleCollectionViewController.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
