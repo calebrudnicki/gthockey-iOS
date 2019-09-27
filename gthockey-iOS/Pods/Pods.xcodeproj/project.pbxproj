@@ -6,11 +6,33 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */;
+			buildPhases = (
+			);
+			dependencies = (
+			);
+			name = SwiftLint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
-		132BB124AD35B0BAAAEB15BF4ADDA217 /* Pods-gthockey-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDD00184E420A72BD75FA2903FCC2CB /* Pods-gthockey-iOS-dummy.m */; };
-		56A36F096A348D2B29C2115E304DCE05 /* Pods-gthockey-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 59BA8FE1CCB43D87E1BA5F1785ABA62A /* Pods-gthockey-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		9E1822965D2A65351AD2ECDCA2DE696C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		2B5A2D683D02CA28968BB3CFF0BF03B5 /* Pods-gthockey-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 59BA8FE1CCB43D87E1BA5F1785ABA62A /* Pods-gthockey-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		7A87D85FF1E967F5AE2135127F4857AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		BBAF5173AABB2E563808CC54AFEFD240 /* Pods-gthockey-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDD00184E420A72BD75FA2903FCC2CB /* Pods-gthockey-iOS-dummy.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E0F8FE20D609995DCAC9FFB61CB51C8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0DDD00184E420A72BD75FA2903FCC2CB /* Pods-gthockey-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-gthockey-iOS-dummy.m"; sourceTree = "<group>"; };
@@ -21,17 +43,18 @@
 		59BA8FE1CCB43D87E1BA5F1785ABA62A /* Pods-gthockey-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-gthockey-iOS-umbrella.h"; sourceTree = "<group>"; };
 		5B6DCE2074EFD5096F0A8749790CF220 /* Pods-gthockey-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-gthockey-iOS-Info.plist"; sourceTree = "<group>"; };
 		648AE678FF9C47FF73300A40FB63B85A /* Pods-gthockey-iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-gthockey-iOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D57EA1A668D5250280C6D18A49BA3E3B /* Pods-gthockey-iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-gthockey-iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
 		F184A036163AFC2205B352929DFCFD65 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7F3C1B2C8170E1866F4C0211C4607264 /* Frameworks */ = {
+		00CF4F0DB2DB9B2972072B21EED1A742 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E1822965D2A65351AD2ECDCA2DE696C /* Foundation.framework in Frameworks */,
+				7A87D85FF1E967F5AE2135127F4857AD /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +67,23 @@
 				CD07815D2417AEE596E3B4AEFCB58CD6 /* Pods-gthockey-iOS */,
 			);
 			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9AED61B9A1CFA211C061344F741DBA07 /* SwiftLint */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9AED61B9A1CFA211C061344F741DBA07 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+				EEA599FE5C15138FF0981CCFB01E55AA /* Support Files */,
+			);
+			name = SwiftLint;
+			path = SwiftLint;
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -75,6 +115,7 @@
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				965877409E01FB3D85D85E90E6B30185 /* Pods */,
 				E139B19D69337BCE0CDC7E7FB25B5DE7 /* Products */,
 				4E8F5D25E6DE7436A0C30EBFB54F2A35 /* Targets Support Files */,
 			);
@@ -96,14 +137,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EEA599FE5C15138FF0981CCFB01E55AA /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLint";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		9505BD83C47DDA7DB5FD58869EEFD0F9 /* Headers */ = {
+		2320F7FC91EC3CE3AB37D21DB8E61984 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56A36F096A348D2B29C2115E304DCE05 /* Pods-gthockey-iOS-umbrella.h in Headers */,
+				2B5A2D683D02CA28968BB3CFF0BF03B5 /* Pods-gthockey-iOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,16 +162,17 @@
 /* Begin PBXNativeTarget section */
 		1EFC8E340819C59B5B48EE3B25338976 /* Pods-gthockey-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FB31363527144AFB7CAC7FF083DCFC36 /* Build configuration list for PBXNativeTarget "Pods-gthockey-iOS" */;
+			buildConfigurationList = E8ADBDF108064B6E58F6749D7D1A1ABC /* Build configuration list for PBXNativeTarget "Pods-gthockey-iOS" */;
 			buildPhases = (
-				9505BD83C47DDA7DB5FD58869EEFD0F9 /* Headers */,
-				0B11F7BAA250B91A0BE070FF0C02BF3C /* Sources */,
-				7F3C1B2C8170E1866F4C0211C4607264 /* Frameworks */,
-				D0746AB16AF2428501325395B071831F /* Resources */,
+				2320F7FC91EC3CE3AB37D21DB8E61984 /* Headers */,
+				EA1AB000100A904594E00465EAF59811 /* Sources */,
+				00CF4F0DB2DB9B2972072B21EED1A742 /* Frameworks */,
+				FA6C1741A091291503460AED15260FF8 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				90B348487D40884AC2B44ACD3149BED4 /* PBXTargetDependency */,
 			);
 			name = "Pods-gthockey-iOS";
 			productName = "Pods-gthockey-iOS";
@@ -150,12 +201,13 @@
 			projectRoot = "";
 			targets = (
 				1EFC8E340819C59B5B48EE3B25338976 /* Pods-gthockey-iOS */,
+				52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D0746AB16AF2428501325395B071831F /* Resources */ = {
+		FA6C1741A091291503460AED15260FF8 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -165,17 +217,64 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0B11F7BAA250B91A0BE070FF0C02BF3C /* Sources */ = {
+		EA1AB000100A904594E00465EAF59811 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				132BB124AD35B0BAAAEB15BF4ADDA217 /* Pods-gthockey-iOS-dummy.m in Sources */,
+				BBAF5173AABB2E563808CC54AFEFD240 /* Pods-gthockey-iOS-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		90B348487D40884AC2B44ACD3149BED4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
+			targetProxy = E0F8FE20D609995DCAC9FFB61CB51C8B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		42ABA460A7EB0F3EDE68EB2DCE0AD318 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F184A036163AFC2205B352929DFCFD65 /* Pods-gthockey-iOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		6410F571BA8C1AEC6A19403F1B61B0B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -240,43 +339,22 @@
 			};
 			name = Debug;
 		};
-		97E262C24C166EFAC6C1BF6C5747B689 /* Debug */ = {
+		84D7C4574E8F0F3095623F0E06F5B402 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F184A036163AFC2205B352929DFCFD65 /* Pods-gthockey-iOS.debug.xcconfig */;
+			baseConfigurationReference = 89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 		A27713CB74E99AF202AADC23200A32F4 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -338,7 +416,7 @@
 			};
 			name = Release;
 		};
-		B1B8A76E89847F2B8E169911FA448AF4 /* Release */ = {
+		A8078B76838074620CDEB07503169565 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5455C67A6BFD5BF1909DE92034DBCFBD /* Pods-gthockey-iOS.release.xcconfig */;
 			buildSettings = {
@@ -377,6 +455,22 @@
 			};
 			name = Release;
 		};
+		DEED47E09AF743F48544C1C4FEADEF47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -389,11 +483,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FB31363527144AFB7CAC7FF083DCFC36 /* Build configuration list for PBXNativeTarget "Pods-gthockey-iOS" */ = {
+		AE7B4FB01588B9E6DF09CB79FC7CE7BD /* Build configuration list for PBXAggregateTarget "SwiftLint" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				97E262C24C166EFAC6C1BF6C5747B689 /* Debug */,
-				B1B8A76E89847F2B8E169911FA448AF4 /* Release */,
+				DEED47E09AF743F48544C1C4FEADEF47 /* Debug */,
+				84D7C4574E8F0F3095623F0E06F5B402 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8ADBDF108064B6E58F6749D7D1A1ABC /* Build configuration list for PBXNativeTarget "Pods-gthockey-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				42ABA460A7EB0F3EDE68EB2DCE0AD318 /* Debug */,
+				A8078B76838074620CDEB07503169565 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
