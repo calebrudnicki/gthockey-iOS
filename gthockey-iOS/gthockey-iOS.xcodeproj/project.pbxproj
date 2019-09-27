@@ -15,8 +15,7 @@
 		82DCB483233C402300BDE2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB482233C402300BDE2FE /* Assets.xcassets */; };
 		82DCB486233C402300BDE2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */; };
 		C58AE6FDEF374C9B1B0751D2 /* Pods_gthockey_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */; };
-		F00CC9B1233E59F900071E7D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00CC9B0233E59F900071E7D /* Player.swift */; };
-		F03B0795233E6314000BCB98 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03B0794233E6314000BCB98 /* News.swift */; };
+		F03B0797233E63A9000BCB98 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03B0796233E63A9000BCB98 /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +31,7 @@
 		82DCB485233C402300BDE2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82DCB487233C402300BDE2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gthockey_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F00CC9B0233E59F900071E7D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		F03B0794233E6314000BCB98 /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		F03B0796233E63A9000BCB98 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +73,8 @@
 		82D971B5233D60B000BFD322 /* RosterFlow */ = {
 			isa = PBXGroup;
 			children = (
+				F03B0796233E63A9000BCB98 /* Player.swift */,
 				82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */,
-				F00CC9B0233E59F900071E7D /* Player.swift */,
 			);
 			path = RosterFlow;
 			sourceTree = "<group>";
@@ -102,7 +100,6 @@
 		82DCB477233C402200BDE2FE /* gthockey-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F03B0793233E6314000BCB98 /* NewsFlow */,
 				82D971B4233D60A500BFD322 /* ScheduleFlow */,
 				82D971B3233D609E00BFD322 /* HomeFlow */,
 				82D971B5233D60B000BFD322 /* RosterFlow */,
@@ -122,14 +119,6 @@
 				0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		F03B0793233E6314000BCB98 /* NewsFlow */ = {
-			isa = PBXGroup;
-			children = (
-				F03B0794233E6314000BCB98 /* News.swift */,
-			);
-			path = NewsFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +221,7 @@
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
 				82D971B0233D54BE00BFD322 /* ScheduleCollectionViewController.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
-				F03B0795233E6314000BCB98 /* News.swift in Sources */,
-				F00CC9B1233E59F900071E7D /* Player.swift in Sources */,
+				F03B0797233E63A9000BCB98 /* Player.swift in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

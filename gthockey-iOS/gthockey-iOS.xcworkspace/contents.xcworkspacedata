@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:gthockey-iOS/NewsFlow">
-   </FileRef>
-   <FileRef
       location = "group:gthockey-iOS.xcodeproj">
    </FileRef>
    <FileRef
