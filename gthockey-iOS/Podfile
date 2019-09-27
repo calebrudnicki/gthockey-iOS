@@ -6,5 +6,6 @@ target 'gthockey-iOS' do
   use_frameworks!
 
   # Pods for gthockey-iOS
+  pod 'SwiftLint'
 
 end

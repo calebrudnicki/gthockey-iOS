@@ -115,7 +115,6 @@
 				424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */,
 				0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
