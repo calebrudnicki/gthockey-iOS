@@ -37,6 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 											 homeCollectionViewController,
 											 rosterCollectionViewController],
 											animated: true)
+        
+        if #available(iOS 13.0, *) {
+            UITabBar.appearance().tintColor = UIColor(named: "navygold") //added support for dark mode colors
+        }
 
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()

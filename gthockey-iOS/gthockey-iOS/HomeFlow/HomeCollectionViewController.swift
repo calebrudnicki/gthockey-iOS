@@ -15,7 +15,11 @@ class HomeCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.backgroundColor = .blue
+       if #available(iOS 13.0, *) {
+            collectionView.backgroundColor = UIColor(named: "goldnavy") //added support for dark mode colors
+        } else {
+            collectionView.backgroundColor = .blue
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
