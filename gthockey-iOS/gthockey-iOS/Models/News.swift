@@ -26,27 +26,27 @@ class News{
         self.teaser = teaser
     }
     
-    func getID() -> Int{
+    func getID() -> Int {
         return id
     }
     
-    func getTitle() -> String{
+    func getTitle() -> String {
         return title
     }
     
-    func getTeaser() -> String{
+    func getTeaser() -> String {
         return teaser
     }
     
-    func getDate() -> Date{
+    func getDate() -> Date {
         return date
     }
     
-    func getImage() -> UIImage{
+    func getImage() -> UIImage {
         return image
     }
     
-    func getContent() -> String{
+    func getContent() -> String {
         return content
     }
     
