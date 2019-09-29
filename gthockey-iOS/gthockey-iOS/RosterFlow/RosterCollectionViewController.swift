@@ -18,7 +18,11 @@ class RosterCollectionViewController: UICollectionViewController {
         navigationItem.title = "Roster"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        collectionView.backgroundColor = .white
+        if #available(iOS 13, *) {
+                   collectionView.backgroundColor = UIColor(named: "goldLightNavyDark")
+               } else {
+                   collectionView.backgroundColor = .white
+               }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
