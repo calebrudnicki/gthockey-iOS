@@ -15,7 +15,10 @@ class HomeCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.backgroundColor = .blue
+        navigationItem.title = "Home"
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        collectionView.backgroundColor = .white
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

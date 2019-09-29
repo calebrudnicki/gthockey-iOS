@@ -15,7 +15,10 @@ class ScheduleCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView.backgroundColor = .orange
+        navigationItem.title = "Schedule"
+        navigationController?.navigationBar.prefersLargeTitles = true
+
+        collectionView.backgroundColor = .white
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

@@ -22,20 +22,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let scheduleTabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "ScheduleIcon"), tag: 0)
         let scheduleCollectionViewController = ScheduleCollectionViewController(collectionViewLayout: layout)
-        scheduleCollectionViewController.tabBarItem = scheduleTabBarItem
+        let scheduleNavigationController = UINavigationController(rootViewController: scheduleCollectionViewController)
+        scheduleNavigationController.tabBarItem = scheduleTabBarItem
 
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "HomeIcon"), tag: 1)
         let homeCollectionViewController = HomeCollectionViewController(collectionViewLayout: layout)
-        homeCollectionViewController.tabBarItem = homeTabBarItem
+        let homeNavigationController = UINavigationController(rootViewController: homeCollectionViewController)
+        homeNavigationController.tabBarItem = homeTabBarItem
 
         let rosterTabBarItem = UITabBarItem(title: "Roster", image: UIImage(named: "RosterIcon"), tag: 2)
         let rosterCollectionViewController = RosterCollectionViewController(collectionViewLayout: layout)
-        rosterCollectionViewController.tabBarItem = rosterTabBarItem
+        let rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
+        rosterNavigationController.tabBarItem = rosterTabBarItem
 
         let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([scheduleCollectionViewController,
-											 homeCollectionViewController,
-											 rosterCollectionViewController],
+        tabBarController.setViewControllers([scheduleNavigationController,
+											 homeNavigationController,
+											 rosterNavigationController],
 											animated: true)
 
         self.window?.rootViewController = tabBarController
