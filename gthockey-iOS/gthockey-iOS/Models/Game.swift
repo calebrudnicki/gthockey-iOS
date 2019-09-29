@@ -32,35 +32,35 @@ class Game {
        
     }
     
-    func get_id() -> Int{
+    func getID() -> Int{
         return id
     }
     
-    func get_date() -> String{
+    func getDateTime() -> String{
         return dateTime
     }
     
-    func get_opponent() -> String{
+    func getOpponentName() -> String{
         return opponentName
     }
     
-    func get_rink() -> String{
+    func getRinkName() -> String{
         return rinkName
     }
     
-    func get_venue() -> String{
+    func getVenue() -> String{
         return venue
     }
     
-    func get_reported() -> Bool{
+    func getIsReported() -> Bool{
         return isReported
     }
     
-    func get_gtscore() -> Int{
+    func getGTScore() -> Int{
         return gtScore
     }
     
-    func get_opponentscore() -> Int{
+    func getOpponentScore() -> Int{
         return opponentScore
     }
     
