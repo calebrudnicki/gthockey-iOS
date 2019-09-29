@@ -25,27 +25,27 @@ class Player {
         self.school = school
     }
     
-    func getID() -> Int{
+    func getID() -> Int {
         return id
     }
     
-    func getFirstName() -> String{
+    func getFirstName() -> String {
         return firstName
     }
     
-    func getLastName() -> String{
+    func getLastName() -> String {
         return lastName
     }
     
-    func getPosition() -> String{
+    func getPosition() -> String {
         return position
     }
     
-    func getHometown() -> String{
+    func getHometown() -> String {
         return hometown
     }
     
-    func getSchool() -> String{
+    func getSchool() -> String {
         return school
     }
     
