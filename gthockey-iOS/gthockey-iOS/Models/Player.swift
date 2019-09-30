@@ -13,14 +13,16 @@ class Player {
     private var firstName: String
     private var lastName: String
     private var position: String
+    private var number: Int
     private var hometown: String
     private var school: String
     
-    init(id: Int, firstName: String, lastName:String, position:String, hometown:String, school:String) {
+    init(id: Int, firstName: String, lastName:String, position:String, number: Int, hometown:String, school:String) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
         self.position = position
+        self.number = number
         self.hometown = hometown
         self.school = school
     }
@@ -39,6 +41,10 @@ class Player {
     
     func getPosition() -> String {
         return position
+    }
+    
+    func getNumber() -> Int {
+        return number
     }
     
     func getHometown() -> String {
