@@ -112,6 +112,7 @@
 				82D971B3233D609E00BFD322 /* HomeFlow */,
 				82D971B5233D60B000BFD322 /* RosterFlow */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
+				F00EE6C123424A7600FC9CDD /* JSONParser.swift */,
 				82DCB482233C402300BDE2FE /* Assets.xcassets */,
 				82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */,
 				82DCB487233C402300BDE2FE /* Info.plist */,
@@ -135,7 +136,6 @@
 				F00EE6C423424AE600FC9CDD /* Game.swift */,
 				F00EE6C523424AE600FC9CDD /* News.swift */,
 				F00EE6C323424AE600FC9CDD /* Player.swift */,
-				F00EE6C123424A7600FC9CDD /* JSONParser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

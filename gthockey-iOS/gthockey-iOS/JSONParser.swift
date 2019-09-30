@@ -12,21 +12,11 @@ import SwiftyJSON
 
 class JSONParser {
     
-    init(){
-        
-    }
+    init() {}
+
+    // MARK: Public Functions
     
-    
-    //all of the getXXX functions are called like this:
-    /*
-     let parser = JSONParser()
-     parser.getXXX() { response in
-     //do code here, where response is the array of games/players/articles you get
-     
-     
-     */
-    
-    func getArticles(completion: @escaping ([News]) -> Void) {
+    public func getArticles(completion: @escaping ([News]) -> Void) {
         var articles: [News] = []
         
         Alamofire.request("https://gthockey.com/api/articles/").validate().responseJSON { responseData  in
@@ -44,12 +34,7 @@ class JSONParser {
         }
     }
     
-    private func makeNewsObject(value: JSON) -> News {
-        let article = News(id: value["id"].int!, title: value["title"].string!, date: Date() /* temp */, image: UIImage() /* temp */, teaser: value["teaser"].string!, content: value["content"].string!)
-        return article
-    }
-    
-    func getRoster(completion: @escaping ([Player]) -> Void) {
+    public func getRoster(completion: @escaping ([Player]) -> Void) {
         var players: [Player] = []
         
         Alamofire.request("https://gthockey.com/api/players/").validate().responseJSON { responseData  in
@@ -65,11 +50,6 @@ class JSONParser {
                 print(error)
             }
         }
-    }
-    
-    private func makePlayerObject(value: JSON) -> Player {
-        let player = Player(id: value["id"].int!,  firstName: value["first_name"].string!, lastName: value["last_name"].string!, position: value["position"].string!, number: value["number"].int ?? 0, hometown: value["hometown"].string!, school: value["school"].string!)
-        return player
     }
     
     func getSchedule(completion: @escaping ([Game]) -> Void) {
@@ -89,10 +69,41 @@ class JSONParser {
             }
         }
     }
+
+    // MARK: Private Functions
+
+    private func makeNewsObject(value: JSON) -> News {
+        let article = News(id: value["id"].int!,
+                           title: value["title"].string!,
+                           date: Date(), //temp
+                           image: UIImage(), //temp
+                           teaser: value["teaser"].string!,
+                           content: value["content"].string!)
+        return article
+    }
     
     private func makeGameObject(value: JSON) -> Game {  
-        let game = Game(id: value["id"].int!, dateTime: Date() /* temp */, opponentName: value["opponent_name"].string!, rinkName: value["rink_name"].string!, venue: value["venue"].string!, isReported: value["is_reported"].bool!, shortResult: value["short_result"].string!, gtScore: value["gt_score"].int ?? 0, opponentScore: value["opp_score"].int ?? 0)
+        let game = Game(id: value["id"].int!,
+                        dateTime: Date(), //temp
+                        opponentName: value["opponent_name"].string!,
+                        rinkName: value["rink_name"].string!,
+                        venue: value["venue"].string!,
+                        isReported: value["is_reported"].bool!,
+                        shortResult: value["short_result"].string!,
+                        gtScore: value["gt_score"].int ?? 0,
+                        opponentScore: value["opp_score"].int ?? 0)
         return game
+    }
+
+    private func makePlayerObject(value: JSON) -> Player {
+        let player = Player(id: value["id"].int!,
+                            firstName: value["first_name"].string!,
+                            lastName: value["last_name"].string!,
+                            position: value["position"].string!,
+                            number: value["number"].int ?? 0,
+                            hometown: value["hometown"].string!,
+                            school: value["school"].string!)
+        return player
     }
     
 }
