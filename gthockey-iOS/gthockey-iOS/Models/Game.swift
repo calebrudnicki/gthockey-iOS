@@ -36,7 +36,7 @@ class Game {
         return id
     }
     
-    func getDateTime() -> String {
+    func getDateTime() -> Date {
         return dateTime
     }
     
