@@ -149,6 +149,7 @@
 				82DCB471233C402200BDE2FE /* Sources */,
 				82DCB472233C402200BDE2FE /* Frameworks */,
 				82DCB473233C402200BDE2FE /* Resources */,
+				B0740C7DD85BAF43B369F4F5 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -205,6 +206,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		B0740C7DD85BAF43B369F4F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FE96055E0330196A97203285 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;

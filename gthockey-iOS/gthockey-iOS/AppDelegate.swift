@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import RevealingSplashView
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,12 +37,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
         rosterNavigationController.tabBarItem = rosterTabBarItem
 
+        let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "BuzzOnlyLogo")!,
+                                                      iconInitialSize: CGSize(width: 124.0, height: 124.0),
+                                                      backgroundColor: UIColor(red: 37/255, green: 47/255, blue: 86/255, alpha: 1.0))
+
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers([scheduleNavigationController,
 											 homeNavigationController,
 											 rosterNavigationController],
 											animated: true)
         tabBarController.selectedIndex = 1
+
+        tabBarController.view.addSubview(revealingSplashView)
+        revealingSplashView.startAnimation()
 
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()

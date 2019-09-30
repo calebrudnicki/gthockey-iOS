@@ -7,5 +7,6 @@ target 'gthockey-iOS' do
 
   # Pods for gthockey-iOS
   pod 'SwiftLint'
+  pod 'RevealingSplashView'
 
 end

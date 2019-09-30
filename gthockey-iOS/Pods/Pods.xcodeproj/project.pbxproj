@@ -19,13 +19,28 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		2B5A2D683D02CA28968BB3CFF0BF03B5 /* Pods-gthockey-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 59BA8FE1CCB43D87E1BA5F1785ABA62A /* Pods-gthockey-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		7A87D85FF1E967F5AE2135127F4857AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		BBAF5173AABB2E563808CC54AFEFD240 /* Pods-gthockey-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DDD00184E420A72BD75FA2903FCC2CB /* Pods-gthockey-iOS-dummy.m */; };
+		0CFFBD55760461439DCD2E287895CF0C /* Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D6FA565F6CEA5BA0663400B36B369EC /* Animations.swift */; };
+		2D796693C82C88B236B517CC3BF3DD81 /* RevealingSplashView.h in Headers */ = {isa = PBXBuildFile; fileRef = 10991C4DA17D966E7C255AE2C7271696 /* RevealingSplashView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		334B4420C1D35AB5E97786B7EC59AF53 /* SplashAnimatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D550705085A43B4E2D643CAE8FE22B0E /* SplashAnimatable.swift */; };
+		345301588CE2D5818996472BA109A6B2 /* RevealingSplashView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1565721AE3BA438AC5958ACB2CE5BA36 /* RevealingSplashView-dummy.m */; };
+		5AC1E45752360A047EB8425F1E6B1512 /* Pods-gthockey-iOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E6CF0BBF3A27DC80E3C3FB28183708F6 /* Pods-gthockey-iOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		770168DE52B4855A94437E5EB527EC84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		776C8675E6F20EE4F8C7D7344D670BB1 /* SplashAnimationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFF7DF6BD8EB48852F966EA26B60E157 /* SplashAnimationType.swift */; };
+		941CF8600D86F37CEF165DA6E7F3134A /* RevealingSplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FE4484ED118841507199006F289C7 /* RevealingSplashView.swift */; };
+		A16FCCE5BB3254369CCA7ACFDA6C5D04 /* Pods-gthockey-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 098889591798DBA6B5BAC3E1F6954688 /* Pods-gthockey-iOS-dummy.m */; };
+		C85464C2F2AC37EDAE3779F0D0662982 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		F5314F2BB4EBA2C5AC7C3EFB485C16DD /* RevealingSplashView-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B2AFFEE0E004F73271DA99822334CD80 /* RevealingSplashView-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E0F8FE20D609995DCAC9FFB61CB51C8B /* PBXContainerItemProxy */ = {
+		0AE74D04D086C0E17B10094159F3E7A9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A16BB753FC705C22DAFCD8B7C1071A09;
+			remoteInfo = RevealingSplashView;
+		};
+		1F1B958C5DB85462AF0D59E91C04C53D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -35,55 +50,131 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0DDD00184E420A72BD75FA2903FCC2CB /* Pods-gthockey-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-gthockey-iOS-dummy.m"; sourceTree = "<group>"; };
-		188B2749295940A5C2BEA009C1CC0426 /* Pods-gthockey-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-gthockey-iOS.modulemap"; sourceTree = "<group>"; };
+		098889591798DBA6B5BAC3E1F6954688 /* Pods-gthockey-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-gthockey-iOS-dummy.m"; sourceTree = "<group>"; };
+		0E3075FA483E3CEFE1479ECD3BA4956D /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		10991C4DA17D966E7C255AE2C7271696 /* RevealingSplashView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = RevealingSplashView.h; path = RevealingSplashView/RevealingSplashView.h; sourceTree = "<group>"; };
+		1565721AE3BA438AC5958ACB2CE5BA36 /* RevealingSplashView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "RevealingSplashView-dummy.m"; sourceTree = "<group>"; };
+		1D91AD3684F4907BBE720E19A9B104C3 /* Pods-gthockey-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-gthockey-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		251DE10A81AFC131048854E5EC31058F /* RevealingSplashView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RevealingSplashView-prefix.pch"; sourceTree = "<group>"; };
+		261FE4484ED118841507199006F289C7 /* RevealingSplashView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RevealingSplashView.swift; path = RevealingSplashView/RevealingSplashView.swift; sourceTree = "<group>"; };
 		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		42C406A9DC8529285142B2020239DAE0 /* Pods-gthockey-iOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-gthockey-iOS-frameworks.sh"; sourceTree = "<group>"; };
+		4555CD7D09633FBDC5EFA6263BA96099 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
 		4AAE808201621AC4D6B6AEB49C56BA9C /* Pods_gthockey_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_gthockey_iOS.framework; path = "Pods-gthockey-iOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5455C67A6BFD5BF1909DE92034DBCFBD /* Pods-gthockey-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-gthockey-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		59BA8FE1CCB43D87E1BA5F1785ABA62A /* Pods-gthockey-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-gthockey-iOS-umbrella.h"; sourceTree = "<group>"; };
-		5B6DCE2074EFD5096F0A8749790CF220 /* Pods-gthockey-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-gthockey-iOS-Info.plist"; sourceTree = "<group>"; };
-		648AE678FF9C47FF73300A40FB63B85A /* Pods-gthockey-iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-gthockey-iOS-acknowledgements.plist"; sourceTree = "<group>"; };
-		89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftLint.xcconfig; sourceTree = "<group>"; };
+		62E216B0909FD6BB373BDBEE31A2C1A2 /* Pods-gthockey-iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-gthockey-iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7233F353BCA314C55130115D7BF863CA /* Pods-gthockey-iOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-gthockey-iOS.modulemap"; sourceTree = "<group>"; };
+		867BB4CBD606DA65069AAC88CF02CB44 /* RevealingSplashView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = RevealingSplashView.modulemap; sourceTree = "<group>"; };
+		8D6FA565F6CEA5BA0663400B36B369EC /* Animations.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Animations.swift; path = RevealingSplashView/Animations.swift; sourceTree = "<group>"; };
+		9BAA797ECE94BE4B3E096F936BD1DF39 /* Pods-gthockey-iOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-gthockey-iOS-Info.plist"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		D57EA1A668D5250280C6D18A49BA3E3B /* Pods-gthockey-iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-gthockey-iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
-		F184A036163AFC2205B352929DFCFD65 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		B2AFFEE0E004F73271DA99822334CD80 /* RevealingSplashView-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "RevealingSplashView-umbrella.h"; sourceTree = "<group>"; };
+		B64F00947AF5FE1B4E2CAF59ADE3123D /* RevealingSplashView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = RevealingSplashView.xcconfig; sourceTree = "<group>"; };
+		BD56534C888FE385363934C9ABE6E7B4 /* RevealingSplashView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = RevealingSplashView.framework; path = RevealingSplashView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDB92118D64F49B36EC510C145EC80AA /* Pods-gthockey-iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-gthockey-iOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		CFF7DF6BD8EB48852F966EA26B60E157 /* SplashAnimationType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SplashAnimationType.swift; path = RevealingSplashView/SplashAnimationType.swift; sourceTree = "<group>"; };
+		D550705085A43B4E2D643CAE8FE22B0E /* SplashAnimatable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SplashAnimatable.swift; path = RevealingSplashView/SplashAnimatable.swift; sourceTree = "<group>"; };
+		E6CF0BBF3A27DC80E3C3FB28183708F6 /* Pods-gthockey-iOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-gthockey-iOS-umbrella.h"; sourceTree = "<group>"; };
+		FB272F6B9D1F39F477C7E4440DE85461 /* RevealingSplashView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "RevealingSplashView-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		00CF4F0DB2DB9B2972072B21EED1A742 /* Frameworks */ = {
+		B759B2C53D4AFDA53541B04006E90D81 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A87D85FF1E967F5AE2135127F4857AD /* Foundation.framework in Frameworks */,
+				770168DE52B4855A94437E5EB527EC84 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCFC1A03102C9BEA57C7CF7A8C0F3122 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C85464C2F2AC37EDAE3779F0D0662982 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4E8F5D25E6DE7436A0C30EBFB54F2A35 /* Targets Support Files */ = {
+		2B5218AB557139D6889AC6ED1D6586C2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CD07815D2417AEE596E3B4AEFCB58CD6 /* Pods-gthockey-iOS */,
+				4AAE808201621AC4D6B6AEB49C56BA9C /* Pods_gthockey_iOS.framework */,
+				BD56534C888FE385363934C9ABE6E7B4 /* RevealingSplashView.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4A086677EC80D641DD2E2DAEA2D67976 /* RevealingSplashView */ = {
+			isa = PBXGroup;
+			children = (
+				8D6FA565F6CEA5BA0663400B36B369EC /* Animations.swift */,
+				10991C4DA17D966E7C255AE2C7271696 /* RevealingSplashView.h */,
+				261FE4484ED118841507199006F289C7 /* RevealingSplashView.swift */,
+				D550705085A43B4E2D643CAE8FE22B0E /* SplashAnimatable.swift */,
+				CFF7DF6BD8EB48852F966EA26B60E157 /* SplashAnimationType.swift */,
+				5691773BEAF1BBF2E6B4F1EA29F2F5C8 /* Support Files */,
+			);
+			name = RevealingSplashView;
+			path = RevealingSplashView;
+			sourceTree = "<group>";
+		};
+		54CF1C69C900839B535784E251620042 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+				D10C9B611F01EFA0B293C1D39A3A6ECE /* Support Files */,
+			);
+			name = SwiftLint;
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
+		5691773BEAF1BBF2E6B4F1EA29F2F5C8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				867BB4CBD606DA65069AAC88CF02CB44 /* RevealingSplashView.modulemap */,
+				B64F00947AF5FE1B4E2CAF59ADE3123D /* RevealingSplashView.xcconfig */,
+				1565721AE3BA438AC5958ACB2CE5BA36 /* RevealingSplashView-dummy.m */,
+				FB272F6B9D1F39F477C7E4440DE85461 /* RevealingSplashView-Info.plist */,
+				251DE10A81AFC131048854E5EC31058F /* RevealingSplashView-prefix.pch */,
+				B2AFFEE0E004F73271DA99822334CD80 /* RevealingSplashView-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/RevealingSplashView";
+			sourceTree = "<group>";
+		};
+		7DEA5052B37BD05506F2F01F6E92E0B4 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				B2FBFB4260BA87FD54F927B6C6A1078A /* Pods-gthockey-iOS */,
 			);
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		965877409E01FB3D85D85E90E6B30185 /* Pods */ = {
+		B2FBFB4260BA87FD54F927B6C6A1078A /* Pods-gthockey-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				9AED61B9A1CFA211C061344F741DBA07 /* SwiftLint */,
+				7233F353BCA314C55130115D7BF863CA /* Pods-gthockey-iOS.modulemap */,
+				62E216B0909FD6BB373BDBEE31A2C1A2 /* Pods-gthockey-iOS-acknowledgements.markdown */,
+				BDB92118D64F49B36EC510C145EC80AA /* Pods-gthockey-iOS-acknowledgements.plist */,
+				098889591798DBA6B5BAC3E1F6954688 /* Pods-gthockey-iOS-dummy.m */,
+				42C406A9DC8529285142B2020239DAE0 /* Pods-gthockey-iOS-frameworks.sh */,
+				9BAA797ECE94BE4B3E096F936BD1DF39 /* Pods-gthockey-iOS-Info.plist */,
+				E6CF0BBF3A27DC80E3C3FB28183708F6 /* Pods-gthockey-iOS-umbrella.h */,
+				0E3075FA483E3CEFE1479ECD3BA4956D /* Pods-gthockey-iOS.debug.xcconfig */,
+				1D91AD3684F4907BBE720E19A9B104C3 /* Pods-gthockey-iOS.release.xcconfig */,
 			);
-			name = Pods;
+			name = "Pods-gthockey-iOS";
+			path = "Target Support Files/Pods-gthockey-iOS";
 			sourceTree = "<group>";
 		};
-		9AED61B9A1CFA211C061344F741DBA07 /* SwiftLint */ = {
+		B46A1433D2756E8A1ED3D80E62A65FF8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EEA599FE5C15138FF0981CCFB01E55AA /* Support Files */,
+				4A086677EC80D641DD2E2DAEA2D67976 /* RevealingSplashView */,
+				54CF1C69C900839B535784E251620042 /* SwiftLint */,
 			);
-			name = SwiftLint;
-			path = SwiftLint;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
@@ -94,31 +185,24 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		CD07815D2417AEE596E3B4AEFCB58CD6 /* Pods-gthockey-iOS */ = {
-			isa = PBXGroup;
-			children = (
-				188B2749295940A5C2BEA009C1CC0426 /* Pods-gthockey-iOS.modulemap */,
-				D57EA1A668D5250280C6D18A49BA3E3B /* Pods-gthockey-iOS-acknowledgements.markdown */,
-				648AE678FF9C47FF73300A40FB63B85A /* Pods-gthockey-iOS-acknowledgements.plist */,
-				0DDD00184E420A72BD75FA2903FCC2CB /* Pods-gthockey-iOS-dummy.m */,
-				5B6DCE2074EFD5096F0A8749790CF220 /* Pods-gthockey-iOS-Info.plist */,
-				59BA8FE1CCB43D87E1BA5F1785ABA62A /* Pods-gthockey-iOS-umbrella.h */,
-				F184A036163AFC2205B352929DFCFD65 /* Pods-gthockey-iOS.debug.xcconfig */,
-				5455C67A6BFD5BF1909DE92034DBCFBD /* Pods-gthockey-iOS.release.xcconfig */,
-			);
-			name = "Pods-gthockey-iOS";
-			path = "Target Support Files/Pods-gthockey-iOS";
-			sourceTree = "<group>";
-		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				965877409E01FB3D85D85E90E6B30185 /* Pods */,
-				E139B19D69337BCE0CDC7E7FB25B5DE7 /* Products */,
-				4E8F5D25E6DE7436A0C30EBFB54F2A35 /* Targets Support Files */,
+				B46A1433D2756E8A1ED3D80E62A65FF8 /* Pods */,
+				2B5218AB557139D6889AC6ED1D6586C2 /* Products */,
+				7DEA5052B37BD05506F2F01F6E92E0B4 /* Targets Support Files */,
 			);
+			sourceTree = "<group>";
+		};
+		D10C9B611F01EFA0B293C1D39A3A6ECE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				4555CD7D09633FBDC5EFA6263BA96099 /* SwiftLint.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftLint";
 			sourceTree = "<group>";
 		};
 		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
@@ -129,31 +213,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E139B19D69337BCE0CDC7E7FB25B5DE7 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				4AAE808201621AC4D6B6AEB49C56BA9C /* Pods_gthockey_iOS.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		EEA599FE5C15138FF0981CCFB01E55AA /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/SwiftLint";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2320F7FC91EC3CE3AB37D21DB8E61984 /* Headers */ = {
+		5AC4CA394125D6504D668CBEA4AEFB57 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B5A2D683D02CA28968BB3CFF0BF03B5 /* Pods-gthockey-iOS-umbrella.h in Headers */,
+				F5314F2BB4EBA2C5AC7C3EFB485C16DD /* RevealingSplashView-umbrella.h in Headers */,
+				2D796693C82C88B236B517CC3BF3DD81 /* RevealingSplashView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BED1E1E2BE2195F9437349B632D85A21 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AC1E45752360A047EB8425F1E6B1512 /* Pods-gthockey-iOS-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,21 +238,40 @@
 /* Begin PBXNativeTarget section */
 		1EFC8E340819C59B5B48EE3B25338976 /* Pods-gthockey-iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8ADBDF108064B6E58F6749D7D1A1ABC /* Build configuration list for PBXNativeTarget "Pods-gthockey-iOS" */;
+			buildConfigurationList = 3FD5EE5506D103201E8FD32AA8DD2EED /* Build configuration list for PBXNativeTarget "Pods-gthockey-iOS" */;
 			buildPhases = (
-				2320F7FC91EC3CE3AB37D21DB8E61984 /* Headers */,
-				EA1AB000100A904594E00465EAF59811 /* Sources */,
-				00CF4F0DB2DB9B2972072B21EED1A742 /* Frameworks */,
-				FA6C1741A091291503460AED15260FF8 /* Resources */,
+				BED1E1E2BE2195F9437349B632D85A21 /* Headers */,
+				9101CBADFD0E77C16A0F0D856355BE1E /* Sources */,
+				DCFC1A03102C9BEA57C7CF7A8C0F3122 /* Frameworks */,
+				266E4D0B12F34219D184FA082850DE7A /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				90B348487D40884AC2B44ACD3149BED4 /* PBXTargetDependency */,
+				003C23F2624FD4FA9257E9987AEE5C9D /* PBXTargetDependency */,
+				1C93DCF9EC369E2FA63492A9E85EF63E /* PBXTargetDependency */,
 			);
 			name = "Pods-gthockey-iOS";
 			productName = "Pods-gthockey-iOS";
 			productReference = 4AAE808201621AC4D6B6AEB49C56BA9C /* Pods_gthockey_iOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A16BB753FC705C22DAFCD8B7C1071A09 /* RevealingSplashView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E0EF856EB00AD6466ED18368545F7459 /* Build configuration list for PBXNativeTarget "RevealingSplashView" */;
+			buildPhases = (
+				5AC4CA394125D6504D668CBEA4AEFB57 /* Headers */,
+				1F38E196797C73D328B4B719F776DF0E /* Sources */,
+				B759B2C53D4AFDA53541B04006E90D81 /* Frameworks */,
+				A806A1901A533170B0EEC9017A39D069 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RevealingSplashView;
+			productName = RevealingSplashView;
+			productReference = BD56534C888FE385363934C9ABE6E7B4 /* RevealingSplashView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -196,18 +291,26 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = E139B19D69337BCE0CDC7E7FB25B5DE7 /* Products */;
+			productRefGroup = 2B5218AB557139D6889AC6ED1D6586C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				1EFC8E340819C59B5B48EE3B25338976 /* Pods-gthockey-iOS */,
+				A16BB753FC705C22DAFCD8B7C1071A09 /* RevealingSplashView */,
 				52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		FA6C1741A091291503460AED15260FF8 /* Resources */ = {
+		266E4D0B12F34219D184FA082850DE7A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A806A1901A533170B0EEC9017A39D069 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -217,29 +320,118 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		EA1AB000100A904594E00465EAF59811 /* Sources */ = {
+		1F38E196797C73D328B4B719F776DF0E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BBAF5173AABB2E563808CC54AFEFD240 /* Pods-gthockey-iOS-dummy.m in Sources */,
+				0CFFBD55760461439DCD2E287895CF0C /* Animations.swift in Sources */,
+				345301588CE2D5818996472BA109A6B2 /* RevealingSplashView-dummy.m in Sources */,
+				941CF8600D86F37CEF165DA6E7F3134A /* RevealingSplashView.swift in Sources */,
+				334B4420C1D35AB5E97786B7EC59AF53 /* SplashAnimatable.swift in Sources */,
+				776C8675E6F20EE4F8C7D7344D670BB1 /* SplashAnimationType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9101CBADFD0E77C16A0F0D856355BE1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A16FCCE5BB3254369CCA7ACFDA6C5D04 /* Pods-gthockey-iOS-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		90B348487D40884AC2B44ACD3149BED4 /* PBXTargetDependency */ = {
+		003C23F2624FD4FA9257E9987AEE5C9D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = RevealingSplashView;
+			target = A16BB753FC705C22DAFCD8B7C1071A09 /* RevealingSplashView */;
+			targetProxy = 0AE74D04D086C0E17B10094159F3E7A9 /* PBXContainerItemProxy */;
+		};
+		1C93DCF9EC369E2FA63492A9E85EF63E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftLint;
 			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = E0F8FE20D609995DCAC9FFB61CB51C8B /* PBXContainerItemProxy */;
+			targetProxy = 1F1B958C5DB85462AF0D59E91C04C53D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		42ABA460A7EB0F3EDE68EB2DCE0AD318 /* Debug */ = {
+		0DBCC192316151E9CBE4518505D9EB42 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F184A036163AFC2205B352929DFCFD65 /* Pods-gthockey-iOS.debug.xcconfig */;
+			baseConfigurationReference = B64F00947AF5FE1B4E2CAF59ADE3123D /* RevealingSplashView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RevealingSplashView/RevealingSplashView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RevealingSplashView/RevealingSplashView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RevealingSplashView/RevealingSplashView.modulemap";
+				PRODUCT_MODULE_NAME = RevealingSplashView;
+				PRODUCT_NAME = RevealingSplashView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1C9E146998E747A327BAB85B0BCF6709 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B64F00947AF5FE1B4E2CAF59ADE3123D /* RevealingSplashView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/RevealingSplashView/RevealingSplashView-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/RevealingSplashView/RevealingSplashView-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/RevealingSplashView/RevealingSplashView.modulemap";
+				PRODUCT_MODULE_NAME = RevealingSplashView;
+				PRODUCT_NAME = RevealingSplashView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		31735FE026563DC5FC208F605C91FF23 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D91AD3684F4907BBE720E19A9B104C3 /* Pods-gthockey-iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
@@ -270,10 +462,11 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		6410F571BA8C1AEC6A19403F1B61B0B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -339,9 +532,47 @@
 			};
 			name = Debug;
 		};
+		7EC73861252F8EAADC140B92974D4D95 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E3075FA483E3CEFE1479ECD3BA4956D /* Pods-gthockey-iOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		84D7C4574E8F0F3095623F0E06F5B402 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */;
+			baseConfigurationReference = 4555CD7D09633FBDC5EFA6263BA96099 /* SwiftLint.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -416,48 +647,9 @@
 			};
 			name = Release;
 		};
-		A8078B76838074620CDEB07503169565 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5455C67A6BFD5BF1909DE92034DBCFBD /* Pods-gthockey-iOS.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		DEED47E09AF743F48544C1C4FEADEF47 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 89F85ACF3D78B39506B75103B4694B36 /* SwiftLint.xcconfig */;
+			baseConfigurationReference = 4555CD7D09633FBDC5EFA6263BA96099 /* SwiftLint.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -474,6 +666,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3FD5EE5506D103201E8FD32AA8DD2EED /* Build configuration list for PBXNativeTarget "Pods-gthockey-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7EC73861252F8EAADC140B92974D4D95 /* Debug */,
+				31735FE026563DC5FC208F605C91FF23 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -492,11 +693,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E8ADBDF108064B6E58F6749D7D1A1ABC /* Build configuration list for PBXNativeTarget "Pods-gthockey-iOS" */ = {
+		E0EF856EB00AD6466ED18368545F7459 /* Build configuration list for PBXNativeTarget "RevealingSplashView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				42ABA460A7EB0F3EDE68EB2DCE0AD318 /* Debug */,
-				A8078B76838074620CDEB07503169565 /* Release */,
+				1C9E146998E747A327BAB85B0BCF6709 /* Debug */,
+				0DBCC192316151E9CBE4518505D9EB42 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
