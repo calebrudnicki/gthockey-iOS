@@ -8,7 +8,7 @@
 
 import Foundation
 
-private class Game {
+ class Game {
 
     private var id: Int
     private var dateTime: Date
@@ -17,11 +17,11 @@ private class Game {
     private var venue: String
     private var isReported: Bool
     private var shortResult: String
-    private var gtScore: Int
-    private var opponentScore: Int
+    private var gtScore: Int?
+    private var opponentScore: Int?
 
     init(id: Int, dateTime: Date, opponentName: String, rinkName: String, venue: String,
-         isReported: Bool, shortResult: String, gtScore:Int, opponentScore: Int) {
+         isReported: Bool, shortResult: String, gtScore:Int?, opponentScore: Int?) {
         self.id = id
         self.dateTime = dateTime
         self.opponentName = opponentName
@@ -59,11 +59,11 @@ private class Game {
     }
 
     func getGTScore() -> Int{
-        return gtScore
+        return gtScore ?? 0
     }
 
     func getOpponentScore() -> Int {
-        return opponentScore
+        return opponentScore ?? 0
     }
 
 }

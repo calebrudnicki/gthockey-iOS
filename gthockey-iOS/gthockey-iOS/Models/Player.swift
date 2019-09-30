@@ -8,7 +8,7 @@
 
 import Foundation
 
-private class Player {
+class Player {
 
     private var id: Int
     private var firstName: String
