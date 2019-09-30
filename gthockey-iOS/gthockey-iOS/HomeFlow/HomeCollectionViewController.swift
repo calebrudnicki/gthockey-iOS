@@ -8,9 +8,37 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-class HomeCollectionViewController: UICollectionViewController {
+    private let exampleNews1 = News(id: 1,
+                            title: "GT stomps on the Dawgs en route to a home-opener victory (4-1)",
+                            date: Date(),
+                            image: UIImage(named: "JonesPic")!,
+                            teaser: "This is a teaser",
+                            content: "content of the article")
+    private let exampleNews2 = News(id: 2,
+                            title: "2019-20 First Weekend Recap",
+                            date: Date(),
+                            image: UIImage(named: "BohnerPic")!,
+                            teaser: "This is a teaser",
+                            content: "content of the article")
+    private let exampleNews3 = News(id: 3,
+                            title: "Getting Things Started: 2019-20 Roster Announced",
+                            date: Date(),
+                            image: UIImage(named: "FesslerPic")!,
+                            teaser: "This is a teaser",
+                            content: "content of the article")
+    private let exampleNews4 = News(id: 4,
+                            title: "2019-20 Season Schedule Released",
+                            date: Date(),
+                            image: UIImage(named: "SchedulePic")!,
+                            teaser: "This is a teaser",
+                            content: "content of the article")
+    private var newsArray: [News] = []
+
+    private let reuseIdentifier = "cell"
+    private let cellWidth = UIScreen.main.bounds.width * 0.9
+    private let cellHeight = UIScreen.main.bounds.height * 0.45
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,9 +52,10 @@ class HomeCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
+        newsArray = [exampleNews1, exampleNews2, exampleNews3, exampleNews4]
     }
 
     /*
@@ -41,23 +70,25 @@ class HomeCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 1
+        return newsArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-
-        // Configure the cell
-
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
+        cell.set(with: newsArray[indexPath.row])
         return cell
+    }
+
+    // MARK: UICollectionViewLayout
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 24.0
     }
 
     // MARK: UICollectionViewDelegate
