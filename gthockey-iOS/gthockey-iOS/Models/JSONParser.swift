@@ -11,7 +11,6 @@ import Alamofire
 import SwiftyJSON
 
 class JSONParser {
-    let downloadQueue = DispatchQueue(label: "cache", qos: DispatchQoS.background)
     
     init(){
         
