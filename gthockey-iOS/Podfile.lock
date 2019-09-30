@@ -1,16 +1,20 @@
 PODS:
+  - RevealingSplashView (0.6.0)
   - SwiftLint (0.35.0)
 
 DEPENDENCIES:
+  - RevealingSplashView
   - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - RevealingSplashView
     - SwiftLint
 
 SPEC CHECKSUMS:
+  RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
 
-PODFILE CHECKSUM: b5723b6f3ed831d03cbc8603d991e96ac80ffccf
+PODFILE CHECKSUM: 4953f71265cb5c0f6acc85bc2e115d4598280b8d
 
 COCOAPODS: 1.7.5
