@@ -7,5 +7,8 @@ target 'gthockey-iOS' do
 
   # Pods for gthockey-iOS
   pod 'SwiftLint'
+  # pod 'Alamofire', '~> 3.0'
+  pod 'SwiftyJSON', '~> 4.0'
+  pod 'Alamofire', '~> 5.0.0-rc.2'
 
 end

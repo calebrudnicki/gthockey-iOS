@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
 
+        let parser = JSONParser()
         return true
     }
 
