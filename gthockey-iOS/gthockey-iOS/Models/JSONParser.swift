@@ -91,9 +91,7 @@ class JSONParser {
         }
     }
     
-    private func makeGameObject(value: JSON) -> Game {
-        //        print(value["id"].int, Date() /* temp */, value["opponent_name"].string, value["rink_name"].string, value["venue"].string, value["is_reported"].bool, value["short_result"].string, value["gt_score"].int ?? 0, value["opp_score"].int ?? 0)
-        
+    private func makeGameObject(value: JSON) -> Game {  
         let game = Game(id: value["id"].int!, dateTime: Date() /* temp */, opponentName: value["opponent_name"].string!, rinkName: value["rink_name"].string!, venue: value["venue"].string!, isReported: value["is_reported"].bool!, shortResult: value["short_result"].string!, gtScore: value["gt_score"].int ?? 0, opponentScore: value["opp_score"].int ?? 0)
         return game
     }
