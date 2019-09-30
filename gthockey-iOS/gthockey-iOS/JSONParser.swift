@@ -8,12 +8,13 @@
 
 import Foundation
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 class JSONParser {
     
     init() {}
-
+    
     // MARK: Public Functions
     
     public func getArticles(completion: @escaping ([News]) -> Void) {
@@ -52,7 +53,7 @@ class JSONParser {
         }
     }
     
-    func getSchedule(completion: @escaping ([Game]) -> Void) {
+    public func getSchedule(completion: @escaping ([Game]) -> Void) {
         var games: [Game] = []
         
         Alamofire.request("https://gthockey.com/api/games/").validate().responseJSON { responseData  in
@@ -69,14 +70,15 @@ class JSONParser {
             }
         }
     }
-
+    
     // MARK: Private Functions
-
+    
     private func makeNewsObject(value: JSON) -> News {
         let article = News(id: value["id"].int!,
                            title: value["title"].string!,
-                           date: Date(), //temp
-                           image: UIImage(), //temp
+                           date: dateFormat(initDate: value["date"].string!),
+                           image: UIImage(),
+                           imgURL: value["image"].string!,
                            teaser: value["teaser"].string!,
                            content: value["content"].string!)
         return article
@@ -85,16 +87,16 @@ class JSONParser {
     private func makeGameObject(value: JSON) -> Game {  
         let game = Game(id: value["id"].int!,
                         dateTime: Date(), //temp
-                        opponentName: value["opponent_name"].string!,
-                        rinkName: value["rink_name"].string!,
-                        venue: value["venue"].string!,
-                        isReported: value["is_reported"].bool!,
-                        shortResult: value["short_result"].string!,
-                        gtScore: value["gt_score"].int ?? 0,
-                        opponentScore: value["opp_score"].int ?? 0)
+            opponentName: value["opponent_name"].string!,
+            rinkName: value["rink_name"].string!,
+            venue: value["venue"].string!,
+            isReported: value["is_reported"].bool!,
+            shortResult: value["short_result"].string!,
+            gtScore: value["gt_score"].int ?? 0,
+            opponentScore: value["opp_score"].int ?? 0)
         return game
     }
-
+    
     private func makePlayerObject(value: JSON) -> Player {
         let player = Player(id: value["id"].int!,
                             firstName: value["first_name"].string!,
@@ -105,5 +107,15 @@ class JSONParser {
                             school: value["school"].string!)
         return player
     }
+    
+    
+    private func dateFormat(initDate: String) -> Date {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        let date = formatter.date(from: initDate)!
+        
+        return date
+    }
+    
     
 }

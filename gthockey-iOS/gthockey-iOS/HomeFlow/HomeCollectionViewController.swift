@@ -14,24 +14,28 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
                             title: "GT stomps on the Dawgs en route to a home-opener victory (4-1)",
                             date: Date(),
                             image: UIImage(named: "JonesPic")!,
+                            imgURL: "",
                             teaser: "This is a teaser",
                             content: "content of the article")
     private let exampleNews2 = News(id: 2,
                             title: "2019-20 First Weekend Recap",
                             date: Date(),
                             image: UIImage(named: "BohnerPic")!,
+                            imgURL: "",
                             teaser: "This is a teaser",
                             content: "content of the article")
     private let exampleNews3 = News(id: 3,
                             title: "Getting Things Started: 2019-20 Roster Announced",
                             date: Date(),
                             image: UIImage(named: "FesslerPic")!,
+                            imgURL: "",
                             teaser: "This is a teaser",
                             content: "content of the article")
     private let exampleNews4 = News(id: 4,
                             title: "2019-20 Season Schedule Released",
                             date: Date(),
                             image: UIImage(named: "SchedulePic")!,
+                            imgURL: "",
                             teaser: "This is a teaser",
                             content: "content of the article")
     private var newsArray: [News] = []
@@ -55,7 +59,23 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         self.collectionView!.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
-        newsArray = [exampleNews1, exampleNews2, exampleNews3, exampleNews4]
+        loadData()
+//        newsArray = [exampleNews1, exampleNews2, exampleNews3, exampleNews4]
+        
+        
+    }
+    
+    public func loadData(){
+        let parser = JSONParser()
+
+        parser.getArticles(){ response in
+            self.newsArray = response
+            self.collectionView.reloadData()
+            
+        }
+        
+        
+        
     }
 
     /*

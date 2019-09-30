@@ -16,13 +16,15 @@ class News {
     private var teaser: String
     private var date: Date
     private var image: UIImage
+    private var imgURL: String
     private var content: String
     
-    init(id: Int, title: String, date: Date, image: UIImage, teaser: String, content: String) {
+    init(id: Int, title: String, date: Date, image: UIImage, imgURL: String, teaser: String, content: String) {
         self.id = id
         self.title = title
         self.date = date
         self.image = image
+        self.imgURL = imgURL
         self.content = content
         self.teaser = teaser
     }
