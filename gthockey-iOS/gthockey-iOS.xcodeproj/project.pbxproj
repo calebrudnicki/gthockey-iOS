@@ -14,6 +14,9 @@
 		82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82DCB47F233C402200BDE2FE /* gthockey_iOS.xcdatamodeld */; };
 		82DCB483233C402300BDE2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB482233C402300BDE2FE /* Assets.xcassets */; };
 		82DCB486233C402300BDE2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */; };
+		82EE57E12341B2BC00FCC181 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E02341B2BC00FCC181 /* Game.swift */; };
+		82EE57E32341B36200FCC181 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E22341B36200FCC181 /* Player.swift */; };
+		82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */; };
 		C58AE6FDEF374C9B1B0751D2 /* Pods_gthockey_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */; };
 		F00EE6C223424A7600FC9CDD /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00EE6C123424A7600FC9CDD /* JSONParser.swift */; };
 		F00EE6C623424AE600FC9CDD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00EE6C323424AE600FC9CDD /* Player.swift */; };
@@ -33,6 +36,9 @@
 		82DCB482233C402300BDE2FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82DCB485233C402300BDE2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82DCB487233C402300BDE2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82EE57E02341B2BC00FCC181 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		82EE57E22341B36200FCC181 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gthockey_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00EE6C023424A5800FC9CDD /* gthockey-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "gthockey-iOS.entitlements"; sourceTree = "<group>"; };
 		F00EE6C123424A7600FC9CDD /* JSONParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
@@ -65,6 +71,7 @@
 			isa = PBXGroup;
 			children = (
 				82D971AD233D54A500BFD322 /* HomeCollectionViewController.swift */,
+				82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */,
 			);
 			path = HomeFlow;
 			sourceTree = "<group>";
@@ -258,6 +265,8 @@
 				F00EE6C223424A7600FC9CDD /* JSONParser.swift in Sources */,
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
 				F00EE6C823424AE600FC9CDD /* News.swift in Sources */,
+				82EE57E32341B36200FCC181 /* Player.swift in Sources */,
+				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				82D971B0233D54BE00BFD322 /* ScheduleCollectionViewController.swift in Sources */,
 				F00EE6C623424AE600FC9CDD /* Player.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,

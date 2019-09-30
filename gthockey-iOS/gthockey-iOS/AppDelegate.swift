@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
 
         let scheduleTabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "ScheduleIcon"), tag: 0)
         let scheduleCollectionViewController = ScheduleCollectionViewController(collectionViewLayout: layout)
@@ -40,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 											 homeNavigationController,
 											 rosterNavigationController],
 											animated: true)
+        tabBarController.selectedIndex = 1
 
         self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
