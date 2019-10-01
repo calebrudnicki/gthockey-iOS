@@ -8,5 +8,8 @@ target 'gthockey-iOS' do
   # Pods for gthockey-iOS
   pod 'SwiftLint'
   pod 'RevealingSplashView'
+  pod 'SwiftyJSON'
+  pod 'Alamofire'
+  pod 'AlamofireImage'
 
 end

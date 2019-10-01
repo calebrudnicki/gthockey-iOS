@@ -1,20 +1,33 @@
 PODS:
+  - Alamofire (4.9.0)
+  - AlamofireImage (3.5.2):
+    - Alamofire (~> 4.8)
   - RevealingSplashView (0.6.0)
   - SwiftLint (0.35.0)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
+  - Alamofire
+  - AlamofireImage
   - RevealingSplashView
   - SwiftLint
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - AlamofireImage
     - RevealingSplashView
     - SwiftLint
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 4953f71265cb5c0f6acc85bc2e115d4598280b8d
+PODFILE CHECKSUM: 5e69ffa365673454e71e1fbfdba482b46c4f2c50
 
 COCOAPODS: 1.7.5

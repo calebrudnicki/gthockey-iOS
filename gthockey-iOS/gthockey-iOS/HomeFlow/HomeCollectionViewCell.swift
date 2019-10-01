@@ -31,14 +31,14 @@ class HomeCollectionViewCell: UICollectionViewCell {
     private let subtitleLabel: UILabel = {
         let subtitleLabel = UILabel()
         subtitleLabel.font = UIFont(name:"HelveticaNeue-Light", size: 16.0)
-        subtitleLabel.adjustsFontSizeToFitWidth = true
+        subtitleLabel.lineBreakMode = .byTruncatingTail
         subtitleLabel.numberOfLines = 2
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         return subtitleLabel
     }()
 
     override init(frame: CGRect) {
-        super.init(frame: .zero)
+        super.init(frame: frame)
 
         layer.backgroundColor = UIColor.white.cgColor
         layer.shadowColor = UIColor.black.cgColor
@@ -81,11 +81,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0),
             subtitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
         ])
-
     }
 
     public func set(with news: News) {
-        imageView.image = news.getImage()
+        imageView.load(url: news.getImageURL())
         titleLabel.text = news.getTitle()
         subtitleLabel.text = news.getTeaser()
     }
@@ -97,6 +96,26 @@ class HomeCollectionViewCell: UICollectionViewCell {
                                             - contentView.layoutMargins.left
         layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
         return layoutAttributes
+    }
+
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+
+}
+
+extension UIImageView {
+
+    func load(url: URL) {
+        DispatchQueue.global().async { [weak self] in
+            if let data = try? Data(contentsOf: url) {
+                if let image = UIImage(data: data) {
+                    DispatchQueue.main.async {
+                        self?.image = image
+                    }
+                }
+            }
+        }
     }
 
 }

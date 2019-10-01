@@ -7,24 +7,23 @@
 //
 
 import Foundation
-import UIKit
 
 class News {
     
-    private var id: Int
-    private var title: String
-    private var teaser: String
-    private var date: Date
-    private var image: UIImage
-    private var content: String
-    
-    init(id: Int, title: String, date: Date, image: UIImage, teaser: String, content: String) {
+    private let id: Int
+    private let title: String
+    private let date: Date
+    private let imageURL: URL
+    private let teaser: String
+    private let content: String
+
+    init(id: Int, title: String, date: Date, imageURL: URL, teaser: String, content: String) {
         self.id = id
         self.title = title
         self.date = date
-        self.image = image
-        self.content = content
+        self.imageURL = imageURL
         self.teaser = teaser
+        self.content = content
     }
     
     func getID() -> Int {
@@ -42,9 +41,9 @@ class News {
     func getDate() -> Date {
         return date
     }
-    
-    func getImage() -> UIImage {
-        return image
+
+    func getImageURL() -> URL {
+        return imageURL
     }
     
     func getContent() -> String {
