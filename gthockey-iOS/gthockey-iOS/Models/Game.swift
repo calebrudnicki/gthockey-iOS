@@ -41,7 +41,8 @@ private class Game {
     func getDateTime() -> Date {
         return dateTime
     }
-
+    
+    //fuck uGA
     func getOpponentName() -> String {
         return opponentName
     }
