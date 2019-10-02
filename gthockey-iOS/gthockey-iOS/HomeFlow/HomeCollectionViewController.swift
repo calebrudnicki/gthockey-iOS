@@ -26,7 +26,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         self.collectionView!.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         let parser = JSONParser()
-        parser.getArticles(){ response in
+        parser.getArticles() { response in
             self.newsArray = response
             self.collectionView.reloadData()
         }

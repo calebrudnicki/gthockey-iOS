@@ -18,8 +18,7 @@ class Player {
     private var hometown: String
     private var school: String
 
-    init(id: Int, firstName: String, lastName: String, position: String,
-         number: Int, hometown: String, school: String) {
+    init(id: Int, firstName: String, lastName: String, position: String, number: Int, hometown: String, school: String) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
