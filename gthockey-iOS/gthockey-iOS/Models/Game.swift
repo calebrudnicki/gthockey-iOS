@@ -8,7 +8,7 @@
 
 import Foundation
 
-private class Game {
+class Game {
 
     private var id: Int
     private var dateTime: Date
