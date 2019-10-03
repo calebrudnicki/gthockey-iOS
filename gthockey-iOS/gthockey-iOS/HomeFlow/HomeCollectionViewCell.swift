@@ -83,6 +83,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
         ])
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+    }
+
     public func set(with news: News) {
         imageView.load(url: news.getImageURL())
         titleLabel.text = news.getTitle()
