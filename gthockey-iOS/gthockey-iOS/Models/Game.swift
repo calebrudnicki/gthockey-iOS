@@ -58,6 +58,10 @@ class Game {
         return isReported
     }
 
+    func getShortResult() -> String {
+        return shortResult
+    }
+
     func getGTScore() -> Int{
         return gtScore
     }

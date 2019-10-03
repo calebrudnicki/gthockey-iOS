@@ -8,10 +8,12 @@
 
 import UIKit
 
-class ScheduleCollectionViewController: UICollectionViewController {
+class ScheduleCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private let reuseIdentifier = "cell"
     private var gameArray: [Game] = []
+    private let cellWidth = UIScreen.main.bounds.width * 0.9
+    private let cellHeight = UIScreen.main.bounds.height * 0.1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +23,7 @@ class ScheduleCollectionViewController: UICollectionViewController {
 
         collectionView.backgroundColor = .white
 
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView!.register(ScheduleCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         let parser = JSONParser()
         parser.getSchedule() { response in
@@ -33,53 +35,24 @@ class ScheduleCollectionViewController: UICollectionViewController {
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return gameArray.count
     }
 
     override func collectionView(_ collectionView: UICollectionView,
                                  cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ScheduleCollectionViewCell
+        cell.set(with: gameArray[indexPath.row])
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
+    // MARK: UICollectionViewLayout
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView,
-								 shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-	/*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to
-	// actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView,
-								 shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: cellWidth, height: cellHeight)
     }
 
-    override func collectionView(_ collectionView: UICollectionView,
-								 canPerformAction action: Selector,
-								 forItemAt indexPath: IndexPath,
-								 withSender sender: Any?) -> Bool {
-        return false
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 16.0
     }
-
-    override func collectionView(_ collectionView: UICollectionView,
-								 performAction action: Selector,
-								 forItemAt indexPath: IndexPath,
-								 withSender sender: Any?) {
-    
-    }
-    */
 
 }
