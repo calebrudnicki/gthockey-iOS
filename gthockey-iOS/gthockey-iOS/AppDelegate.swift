@@ -23,8 +23,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         layout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
 
         let scheduleTabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "ScheduleIcon"), tag: 0)
-        let scheduleCollectionViewController = ScheduleCollectionViewController(collectionViewLayout: layout)
-        let scheduleNavigationController = UINavigationController(rootViewController: scheduleCollectionViewController)
+        let scheduleTableViewController = ScheduleTableViewController()
+        let scheduleNavigationController = UINavigationController(rootViewController: scheduleTableViewController)
         scheduleNavigationController.tabBarItem = scheduleTabBarItem
 
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "HomeIcon"), tag: 1)
@@ -46,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 											 homeNavigationController,
 											 rosterNavigationController],
 											animated: true)
-        tabBarController.selectedIndex = 1
+        tabBarController.selectedIndex = 0
 
         tabBarController.view.addSubview(revealingSplashView)
         revealingSplashView.startAnimation()

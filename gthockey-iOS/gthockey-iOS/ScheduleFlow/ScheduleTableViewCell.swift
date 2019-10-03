@@ -1,5 +1,5 @@
 //
-//  ScheduleCollectionViewCell.swift
+//  ScheduleTableViewCell.swift
 //  gthockey-iOS
 //
 //  Created by Caleb Rudnicki on 10/3/19.
@@ -8,24 +8,15 @@
 
 import UIKit
 
-class ScheduleCollectionViewCell: UICollectionViewCell {
+class ScheduleTableViewCell: UITableViewCell {
 
     private let scheduleOpponentRinkView = ScheduleOpponentRinkView()
     private let scheduleDateTimeView = ScheduleDateTimeView()
     private let scheduleResultView = ScheduleResultView()
     private var gameIsReported: Bool = false
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        layer.backgroundColor = UIColor.white.cgColor
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 7.0
-        layer.cornerRadius = 6.0
-
-        contentView.layer.cornerRadius = 6.0
-        contentView.layer.masksToBounds = true
+    override init(style: CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         contentView.addSubview(scheduleOpponentRinkView)
         contentView.addSubview(scheduleDateTimeView)
@@ -33,11 +24,11 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
 
         updateConstraints()
     }
-
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func updateConstraints() {
         super.updateConstraints()
 
@@ -82,7 +73,6 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         }
 
         updateConstraints()
-
     }
 
 }
