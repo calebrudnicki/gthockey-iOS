@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5D623440B6700114F84 /* JSONParser.swift */; };
+		82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */; };
+		82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */; };
+		82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */; };
+		82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E22346812400114F84 /* ScheduleTableViewController.swift */; };
+		82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E42346815300114F84 /* ScheduleTableViewCell.swift */; };
 		82D971AE233D54A500BFD322 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971AD233D54A500BFD322 /* HomeCollectionViewController.swift */; };
-		82D971B0233D54BE00BFD322 /* ScheduleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971AF233D54BE00BFD322 /* ScheduleCollectionViewController.swift */; };
 		82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */; };
 		82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DCB478233C402200BDE2FE /* AppDelegate.swift */; };
 		82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 82DCB47F233C402200BDE2FE /* gthockey_iOS.xcdatamodeld */; };
@@ -26,8 +30,12 @@
 		0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.release.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.debug.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		82ADF5D623440B6700114F84 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
+		82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDateTimeView.swift; sourceTree = "<group>"; };
+		82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultView.swift; sourceTree = "<group>"; };
+		82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleOpponentRinkView.swift; sourceTree = "<group>"; };
+		82ADF5E22346812400114F84 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
+		82ADF5E42346815300114F84 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		82D971AD233D54A500BFD322 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
-		82D971AF233D54BE00BFD322 /* ScheduleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewController.swift; sourceTree = "<group>"; };
 		82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewController.swift; sourceTree = "<group>"; };
 		82DCB475233C402200BDE2FE /* gthockey-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gthockey-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DCB478233C402200BDE2FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +82,11 @@
 		82D971B4233D60A500BFD322 /* ScheduleFlow */ = {
 			isa = PBXGroup;
 			children = (
-				82D971AF233D54BE00BFD322 /* ScheduleCollectionViewController.swift */,
+				82ADF5E22346812400114F84 /* ScheduleTableViewController.swift */,
+				82ADF5E42346815300114F84 /* ScheduleTableViewCell.swift */,
+				82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */,
+				82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */,
+				82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */,
 			);
 			path = ScheduleFlow;
 			sourceTree = "<group>";
@@ -257,12 +269,16 @@
 			files = (
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				82D971AE233D54A500BFD322 /* HomeCollectionViewController.swift in Sources */,
+				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
+				82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */,
+				82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */,
+				82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */,
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
 				82EE57E32341B36200FCC181 /* Player.swift in Sources */,
+				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
-				82D971B0233D54BE00BFD322 /* ScheduleCollectionViewController.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
 			);
