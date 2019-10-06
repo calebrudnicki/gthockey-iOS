@@ -19,21 +19,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
 
         let scheduleTabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "ScheduleIcon"), tag: 0)
         let scheduleTableViewController = ScheduleTableViewController()
         let scheduleNavigationController = UINavigationController(rootViewController: scheduleTableViewController)
         scheduleNavigationController.tabBarItem = scheduleTabBarItem
-
+        
+        let homeLayout = UICollectionViewFlowLayout()
+        homeLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
         let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "HomeIcon"), tag: 1)
-        let homeCollectionViewController = HomeCollectionViewController(collectionViewLayout: layout)
+        let homeCollectionViewController = HomeCollectionViewController(collectionViewLayout: homeLayout)
         let homeNavigationController = UINavigationController(rootViewController: homeCollectionViewController)
         homeNavigationController.tabBarItem = homeTabBarItem
-
+        
+        let rosterLayout = UICollectionViewFlowLayout()
+        rosterLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
         let rosterTabBarItem = UITabBarItem(title: "Roster", image: UIImage(named: "RosterIcon"), tag: 2)
-        let rosterCollectionViewController = RosterCollectionViewController(collectionViewLayout: layout)
+        let rosterCollectionViewController = RosterCollectionViewController(collectionViewLayout: rosterLayout)
         let rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
         rosterNavigationController.tabBarItem = rosterTabBarItem
 
