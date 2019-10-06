@@ -37,7 +37,7 @@
 		82ADF5E42346815300114F84 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		82D971AD233D54A500BFD322 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewController.swift; sourceTree = "<group>"; };
-		82DCB475233C402200BDE2FE /* gthockey-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gthockey-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		82DCB475233C402200BDE2FE /* GT Hockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GT Hockey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		82DCB478233C402200BDE2FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82DCB480233C402200BDE2FE /* gthockey_iOS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = gthockey_iOS.xcdatamodel; sourceTree = "<group>"; };
 		82DCB482233C402300BDE2FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		82DCB476233C402200BDE2FE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				82DCB475233C402200BDE2FE /* gthockey-iOS.app */,
+				82DCB475233C402200BDE2FE /* GT Hockey.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -172,7 +172,7 @@
 			);
 			name = "gthockey-iOS";
 			productName = "gthockey-iOS";
-			productReference = 82DCB475233C402200BDE2FE /* gthockey-iOS.app */;
+			productReference = 82DCB475233C402200BDE2FE /* GT Hockey.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -427,7 +427,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "GT Hockey";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -446,7 +446,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "GT Hockey";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
