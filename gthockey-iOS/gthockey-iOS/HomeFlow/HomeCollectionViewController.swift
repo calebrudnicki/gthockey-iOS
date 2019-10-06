@@ -44,6 +44,12 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         return cell
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let homeDetailsViewController = HomeDetailsViewController()
+        homeDetailsViewController.setWord(word: newsArray[indexPath.row].getContent())
+        present(homeDetailsViewController, animated: true, completion: nil)
+    }
+
     // MARK: UICollectionViewLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
