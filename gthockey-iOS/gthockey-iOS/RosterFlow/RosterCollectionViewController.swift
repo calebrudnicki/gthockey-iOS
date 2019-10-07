@@ -24,28 +24,9 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         navigationItem.title = "Roster"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        collectionView.backgroundColor = .white
+        setupCollectionView()
 
-        collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.register(RosterCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
-
-        let parser = JSONParser()
-        parser.getRoster() { response in
-            for player in response {
-                switch player.getPosition() {
-                case "F":
-                    self.forwardArray.append(player)
-                case "D":
-                    self.defenseArray.append(player)
-                case "G":
-                    self.goalieArray.append(player)
-                default:
-                    self.managerArray.append(player)
-                }
-            }
-            self.collectionView.reloadData()
-        }
-
+        fetchRoster()
     }
 
     // MARK: UICollectionViewDataSource
@@ -111,6 +92,42 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 12.0, left: 12.0, bottom: 12.0, right: 12.0)
+    }
+
+}
+
+// MARK: - Private Methods
+
+private extension RosterCollectionViewController {
+
+    func setupCollectionView() {
+        collectionView.backgroundColor = .white
+        collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(RosterCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(fetchRoster), for: .valueChanged)
+    }
+
+    @objc func fetchRoster() {
+        let parser = JSONParser()
+        parser.getRoster() { response in
+            for player in response {
+                switch player.getPosition() {
+                case "F":
+                    self.forwardArray.append(player)
+                case "D":
+                    self.defenseArray.append(player)
+                case "G":
+                    self.goalieArray.append(player)
+                default:
+                    self.managerArray.append(player)
+                }
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.collectionView.refreshControl?.endRefreshing()
+            }
+        }
     }
 
 }
