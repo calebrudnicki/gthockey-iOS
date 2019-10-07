@@ -12,7 +12,7 @@ class ScheduleOpponentRinkView: UIView {
 
     private let opponentLabel: UILabel = {
         let opponentLabel = UILabel()
-        opponentLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
+        opponentLabel.font = UIFont(name:"Helvetica Neue", size: 20.0)
         opponentLabel.adjustsFontSizeToFitWidth = true
         opponentLabel.numberOfLines = 1
         opponentLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -66,8 +66,12 @@ class ScheduleOpponentRinkView: UIView {
 
     }
 
-    public func set(with opponent: String, _ rink: String) {
-        opponentLabel.text = "vs. \(opponent)"
+    public func set(with opponent: String, _ rink: String, _ venue: String) {
+        if venue == "H" {
+            opponentLabel.text = "vs \(opponent)"
+        } else {
+            opponentLabel.text = "at \(opponent)"
+        }
         rinkLabel.text = rink
     }
 

@@ -34,7 +34,7 @@ class ScheduleTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             scheduleOpponentRinkView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8.0),
-            scheduleOpponentRinkView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
+            scheduleOpponentRinkView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
             scheduleOpponentRinkView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0),
             scheduleOpponentRinkView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.7)
         ])
@@ -58,8 +58,8 @@ class ScheduleTableViewCell: UITableViewCell {
     }
 
     public func set(with game: Game) {
-        scheduleOpponentRinkView.set(with: game.getOpponentName(), game.getRinkName())
-
+        scheduleOpponentRinkView.set(with: game.getOpponentName(), game.getRinkName(), game.getVenue())
+        
         if game.getIsReported() {
             scheduleResultView.set(with: game.getShortResult(), "\(game.getGTScore()) - \(game.getOpponentScore())")
             gameIsReported = true
