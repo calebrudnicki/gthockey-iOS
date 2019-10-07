@@ -11,7 +11,8 @@ import UIKit
 class ScheduleTableViewController: UITableViewController {
 
     private let reuseIdentifier = "cell"
-    private var gameArray: [Game] = []
+    private var completedGameArray: [Game] = []
+    private var upcomingGameArray: [Game] = []
     private let cellHeight = UIScreen.main.bounds.height * 0.8
 
     override func viewDidLoad() {
@@ -20,29 +21,61 @@ class ScheduleTableViewController: UITableViewController {
         navigationItem.title = "Schedule"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        self.tableView!.register(ScheduleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.setEditing(false, animated: false)
 
         let parser = JSONParser()
         parser.getSchedule() { response in
-            self.gameArray = response
+            for game in response {
+                if game.getIsReported() {
+                    self.completedGameArray.append(game)
+                } else {
+                    self.upcomingGameArray.append(game)
+                }
+            }
             self.tableView.reloadData()
         }
     }
 
     // MARK: - Table view data source
 
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gameArray.count
+        switch section {
+        case 0:
+            return completedGameArray.count
+        default:
+            return upcomingGameArray.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ScheduleTableViewCell
-        cell.set(with: gameArray[indexPath.row])
+
+        switch indexPath.section {
+        case 0:
+            cell.set(with: completedGameArray[indexPath.row])
+        default:
+            cell.set(with: upcomingGameArray[indexPath.row])
+        }
+
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 72.0
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Completed"
+        default:
+            return "Upcoming"
+        }
     }
 
 }
