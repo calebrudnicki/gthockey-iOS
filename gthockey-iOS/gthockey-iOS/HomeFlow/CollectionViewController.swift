@@ -22,7 +22,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()
-
         fetchArticles()
     }
 
@@ -54,14 +53,16 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
 private extension HomeCollectionViewController {
 
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.backgroundColor = .white
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchArticles), for: .valueChanged)
     }
 
-    @objc func fetchArticles() {
+    @objc private func fetchArticles() {
+        newsArray = []
+        
         let parser = JSONParser()
         parser.getArticles() { response in
             self.newsArray = response
