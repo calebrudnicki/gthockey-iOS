@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeCollectionViewCell: UICollectionViewCell {
 
@@ -89,18 +90,9 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
 
     public func set(with news: News) {
-        imageView.load(url: news.getImageURL())
+        imageView.sd_setImage(with: news.getImageURL(), placeholderImage:nil)
         titleLabel.text = news.getTitle()
         subtitleLabel.text = news.getTeaser()
-    }
-
-    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes)
-                                                                    -> UICollectionViewLayoutAttributes {
-        titleLabel.preferredMaxLayoutWidth = layoutAttributes.size.width
-                                            - contentView.layoutMargins.left
-                                            - contentView.layoutMargins.left
-        layoutAttributes.bounds.size.height = systemLayoutSizeFitting(UIView.layoutFittingCompressedSize).height
-        return layoutAttributes
     }
 
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
