@@ -80,11 +80,11 @@ private extension ScheduleTableViewController {
     }
 
     @objc private func fetchSchedule() {
-        completedGameArray = []
-        upcomingGameArray = []
-        
         let parser = JSONParser()
         parser.getSchedule() { response in
+            self.completedGameArray = []
+            self.upcomingGameArray = []
+
             for game in response {
                 if game.getIsReported() {
                     self.completedGameArray.append(game)

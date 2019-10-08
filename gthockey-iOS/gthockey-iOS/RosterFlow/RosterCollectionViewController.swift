@@ -108,13 +108,13 @@ private extension RosterCollectionViewController {
     }
 
     @objc private func fetchRoster() {
-        forwardArray = []
-        defenseArray = []
-        goalieArray = []
-        managerArray = []
-        
         let parser = JSONParser()       
         parser.getRoster() { response in
+            self.forwardArray = []
+            self.defenseArray = []
+            self.goalieArray = []
+            self.managerArray = []
+
             for player in response {
                 switch player.getPosition() {
                 case "F":
