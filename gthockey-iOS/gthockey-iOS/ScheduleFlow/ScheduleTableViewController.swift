@@ -21,20 +21,8 @@ class ScheduleTableViewController: UITableViewController {
         navigationItem.title = "Schedule"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.setEditing(false, animated: false)
-
-        let parser = JSONParser()
-        parser.getSchedule() { response in
-            for game in response {
-                if game.getIsReported() {
-                    self.completedGameArray.append(game)
-                } else {
-                    self.upcomingGameArray.append(game)
-                }
-            }
-            self.tableView.reloadData()
-        }
+        setupTableView()
+        fetchSchedule()
     }
 
     // MARK: - Table view data source
@@ -75,6 +63,39 @@ class ScheduleTableViewController: UITableViewController {
             return "Completed"
         default:
             return "Upcoming"
+        }
+    }
+
+}
+
+// MARK: - Private Methods
+
+private extension ScheduleTableViewController {
+
+    private func setupTableView() {
+        tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.setEditing(false, animated: false)
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(fetchSchedule), for: .valueChanged)
+    }
+
+    @objc private func fetchSchedule() {
+        completedGameArray = []
+        upcomingGameArray = []
+        
+        let parser = JSONParser()
+        parser.getSchedule() { response in
+            for game in response {
+                if game.getIsReported() {
+                    self.completedGameArray.append(game)
+                } else {
+                    self.upcomingGameArray.append(game)
+                }
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            }
         }
     }
 

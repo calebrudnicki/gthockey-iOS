@@ -21,15 +21,8 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         navigationItem.title = "Home"
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        collectionView.backgroundColor = .white
-
-        self.collectionView!.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-        let parser = JSONParser()
-        parser.getArticles() { response in
-            self.newsArray = response
-            self.collectionView.reloadData()
-        }
+        setupCollectionView()
+        fetchArticles()
     }
 
     // MARK: UICollectionViewDataSource
@@ -52,6 +45,33 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 24.0
+    }
+
+}
+
+// MARK: - Private Methods
+
+private extension HomeCollectionViewController {
+
+    private func setupCollectionView() {
+        collectionView.backgroundColor = .white
+        collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(fetchArticles), for: .valueChanged)
+    }
+
+    @objc private func fetchArticles() {
+        newsArray = []
+        
+        let parser = JSONParser()
+        parser.getArticles() { response in
+            self.newsArray = response
+
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.collectionView.refreshControl?.endRefreshing()
+            }
+        }
     }
 
 }
