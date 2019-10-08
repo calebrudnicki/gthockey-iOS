@@ -10,6 +10,13 @@ import UIKit
 
 class DetailsScrollView: UIScrollView {
 
+    private let contentView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+
    private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
@@ -30,26 +37,35 @@ class DetailsScrollView: UIScrollView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
+        backgroundColor = .green
         translatesAutoresizingMaskIntoConstraints = false
-        
+
+
         imageView.image = UIImage(named: "JonesPic")
-        addSubview(imageView)
-        addSubview(textView)
+//        addSubview(imageView)
+        addSubview(contentView)
+//        contentView.addSubview(textView)
 
+//        NSLayoutConstraint.activate([
+//            imageView.topAnchor.constraint(equalTo: topAnchor),
+//            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+//            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+//            imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2)
+//        ])
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.2)
+            contentView.topAnchor.constraint(equalTo: bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
 
-        NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-            textView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            textView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//            textView.topAnchor.constraint(equalTo: contentView.bottomAnchor),
+//            textView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+//            textView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+//            textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+//        ])
     }
 
     required init?(coder: NSCoder) {
