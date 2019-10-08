@@ -45,7 +45,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let homeDetailsViewController = HomeDetailsViewController()
+        let homeDetailsViewController = HomeDetailViewController()
         homeDetailsViewController.setArticle(with: newsArray[indexPath.row])
         present(homeDetailsViewController, animated: true, completion: nil)
     }
