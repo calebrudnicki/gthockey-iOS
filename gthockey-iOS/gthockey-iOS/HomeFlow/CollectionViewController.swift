@@ -37,12 +37,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         return cell
     }
 
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let homeDetailsViewController = HomeDetailViewController()
-        homeDetailsViewController.setArticle(with: newsArray[indexPath.row])
-        present(homeDetailsViewController, animated: true, completion: nil)
-    }
-
     // MARK: UICollectionViewLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -67,10 +61,12 @@ private extension HomeCollectionViewController {
     }
 
     @objc private func fetchArticles() {
+        newsArray = []
+        
         let parser = JSONParser()
         parser.getArticles() { response in
-            self.newsArray = []
             self.newsArray = response
+
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.collectionView.refreshControl?.endRefreshing()
