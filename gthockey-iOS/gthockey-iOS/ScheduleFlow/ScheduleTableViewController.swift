@@ -22,7 +22,6 @@ class ScheduleTableViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupTableView()
-
         fetchSchedule()
     }
 
@@ -73,14 +72,17 @@ class ScheduleTableViewController: UITableViewController {
 
 private extension ScheduleTableViewController {
 
-    func setupTableView() {
+    private func setupTableView() {
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         tableView.setEditing(false, animated: false)
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(fetchSchedule), for: .valueChanged)
     }
 
-    @objc func fetchSchedule() {
+    @objc private func fetchSchedule() {
+        completedGameArray = []
+        upcomingGameArray = []
+        
         let parser = JSONParser()
         parser.getSchedule() { response in
             for game in response {
@@ -90,7 +92,6 @@ private extension ScheduleTableViewController {
                     self.upcomingGameArray.append(game)
                 }
             }
-
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.tableView.refreshControl?.endRefreshing()
