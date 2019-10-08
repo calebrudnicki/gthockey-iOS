@@ -84,10 +84,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        imageView.image = nil
-    }
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        imageView.image = nil
+//    }
 
     public func set(with news: News) {
         imageView.sd_setImage(with: news.getImageURL(), placeholderImage: nil)
@@ -95,24 +95,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
         subtitleLabel.text = news.getTeaser()
     }
 
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-    }
-
-}
-
-extension UIImageView {
-
-    func load(url: URL) {
-        DispatchQueue.global().async { [weak self] in
-            if let data = try? Data(contentsOf: url) {
-                if let image = UIImage(data: data) {
-                    DispatchQueue.main.async {
-                        self?.image = image
-                    }
-                }
-            }
-        }
-    }
+//    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+//        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+//    }
 
 }
