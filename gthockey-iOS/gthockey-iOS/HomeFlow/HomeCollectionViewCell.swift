@@ -90,7 +90,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     }
 
     public func set(with news: News) {
-        imageView.sd_setImage(with: news.getImageURL(), placeholderImage:nil)
+        imageView.sd_setImage(with: news.getImageURL(), placeholderImage: nil)
         titleLabel.text = news.getTitle()
         subtitleLabel.text = news.getTeaser()
     }
