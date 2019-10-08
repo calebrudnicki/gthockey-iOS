@@ -25,7 +25,6 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()
-
         fetchRoster()
     }
 
@@ -100,7 +99,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
 
 private extension RosterCollectionViewController {
 
-    func setupCollectionView() {
+    private func setupCollectionView() {
         collectionView.backgroundColor = .white
         collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.register(RosterCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
@@ -108,8 +107,13 @@ private extension RosterCollectionViewController {
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchRoster), for: .valueChanged)
     }
 
-    @objc func fetchRoster() {
-        let parser = JSONParser()
+    @objc private func fetchRoster() {
+        forwardArray = []
+        defenseArray = []
+        goalieArray = []
+        managerArray = []
+        
+        let parser = JSONParser()       
         parser.getRoster() { response in
             for player in response {
                 switch player.getPosition() {
