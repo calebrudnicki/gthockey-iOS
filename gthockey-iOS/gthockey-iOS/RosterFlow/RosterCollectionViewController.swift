@@ -8,12 +8,15 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-class RosterCollectionViewController: UICollectionViewController {
+class RosterCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private let reuseIdentifier = "cell"
-    private var playerArray: [Player] = []
+    private let headerIdentifier = "header"
+    private var forwardArray: [Player] = []
+    private var defenseArray: [Player] = []
+    private var goalieArray: [Player] = []
+    private var managerArray: [Player] = []
+    private let cellWidth = UIScreen.main.bounds.width / 2.25
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +26,23 @@ class RosterCollectionViewController: UICollectionViewController {
 
         collectionView.backgroundColor = .white
 
-        // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(RosterCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
 
         let parser = JSONParser()
         parser.getRoster() { response in
-            self.playerArray = response
+            for player in response {
+                switch player.getPosition() {
+                case "F":
+                    self.forwardArray.append(player)
+                case "D":
+                    self.defenseArray.append(player)
+                case "G":
+                    self.goalieArray.append(player)
+                default:
+                    self.managerArray.append(player)
+                }
+            }
             self.collectionView.reloadData()
         }
 
@@ -36,54 +50,67 @@ class RosterCollectionViewController: UICollectionViewController {
 
     // MARK: UICollectionViewDataSource
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 4
     }
 
-    override func collectionView(_ collectionView: UICollectionView,
-                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return forwardArray.count
+        case 1:
+            return defenseArray.count
+        case 2:
+            return goalieArray.count
+        default:
+            return managerArray.count
+        }
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RosterCollectionViewCell
+
+        switch indexPath.section {
+        case 0:
+            cell.set(with: forwardArray[indexPath.row])
+        case 1:
+            cell.set(with: defenseArray[indexPath.row])
+        case 2:
+            cell.set(with: goalieArray[indexPath.row])
+        default:
+            cell.set(with: managerArray[indexPath.row])
+        }
+
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
-	/*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView,
-								 shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-	/*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to
-	// actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView,
-								 shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! RosterCollectionViewHeader
+        switch indexPath.section {
+        case 0:
+            header.set(with: "Forwards")
+        case 1:
+            header.set(with: "Defense")
+        case 2:
+            header.set(with: "Goalies")
+        default:
+            header.set(with: "Managers")
+        }
+        return header
     }
 
-    override func collectionView(_ collectionView: UICollectionView,
-								 canPerformAction action: Selector,
-								 forItemAt indexPath: IndexPath,
-								 withSender sender: Any?) -> Bool {
-        return false
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: cellWidth / 2)
     }
 
-    override func collectionView(_ collectionView: UICollectionView,
-								 performAction action: Selector,
-								 forItemAt indexPath: IndexPath,
-								 withSender sender: Any?) {
-    
+    // MARK: UICollectionViewLayout
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: cellWidth, height: cellWidth)
     }
-    */
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 12.0, left: 12.0, bottom: 12.0, right: 12.0)
+    }
 
 }

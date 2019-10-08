@@ -12,7 +12,7 @@ class ScheduleResultView: UIView {
 
     private let resultLabel: UILabel = {
         let resultLabel = UILabel()
-        resultLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
+        resultLabel.font = UIFont(name:"Helvetica Neue", size: 20.0)
         resultLabel.adjustsFontSizeToFitWidth = true
         resultLabel.numberOfLines = 1
         resultLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -70,11 +70,18 @@ class ScheduleResultView: UIView {
     public func set(with result: String, _ score: String) {
         resultLabel.text = result
         if result == "W" {
-            resultLabel.textColor = .green
+            resultLabel.textColor = .winGreen
         } else {
-            resultLabel.textColor = .red
+            resultLabel.textColor = .lossRed
         }
         scoreLabel.text = score
     }
+
+}
+
+extension UIColor {
+
+    static var winGreen = UIColor(red: 34/255, green: 139/255, blue: 34/255, alpha: 1.0)
+    static var lossRed = UIColor(red: 178/255, green: 34/255, blue: 34/255, alpha: 1.0)
 
 }
