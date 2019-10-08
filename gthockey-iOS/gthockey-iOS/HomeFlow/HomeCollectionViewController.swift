@@ -37,6 +37,12 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         return cell
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let homeDetailsViewController = HomeDetailViewController()
+        homeDetailsViewController.setArticle(with: newsArray[indexPath.row])
+        present(homeDetailsViewController, animated: true, completion: nil)
+    }
+
     // MARK: UICollectionViewLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

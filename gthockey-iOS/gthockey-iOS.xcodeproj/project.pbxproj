@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */; };
 		82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */; };
+		82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */; };
 		82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5D623440B6700114F84 /* JSONParser.swift */; };
 		82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */; };
 		82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */; };
@@ -33,6 +34,7 @@
 		424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.debug.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewHeader.swift; sourceTree = "<group>"; };
 		82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
+		82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		82ADF5D623440B6700114F84 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDateTimeView.swift; sourceTree = "<group>"; };
 		82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultView.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 			children = (
 				82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */,
 				82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */,
+				82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */,
 			);
 			path = HomeFlow;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 				82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */,
 				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
+				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
