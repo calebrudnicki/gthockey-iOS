@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import MRArticleViewController
 
-class HomeDetailsViewController: UIViewController {
+class HomeDetailsViewController: ArticleViewController {
 
-    private lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 4000)
+    private lazy var contentViewSize = CGSize(width: self.view.frame.width, height: self.view.frame.height + 400)
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView(frame: .zero)
@@ -25,36 +26,18 @@ class HomeDetailsViewController: UIViewController {
         let containerView = UIView()
         containerView.backgroundColor = .white
         containerView.frame.size = contentViewSize
-//        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.translatesAutoresizingMaskIntoConstraints = false
         return containerView
     }()
-
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.alignment = .center
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        stackView.frame.size = contentViewSize
-        stackView.backgroundColor = .white
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        return stackView
-    }()
-
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .gray
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.text = "Hey there"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
+//
+//    private let imageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.backgroundColor = .gray
+//        imageView.clipsToBounds = true
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        return imageView
+//    }()
 
     private lazy var textView: UITextView = {
         let textView = UITextView()
@@ -66,41 +49,18 @@ class HomeDetailsViewController: UIViewController {
         return textView
     }()
 
-    public func setWord(word: String) {
-        label.text = word
+    public func setArticle(with news: News) {
+        imageView.image = UIImage(named: "JonesPic")!
+        headline = news.getTitle()
+        date = news.getDate()
+        body = news.getContent()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        imageView.contentMode = .scaleAspectFill
         view.backgroundColor = .white
-        imageView.image = UIImage(named: "JonesPic")
-
-        view.addSubview(scrollView)
-        scrollView.addSubview(stackView)
-        stackView.addArrangedSubview(imageView)
-        stackView.addArrangedSubview(textView)
-//
-//        NSLayoutConstraint.activate([
-//                   stackView.topAnchor.constraint(equalTo: containerView.topAnchor),
-//                   stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-//                   stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-//                   stackView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-//               ])
-
-//        NSLayoutConstraint.activate([
-//            imageView.topAnchor.constraint(equalTo: containerView.topAnchor),
-//            imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-//            imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-//            imageView.heightAnchor.constraint(equalTo: containerView.heightAnchor, multiplier: 0.3)
-//        ])
-//
-//        NSLayoutConstraint.activate([
-//            textView.topAnchor.constraint(equalTo: imageView.bottomAnchor),
-//            textView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-//            textView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-//            textView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-//        ])
     }
 
 }
