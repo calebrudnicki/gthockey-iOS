@@ -12,7 +12,7 @@ import AlamofireImage
 import SwiftyJSON
 
 class JSONParser {
-
+    
     init() {}
 
     // MARK: Public Functions

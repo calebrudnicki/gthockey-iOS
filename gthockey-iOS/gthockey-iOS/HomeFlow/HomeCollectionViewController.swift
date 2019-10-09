@@ -77,5 +77,4 @@ private extension HomeCollectionViewController {
             }
         }
     }
-
 }
