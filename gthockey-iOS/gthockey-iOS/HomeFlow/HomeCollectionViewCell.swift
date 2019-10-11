@@ -84,19 +84,10 @@ class HomeCollectionViewCell: UICollectionViewCell {
         ])
     }
 
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        imageView.image = nil
-//    }
-
     public func set(with news: News) {
         imageView.sd_setImage(with: news.getImageURL(), placeholderImage: nil)
         titleLabel.text = news.getTitle()
         subtitleLabel.text = news.getTeaser()
     }
-
-//    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-//        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
-//    }
-
+    
 }
