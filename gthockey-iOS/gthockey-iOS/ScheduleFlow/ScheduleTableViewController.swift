@@ -20,6 +20,7 @@ class ScheduleTableViewController: UITableViewController {
 
         navigationItem.title = "Schedule"
         navigationController?.navigationBar.prefersLargeTitles = true
+        tableView.scrollsToTop = true
 
         setupTableView()
         fetchSchedule()

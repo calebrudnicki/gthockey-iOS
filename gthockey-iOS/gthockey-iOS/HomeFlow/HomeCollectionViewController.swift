@@ -23,6 +23,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
         setupCollectionView()
         fetchArticles()
+        collectionView.scrollsToTop = true
     }
 
     // MARK: UICollectionViewDataSource

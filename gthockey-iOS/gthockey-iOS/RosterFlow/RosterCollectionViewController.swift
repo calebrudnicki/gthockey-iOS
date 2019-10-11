@@ -23,6 +23,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
 
         navigationItem.title = "Roster"
         navigationController?.navigationBar.prefersLargeTitles = true
+        collectionView.scrollsToTop = true
 
         setupCollectionView()
         fetchRoster()
