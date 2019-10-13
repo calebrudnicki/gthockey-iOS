@@ -130,18 +130,19 @@ class HomeDetailViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: headlineLabel.bottomAnchor, constant: 8.0),
-            dateLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0)
+            dateLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            dateLabel.trailingAnchor.constraint(lessThanOrEqualTo: backgroundView.trailingAnchor, constant: -12.0)
         ])
 
         NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10.0),
+            separatorView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 12.0),
             separatorView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            separatorView.widthAnchor.constraint(equalTo: dateLabel.widthAnchor, multiplier: 1),
+            separatorView.widthAnchor.constraint(equalTo: dateLabel.widthAnchor),
             separatorView.heightAnchor.constraint(equalToConstant: 1.0)
         ])
 
         NSLayoutConstraint.activate([
-            bodyLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 10.0),
+            bodyLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 12.0),
             bodyLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             bodyLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             bodyLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)

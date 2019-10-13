@@ -46,6 +46,19 @@ class Player {
         return position
     }
 
+    func getPositionLong() -> String {
+        switch position {
+        case "F":
+            return "Forward"
+        case "D":
+            return "Defense"
+        case "G":
+            return "Goalie"
+        default:
+            return "Manager"
+        }
+    }
+
     func getNumber() -> Int {
         return number
     }

@@ -68,6 +68,49 @@ class RosterDetailViewController: UIViewController {
         return numberLabel
     }()
 
+    private let separatorView: UIView = {
+        let separatorView = UIView()
+        separatorView.backgroundColor = .black
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        return separatorView
+    }()
+
+    private let positionLabel: UILabel = {
+        let positionLabel = UILabel()
+        positionLabel.numberOfLines = 0
+        positionLabel.sizeToFit()
+        positionLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+        positionLabel.translatesAutoresizingMaskIntoConstraints = false
+        return positionLabel
+    }()
+
+    private let hometownLabel: UILabel = {
+        let hometownLabel = UILabel()
+        hometownLabel.numberOfLines = 0
+        hometownLabel.sizeToFit()
+        hometownLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+        hometownLabel.translatesAutoresizingMaskIntoConstraints = false
+        return hometownLabel
+    }()
+
+    private let schoolLabel: UILabel = {
+        let schoolLabel = UILabel()
+        schoolLabel.numberOfLines = 0
+        schoolLabel.sizeToFit()
+        schoolLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+        schoolLabel.translatesAutoresizingMaskIntoConstraints = false
+        return schoolLabel
+    }()
+
+    private let bioLabel: UILabel = {
+        let bioLabel = UILabel()
+        bioLabel.numberOfLines = 0
+        bioLabel.sizeToFit()
+        bioLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+        bioLabel.translatesAutoresizingMaskIntoConstraints = false
+        return bioLabel
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -81,6 +124,11 @@ class RosterDetailViewController: UIViewController {
         backgroundView.addSubview(firstNameLabel)
         backgroundView.addSubview(lastNameLabel)
         backgroundView.addSubview(numberLabel)
+        backgroundView.addSubview(separatorView)
+        backgroundView.addSubview(positionLabel)
+        backgroundView.addSubview(hometownLabel)
+        backgroundView.addSubview(schoolLabel)
+        backgroundView.addSubview(bioLabel)
 
         updateViewConstraints()
     }
@@ -118,19 +166,51 @@ class RosterDetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             firstNameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8.0),
             firstNameLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            firstNameLabel.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.75)
+            firstNameLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
         ])
 
         NSLayoutConstraint.activate([
             lastNameLabel.topAnchor.constraint(equalTo: firstNameLabel.bottomAnchor, constant: 4.0),
             lastNameLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            firstNameLabel.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.75)
         ])
 
         NSLayoutConstraint.activate([
-            numberLabel.leadingAnchor.constraint(equalTo: firstNameLabel.trailingAnchor, constant: 12.0),
+            numberLabel.topAnchor.constraint(equalTo: firstNameLabel.bottomAnchor, constant: 4.0),
+            numberLabel.leadingAnchor.constraint(equalTo: lastNameLabel.trailingAnchor, constant: 12.0),
             numberLabel.bottomAnchor.constraint(equalTo: lastNameLabel.bottomAnchor),
             numberLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            separatorView.topAnchor.constraint(equalTo: lastNameLabel.bottomAnchor, constant: 12.0),
+            separatorView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            separatorView.widthAnchor.constraint(equalTo: lastNameLabel.widthAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            positionLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 12.0),
+            positionLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            positionLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            hometownLabel.topAnchor.constraint(equalTo: positionLabel.bottomAnchor, constant: 8.0),
+            hometownLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            hometownLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            schoolLabel.topAnchor.constraint(equalTo: hometownLabel.bottomAnchor, constant: 8.0),
+            schoolLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            schoolLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            bioLabel.topAnchor.constraint(equalTo: schoolLabel.bottomAnchor, constant: 12.0),
+            bioLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            bioLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
+            bioLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
         ])
     }
 
@@ -139,6 +219,10 @@ class RosterDetailViewController: UIViewController {
         firstNameLabel.text = player.getFirstName()
         lastNameLabel.text = player.getLastName()
         numberLabel.text = "#\(player.getNumber())"
+        positionLabel.text = player.getPositionLong()
+        hometownLabel.text = player.getHometown()
+        schoolLabel.text = player.getSchool()
+        bioLabel.text = "The Jackets were back on home ice after starting off the 2019-20 campaign mostly on the road. Coming into the weekend, the squad held a respectable 5-1 record, with their solo loss coming to an Auburn squad in just the second game of the season. Back on home ice though, GT would look to square off against two relatively unfamiliar opponents in the University of Central Florida Knights and the Coastal Carolina University Chanticleers."
     }
 
     @objc private func closeButtonTapped() {
