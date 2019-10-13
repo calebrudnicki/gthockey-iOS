@@ -1,15 +1,15 @@
 //
-//  HomeDetailViewController.swift
+//  RosterDetailViewController.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 10/8/19.
+//  Created by Caleb Rudnicki on 10/11/19.
 //  Copyright © 2019 Caleb Rudnicki. All rights reserved.
 //
 
 import UIKit
 import SDWebImage
 
-class HomeDetailViewController: UIViewController {
+class RosterDetailViewController: UIViewController {
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -40,38 +40,32 @@ class HomeDetailViewController: UIViewController {
         return imageView
     }()
 
-    private let headlineLabel: UILabel = {
-        let headlineLabel = UILabel()
-        headlineLabel.numberOfLines = 0
-        headlineLabel.sizeToFit()
-        headlineLabel.font = UIFont(name: "HelveticaNeue-Light", size: 36)
-        headlineLabel.translatesAutoresizingMaskIntoConstraints = false
-        return headlineLabel
+    private let firstNameLabel: UILabel = {
+        let firstNameLabel = UILabel()
+        firstNameLabel.numberOfLines = 0
+        firstNameLabel.sizeToFit()
+        firstNameLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24)
+        firstNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        return firstNameLabel
     }()
 
-    private let dateLabel: UILabel = {
-        let dateLabel = UILabel()
-        dateLabel.numberOfLines = 0
-        dateLabel.sizeToFit()
-        dateLabel.font = UIFont(name: "HelveticaNeue", size: 12)
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        return dateLabel
+    private let lastNameLabel: UILabel = {
+        let lastNameLabel = UILabel()
+        lastNameLabel.numberOfLines = 0
+        lastNameLabel.sizeToFit()
+        lastNameLabel.font = UIFont(name: "Helvetica Neue", size: 36)
+        lastNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        return lastNameLabel
     }()
 
-    private let separatorView: UIView = {
-        let separatorView = UIView()
-        separatorView.backgroundColor = .black
-        separatorView.translatesAutoresizingMaskIntoConstraints = false
-        return separatorView
-    }()
-
-    private let bodyLabel: UILabel = {
-        let bodyLabel = UILabel()
-        bodyLabel.numberOfLines = 0
-        bodyLabel.sizeToFit()
-        bodyLabel.font = UIFont(name: "Georgia", size: 20)
-        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
-        return bodyLabel
+    private let numberLabel: UILabel = {
+        let numberLabel = UILabel()
+        numberLabel.numberOfLines = 0
+        numberLabel.textAlignment = .right
+        numberLabel.sizeToFit()
+        numberLabel.font = UIFont(name: "Helvetica Neue", size: 36)
+        numberLabel.translatesAutoresizingMaskIntoConstraints = false
+        return numberLabel
     }()
 
     override func viewDidLoad() {
@@ -84,10 +78,9 @@ class HomeDetailViewController: UIViewController {
         scrollView.addSubview(backgroundView)
         backgroundView.addSubview(imageView)
         backgroundView.addSubview(closeButton)
-        backgroundView.addSubview(headlineLabel)
-        backgroundView.addSubview(dateLabel)
-        backgroundView.addSubview(separatorView)
-        backgroundView.addSubview(bodyLabel)
+        backgroundView.addSubview(firstNameLabel)
+        backgroundView.addSubview(lastNameLabel)
+        backgroundView.addSubview(numberLabel)
 
         updateViewConstraints()
     }
@@ -123,40 +116,29 @@ class HomeDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            headlineLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8.0),
-            headlineLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            headlineLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -24.0)
+            firstNameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8.0),
+            firstNameLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            firstNameLabel.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.75)
         ])
 
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: headlineLabel.bottomAnchor, constant: 8.0),
-            dateLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0)
+            lastNameLabel.topAnchor.constraint(equalTo: firstNameLabel.bottomAnchor, constant: 4.0),
+            lastNameLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            firstNameLabel.widthAnchor.constraint(equalTo: backgroundView.widthAnchor, multiplier: 0.75)
         ])
 
         NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 10.0),
-            separatorView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            separatorView.widthAnchor.constraint(equalTo: dateLabel.widthAnchor, multiplier: 1),
-            separatorView.heightAnchor.constraint(equalToConstant: 1.0)
-        ])
-
-        NSLayoutConstraint.activate([
-            bodyLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 10.0),
-            bodyLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            bodyLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
-            bodyLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
+            numberLabel.leadingAnchor.constraint(equalTo: firstNameLabel.trailingAnchor, constant: 12.0),
+            numberLabel.bottomAnchor.constraint(equalTo: lastNameLabel.bottomAnchor),
+            numberLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
         ])
     }
 
-    public func set(with news: News) {
-        imageView.sd_setImage(with: news.getImageURL(), placeholderImage: nil)
-        headlineLabel.text = news.getTitle()
-
-        let formatter = DateFormatter()
-        formatter.dateStyle = .long
-        dateLabel.text = formatter.string(from: news.getDate())
-
-        bodyLabel.text = news.getContent()
+    public func set(with player: Player) {
+        imageView.sd_setImage(with: player.getImageURL(), placeholderImage: nil)
+        firstNameLabel.text = player.getFirstName()
+        lastNameLabel.text = player.getLastName()
+        numberLabel.text = "#\(player.getNumber())"
     }
 
     @objc private func closeButtonTapped() {

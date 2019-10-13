@@ -17,8 +17,9 @@ class Player {
     private var number: Int
     private var hometown: String
     private var school: String
+    private var imageURL: URL
 
-    init(id: Int, firstName: String, lastName: String, position: String, number: Int, hometown: String, school: String) {
+    init(id: Int, firstName: String, lastName: String, position: String, number: Int, hometown: String, school: String, imageURL: URL) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
@@ -26,6 +27,7 @@ class Player {
         self.number = number
         self.hometown = hometown
         self.school = school
+        self.imageURL = imageURL
     }
 
     func getID() -> Int {
@@ -54,6 +56,10 @@ class Player {
 
     func getSchool() -> String {
         return school
+    }
+
+    func getImageURL() -> URL {
+        return imageURL
     }
 
 }
