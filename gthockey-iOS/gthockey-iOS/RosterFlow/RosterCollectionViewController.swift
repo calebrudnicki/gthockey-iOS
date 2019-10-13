@@ -105,6 +105,7 @@ private extension RosterCollectionViewController {
         collectionView.register(RosterCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchRoster), for: .valueChanged)
+        collectionView.collectionhe
     }
 
     @objc private func fetchRoster() {

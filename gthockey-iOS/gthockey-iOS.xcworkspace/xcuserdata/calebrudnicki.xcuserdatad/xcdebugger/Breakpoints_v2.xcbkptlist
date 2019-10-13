@@ -3,4 +3,54 @@
    uuid = "0F025E1F-9675-4B90-931E-D3B395D43848"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A48F42A6-8734-4A70-A8F1-B03C8B8B05AA"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gthockey-iOS/HomeFlow/HomeCollectionViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "fetchArticles()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A48F42A6-8734-4A70-A8F1-B03C8B8B05AA - 5bb0a73253652719"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GT_Hockey.HomeCollectionViewController.(fetchArticles in _6D119F948AF059254158F6D2D93B1491)() -&gt; ()"
+                  moduleName = "GT Hockey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebrudnicki/Desktop/gthockey-iOS/gthockey-iOS/gthockey-iOS/HomeFlow/HomeCollectionViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "74"
+                  endingLineNumber = "74"
+                  offsetFromSymbolStart = "105">
+               </Location>
+               <Location
+                  uuid = "A48F42A6-8734-4A70-A8F1-B03C8B8B05AA - 86747cb8df0ebe21"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;GT_Hockey.News&gt;) -&gt; () in GT_Hockey.HomeCollectionViewController.(fetchArticles in _6D119F948AF059254158F6D2D93B1491)() -&gt; ()"
+                  moduleName = "GT Hockey"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/calebrudnicki/Desktop/gthockey-iOS/gthockey-iOS/gthockey-iOS/HomeFlow/HomeCollectionViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "75"
+                  endingLineNumber = "75"
+                  offsetFromSymbolStart = "213">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

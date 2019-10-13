@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
 class ScheduleTableViewController: UITableViewController {
 
@@ -68,15 +69,15 @@ class ScheduleTableViewController: UITableViewController {
 
 }
 
-// MARK: - Private Methods
+// MARK: Private Methods
 
-private extension ScheduleTableViewController {
+extension ScheduleTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     private func setupTableView() {
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.setEditing(false, animated: false)
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(fetchSchedule), for: .valueChanged)
+        tableView.tableFooterView = UIView()
     }
 
     @objc private func fetchSchedule() {
@@ -97,6 +98,22 @@ private extension ScheduleTableViewController {
                 self.tableView.refreshControl?.endRefreshing()
             }
         }
+    }
+
+    // MARK: DZNEmptyDataSetSource Functions
+
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "There doesn't seem to be any connection...")
+    }
+
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
+        return NSAttributedString(string: "Refresh")
+    }
+
+    // MARK: DZNEmptyDataSetSource Functions
+
+    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
+        fetchSchedule()
     }
 
 }
