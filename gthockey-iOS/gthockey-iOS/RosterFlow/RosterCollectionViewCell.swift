@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class RosterCollectionViewCell: UICollectionViewCell {
 
@@ -123,7 +124,7 @@ class RosterCollectionViewCell: UICollectionViewCell {
     }
 
     public func set(with player: Player) {
-        imageView.image = UIImage(named: "JonesPic")
+        imageView.sd_setImage(with: player.getImageURL(), placeholderImage: nil)
         firstNameLabel.text = player.getFirstName()
         lastNameLabel.text = player.getLastName()
         numberLabel.text = "#\(player.getNumber())"

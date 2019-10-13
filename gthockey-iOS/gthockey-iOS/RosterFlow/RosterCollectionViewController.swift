@@ -83,6 +83,21 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         return CGSize(width: UIScreen.main.bounds.width, height: cellWidth / 2)
     }
 
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let rosterDetailViewController = RosterDetailViewController()
+        switch indexPath.section {
+        case 0:
+            rosterDetailViewController.set(with: forwardArray[indexPath.row])
+        case 1:
+            rosterDetailViewController.set(with: defenseArray[indexPath.row])
+        case 2:
+            rosterDetailViewController.set(with: goalieArray[indexPath.row])
+        default:
+            rosterDetailViewController.set(with: managerArray[indexPath.row])
+        }
+        present(rosterDetailViewController, animated: true, completion: nil)
+    }
+
     // MARK: UICollectionViewLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
