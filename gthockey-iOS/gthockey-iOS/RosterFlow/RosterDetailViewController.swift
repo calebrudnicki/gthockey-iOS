@@ -216,6 +216,10 @@ class RosterDetailViewController: UIViewController {
         ])
     }
 
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+
     public func set(with player: Player) {
         imageView.sd_setImage(with: player.getImageURL(), placeholderImage: nil)
         firstNameLabel.text = player.getFirstName()

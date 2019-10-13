@@ -22,7 +22,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
+        titleLabel.font = UIFont(name:"HelveticaNeue-Light", size: 24.0)
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.numberOfLines = 2
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +31,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     private let subtitleLabel: UILabel = {
         let subtitleLabel = UILabel()
-        subtitleLabel.font = UIFont(name:"HelveticaNeue-Light", size: 16.0)
+        subtitleLabel.font = UIFont(name:"Georgia", size: 16.0)
         subtitleLabel.lineBreakMode = .byTruncatingTail
         subtitleLabel.numberOfLines = 2
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -77,7 +77,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4.0),
+            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8.0),
             subtitleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4.0),
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0),
             subtitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)

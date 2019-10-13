@@ -44,7 +44,7 @@ class HomeDetailViewController: UIViewController {
         let headlineLabel = UILabel()
         headlineLabel.numberOfLines = 0
         headlineLabel.sizeToFit()
-        headlineLabel.font = UIFont(name: "HelveticaNeue-Light", size: 36)
+        headlineLabel.font = UIFont(name: "HelveticaNeue-Light", size: 36.0)
         headlineLabel.translatesAutoresizingMaskIntoConstraints = false
         return headlineLabel
     }()
@@ -53,7 +53,7 @@ class HomeDetailViewController: UIViewController {
         let dateLabel = UILabel()
         dateLabel.numberOfLines = 0
         dateLabel.sizeToFit()
-        dateLabel.font = UIFont(name: "HelveticaNeue", size: 12)
+        dateLabel.font = UIFont(name: "HelveticaNeue", size: 12.0)
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         return dateLabel
     }()
@@ -69,7 +69,7 @@ class HomeDetailViewController: UIViewController {
         let bodyLabel = UILabel()
         bodyLabel.numberOfLines = 0
         bodyLabel.sizeToFit()
-        bodyLabel.font = UIFont(name: "Georgia", size: 20)
+        bodyLabel.font = UIFont(name: "Georgia", size: 20.0)
         bodyLabel.translatesAutoresizingMaskIntoConstraints = false
         return bodyLabel
     }()
@@ -149,6 +149,10 @@ class HomeDetailViewController: UIViewController {
             bodyLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             bodyLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
         ])
+    }
+
+    override var prefersStatusBarHidden: Bool {
+        return true
     }
 
     public func set(with news: News) {
