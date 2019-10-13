@@ -9,7 +9,7 @@
 import UIKit
 
 class RosterCollectionViewHeader: UICollectionReusableView {
-
+    
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
@@ -18,30 +18,30 @@ class RosterCollectionViewHeader: UICollectionReusableView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         addSubview(titleLabel)
-
+        
         updateConstraints()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func updateConstraints() {
         super.updateConstraints()
-
+        
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.0),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12.0)
         ])
     }
-
+    
     public func set(with title: String) {
         titleLabel.text = title
     }
-
+    
 }

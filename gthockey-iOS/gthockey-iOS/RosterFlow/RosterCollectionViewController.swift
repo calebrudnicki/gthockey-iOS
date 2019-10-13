@@ -9,7 +9,7 @@
 import UIKit
 
 class RosterCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
+    
     private let reuseIdentifier = "cell"
     private let headerIdentifier = "header"
     private var forwardArray: [Player] = []
@@ -17,23 +17,23 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     private var goalieArray: [Player] = []
     private var managerArray: [Player] = []
     private let cellWidth = UIScreen.main.bounds.width / 2.25
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         navigationItem.title = "Roster"
         navigationController?.navigationBar.prefersLargeTitles = true
-
+        
         setupCollectionView()
         fetchRoster()
     }
-
+    
     // MARK: UICollectionViewDataSource
-
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 4
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -46,10 +46,10 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
             return managerArray.count
         }
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RosterCollectionViewCell
-
+        
         switch indexPath.section {
         case 0:
             cell.set(with: forwardArray[indexPath.row])
@@ -60,10 +60,10 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         default:
             cell.set(with: managerArray[indexPath.row])
         }
-
+        
         return cell
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! RosterCollectionViewHeader
         switch indexPath.section {
@@ -78,11 +78,11 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         }
         return header
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: cellWidth / 2)
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let rosterDetailViewController = RosterDetailViewController()
         switch indexPath.section {
@@ -97,31 +97,36 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         }
         present(rosterDetailViewController, animated: true, completion: nil)
     }
-
+    
     // MARK: UICollectionViewLayout
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: cellWidth, height: cellWidth)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 12.0, left: 12.0, bottom: 12.0, right: 12.0)
     }
-
+    
 }
 
 // MARK: - Private Methods
 
 private extension RosterCollectionViewController {
-
+    
     private func setupCollectionView() {
-        collectionView.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            collectionView.backgroundColor = .systemBackground
+        } else {
+            collectionView.backgroundColor = .white
+        }
+        
         collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.register(RosterCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchRoster), for: .valueChanged)
     }
-
+    
     @objc private func fetchRoster() {
         let parser = JSONParser()       
         parser.getRoster() { response in
@@ -129,7 +134,7 @@ private extension RosterCollectionViewController {
             self.defenseArray = []
             self.goalieArray = []
             self.managerArray = []
-
+            
             for player in response {
                 switch player.getPosition() {
                 case "F":
@@ -148,5 +153,5 @@ private extension RosterCollectionViewController {
             }
         }
     }
-
+    
 }
