@@ -58,6 +58,13 @@ class HomeDetailViewController: UIViewController {
         return dateLabel
     }()
 
+    private let separatorView: UIView = {
+        let separatorView = UIView()
+        separatorView.backgroundColor = .black
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        return separatorView
+    }()
+
     private let bodyLabel: UILabel = {
         let bodyLabel = UILabel()
         bodyLabel.numberOfLines = 0
@@ -79,6 +86,7 @@ class HomeDetailViewController: UIViewController {
         backgroundView.addSubview(closeButton)
         backgroundView.addSubview(headlineLabel)
         backgroundView.addSubview(dateLabel)
+        backgroundView.addSubview(separatorView)
         backgroundView.addSubview(bodyLabel)
 
         updateViewConstraints()
@@ -123,24 +131,30 @@ class HomeDetailViewController: UIViewController {
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: headlineLabel.bottomAnchor, constant: 8.0),
             dateLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            dateLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+            dateLabel.trailingAnchor.constraint(lessThanOrEqualTo: backgroundView.trailingAnchor, constant: -12.0)
         ])
 
         NSLayoutConstraint.activate([
-            bodyLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 20.0),
+            separatorView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 12.0),
+            separatorView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            separatorView.widthAnchor.constraint(equalTo: dateLabel.widthAnchor),
+            separatorView.heightAnchor.constraint(equalToConstant: 1.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            bodyLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 12.0),
             bodyLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             bodyLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             bodyLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
         ])
     }
 
-    public func setArticle(with news: News) {
+    public func set(with news: News) {
         imageView.sd_setImage(with: news.getImageURL(), placeholderImage: nil)
         headlineLabel.text = news.getTitle()
 
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .long
+        formatter.dateStyle = .long
         dateLabel.text = formatter.string(from: news.getDate())
 
         bodyLabel.text = news.getContent()

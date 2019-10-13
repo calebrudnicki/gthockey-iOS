@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 											 homeNavigationController,
 											 rosterNavigationController],
 											animated: true)
-        tabBarController.selectedIndex = 0
+        tabBarController.selectedIndex = 1
 
         tabBarController.view.addSubview(revealingSplashView)
         revealingSplashView.startAnimation()

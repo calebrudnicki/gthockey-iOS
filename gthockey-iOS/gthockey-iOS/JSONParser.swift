@@ -103,7 +103,8 @@ class JSONParser {
                             position: value["position"].string!,
                             number: value["number"].int ?? 0,
                             hometown: value["hometown"].string!,
-                            school: value["school"].string!)
+                            school: value["school"].string!,
+                            imageURL: URL(string: value["image"].string ?? "https://test.gthockey.com/media/players/caleb.jpg")!)
         return player
     }
 
