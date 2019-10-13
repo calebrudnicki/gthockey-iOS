@@ -23,12 +23,12 @@ class HomeDetailViewController: UIViewController {
         return backgroundView
     }()
 
-    private let closeButton: UIButton = {
-        let closeButton = UIButton()
-        closeButton.setTitle("Close", for: .normal)
-        closeButton.setTitleColor(.white, for: .normal)
-        closeButton.titleLabel?.numberOfLines = 0
-        closeButton.titleLabel?.sizeToFit()
+    private let closeButton: UIImageView = {
+        let closeButton = UIImageView()
+        closeButton.image = UIImage(named: "CloseButton")
+        closeButton.clipsToBounds = true
+        closeButton.contentMode = .scaleAspectFill
+        closeButton.isUserInteractionEnabled = true
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         return closeButton
     }()
@@ -78,7 +78,7 @@ class HomeDetailViewController: UIViewController {
         super.viewDidLoad()
 
         view.backgroundColor = .white
-        closeButton.addTarget(self, action: #selector(closeButtonTapped), for: .touchUpInside)
+        closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
@@ -118,8 +118,10 @@ class HomeDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 8.0),
-            closeButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 8.0)
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12.0),
+            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12.0),
+            closeButton.widthAnchor.constraint(equalToConstant: 32.0),
+            closeButton.heightAnchor.constraint(equalToConstant: 32.0)
         ])
 
         NSLayoutConstraint.activate([
