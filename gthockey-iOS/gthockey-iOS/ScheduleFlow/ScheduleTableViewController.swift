@@ -113,16 +113,6 @@ extension ScheduleTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
         let parser = JSONParser()
         parser.getGame(with: id) { response in
             print(response)
-//            self.completedGameArray = []
-//            self.upcomingGameArray = []
-//
-//            for game in response {
-//                if game.getIsReported() {
-//                    self.completedGameArray.append(game)
-//                } else {
-//                    self.upcomingGameArray.append(game)
-//                }
-//            }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.tableView.refreshControl?.endRefreshing()
