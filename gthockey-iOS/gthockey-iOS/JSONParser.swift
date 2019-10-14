@@ -24,7 +24,7 @@ class JSONParser {
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
-                for (_, value) in jsonResult{
+                for (_, value) in jsonResult {
                     articles.append(self.makeNewsObject(value: value))
                 }
                 completion(articles)
@@ -42,7 +42,7 @@ class JSONParser {
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
-                for (_, value) in jsonResult{
+                for (_, value) in jsonResult {
                     players.append(self.makePlayerObject(value: value))
                 }
                 completion(players)
@@ -60,10 +60,26 @@ class JSONParser {
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
-                for (_, value) in jsonResult{
+                for (_, value) in jsonResult {
                     games.append(self.makeGameObject(value: value))
                 }
                 completion(games)
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    public func getGame(with id: Int, completion: @escaping (Rink) -> Void) {
+        var rink: Rink?
+
+        Alamofire.request("https://gthockey.com/api/games/\(id)").validate().responseJSON { responseData  in
+            switch responseData.result {
+            case .success(let value):
+                let jsonResult = JSON(value)
+                rink = self.makeRinkObject(value: jsonResult["location"])
+                completion(rink!)
 
             case .failure(let error):
                 print(error)
@@ -108,6 +124,12 @@ class JSONParser {
         return player
     }
 
+    private func makeRinkObject(value: JSON) -> Rink {
+        let rink = Rink(id: value["id"].int!,
+                        name: value["rink_name"].string!,
+                        mapsURL: URL(string: value["maps_url"].string! ?? "https://www.google.com/maps/place/Columbus+Ice+Rink/@32.4504096,-84.9886797,15z/data=!4m2!3m1!1s0x0:")!)
+        return rink
+    }
 
     private func formatDate(from dateString: String, withTime: Bool) -> Date {
         let formatter = DateFormatter()
