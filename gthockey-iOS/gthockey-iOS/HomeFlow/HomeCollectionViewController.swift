@@ -61,7 +61,12 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 extension HomeCollectionViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     private func setupCollectionView() {
-        collectionView.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            collectionView.backgroundColor = .systemBackground
+        }
+        else {
+            collectionView.backgroundColor = .white
+        }
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchArticles), for: .valueChanged)
@@ -82,7 +87,7 @@ extension HomeCollectionViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDe
     }
 
     // MARK: DZNEmptyDataSetSource Functions
-
+    
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         return NSAttributedString(string: "There doesn't seem to be any connection...")
     }

@@ -22,27 +22,43 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont(name:"HelveticaNeue-Light", size: 24.0)
+        titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.numberOfLines = 2
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 13.0, *) {
+            titleLabel.textColor = .label
+        } else {
+            titleLabel.textColor = .black
+        }
         return titleLabel
     }()
 
     private let subtitleLabel: UILabel = {
         let subtitleLabel = UILabel()
-        subtitleLabel.font = UIFont(name:"Georgia", size: 16.0)
+        subtitleLabel.font = UIFont(name: "Georgia", size: 16.0)
         subtitleLabel.lineBreakMode = .byTruncatingTail
         subtitleLabel.numberOfLines = 2
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 13.0, *) {
+            subtitleLabel.textColor = .label
+        } else {
+            subtitleLabel.textColor = .black
+        }
         return subtitleLabel
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        if #available(iOS 13.0, *) {
+            backgroundColor = UIColor(named: "darkBackground")
+            layer.backgroundColor = UIColor(named: "darkBackground")?.cgColor
+            layer.shadowColor = UIColor.label.cgColor
+        } else {
+            layer.backgroundColor = UIColor.white.cgColor
+            layer.shadowColor = UIColor.black.cgColor
 
-        layer.backgroundColor = UIColor.white.cgColor
-        layer.shadowColor = UIColor.black.cgColor
+        }
         layer.shadowOpacity = 0.2
         layer.shadowRadius = 7.0
         layer.cornerRadius = 6.0
@@ -89,5 +105,5 @@ class HomeCollectionViewCell: UICollectionViewCell {
         titleLabel.text = news.getTitle()
         subtitleLabel.text = news.getTeaser()
     }
-    
+
 }
