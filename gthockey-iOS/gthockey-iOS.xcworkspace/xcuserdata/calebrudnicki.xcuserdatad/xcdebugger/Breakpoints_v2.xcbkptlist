@@ -7,47 +7,47 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A48F42A6-8734-4A70-A8F1-B03C8B8B05AA"
+            uuid = "EFE53674-7DCC-4591-BD7D-CDB235BFB2CE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "gthockey-iOS/HomeFlow/HomeCollectionViewController.swift"
+            filePath = "gthockey-iOS/ScheduleFlow/ScheduleTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "fetchArticles()"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
+            landmarkName = "fetchGame(with:)"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "A48F42A6-8734-4A70-A8F1-B03C8B8B05AA - 5bb0a73253652719"
+                  uuid = "EFE53674-7DCC-4591-BD7D-CDB235BFB2CE - 8e269969268d6e73"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "GT_Hockey.HomeCollectionViewController.(fetchArticles in _6D119F948AF059254158F6D2D93B1491)() -&gt; ()"
+                  symbolName = "closure #1 (GT_Hockey.Rink) -&gt; () in GT_Hockey.ScheduleTableViewController.(fetchGame in _800FA5DA054B95F9B871392BF28B297D)(with: Swift.Int) -&gt; ()"
                   moduleName = "GT Hockey"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/calebrudnicki/Desktop/gthockey-iOS/gthockey-iOS/gthockey-iOS/HomeFlow/HomeCollectionViewController.swift"
+                  urlString = "file:///Users/calebrudnicki/Desktop/gthockey-iOS/gthockey-iOS/gthockey-iOS/ScheduleFlow/ScheduleTableViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "74"
-                  endingLineNumber = "74"
-                  offsetFromSymbolStart = "105">
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "377">
                </Location>
                <Location
-                  uuid = "A48F42A6-8734-4A70-A8F1-B03C8B8B05AA - 86747cb8df0ebe21"
+                  uuid = "EFE53674-7DCC-4591-BD7D-CDB235BFB2CE - 1db29f632a96f5bf"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Array&lt;GT_Hockey.News&gt;) -&gt; () in GT_Hockey.HomeCollectionViewController.(fetchArticles in _6D119F948AF059254158F6D2D93B1491)() -&gt; ()"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (GT_Hockey.Rink) -&gt; () in GT_Hockey.ScheduleTableViewController.(fetchGame in _800FA5DA054B95F9B871392BF28B297D)(with: Swift.Int) -&gt; ()"
                   moduleName = "GT Hockey"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/calebrudnicki/Desktop/gthockey-iOS/gthockey-iOS/gthockey-iOS/HomeFlow/HomeCollectionViewController.swift"
+                  urlString = "file:///Users/calebrudnicki/Desktop/gthockey-iOS/gthockey-iOS/gthockey-iOS/ScheduleFlow/ScheduleTableViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "75"
-                  endingLineNumber = "75"
-                  offsetFromSymbolStart = "213">
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "42">
                </Location>
             </Locations>
          </BreakpointContent>

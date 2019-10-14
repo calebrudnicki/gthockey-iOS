@@ -67,6 +67,15 @@ class ScheduleTableViewController: UITableViewController {
         }
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            fetchGame(with: completedGameArray[indexPath.row].getID())
+        default:
+            fetchGame(with: upcomingGameArray[indexPath.row].getID())
+        }
+    }
+
 }
 
 // MARK: Private Methods
@@ -93,6 +102,27 @@ extension ScheduleTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
                     self.upcomingGameArray.append(game)
                 }
             }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableView.refreshControl?.endRefreshing()
+            }
+        }
+    }
+
+    @objc private func fetchGame(with id: Int) {
+        let parser = JSONParser()
+        parser.getGame(with: id) { response in
+            print(response)
+//            self.completedGameArray = []
+//            self.upcomingGameArray = []
+//
+//            for game in response {
+//                if game.getIsReported() {
+//                    self.completedGameArray.append(game)
+//                } else {
+//                    self.upcomingGameArray.append(game)
+//                }
+//            }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.tableView.refreshControl?.endRefreshing()
