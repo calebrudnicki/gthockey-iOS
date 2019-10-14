@@ -62,7 +62,7 @@ extension HomeCollectionViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDe
     
     private func setupCollectionView() {
         if #available(iOS 13.0, *) {
-            collectionView  .backgroundColor = .systemBackground    
+            collectionView.backgroundColor = .systemBackground
         }
         else {collectionView.backgroundColor = .white}
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)

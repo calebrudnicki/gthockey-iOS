@@ -51,6 +51,7 @@ class HomeDetailViewController: UIViewController {
         headlineLabel.sizeToFit()
         headlineLabel.font = UIFont(name: "HelveticaNeue-Light", size: 36)
         headlineLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         return headlineLabel
     }()
     

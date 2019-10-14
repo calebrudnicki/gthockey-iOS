@@ -26,6 +26,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.numberOfLines = 2
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 13.0, *) {
+            titleLabel.textColor = .label
+        } else {
+            titleLabel.textColor = .black
+        }
         return titleLabel
     }()
     
@@ -35,20 +40,27 @@ class HomeCollectionViewCell: UICollectionViewCell {
         subtitleLabel.lineBreakMode = .byTruncatingTail
         subtitleLabel.numberOfLines = 2
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        if #available(iOS 13.0, *) {
+            subtitleLabel.textColor = .label
+        } else {
+            subtitleLabel.textColor = .black
+        }
         return subtitleLabel
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         if #available(iOS 13.0, *) {
-            self.backgroundColor = UIColor.systemBackground
-            layer.backgroundColor = UIColor.systemBackground.cgColor
+            self.backgroundColor = UIColor(named: "darkBackground")
+            layer.backgroundColor = UIColor(named: "darkBackground")?.cgColor
             layer.shadowColor = UIColor.label.cgColor
+            
         } else {
             layer.backgroundColor = UIColor.white.cgColor
             layer.shadowColor = UIColor.black.cgColor
+
         }
-        layer.shadowOpacity = 0.2
+         layer.shadowOpacity = 0.2
         layer.shadowRadius = 7.0
         layer.cornerRadius = 6.0
         

@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "BuzzOnlyLogo")!,
                                                       iconInitialSize: CGSize(width: 124.0, height: 124.0),
-                                                      backgroundColor: UIColor(red: 37/255, green: 47/255, blue: 86/255, alpha: 1.0))
+                                                      backgroundColor: UIColor(red: 0, green: 0.188, blue: 0.341, alpha: 1.0))
 
         let tabBarController = UITabBarController()
         tabBarController.setViewControllers([scheduleNavigationController,
