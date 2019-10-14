@@ -26,6 +26,13 @@ class RosterDetailViewController: UIViewController {
     private let closeButton: UIImageView = {
         let closeButton = UIImageView()
         closeButton.image = UIImage(named: "CloseButton")
+        if #available(iOS 13.0, *) {
+            closeButton.tintColor = .label
+        }
+        else {
+            closeButton.tintColor = .black
+        }
+
         closeButton.clipsToBounds = true
         closeButton.contentMode = .scaleAspectFill
         closeButton.isUserInteractionEnabled = true
@@ -70,7 +77,7 @@ class RosterDetailViewController: UIViewController {
 
     private let separatorView: UIView = {
         let separatorView = UIView()
-        separatorView.backgroundColor = .black
+        separatorView.backgroundColor = UIColor(named: "darkBackground")
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         return separatorView
     }()
@@ -114,9 +121,13 @@ class RosterDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+        } else {
+            view.backgroundColor = .white
+        }
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
-        
+
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
         backgroundView.addSubview(imageView)

@@ -115,7 +115,12 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
 private extension RosterCollectionViewController {
 
     private func setupCollectionView() {
-        collectionView.backgroundColor = .white
+        if #available(iOS 13.0, *) {
+            collectionView.backgroundColor = .systemBackground
+        } else {
+            collectionView.backgroundColor = .white
+        }
+
         collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.register(RosterCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
         collectionView.refreshControl = UIRefreshControl()
