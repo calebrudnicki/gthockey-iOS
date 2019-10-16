@@ -29,6 +29,7 @@
 		C58AE6FDEF374C9B1B0751D2 /* Pods_gthockey_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */; };
 		F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C392B2354EA3E009E1F3A /* Rink.swift */; };
 		F02585AF23412F88008E641C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02585AE23412F88008E641C /* News.swift */; };
+		F0B5491623576D0700F6BF07 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5491523576D0700F6BF07 /* CardCollectionViewCell.swift */; };
 		FA3570BA23502190008E83BC /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3570B923502190008E83BC /* Team.swift */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gthockey_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00C392B2354EA3E009E1F3A /* Rink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rink.swift; sourceTree = "<group>"; };
 		F02585AE23412F88008E641C /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		F0B5491523576D0700F6BF07 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA3570B923502190008E83BC /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,6 +143,7 @@
 				82D971B3233D609E00BFD322 /* HomeFlow */,
 				82D971B5233D60B000BFD322 /* RosterFlow */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
+				F0B5491523576D0700F6BF07 /* CardCollectionViewCell.swift */,
 				82ADF5D623440B6700114F84 /* JSONParser.swift */,
 				82DCB482233C402300BDE2FE /* Assets.xcassets */,
 				82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */,
@@ -289,6 +292,7 @@
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
+				F0B5491623576D0700F6BF07 /* CardCollectionViewCell.swift in Sources */,
 				F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */,
 				82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */,
 				82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */,

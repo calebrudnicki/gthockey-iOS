@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                       backgroundColor: UIColor(red: 37/255, green: 47/255, blue: 86/255, alpha: 1.0))
 
         let tabBarController = UITabBarController()
+        tabBarController.tabBar.tintColor = UIColor(named: "goldDarkNavyLight")
         tabBarController.setViewControllers([scheduleNavigationController,
 											 homeNavigationController,
 											 rosterNavigationController],

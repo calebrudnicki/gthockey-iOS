@@ -27,11 +27,10 @@ class HomeDetailViewController: UIViewController {
         let closeButton = UIImageView()
         closeButton.image = UIImage(named: "CloseButton")
         if #available(iOS 13.0, *) {
-            closeButton.tintColor = .label
+            closeButton.image = UIImage(systemName: "xmark.square.fill")
+            closeButton.tintColor = UIColor(named: "techGold")
         }
-        else {
-            closeButton.tintColor = .black
-        }
+
         closeButton.clipsToBounds = true
         closeButton.contentMode = .scaleAspectFill
         closeButton.isUserInteractionEnabled = true
@@ -66,7 +65,7 @@ class HomeDetailViewController: UIViewController {
 
     private let separatorView: UIView = {
         let separatorView = UIView()
-        separatorView.backgroundColor = UIColor(named: "darkBackground")
+        separatorView.backgroundColor = UIColor(named: "techGold")
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         return separatorView
     }()

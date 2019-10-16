@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class HomeCollectionViewCell: UICollectionViewCell {
+class HomeCollectionViewCell: CardCollectionViewCell {
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -50,22 +50,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        if #available(iOS 13.0, *) {
-            backgroundColor = UIColor(named: "darkBackground")
-            layer.backgroundColor = UIColor(named: "darkBackground")?.cgColor
-            layer.shadowColor = UIColor.label.cgColor
-        } else {
-            layer.backgroundColor = UIColor.white.cgColor
-            layer.shadowColor = UIColor.black.cgColor
-
-        }
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 7.0
-        layer.cornerRadius = 6.0
-
-        contentView.layer.cornerRadius = 6.0
-        contentView.layer.masksToBounds = true
-
+        
         contentView.addSubview(imageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(subtitleLabel)

@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class RosterCollectionViewCell: UICollectionViewCell {
+class RosterCollectionViewCell: CardCollectionViewCell {
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -110,22 +110,9 @@ class RosterCollectionViewCell: UICollectionViewCell {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        if #available(iOS 13.0, *) {
-            layer.backgroundColor = UIColor(named: "darkBackground")?.cgColor    
-            layer.shadowColor = UIColor.label.cgColor
-        } else {
-            layer.backgroundColor = UIColor.white.cgColor
-            layer.shadowColor = UIColor.black.cgColor
-        }
-
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 7.0
-        layer.cornerRadius = 6.0
 
         imageView.layer.cornerRadius = imageView.frame.size.height / 2
 
-        contentView.layer.cornerRadius = 6.0
-        contentView.layer.masksToBounds = true
     }
 
     public func set(with player: Player) {
