@@ -71,7 +71,7 @@ class JSONParser {
         }
     }
 
-    public func getGame(with id: Int, completion: @escaping (Rink) -> Void) {
+    public func getGameRink(with id: Int, completion: @escaping (Rink) -> Void) {
         var rink: Rink?
 
         Alamofire.request("https://gthockey.com/api/games/\(id)").validate().responseJSON { responseData  in
@@ -80,6 +80,22 @@ class JSONParser {
                 let jsonResult = JSON(value)
                 rink = self.makeRinkObject(value: jsonResult["location"])
                 completion(rink!)
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    public func getGameTeam(with id: Int, completion: @escaping (Team) -> Void) {
+        var team: Team?
+
+        Alamofire.request("https://gthockey.com/api/games/\(id)").validate().responseJSON { responseData  in
+            switch responseData.result {
+            case .success(let value):
+                let jsonResult = JSON(value)
+                team = self.makeTeamObject(value: jsonResult["opponent"])
+                completion(team!)
 
             case .failure(let error):
                 print(error)
@@ -127,8 +143,17 @@ class JSONParser {
     private func makeRinkObject(value: JSON) -> Rink {
         let rink = Rink(id: value["id"].int!,
                         name: value["rink_name"].string!,
-                        mapsURL: URL(string: value["maps_url"].string! ?? "https://www.google.com/maps/place/Columbus+Ice+Rink/@32.4504096,-84.9886797,15z/data=!4m2!3m1!1s0x0:")!)
+                        mapsURL: URL(string: value["maps_url"].string ?? "https://www.google.com/maps/place/Columbus+Ice+Rink/@32.4504096,-84.9886797,15z/data=!4m2!3m1!1s0x0:")!)
         return rink
+    }
+
+    private func makeTeamObject(value: JSON) -> Team {
+        let team = Team(id: value["id"].int!,
+                        schoolName: value["school_name"].string!,
+                        mascotName: value["mascot_name"].string!,
+                        webURL: URL(string: value["web_url"].string ?? "https://google.com")!,
+                        imageURL: URL(string: value["logo"].string ?? "https://test.gthockey.com/media/players/caleb.jpg")!)
+        return team
     }
 
     private func formatDate(from dateString: String, withTime: Bool) -> Date {

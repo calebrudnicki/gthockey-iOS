@@ -111,7 +111,7 @@ extension ScheduleTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
 
     @objc private func fetchGame(with id: Int) {
         let parser = JSONParser()
-        parser.getGame(with: id) { response in
+        parser.getGameRink(with: id) { response in
             print(response)
             DispatchQueue.main.async {
                 self.tableView.reloadData()
