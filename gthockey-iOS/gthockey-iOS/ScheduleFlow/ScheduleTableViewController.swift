@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 import DZNEmptyDataSet
 
 class ScheduleTableViewController: UITableViewController {
@@ -68,12 +69,22 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section {
-        case 0:
-            fetchGame(with: completedGameArray[indexPath.row].getID())
-        default:
-            fetchGame(with: upcomingGameArray[indexPath.row].getID())
-        }
+        let alert = UIAlertController(title: "Get Directions to the Rink", message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+            switch indexPath.section {
+            case 0:
+                self.fetchGame(with: self.completedGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
+                    self.openMaps(with: rink)
+                })
+            default:
+                self.fetchGame(with: self.upcomingGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
+                    self.openMaps(with: rink)
+                })
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 
 }
@@ -109,15 +120,42 @@ extension ScheduleTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
         }
     }
 
-    @objc private func fetchGame(with id: Int) {
+    private func fetchGame(with id: Int, completion: @escaping (Team, Rink) -> Void) {
         let parser = JSONParser()
-        parser.getGame(with: id) { response in
-            print(response)
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.tableView.refreshControl?.endRefreshing()
-            }
+        parser.getGame(with: id) { (opponent, rink) in
+            completion(opponent, rink)
         }
+    }
+
+    private func openMaps(with rink: Rink) {
+        let rinkCoordinates = findLocation(from: rink.getMapsURL()).coordinate
+        let coordinateRegion = MKCoordinateRegion(center: rinkCoordinates,
+                                                  latitudinalMeters: 1000,
+                                                  longitudinalMeters: 1000)
+        let options = [
+            MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: coordinateRegion.center),
+            MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: coordinateRegion.span)
+        ]
+        let placemark = MKPlacemark(coordinate: rinkCoordinates, addressDictionary: nil)
+        let mapItem = MKMapItem(placemark: placemark)
+        mapItem.name = rink.getName()
+        mapItem.openInMaps(launchOptions: options)
+    }
+
+    private func findLocation(from url: URL) -> CLLocation {
+        var latitude: Float?
+        var longitude: Float?
+
+        if let latitudeString = url.absoluteString.slice(from: "@", to: ",") {
+            latitude = Float(latitudeString)
+        }
+
+        if let longitudeString = url.absoluteString.slice(from: ",", to: ",") {
+            longitude = Float(longitudeString)
+        }
+
+        return CLLocation(latitude: CLLocationDegrees(exactly: latitude ?? 33.7756)!,
+                          longitude: CLLocationDegrees(exactly: longitude ?? -84.3963)!)
     }
 
     // MARK: DZNEmptyDataSetSource Functions
@@ -136,4 +174,14 @@ extension ScheduleTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
         fetchSchedule()
     }
 
+}
+
+extension String {
+    func slice(from: String, to: String) -> String? {
+        return (range(of: from)?.upperBound).flatMap { substringFrom in
+            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                String(self[substringFrom..<substringTo])
+            }
+        }
+    }
 }

@@ -59,7 +59,7 @@ class ScheduleTableViewCell: UITableViewCell {
 
     public func set(with game: Game) {
         scheduleOpponentRinkView.set(with: game.getOpponentName(), game.getRinkName(), game.getVenue())
-        
+
         if game.getIsReported() {
             scheduleResultView.set(with: game.getShortResult(), "\(game.getGTScore()) - \(game.getOpponentScore())")
             gameIsReported = true
