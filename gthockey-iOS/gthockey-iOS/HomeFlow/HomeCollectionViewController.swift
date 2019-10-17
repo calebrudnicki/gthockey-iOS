@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import DZNEmptyDataSet
 
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
@@ -58,7 +57,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
 // MARK: Private Methods
 
-extension HomeCollectionViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+extension HomeCollectionViewController {
 
     private func setupCollectionView() {
         if #available(iOS 13.0, *) {
@@ -70,8 +69,6 @@ extension HomeCollectionViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDe
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchArticles), for: .valueChanged)
-        collectionView.emptyDataSetSource = self
-        collectionView.emptyDataSetDelegate = self
     }
 
     @objc private func fetchArticles() {
@@ -84,22 +81,6 @@ extension HomeCollectionViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDe
                 self.collectionView.refreshControl?.endRefreshing()
             }
         }
-    }
-
-    // MARK: DZNEmptyDataSetSource Functions
-    
-    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "There doesn't seem to be any connection...")
-    }
-
-    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
-        return NSAttributedString(string: "Refresh")
-    }
-
-    // MARK: DZNEmptyDataSetSource Functions
-
-    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
-        fetchArticles()
     }
 
 }

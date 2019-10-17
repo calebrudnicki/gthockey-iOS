@@ -8,7 +8,6 @@
 
 import UIKit
 import MapKit
-import DZNEmptyDataSet
 
 class ScheduleTableViewController: UITableViewController {
 
@@ -91,7 +90,7 @@ class ScheduleTableViewController: UITableViewController {
 
 // MARK: Private Methods
 
-extension ScheduleTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+extension ScheduleTableViewController {
 
     private func setupTableView() {
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
@@ -156,22 +155,6 @@ extension ScheduleTableViewController: DZNEmptyDataSetSource, DZNEmptyDataSetDel
 
         return CLLocation(latitude: CLLocationDegrees(exactly: latitude ?? 33.7756)!,
                           longitude: CLLocationDegrees(exactly: longitude ?? -84.3963)!)
-    }
-
-    // MARK: DZNEmptyDataSetSource Functions
-
-    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        return NSAttributedString(string: "There doesn't seem to be any connection...")
-    }
-
-    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControl.State) -> NSAttributedString! {
-        return NSAttributedString(string: "Refresh")
-    }
-
-    // MARK: DZNEmptyDataSetSource Functions
-
-    func emptyDataSet(_ scrollView: UIScrollView!, didTap button: UIButton!) {
-        fetchSchedule()
     }
 
 }
