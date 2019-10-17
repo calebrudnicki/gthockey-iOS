@@ -32,7 +32,6 @@ class ScheduleOpponentRinkView: UIView {
         let detailsStack = UIStackView()
         detailsStack.axis = .vertical
         detailsStack.distribution = .fillProportionally
-        detailsStack.spacing = 4.0
         detailsStack.translatesAutoresizingMaskIntoConstraints = false
         return detailsStack
     }()

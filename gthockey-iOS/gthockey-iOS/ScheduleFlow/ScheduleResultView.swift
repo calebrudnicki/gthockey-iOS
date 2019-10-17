@@ -33,7 +33,6 @@ class ScheduleResultView: UIView {
         detailsStack.axis = .vertical
         detailsStack.distribution = .fillProportionally
         detailsStack.alignment = .center
-        detailsStack.spacing = 4.0
         detailsStack.translatesAutoresizingMaskIntoConstraints = false
         return detailsStack
     }()

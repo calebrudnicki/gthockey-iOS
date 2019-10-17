@@ -149,6 +149,7 @@ private extension RosterCollectionViewController {
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
+                self.
                 self.collectionView.refreshControl?.endRefreshing()
             }
         }

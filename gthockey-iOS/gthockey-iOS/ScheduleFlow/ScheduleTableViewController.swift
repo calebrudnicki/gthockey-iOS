@@ -97,6 +97,7 @@ extension ScheduleTableViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(fetchSchedule), for: .valueChanged)
         tableView.tableFooterView = UIView()
+        tableView.sectionHeaderHeight = 0.0
     }
 
     @objc private func fetchSchedule() {
@@ -114,6 +115,8 @@ extension ScheduleTableViewController {
             }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.tableView.sectionHeaderHeight = 32.0
+                self.tableView.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .none)
                 self.tableView.refreshControl?.endRefreshing()
             }
         }
