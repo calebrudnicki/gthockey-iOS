@@ -12,6 +12,5 @@ target 'gthockey-iOS' do
   pod 'Alamofire'
   pod 'AlamofireImage'
   pod 'SDWebImage', '~> 5.0'
-  pod 'DZNEmptyDataSet'
 
 end

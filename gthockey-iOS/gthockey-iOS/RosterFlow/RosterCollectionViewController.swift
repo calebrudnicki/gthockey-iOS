@@ -16,7 +16,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     private var defenseArray: [Player] = []
     private var goalieArray: [Player] = []
     private var managerArray: [Player] = []
-    private let cellWidth = UIScreen.main.bounds.width / 2.25
+    private let cellWidth = UIScreen.main.bounds.width * 0.45
 
     var delegate: HomeControllerDelegate?
 
@@ -86,7 +86,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: cellWidth / 2)
+        return CGSize(width: UIScreen.main.bounds.width, height: cellWidth / 3)
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -161,7 +161,6 @@ private extension RosterCollectionViewController {
     }
 
     @objc private func menuButtonTapped() {
-        print("toggleMenu")
         delegate?.handleMenuToggle(forMenuOption: nil)
     }
 

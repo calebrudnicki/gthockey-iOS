@@ -2,7 +2,6 @@ PODS:
   - Alamofire (4.9.0)
   - AlamofireImage (3.5.2):
     - Alamofire (~> 4.8)
-  - DZNEmptyDataSet (1.8.1)
   - RevealingSplashView (0.6.0)
   - SDWebImage (5.2.3):
     - SDWebImage/Core (= 5.2.3)
@@ -13,7 +12,6 @@ PODS:
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
-  - DZNEmptyDataSet
   - RevealingSplashView
   - SDWebImage (~> 5.0)
   - SwiftLint
@@ -23,7 +21,6 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireImage
-    - DZNEmptyDataSet
     - RevealingSplashView
     - SDWebImage
     - SwiftLint
@@ -32,12 +29,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
-  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 766f115d964fbe0a34c2320130a9175d20723d40
+PODFILE CHECKSUM: cb66b58ed0190d93374b06f58363087045c1c944
 
 COCOAPODS: 1.7.5
