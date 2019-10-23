@@ -15,10 +15,16 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     private let cellWidth = UIScreen.main.bounds.width * 0.9
     private let cellHeight = UIScreen.main.bounds.height * 0.45
 
+    var delegate: HomeControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "Home"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "MenuIcon")?.withRenderingMode(.alwaysOriginal),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(menuButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()
@@ -81,6 +87,11 @@ extension HomeCollectionViewController {
                 self.collectionView.refreshControl?.endRefreshing()
             }
         }
+    }
+
+    @objc private func menuButtonTapped() {
+        print("toggleMenu")
+        delegate?.handleMenuToggle(forMenuOption: nil)
     }
 
 }
