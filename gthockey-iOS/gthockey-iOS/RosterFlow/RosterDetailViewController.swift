@@ -77,7 +77,7 @@ class RosterDetailViewController: UIViewController {
 
     private let separatorView: UIView = {
         let separatorView = UIView()
-        separatorView.backgroundColor = UIColor(named: "darkBackground")
+        separatorView.backgroundColor = .techGold
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         return separatorView
     }()

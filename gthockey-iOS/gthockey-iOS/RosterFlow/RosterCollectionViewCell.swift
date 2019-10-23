@@ -46,9 +46,8 @@ class RosterCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         if #available(iOS 13.0, *) {
-            layer.backgroundColor = UIColor(named: "darkBackground")?.cgColor
+            layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
             layer.shadowColor = UIColor.label.cgColor
         } else {
             layer.backgroundColor = UIColor.white.cgColor

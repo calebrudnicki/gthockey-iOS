@@ -77,10 +77,3 @@ class ScheduleResultView: UIView {
     }
 
 }
-
-extension UIColor {
-
-    static var winGreen = UIColor(red: 34/255, green: 139/255, blue: 34/255, alpha: 1.0)
-    static var lossRed = UIColor(red: 178/255, green: 34/255, blue: 34/255, alpha: 1.0)
-
-}

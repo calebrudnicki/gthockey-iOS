@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum MenuOption: Int, CustomStringConvertible {
 
@@ -19,6 +20,14 @@ enum MenuOption: Int, CustomStringConvertible {
         case .Home: return "Home"
         case .Schedule: return "Schedule"
         case .Roster: return "Roster"
+        }
+    }
+
+    var image: UIImage {
+        switch self {
+        case .Home: return UIImage(named: "HomeIcon")!
+        case .Schedule: return UIImage(named: "ScheduleIcon")!
+        case .Roster: return UIImage(named: "RosterIcon")!
         }
     }
 

@@ -51,13 +51,11 @@ class HomeCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         if #available(iOS 13.0, *) {
-            backgroundColor = UIColor(named: "darkBackground")
-            layer.backgroundColor = UIColor(named: "darkBackground")?.cgColor
+            layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
             layer.shadowColor = UIColor.label.cgColor
         } else {
             layer.backgroundColor = UIColor.white.cgColor
             layer.shadowColor = UIColor.black.cgColor
-
         }
         layer.shadowOpacity = 0.2
         layer.shadowRadius = 7.0

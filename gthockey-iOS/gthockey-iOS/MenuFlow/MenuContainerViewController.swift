@@ -10,7 +10,7 @@ import UIKit
 
 class MenuContainerViewController: UIViewController {
 
-    var menuController: MenuViewController!
+    var menuTableViewController: MenuTableViewController!
     var currentNavigationController: UINavigationController!
     var isExpanded = false
 
@@ -55,18 +55,20 @@ class MenuContainerViewController: UIViewController {
         //Set default screen to be Home
         currentNavigationController = homeNavigationController
 
+        view.backgroundColor = .techNavy
+
         view.addSubview(currentNavigationController.view)
         addChild(currentNavigationController)
         currentNavigationController.didMove(toParent: self)
     }
 
     func configureMenuController() {
-        if menuController == nil {
-            menuController = MenuViewController()
-            menuController.delegate = self
-            view.insertSubview(menuController.view, at: 0)
-            addChild(menuController)
-            menuController.didMove(toParent: self)
+        if menuTableViewController == nil {
+            menuTableViewController = MenuTableViewController()
+            menuTableViewController.delegate = self
+            view.insertSubview(menuTableViewController.view, at: 0)
+            addChild(menuTableViewController)
+            menuTableViewController.didMove(toParent: self)
         }
     }
 
@@ -76,7 +78,6 @@ class MenuContainerViewController: UIViewController {
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
                 self.currentNavigationController.view.frame.origin.x = self.currentNavigationController.view.frame.width - 80
             }) { (_) in
-                print("Out")
                 self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = false
             }
         } else {
@@ -84,14 +85,13 @@ class MenuContainerViewController: UIViewController {
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
                 self.currentNavigationController.view.frame.origin.x = 0
             }) { (_) in
+                self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = true
+                
                 guard let menuOption = menuOption,
                           menuOption.description != self.currentNavigationController.children[0].navigationItem.title!
                 else { return }
 
                 self.didSelectMenuOption(menuOption: menuOption)
-
-                print("in")
-                self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = true
             }
         }
     }

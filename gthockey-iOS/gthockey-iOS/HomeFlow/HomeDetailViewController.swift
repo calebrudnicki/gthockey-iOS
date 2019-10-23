@@ -28,8 +28,7 @@ class HomeDetailViewController: UIViewController {
         closeButton.image = UIImage(named: "CloseButton")
         if #available(iOS 13.0, *) {
             closeButton.tintColor = .label
-        }
-        else {
+        } else {
             closeButton.tintColor = .black
         }
         closeButton.clipsToBounds = true
@@ -66,7 +65,7 @@ class HomeDetailViewController: UIViewController {
 
     private let separatorView: UIView = {
         let separatorView = UIView()
-        separatorView.backgroundColor = UIColor(named: "darkBackground")
+        separatorView.backgroundColor = .techGold
         separatorView.translatesAutoresizingMaskIntoConstraints = false
         return separatorView
     }()
@@ -85,8 +84,7 @@ class HomeDetailViewController: UIViewController {
 
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemBackground
-        }
-        else {
+        } else {
             view.backgroundColor = .white
         }
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))

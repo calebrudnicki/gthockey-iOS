@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "BuzzOnlyLogo")!,
                                                       iconInitialSize: CGSize(width: 124.0, height: 124.0),
-                                                      backgroundColor: UIColor(red: 37/255, green: 47/255, blue: 86/255, alpha: 1.0))
+                                                      backgroundColor: .techNavy)
         let menuContainerViewController = MenuContainerViewController()
         menuContainerViewController.view.addSubview(revealingSplashView)
         revealingSplashView.startAnimation()

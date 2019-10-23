@@ -21,10 +21,18 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         super.viewDidLoad()
 
         navigationItem.title = "Home"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "MenuIcon")?.withRenderingMode(.alwaysOriginal),
+
+        let menuButtonImage: UIImage?
+        if traitCollection.userInterfaceStyle == .light {
+            menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
+        } else {
+            menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
+        }
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()
@@ -68,9 +76,10 @@ extension HomeCollectionViewController {
     private func setupCollectionView() {
         if #available(iOS 13.0, *) {
             collectionView.backgroundColor = .systemBackground
-        }
-        else {
+            navigationItem.leftBarButtonItem?.tintColor = .cyan
+        } else {
             collectionView.backgroundColor = .white
+            navigationItem.leftBarButtonItem?.tintColor = .black
         }
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.refreshControl = UIRefreshControl()
