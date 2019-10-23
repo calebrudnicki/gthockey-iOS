@@ -18,10 +18,16 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     private var managerArray: [Player] = []
     private let cellWidth = UIScreen.main.bounds.width / 2.25
 
+    var delegate: HomeControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "Roster"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "MenuIcon")?.withRenderingMode(.alwaysOriginal),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(menuButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()
@@ -149,10 +155,14 @@ private extension RosterCollectionViewController {
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
-                self.
                 self.collectionView.refreshControl?.endRefreshing()
             }
         }
+    }
+
+    @objc private func menuButtonTapped() {
+        print("toggleMenu")
+        delegate?.handleMenuToggle(forMenuOption: nil)
     }
 
 }

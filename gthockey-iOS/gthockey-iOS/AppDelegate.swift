@@ -19,41 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
-
-        let scheduleTabBarItem = UITabBarItem(title: "Schedule", image: UIImage(named: "ScheduleIcon"), tag: 0)
-        let scheduleTableViewController = ScheduleTableViewController()
-        let scheduleNavigationController = UINavigationController(rootViewController: scheduleTableViewController)
-        scheduleNavigationController.tabBarItem = scheduleTabBarItem
-
-        let homeLayout = UICollectionViewFlowLayout()
-        homeLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
-        let homeTabBarItem = UITabBarItem(title: "Home", image: UIImage(named: "HomeIcon"), tag: 1)
-        let homeCollectionViewController = HomeCollectionViewController(collectionViewLayout: homeLayout)
-        let homeNavigationController = UINavigationController(rootViewController: homeCollectionViewController)
-        homeNavigationController.tabBarItem = homeTabBarItem
-
-        let rosterLayout = UICollectionViewFlowLayout()
-        rosterLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
-        let rosterTabBarItem = UITabBarItem(title: "Roster", image: UIImage(named: "RosterIcon"), tag: 2)
-        let rosterCollectionViewController = RosterCollectionViewController(collectionViewLayout: rosterLayout)
-        let rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
-        rosterNavigationController.tabBarItem = rosterTabBarItem
-
+        
         let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "BuzzOnlyLogo")!,
                                                       iconInitialSize: CGSize(width: 124.0, height: 124.0),
                                                       backgroundColor: UIColor(red: 37/255, green: 47/255, blue: 86/255, alpha: 1.0))
-
-        let tabBarController = UITabBarController()
-        tabBarController.setViewControllers([scheduleNavigationController,
-											 homeNavigationController,
-											 rosterNavigationController],
-											animated: true)
-        tabBarController.selectedIndex = 1
-
-        tabBarController.view.addSubview(revealingSplashView)
+        let menuContainerViewController = MenuContainerViewController()
+        menuContainerViewController.view.addSubview(revealingSplashView)
         revealingSplashView.startAnimation()
 
-        self.window?.rootViewController = tabBarController
+        self.window?.rootViewController = menuContainerViewController
         self.window?.makeKeyAndVisible()
 
         return true

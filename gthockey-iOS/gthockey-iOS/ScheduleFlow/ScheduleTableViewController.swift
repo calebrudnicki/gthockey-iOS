@@ -16,10 +16,16 @@ class ScheduleTableViewController: UITableViewController {
     private var upcomingGameArray: [Game] = []
     private let cellHeight = UIScreen.main.bounds.height * 0.8
 
+    var delegate: HomeControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navigationItem.title = "Schedule"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "MenuIcon")?.withRenderingMode(.alwaysOriginal),
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(menuButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupTableView()
@@ -158,6 +164,11 @@ extension ScheduleTableViewController {
 
         return CLLocation(latitude: CLLocationDegrees(exactly: latitude ?? 33.7756)!,
                           longitude: CLLocationDegrees(exactly: longitude ?? -84.3963)!)
+    }
+
+    @objc private func menuButtonTapped() {
+        print("toggleMenu")
+        delegate?.handleMenuToggle(forMenuOption: nil)
     }
 
 }
