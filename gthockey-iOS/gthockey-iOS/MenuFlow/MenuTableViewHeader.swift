@@ -36,7 +36,7 @@ class MenuTableViewHeader: UIView {
         super.updateConstraints()
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12.0),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20.0),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12.0),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)

@@ -31,6 +31,8 @@ class RosterCollectionViewCell: UICollectionViewCell {
     private let lastNameLabel: UILabel = {
         let lastNameLabel = UILabel()
         lastNameLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
+//        lastNameLabel.adjustsFontSizeToFitWidth = true
+        lastNameLabel.allowsDefaultTighteningForTruncation = true
         lastNameLabel.numberOfLines = 1
         lastNameLabel.translatesAutoresizingMaskIntoConstraints = false
         return lastNameLabel
@@ -39,6 +41,7 @@ class RosterCollectionViewCell: UICollectionViewCell {
     private let numberLabel: UILabel = {
         let numberLabel = UILabel()
         numberLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
+        numberLabel.textAlignment = .right
         numberLabel.numberOfLines = 1
         numberLabel.translatesAutoresizingMaskIntoConstraints = false
         return numberLabel
@@ -91,12 +94,12 @@ class RosterCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             lastNameLabel.topAnchor.constraint(equalTo: firstNameLabel.bottomAnchor),
             lastNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4.0),
+            lastNameLabel.trailingAnchor.constraint(equalTo: numberLabel.leadingAnchor, constant: 8.0),
             lastNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4.0)
         ])
 
         NSLayoutConstraint.activate([
             numberLabel.topAnchor.constraint(equalTo: firstNameLabel.bottomAnchor),
-            numberLabel.leadingAnchor.constraint(equalTo: lastNameLabel.trailingAnchor, constant: 4.0),
             numberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0),
             numberLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4.0)
         ])

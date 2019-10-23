@@ -37,7 +37,7 @@ class MenuTableViewFooter: UIView {
         super.updateConstraints()
 
         NSLayoutConstraint.activate([
-            versionLabel.topAnchor.constraint(equalTo: topAnchor),
+            versionLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12.0),
             versionLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
             versionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             versionLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
