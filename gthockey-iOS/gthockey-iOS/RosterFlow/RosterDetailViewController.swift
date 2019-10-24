@@ -23,19 +23,8 @@ class RosterDetailViewController: UIViewController {
         return backgroundView
     }()
 
-    private let closeButton: UIImageView = {
-        let closeButton = UIImageView()
-        closeButton.image = UIImage(named: "CloseButton")
-        if #available(iOS 13.0, *) {
-            closeButton.tintColor = .label
-        }
-        else {
-            closeButton.tintColor = .black
-        }
-
-        closeButton.clipsToBounds = true
-        closeButton.contentMode = .scaleAspectFill
-        closeButton.isUserInteractionEnabled = true
+    private let closeButton: UIButton = {
+        let closeButton = UIButton(type: .custom)
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         return closeButton
     }()
@@ -126,20 +115,20 @@ class RosterDetailViewController: UIViewController {
         } else {
             view.backgroundColor = .white
         }
+
+        var closeButtonImage: UIImage?
+        if traitCollection.userInterfaceStyle == .dark {
+            closeButtonImage = UIImage(named: "CloseButtonWhite")?.withRenderingMode(.alwaysOriginal)
+        } else {
+            closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
+        }
+        closeButton.setImage(closeButtonImage, for: .normal)
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
-        backgroundView.addSubview(imageView)
-        backgroundView.addSubview(closeButton)
-        backgroundView.addSubview(firstNameLabel)
-        backgroundView.addSubview(lastNameLabel)
-        backgroundView.addSubview(numberLabel)
-        backgroundView.addSubview(separatorView)
-        backgroundView.addSubview(positionLabel)
-        backgroundView.addSubview(hometownLabel)
-        backgroundView.addSubview(schoolLabel)
-        backgroundView.addSubview(bioLabel)
+        backgroundView.addSubviews([imageView, closeButton, firstNameLabel, lastNameLabel, numberLabel, separatorView,
+                                    positionLabel, hometownLabel, schoolLabel, bioLabel])
 
         updateViewConstraints()
     }

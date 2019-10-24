@@ -26,10 +26,10 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         navigationItem.title = "Roster"
 
         let menuButtonImage: UIImage?
-        if traitCollection.userInterfaceStyle == .light {
-            menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
-        } else {
+        if traitCollection.userInterfaceStyle == .dark {
             menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
+        } else {
+            menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
                                                            style: .plain,

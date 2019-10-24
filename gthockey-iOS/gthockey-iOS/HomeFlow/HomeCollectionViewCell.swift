@@ -64,9 +64,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 6.0
         contentView.layer.masksToBounds = true
 
-        contentView.addSubview(imageView)
-        contentView.addSubview(titleLabel)
-        contentView.addSubview(subtitleLabel)
+        contentView.addSubviews([imageView, titleLabel, subtitleLabel])
 
         updateConstraints()
     }

@@ -64,10 +64,7 @@ class RosterCollectionViewCell: UICollectionViewCell {
         contentView.layer.cornerRadius = 6.0
         contentView.layer.masksToBounds = true
 
-        contentView.addSubview(imageView)
-        contentView.addSubview(firstNameLabel)
-        contentView.addSubview(lastNameLabel)
-        contentView.addSubview(numberLabel)
+        contentView.addSubviews([imageView, firstNameLabel, lastNameLabel, numberLabel])
 
         updateConstraints()
     }

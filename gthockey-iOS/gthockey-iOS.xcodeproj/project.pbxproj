@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */; };
+		825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825092172361EFB300D98DEA /* UIViewExtension.swift */; };
 		8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */; };
 		8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC652360AB3E00C7C9DF /* MenuTableViewFooter.swift */; };
 		8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC672360AB9500C7C9DF /* MenuTableViewController.swift */; };
@@ -44,6 +45,7 @@
 		0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.release.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.debug.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContainerViewController.swift; sourceTree = "<group>"; };
+		825092172361EFB300D98DEA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewHeader.swift; sourceTree = "<group>"; };
 		8288FC652360AB3E00C7C9DF /* MenuTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewFooter.swift; sourceTree = "<group>"; };
 		8288FC672360AB9500C7C9DF /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -96,6 +98,15 @@
 				D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		825092162361EF8E00D98DEA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				82F79FC4236004D70070F63D /* UIColorExtension.swift */,
+				825092172361EFB300D98DEA /* UIViewExtension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		82D971B3233D609E00BFD322 /* HomeFlow */ = {
@@ -157,13 +168,13 @@
 				82D971B3233D609E00BFD322 /* HomeFlow */,
 				82D971B4233D60A500BFD322 /* ScheduleFlow */,
 				82D971B5233D60B000BFD322 /* RosterFlow */,
+				825092162361EF8E00D98DEA /* Extensions */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
 				82ADF5D623440B6700114F84 /* JSONParser.swift */,
 				82DCB482233C402300BDE2FE /* Assets.xcassets */,
 				82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */,
 				82DCB487233C402300BDE2FE /* Info.plist */,
 				82DCB47F233C402200BDE2FE /* gthockey_iOS.xcdatamodeld */,
-				82F79FC4236004D70070F63D /* UIColorExtension.swift */,
 			);
 			path = "gthockey-iOS";
 			sourceTree = "<group>";
@@ -341,6 +352,7 @@
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
+				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,

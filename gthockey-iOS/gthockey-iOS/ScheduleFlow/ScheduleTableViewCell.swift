@@ -18,9 +18,7 @@ class ScheduleTableViewCell: UITableViewCell {
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.addSubview(scheduleOpponentRinkView)
-        contentView.addSubview(scheduleDateTimeView)
-        contentView.addSubview(scheduleResultView)
+        contentView.addSubviews([scheduleOpponentRinkView, scheduleDateTimeView, scheduleResultView])
 
         updateConstraints()
     }

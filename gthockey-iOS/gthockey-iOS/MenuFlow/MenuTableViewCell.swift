@@ -36,8 +36,7 @@ class MenuTableViewCell: UITableViewCell {
 
         backgroundColor = .techNavy
 
-        contentView.addSubview(iconImageView)
-        contentView.addSubview(optionLabel)
+        contentView.addSubviews([iconImageView, optionLabel])
 
         updateConstraints()
     }
