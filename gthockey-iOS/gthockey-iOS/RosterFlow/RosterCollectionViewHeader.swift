@@ -10,6 +10,8 @@ import UIKit
 
 class RosterCollectionViewHeader: UICollectionReusableView {
 
+    // MARK: Properties
+
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
@@ -18,6 +20,8 @@ class RosterCollectionViewHeader: UICollectionReusableView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
     }()
+
+    // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -39,6 +43,8 @@ class RosterCollectionViewHeader: UICollectionReusableView {
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12.0)
         ])
     }
+
+    // MARK: Setter
 
     public func set(with title: String) {
         titleLabel.text = title

@@ -11,6 +11,8 @@ import SDWebImage
 
 class HomeDetailViewController: UIViewController {
 
+    // MARK: Properties
+
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -70,21 +72,21 @@ class HomeDetailViewController: UIViewController {
         return bodyLabel
     }()
 
+    // MARK: Init
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemBackground
-        } else {
-            view.backgroundColor = .white
-        }
-
         var closeButtonImage: UIImage?
+
         if traitCollection.userInterfaceStyle == .dark {
+            view.backgroundColor = .black
             closeButtonImage = UIImage(named: "CloseButtonWhite")?.withRenderingMode(.alwaysOriginal)
         } else {
+            view.backgroundColor = .white
             closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
         }
+
         closeButton.setImage(closeButtonImage, for: .normal)
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
@@ -158,6 +160,8 @@ class HomeDetailViewController: UIViewController {
         return true
     }
 
+    // MARK: Setter
+
     public func set(with news: News) {
         imageView.sd_setImage(with: news.getImageURL(), placeholderImage: nil)
         headlineLabel.text = news.getTitle()
@@ -166,31 +170,13 @@ class HomeDetailViewController: UIViewController {
         formatter.dateStyle = .long
         dateLabel.text = formatter.string(from: news.getDate())
 
-        bodyLabel.text = news.getContent().htmlToString
+        bodyLabel.text = news.getContent()
     }
+
+    // MARK: Action
 
     @objc private func closeButtonTapped() {
         dismiss(animated: true, completion: nil)
     }
 
-}
-
-extension String {
-    var htmlToAttributedString: NSAttributedString? {
-        guard let data = data(using: .utf8) else { return NSAttributedString() }
-
-        do {
-            return try NSAttributedString(data: data,
-                                          options: [.documentType: NSAttributedString.DocumentType.html,
-                                                    .characterEncoding: String.Encoding.utf8.rawValue],
-                                          documentAttributes: nil)
-        } catch {
-               return NSAttributedString()
-        }
-        return NSAttributedString()
-    }
-
-    var htmlToString: String {
-        return htmlToAttributedString?.string ?? ""
-    }
 }

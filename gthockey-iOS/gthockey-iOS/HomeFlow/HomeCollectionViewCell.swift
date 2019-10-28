@@ -11,6 +11,8 @@ import SDWebImage
 
 class HomeCollectionViewCell: UICollectionViewCell {
 
+    // MARK: Properties
+
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
@@ -26,11 +28,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.numberOfLines = 2
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 13.0, *) {
-            titleLabel.textColor = .label
-        } else {
-            titleLabel.textColor = .black
-        }
         return titleLabel
     }()
 
@@ -40,23 +37,26 @@ class HomeCollectionViewCell: UICollectionViewCell {
         subtitleLabel.lineBreakMode = .byTruncatingTail
         subtitleLabel.numberOfLines = 2
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        if #available(iOS 13.0, *) {
-            subtitleLabel.textColor = .label
-        } else {
-            subtitleLabel.textColor = .black
-        }
         return subtitleLabel
     }()
 
+    // MARK: Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        if #available(iOS 13.0, *) {
-            layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
-            layer.shadowColor = UIColor.label.cgColor
+
+        if traitCollection.userInterfaceStyle == .dark {
+            layer.backgroundColor = UIColor.cellBackgroundDark.cgColor
+            layer.shadowColor = UIColor.white.cgColor
+            titleLabel.textColor = .white
+            subtitleLabel.textColor = .white
         } else {
-            layer.backgroundColor = UIColor.white.cgColor
+            layer.backgroundColor = UIColor.cellBackgroundLight.cgColor
             layer.shadowColor = UIColor.black.cgColor
+            titleLabel.textColor = .black
+            subtitleLabel.textColor = .black
         }
+
         layer.shadowOpacity = 0.2
         layer.shadowRadius = 7.0
         layer.cornerRadius = 6.0
@@ -95,6 +95,8 @@ class HomeCollectionViewCell: UICollectionViewCell {
             subtitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
         ])
     }
+
+    // MARK: Setter
 
     public func set(with news: News) {
         imageView.sd_setImage(with: news.getImageURL(), placeholderImage: nil)

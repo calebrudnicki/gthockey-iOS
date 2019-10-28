@@ -10,6 +10,8 @@ import UIKit
 
 class MenuTableViewFooter: UIView {
 
+    // MARK: Properties
+
     private let versionLabel: UILabel = {
         let versionLabel = UILabel()
         versionLabel.font = UIFont(name: "HelveticaNeue-Light", size: 12.0)
@@ -22,9 +24,11 @@ class MenuTableViewFooter: UIView {
         return versionLabel
     }()
 
+    // MARK: Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         addSubview(versionLabel)
         updateConstraints()
     }

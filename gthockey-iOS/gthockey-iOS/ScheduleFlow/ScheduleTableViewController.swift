@@ -11,12 +11,14 @@ import MapKit
 
 class ScheduleTableViewController: UITableViewController {
 
-    private let reuseIdentifier = "cell"
+    // MARK: Properties
+
     private var completedGameArray: [Game] = []
     private var upcomingGameArray: [Game] = []
     private let cellHeight = UIScreen.main.bounds.height * 0.8
+    public var delegate: HomeControllerDelegate?
 
-    var delegate: HomeControllerDelegate?
+    // MARK: Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +41,46 @@ class ScheduleTableViewController: UITableViewController {
         fetchSchedule()
     }
 
-    // MARK: - Table view data source
+    // MARK: Config
+
+    private func setupTableView() {
+        tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: "ScheduleTableViewCell")
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(fetchSchedule), for: .valueChanged)
+        tableView.tableFooterView = UIView()
+        tableView.sectionHeaderHeight = 0.0
+    }
+
+    @objc private func fetchSchedule() {
+        let parser = JSONParser()
+        parser.getSchedule() { response in
+            self.completedGameArray = []
+            self.upcomingGameArray = []
+
+            for game in response {
+                if game.getIsReported() {
+                    self.completedGameArray.append(game)
+                } else {
+                    self.upcomingGameArray.append(game)
+                }
+            }
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.tableView.sectionHeaderHeight = 32.0
+                self.tableView.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .none)
+                self.tableView.refreshControl?.endRefreshing()
+            }
+        }
+    }
+
+    private func fetchGame(with id: Int, completion: @escaping (Team, Rink) -> Void) {
+        let parser = JSONParser()
+        parser.getGame(with: id) { (opponent, rink) in
+            completion(opponent, rink)
+        }
+    }
+
+    // MARK: UITableViewDelegate / UITableViewDataSource
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -55,7 +96,7 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath) as! ScheduleTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
 
         switch indexPath.section {
         case 0:
@@ -99,48 +140,13 @@ class ScheduleTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-}
+    // MARK: Action
 
-// MARK: Private Methods
-
-extension ScheduleTableViewController {
-
-    private func setupTableView() {
-        tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(fetchSchedule), for: .valueChanged)
-        tableView.tableFooterView = UIView()
-        tableView.sectionHeaderHeight = 0.0
+    @objc private func menuButtonTapped() {
+        delegate?.handleMenuToggle(forMenuOption: nil)
     }
 
-    @objc private func fetchSchedule() {
-        let parser = JSONParser()
-        parser.getSchedule() { response in
-            self.completedGameArray = []
-            self.upcomingGameArray = []
-
-            for game in response {
-                if game.getIsReported() {
-                    self.completedGameArray.append(game)
-                } else {
-                    self.upcomingGameArray.append(game)
-                }
-            }
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.tableView.sectionHeaderHeight = 32.0
-                self.tableView.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .none)
-                self.tableView.refreshControl?.endRefreshing()
-            }
-        }
-    }
-
-    private func fetchGame(with id: Int, completion: @escaping (Team, Rink) -> Void) {
-        let parser = JSONParser()
-        parser.getGame(with: id) { (opponent, rink) in
-            completion(opponent, rink)
-        }
-    }
+    // MARK: Location
 
     private func openMaps(with rink: Rink) {
         let rinkCoordinates = findLocation(from: rink.getMapsURL()).coordinate
@@ -173,18 +179,4 @@ extension ScheduleTableViewController {
                           longitude: CLLocationDegrees(exactly: longitude ?? -84.3963)!)
     }
 
-    @objc private func menuButtonTapped() {
-        delegate?.handleMenuToggle(forMenuOption: nil)
-    }
-
-}
-
-extension String {
-    func slice(from: String, to: String) -> String? {
-        return (range(of: from)?.upperBound).flatMap { substringFrom in
-            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
-                String(self[substringFrom..<substringTo])
-            }
-        }
-    }
 }

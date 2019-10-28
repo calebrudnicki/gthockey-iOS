@@ -10,10 +10,7 @@ import UIKit
 
 class MenuTableViewCell: UITableViewCell {
 
-    private let scheduleOpponentRinkView = ScheduleOpponentRinkView()
-    private let scheduleDateTimeView = ScheduleDateTimeView()
-    private let scheduleResultView = ScheduleResultView()
-    private var gameIsReported: Bool = false
+    // MARK: Properties
 
     private let iconImageView: UIImageView = {
         let iconImageView = UIImageView()
@@ -31,13 +28,13 @@ class MenuTableViewCell: UITableViewCell {
         return optionLabel
     }()
 
+    // MARK: Init
+
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         backgroundColor = .techNavy
-
         contentView.addSubviews([iconImageView, optionLabel])
-
         updateConstraints()
     }
 
@@ -62,9 +59,11 @@ class MenuTableViewCell: UITableViewCell {
         ])
     }
 
+    // MARK: Setter
+
     public func set(with menuOption: MenuOption) {
         iconImageView.image = menuOption.image
         optionLabel.text = menuOption.description
     }
-}
 
+}

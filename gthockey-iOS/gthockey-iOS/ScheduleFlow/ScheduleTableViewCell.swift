@@ -10,10 +10,14 @@ import UIKit
 
 class ScheduleTableViewCell: UITableViewCell {
 
+    // MARK: Properties
+
     private let scheduleOpponentRinkView = ScheduleOpponentRinkView()
     private let scheduleDateTimeView = ScheduleDateTimeView()
     private let scheduleResultView = ScheduleResultView()
-    private var gameIsReported: Bool = false
+    private var gameIsReported = false
+
+    // MARK: Init
 
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -52,8 +56,9 @@ class ScheduleTableViewCell: UITableViewCell {
                 scheduleDateTimeView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
             ])
         }
-
     }
+
+    // MARK: Setter
 
     public func set(with game: Game) {
         scheduleOpponentRinkView.set(with: game.getOpponentName(), game.getRinkName(), game.getVenue())

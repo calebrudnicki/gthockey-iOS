@@ -10,29 +10,29 @@ import UIKit
 
 class MenuContainerViewController: UIViewController {
 
-    var menuTableViewController: MenuTableViewController!
-    var currentNavigationController: UINavigationController!
-    var isExpanded = false
+    // MARK: Properties
 
-    let homeCollectionViewController: HomeCollectionViewController = {
+    private var menuTableViewController: MenuTableViewController!
+    private var currentNavigationController: UINavigationController!
+    private var isExpanded = false
+    private let homeCollectionViewController: HomeCollectionViewController = {
         let homeLayout = UICollectionViewFlowLayout()
         homeLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
         let homeCollectionViewController = HomeCollectionViewController(collectionViewLayout: homeLayout)
         return homeCollectionViewController
     }()
-
-    let scheduleTableViewController = ScheduleTableViewController()
-
-    let rosterCollectionViewController: RosterCollectionViewController = {
+    private let scheduleTableViewController = ScheduleTableViewController()
+    private let rosterCollectionViewController: RosterCollectionViewController = {
         let rosterLayout = UICollectionViewFlowLayout()
         rosterLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
         let rosterCollectionViewController = RosterCollectionViewController(collectionViewLayout: rosterLayout)
         return rosterCollectionViewController
     }()
+    private var homeNavigationController: UINavigationController?
+    private var scheduleNavigationController: UINavigationController?
+    private var rosterNavigationController: UINavigationController?
 
-    var homeNavigationController: UINavigationController!
-    var scheduleNavigationController: UINavigationController!
-    var rosterNavigationController: UINavigationController!
+    // MARK: Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +42,10 @@ class MenuContainerViewController: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return isExpanded
     }
+
+    // MARK: Config
     
-    func configureHomeController() {
+    private func configureHomeController() {
         homeNavigationController = UINavigationController(rootViewController: homeCollectionViewController)
         scheduleNavigationController = UINavigationController(rootViewController: scheduleTableViewController)
         rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
@@ -62,7 +64,7 @@ class MenuContainerViewController: UIViewController {
         currentNavigationController.didMove(toParent: self)
     }
 
-    func configureMenuController() {
+    private func configureMenuController() {
         if menuTableViewController == nil {
             menuTableViewController = MenuTableViewController()
             menuTableViewController.delegate = self
@@ -72,16 +74,18 @@ class MenuContainerViewController: UIViewController {
         }
     }
 
-    func animatePanel(shouldExpand: Bool, menuOption: MenuOption?) {
+    // MARK: Menu Control Functions
+
+    private func animatePanel(shouldExpand: Bool, menuOption: MenuOption?) {
         if shouldExpand {
-            //show menu
+            //Animation to show menu
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
                 self.currentNavigationController.view.frame.origin.x = self.currentNavigationController.view.frame.width - 80
             }) { (_) in
                 self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = false
             }
         } else {
-            //hide menu
+            //Animation to hide menu
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
                 self.currentNavigationController.view.frame.origin.x = 0
             }) { (_) in
@@ -96,7 +100,7 @@ class MenuContainerViewController: UIViewController {
         }
     }
 
-    func didSelectMenuOption(menuOption: MenuOption) {
+    private func didSelectMenuOption(menuOption: MenuOption) {
         currentNavigationController.view.removeFromSuperview()
         currentNavigationController.removeFromParent()
 
@@ -117,6 +121,9 @@ class MenuContainerViewController: UIViewController {
 }
 
 extension MenuContainerViewController: HomeControllerDelegate {
+
+    // MARK: HomeControllerDelegate
+
     func handleMenuToggle(forMenuOption menuOption: MenuOption?) {
         if !isExpanded {
             configureMenuController()
@@ -125,4 +132,5 @@ extension MenuContainerViewController: HomeControllerDelegate {
         isExpanded = !isExpanded
         animatePanel(shouldExpand: isExpanded, menuOption: menuOption)
     }
+
 }

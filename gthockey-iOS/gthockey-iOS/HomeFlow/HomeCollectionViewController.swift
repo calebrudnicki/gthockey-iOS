@@ -10,12 +10,14 @@ import UIKit
 
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    private let reuseIdentifier = "cell"
+    // MARK: Properties
+
     private var newsArray: [News] = []
     private let cellWidth = UIScreen.main.bounds.width * 0.9
     private let cellHeight = UIScreen.main.bounds.height * 0.45
+    public var delegate: HomeControllerDelegate?
 
-    var delegate: HomeControllerDelegate?
+    // MARK: Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +26,10 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
         let menuButtonImage: UIImage?
         if traitCollection.userInterfaceStyle == .dark {
+            collectionView.backgroundColor = .black
             menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
         } else {
+            collectionView.backgroundColor = .white
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
@@ -39,6 +43,26 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         fetchArticles()
     }
 
+    // MARK: Config
+
+    private func setupCollectionView() {
+        collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "HomeCollectionViewCell")
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(fetchArticles), for: .valueChanged)
+    }
+
+    @objc private func fetchArticles() {
+        let parser = JSONParser()
+        parser.getArticles() { response in
+            self.newsArray = []
+            self.newsArray = response
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.collectionView.refreshControl?.endRefreshing()
+            }
+        }
+    }
+
     // MARK: UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -46,7 +70,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! HomeCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
         cell.set(with: newsArray[indexPath.row])
         return cell
     }
@@ -67,39 +91,9 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         return 24.0
     }
 
-}
-
-// MARK: Private Methods
-
-extension HomeCollectionViewController {
-
-    private func setupCollectionView() {
-        if #available(iOS 13.0, *) {
-            collectionView.backgroundColor = .systemBackground
-            navigationItem.leftBarButtonItem?.tintColor = .cyan
-        } else {
-            collectionView.backgroundColor = .white
-            navigationItem.leftBarButtonItem?.tintColor = .black
-        }
-        collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.refreshControl = UIRefreshControl()
-        collectionView.refreshControl?.addTarget(self, action: #selector(fetchArticles), for: .valueChanged)
-    }
-
-    @objc private func fetchArticles() {
-        let parser = JSONParser()
-        parser.getArticles() { response in
-            self.newsArray = []
-            self.newsArray = response
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.collectionView.refreshControl?.endRefreshing()
-            }
-        }
-    }
+    // MARK: Action
 
     @objc private func menuButtonTapped() {
-        print("toggleMenu")
         delegate?.handleMenuToggle(forMenuOption: nil)
     }
 

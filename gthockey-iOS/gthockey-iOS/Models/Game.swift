@@ -10,6 +10,8 @@ import Foundation
 
 class Game {
 
+    // MARK: Properties
+
     private var id: Int
     private var dateTime: Date
     private var opponentName: String
@@ -19,6 +21,8 @@ class Game {
     private var shortResult: String
     private var gtScore: Int
     private var opponentScore: Int
+
+    // MARK: Init
 
     init(id: Int, dateTime: Date, opponentName: String, rinkName: String, venue: String,
          isReported: Bool, shortResult: String, gtScore:Int, opponentScore: Int) {
@@ -31,8 +35,9 @@ class Game {
         self.shortResult = shortResult
         self.gtScore = gtScore
         self.opponentScore = opponentScore
-
     }
+
+    // MARK: Getters
 
     func getID() -> Int {
         return id

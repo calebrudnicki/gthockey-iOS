@@ -10,6 +10,8 @@ import UIKit
 
 class ScheduleDateTimeView: UIView {
 
+    // MARK: Properties
+
     private let dateLabel: UILabel = {
         let dateLabel = UILabel()
         dateLabel.font = UIFont(name:"HelveticaNeue-Light", size: 12.0)
@@ -37,6 +39,8 @@ class ScheduleDateTimeView: UIView {
         return detailsStack
     }()
 
+    // MARK: Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -63,13 +67,16 @@ class ScheduleDateTimeView: UIView {
             detailsStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailsStack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-
     }
+
+    // MARK: Setter
 
     public func set(with date: Date) {
         dateLabel.text = formatDate(from: date)
         timeLabel.text = formatTime(from: date)
     }
+
+    // MARK: Date & Time
 
     private func formatDate(from date: Date) -> String {
         let formatter = DateFormatter()

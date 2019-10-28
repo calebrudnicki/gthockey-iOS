@@ -9,6 +9,8 @@
 import Foundation
 
 class News {
+
+    // MARK: Properties
     
     private let id: Int
     private let title: String
@@ -16,6 +18,8 @@ class News {
     private let imageURL: URL
     private let teaser: String
     private let content: String
+
+    // MARK: Init
 
     init(id: Int, title: String, date: Date, imageURL: URL, teaser: String, content: String) {
         self.id = id
@@ -25,6 +29,8 @@ class News {
         self.teaser = teaser
         self.content = content
     }
+
+    // MARK: Getters
     
     func getID() -> Int {
         return id

@@ -10,6 +10,8 @@ import UIKit
 
 class MenuTableViewHeader: UIView {
 
+    // MARK: Properties
+
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 32.0)
@@ -20,6 +22,8 @@ class MenuTableViewHeader: UIView {
         titleLabel.textColor = .techGold
         return titleLabel
     }()
+
+    // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
