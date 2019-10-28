@@ -10,6 +10,8 @@ import Foundation
 
 class Player {
 
+    // MARK: Properties
+
     private var id: Int
     private var firstName: String
     private var lastName: String
@@ -18,8 +20,13 @@ class Player {
     private var hometown: String
     private var school: String
     private var imageURL: URL
+    private var headshotURL: URL
+    private var bio: String
 
-    init(id: Int, firstName: String, lastName: String, position: String, number: Int, hometown: String, school: String, imageURL: URL) {
+    // MARK: Init
+
+    init(id: Int, firstName: String, lastName: String, position: String, number: Int,
+         hometown: String, school: String, imageURL: URL, headshotURL: URL, bio: String) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
@@ -28,7 +35,11 @@ class Player {
         self.hometown = hometown
         self.school = school
         self.imageURL = imageURL
+        self.headshotURL = headshotURL
+        self.bio = bio
     }
+
+    // MARK: Getters
 
     func getID() -> Int {
         return id
@@ -73,6 +84,14 @@ class Player {
 
     func getImageURL() -> URL {
         return imageURL
+    }
+
+    func getHeadshotURL() -> URL {
+        return headshotURL
+    }
+
+    func getBio() -> String {
+        return bio
     }
 
 }

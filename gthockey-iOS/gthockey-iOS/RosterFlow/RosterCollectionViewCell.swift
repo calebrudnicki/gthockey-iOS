@@ -11,6 +11,8 @@ import SDWebImage
 
 class RosterCollectionViewCell: UICollectionViewCell {
 
+    // MARK: Properties
+
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
@@ -31,7 +33,6 @@ class RosterCollectionViewCell: UICollectionViewCell {
     private let lastNameLabel: UILabel = {
         let lastNameLabel = UILabel()
         lastNameLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
-//        lastNameLabel.adjustsFontSizeToFitWidth = true
         lastNameLabel.allowsDefaultTighteningForTruncation = true
         lastNameLabel.numberOfLines = 1
         lastNameLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -47,14 +48,23 @@ class RosterCollectionViewCell: UICollectionViewCell {
         return numberLabel
     }()
 
+    // MARK: Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
-        if #available(iOS 13.0, *) {
-            layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
-            layer.shadowColor = UIColor.label.cgColor
+
+        if traitCollection.userInterfaceStyle == .dark {
+            layer.backgroundColor = UIColor.cellBackgroundDark.cgColor
+            layer.shadowColor = UIColor.white.cgColor
+            firstNameLabel.textColor = .white
+            lastNameLabel.textColor = .white
+            numberLabel.textColor = .white
         } else {
-            layer.backgroundColor = UIColor.white.cgColor
+            layer.backgroundColor = UIColor.cellBackgroundLight.cgColor
             layer.shadowColor = UIColor.black.cgColor
+            firstNameLabel.textColor = .black
+            lastNameLabel.textColor = .black
+            numberLabel.textColor = .black
         }
 
         layer.shadowOpacity = 0.2
@@ -101,6 +111,8 @@ class RosterCollectionViewCell: UICollectionViewCell {
             numberLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4.0)
         ])
     }
+
+    // MARK: Setter
 
     public func set(with player: Player) {
         imageView.sd_setImage(with: player.getImageURL(), placeholderImage: nil)

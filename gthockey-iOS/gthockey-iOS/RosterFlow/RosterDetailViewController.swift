@@ -11,6 +11,8 @@ import SDWebImage
 
 class RosterDetailViewController: UIViewController {
 
+    // MARK: Properties
+
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -107,21 +109,21 @@ class RosterDetailViewController: UIViewController {
         return bioLabel
     }()
 
+    // MARK: Init
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemBackground
-        } else {
-            view.backgroundColor = .white
-        }
-
         var closeButtonImage: UIImage?
+
         if traitCollection.userInterfaceStyle == .dark {
+            view.backgroundColor = .black
             closeButtonImage = UIImage(named: "CloseButtonWhite")?.withRenderingMode(.alwaysOriginal)
         } else {
+            view.backgroundColor = .white
             closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
         }
+
         closeButton.setImage(closeButtonImage, for: .normal)
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
@@ -220,6 +222,8 @@ class RosterDetailViewController: UIViewController {
         return true
     }
 
+    // MARK: Setter
+
     public func set(with player: Player) {
         imageView.sd_setImage(with: player.getImageURL(), placeholderImage: nil)
         firstNameLabel.text = player.getFirstName()
@@ -228,8 +232,10 @@ class RosterDetailViewController: UIViewController {
         positionLabel.text = player.getPositionLong()
         hometownLabel.text = player.getHometown()
         schoolLabel.text = player.getSchool()
-        bioLabel.text = "The Jackets were back on home ice after starting off the 2019-20 campaign mostly on the road. Coming into the weekend, the squad held a respectable 5-1 record, with their solo loss coming to an Auburn squad in just the second game of the season. Back on home ice though, GT would look to square off against two relatively unfamiliar opponents in the University of Central Florida Knights and the Coastal Carolina University Chanticleers."
+        bioLabel.text = player.getBio()
     }
+
+    // MARK: Action
 
     @objc private func closeButtonTapped() {
         dismiss(animated: true, completion: nil)

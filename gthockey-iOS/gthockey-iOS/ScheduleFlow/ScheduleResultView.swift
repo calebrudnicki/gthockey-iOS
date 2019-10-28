@@ -10,6 +10,8 @@ import UIKit
 
 class ScheduleResultView: UIView {
 
+    // MARK: Properties
+
     private let resultLabel: UILabel = {
         let resultLabel = UILabel()
         resultLabel.font = UIFont(name:"Helvetica Neue", size: 20.0)
@@ -37,6 +39,8 @@ class ScheduleResultView: UIView {
         return detailsStack
     }()
 
+    // MARK: Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -63,8 +67,9 @@ class ScheduleResultView: UIView {
             detailsStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailsStack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-
     }
+
+    // MARK: Setter
 
     public func set(with result: String, _ score: String) {
         resultLabel.text = result

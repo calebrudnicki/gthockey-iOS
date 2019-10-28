@@ -10,6 +10,8 @@ import UIKit
 
 class ScheduleOpponentRinkView: UIView {
 
+    // MARK: Properties
+
     private let opponentLabel: UILabel = {
         let opponentLabel = UILabel()
         opponentLabel.font = UIFont(name:"Helvetica Neue", size: 20.0)
@@ -35,6 +37,8 @@ class ScheduleOpponentRinkView: UIView {
         detailsStack.translatesAutoresizingMaskIntoConstraints = false
         return detailsStack
     }()
+
+    // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,8 +66,9 @@ class ScheduleOpponentRinkView: UIView {
             detailsStack.trailingAnchor.constraint(equalTo: trailingAnchor),
             detailsStack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-
     }
+
+    // MARK: Setter
 
     public func set(with opponent: String, _ rink: String, _ venue: String) {
         if venue == "H" {

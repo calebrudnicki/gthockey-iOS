@@ -9,11 +9,16 @@
 import Foundation
 
 class Team {
+
+    // MARK: Properties
+
     private var id: Int
     private var schoolName: String
     private var mascotName: String
     private var webURL: URL
     private var imageURL: URL
+
+    // MARK: Init
 
     init(id: Int, schoolName: String, mascotName: String, webURL: URL, imageURL: URL) {
         self.id = id
@@ -22,6 +27,8 @@ class Team {
         self.webURL = webURL
         self.imageURL = imageURL
     }
+
+    // MARK: Getters
 
     func getID() -> Int {
         return self.id
@@ -42,4 +49,5 @@ class Team {
     func getImageURL() -> URL {
         return self.imageURL
     }
+    
 }

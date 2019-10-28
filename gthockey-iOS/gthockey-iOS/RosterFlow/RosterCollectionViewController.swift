@@ -10,15 +10,16 @@ import UIKit
 
 class RosterCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-    private let reuseIdentifier = "cell"
-    private let headerIdentifier = "header"
+    // MARK: Properties
+
     private var forwardArray: [Player] = []
     private var defenseArray: [Player] = []
     private var goalieArray: [Player] = []
     private var managerArray: [Player] = []
     private let cellWidth = UIScreen.main.bounds.width * 0.45
+    public var delegate: HomeControllerDelegate?
 
-    var delegate: HomeControllerDelegate?
+    // MARK: Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,10 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
 
         let menuButtonImage: UIImage?
         if traitCollection.userInterfaceStyle == .dark {
+            collectionView.backgroundColor = .black
             menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
         } else {
+            collectionView.backgroundColor = .white
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
@@ -39,6 +42,44 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
 
         setupCollectionView()
         fetchRoster()
+    }
+
+    // MARK: Config
+
+    private func setupCollectionView() {
+        collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: "RosterCollectionViewCell")
+        collectionView.register(RosterCollectionViewHeader.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: "RosterCollectionViewHeader")
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(fetchRoster), for: .valueChanged)
+    }
+
+    @objc private func fetchRoster() {
+        let parser = JSONParser()
+        parser.getRoster() { response in
+            self.forwardArray = []
+            self.defenseArray = []
+            self.goalieArray = []
+            self.managerArray = []
+
+            for player in response {
+                switch player.getPosition() {
+                case "F":
+                    self.forwardArray.append(player)
+                case "D":
+                    self.defenseArray.append(player)
+                case "G":
+                    self.goalieArray.append(player)
+                default:
+                    self.managerArray.append(player)
+                }
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.collectionView.refreshControl?.endRefreshing()
+            }
+        }
     }
 
     // MARK: UICollectionViewDataSource
@@ -61,7 +102,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! RosterCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RosterCollectionViewCell", for: indexPath) as! RosterCollectionViewCell
 
         switch indexPath.section {
         case 0:
@@ -78,7 +119,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! RosterCollectionViewHeader
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "RosterCollectionViewHeader", for: indexPath) as! RosterCollectionViewHeader
         switch indexPath.section {
         case 0:
             header.set(with: "Forwards")
@@ -121,51 +162,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         return UIEdgeInsets(top: 12.0, left: 12.0, bottom: 12.0, right: 12.0)
     }
 
-}
-
-// MARK: - Private Methods
-
-private extension RosterCollectionViewController {
-
-    private func setupCollectionView() {
-        if #available(iOS 13.0, *) {
-            collectionView.backgroundColor = .systemBackground
-        } else {
-            collectionView.backgroundColor = .white
-        }
-
-        collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-        collectionView.register(RosterCollectionViewHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
-        collectionView.refreshControl = UIRefreshControl()
-        collectionView.refreshControl?.addTarget(self, action: #selector(fetchRoster), for: .valueChanged)
-    }
-
-    @objc private func fetchRoster() {
-        let parser = JSONParser()       
-        parser.getRoster() { response in
-            self.forwardArray = []
-            self.defenseArray = []
-            self.goalieArray = []
-            self.managerArray = []
-
-            for player in response {
-                switch player.getPosition() {
-                case "F":
-                    self.forwardArray.append(player)
-                case "D":
-                    self.defenseArray.append(player)
-                case "G":
-                    self.goalieArray.append(player)
-                default:
-                    self.managerArray.append(player)
-                }
-            }
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.collectionView.refreshControl?.endRefreshing()
-            }
-        }
-    }
+    // MARK: Action
 
     @objc private func menuButtonTapped() {
         delegate?.handleMenuToggle(forMenuOption: nil)
