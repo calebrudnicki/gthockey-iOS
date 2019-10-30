@@ -14,6 +14,7 @@
 		8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC672360AB9500C7C9DF /* MenuTableViewController.swift */; };
 		8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC692360AC1900C7C9DF /* MenuTableViewCell.swift */; };
 		82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82918F312350B62F00723B4A /* RosterDetailViewController.swift */; };
+		8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */; };
 		82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */; };
 		82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */; };
 		82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */; };
@@ -52,6 +53,7 @@
 		8288FC672360AB9500C7C9DF /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		8288FC692360AC1900C7C9DF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		82918F312350B62F00723B4A /* RosterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterDetailViewController.swift; sourceTree = "<group>"; };
+		8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewHeader.swift; sourceTree = "<group>"; };
 		82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		8297AFE3236A357F0081B273 /* CustomUIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */,
+			);
+			path = CustomUIComponents;
+			sourceTree = "<group>";
+		};
 		82D971B3233D609E00BFD322 /* HomeFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F02585AD23412F68008E641C /* Models */,
+				8297AFE3236A357F0081B273 /* CustomUIComponents */,
 				82F79FC1235FF14A0070F63D /* MenuFlow */,
 				82D971B3233D609E00BFD322 /* HomeFlow */,
 				82D971B4233D60A500BFD322 /* ScheduleFlow */,
@@ -337,6 +348,7 @@
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */,
+				8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,

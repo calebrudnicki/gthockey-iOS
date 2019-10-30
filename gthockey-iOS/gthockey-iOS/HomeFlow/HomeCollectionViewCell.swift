@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class HomeCollectionViewCell: UICollectionViewCell {
+class HomeCollectionViewCell: CardCollectionViewCell {
 
     // MARK: Properties
 
@@ -45,27 +45,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        if traitCollection.userInterfaceStyle == .dark {
-            layer.backgroundColor = UIColor.cellBackgroundDark.cgColor
-            layer.shadowColor = UIColor.white.cgColor
-            titleLabel.textColor = .white
-            subtitleLabel.textColor = .white
-        } else {
-            layer.backgroundColor = UIColor.cellBackgroundLight.cgColor
-            layer.shadowColor = UIColor.black.cgColor
-            titleLabel.textColor = .black
-            subtitleLabel.textColor = .black
-        }
-
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 7.0
-        layer.cornerRadius = 6.0
-
-        contentView.layer.cornerRadius = 6.0
-        contentView.layer.masksToBounds = true
-
         contentView.addSubviews([imageView, titleLabel, subtitleLabel])
-
         updateConstraints()
     }
 

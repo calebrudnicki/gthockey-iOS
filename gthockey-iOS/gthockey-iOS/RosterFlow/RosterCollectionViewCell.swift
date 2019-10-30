@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class RosterCollectionViewCell: UICollectionViewCell {
+class RosterCollectionViewCell: CardCollectionViewCell {
 
     // MARK: Properties
 
@@ -53,29 +53,7 @@ class RosterCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        if traitCollection.userInterfaceStyle == .dark {
-            layer.backgroundColor = UIColor.cellBackgroundDark.cgColor
-            layer.shadowColor = UIColor.white.cgColor
-            firstNameLabel.textColor = .white
-            lastNameLabel.textColor = .white
-            numberLabel.textColor = .white
-        } else {
-            layer.backgroundColor = UIColor.cellBackgroundLight.cgColor
-            layer.shadowColor = UIColor.black.cgColor
-            firstNameLabel.textColor = .black
-            lastNameLabel.textColor = .black
-            numberLabel.textColor = .black
-        }
-
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 7.0
-        layer.cornerRadius = 6.0
-
-        contentView.layer.cornerRadius = 6.0
-        contentView.layer.masksToBounds = true
-
         contentView.addSubviews([imageView, firstNameLabel, lastNameLabel, numberLabel])
-
         updateConstraints()
     }
 
