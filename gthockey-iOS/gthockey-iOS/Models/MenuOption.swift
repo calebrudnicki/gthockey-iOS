@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-enum MenuOption: Int, CustomStringConvertible {
+enum MenuOption: Int, CustomStringConvertible, CaseIterable {
 
     case Home
     case Schedule
@@ -29,6 +29,10 @@ enum MenuOption: Int, CustomStringConvertible {
         case .Schedule: return UIImage(named: "ScheduleIcon")!
         case .Roster: return UIImage(named: "RosterIcon")!
         }
+    }
+
+    func count() -> Int {
+        return MenuOption.allCases.count
     }
 
 }

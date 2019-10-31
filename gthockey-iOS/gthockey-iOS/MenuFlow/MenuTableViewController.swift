@@ -33,7 +33,7 @@ class MenuTableViewController: UITableViewController {
 
         let menuTableViewFooter = MenuTableViewFooter()
         tableView.tableFooterView = menuTableViewFooter
-        menuTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width - 80, height: 25.0)
+        menuTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width - 80, height: 75.0)
 
         updateViewConstraints()
     }
@@ -52,7 +52,7 @@ class MenuTableViewController: UITableViewController {
     // MARK: UITableViewDelegate / UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return MenuOption.Home.count()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
