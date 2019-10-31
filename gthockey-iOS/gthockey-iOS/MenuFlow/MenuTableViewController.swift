@@ -33,7 +33,7 @@ class MenuTableViewController: UITableViewController {
 
         let menuTableViewFooter = MenuTableViewFooter()
         tableView.tableFooterView = menuTableViewFooter
-        menuTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width - 80, height: 25.0)
+        menuTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width - 80, height: 75.0)
 
         updateViewConstraints()
     }
