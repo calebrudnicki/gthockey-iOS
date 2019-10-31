@@ -49,7 +49,7 @@ class MenuTableViewFooter: UIView {
     private let versionLabel: UILabel = {
         let versionLabel = UILabel()
         versionLabel.font = UIFont(name: "HelveticaNeue-Light", size: 12.0)
-        versionLabel.text = "Made in ATL | Version 1.0"
+        versionLabel.text = "Made in ATL"
         versionLabel.adjustsFontSizeToFitWidth = true
         versionLabel.numberOfLines = 1
         versionLabel.textAlignment = .center
@@ -63,6 +63,10 @@ class MenuTableViewFooter: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            versionLabel.text = "\(String(describing: versionLabel.text!)) | Version \(version)"
+        }
 
         instagramButton.addTarget(self, action: #selector(instagramButtonTapped), for: .touchUpInside)
         twitterButton.addTarget(self, action: #selector(twitterButtonTapped), for: .touchUpInside)
