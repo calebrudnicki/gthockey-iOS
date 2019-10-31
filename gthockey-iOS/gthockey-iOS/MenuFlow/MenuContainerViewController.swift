@@ -111,39 +111,6 @@ class MenuContainerViewController: UIViewController {
             currentNavigationController = scheduleNavigationController
         case .Roster:
             currentNavigationController = rosterNavigationController
-//        case .Instagram:
-//            let appURL = NSURL(string: "instagram://user?username=gthockey")!
-//            let webURL = NSURL(string: "https://instagram.com/gthockey")!
-//
-//            let application = UIApplication.shared
-//
-//            if application.canOpenURL(appURL as URL) {
-//                 application.open(appURL as URL)
-//            } else {
-//                 application.open(webURL as URL)
-//            }
-//        case .Twitter:
-//            let appURL = NSURL(string: "twitter://user?screen_name=GT_Hockey")!
-//            let webURL = NSURL(string: "https://twitter.com/GT_Hockey")!
-//
-//            let application = UIApplication.shared
-//
-//            if application.canOpenURL(appURL as URL) {
-//                 application.open(appURL as URL)
-//            } else {
-//                 application.open(webURL as URL)
-//            }
-//        case .Facebook:
-//            let appURL = NSURL(string: "fb://profile/85852244494")!
-//            let webURL = NSURL(string: "https://facebook.com/GeorgiaTechHockey")!
-//
-//            let application = UIApplication.shared
-//
-//            if application.canOpenURL(appURL as URL) {
-//                 application.open(appURL as URL)
-//            } else {
-//                 application.open(webURL as URL)
-//            }
         }
 
         view.addSubview(currentNavigationController.view)
