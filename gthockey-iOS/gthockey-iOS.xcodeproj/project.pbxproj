@@ -37,6 +37,10 @@
 		82F79FBE235F428E0070F63D /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FBD235F428E0070F63D /* MenuOption.swift */; };
 		82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FC2235FF1890070F63D /* MenuControllerDelegate.swift */; };
 		82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FC4236004D70070F63D /* UIColorExtension.swift */; };
+		82F8557E236BD79F00DE7AFD /* ShopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8557D236BD79F00DE7AFD /* ShopCollectionViewController.swift */; };
+		82F85580236BD9AA00DE7AFD /* ShopItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F8557F236BD9AA00DE7AFD /* ShopItem.swift */; };
+		82F85582236BDA7900DE7AFD /* Apparel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F85581236BDA7900DE7AFD /* Apparel.swift */; };
+		82F85584236BDBD900DE7AFD /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F85583236BDBD900DE7AFD /* ShopCollectionViewCell.swift */; };
 		C58AE6FDEF374C9B1B0751D2 /* Pods_gthockey_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */; };
 		F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C392B2354EA3E009E1F3A /* Rink.swift */; };
 		F02585AF23412F88008E641C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02585AE23412F88008E641C /* News.swift */; };
@@ -78,6 +82,10 @@
 		82F79FBD235F428E0070F63D /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		82F79FC2235FF1890070F63D /* MenuControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuControllerDelegate.swift; sourceTree = "<group>"; };
 		82F79FC4236004D70070F63D /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		82F8557D236BD79F00DE7AFD /* ShopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewController.swift; sourceTree = "<group>"; };
+		82F8557F236BD9AA00DE7AFD /* ShopItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopItem.swift; sourceTree = "<group>"; };
+		82F85581236BDA7900DE7AFD /* Apparel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apparel.swift; sourceTree = "<group>"; };
+		82F85583236BDBD900DE7AFD /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gthockey_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00C392B2354EA3E009E1F3A /* Rink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rink.swift; sourceTree = "<group>"; };
 		F02585AE23412F88008E641C /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -182,6 +190,7 @@
 				82D971B3233D609E00BFD322 /* HomeFlow */,
 				82D971B4233D60A500BFD322 /* ScheduleFlow */,
 				82D971B5233D60B000BFD322 /* RosterFlow */,
+				82F8557A236BD76A00DE7AFD /* ShopFlow */,
 				825092162361EF8E00D98DEA /* Extensions */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
 				82ADF5D623440B6700114F84 /* JSONParser.swift */,
@@ -206,6 +215,15 @@
 			path = MenuFlow;
 			sourceTree = "<group>";
 		};
+		82F8557A236BD76A00DE7AFD /* ShopFlow */ = {
+			isa = PBXGroup;
+			children = (
+				82F8557D236BD79F00DE7AFD /* ShopCollectionViewController.swift */,
+				82F85583236BDBD900DE7AFD /* ShopCollectionViewCell.swift */,
+			);
+			path = ShopFlow;
+			sourceTree = "<group>";
+		};
 		D89084F37458199E9103A8FE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +241,9 @@
 				82EE57E22341B36200FCC181 /* Player.swift */,
 				FA3570B923502190008E83BC /* Team.swift */,
 				F00C392B2354EA3E009E1F3A /* Rink.swift */,
+				82F85581236BDA7900DE7AFD /* Apparel.swift */,
 				82F79FBD235F428E0070F63D /* MenuOption.swift */,
+				82F8557F236BD9AA00DE7AFD /* ShopItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -344,6 +364,7 @@
 			files = (
 				FA3570BA23502190008E83BC /* Team.swift in Sources */,
 				8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */,
+				82F85584236BDBD900DE7AFD /* ShopCollectionViewCell.swift in Sources */,
 				82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */,
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
@@ -352,6 +373,7 @@
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
+				82F8557E236BD79F00DE7AFD /* ShopCollectionViewController.swift in Sources */,
 				82F79FBE235F428E0070F63D /* MenuOption.swift in Sources */,
 				8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
@@ -368,11 +390,13 @@
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
+				82F85582236BDA7900DE7AFD /* Apparel.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
 				82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */,
+				82F85580236BD9AA00DE7AFD /* ShopItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
