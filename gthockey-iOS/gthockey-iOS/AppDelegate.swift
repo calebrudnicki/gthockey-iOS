@@ -9,6 +9,9 @@
 import UIKit
 import CoreData
 import RevealingSplashView
+import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
+
+        FirebaseApp.configure()
         
         let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "BuzzOnlyLogo")!,
                                                       iconInitialSize: CGSize(width: 124.0, height: 124.0),
@@ -27,7 +32,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         menuContainerViewController.view.addSubview(revealingSplashView)
         revealingSplashView.startAnimation()
 
-        self.window?.rootViewController = menuContainerViewController
+        let welcomeViewController = WelcomeViewController()
+//        Auth.auth().createUser(withEmail: "calebrudnicki@gmail.com", password: "mochajo") { user, error in
+//            if error == nil {
+//                Auth.auth().signIn(withEmail: "calebrudnicki@gmail.com",
+//                                   password: "mochajo")
+//            } else {
+//                let db = Firestore.firestore()
+//                db.collection("users").addDocument(data: ["firstName": "Caleb",
+//                                                          "lastName": "Rudnicki",
+//                                                          "email": "calebrudnicki@gmail.com",
+//                                                          "uid": user?.user.uid,
+//                                                          "cart": [Game]()]) { error in
+//                    if error != nil {
+//                        print(error?.localizedDescription)
+//                    }
+//                }
+//            }
+//        }
+
+        self.window?.rootViewController = welcomeViewController
         self.window?.makeKeyAndVisible()
 
         return true

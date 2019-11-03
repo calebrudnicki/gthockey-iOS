@@ -8,6 +8,8 @@
 
 import UIKit
 import MapKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class ScheduleTableViewController: UITableViewController {
 
@@ -122,6 +124,22 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let user = Auth.auth().currentUser
+        let db = Firestore.firestore()
+        db.collection("users").whereField("uid", isEqualTo: user?.uid).limit(to: 1).getDocuments(completion: { (snapshot, error) in
+            if error != nil {
+                print(error?.localizedDescription)
+            }
+            for document in (snapshot?.documents)! {
+                if let lastName = document.data()["lastName"] as? String {
+                    print(lastName)
+                }
+            }
+        })
+//        db.collection("users").
+
+//        let userID = Auth.auth().currentUser?.providerData
+
         let alert = UIAlertController(title: "Get Directions to the Rink", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             switch indexPath.section {

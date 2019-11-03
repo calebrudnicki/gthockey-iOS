@@ -13,4 +13,9 @@ target 'gthockey-iOS' do
   pod 'AlamofireImage'
   pod 'SDWebImage', '~> 5.0'
 
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Core'
+  pod 'Firebase/Firestore'
+
 end
