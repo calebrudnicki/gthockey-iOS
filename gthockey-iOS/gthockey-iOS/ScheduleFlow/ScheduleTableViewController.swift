@@ -39,6 +39,7 @@ class ScheduleTableViewController: UITableViewController {
                                                            action: #selector(menuButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
+        addToCart()
         setupTableView()
         fetchSchedule()
     }
@@ -131,14 +132,12 @@ class ScheduleTableViewController: UITableViewController {
                 print(error?.localizedDescription)
             }
             for document in (snapshot?.documents)! {
-                if let lastName = document.data()["lastName"] as? String {
-                    print(lastName)
+                if let cart = document.data()["cart"] as? [Int] {
+                    print(cart)
                 }
             }
         })
-//        db.collection("users").
 
-//        let userID = Auth.auth().currentUser?.providerData
 
         let alert = UIAlertController(title: "Get Directions to the Rink", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
@@ -195,6 +194,14 @@ class ScheduleTableViewController: UITableViewController {
 
         return CLLocation(latitude: CLLocationDegrees(exactly: latitude ?? 33.7756)!,
                           longitude: CLLocationDegrees(exactly: longitude ?? -84.3963)!)
+    }
+
+    private func addToCart() {
+        if let user = Auth.auth().currentUser {
+
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).setData(["cart": [1,2,3]], merge: true)
+        }
     }
 
 }

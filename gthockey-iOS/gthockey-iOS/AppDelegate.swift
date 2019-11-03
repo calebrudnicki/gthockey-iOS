@@ -33,24 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         revealingSplashView.startAnimation()
 
         let welcomeViewController = WelcomeViewController()
-//        Auth.auth().createUser(withEmail: "calebrudnicki@gmail.com", password: "mochajo") { user, error in
-//            if error == nil {
-//                Auth.auth().signIn(withEmail: "calebrudnicki@gmail.com",
-//                                   password: "mochajo")
-//            } else {
-//                let db = Firestore.firestore()
-//                db.collection("users").addDocument(data: ["firstName": "Caleb",
-//                                                          "lastName": "Rudnicki",
-//                                                          "email": "calebrudnicki@gmail.com",
-//                                                          "uid": user?.user.uid,
-//                                                          "cart": [Game]()]) { error in
-//                    if error != nil {
-//                        print(error?.localizedDescription)
-//                    }
-//                }
-//            }
-//        }
-
         self.window?.rootViewController = welcomeViewController
         self.window?.makeKeyAndVisible()
 

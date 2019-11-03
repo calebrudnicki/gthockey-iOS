@@ -51,6 +51,7 @@ class SignupViewController: UIViewController {
         emailTextField.backgroundColor = .gray
         emailTextField.textColor = .black
         emailTextField.keyboardType = .emailAddress
+        emailTextField.autocapitalizationType = .none
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         return emailTextField
     }()
@@ -146,10 +147,12 @@ class SignupViewController: UIViewController {
                 print(error?.localizedDescription)
             } else {
                 let db = Firestore.firestore()
-                db.collection("users").addDocument(data: ["firstName": firstName,
-                                                          "lastName": lastName,
-                                                          "email": email,
-                                                          "uid": result?.user.uid]) { (error) in
+                guard let user = result?.user else { return }
+                db.collection("users").document(user.uid).setData(["firstName": firstName,
+                                                                   "lastName": lastName,
+                                                                   "email": email,
+                                                                   "uid": result?.user.uid,
+                                                                   "cart": []]) { (error) in
                     if error != nil {
                         print(error?.localizedDescription)
                     }

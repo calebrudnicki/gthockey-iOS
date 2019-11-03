@@ -34,6 +34,7 @@ class LoginViewController: UIViewController {
         emailTextField.backgroundColor = .gray
         emailTextField.textColor = .black
         emailTextField.keyboardType = .emailAddress
+        emailTextField.autocapitalizationType = .none
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         return emailTextField
     }()
@@ -50,8 +51,7 @@ class LoginViewController: UIViewController {
     private let loginButton: UIButton = {
         let loginButton = UIButton()
         loginButton.setTitle("Log In", for: .normal)
-        loginButton.setTitleColor(.green, for: .normal)
-        loginButton.setTitleColor(.red, for: .disabled)
+        loginButton.backgroundColor = .winGreen
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         return loginButton
     }()
