@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class ShopCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
 
     private var apparelArray: [Apparel] = []
+    private var shoppingCart: [[String : Any]] = []
     private let cellWidth = UIScreen.main.bounds.width * 0.9
     private let cellHeight = UIScreen.main.bounds.height * 0.3
     public var delegate: HomeControllerDelegate?
@@ -70,6 +73,15 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopCollectionViewCell", for: indexPath) as! ShopCollectionViewCell
         cell.set(with: apparelArray[indexPath.row])
         return cell
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        shoppingCart.append(apparelArray[indexPath.row].convertToArray())
+        
+        if let user = Auth.auth().currentUser {
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).setData(["cart": shoppingCart], merge: true)
+        }
     }
 
     // MARK: UICollectionViewLayout

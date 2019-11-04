@@ -200,7 +200,6 @@
 		82DCB477233C402200BDE2FE /* gthockey-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				82170D12236FB349005FE89B /* ShopFlow */,
 				F02585AD23412F68008E641C /* Models */,
 				8297AFE3236A357F0081B273 /* CustomUIComponents */,
 				82F85588236C7B9700DE7AFD /* LoginFlow */,
@@ -208,6 +207,7 @@
 				82D971B3233D609E00BFD322 /* HomeFlow */,
 				82D971B4233D60A500BFD322 /* ScheduleFlow */,
 				82D971B5233D60B000BFD322 /* RosterFlow */,
+				82170D12236FB349005FE89B /* ShopFlow */,
 				825092162361EF8E00D98DEA /* Extensions */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
 				82ADF5D623440B6700114F84 /* JSONParser.swift */,
@@ -261,8 +261,8 @@
 				82EE57E22341B36200FCC181 /* Player.swift */,
 				FA3570B923502190008E83BC /* Team.swift */,
 				F00C392B2354EA3E009E1F3A /* Rink.swift */,
-				82F79FBD235F428E0070F63D /* MenuOption.swift */,
 				82170D10236FB301005FE89B /* Apparel.swift */,
+				82F79FBD235F428E0070F63D /* MenuOption.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
