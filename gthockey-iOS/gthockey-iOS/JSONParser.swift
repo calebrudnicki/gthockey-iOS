@@ -89,6 +89,24 @@ class JSONParser {
         }
     }
 
+    public func getApparel(completion: @escaping ([Apparel]) -> Void) {
+        var apparels: [Apparel] = []
+
+        Alamofire.request("https://gthockey.com/api/shop/").validate().responseJSON { responseData  in
+            switch responseData.result {
+            case .success(let value):
+                let jsonResult = JSON(value)
+                for (_, value) in jsonResult {
+                    apparels.append(self.makeApparelObject(value: value))
+                }
+                completion(apparels)
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
     // MARK: Private Functions
 
     private func makeNewsObject(value: JSON) -> News {
@@ -142,6 +160,15 @@ class JSONParser {
                         name: value["rink_name"].string!,
                         mapsURL: URL(string: value["maps_url"].string ?? "https://www.google.com/maps/place/Columbus+Ice+Rink/@32.4504096,-84.9886797,15z/data=!4m2!3m1!1s0x0:")!)
         return rink
+    }
+
+    private func makeApparelObject(value: JSON) -> Apparel {
+        let apparel = Apparel(id: value["id"].int!,
+                              name: value["name"].string!,
+                              price: value["price"].float!,
+                              description: value["description"].string!,
+                              imageURL: URL(string: value["image"].string ?? "https://test.gthockey.com/media/players/caleb.jpg")!)
+        return apparel
     }
 
     private func formatDate(from dateString: String, withTime: Bool) -> Date {

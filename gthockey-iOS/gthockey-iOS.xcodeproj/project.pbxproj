@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */; };
 		820CB982236F3BF100D36EFF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CB981236F3BF100D36EFF /* SignupViewController.swift */; };
+		82170D11236FB301005FE89B /* Apparel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D10236FB301005FE89B /* Apparel.swift */; };
+		82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D13236FB360005FE89B /* ShopCollectionViewController.swift */; };
+		82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */; };
 		8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */; };
 		825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825092172361EFB300D98DEA /* UIViewExtension.swift */; };
 		8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */; };
@@ -52,6 +55,9 @@
 		424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.debug.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		820CB981236F3BF100D36EFF /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		82170D10236FB301005FE89B /* Apparel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apparel.swift; sourceTree = "<group>"; };
+		82170D13236FB360005FE89B /* ShopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewController.swift; sourceTree = "<group>"; };
+		82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContainerViewController.swift; sourceTree = "<group>"; };
 		825092172361EFB300D98DEA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewHeader.swift; sourceTree = "<group>"; };
@@ -111,6 +117,15 @@
 				D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		82170D12236FB349005FE89B /* ShopFlow */ = {
+			isa = PBXGroup;
+			children = (
+				82170D13236FB360005FE89B /* ShopCollectionViewController.swift */,
+				82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */,
+			);
+			path = ShopFlow;
 			sourceTree = "<group>";
 		};
 		825092162361EF8E00D98DEA /* Extensions */ = {
@@ -185,6 +200,7 @@
 		82DCB477233C402200BDE2FE /* gthockey-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				82170D12236FB349005FE89B /* ShopFlow */,
 				F02585AD23412F68008E641C /* Models */,
 				8297AFE3236A357F0081B273 /* CustomUIComponents */,
 				82F85588236C7B9700DE7AFD /* LoginFlow */,
@@ -246,6 +262,7 @@
 				FA3570B923502190008E83BC /* Team.swift */,
 				F00C392B2354EA3E009E1F3A /* Rink.swift */,
 				82F79FBD235F428E0070F63D /* MenuOption.swift */,
+				82170D10236FB301005FE89B /* Apparel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -371,6 +388,7 @@
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */,
+				82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */,
 				8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
@@ -380,10 +398,12 @@
 				82F8558A236C7BAF00DE7AFD /* LoginViewController.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
 				F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */,
+				82170D11236FB301005FE89B /* Apparel.swift in Sources */,
 				82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */,
 				82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */,
 				82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */,
 				82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */,
+				82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */,
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
 				82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */,
 				82EE57E32341B36200FCC181 /* Player.swift in Sources */,
