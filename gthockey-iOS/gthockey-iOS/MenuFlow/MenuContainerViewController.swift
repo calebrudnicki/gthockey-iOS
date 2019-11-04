@@ -28,9 +28,16 @@ class MenuContainerViewController: UIViewController {
         let rosterCollectionViewController = RosterCollectionViewController(collectionViewLayout: rosterLayout)
         return rosterCollectionViewController
     }()
+    private let shopCollectionViewController: ShopCollectionViewController = {
+        let shopLayout = UICollectionViewFlowLayout()
+        shopLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
+        let shopCollectionViewController = ShopCollectionViewController(collectionViewLayout: shopLayout)
+        return shopCollectionViewController
+    }()
     private var homeNavigationController: UINavigationController?
     private var scheduleNavigationController: UINavigationController?
     private var rosterNavigationController: UINavigationController?
+    private var shopNavigationController: UINavigationController?
 
     // MARK: Init
 
@@ -49,10 +56,12 @@ class MenuContainerViewController: UIViewController {
         homeNavigationController = UINavigationController(rootViewController: homeCollectionViewController)
         scheduleNavigationController = UINavigationController(rootViewController: scheduleTableViewController)
         rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
+        shopNavigationController = UINavigationController(rootViewController: shopCollectionViewController)
 
         homeCollectionViewController.delegate = self
         scheduleTableViewController.delegate = self
         rosterCollectionViewController.delegate = self
+        shopCollectionViewController.delegate = self
 
         //Set default screen to be Home
         currentNavigationController = homeNavigationController
@@ -111,6 +120,8 @@ class MenuContainerViewController: UIViewController {
             currentNavigationController = scheduleNavigationController
         case .Roster:
             currentNavigationController = rosterNavigationController
+        case .Shop:
+            currentNavigationController = shopNavigationController
         }
 
         view.addSubview(currentNavigationController.view)
