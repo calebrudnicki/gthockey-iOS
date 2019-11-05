@@ -32,26 +32,42 @@ class SignupViewController: UIViewController {
 
     private let firstNameTextField: UITextField = {
         let firstNameTextField = UITextField()
-        firstNameTextField.backgroundColor = .gray
-        firstNameTextField.textColor = .black
+//        firstNameTextField.layer.borderColor = UIColor.techGold.cgColor
+//        firstNameTextField.layer.borderWidth = 1
+        firstNameTextField.textColor = .white
+        firstNameTextField.placeholder = "First name"
+        firstNameTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
+
+        var bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0.0, y: 75.0, width: firstNameTextField.frame.size.width, height: 1.0)
+        bottomLine.backgroundColor = UIColor.white.cgColor
+        firstNameTextField.borderStyle = .none
+        firstNameTextField.layer.addSublayer(bottomLine)
+
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
         return firstNameTextField
     }()
 
     private let lastNameTextField: UITextField = {
         let lastNameTextField = UITextField()
-        lastNameTextField.backgroundColor = .gray
-        lastNameTextField.textColor = .black
+        lastNameTextField.layer.borderColor = UIColor.techGold.cgColor
+        lastNameTextField.layer.borderWidth = 1
+        lastNameTextField.textColor = .white
+        lastNameTextField.placeholder = "Last name"
+        lastNameTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
         return lastNameTextField
     }()
 
     private let emailTextField: UITextField = {
         let emailTextField = UITextField()
-        emailTextField.backgroundColor = .gray
-        emailTextField.textColor = .black
+        emailTextField.layer.borderColor = UIColor.techGold.cgColor
+        emailTextField.layer.borderWidth = 1
+        emailTextField.textColor = .white
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
+        emailTextField.placeholder = "Email"
+        emailTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         return emailTextField
     }()
@@ -59,8 +75,11 @@ class SignupViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.backgroundColor = .gray
-        passwordTextField.textColor = .black
+        passwordTextField.layer.borderColor = UIColor.techGold.cgColor
+        passwordTextField.layer.borderWidth = 1
+        passwordTextField.textColor = .white
+        passwordTextField.placeholder = "Password"
+        passwordTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         return passwordTextField
     }()
@@ -68,7 +87,10 @@ class SignupViewController: UIViewController {
     private let signupButton: UIButton = {
         let signupButton = UIButton()
         signupButton.setTitle("Sign Up", for: .normal)
-        signupButton.backgroundColor = .winGreen
+        signupButton.setTitleColor(.white, for: .normal)
+        signupButton.backgroundColor = .techGold
+        signupButton.layer.cornerRadius = 30
+        signupButton.clipsToBounds = true
         signupButton.translatesAutoresizingMaskIntoConstraints = false
         return signupButton
     }()
@@ -78,13 +100,16 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .techNavy
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardWillHide(notification:)))
+        view.addGestureRecognizer(tap)
+
         var closeButtonImage: UIImage?
 
         if traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = .black
             closeButtonImage = UIImage(named: "CloseButtonWhite")?.withRenderingMode(.alwaysOriginal)
         } else {
-            view.backgroundColor = .white
             closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
         }
 
@@ -92,6 +117,11 @@ class SignupViewController: UIViewController {
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
         
         signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+
+//        firstNameTextField.becomeFirstResponder()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         textFieldStackView.addArrangedSubview(firstNameTextField)
         textFieldStackView.addArrangedSubview(lastNameTextField)
@@ -111,15 +141,15 @@ class SignupViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-           textFieldStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-           textFieldStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-           textFieldStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+           textFieldStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
+           textFieldStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0)
         ])
 
         NSLayoutConstraint.activate([
             signupButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 12.0),
-            signupButton.leadingAnchor.constraint(equalTo: textFieldStackView.leadingAnchor),
-            signupButton.trailingAnchor.constraint(equalTo: textFieldStackView.trailingAnchor),
+            signupButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
+            signupButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
+            signupButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0),
             signupButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.075)
         ])
     }
@@ -163,6 +193,17 @@ class SignupViewController: UIViewController {
                 self.present(menuContainerViewController, animated: true, completion: nil)
             }
         }
+    }
+
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            view.frame.origin.y -= keyboardSize.height
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        view.endEditing(true)
+        view.frame.origin.y = 0
     }
 
 }
