@@ -64,10 +64,8 @@ class LoginViewController: UIViewController {
         var closeButtonImage: UIImage?
 
         if traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = .black
             closeButtonImage = UIImage(named: "CloseButtonWhite")?.withRenderingMode(.alwaysOriginal)
         } else {
-            view.backgroundColor = .white
             closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
         }
 

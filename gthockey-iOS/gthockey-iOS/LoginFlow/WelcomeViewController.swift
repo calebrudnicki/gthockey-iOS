@@ -23,7 +23,10 @@ class WelcomeViewController: UIViewController {
     private let signupButton: UIButton = {
         let signupButton = UIButton()
         signupButton.setTitle("Sign Up", for: .normal)
-        signupButton.backgroundColor = .winGreen
+        signupButton.setTitleColor(.white, for: .normal)
+        signupButton.backgroundColor = .techGold
+        signupButton.layer.cornerRadius = 30
+        signupButton.clipsToBounds = true
         signupButton.translatesAutoresizingMaskIntoConstraints = false
         return signupButton
     }()
@@ -31,7 +34,10 @@ class WelcomeViewController: UIViewController {
     private let loginButton: UIButton = {
         let loginButton = UIButton()
         loginButton.setTitle("Log In", for: .normal)
-        loginButton.backgroundColor = .blue
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.backgroundColor = .techNavy
+        loginButton.layer.cornerRadius = 30
+        loginButton.clipsToBounds = true
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         return loginButton
     }()
@@ -60,14 +66,16 @@ class WelcomeViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             signupButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
-            signupButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0)
+            signupButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
+            signupButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.075)
         ])
 
         NSLayoutConstraint.activate([
-            loginButton.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 8.0),
+            loginButton.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 12.0),
             loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
             loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
-            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0)
+            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0),
+            loginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.075)
         ])
     }
 
