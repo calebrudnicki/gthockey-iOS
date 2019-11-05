@@ -39,7 +39,6 @@ class ScheduleTableViewController: UITableViewController {
                                                            action: #selector(menuButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        addToCart()
         setupTableView()
         fetchSchedule()
     }
