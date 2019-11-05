@@ -93,7 +93,7 @@ class RosterCollectionViewCell: CardCollectionViewCell {
     // MARK: Setter
 
     public func set(with player: Player) {
-        imageView.sd_setImage(with: player.getImageURL(), placeholderImage: nil)
+        imageView.sd_setImage(with: player.getHeadshotURL(), placeholderImage: nil)
         firstNameLabel.text = player.getFirstName()
         lastNameLabel.text = player.getLastName()
         numberLabel.text = "#\(player.getNumber())"
