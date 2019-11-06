@@ -116,6 +116,11 @@ class SignupViewController: UIViewController {
         
         signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
 
+<<<<<<< HEAD
+=======
+//        firstNameTextField.becomeFirstResponder()
+
+>>>>>>> 69a478654c9fdbbbad5e277eaa8a1f3430c677ba
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
