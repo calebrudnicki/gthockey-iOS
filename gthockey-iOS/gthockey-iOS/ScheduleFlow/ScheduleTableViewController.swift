@@ -124,6 +124,9 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let authentificator = Authentificator()
+        authentificator.signOut()
+
         let alert = UIAlertController(title: "Get Directions to the Rink", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             switch indexPath.section {

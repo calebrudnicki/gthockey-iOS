@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
 
 class SignupViewController: UIViewController {
 
@@ -118,8 +116,6 @@ class SignupViewController: UIViewController {
         
         signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
 
-//        firstNameTextField.becomeFirstResponder()
-
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
@@ -172,25 +168,18 @@ class SignupViewController: UIViewController {
             password.count > 0
         else { return }
 
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error != nil {
-                print(error?.localizedDescription)
-            } else {
-                let db = Firestore.firestore()
-                guard let user = result?.user else { return }
-                db.collection("users").document(user.uid).setData(["firstName": firstName,
-                                                                   "lastName": lastName,
-                                                                   "email": email,
-                                                                   "uid": result?.user.uid,
-                                                                   "cart": []]) { (error) in
-                    if error != nil {
-                        print(error?.localizedDescription)
-                    }
-                }
-
+        let authentificator = Authentificator()
+        authentificator.signup(with: firstName, lastName, email, password) { result, error in
+            if result {
                 let menuContainerViewController = MenuContainerViewController()
                 menuContainerViewController.modalPresentationStyle = .fullScreen
                 self.present(menuContainerViewController, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Sign Up Failed",
+                                          message: error?.localizedDescription,
+                                          preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

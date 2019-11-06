@@ -32,10 +32,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         menuContainerViewController.view.addSubview(revealingSplashView)
         revealingSplashView.startAnimation()
 
+        if let email = UserDefaults.standard.string(forKey: "email"),
+            let password = UserDefaults.standard.string(forKey: "password") {
+            let authentificator = Authentificator()
+            authentificator.login(with: email, password) { result, _ in
+                if result {
+                    self.window?.rootViewController = menuContainerViewController
+                }
+            }
+        }
+
         let welcomeViewController = WelcomeViewController()
         self.window?.rootViewController = welcomeViewController
         self.window?.makeKeyAndVisible()
-
         return true
     }
 

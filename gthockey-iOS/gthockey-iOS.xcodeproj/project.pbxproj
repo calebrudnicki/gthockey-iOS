@@ -14,6 +14,7 @@
 		82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */; };
 		8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */; };
 		825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825092172361EFB300D98DEA /* UIViewExtension.swift */; };
+		826281A623733FD200E4CC38 /* Authentificator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826281A523733FD200E4CC38 /* Authentificator.swift */; };
 		8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */; };
 		8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC652360AB3E00C7C9DF /* MenuTableViewFooter.swift */; };
 		8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC672360AB9500C7C9DF /* MenuTableViewController.swift */; };
@@ -60,6 +61,7 @@
 		82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContainerViewController.swift; sourceTree = "<group>"; };
 		825092172361EFB300D98DEA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		826281A523733FD200E4CC38 /* Authentificator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentificator.swift; sourceTree = "<group>"; };
 		8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewHeader.swift; sourceTree = "<group>"; };
 		8288FC652360AB3E00C7C9DF /* MenuTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewFooter.swift; sourceTree = "<group>"; };
 		8288FC672360AB9500C7C9DF /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 				825092162361EF8E00D98DEA /* Extensions */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
 				82ADF5D623440B6700114F84 /* JSONParser.swift */,
+				826281A523733FD200E4CC38 /* Authentificator.swift */,
 				82DCB482233C402300BDE2FE /* Assets.xcassets */,
 				82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */,
 				82DCB487233C402300BDE2FE /* Info.plist */,
@@ -404,6 +407,7 @@
 				82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */,
 				82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */,
 				82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */,
+				826281A623733FD200E4CC38 /* Authentificator.swift in Sources */,
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
 				82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */,
 				82EE57E32341B36200FCC181 /* Player.swift in Sources */,

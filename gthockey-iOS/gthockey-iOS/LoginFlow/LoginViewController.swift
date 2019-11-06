@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -117,17 +116,18 @@ class LoginViewController: UIViewController {
             password.count > 0
         else { return }
 
-        Auth.auth().signIn(withEmail: email, password: password) { user, error in
-            if let error = error, user == nil {
-                let alert = UIAlertController(title: "Sign In Failed",
-                                          message: error.localizedDescription,
-                                          preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alert, animated: true, completion: nil)
-            } else {
+        let authentificator = Authentificator()
+        authentificator.login(with: email, password) { result, error in
+            if result {
                 let menuContainerViewController = MenuContainerViewController()
                 menuContainerViewController.modalPresentationStyle = .fullScreen
                 self.present(menuContainerViewController, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Log In Failed",
+                                          message: error?.localizedDescription,
+                                          preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
