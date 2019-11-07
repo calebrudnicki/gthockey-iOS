@@ -24,6 +24,7 @@ class WelcomeViewController: UIViewController {
         let signupButton = UIButton()
         signupButton.setTitle("Sign Up", for: .normal)
         signupButton.setTitleColor(.white, for: .normal)
+        signupButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         signupButton.backgroundColor = .techGold
         signupButton.layer.cornerRadius = 30
         signupButton.clipsToBounds = true
@@ -35,6 +36,7 @@ class WelcomeViewController: UIViewController {
         let loginButton = UIButton()
         loginButton.setTitle("Log In", for: .normal)
         loginButton.setTitleColor(.white, for: .normal)
+        loginButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         loginButton.backgroundColor = .techNavy
         loginButton.layer.cornerRadius = 30
         loginButton.clipsToBounds = true

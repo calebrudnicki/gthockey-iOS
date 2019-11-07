@@ -22,7 +22,7 @@ class SignupViewController: UIViewController {
         let textFieldStackView = UIStackView()
         textFieldStackView.axis = .vertical
         textFieldStackView.distribution = .equalCentering
-        textFieldStackView.spacing = 8.0
+        textFieldStackView.spacing = 18.0
         textFieldStackView.backgroundColor = .techNavy
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         return textFieldStackView
@@ -30,8 +30,6 @@ class SignupViewController: UIViewController {
 
     private let firstNameTextField: UITextField = {
         let firstNameTextField = UITextField()
-//        firstNameTextField.layer.borderColor = UIColor.techGold.cgColor
-//        firstNameTextField.layer.borderWidth = 1
         firstNameTextField.textColor = .white
         firstNameTextField.placeholder = "First name"
         firstNameTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
@@ -41,15 +39,12 @@ class SignupViewController: UIViewController {
         bottomLine.backgroundColor = UIColor.white.cgColor
         firstNameTextField.borderStyle = .none
         firstNameTextField.layer.addSublayer(bottomLine)
-
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
         return firstNameTextField
     }()
 
     private let lastNameTextField: UITextField = {
         let lastNameTextField = UITextField()
-        lastNameTextField.layer.borderColor = UIColor.techGold.cgColor
-        lastNameTextField.layer.borderWidth = 1
         lastNameTextField.textColor = .white
         lastNameTextField.placeholder = "Last name"
         lastNameTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
@@ -59,8 +54,6 @@ class SignupViewController: UIViewController {
 
     private let emailTextField: UITextField = {
         let emailTextField = UITextField()
-        emailTextField.layer.borderColor = UIColor.techGold.cgColor
-        emailTextField.layer.borderWidth = 1
         emailTextField.textColor = .white
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
@@ -73,8 +66,6 @@ class SignupViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.layer.borderColor = UIColor.techGold.cgColor
-        passwordTextField.layer.borderWidth = 1
         passwordTextField.textColor = .white
         passwordTextField.placeholder = "Password"
         passwordTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
@@ -86,6 +77,7 @@ class SignupViewController: UIViewController {
         let signupButton = UIButton()
         signupButton.setTitle("Sign Up", for: .normal)
         signupButton.setTitleColor(.white, for: .normal)
+        signupButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         signupButton.backgroundColor = .techGold
         signupButton.layer.cornerRadius = 30
         signupButton.clipsToBounds = true
@@ -100,7 +92,7 @@ class SignupViewController: UIViewController {
 
         view.backgroundColor = .techNavy
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(keyboardWillHide(notification:)))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tap)
 
         var closeButtonImage: UIImage?
@@ -116,11 +108,6 @@ class SignupViewController: UIViewController {
         
         signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
 
-<<<<<<< HEAD
-=======
-//        firstNameTextField.becomeFirstResponder()
-
->>>>>>> 69a478654c9fdbbbad5e277eaa8a1f3430c677ba
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
@@ -147,7 +134,7 @@ class SignupViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            signupButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 12.0),
+            signupButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 18.0),
             signupButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
             signupButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
             signupButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0),
@@ -190,14 +177,37 @@ class SignupViewController: UIViewController {
     }
 
     @objc private func keyboardWillShow(notification: NSNotification) {
+//        guard
+//            let userInfo = notification.userInfo,
+//            let keyboardSize = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue
+//        else { return }
+//
+//        let keyboardFrame = keyboardSize.cgRectValue
+//        if self.view.frame.origin.y == 0 {
+//            self.view.frame.origin.y -= keyboardFrame.height
+//        }
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            view.frame.origin.y -= keyboardSize.height
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height + 24
+            }
         }
     }
 
-    @objc private func keyboardWillHide(notification: NSNotification) {
+    @objc private func hideKeyboard() {
         view.endEditing(true)
-        view.frame.origin.y = 0
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        guard
+            let userInfo = notification.userInfo,
+            let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        else { return }
+
+        let keyboardFrame = keyboardSize.cgRectValue
+
+        if self.view.frame.origin.y != 0{
+            self.view.frame.origin.y = 0
+        }
     }
 
 }
