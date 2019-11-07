@@ -76,13 +76,19 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        shoppingCart.append(apparelArray[indexPath.row].convertToArray())
-        
-        if let user = Auth.auth().currentUser {
-            let db = Firestore.firestore()
-            db.collection("users").document(user.uid).setData(["cart": shoppingCart], merge: true)
-        }
+        let shopDetailViewController = ShopDetailViewController()
+        shopDetailViewController.set(with: apparelArray[indexPath.row])
+        present(shopDetailViewController, animated: true, completion: nil)
     }
+
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        shoppingCart.append(apparelArray[indexPath.row].convertToArray())
+//
+//        if let user = Auth.auth().currentUser {
+//            let db = Firestore.firestore()
+//            db.collection("users").document(user.uid).setData(["cart": shoppingCart], merge: true)
+//        }
+//    }
 
     // MARK: UICollectionViewLayout
 
