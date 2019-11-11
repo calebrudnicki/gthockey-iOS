@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -23,7 +22,7 @@ class LoginViewController: UIViewController {
         let textFieldStackView = UIStackView()
         textFieldStackView.axis = .vertical
         textFieldStackView.distribution = .equalCentering
-        textFieldStackView.spacing = 8.0
+        textFieldStackView.spacing = 18.0
         textFieldStackView.backgroundColor = .techNavy
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         return textFieldStackView
@@ -31,10 +30,11 @@ class LoginViewController: UIViewController {
 
     private let emailTextField: UITextField = {
         let emailTextField = UITextField()
-        emailTextField.backgroundColor = .gray
-        emailTextField.textColor = .black
+        emailTextField.textColor = .white
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
+        emailTextField.placeholder = "Email"
+        emailTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         return emailTextField
     }()
@@ -42,16 +42,21 @@ class LoginViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.backgroundColor = .gray
-        passwordTextField.textColor = .black
+        passwordTextField.textColor = .white
+        passwordTextField.placeholder = "Password"
+        passwordTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         return passwordTextField
     }()
 
     private let loginButton: UIButton = {
         let loginButton = UIButton()
-        loginButton.setTitle("Log In", for: .normal)
-        loginButton.backgroundColor = .winGreen
+        loginButton.setTitle("Sign Up", for: .normal)
+        loginButton.setTitleColor(.white, for: .normal)
+        loginButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
+        loginButton.backgroundColor = .techGold
+        loginButton.layer.cornerRadius = 30
+        loginButton.clipsToBounds = true
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         return loginButton
     }()
@@ -59,22 +64,20 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .techGold
+        view.backgroundColor = .techNavy
 
         var closeButtonImage: UIImage?
 
         if traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = .black
             closeButtonImage = UIImage(named: "CloseButtonWhite")?.withRenderingMode(.alwaysOriginal)
         } else {
-            view.backgroundColor = .white
             closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
         }
 
         closeButton.setImage(closeButtonImage, for: .normal)
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
-        loginButton.addTarget(self, action: #selector(logInButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
 
         textFieldStackView.addArrangedSubview(emailTextField)
         textFieldStackView.addArrangedSubview(passwordTextField)
@@ -87,20 +90,20 @@ class LoginViewController: UIViewController {
         super.updateViewConstraints()
 
         NSLayoutConstraint.activate([
-           closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-           closeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12.0)
+            closeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            closeButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 12.0)
         ])
 
         NSLayoutConstraint.activate([
-            textFieldStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            textFieldStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            textFieldStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+           textFieldStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
+           textFieldStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0)
         ])
 
         NSLayoutConstraint.activate([
-            loginButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 12.0),
-            loginButton.leadingAnchor.constraint(equalTo: textFieldStackView.leadingAnchor),
-            loginButton.trailingAnchor.constraint(equalTo: textFieldStackView.trailingAnchor),
+            loginButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 18.0),
+            loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
+            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
+            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0),
             loginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.075)
         ])
     }
@@ -111,7 +114,7 @@ class LoginViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-    @objc private func logInButtonTapped() {
+    @objc private func loginButtonTapped() {
         guard
             let email = emailTextField.text?.lowercased(),
             let password = passwordTextField.text?.lowercased(),
@@ -119,17 +122,18 @@ class LoginViewController: UIViewController {
             password.count > 0
         else { return }
 
-        Auth.auth().signIn(withEmail: email, password: password) { user, error in
-            if let error = error, user == nil {
-                let alert = UIAlertController(title: "Sign In Failed",
-                                          message: error.localizedDescription,
-                                          preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alert, animated: true, completion: nil)
-            } else {
+        let authentificator = Authentificator()
+        authentificator.login(with: email, password) { result, error in
+            if result {
                 let menuContainerViewController = MenuContainerViewController()
                 menuContainerViewController.modalPresentationStyle = .fullScreen
                 self.present(menuContainerViewController, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Log In Failed",
+                                          message: error?.localizedDescription,
+                                          preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }

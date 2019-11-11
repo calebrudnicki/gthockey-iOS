@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
 
 class SignupViewController: UIViewController {
 
@@ -24,7 +22,7 @@ class SignupViewController: UIViewController {
         let textFieldStackView = UIStackView()
         textFieldStackView.axis = .vertical
         textFieldStackView.distribution = .equalCentering
-        textFieldStackView.spacing = 8.0
+        textFieldStackView.spacing = 18.0
         textFieldStackView.backgroundColor = .techNavy
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         return textFieldStackView
@@ -32,26 +30,29 @@ class SignupViewController: UIViewController {
 
     private let firstNameTextField: UITextField = {
         let firstNameTextField = UITextField()
-        firstNameTextField.backgroundColor = .gray
-        firstNameTextField.textColor = .black
+        firstNameTextField.textColor = .white
+        firstNameTextField.placeholder = "First name"
+        firstNameTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
         return firstNameTextField
     }()
 
     private let lastNameTextField: UITextField = {
         let lastNameTextField = UITextField()
-        lastNameTextField.backgroundColor = .gray
-        lastNameTextField.textColor = .black
+        lastNameTextField.textColor = .white
+        lastNameTextField.placeholder = "Last name"
+        lastNameTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
         return lastNameTextField
     }()
 
     private let emailTextField: UITextField = {
         let emailTextField = UITextField()
-        emailTextField.backgroundColor = .gray
-        emailTextField.textColor = .black
+        emailTextField.textColor = .white
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
+        emailTextField.placeholder = "Email"
+        emailTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
         return emailTextField
     }()
@@ -59,8 +60,9 @@ class SignupViewController: UIViewController {
     private let passwordTextField: UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.backgroundColor = .gray
-        passwordTextField.textColor = .black
+        passwordTextField.textColor = .white
+        passwordTextField.placeholder = "Password"
+        passwordTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         return passwordTextField
     }()
@@ -68,7 +70,11 @@ class SignupViewController: UIViewController {
     private let signupButton: UIButton = {
         let signupButton = UIButton()
         signupButton.setTitle("Sign Up", for: .normal)
-        signupButton.backgroundColor = .winGreen
+        signupButton.setTitleColor(.white, for: .normal)
+        signupButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
+        signupButton.backgroundColor = .techGold
+        signupButton.layer.cornerRadius = 30
+        signupButton.clipsToBounds = true
         signupButton.translatesAutoresizingMaskIntoConstraints = false
         return signupButton
     }()
@@ -78,13 +84,13 @@ class SignupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        view.backgroundColor = .techNavy
+
         var closeButtonImage: UIImage?
 
         if traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = .black
             closeButtonImage = UIImage(named: "CloseButtonWhite")?.withRenderingMode(.alwaysOriginal)
         } else {
-            view.backgroundColor = .white
             closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
         }
 
@@ -111,15 +117,15 @@ class SignupViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-           textFieldStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-           textFieldStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-           textFieldStackView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8)
+           textFieldStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
+           textFieldStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0)
         ])
 
         NSLayoutConstraint.activate([
-            signupButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 12.0),
-            signupButton.leadingAnchor.constraint(equalTo: textFieldStackView.leadingAnchor),
-            signupButton.trailingAnchor.constraint(equalTo: textFieldStackView.trailingAnchor),
+            signupButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 18.0),
+            signupButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
+            signupButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
+            signupButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0),
             signupButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.075)
         ])
     }
@@ -142,25 +148,18 @@ class SignupViewController: UIViewController {
             password.count > 0
         else { return }
 
-        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
-            if error != nil {
-                print(error?.localizedDescription)
-            } else {
-                let db = Firestore.firestore()
-                guard let user = result?.user else { return }
-                db.collection("users").document(user.uid).setData(["firstName": firstName,
-                                                                   "lastName": lastName,
-                                                                   "email": email,
-                                                                   "uid": result?.user.uid,
-                                                                   "cart": []]) { (error) in
-                    if error != nil {
-                        print(error?.localizedDescription)
-                    }
-                }
-
+        let authentificator = Authentificator()
+        authentificator.signup(with: firstName, lastName, email, password) { result, error in
+            if result {
                 let menuContainerViewController = MenuContainerViewController()
                 menuContainerViewController.modalPresentationStyle = .fullScreen
                 self.present(menuContainerViewController, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Sign Up Failed",
+                                          message: error?.localizedDescription,
+                                          preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
