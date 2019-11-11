@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
 
     private let emailTextField: UITextField = {
         let emailTextField = UITextField()
+        emailTextField.text = "calebrudnicki@gmail.com"
         emailTextField.backgroundColor = .gray
         emailTextField.textColor = .black
         emailTextField.keyboardType = .emailAddress
@@ -41,6 +42,7 @@ class LoginViewController: UIViewController {
 
     private let passwordTextField: UITextField = {
         let passwordTextField = UITextField()
+        passwordTextField.text = "mochajo"
         passwordTextField.isSecureTextEntry = true
         passwordTextField.backgroundColor = .gray
         passwordTextField.textColor = .black

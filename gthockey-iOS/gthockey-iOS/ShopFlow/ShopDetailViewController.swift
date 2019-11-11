@@ -60,11 +60,11 @@ class ShopDetailViewController: UIViewController {
         return priceLabel
     }()
 
-    private let separatorView: UIView = {
-        let separatorView = UIView()
-        separatorView.backgroundColor = .techGold
-        separatorView.translatesAutoresizingMaskIntoConstraints = false
-        return separatorView
+    private let separatorView1: UIView = {
+        let separatorView1 = UIView()
+        separatorView1.backgroundColor = .techGold
+        separatorView1.translatesAutoresizingMaskIntoConstraints = false
+        return separatorView1
     }()
 
     private let descriptionLabel: UILabel = {
@@ -75,6 +75,36 @@ class ShopDetailViewController: UIViewController {
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         return descriptionLabel
     }()
+
+    private let separatorView2: UIView = {
+        let separatorView2 = UIView()
+        separatorView2.backgroundColor = .techGold
+        separatorView2.translatesAutoresizingMaskIntoConstraints = false
+        return separatorView2
+    }()
+
+    private let restrictedOptionsStackView: UIStackView = {
+        let restrictedOptionsStackView = UIStackView()
+        restrictedOptionsStackView.axis = .vertical
+        restrictedOptionsStackView.distribution = .equalCentering
+        restrictedOptionsStackView.spacing = 8.0
+        restrictedOptionsStackView.translatesAutoresizingMaskIntoConstraints = false
+        return restrictedOptionsStackView
+    }()
+
+    private let customOptionsStackView: UIStackView = {
+        let customOptionsStackView = UIStackView()
+        customOptionsStackView.axis = .vertical
+        customOptionsStackView.distribution = .equalCentering
+        customOptionsStackView.spacing = 8.0
+        customOptionsStackView.translatesAutoresizingMaskIntoConstraints = false
+        return customOptionsStackView
+    }()
+
+    private let restrictedOptionsView = ShopRestrictedOptionsView()
+    private let restrictedOptionsView1 = ShopRestrictedOptionsView()
+
+    private let customOptionsView = ShopCustomOptionsView()
 
     private let addToCartButton: UIButton = {
         let addToCartButton = UIButton()
@@ -110,7 +140,12 @@ class ShopDetailViewController: UIViewController {
 
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
-        backgroundView.addSubviews([imageView, closeButton, headlineLabel, priceLabel, separatorView, descriptionLabel, addToCartButton])
+
+//        restrictedOptionsStackView.addArrangedSubview(restrictedOptionsView)
+//        restrictedOptionsStackView.addArrangedSubview(restrictedOptionsView1)
+
+        backgroundView.addSubviews([imageView, closeButton, headlineLabel, priceLabel, separatorView1, descriptionLabel,
+                                    separatorView2, restrictedOptionsStackView, customOptionsStackView, addToCartButton])
 
         updateViewConstraints()
     }
@@ -160,20 +195,39 @@ class ShopDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 12.0),
-            separatorView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            separatorView.widthAnchor.constraint(equalTo: priceLabel.widthAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 1.0)
+            separatorView1.topAnchor.constraint(equalTo: priceLabel.bottomAnchor, constant: 12.0),
+            separatorView1.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            separatorView1.widthAnchor.constraint(equalTo: priceLabel.widthAnchor),
+            separatorView1.heightAnchor.constraint(equalToConstant: 1.0)
         ])
 
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 12.0),
+            descriptionLabel.topAnchor.constraint(equalTo: separatorView1.bottomAnchor, constant: 12.0),
             descriptionLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             descriptionLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
         ])
 
         NSLayoutConstraint.activate([
-            addToCartButton.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 24.0),
+            separatorView2.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 12.0),
+            separatorView2.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            separatorView2.widthAnchor.constraint(equalTo: separatorView1.widthAnchor),
+            separatorView2.heightAnchor.constraint(equalToConstant: 1.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            restrictedOptionsStackView.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 12.0),
+            restrictedOptionsStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            restrictedOptionsStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            customOptionsStackView.topAnchor.constraint(equalTo: restrictedOptionsStackView.bottomAnchor, constant: 12.0),
+            customOptionsStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            customOptionsStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            addToCartButton.topAnchor.constraint(equalTo: customOptionsStackView.bottomAnchor, constant: 24.0),
             addToCartButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             addToCartButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             addToCartButton.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0),
@@ -187,11 +241,23 @@ class ShopDetailViewController: UIViewController {
 
     // MARK: Setter
 
-    public func set(with apparel: Apparel) {
+    public func set(with apparel: Apparel, _ restrictedOptions: [ApparelRestrictedItem], _ customOptions: [ApparelCustomItem]) {
         imageView.sd_setImage(with: apparel.getImageURL(), placeholderImage: nil)
         headlineLabel.text = apparel.getName()
         priceLabel.text = "$\(apparel.getPrice().description)"
         descriptionLabel.text = apparel.getDescription()
+
+        for restrictedOption in restrictedOptions {
+            let shopRestrictedOptionsView = ShopRestrictedOptionsView()
+            shopRestrictedOptionsView.set(with: restrictedOption)
+            restrictedOptionsStackView.addArrangedSubview(shopRestrictedOptionsView)
+        }
+
+        for customOption in customOptions {
+            let shopCustomOptionsView = ShopCustomOptionsView()
+            shopCustomOptionsView.set(with: customOption)
+            restrictedOptionsStackView.addArrangedSubview(shopCustomOptionsView)
+        }
 
         apparelItem = apparel.convertToArray()
     }

@@ -20,7 +20,7 @@ class JSONParser {
     public func getArticles(completion: @escaping ([News]) -> Void) {
         var articles: [News] = []
 
-        Alamofire.request("https://gthockey.com/api/articles/").validate().responseJSON { responseData  in
+        Alamofire.request("https://gthockey.com/api/articles/").validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -38,7 +38,7 @@ class JSONParser {
     public func getRoster(completion: @escaping ([Player]) -> Void) {
         var players: [Player] = []
 
-        Alamofire.request("https://gthockey.com/api/players/").validate().responseJSON { responseData  in
+        Alamofire.request("https://gthockey.com/api/players/").validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -56,7 +56,7 @@ class JSONParser {
     public func getSchedule(completion: @escaping ([Game]) -> Void) {
         var games: [Game] = []
 
-        Alamofire.request("https://gthockey.com/api/games/").validate().responseJSON { responseData  in
+        Alamofire.request("https://gthockey.com/api/games/").validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -75,7 +75,7 @@ class JSONParser {
         var opponent: Team?
         var rink: Rink?
 
-        Alamofire.request("https://gthockey.com/api/games/\(id)").validate().responseJSON { responseData  in
+        Alamofire.request("https://gthockey.com/api/games/\(id)").validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -89,10 +89,10 @@ class JSONParser {
         }
     }
 
-    public func getApparel(completion: @escaping ([Apparel]) -> Void) {
+    public func getShopItems(completion: @escaping ([Apparel]) -> Void) {
         var apparels: [Apparel] = []
 
-        Alamofire.request("https://gthockey.com/api/shop/").validate().responseJSON { responseData  in
+        Alamofire.request("https://gthockey.com/api/shop/").validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -100,6 +100,24 @@ class JSONParser {
                     apparels.append(self.makeApparelObject(value: value))
                 }
                 completion(apparels)
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    public func getApparel(with id: Int, completion: @escaping ([ApparelRestrictedItem], [ApparelCustomItem]) -> Void) {
+        var restrictedOptions: [ApparelRestrictedItem]?
+        var customOptions: [ApparelCustomItem]?
+
+        Alamofire.request("https://gthockey.com/api/shop/\(id)").validate().responseJSON { responseData in
+            switch responseData.result {
+            case .success(let value):
+                let jsonResult = JSON(value)
+                restrictedOptions = self.makeApparelRestrictedItemObject(value: jsonResult["options"])
+                customOptions = self.makeApparelCustomItemObject(value: jsonResult["custom_options"])
+                completion(restrictedOptions!, customOptions!)
 
             case .failure(let error):
                 print(error)
@@ -169,6 +187,33 @@ class JSONParser {
                               description: value["description"].string!,
                               imageURL: URL(string: value["image"].string ?? "https://test.gthockey.com/media/players/caleb.jpg")!)
         return apparel
+    }
+
+    private func makeApparelRestrictedItemObject(value: JSON) -> [ApparelRestrictedItem] {
+        var arr: [ApparelRestrictedItem] = []
+        for (_, item) in value {
+            let apparelRestrictedItem = ApparelRestrictedItem(id: item["id"].int!,
+                                                              displayName: item["display_name"].string!,
+                                                              helpText: item["help_text"].string!,
+                                                              optionsList: (item["option_list"].string!).components(separatedBy: [","]),
+                                                              correspondingApparelID: item["shop_item"].int!)
+            arr.append(apparelRestrictedItem)
+        }
+        return arr
+    }
+
+    private func makeApparelCustomItemObject(value: JSON) -> [ApparelCustomItem] {
+        var arr: [ApparelCustomItem] = []
+        for (_, item) in value {
+            let apparelCustomItem = ApparelCustomItem(id: item["id"].int!,
+                                                      displayName: item["display_name"].string!,
+                                                      helpText: item["help_text"].string!,
+                                                      isRequired: item["required"].bool!,
+                                                      extraCost: item["extra_cost"].int!,
+                                                      correspondingApparelID: item["shop_item"].int!)
+            arr.append(apparelCustomItem)
+        }
+        return arr
     }
 
     private func formatDate(from dateString: String, withTime: Bool) -> Date {

@@ -53,7 +53,7 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
 
     @objc private func fetchApparel() {
        let parser = JSONParser()
-       parser.getApparel() { response in
+       parser.getShopItems() { response in
            self.apparelArray = []
            self.apparelArray = response
            DispatchQueue.main.async {
@@ -76,19 +76,12 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let shopDetailViewController = ShopDetailViewController()
-        shopDetailViewController.set(with: apparelArray[indexPath.row])
-        present(shopDetailViewController, animated: true, completion: nil)
+        self.fetchApparelDetails(with: self.apparelArray[indexPath.row].getID(), completion: { (apparelRestrictedItems, apparelCustomItems) in
+            let shopDetailViewController = ShopDetailViewController()
+            shopDetailViewController.set(with: self.apparelArray[indexPath.row], apparelRestrictedItems, apparelCustomItems)
+            self.present(shopDetailViewController, animated: true, completion: nil)
+        })
     }
-
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        shoppingCart.append(apparelArray[indexPath.row].convertToArray())
-//
-//        if let user = Auth.auth().currentUser {
-//            let db = Firestore.firestore()
-//            db.collection("users").document(user.uid).setData(["cart": shoppingCart], merge: true)
-//        }
-//    }
 
     // MARK: UICollectionViewLayout
 
@@ -100,6 +93,13 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     
     @objc private func menuButtonTapped() {
         delegate?.handleMenuToggle(forMenuOption: nil)
+    }
+
+    private func fetchApparelDetails(with id: Int, completion: @escaping ([ApparelRestrictedItem], [ApparelCustomItem]) -> Void) {
+        let parser = JSONParser()
+        parser.getApparel(with: id) { (apparelRestrictedItems, apparelCustomItems) in
+            completion(apparelRestrictedItems, apparelCustomItems)
+        }
     }
 
 }
