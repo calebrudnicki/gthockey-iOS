@@ -33,12 +33,6 @@ class SignupViewController: UIViewController {
         firstNameTextField.textColor = .white
         firstNameTextField.placeholder = "First name"
         firstNameTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
-
-        var bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: 75.0, width: firstNameTextField.frame.size.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor.white.cgColor
-        firstNameTextField.borderStyle = .none
-        firstNameTextField.layer.addSublayer(bottomLine)
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
         return firstNameTextField
     }()
@@ -92,9 +86,6 @@ class SignupViewController: UIViewController {
 
         view.backgroundColor = .techNavy
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        view.addGestureRecognizer(tap)
-
         var closeButtonImage: UIImage?
 
         if traitCollection.userInterfaceStyle == .dark {
@@ -107,9 +98,6 @@ class SignupViewController: UIViewController {
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
         
         signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
         textFieldStackView.addArrangedSubview(firstNameTextField)
         textFieldStackView.addArrangedSubview(lastNameTextField)
@@ -173,40 +161,6 @@ class SignupViewController: UIViewController {
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
             }
-        }
-    }
-
-    @objc private func keyboardWillShow(notification: NSNotification) {
-//        guard
-//            let userInfo = notification.userInfo,
-//            let keyboardSize = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue
-//        else { return }
-//
-//        let keyboardFrame = keyboardSize.cgRectValue
-//        if self.view.frame.origin.y == 0 {
-//            self.view.frame.origin.y -= keyboardFrame.height
-//        }
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0 {
-                self.view.frame.origin.y -= keyboardSize.height + 24
-            }
-        }
-    }
-
-    @objc private func hideKeyboard() {
-        view.endEditing(true)
-    }
-
-    @objc private func keyboardWillHide(notification: NSNotification) {
-        guard
-            let userInfo = notification.userInfo,
-            let keyboardSize = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
-        else { return }
-
-        let keyboardFrame = keyboardSize.cgRectValue
-
-        if self.view.frame.origin.y != 0{
-            self.view.frame.origin.y = 0
         }
     }
 

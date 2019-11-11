@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import RevealingSplashView
+import IQKeyboardManagerSwift
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
@@ -24,6 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
         FirebaseApp.configure()
+
+        IQKeyboardManager.shared.enable = true
+//        IQKeyboardManager.shared.keyboardDistanceFromTextField = 12.0
+        IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         
         let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "BuzzOnlyLogo")!,
                                                       iconInitialSize: CGSize(width: 124.0, height: 124.0),
