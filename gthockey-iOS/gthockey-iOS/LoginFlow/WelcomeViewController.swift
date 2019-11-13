@@ -20,29 +20,8 @@ class WelcomeViewController: UIViewController {
         return backgroundImage
     }()
 
-    private let signupButton: UIButton = {
-        let signupButton = UIButton()
-        signupButton.setTitle("Sign Up", for: .normal)
-        signupButton.setTitleColor(.white, for: .normal)
-        signupButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
-        signupButton.backgroundColor = .techGold
-        signupButton.layer.cornerRadius = 30
-        signupButton.clipsToBounds = true
-        signupButton.translatesAutoresizingMaskIntoConstraints = false
-        return signupButton
-    }()
-
-    private let loginButton: UIButton = {
-        let loginButton = UIButton()
-        loginButton.setTitle("Log In", for: .normal)
-        loginButton.setTitleColor(.white, for: .normal)
-        loginButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
-        loginButton.backgroundColor = .techNavy
-        loginButton.layer.cornerRadius = 30
-        loginButton.clipsToBounds = true
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        return loginButton
-    }()
+    private let signupButton = PillButton(title: "Sign Up", fillColor: .techGold)
+    private let loginButton = PillButton(title: "Log In", fillColor: .techNavy)
 
     // MARK: Init
 
