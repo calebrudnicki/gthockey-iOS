@@ -49,17 +49,7 @@ class LoginViewController: UIViewController {
         return passwordTextField
     }()
 
-    private let loginButton: UIButton = {
-        let loginButton = UIButton()
-        loginButton.setTitle("Sign Up", for: .normal)
-        loginButton.setTitleColor(.white, for: .normal)
-        loginButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
-        loginButton.backgroundColor = .techGold
-        loginButton.layer.cornerRadius = 30
-        loginButton.clipsToBounds = true
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
-        return loginButton
-    }()
+    private let loginButton = PillButton(title: "Log In", fillColor: .techGold)
 
     override func viewDidLoad() {
         super.viewDidLoad()
