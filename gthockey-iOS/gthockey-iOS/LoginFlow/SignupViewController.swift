@@ -67,17 +67,7 @@ class SignupViewController: UIViewController {
         return passwordTextField
     }()
 
-    private let signupButton: UIButton = {
-        let signupButton = UIButton()
-        signupButton.setTitle("Sign Up", for: .normal)
-        signupButton.setTitleColor(.white, for: .normal)
-        signupButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
-        signupButton.backgroundColor = .techGold
-        signupButton.layer.cornerRadius = 30
-        signupButton.clipsToBounds = true
-        signupButton.translatesAutoresizingMaskIntoConstraints = false
-        return signupButton
-    }()
+    private let signupButton = PillButton(title: "Sign Up", fillColor: .techGold)
 
     // MARK: Init
 
