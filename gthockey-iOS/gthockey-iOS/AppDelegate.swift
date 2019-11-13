@@ -8,7 +8,6 @@
 
 import UIKit
 import CoreData
-import RevealingSplashView
 import IQKeyboardManagerSwift
 import Firebase
 import FirebaseAuth
@@ -27,28 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
 
         IQKeyboardManager.shared.enable = true
-//        IQKeyboardManager.shared.keyboardDistanceFromTextField = 12.0
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
-        
-        let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "BuzzOnlyLogo")!,
-                                                      iconInitialSize: CGSize(width: 124.0, height: 124.0),
-                                                      backgroundColor: .techNavy)
-        let menuContainerViewController = MenuContainerViewController()
-        menuContainerViewController.view.addSubview(revealingSplashView)
-        revealingSplashView.startAnimation()
 
-        if let email = UserDefaults.standard.string(forKey: "email"),
-            let password = UserDefaults.standard.string(forKey: "password") {
-            let authentificator = Authentificator()
-            authentificator.login(with: email, password) { result, _ in
-                if result {
-                    self.window?.rootViewController = menuContainerViewController
-                }
-            }
-        }
-
-        let welcomeViewController = WelcomeViewController()
-        self.window?.rootViewController = welcomeViewController
+        let preLaunchViewController = PreLaunchViewController()
+        self.window?.rootViewController = preLaunchViewController
         self.window?.makeKeyAndVisible()
         return true
     }
