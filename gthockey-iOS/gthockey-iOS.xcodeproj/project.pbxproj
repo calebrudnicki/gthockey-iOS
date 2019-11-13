@@ -30,6 +30,11 @@
 		82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */; };
 		82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E22346812400114F84 /* ScheduleTableViewController.swift */; };
 		82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E42346815300114F84 /* ScheduleTableViewCell.swift */; };
+		82B3A16F237BB44F00CD8F3D /* ShopCustomOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A16C237BB44E00CD8F3D /* ShopCustomOptionsView.swift */; };
+		82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A16D237BB44E00CD8F3D /* ShopDetailViewController.swift */; };
+		82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A16E237BB44E00CD8F3D /* ShopRestrictedOptionsView.swift */; };
+		82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A172237BB49700CD8F3D /* ApparelCustomItem.swift */; };
+		82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */; };
 		82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C1E92363333800C4D2C2 /* StringExtension.swift */; };
 		82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */; };
 		82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DCB478233C402200BDE2FE /* AppDelegate.swift */; };
@@ -77,6 +82,11 @@
 		82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleOpponentRinkView.swift; sourceTree = "<group>"; };
 		82ADF5E22346812400114F84 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
 		82ADF5E42346815300114F84 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
+		82B3A16C237BB44E00CD8F3D /* ShopCustomOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCustomOptionsView.swift; sourceTree = "<group>"; };
+		82B3A16D237BB44E00CD8F3D /* ShopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
+		82B3A16E237BB44E00CD8F3D /* ShopRestrictedOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopRestrictedOptionsView.swift; sourceTree = "<group>"; };
+		82B3A172237BB49700CD8F3D /* ApparelCustomItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApparelCustomItem.swift; sourceTree = "<group>"; };
+		82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApparelRestrictedItem.swift; sourceTree = "<group>"; };
 		82C8C1E92363333800C4D2C2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewController.swift; sourceTree = "<group>"; };
 		82DCB475233C402200BDE2FE /* GT Hockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GT Hockey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -126,6 +136,9 @@
 			children = (
 				82170D13236FB360005FE89B /* ShopCollectionViewController.swift */,
 				82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */,
+				82B3A16C237BB44E00CD8F3D /* ShopCustomOptionsView.swift */,
+				82B3A16D237BB44E00CD8F3D /* ShopDetailViewController.swift */,
+				82B3A16E237BB44E00CD8F3D /* ShopRestrictedOptionsView.swift */,
 			);
 			path = ShopFlow;
 			sourceTree = "<group>";
@@ -265,6 +278,8 @@
 				FA3570B923502190008E83BC /* Team.swift */,
 				F00C392B2354EA3E009E1F3A /* Rink.swift */,
 				82170D10236FB301005FE89B /* Apparel.swift */,
+				82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */,
+				82B3A172237BB49700CD8F3D /* ApparelCustomItem.swift */,
 				82F79FBD235F428E0070F63D /* MenuOption.swift */,
 			);
 			path = Models;
@@ -398,6 +413,7 @@
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
 				82F79FBE235F428E0070F63D /* MenuOption.swift in Sources */,
 				8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */,
+				82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */,
 				82F8558A236C7BAF00DE7AFD /* LoginViewController.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
 				F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */,
@@ -411,6 +427,7 @@
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
 				82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */,
 				82EE57E32341B36200FCC181 /* Player.swift in Sources */,
+				82B3A16F237BB44F00CD8F3D /* ShopCustomOptionsView.swift in Sources */,
 				82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */,
 				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,
 				820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */,
@@ -422,7 +439,10 @@
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
+				82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */,
 				82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */,
+				82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */,
+				82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
