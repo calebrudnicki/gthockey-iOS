@@ -50,9 +50,15 @@ class Authentificator {
         }
     }
 
-    public func signOut() {
-        UserDefaults.standard.removeObject(forKey: "email")
-        UserDefaults.standard.removeObject(forKey: "password")
+    public func signOut(completion: @escaping (Bool, Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            UserDefaults.standard.removeObject(forKey: "email")
+            UserDefaults.standard.removeObject(forKey: "password")
+            completion(true, nil)
+        } catch let error as NSError {
+            completion(false, error)
+        }
     }
 
     // MARK: Private Functions

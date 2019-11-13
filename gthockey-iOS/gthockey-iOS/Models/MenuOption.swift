@@ -15,6 +15,7 @@ enum MenuOption: Int, CustomStringConvertible, CaseIterable {
     case Schedule
     case Roster
     case Shop
+    case SignOut
 
     var description: String {
         switch self {
@@ -22,6 +23,7 @@ enum MenuOption: Int, CustomStringConvertible, CaseIterable {
         case .Schedule: return "Schedule"
         case .Roster: return "Roster"
         case .Shop: return "Shop"
+        case .SignOut: return "Sign Out"
         }
     }
 
@@ -31,6 +33,7 @@ enum MenuOption: Int, CustomStringConvertible, CaseIterable {
         case .Schedule: return UIImage(named: "ScheduleIcon")!
         case .Roster: return UIImage(named: "RosterIcon")!
         case .Shop: return UIImage(named: "ShopIcon")!
+        case .SignOut: return UIImage(named: "SignOutIcon")!
         }
     }
 
