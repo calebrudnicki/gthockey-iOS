@@ -36,6 +36,7 @@
 		82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A172237BB49700CD8F3D /* ApparelCustomItem.swift */; };
 		82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */; };
 		82B3A177237BD7CC00CD8F3D /* PillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A176237BD7CC00CD8F3D /* PillButton.swift */; };
+		82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */; };
 		82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C1E92363333800C4D2C2 /* StringExtension.swift */; };
 		82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */; };
 		82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DCB478233C402200BDE2FE /* AppDelegate.swift */; };
@@ -89,6 +90,7 @@
 		82B3A172237BB49700CD8F3D /* ApparelCustomItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApparelCustomItem.swift; sourceTree = "<group>"; };
 		82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApparelRestrictedItem.swift; sourceTree = "<group>"; };
 		82B3A176237BD7CC00CD8F3D /* PillButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillButton.swift; sourceTree = "<group>"; };
+		82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLaunchViewController.swift; sourceTree = "<group>"; };
 		82C8C1E92363333800C4D2C2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewController.swift; sourceTree = "<group>"; };
 		82DCB475233C402200BDE2FE /* GT Hockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GT Hockey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,6 +232,7 @@
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
 				82ADF5D623440B6700114F84 /* JSONParser.swift */,
 				826281A523733FD200E4CC38 /* Authentificator.swift */,
+				82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */,
 				82DCB482233C402300BDE2FE /* Assets.xcassets */,
 				82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */,
 				82DCB487233C402300BDE2FE /* Info.plist */,
@@ -412,6 +415,7 @@
 				82B3A177237BD7CC00CD8F3D /* PillButton.swift in Sources */,
 				82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */,
 				8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */,
+				82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
@@ -598,7 +602,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -620,7 +624,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
