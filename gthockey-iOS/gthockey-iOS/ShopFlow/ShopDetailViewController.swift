@@ -102,21 +102,8 @@ class ShopDetailViewController: UIViewController {
     }()
 
     private let restrictedOptionsView = ShopRestrictedOptionsView()
-    private let restrictedOptionsView1 = ShopRestrictedOptionsView()
-
     private let customOptionsView = ShopCustomOptionsView()
-
-    private let addToCartButton: UIButton = {
-        let addToCartButton = UIButton()
-        addToCartButton.setTitle("Add to Cart", for: .normal)
-        addToCartButton.setTitleColor(.white, for: .normal)
-        addToCartButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
-        addToCartButton.backgroundColor = .winGreen
-        addToCartButton.layer.cornerRadius = 30
-        addToCartButton.clipsToBounds = true
-        addToCartButton.translatesAutoresizingMaskIntoConstraints = false
-        return addToCartButton
-    }()
+    private let addToCartButton = PillButton(title: "Add to Cart", fillColor: .winGreen)
 
     // MARK: Init
 
