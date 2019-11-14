@@ -103,7 +103,7 @@ class ShopDetailViewController: UIViewController {
 
     private let restrictedOptionsView = ShopRestrictedOptionsView()
     private let customOptionsView = ShopCustomOptionsView()
-    private let addToCartButton = PillButton(title: "Add to Cart", fillColor: .winGreen)
+    private let addToCartButton = PillButton(title: "Add to Cart", backgroundColor: .winGreen, borderColor: .winGreen, isEnabled: true)
 
     // MARK: Init
 
@@ -257,7 +257,7 @@ class ShopDetailViewController: UIViewController {
     @objc private func addToCartButtonTapped() {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
-            db.collection("users").document(user.uid).setData(["cart": apparelItem], merge: true)
+            db.collection("users").document(user.uid).updateData(["cart": FieldValue.arrayUnion([apparelItem])])
         }
     }
 
