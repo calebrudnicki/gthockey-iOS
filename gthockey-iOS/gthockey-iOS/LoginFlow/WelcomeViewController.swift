@@ -12,26 +12,28 @@ class WelcomeViewController: UIViewController {
 
     // MARK: Properties
 
-    private let backgroundImage: UIImageView = {
-        let backgroundImage = UIImageView()
-        backgroundImage.image = UIImage(named: "WelcomePic")
-        backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
-        return backgroundImage
-    }()
-
-    private let signupButton = PillButton(title: "Sign Up", fillColor: .techGold)
-    private let loginButton = PillButton(title: "Log In", fillColor: .techNavy)
+    private let welcomeButtonsView = WelcomeButtonsView()
+    private let signupView = SignupView()
+    private let loginView = LoginView()
 
     // MARK: Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        view.backgroundColor = .techNavy
+        
+        welcomeButtonsView.delegate = self
 
-        view.addSubviews([backgroundImage, signupButton, loginButton])
+        signupView.delegate = self
+        signupView.isHidden = true
+        signupView.alpha = 0.0
+
+        loginView.delegate = self
+        loginView.isHidden = true
+        loginView.alpha = 0.0
+
+        view.addSubviews([welcomeButtonsView, signupView, loginView])
         updateViewConstraints()
     }
 
@@ -39,39 +41,108 @@ class WelcomeViewController: UIViewController {
         super.updateViewConstraints()
 
         NSLayoutConstraint.activate([
-            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            signupView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
+            signupView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
+            signupView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0)
         ])
 
         NSLayoutConstraint.activate([
-            signupButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
-            signupButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
-            signupButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.075)
+            loginView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
+            loginView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
+            loginView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0),
         ])
 
         NSLayoutConstraint.activate([
-            loginButton.topAnchor.constraint(equalTo: signupButton.bottomAnchor, constant: 12.0),
-            loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
-            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
-            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0),
-            loginButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.075)
+            welcomeButtonsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
+            welcomeButtonsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24.0),
+            welcomeButtonsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0)
         ])
     }
 
-    // MARK: Actions
+}
 
-    @objc private func signupButtonTapped() {
-        let signupViewController = SignupViewController()
-        signupViewController.modalPresentationStyle = .fullScreen
-        present(signupViewController, animated: true, completion: nil)
+extension WelcomeViewController: WelcomeButtonsViewDelegate {
+
+    func didTapSignupButton() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.welcomeButtonsView.alpha = 0.0
+            self.signupView.alpha = 1.0
+        }, completion: { _ in
+            self.welcomeButtonsView.isHidden = true
+            self.signupView.isHidden = false
+        })
     }
 
-    @objc private func loginButtonTapped() {
-        let loginViewController = LoginViewController()
-        loginViewController.modalPresentationStyle = .fullScreen
-        present(loginViewController, animated: true, completion: nil)
+    func didTapLoginButton() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.welcomeButtonsView.alpha = 0.0
+            self.loginView.alpha = 1.0
+        }, completion: { _ in
+            self.welcomeButtonsView.isHidden = true
+            self.loginView.isHidden = false
+        })
+    }
+
+}
+
+extension WelcomeViewController: SignupViewDelegate {
+
+    func didTapSignupButton(with firstName: String, _ lastName: String, _ email: String, _ password: String) {
+        let authentificator = Authentificator()
+        authentificator.signup(with: firstName, lastName, email, password) { result, error in
+            if result {
+                let menuContainerViewController = MenuContainerViewController()
+                menuContainerViewController.modalPresentationStyle = .fullScreen
+                self.present(menuContainerViewController, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Sign Up Failed",
+                                          message: error?.localizedDescription,
+                                          preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+
+    func switchToLogin() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.signupView.alpha = 0.0
+            self.loginView.alpha = 1.0
+        }, completion: { _ in
+            self.signupView.isHidden = true
+            self.loginView.isHidden = false
+        })
+    }
+
+}
+
+extension WelcomeViewController: LoginViewDelegate {
+
+    func didTapLoginButton(with email: String, _ password: String) {
+        let authentificator = Authentificator()
+        authentificator.login(with: email, password) { result, error in
+            if result {
+                let menuContainerViewController = MenuContainerViewController()
+                menuContainerViewController.modalPresentationStyle = .fullScreen
+                self.present(menuContainerViewController, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Log In Failed",
+                                          message: error?.localizedDescription,
+                                          preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+
+    func switchToSignup() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.loginView.alpha = 0.0
+            self.signupView.alpha = 1.0
+        }, completion: { _ in
+            self.loginView.isHidden = true
+            self.signupView.isHidden = false
+        })
     }
 
 }

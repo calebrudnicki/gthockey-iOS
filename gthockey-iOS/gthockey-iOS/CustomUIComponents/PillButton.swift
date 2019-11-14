@@ -10,6 +10,18 @@ import UIKit
 
 class PillButton: UIButton {
 
+    override var isEnabled: Bool {
+        didSet{
+            self.alpha = self.isEnabled ? 1.0 : 0.35
+        }
+    }
+
+    override var isHighlighted: Bool {
+        didSet{
+            self.titleLabel?.alpha = self.isHighlighted ? 0.35 : 1.0
+        }
+    }
+
     // MARK: Init
 
     override init(frame: CGRect) {
@@ -24,16 +36,20 @@ class PillButton: UIButton {
         setTitleColor(.white, for: .normal)
 
         titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
-        layer.cornerRadius = 30
+        layer.cornerRadius = 25
+        layer.borderWidth = 2
         clipsToBounds = true
+        contentEdgeInsets = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 12.0, right: 0.0)
         translatesAutoresizingMaskIntoConstraints = false
     }
 
-    convenience init(title: String, fillColor: UIColor) {
+    convenience init(title: String, backgroundColor: UIColor, borderColor: UIColor, isEnabled: Bool) {
         self.init()
 
         setTitle(title, for: .normal)
-        backgroundColor = fillColor
+        self.backgroundColor = backgroundColor
+        self.layer.borderColor = borderColor.cgColor
+        self.isEnabled = isEnabled
     }
 
 

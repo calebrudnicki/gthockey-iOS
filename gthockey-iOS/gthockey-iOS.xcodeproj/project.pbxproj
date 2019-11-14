@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */; };
-		820CB982236F3BF100D36EFF /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CB981236F3BF100D36EFF /* SignupViewController.swift */; };
 		82170D11236FB301005FE89B /* Apparel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D10236FB301005FE89B /* Apparel.swift */; };
 		82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D13236FB360005FE89B /* ShopCollectionViewController.swift */; };
 		82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */; };
@@ -37,6 +36,9 @@
 		82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */; };
 		82B3A177237BD7CC00CD8F3D /* PillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A176237BD7CC00CD8F3D /* PillButton.swift */; };
 		82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */; };
+		82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17A237DA87600CD8F3D /* SignupView.swift */; };
+		82B3A17D237DBFAE00CD8F3D /* WelcomeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */; };
+		82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17E237DF95C00CD8F3D /* LoginView.swift */; };
 		82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C1E92363333800C4D2C2 /* StringExtension.swift */; };
 		82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */; };
 		82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DCB478233C402200BDE2FE /* AppDelegate.swift */; };
@@ -51,7 +53,6 @@
 		82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FC2235FF1890070F63D /* MenuControllerDelegate.swift */; };
 		82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FC4236004D70070F63D /* UIColorExtension.swift */; };
 		82F85586236C797600DE7AFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82F85585236C797600DE7AFD /* GoogleService-Info.plist */; };
-		82F8558A236C7BAF00DE7AFD /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F85589236C7BAF00DE7AFD /* LoginViewController.swift */; };
 		C58AE6FDEF374C9B1B0751D2 /* Pods_gthockey_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */; };
 		F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C392B2354EA3E009E1F3A /* Rink.swift */; };
 		F02585AF23412F88008E641C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02585AE23412F88008E641C /* News.swift */; };
@@ -62,7 +63,6 @@
 		0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.release.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.debug.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		820CB981236F3BF100D36EFF /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		82170D10236FB301005FE89B /* Apparel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apparel.swift; sourceTree = "<group>"; };
 		82170D13236FB360005FE89B /* ShopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewController.swift; sourceTree = "<group>"; };
 		82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -91,6 +91,9 @@
 		82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApparelRestrictedItem.swift; sourceTree = "<group>"; };
 		82B3A176237BD7CC00CD8F3D /* PillButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillButton.swift; sourceTree = "<group>"; };
 		82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLaunchViewController.swift; sourceTree = "<group>"; };
+		82B3A17A237DA87600CD8F3D /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonsView.swift; sourceTree = "<group>"; };
+		82B3A17E237DF95C00CD8F3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		82C8C1E92363333800C4D2C2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewController.swift; sourceTree = "<group>"; };
 		82DCB475233C402200BDE2FE /* GT Hockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GT Hockey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,7 +111,6 @@
 		82F79FC4236004D70070F63D /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		82F85585236C797600DE7AFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		82F85587236C7B4A00DE7AFD /* GT Hockey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GT Hockey.entitlements"; sourceTree = "<group>"; };
-		82F85589236C7BAF00DE7AFD /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gthockey_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00C392B2354EA3E009E1F3A /* Rink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rink.swift; sourceTree = "<group>"; };
 		F02585AE23412F88008E641C /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -260,8 +262,9 @@
 			isa = PBXGroup;
 			children = (
 				820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */,
-				820CB981236F3BF100D36EFF /* SignupViewController.swift */,
-				82F85589236C7BAF00DE7AFD /* LoginViewController.swift */,
+				82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */,
+				82B3A17A237DA87600CD8F3D /* SignupView.swift */,
+				82B3A17E237DF95C00CD8F3D /* LoginView.swift */,
 			);
 			path = LoginFlow;
 			sourceTree = "<group>";
@@ -416,13 +419,13 @@
 				82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */,
 				8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */,
 				82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */,
+				82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
 				82F79FBE235F428E0070F63D /* MenuOption.swift in Sources */,
 				8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */,
 				82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */,
-				82F8558A236C7BAF00DE7AFD /* LoginViewController.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
 				F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */,
 				82170D11236FB301005FE89B /* Apparel.swift in Sources */,
@@ -431,6 +434,7 @@
 				82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */,
 				82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */,
 				82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */,
+				82B3A17D237DBFAE00CD8F3D /* WelcomeButtonsView.swift in Sources */,
 				826281A623733FD200E4CC38 /* Authentificator.swift in Sources */,
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
 				82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */,
@@ -442,7 +446,7 @@
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
-				820CB982236F3BF100D36EFF /* SignupViewController.swift in Sources */,
+				82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
