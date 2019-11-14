@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol ShopRestrictedOptionsViewDelegate {
+    func didSelect(option: String, for category: String)
+}
+
 class ShopRestrictedOptionsView: UIView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     // MARK: Properties
 
     private var selectionList: [String]?
+    public var delegate: ShopRestrictedOptionsViewDelegate!
 
     private let displayLabel: UILabel = {
         let displayLabel = UILabel()
@@ -106,6 +111,10 @@ class ShopRestrictedOptionsView: UIView, UIPickerViewDelegate, UIPickerViewDataS
         optionsTextField.text = selectionList?[row]
     }
 
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.didSelect(option: textField.text ?? "", for: displayLabel.text ?? "")
+    }
+
     @objc func donePicker() {
         endEditing(true)
     }
@@ -114,7 +123,7 @@ class ShopRestrictedOptionsView: UIView, UIPickerViewDelegate, UIPickerViewDataS
 
     public func set(with restrictedItem: ApparelRestrictedItem) {
         displayLabel.text = restrictedItem.getDisplayName()
-        optionsTextField.placeholder = "Size"
+        optionsTextField.placeholder = restrictedItem.getHelpText()
         selectionList = restrictedItem.getOptionsList()
     }
 

@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol ShopCustomOptionsViewDelegate {
+    func didEnter(option: String, for category: String)
+}
+
 class ShopCustomOptionsView: UIView, UITextFieldDelegate {
+
+    public var delegate: ShopCustomOptionsViewDelegate!
 
     // MARK: Properties
 
@@ -70,8 +76,8 @@ class ShopCustomOptionsView: UIView, UITextFieldDelegate {
         ])
     }
 
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        print("did begin editing")
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.didEnter(option: textField.text ?? "", for: displayLabel.text ?? "")
     }
 
     // MARK: Setter

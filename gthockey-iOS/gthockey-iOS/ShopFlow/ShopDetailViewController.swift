@@ -234,12 +234,14 @@ class ShopDetailViewController: UIViewController {
         for restrictedOption in restrictedOptions {
             let shopRestrictedOptionsView = ShopRestrictedOptionsView()
             shopRestrictedOptionsView.set(with: restrictedOption)
+            shopRestrictedOptionsView.delegate = self
             restrictedOptionsStackView.addArrangedSubview(shopRestrictedOptionsView)
         }
 
         for customOption in customOptions {
             let shopCustomOptionsView = ShopCustomOptionsView()
             shopCustomOptionsView.set(with: customOption)
+            shopCustomOptionsView.delegate = self
             restrictedOptionsStackView.addArrangedSubview(shopCustomOptionsView)
         }
 
@@ -257,6 +259,22 @@ class ShopDetailViewController: UIViewController {
             let db = Firestore.firestore()
             db.collection("users").document(user.uid).setData(["cart": apparelItem], merge: true)
         }
+    }
+
+}
+
+extension ShopDetailViewController: ShopRestrictedOptionsViewDelegate {
+
+    func didSelect(option: String, for category: String) {
+        print("Chose \(option) for \(category)")
+    }
+
+}
+
+extension ShopDetailViewController: ShopCustomOptionsViewDelegate {
+
+    func didEnter(option: String, for category: String) {
+        print("Chose \(option) for \(category)")
     }
 
 }

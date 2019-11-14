@@ -140,9 +140,9 @@
 			children = (
 				82170D13236FB360005FE89B /* ShopCollectionViewController.swift */,
 				82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */,
-				82B3A16C237BB44E00CD8F3D /* ShopCustomOptionsView.swift */,
 				82B3A16D237BB44E00CD8F3D /* ShopDetailViewController.swift */,
 				82B3A16E237BB44E00CD8F3D /* ShopRestrictedOptionsView.swift */,
+				82B3A16C237BB44E00CD8F3D /* ShopCustomOptionsView.swift */,
 			);
 			path = ShopFlow;
 			sourceTree = "<group>";
