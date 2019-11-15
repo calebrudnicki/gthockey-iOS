@@ -28,15 +28,24 @@ class ScheduleTableViewController: UITableViewController {
         navigationItem.title = "Schedule"
 
         let menuButtonImage: UIImage?
+        let cartButtonImage: UIImage?
+
         if traitCollection.userInterfaceStyle == .dark {
             menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
+            cartButtonImage = UIImage(named: "CartIconWhite")?.withRenderingMode(.alwaysOriginal)
         } else {
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
+            cartButtonImage = UIImage(named: "CartIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupTableView()
@@ -146,6 +155,10 @@ class ScheduleTableViewController: UITableViewController {
 
     @objc private func menuButtonTapped() {
         delegate?.handleMenuToggle(forMenuOption: nil)
+    }
+
+    @objc private func cartButtonTapped() {
+        print("Cart button tapped")
     }
 
     // MARK: Location

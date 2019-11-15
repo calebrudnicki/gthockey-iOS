@@ -28,17 +28,26 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
         navigationItem.title = "Shop"
 
         let menuButtonImage: UIImage?
+        let cartButtonImage: UIImage?
+
         if traitCollection.userInterfaceStyle == .dark {
             collectionView.backgroundColor = .black
             menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
+            cartButtonImage = UIImage(named: "CartIconWhite")?.withRenderingMode(.alwaysOriginal)
         } else {
             collectionView.backgroundColor = .white
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
+            cartButtonImage = UIImage(named: "CartIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()
@@ -93,6 +102,10 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     
     @objc private func menuButtonTapped() {
         delegate?.handleMenuToggle(forMenuOption: nil)
+    }
+
+    @objc private func cartButtonTapped() {
+        print("Cart button tapped")
     }
 
     private func fetchApparelDetails(with id: Int, completion: @escaping ([ApparelRestrictedItem], [ApparelCustomItem]) -> Void) {
