@@ -17,6 +17,7 @@ class ApparelRestrictedItem {
     private var helpText: String
     private var optionsList: [String]
     private var correspondingApparelID: Int
+    private var value: String?
 
     // MARK: Init
 
@@ -48,6 +49,16 @@ class ApparelRestrictedItem {
 
     func getCorrespondingApparelID() -> Int {
         return correspondingApparelID
+    }
+
+    func getValue() -> String? {
+        return value
+    }
+
+    // MARK: Setters
+
+    func setValue(with value: String) {
+        self.value = value
     }
 
 }

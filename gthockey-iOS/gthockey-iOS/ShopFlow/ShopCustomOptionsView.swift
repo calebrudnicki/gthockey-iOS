@@ -33,8 +33,8 @@ class ShopCustomOptionsView: UIView, UITextFieldDelegate {
         let optionsTextField = UITextField()
         optionsTextField.backgroundColor = .white
         optionsTextField.textColor = .black
-        optionsTextField.placeholder = ""
-        optionsTextField.font = UIFont(name:"HelveticaNeue-Light", size: 24.0)
+//        optionsTextField.placeholder = ""
+        optionsTextField.font = UIFont(name:"HelveticaNeue-Light", size: 20.0)
         optionsTextField.translatesAutoresizingMaskIntoConstraints = false
         return optionsTextField
     }()
@@ -84,6 +84,7 @@ class ShopCustomOptionsView: UIView, UITextFieldDelegate {
 
     public func set(with customItem: ApparelCustomItem) {
         displayLabel.text = customItem.getDisplayName()
+        optionsTextField.placeholder = customItem.getHelpText()
     }
 
 }

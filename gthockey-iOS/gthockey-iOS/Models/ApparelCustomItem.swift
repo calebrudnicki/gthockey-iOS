@@ -18,6 +18,7 @@ class ApparelCustomItem {
     private var isRequired: Bool
     private var extraCost: Int
     private var correspondingApparelID: Int
+    private var value: String?
 
     // MARK: Init
 
@@ -54,6 +55,16 @@ class ApparelCustomItem {
 
     func getCorrespondingApparelID() -> Int {
         return correspondingApparelID
+    }
+
+    func getValue() -> String? {
+        return value
+    }
+
+    // MARK: Setters
+
+    func setValue(with value: String) {
+        self.value = value
     }
 
 }
