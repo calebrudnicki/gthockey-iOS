@@ -33,7 +33,7 @@ class ShopCollectionViewCell: CardCollectionViewCell {
 
     private let priceLabel: UILabel = {
         let priceLabel = UILabel()
-        priceLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
+        priceLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
         priceLabel.adjustsFontSizeToFitWidth = true
         priceLabel.numberOfLines = 1
         priceLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -65,12 +65,12 @@ class ShopCollectionViewCell: CardCollectionViewCell {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4.0),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4.0),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0)
         ])
 
         NSLayoutConstraint.activate([
-            priceLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4.0),
-            priceLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 12.0),
+            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4.0),
+            priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4.0),
             priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0),
             priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
         ])

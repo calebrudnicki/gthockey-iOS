@@ -34,8 +34,7 @@ class ShopRestrictedOptionsView: UIView, UIPickerViewDelegate, UIPickerViewDataS
         let optionsTextField = UITextField()
         optionsTextField.backgroundColor = .white
         optionsTextField.textColor = .black
-//        optionsTextField.placeholder = ""
-        optionsTextField.font = UIFont(name:"HelveticaNeue-Light", size: 24.0)
+        optionsTextField.font = UIFont(name:"HelveticaNeue-Light", size: 20.0)
         optionsTextField.translatesAutoresizingMaskIntoConstraints = false
         return optionsTextField
     }()
