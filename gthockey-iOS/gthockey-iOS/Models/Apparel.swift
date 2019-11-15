@@ -50,8 +50,8 @@ class Apparel {
         return imageURL
     }
 
-    func convertToArray() -> [String : Any] {
-        return ["id": id, "name": name, "size": "M", "number": "1", "jerseyName": "Rudnicki"]
-    }
+//    func convertToArray(with size: String, _ number: String, _ jerseyName: String) -> [String : Any] {
+//        return ["id": id, "name": name, "size": size, "number": number, "jerseyName": jerseyName]
+//    }
 
 }

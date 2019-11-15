@@ -15,7 +15,9 @@ class ShopDetailViewController: UIViewController {
 
     // MARK: Properties
 
-    private var apparelItem: [String : Any]?
+    private var apparelItem: Apparel?
+    private var restrictedOptions: [ApparelRestrictedItem]?
+    private var customOptions: [ApparelCustomItem]?
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -103,7 +105,7 @@ class ShopDetailViewController: UIViewController {
 
     private let restrictedOptionsView = ShopRestrictedOptionsView()
     private let customOptionsView = ShopCustomOptionsView()
-    private let addToCartButton = PillButton(title: "Add to Cart", backgroundColor: .winGreen, borderColor: .winGreen, isEnabled: true)
+    private let addToCartButton = PillButton(title: "Add to Cart", backgroundColor: .winGreen, borderColor: .winGreen, isEnabled: false)
 
     // MARK: Init
 
@@ -231,6 +233,7 @@ class ShopDetailViewController: UIViewController {
         priceLabel.text = "$\(apparel.getPrice().description)"
         descriptionLabel.text = apparel.getDescription()
 
+        self.restrictedOptions = restrictedOptions
         for restrictedOption in restrictedOptions {
             let shopRestrictedOptionsView = ShopRestrictedOptionsView()
             shopRestrictedOptionsView.set(with: restrictedOption)
@@ -238,6 +241,7 @@ class ShopDetailViewController: UIViewController {
             restrictedOptionsStackView.addArrangedSubview(shopRestrictedOptionsView)
         }
 
+        self.customOptions = customOptions
         for customOption in customOptions {
             let shopCustomOptionsView = ShopCustomOptionsView()
             shopCustomOptionsView.set(with: customOption)
@@ -245,7 +249,7 @@ class ShopDetailViewController: UIViewController {
             restrictedOptionsStackView.addArrangedSubview(shopCustomOptionsView)
         }
 
-        apparelItem = apparel.convertToArray()
+        apparelItem = apparel
     }
 
     // MARK: Action
@@ -257,8 +261,49 @@ class ShopDetailViewController: UIViewController {
     @objc private func addToCartButtonTapped() {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
-            db.collection("users").document(user.uid).updateData(["cart": FieldValue.arrayUnion([apparelItem])])
+
+//            guard let restrictedOptions = restrictedOptions else { return false }
+//            for restrictedOption in restrictedOptions {
+//
+//                if restrictedOption.getValue() == nil || restrictedOption.getValue() == "" {
+//                    return false
+//                }
+//            }
+
+            let apparelItemFirestore = convertForFirestore(with: (apparelItem?.getID())!, (apparelItem?.getName())!, "M", "45", "SAGET")
+
+            db.collection("users").document(user.uid).updateData(["cart": FieldValue.arrayUnion([apparelItemFirestore])])
         }
+    }
+
+    func convertForFirestore(with id: Int, _ name: String, _ size: String, _ number: String?, _ jerseyName: String?) -> [String : Any] {
+        if let number = number, let jerseyName = jerseyName {
+            return ["id": id, "name": name, "size": size, "number": number, "jerseyName": jerseyName]
+        } else if number == nil && jerseyName == nil {
+            return ["id": id, "name": name, "size": size]
+        } else if number == nil && jerseyName != nil {
+            return ["id": id, "name": name, "size": size, "jerseyName": jerseyName]
+        } else {
+            return ["id": id, "name": name, "size": size, "number": number]
+        }
+    }
+
+    private func shouldEnableAddToCartButton() -> Bool {
+        guard let restrictedOptions = restrictedOptions else { return false }
+        for restrictedOption in restrictedOptions {
+            if restrictedOption.getValue() == nil || restrictedOption.getValue() == "" {
+                return false
+            }
+        }
+
+        guard let customOptions = customOptions else { return false }
+        for customOption in customOptions {
+            if customOption.getIsRequired() && (customOption.getValue() == nil || customOption.getValue() == "") {
+                return false
+            }
+        }
+
+        return true
     }
 
 }
@@ -267,6 +312,15 @@ extension ShopDetailViewController: ShopRestrictedOptionsViewDelegate {
 
     func didSelect(option: String, for category: String) {
         print("Chose \(option) for \(category)")
+
+        guard let restrictedOptions = restrictedOptions else { return }
+        for restrictedOption in restrictedOptions {
+            if restrictedOption.getDisplayName() == category {
+                restrictedOption.setValue(with: option)
+            }
+        }
+
+        addToCartButton.isEnabled = shouldEnableAddToCartButton()
     }
 
 }
@@ -275,6 +329,15 @@ extension ShopDetailViewController: ShopCustomOptionsViewDelegate {
 
     func didEnter(option: String, for category: String) {
         print("Chose \(option) for \(category)")
+
+        guard let customOptions = customOptions else { return }
+        for customOption in customOptions {
+            if customOption.getDisplayName() == category {
+                customOption.setValue(with: option)
+            }
+        }
+
+        addToCartButton.isEnabled = shouldEnableAddToCartButton()
     }
 
 }
