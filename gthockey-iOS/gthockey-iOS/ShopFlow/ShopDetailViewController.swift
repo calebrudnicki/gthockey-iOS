@@ -262,31 +262,26 @@ class ShopDetailViewController: UIViewController {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
 
-//            guard let restrictedOptions = restrictedOptions else { return false }
-//            for restrictedOption in restrictedOptions {
-//
-//                if restrictedOption.getValue() == nil || restrictedOption.getValue() == "" {
-//                    return false
-//                }
-//            }
+            var firestoreDict: [String : Any] = ["id": (apparelItem?.getID())!, "name": (apparelItem?.getName())!]
 
-            let apparelItemFirestore = convertForFirestore(with: (apparelItem?.getID())!, (apparelItem?.getName())!, "M", "45", "SAGET")
+            guard let restrictedOptions = restrictedOptions else { return }
+            for restrictedOption in restrictedOptions {
+                let key = restrictedOption.getDisplayName()
+                firestoreDict[key.lowercased()] = restrictedOption.getValue()
+            }
 
-            db.collection("users").document(user.uid).updateData(["cart": FieldValue.arrayUnion([apparelItemFirestore])])
+            guard let customOptions = customOptions else { return }
+            for customOption in customOptions {
+                let key = customOption.getDisplayName()
+                firestoreDict[key.lowercased()] = customOption.getValue()
+            }
+
+            db.collection("users").document(user.uid).updateData(["cart": FieldValue.arrayUnion([firestoreDict])])
+            dismiss(animated: true, completion: nil)
         }
     }
 
-    func convertForFirestore(with id: Int, _ name: String, _ size: String, _ number: String?, _ jerseyName: String?) -> [String : Any] {
-        if let number = number, let jerseyName = jerseyName {
-            return ["id": id, "name": name, "size": size, "number": number, "jerseyName": jerseyName]
-        } else if number == nil && jerseyName == nil {
-            return ["id": id, "name": name, "size": size]
-        } else if number == nil && jerseyName != nil {
-            return ["id": id, "name": name, "size": size, "jerseyName": jerseyName]
-        } else {
-            return ["id": id, "name": name, "size": size, "number": number]
-        }
-    }
+    // MARK: Helper Functions
 
     private func shouldEnableAddToCartButton() -> Bool {
         guard let restrictedOptions = restrictedOptions else { return false }
@@ -311,9 +306,8 @@ class ShopDetailViewController: UIViewController {
 extension ShopDetailViewController: ShopRestrictedOptionsViewDelegate {
 
     func didSelect(option: String, for category: String) {
-        print("Chose \(option) for \(category)")
-
         guard let restrictedOptions = restrictedOptions else { return }
+
         for restrictedOption in restrictedOptions {
             if restrictedOption.getDisplayName() == category {
                 restrictedOption.setValue(with: option)
@@ -328,9 +322,8 @@ extension ShopDetailViewController: ShopRestrictedOptionsViewDelegate {
 extension ShopDetailViewController: ShopCustomOptionsViewDelegate {
 
     func didEnter(option: String, for category: String) {
-        print("Chose \(option) for \(category)")
-
         guard let customOptions = customOptions else { return }
+
         for customOption in customOptions {
             if customOption.getDisplayName() == category {
                 customOption.setValue(with: option)
