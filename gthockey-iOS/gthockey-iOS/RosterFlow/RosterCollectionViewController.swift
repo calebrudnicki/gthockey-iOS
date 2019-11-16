@@ -178,7 +178,8 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     @objc private func cartButtonTapped() {
-        print("Cart button tapped")
+        let cartTableViewController = CartTableViewController()
+        present(cartTableViewController, animated: true, completion: nil)
     }
 
 }

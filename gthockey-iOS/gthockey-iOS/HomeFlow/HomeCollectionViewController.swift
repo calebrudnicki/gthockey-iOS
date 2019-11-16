@@ -106,7 +106,8 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     @objc private func cartButtonTapped() {
-        print("Cart button tapped")
+        let cartTableViewController = CartTableViewController()
+        present(cartTableViewController, animated: true, completion: nil)
     }
 
 }

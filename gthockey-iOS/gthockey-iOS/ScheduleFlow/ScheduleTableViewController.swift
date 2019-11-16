@@ -158,7 +158,8 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     @objc private func cartButtonTapped() {
-        print("Cart button tapped")
+        let cartTableViewController = CartTableViewController()
+        present(cartTableViewController, animated: true, completion: nil)
     }
 
     // MARK: Location

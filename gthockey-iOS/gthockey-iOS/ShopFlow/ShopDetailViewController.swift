@@ -262,7 +262,9 @@ class ShopDetailViewController: UIViewController {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
 
-            var firestoreDict: [String : Any] = ["id": (apparelItem?.getID())!, "name": (apparelItem?.getName())!]
+            var firestoreDict: [String : Any] = ["id": (apparelItem?.getID())!,
+                                                 "name": (apparelItem?.getName())!,
+                                                 "imageURL": (apparelItem?.getImageURL())?.description]
 
             guard let restrictedOptions = restrictedOptions else { return }
             for restrictedOption in restrictedOptions {

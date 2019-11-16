@@ -49,6 +49,10 @@
 		82EE57E12341B2BC00FCC181 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E02341B2BC00FCC181 /* Game.swift */; };
 		82EE57E32341B36200FCC181 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E22341B36200FCC181 /* Player.swift */; };
 		82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */; };
+		82F468EE237F4C0E00573EE5 /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F468ED237F4C0E00573EE5 /* CartTableViewController.swift */; };
+		82F468F0237F55EC00573EE5 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F468EF237F55EC00573EE5 /* CartTableViewCell.swift */; };
+		82F468F2237F611C00573EE5 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F468F1237F611C00573EE5 /* CartItem.swift */; };
+		82F468F62380659800573EE5 /* CartTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F468F52380659800573EE5 /* CartTableViewFooter.swift */; };
 		82F79FBE235F428E0070F63D /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FBD235F428E0070F63D /* MenuOption.swift */; };
 		82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FC2235FF1890070F63D /* MenuControllerDelegate.swift */; };
 		82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FC4236004D70070F63D /* UIColorExtension.swift */; };
@@ -106,6 +110,10 @@
 		82EE57E02341B2BC00FCC181 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		82EE57E22341B36200FCC181 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
+		82F468ED237F4C0E00573EE5 /* CartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
+		82F468EF237F55EC00573EE5 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
+		82F468F1237F611C00573EE5 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
+		82F468F52380659800573EE5 /* CartTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewFooter.swift; sourceTree = "<group>"; };
 		82F79FBD235F428E0070F63D /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		82F79FC2235FF1890070F63D /* MenuControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuControllerDelegate.swift; sourceTree = "<group>"; };
 		82F79FC4236004D70070F63D /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 				82D971B4233D60A500BFD322 /* ScheduleFlow */,
 				82D971B5233D60B000BFD322 /* RosterFlow */,
 				82170D12236FB349005FE89B /* ShopFlow */,
+				82F468EC237F4BD800573EE5 /* CartFlow */,
 				825092162361EF8E00D98DEA /* Extensions */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
 				82ADF5D623440B6700114F84 /* JSONParser.swift */,
@@ -243,6 +252,16 @@
 				82F85587236C7B4A00DE7AFD /* GT Hockey.entitlements */,
 			);
 			path = "gthockey-iOS";
+			sourceTree = "<group>";
+		};
+		82F468EC237F4BD800573EE5 /* CartFlow */ = {
+			isa = PBXGroup;
+			children = (
+				82F468ED237F4C0E00573EE5 /* CartTableViewController.swift */,
+				82F468EF237F55EC00573EE5 /* CartTableViewCell.swift */,
+				82F468F52380659800573EE5 /* CartTableViewFooter.swift */,
+			);
+			path = CartFlow;
 			sourceTree = "<group>";
 		};
 		82F79FC1235FF14A0070F63D /* MenuFlow */ = {
@@ -289,6 +308,7 @@
 				82170D10236FB301005FE89B /* Apparel.swift */,
 				82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */,
 				82B3A172237BB49700CD8F3D /* ApparelCustomItem.swift */,
+				82F468F1237F611C00573EE5 /* CartItem.swift */,
 				82F79FBD235F428E0070F63D /* MenuOption.swift */,
 			);
 			path = Models;
@@ -422,8 +442,10 @@
 				82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
+				82F468F62380659800573EE5 /* CartTableViewFooter.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
 				82F79FBE235F428E0070F63D /* MenuOption.swift in Sources */,
+				82F468F0237F55EC00573EE5 /* CartTableViewCell.swift in Sources */,
 				8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */,
 				82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
@@ -433,6 +455,7 @@
 				82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */,
 				82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */,
 				82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */,
+				82F468EE237F4C0E00573EE5 /* CartTableViewController.swift in Sources */,
 				82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */,
 				82B3A17D237DBFAE00CD8F3D /* WelcomeButtonsView.swift in Sources */,
 				826281A623733FD200E4CC38 /* Authentificator.swift in Sources */,
@@ -455,6 +478,7 @@
 				82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */,
 				82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */,
 				82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */,
+				82F468F2237F611C00573EE5 /* CartItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

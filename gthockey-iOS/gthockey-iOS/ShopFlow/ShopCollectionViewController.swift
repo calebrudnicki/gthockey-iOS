@@ -105,7 +105,8 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     @objc private func cartButtonTapped() {
-        print("Cart button tapped")
+        let cartTableViewController = CartTableViewController()
+        present(cartTableViewController, animated: true, completion: nil)
     }
 
     private func fetchApparelDetails(with id: Int, completion: @escaping ([ApparelRestrictedItem], [ApparelCustomItem]) -> Void) {
