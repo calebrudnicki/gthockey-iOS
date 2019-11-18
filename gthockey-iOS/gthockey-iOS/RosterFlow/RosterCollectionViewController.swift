@@ -27,9 +27,9 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         navigationItem.title = "Roster"
 
         let menuButtonImage: UIImage?
-        if traitCollection.userInterfaceStyle == .dark {
-            collectionView.backgroundColor = .black
-            menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
+        if #available(iOS 13.0, *){
+            collectionView.backgroundColor = .systemBackground
+            menuButtonImage = UIImage(systemName: "line.horizontal.3")?.withRenderingMode(.alwaysOriginal).withTintColor(.label)
         } else {
             collectionView.backgroundColor = .white
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)

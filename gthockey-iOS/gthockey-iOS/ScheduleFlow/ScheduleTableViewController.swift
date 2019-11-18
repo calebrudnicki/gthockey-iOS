@@ -28,9 +28,11 @@ class ScheduleTableViewController: UITableViewController {
         navigationItem.title = "Schedule"
 
         let menuButtonImage: UIImage?
-        if traitCollection.userInterfaceStyle == .dark {
-            menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
-        } else {
+
+        if #available(iOS 13.0, *){
+             menuButtonImage = UIImage(systemName: "line.horizontal.3")?.withRenderingMode(.alwaysOriginal).withTintColor(.label)
+        }
+        else {
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,

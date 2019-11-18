@@ -116,9 +116,9 @@ class RosterDetailViewController: UIViewController {
 
         var closeButtonImage: UIImage?
 
-        if traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = .black
-            closeButtonImage = UIImage(named: "CloseButtonWhite")?.withRenderingMode(.alwaysOriginal)
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
+            closeButtonImage = UIImage(systemName: "xmark.circle")?.withRenderingMode(.alwaysOriginal).withTintColor(.label)
         } else {
             view.backgroundColor = .white
             closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)

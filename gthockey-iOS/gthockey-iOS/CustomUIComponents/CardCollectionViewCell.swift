@@ -15,9 +15,10 @@ class CardCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        if traitCollection.userInterfaceStyle == .dark {
-            layer.backgroundColor = UIColor.cellBackgroundDark.cgColor
-            layer.shadowColor = UIColor.white.cgColor
+        if #available(iOS 13.0, *) {
+            self.backgroundColor = .secondarySystemBackground
+            layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
+            layer.shadowColor = UIColor.label.cgColor
         } else {
             layer.backgroundColor = UIColor.cellBackgroundLight.cgColor
             layer.shadowColor = UIColor.black.cgColor
