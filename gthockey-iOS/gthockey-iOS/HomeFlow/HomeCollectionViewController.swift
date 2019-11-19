@@ -27,10 +27,16 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
         let menuButtonImage: UIImage?
         let cartButtonImage: UIImage?
 
-        if traitCollection.userInterfaceStyle == .dark {
-            collectionView.backgroundColor = .black
-            menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
-            cartButtonImage = UIImage(named: "CartIconWhite")?.withRenderingMode(.alwaysOriginal)
+        if #available(iOS 13.0, *){
+            collectionView.backgroundColor = .systemBackground
+            menuButtonImage = UIImage(systemName: "line.horizontal.3")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.label)
+                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
+            cartButtonImage = UIImage(systemName: "cart.fill")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.label)
+                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
         } else {
             collectionView.backgroundColor = .white
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)

@@ -19,5 +19,5 @@ extension UIColor {
 
     static let cellBackgroundDark = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1.0)
     static let cellBackgroundLight = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1.0)
-    
+
 }

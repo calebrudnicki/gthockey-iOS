@@ -30,9 +30,15 @@ class ScheduleTableViewController: UITableViewController {
         let menuButtonImage: UIImage?
         let cartButtonImage: UIImage?
 
-        if traitCollection.userInterfaceStyle == .dark {
-            menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
-            cartButtonImage = UIImage(named: "CartIconWhite")?.withRenderingMode(.alwaysOriginal)
+        if #available(iOS 13.0, *){
+            menuButtonImage = UIImage(systemName: "line.horizontal.3")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.label)
+                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
+            cartButtonImage = UIImage(systemName: "cart.fill")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.label)
+                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
         } else {
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
             cartButtonImage = UIImage(named: "CartIconBlack")?.withRenderingMode(.alwaysOriginal)
