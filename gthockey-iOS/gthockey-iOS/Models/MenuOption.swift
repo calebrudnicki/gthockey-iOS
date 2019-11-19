@@ -29,11 +29,36 @@ enum MenuOption: Int, CustomStringConvertible, CaseIterable {
 
     var image: UIImage {
         switch self {
-        case .Home: return UIImage(named: "HomeIcon")!
-        case .Schedule: return UIImage(named: "ScheduleIcon")!
-        case .Roster: return UIImage(named: "RosterIcon")!
-        case .Shop: return UIImage(named: "ShopIcon")!
-        case .SignOut: return UIImage(named: "SignOutIcon")!
+        case .Home:
+            if #available(iOS 13.0, *){
+                return (UIImage(systemName: "house.fill")?
+                        .withRenderingMode(.alwaysOriginal)
+                        .withTintColor(.white))!
+            }
+            return UIImage(named: "HomeIcon")!
+        case .Schedule:
+            if #available(iOS 13.0, *){
+                return (UIImage(systemName: "calendar")?
+                        .withRenderingMode(.alwaysOriginal)
+                        .withTintColor(.white))!
+            }
+            return UIImage(named: "ScheduleIcon")!
+        case .Roster:
+            if #available(iOS 13.0, *){
+                return (UIImage(systemName: "person.3.fill")?
+                        .withRenderingMode(.alwaysOriginal)
+                        .withTintColor(.white))!
+            }
+            return UIImage(named: "RosterIcon")!
+        case .Shop:
+            if #available(iOS 13.0, *){
+                return (UIImage(systemName: "bag.fill")?
+                        .withRenderingMode(.alwaysOriginal)
+                        .withTintColor(.white))!
+            }
+            return UIImage(named: "ShopIcon")!
+        case .SignOut:
+            return UIImage(named: "SignOutIcon")!
         }
     }
 

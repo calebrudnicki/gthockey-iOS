@@ -27,8 +27,8 @@ class PillButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        if traitCollection.userInterfaceStyle == .dark {
-            layer.shadowColor = UIColor.white.cgColor
+        if #available(iOS 13.0, *) {
+            layer.shadowColor = UIColor.label.cgColor
         } else {
             layer.shadowColor = UIColor.black.cgColor
         }

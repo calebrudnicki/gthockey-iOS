@@ -61,6 +61,21 @@ class Authentificator {
         }
     }
 
+    public func getUserFirstName() -> String {
+//        if let user = Auth.auth().currentUser {
+//            let db = Firestore.firestore()
+//            db.collection("users").document(user.uid).getDocument { (document, error) in
+//            if let document = document, document.exists,
+//                let firstName = ((document.data()! as NSDictionary)["firstName"] as! String?) {
+//                return firstName
+//                }
+//            } else {
+//                print("Document does not exist")
+//            }
+//        }
+        return "Caleb"
+    }
+
     // MARK: Private Functions
 
     private func setUserDefaults(with email: String, password: String) {
