@@ -28,10 +28,11 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
         if #available(iOS 13.0, *){
             collectionView.backgroundColor = .systemBackground
-            menuButtonImage = UIImage(systemName: "line.horizontal.3")?.withRenderingMode(.alwaysOriginal).withTintColor(.label)
-        }
-
-        else {
+            menuButtonImage = UIImage(systemName: "line.horizontal.3")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.label)
+                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
+        } else {
             collectionView.backgroundColor = .white
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
@@ -39,7 +40,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
-        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()

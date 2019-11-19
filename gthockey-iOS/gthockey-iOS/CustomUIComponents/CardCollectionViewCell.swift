@@ -16,7 +16,7 @@ class CardCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
 
         if #available(iOS 13.0, *) {
-            self.backgroundColor = .secondarySystemBackground
+            backgroundColor = .secondarySystemBackground
             layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
             layer.shadowColor = UIColor.label.cgColor
         } else {
