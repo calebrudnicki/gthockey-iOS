@@ -14,7 +14,7 @@ class MenuTableViewHeader: UIView {
 
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 32.0)
+        titleLabel.font = UIFont(name: "HelveticaNeue", size: 32.0)
         titleLabel.text = "The Official Georgia Tech Hockey App"
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.numberOfLines = 2
@@ -27,6 +27,9 @@ class MenuTableViewHeader: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+        let authentificator = Authentificator()
+        titleLabel.text = "Hi, \(authentificator.getUserFirstName()), Welcome to GT Hockey App"
 
         addSubview(titleLabel)
         updateConstraints()
