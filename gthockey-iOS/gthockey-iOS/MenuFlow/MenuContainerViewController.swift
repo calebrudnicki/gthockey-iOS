@@ -34,10 +34,14 @@ class MenuContainerViewController: UIViewController {
         let shopCollectionViewController = ShopCollectionViewController(collectionViewLayout: shopLayout)
         return shopCollectionViewController
     }()
+    private let settingsTableViewController = SettingsTableViewController()
+
+
     private var homeNavigationController: UINavigationController?
     private var scheduleNavigationController: UINavigationController?
     private var rosterNavigationController: UINavigationController?
     private var shopNavigationController: UINavigationController?
+    private var settingsNavigationController: UINavigationController?
 
     // MARK: Init
 
@@ -57,11 +61,13 @@ class MenuContainerViewController: UIViewController {
         scheduleNavigationController = UINavigationController(rootViewController: scheduleTableViewController)
         rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
         shopNavigationController = UINavigationController(rootViewController: shopCollectionViewController)
+        settingsNavigationController = UINavigationController(rootViewController: settingsTableViewController)
 
         homeCollectionViewController.delegate = self
         scheduleTableViewController.delegate = self
         rosterCollectionViewController.delegate = self
         shopCollectionViewController.delegate = self
+        settingsTableViewController.delegate = self
 
         //Set default screen to be Home
         currentNavigationController = homeNavigationController
@@ -122,26 +128,8 @@ class MenuContainerViewController: UIViewController {
             currentNavigationController = rosterNavigationController
         case .Shop:
             currentNavigationController = shopNavigationController
-        case .SignOut:
-            let alert = UIAlertController(title: "Are you sure you want to sign out?", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-                let authentificator = Authentificator()
-                authentificator.signOut { (result, error) in
-                    if result {
-                        let welcomeViewController = WelcomeViewController()
-                        welcomeViewController.modalPresentationStyle = .fullScreen
-                        self.present(welcomeViewController, animated: true, completion: nil)
-                    } else {
-                        let alert = UIAlertController(title: "Sign Out Failed",
-                                                  message: error?.localizedDescription,
-                                                  preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: .default))
-                        self.present(alert, animated: true, completion: nil)
-                    }
-                }
-            }))
-            alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
-            self.present(alert, animated: true, completion: nil)
+        case .Settings:
+            currentNavigationController = settingsNavigationController
         }
         view.addSubview(currentNavigationController.view)
         addChild(currentNavigationController)
