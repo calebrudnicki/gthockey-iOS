@@ -31,7 +31,7 @@ class ShopDetailViewController: UIViewController {
         return backgroundView
     }()
 
-    private let closeButton= FloatingCloseButton()
+    private let closeButton = FloatingCloseButton()
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
