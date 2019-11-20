@@ -123,7 +123,7 @@ class ScheduleDetailViewController: UIViewController {
         } else {
             view.backgroundColor = .white
         }
-        
+        mapView.delegate = self
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         view.addSubview(scrollView)
@@ -158,7 +158,7 @@ class ScheduleDetailViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12.0),
-            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12.0),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0),
             closeButton.widthAnchor.constraint(equalToConstant: 32.0),
             closeButton.heightAnchor.constraint(equalToConstant: 32.0)
         ])
@@ -232,14 +232,14 @@ class ScheduleDetailViewController: UIViewController {
     private func initializeMapKitConstraints(rink: Rink){
 
         mapView.setRegion(MKCoordinateRegion(center: CLLocation(latitude: CLLocationDegrees(rink.getLatitude()), longitude: CLLocationDegrees(rink.getLongitude())).coordinate,
-                                             latitudinalMeters: 200, longitudinalMeters: 200), animated: true)
+                                             latitudinalMeters: 300, longitudinalMeters: 300), animated: true)
 
         mapView.frame = mapViewContainer.frame
 
-        let pin = MKPointAnnotation()
-        pin.title = rink.getName()
-        pin.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(rink.getLatitude()), longitude: CLLocationDegrees(rink.getLongitude()))
-        mapView.addAnnotation(pin)
+
+        let annotation = Annotation(title: rink.getName(),
+                                    coordinate: CLLocationCoordinate2D(latitude: CLLocationDegrees(rink.getLatitude()), longitude: CLLocationDegrees(rink.getLongitude())))
+        mapView.addAnnotation(annotation)
 
 
     }

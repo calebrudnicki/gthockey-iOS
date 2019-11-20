@@ -153,7 +153,7 @@ class RosterDetailViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12.0),
-            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12.0),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0),
             closeButton.widthAnchor.constraint(equalToConstant: 32.0),
             closeButton.heightAnchor.constraint(equalToConstant: 32.0)
         ])

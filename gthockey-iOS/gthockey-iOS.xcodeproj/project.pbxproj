@@ -62,6 +62,8 @@
 		F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C392B2354EA3E009E1F3A /* Rink.swift */; };
 		F02585AF23412F88008E641C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02585AE23412F88008E641C /* News.swift */; };
 		F0C312D52385976200B7FD8D /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C312D42385976200B7FD8D /* ScheduleDetailViewController.swift */; };
+		F0C312D723859E8A00B7FD8D /* ScheduleDetailControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C312D623859E8A00B7FD8D /* ScheduleDetailControllerDelegate.swift */; };
+		F0C312DB2385AA2500B7FD8D /* MapKitAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C312DA2385AA2500B7FD8D /* MapKitAnnotation.swift */; };
 		FA3570BA23502190008E83BC /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3570B923502190008E83BC /* Team.swift */; };
 /* End PBXBuildFile section */
 
@@ -126,6 +128,8 @@
 		F00C392B2354EA3E009E1F3A /* Rink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rink.swift; sourceTree = "<group>"; };
 		F02585AE23412F88008E641C /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		F0C312D42385976200B7FD8D /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
+		F0C312D623859E8A00B7FD8D /* ScheduleDetailControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailControllerDelegate.swift; sourceTree = "<group>"; };
+		F0C312DA2385AA2500B7FD8D /* MapKitAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitAnnotation.swift; sourceTree = "<group>"; };
 		FA3570B923502190008E83BC /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -177,6 +181,7 @@
 				8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */,
 				82B3A176237BD7CC00CD8F3D /* PillButton.swift */,
 				82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */,
+				F0C312DA2385AA2500B7FD8D /* MapKitAnnotation.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -200,6 +205,7 @@
 				82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */,
 				82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */,
 				F0C312D42385976200B7FD8D /* ScheduleDetailViewController.swift */,
+				F0C312D623859E8A00B7FD8D /* ScheduleDetailControllerDelegate.swift */,
 			);
 			path = ScheduleFlow;
 			sourceTree = "<group>";
@@ -469,9 +475,11 @@
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
 				82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */,
 				82EE57E32341B36200FCC181 /* Player.swift in Sources */,
+				F0C312DB2385AA2500B7FD8D /* MapKitAnnotation.swift in Sources */,
 				82B3A16F237BB44F00CD8F3D /* ShopCustomOptionsView.swift in Sources */,
 				82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */,
 				F0C312D52385976200B7FD8D /* ScheduleDetailViewController.swift in Sources */,
+				F0C312D723859E8A00B7FD8D /* ScheduleDetailControllerDelegate.swift in Sources */,
 				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,
 				820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */,
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
