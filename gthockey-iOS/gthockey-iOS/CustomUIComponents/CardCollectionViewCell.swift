@@ -12,6 +12,20 @@ class CardCollectionViewCell: UICollectionViewCell {
 
     // MARK: Init
 
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                    self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+                }, completion: nil)
+            } else {
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }, completion: nil)
+            }
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
