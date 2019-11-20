@@ -25,11 +25,7 @@ class RosterDetailViewController: UIViewController {
         return backgroundView
     }()
 
-    private let closeButton: UIButton = {
-        let closeButton = UIButton(type: .custom)
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        return closeButton
-    }()
+    private let closeButton = FloatingCloseButton()
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -114,20 +110,12 @@ class RosterDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var closeButtonImage: UIImage?
-
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemBackground
-            closeButtonImage = UIImage(systemName: "xmark.circle.fill")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.label)
-                .withConfiguration(UIImage.SymbolConfiguration(pointSize: 40.0, weight: .bold))
         } else {
             view.backgroundColor = .white
-            closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
         }
 
-        closeButton.setImage(closeButtonImage, for: .normal)
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         view.addSubview(scrollView)
