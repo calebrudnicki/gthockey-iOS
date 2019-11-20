@@ -25,6 +25,7 @@ class CartTableViewController: UITableViewController {
 
     private func setupTableView() {
         tableView.register(CartTableViewCell.self, forCellReuseIdentifier: "cartTableViewCell")
+        
         tableView.tableFooterView = CartTableViewFooter()
     }
 
@@ -73,7 +74,7 @@ class CartTableViewController: UITableViewController {
         }
     }
 
-    // MARK: - Table view data source
+    // MARK: Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -87,6 +88,31 @@ class CartTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cartTableViewCell", for: indexPath) as! CartTableViewCell
         cell.set(with: cartItems[indexPath.row])
         return cell
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 148.0
+    }
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+
+            let cartHelper = CartHelper()
+            cartHelper.remove(with: cartItems[indexPath.row], completion: { result in
+                if result {
+                    self.cartItems.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                } else {
+                    let alert = UIAlertController(title: "Remove to Cart Failed",
+                                                  message: nil,
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
+//            cartItems.remove(at: indexPath.row)
+        }
     }
 
 }

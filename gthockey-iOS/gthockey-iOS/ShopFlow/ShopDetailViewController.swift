@@ -250,28 +250,34 @@ class ShopDetailViewController: UIViewController {
     }
 
     @objc private func addToCartButtonTapped() {
-        if let user = Auth.auth().currentUser {
-            let db = Firestore.firestore()
+        var firestoreDict: [String : Any] = ["id": (apparelItem?.getID())!,
+                                             "name": (apparelItem?.getName())!,
+                                             "imageURL": (apparelItem?.getImageURL())?.description]
 
-            var firestoreDict: [String : Any] = ["id": (apparelItem?.getID())!,
-                                                 "name": (apparelItem?.getName())!,
-                                                 "imageURL": (apparelItem?.getImageURL())?.description]
-
-            guard let restrictedOptions = restrictedOptions else { return }
-            for restrictedOption in restrictedOptions {
-                let key = restrictedOption.getDisplayName()
-                firestoreDict[key.lowercased()] = restrictedOption.getValue()
-            }
-
-            guard let customOptions = customOptions else { return }
-            for customOption in customOptions {
-                let key = customOption.getDisplayName()
-                firestoreDict[key.lowercased()] = customOption.getValue()
-            }
-
-            db.collection("users").document(user.uid).updateData(["cart": FieldValue.arrayUnion([firestoreDict])])
-            dismiss(animated: true, completion: nil)
+        guard let restrictedOptions = restrictedOptions else { return }
+        for restrictedOption in restrictedOptions {
+            let key = restrictedOption.getDisplayName()
+            firestoreDict[key.lowercased()] = restrictedOption.getValue()
         }
+
+        guard let customOptions = customOptions else { return }
+        for customOption in customOptions {
+            let key = customOption.getDisplayName()
+            firestoreDict[key.lowercased()] = customOption.getValue()
+        }
+
+        let cartHelper = CartHelper()
+        cartHelper.add(cartDict: firestoreDict, completion: { result in
+            if result {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Add to Cart Failed",
+                                              message: nil,
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
 
     // MARK: Helper Functions
