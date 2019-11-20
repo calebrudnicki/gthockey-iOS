@@ -124,21 +124,35 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: "Get Directions to the Rink", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            switch indexPath.section {
+//        let alert = UIAlertController(title: "Get Directions to the Rink", message: nil, preferredStyle: .alert)
+//        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+//            switch indexPath.section {
+//            case 0:
+//                self.fetchGame(with: self.completedGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
+//                    self.openMaps(with: rink)
+//                })
+//            default:
+//                self.fetchGame(with: self.upcomingGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
+//                    self.openMaps(with: rink)
+//                })
+//            }
+//        }))
+//        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
+//        self.present(alert, animated: true, completion: nil)
+//        tableView.deselectRow(at: indexPath, animated: true)
+        let gameDetailViewController = ScheduleDetailViewController()
+        switch indexPath.section {
             case 0:
                 self.fetchGame(with: self.completedGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
-                    self.openMaps(with: rink)
+                    gameDetailViewController.set(with: self.completedGameArray[indexPath.row], with: opponent, with: rink)
                 })
             default:
                 self.fetchGame(with: self.upcomingGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
-                    self.openMaps(with: rink)
+                    gameDetailViewController.set(with: self.upcomingGameArray[indexPath.row], with: opponent, with: rink)
                 })
             }
-        }))
-        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+
+        present(gameDetailViewController, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 

@@ -165,10 +165,12 @@ class JSONParser {
     }
 
     private func makeTeamObject(value: JSON) -> Team {
+        print(value)
+        
         let team = Team(id: value["id"].int!,
                         schoolName: value["school_name"].string!,
                         mascotName: value["mascot_name"].string!,
-                        webURL: URL(string: value["web_url"].string ?? "http://lynnclubhockey.pointstreaksites.com/view/fightingknights/")!,
+                        webURL: URL(string: value["web_url"].string ?? "http://lynnclubhockey.pointstreaksites.com/view/fightingknights/") ?? URL(string: "http://lynnclubhockey.pointstreaksites.com/view/fightingknights/")!,
                         imageURL: URL(string: value["logo"].string ?? "https://prod.gthockey.com/media/teamlogos/EpGmgBUN_400x400.png")!)
         return team
     }
