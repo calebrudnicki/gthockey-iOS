@@ -83,7 +83,7 @@ class ScheduleDetailViewController: UIViewController {
         let homeTeamLabel = UILabel()
         homeTeamLabel.numberOfLines = 0
         homeTeamLabel.sizeToFit()
-        homeTeamLabel.font = UIFont(name: "HelveticaNeue-Light", size: 32.0)
+        homeTeamLabel.font = UIFont(name: "Helvetica Neue", size: 32.0)
         homeTeamLabel.translatesAutoresizingMaskIntoConstraints = false
         return homeTeamLabel
     }()
@@ -92,7 +92,7 @@ class ScheduleDetailViewController: UIViewController {
         let awayTeamTitle = UILabel()
         awayTeamTitle.numberOfLines = 0
         awayTeamTitle.sizeToFit()
-        awayTeamTitle.font = UIFont(name: "HelveticaNeue-Light", size: 32.0)
+        awayTeamTitle.font = UIFont(name: "Helvetica Neue", size: 32.0)
         awayTeamTitle.translatesAutoresizingMaskIntoConstraints = false
         return awayTeamTitle
     }()
