@@ -57,7 +57,6 @@
 		F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C392B2354EA3E009E1F3A /* Rink.swift */; };
 		F02585AF23412F88008E641C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02585AE23412F88008E641C /* News.swift */; };
 		F02DEA9023846B6A0063B83F /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DEA8F23846B6A0063B83F /* ScheduleDetailViewController.swift */; };
-		F02DEA92238470F00063B83F /* FullGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02DEA91238470F00063B83F /* FullGame.swift */; };
 		FA3570BA23502190008E83BC /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3570B923502190008E83BC /* Team.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,7 +116,6 @@
 		F00C392B2354EA3E009E1F3A /* Rink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rink.swift; sourceTree = "<group>"; };
 		F02585AE23412F88008E641C /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		F02DEA8F23846B6A0063B83F /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
-		F02DEA91238470F00063B83F /* FullGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullGame.swift; sourceTree = "<group>"; };
 		FA3570B923502190008E83BC /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -295,7 +293,6 @@
 				82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */,
 				82B3A172237BB49700CD8F3D /* ApparelCustomItem.swift */,
 				82F79FBD235F428E0070F63D /* MenuOption.swift */,
-				F02DEA91238470F00063B83F /* FullGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -421,7 +418,6 @@
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */,
-				F02DEA92238470F00063B83F /* FullGame.swift in Sources */,
 				82B3A177237BD7CC00CD8F3D /* PillButton.swift in Sources */,
 				82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */,
 				8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */,
