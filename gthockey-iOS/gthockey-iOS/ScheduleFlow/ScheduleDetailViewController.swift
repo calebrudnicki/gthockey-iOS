@@ -117,38 +117,6 @@ class ScheduleDetailViewController: UIViewController {
         return awayTeamScore
     }()
 
-    private let homeTeamStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill // .leading .firstBaseline .center .trailing .lastBaseline
-        stackView.distribution = .fill // .fillEqually .fillProportionally .equalSpacing .equalCentering
-        return stackView
-    }()
-
-    private let awayTeamStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.alignment = .fill // .leading .firstBaseline .center .trailing .lastBaseline
-        stackView.distribution = .fill // .fillEqually .fillProportionally .equalSpacing .equalCentering
-        return stackView
-    }()
-
-    private let homeTeamNameStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill // .leading .firstBaseline .center .trailing .lastBaseline
-        stackView.distribution = .fillEqually // .fillEqually .fillProportionally .equalSpacing .equalCentering
-        return stackView
-    }()
-
-    private let awayTeamNameStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill // .leading .firstBaseline .center .trailing .lastBaseline
-        stackView.distribution = .fillEqually // .fillEqually .fillProportionally .equalSpacing .equalCentering
-        return stackView
-    }()
-
     // MARK: Init
 
     override func viewDidLoad() {
