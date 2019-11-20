@@ -61,6 +61,7 @@
 		C58AE6FDEF374C9B1B0751D2 /* Pods_gthockey_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */; };
 		F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C392B2354EA3E009E1F3A /* Rink.swift */; };
 		F02585AF23412F88008E641C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02585AE23412F88008E641C /* News.swift */; };
+		F0C312D52385976200B7FD8D /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C312D42385976200B7FD8D /* ScheduleDetailViewController.swift */; };
 		FA3570BA23502190008E83BC /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3570B923502190008E83BC /* Team.swift */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +125,7 @@
 		D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gthockey_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00C392B2354EA3E009E1F3A /* Rink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rink.swift; sourceTree = "<group>"; };
 		F02585AE23412F88008E641C /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		F0C312D42385976200B7FD8D /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		FA3570B923502190008E83BC /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,6 +199,7 @@
 				82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */,
 				82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */,
 				82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */,
+				F0C312D42385976200B7FD8D /* ScheduleDetailViewController.swift */,
 			);
 			path = ScheduleFlow;
 			sourceTree = "<group>";
@@ -347,7 +350,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1030;
-				ORGANIZATIONNAME = "Caleb Rudnicki";
+				ORGANIZATIONNAME = "GT Hockey";
 				TargetAttributes = {
 					82DCB474233C402200BDE2FE = {
 						CreatedOnToolsVersion = 10.3;
@@ -355,7 +358,7 @@
 				};
 			};
 			buildConfigurationList = 82DCB470233C402200BDE2FE /* Build configuration list for PBXProject "gthockey-iOS" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 10.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -468,6 +471,7 @@
 				82EE57E32341B36200FCC181 /* Player.swift in Sources */,
 				82B3A16F237BB44F00CD8F3D /* ShopCustomOptionsView.swift in Sources */,
 				82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */,
+				F0C312D52385976200B7FD8D /* ScheduleDetailViewController.swift in Sources */,
 				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,
 				820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */,
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
@@ -624,7 +628,7 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 92DETN2MKQ;
+				DEVELOPMENT_TEAM = DF2L4427W9;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -646,7 +650,7 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = 92DETN2MKQ;
+				DEVELOPMENT_TEAM = DF2L4427W9;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

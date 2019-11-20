@@ -168,15 +168,15 @@ class JSONParser {
         let team = Team(id: value["id"].int!,
                         schoolName: value["school_name"].string!,
                         mascotName: value["mascot_name"].string!,
-                        webURL: URL(string: value["web_url"].string ?? "http://lynnclubhockey.pointstreaksites.com/view/fightingknights/")!,
-                        imageURL: URL(string: value["logo"].string ?? "https://prod.gthockey.com/media/teamlogos/EpGmgBUN_400x400.png")!)
+                        webURL: URL(string: value["web_url"].string!) ?? URL(string: "http://lynnclubhockey.pointstreaksites.com/view/fightingknights/")!,
+                        imageURL: URL(string: value["logo"].string!) ?? URL(string: "https://prod.gthockey.com/media/teamlogos/EpGmgBUN_400x400.png")!)
         return team
     }
 
     private func makeRinkObject(value: JSON) -> Rink {
-        let rink = Rink(id: value["id"].int!,
-                        name: value["rink_name"].string!,
-                        mapsURL: URL(string: value["maps_url"].string ?? "https://www.google.com/maps/place/Columbus+Ice+Rink/@32.4504096,-84.9886797,15z/data=!4m2!3m1!1s0x0:")!)
+        let rink = Rink(id: value["id"].int ?? 12345,
+                        name: value["rink_name"].string ?? "TBD",
+                        mapsURL: URL(string: value["maps_url"].string ?? "@0.00000,0.000000,15z/data=!4m2!3m1!1s0x0:")!)
         return rink
     }
 

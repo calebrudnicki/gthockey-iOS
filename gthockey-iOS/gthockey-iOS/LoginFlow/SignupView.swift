@@ -1,4 +1,4 @@
-//
+    //
 //  SignupView.swift
 //  gthockey-iOS
 //
