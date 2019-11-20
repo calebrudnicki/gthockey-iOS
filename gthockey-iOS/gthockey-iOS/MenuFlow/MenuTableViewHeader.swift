@@ -29,7 +29,7 @@ class MenuTableViewHeader: UIView {
         super.init(frame: frame)
 
         let authentificator = Authentificator()
-        titleLabel.text = "Hi \(authentificator.getUserFirstName())"
+        titleLabel.text = "GT Hockey"//"Hi \(authentificator.getUserFirstName())"
 
         addSubview(titleLabel)
         updateConstraints()
