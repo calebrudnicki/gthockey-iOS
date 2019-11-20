@@ -168,8 +168,8 @@ class ScheduleDetailViewController: UIViewController {
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         view.addSubview(scrollView)
-        scrollView.addSubviews([backgroundView, mapViewContainer])
-        backgroundView.addSubviews([closeButton, homeTeamTitle, homeTeamMascot, homeTeamImageView, homeTeamScore, awayTeamTitle, awayTeamMascot, awayTeamImageView, awayTeamScore])
+        scrollView.addSubviews([backgroundView, mapViewContainer, closeButton])
+        backgroundView.addSubviews([homeTeamTitle, homeTeamMascot, homeTeamImageView, homeTeamScore, awayTeamTitle, awayTeamMascot, awayTeamImageView, awayTeamScore])
         
         mapViewContainer.addSubview(mapView)
 
