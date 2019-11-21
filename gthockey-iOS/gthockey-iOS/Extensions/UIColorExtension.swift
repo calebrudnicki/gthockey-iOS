@@ -17,6 +17,8 @@ extension UIColor {
     static let winGreen = UIColor(red: 34/255, green: 139/255, blue: 34/255, alpha: 1.0)
     static let lossRed = UIColor(red: 178/255, green: 34/255, blue: 34/255, alpha: 1.0)
 
+    static let paypalBlue = UIColor(red: 22/255, green: 155/255, blue: 215/255, alpha: 1.0)
+
     static let cellBackgroundDark = UIColor(red: 28/255, green: 28/255, blue: 30/255, alpha: 1.0)
     static let cellBackgroundLight = UIColor(red: 242/255, green: 242/255, blue: 247/255, alpha: 1.0)
 

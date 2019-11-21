@@ -25,8 +25,10 @@ class CartTableViewController: UITableViewController {
 
     private func setupTableView() {
         tableView.register(CartTableViewCell.self, forCellReuseIdentifier: "cartTableViewCell")
-        
-        tableView.tableFooterView = CartTableViewFooter()
+
+        let cartTableViewFooter = CartTableViewFooter()
+        cartTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 75.0)
+        tableView.tableFooterView = cartTableViewFooter
     }
 
     @objc private func fetchCart() {
@@ -68,7 +70,6 @@ class CartTableViewController: UITableViewController {
 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
-                    print(self.cartItems)
                 }
             }
         }

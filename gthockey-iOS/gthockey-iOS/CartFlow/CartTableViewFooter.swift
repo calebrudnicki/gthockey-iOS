@@ -12,14 +12,14 @@ class CartTableViewFooter: UIView {
 
     // MARK: Properties
 
-    let paypalCheckoutButton = PillButton(title: "Checkout", backgroundColor: .blue, borderColor: .blue, isEnabled: true)
+    let paypalCheckoutButton = PillButton(title: "Checkout", backgroundColor: .paypalBlue, borderColor: .paypalBlue, isEnabled: true)
 
     // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        translatesAutoresizingMaskIntoConstraints = false
+        paypalCheckoutButton.addTarget(self, action: #selector(paypalCheckoutButtonTapped), for: .touchUpInside)
 
         addSubview(paypalCheckoutButton)
         updateConstraints()
@@ -35,9 +35,15 @@ class CartTableViewFooter: UIView {
         NSLayoutConstraint.activate([
             paypalCheckoutButton.topAnchor.constraint(equalTo: topAnchor, constant: 12.0),
             paypalCheckoutButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.0),
-            paypalCheckoutButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 12.0),
-            paypalCheckoutButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 12.0)
+            paypalCheckoutButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12.0),
+            paypalCheckoutButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12.0)
         ])
+    }
+
+    // MARK: Action
+
+    @objc private func paypalCheckoutButtonTapped() {
+        print("Start checkout with paypal")
     }
 
 }
