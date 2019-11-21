@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class HomeDetailViewController: UIViewController, UITextViewDelegate{
+class HomeDetailViewController: UIViewController {
 
     // MARK: Properties
 
