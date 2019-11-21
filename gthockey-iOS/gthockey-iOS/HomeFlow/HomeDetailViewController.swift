@@ -59,14 +59,7 @@ class HomeDetailViewController: UIViewController {
         return separatorView
     }()
 
-    private let bodyLabel: UILabel = {
-        let bodyLabel = UILabel()
-        bodyLabel.numberOfLines = 0
-        bodyLabel.sizeToFit()
-        bodyLabel.font = UIFont(name: "Georgia", size: 20.0)
-        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
-        return bodyLabel
-    }()
+    private let bodyTextView = HTMLTextView(frame: .zero)
 
     // MARK: Init
 
@@ -83,7 +76,7 @@ class HomeDetailViewController: UIViewController {
 
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
-        backgroundView.addSubviews([imageView, closeButton, headlineLabel, dateLabel, separatorView, bodyLabel])
+        backgroundView.addSubviews([imageView, closeButton, headlineLabel, dateLabel, separatorView, bodyTextView])
 
         updateViewConstraints()
     }
@@ -140,10 +133,10 @@ class HomeDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            bodyLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 12.0),
-            bodyLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            bodyLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
-            bodyLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
+            bodyTextView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 12.0),
+            bodyTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            bodyTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
+            bodyTextView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
         ])
     }
 
@@ -161,7 +154,7 @@ class HomeDetailViewController: UIViewController {
         formatter.dateStyle = .long
         dateLabel.text = formatter.string(from: news.getDate())
 
-        bodyLabel.text = news.getContent()
+        bodyTextView.setText(with: news.getContent())
     }
 
     // MARK: Action
