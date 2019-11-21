@@ -70,14 +70,6 @@ class ShopDetailViewController: UIViewController {
     }()
 
     private let descriptionLabel = HTMLTextView()
-//    private let descriptionLabel: UILabel = {
-//        let descriptionLabel = UILabel()
-//        descriptionLabel.numberOfLines = 0
-//        descriptionLabel.sizeToFit()
-//        descriptionLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
-//        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-//        return descriptionLabel
-//    }()
 
     private let separatorView2: UIView = {
         let separatorView2 = UIView()
@@ -233,7 +225,6 @@ class ShopDetailViewController: UIViewController {
         headlineLabel.text = apparel.getName()
         priceLabel.text = "$\(apparel.getPrice().description)"
         descriptionLabel.setText(with: apparel.getDescription())
-//        descriptionLabel.text = apparel.getDescription()
 
         self.restrictedOptions = restrictedOptions
         for restrictedOption in restrictedOptions {

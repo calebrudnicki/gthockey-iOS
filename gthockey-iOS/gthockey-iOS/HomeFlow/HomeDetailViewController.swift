@@ -164,13 +164,6 @@ class HomeDetailViewController: UIViewController {
         dateLabel.text = formatter.string(from: news.getDate())
 
         bodyTextView.setText(with: news.getContent())
-//        let contentString = news.getContent().replacingOccurrences(of: "\n", with: "<br>")
-//        let attributedString = contentString.htmlToAttributedString?.mutableCopy() as! NSMutableAttributedString
-//        attributedString.addAttribute(.font, value: UIFont(name: "Georgia", size: 20.0)!, range: NSRange(location: 0, length: attributedString.length))
-//        if #available(iOS 13.0, *) {
-//            attributedString.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: attributedString.length))
-//        }
-//        bodyTextView.attributedText = attributedString
     }
 
     // MARK: Action
