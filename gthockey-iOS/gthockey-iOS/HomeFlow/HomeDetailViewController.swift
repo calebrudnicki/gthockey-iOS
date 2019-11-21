@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class HomeDetailViewController: UIViewController {
+class HomeDetailViewController: UIViewController, UITextViewDelegate{
 
     // MARK: Properties
 
@@ -63,13 +63,22 @@ class HomeDetailViewController: UIViewController {
         return separatorView
     }()
 
-    private let bodyLabel: UILabel = {
-        let bodyLabel = UILabel()
-        bodyLabel.numberOfLines = 0
-        bodyLabel.sizeToFit()
-        bodyLabel.font = UIFont(name: "Georgia", size: 20.0)
-        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
-        return bodyLabel
+    private let bodyContainer: UILabel = {
+        let bodyContainer = UILabel()
+        bodyContainer.sizeToFit()
+        bodyContainer.isUserInteractionEnabled = true
+        bodyContainer.translatesAutoresizingMaskIntoConstraints = false
+        return bodyContainer
+    }()
+
+    private let bodyTextView: UITextView = {
+        let bodyTextView = UITextView()
+        bodyTextView.isScrollEnabled = false
+        bodyTextView.isEditable = false
+        bodyTextView.dataDetectorTypes = .link
+        bodyTextView.font = UIFont(name: "Georgia", size: 20.0)
+        bodyTextView.translatesAutoresizingMaskIntoConstraints = false
+        return bodyTextView
     }()
 
     // MARK: Init
@@ -90,9 +99,11 @@ class HomeDetailViewController: UIViewController {
         closeButton.setImage(closeButtonImage, for: .normal)
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
+        bodyContainer.addSubview(bodyTextView)
+
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
-        backgroundView.addSubviews([imageView, closeButton, headlineLabel, dateLabel, separatorView, bodyLabel])
+        backgroundView.addSubviews([imageView, closeButton, headlineLabel, dateLabel, separatorView, bodyContainer])
 
         updateViewConstraints()
     }
@@ -149,10 +160,17 @@ class HomeDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            bodyLabel.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 12.0),
-            bodyLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            bodyLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
-            bodyLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
+            bodyTextView.topAnchor.constraint(equalTo: bodyContainer.topAnchor),
+            bodyTextView.leadingAnchor.constraint(equalTo: bodyContainer.leadingAnchor),
+            bodyTextView.trailingAnchor.constraint(equalTo: bodyContainer.trailingAnchor),
+            bodyTextView.bottomAnchor.constraint(equalTo: bodyContainer.bottomAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            bodyContainer.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 12.0),
+            bodyContainer.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            bodyContainer.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
+            bodyContainer.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
         ])
     }
 
@@ -170,7 +188,13 @@ class HomeDetailViewController: UIViewController {
         formatter.dateStyle = .long
         dateLabel.text = formatter.string(from: news.getDate())
 
-        bodyLabel.text = news.getContent()
+        let attributedString = news.getContent().htmlToAttributedString?.mutableCopy() as! NSMutableAttributedString
+        attributedString.addAttribute(.font, value: UIFont(name: "Georgia", size: 20.0)!, range: NSRange(location: 0, length: attributedString.length))
+        if #available(iOS 13.0, *) {
+            attributedString.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: attributedString.length))
+        }
+        bodyTextView.attributedText = attributedString
+        bodyTextView.backgroundColor = self.view.backgroundColor
     }
 
     // MARK: Action
@@ -179,4 +203,18 @@ class HomeDetailViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
+}
+
+extension String {
+    var htmlToAttributedString: NSAttributedString? {
+        guard let data = data(using: .utf8) else { return NSAttributedString() }
+        do {
+            return try NSAttributedString(data: data, options: [.documentType: NSAttributedString.DocumentType.html, .characterEncoding:String.Encoding.utf8.rawValue], documentAttributes: nil)
+        } catch {
+            return NSAttributedString()
+        }
+    }
+    var htmlToString: String {
+        return htmlToAttributedString?.string ?? ""
+    }
 }
