@@ -25,11 +25,7 @@ class HomeDetailViewController: UIViewController {
         return backgroundView
     }()
 
-    private let closeButton: UIButton = {
-        let closeButton = UIButton(type: .custom)
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        return closeButton
-    }()
+    private let closeButton = FloatingCloseButton()
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -70,17 +66,12 @@ class HomeDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var closeButtonImage: UIImage?
-
-        if traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = .black
-            closeButtonImage = UIImage(named: "CloseButtonWhite")?.withRenderingMode(.alwaysOriginal)
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
         } else {
             view.backgroundColor = .white
-            closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
         }
 
-        closeButton.setImage(closeButtonImage, for: .normal)
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         view.addSubview(scrollView)

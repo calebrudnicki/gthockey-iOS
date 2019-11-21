@@ -28,15 +28,30 @@ class ScheduleTableViewController: UITableViewController {
         navigationItem.title = "Schedule"
 
         let menuButtonImage: UIImage?
-        if traitCollection.userInterfaceStyle == .dark {
-            menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
+        let cartButtonImage: UIImage?
+
+        if #available(iOS 13.0, *){
+            menuButtonImage = UIImage(systemName: "line.horizontal.3")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.label)
+                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
+            cartButtonImage = UIImage(systemName: "cart.fill")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.label)
+                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
         } else {
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
+            cartButtonImage = UIImage(named: "CartIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupTableView()
@@ -146,6 +161,11 @@ class ScheduleTableViewController: UITableViewController {
 
     @objc private func menuButtonTapped() {
         delegate?.handleMenuToggle(forMenuOption: nil)
+    }
+
+    @objc private func cartButtonTapped() {
+        let cartTableViewController = CartTableViewController()
+        present(cartTableViewController, animated: true, completion: nil)
     }
 
     // MARK: Location

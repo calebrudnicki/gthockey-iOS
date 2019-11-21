@@ -12,12 +12,27 @@ class CardCollectionViewCell: UICollectionViewCell {
 
     // MARK: Init
 
+    override var isHighlighted: Bool {
+        didSet {
+            if isHighlighted {
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                    self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+                }, completion: nil)
+            } else {
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }, completion: nil)
+            }
+        }
+    }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        if traitCollection.userInterfaceStyle == .dark {
-            layer.backgroundColor = UIColor.cellBackgroundDark.cgColor
-            layer.shadowColor = UIColor.white.cgColor
+        if #available(iOS 13.0, *) {
+            backgroundColor = .secondarySystemBackground
+            layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
+            layer.shadowColor = UIColor.label.cgColor
         } else {
             layer.backgroundColor = UIColor.cellBackgroundLight.cgColor
             layer.shadowColor = UIColor.black.cgColor

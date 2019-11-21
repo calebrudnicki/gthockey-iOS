@@ -28,17 +28,32 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
         navigationItem.title = "Shop"
 
         let menuButtonImage: UIImage?
-        if traitCollection.userInterfaceStyle == .dark {
-            collectionView.backgroundColor = .black
-            menuButtonImage = UIImage(named: "MenuIconWhite")?.withRenderingMode(.alwaysOriginal)
+        let cartButtonImage: UIImage?
+
+        if #available(iOS 13.0, *){
+            collectionView.backgroundColor = .systemBackground
+            menuButtonImage = UIImage(systemName: "line.horizontal.3")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.label)
+                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
+            cartButtonImage = UIImage(systemName: "cart.fill")?
+                .withRenderingMode(.alwaysOriginal)
+                .withTintColor(.label)
+                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
         } else {
             collectionView.backgroundColor = .white
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
+            cartButtonImage = UIImage(named: "CartIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
+
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()
@@ -93,6 +108,11 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     
     @objc private func menuButtonTapped() {
         delegate?.handleMenuToggle(forMenuOption: nil)
+    }
+
+    @objc private func cartButtonTapped() {
+        let cartTableViewController = CartTableViewController()
+        present(cartTableViewController, animated: true, completion: nil)
     }
 
     private func fetchApparelDetails(with id: Int, completion: @escaping ([ApparelRestrictedItem], [ApparelCustomItem]) -> Void) {

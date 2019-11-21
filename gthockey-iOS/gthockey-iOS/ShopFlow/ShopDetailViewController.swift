@@ -31,11 +31,7 @@ class ShopDetailViewController: UIViewController {
         return backgroundView
     }()
 
-    private let closeButton: UIButton = {
-        let closeButton = UIButton(type: .custom)
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
-        return closeButton
-    }()
+    private let closeButton = FloatingCloseButton()
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()
@@ -105,17 +101,12 @@ class ShopDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var closeButtonImage: UIImage?
-
-        if traitCollection.userInterfaceStyle == .dark {
-            view.backgroundColor = .black
-            closeButtonImage = UIImage(named: "CloseButtonWhite")?.withRenderingMode(.alwaysOriginal)
+        if #available(iOS 13.0, *) {
+            view.backgroundColor = .systemBackground
         } else {
             view.backgroundColor = .white
-            closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
         }
 
-        closeButton.setImage(closeButtonImage, for: .normal)
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         addToCartButton.addTarget(self, action: #selector(addToCartButtonTapped), for: .touchUpInside)
@@ -255,7 +246,9 @@ class ShopDetailViewController: UIViewController {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
 
-            var firestoreDict: [String : Any] = ["id": (apparelItem?.getID())!, "name": (apparelItem?.getName())!]
+            var firestoreDict: [String : Any] = ["id": (apparelItem?.getID())!,
+                                                 "name": (apparelItem?.getName())!,
+                                                 "imageURL": (apparelItem?.getImageURL())?.description]
 
             guard let restrictedOptions = restrictedOptions else { return }
             for restrictedOption in restrictedOptions {
