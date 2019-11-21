@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseAnalytics
 
 class Authentificator {
 
@@ -43,6 +44,7 @@ class Authentificator {
                     if error != nil {
                         completion(false, error)
                     }
+
                     self.setUserDefaults(with: email, password: password)
                 }
                 completion(true, nil)
@@ -61,19 +63,20 @@ class Authentificator {
         }
     }
 
-    public func getUserFirstName() -> String {
-//        if let user = Auth.auth().currentUser {
-//            let db = Firestore.firestore()
-//            db.collection("users").document(user.uid).getDocument { (document, error) in
-//            if let document = document, document.exists,
-//                let firstName = ((document.data()! as NSDictionary)["firstName"] as! String?) {
-//                return firstName
-//                }
-//            } else {
-//                print("Document does not exist")
-//            }
-//        }
-        return "Caleb"
+    public func getUserProperties(completion: @escaping ([String : String]) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).getDocument { (document, error) in
+                guard let document = document,
+                            document.exists
+                else { return }
+
+                if let firstName = ((document.data()! as NSDictionary)["firstName"] as! String?),
+                   let lastName = ((document.data()! as NSDictionary)["lastName"] as! String?) {
+                    completion(["firstName": firstName, "lastName": lastName])
+                }
+            }
+        }
     }
 
     // MARK: Private Functions

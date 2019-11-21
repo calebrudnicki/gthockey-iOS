@@ -39,6 +39,7 @@
 		82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17A237DA87600CD8F3D /* SignupView.swift */; };
 		82B3A17D237DBFAE00CD8F3D /* WelcomeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */; };
 		82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17E237DF95C00CD8F3D /* LoginView.swift */; };
+		82C0BC1E2387208500A134E7 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */; };
 		82C2467D2384BAC7003CB268 /* FloatingCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */; };
 		82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C1E92363333800C4D2C2 /* StringExtension.swift */; };
 		82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */; };
@@ -100,6 +101,7 @@
 		82B3A17A237DA87600CD8F3D /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonsView.swift; sourceTree = "<group>"; };
 		82B3A17E237DF95C00CD8F3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCloseButton.swift; sourceTree = "<group>"; };
 		82C8C1E92363333800C4D2C2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewController.swift; sourceTree = "<group>"; };
@@ -324,6 +326,7 @@
 			isa = PBXGroup;
 			children = (
 				F093EA4B2385F4170037FCA7 /* SettingsTableViewController.swift */,
+				82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */,
 			);
 			path = SettingsFlow;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */,
 				82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */,
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
+				82C0BC1E2387208500A134E7 /* SettingsTableViewCell.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */,
 				82B3A177237BD7CC00CD8F3D /* PillButton.swift in Sources */,
@@ -637,7 +641,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = DF2L4427W9;
+				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -661,7 +665,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = DF2L4427W9;
+				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
