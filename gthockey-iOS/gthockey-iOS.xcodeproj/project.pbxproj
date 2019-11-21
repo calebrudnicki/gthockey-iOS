@@ -39,6 +39,7 @@
 		82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17A237DA87600CD8F3D /* SignupView.swift */; };
 		82B3A17D237DBFAE00CD8F3D /* WelcomeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */; };
 		82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17E237DF95C00CD8F3D /* LoginView.swift */; };
+		82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C24680238669E0003CB268 /* HTMLTextView.swift */; };
 		82C2467D2384BAC7003CB268 /* FloatingCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */; };
 		82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C1E92363333800C4D2C2 /* StringExtension.swift */; };
 		82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */; };
@@ -99,6 +100,7 @@
 		82B3A17A237DA87600CD8F3D /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonsView.swift; sourceTree = "<group>"; };
 		82B3A17E237DF95C00CD8F3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		82C24680238669E0003CB268 /* HTMLTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextView.swift; sourceTree = "<group>"; };
 		82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCloseButton.swift; sourceTree = "<group>"; };
 		82C8C1E92363333800C4D2C2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 			children = (
 				8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */,
 				82B3A176237BD7CC00CD8F3D /* PillButton.swift */,
+				82C24680238669E0003CB268 /* HTMLTextView.swift */,
 				82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */,
 			);
 			path = CustomUIComponents;
@@ -477,6 +480,7 @@
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
+				82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
 				82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */,
 				82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */,
