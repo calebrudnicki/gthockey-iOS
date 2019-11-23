@@ -79,6 +79,15 @@ class Authentificator {
         }
     }
 
+    public func updateUserProperties(with firstName: String, lastName: String, completion: @escaping (Bool) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).updateData(["firstName": firstName, "lastName": lastName])
+            completion(true)
+        }
+        completion(false)
+    }
+
     // MARK: Private Functions
 
     private func setUserDefaults(with email: String, password: String) {

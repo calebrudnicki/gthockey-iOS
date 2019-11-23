@@ -101,7 +101,7 @@ class ShopDetailViewController: UIViewController {
 
     private let restrictedOptionsView = ShopRestrictedOptionsView()
     private let customOptionsView = ShopCustomOptionsView()
-    private let addToCartButton = PillButton(title: "Add to Cart", backgroundColor: .winGreen, borderColor: .winGreen, isEnabled: false)
+    private let addToCartButton = PillButton(title: "Add to cart", backgroundColor: .winGreen, borderColor: .winGreen, isEnabled: false)
 
     // MARK: Init
 

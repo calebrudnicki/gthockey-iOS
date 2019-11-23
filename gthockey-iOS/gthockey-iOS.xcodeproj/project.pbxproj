@@ -40,6 +40,7 @@
 		82B3A17D237DBFAE00CD8F3D /* WelcomeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */; };
 		82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17E237DF95C00CD8F3D /* LoginView.swift */; };
 		82C0BC1E2387208500A134E7 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */; };
+		82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */; };
 		82C2467D2384BAC7003CB268 /* FloatingCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */; };
 		82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C1E92363333800C4D2C2 /* StringExtension.swift */; };
 		82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */; };
@@ -102,6 +103,7 @@
 		82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonsView.swift; sourceTree = "<group>"; };
 		82B3A17E237DF95C00CD8F3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewFooter.swift; sourceTree = "<group>"; };
 		82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCloseButton.swift; sourceTree = "<group>"; };
 		82C8C1E92363333800C4D2C2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewController.swift; sourceTree = "<group>"; };
@@ -327,6 +329,7 @@
 			children = (
 				F093EA4B2385F4170037FCA7 /* SettingsTableViewController.swift */,
 				82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */,
+				82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */,
 			);
 			path = SettingsFlow;
 			sourceTree = "<group>";
@@ -499,6 +502,7 @@
 				82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */,
 				82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */,
 				82F468F2237F611C00573EE5 /* CartItem.swift in Sources */,
+				82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
