@@ -68,7 +68,7 @@ class SignupView: UIView {
         return passwordTextField
     }()
 
-    private let signupButton = PillButton(title: "Sign Up", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
+    private let signupButton = PillButton(title: "Sign up", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
 
     private let switchToLoginButton: UIButton = {
         let switchToLoginButton = UIButton()

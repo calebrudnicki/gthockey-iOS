@@ -39,6 +39,8 @@
 		82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17A237DA87600CD8F3D /* SignupView.swift */; };
 		82B3A17D237DBFAE00CD8F3D /* WelcomeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */; };
 		82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17E237DF95C00CD8F3D /* LoginView.swift */; };
+		82C0BC1E2387208500A134E7 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */; };
+		82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */; };
 		82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C24680238669E0003CB268 /* HTMLTextView.swift */; };
 		82C2467D2384BAC7003CB268 /* FloatingCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */; };
 		82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C1E92363333800C4D2C2 /* StringExtension.swift */; };
@@ -62,6 +64,7 @@
 		C58AE6FDEF374C9B1B0751D2 /* Pods_gthockey_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */; };
 		F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C392B2354EA3E009E1F3A /* Rink.swift */; };
 		F02585AF23412F88008E641C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02585AE23412F88008E641C /* News.swift */; };
+		F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F093EA4B2385F4170037FCA7 /* SettingsTableViewController.swift */; };
 		FA3570BA23502190008E83BC /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3570B923502190008E83BC /* Team.swift */; };
 /* End PBXBuildFile section */
 
@@ -100,6 +103,8 @@
 		82B3A17A237DA87600CD8F3D /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonsView.swift; sourceTree = "<group>"; };
 		82B3A17E237DF95C00CD8F3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewFooter.swift; sourceTree = "<group>"; };
 		82C24680238669E0003CB268 /* HTMLTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextView.swift; sourceTree = "<group>"; };
 		82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCloseButton.swift; sourceTree = "<group>"; };
 		82C8C1E92363333800C4D2C2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
@@ -126,6 +131,7 @@
 		D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gthockey_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00C392B2354EA3E009E1F3A /* Rink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rink.swift; sourceTree = "<group>"; };
 		F02585AE23412F88008E641C /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		F093EA4B2385F4170037FCA7 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		FA3570B923502190008E83BC /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -244,6 +250,7 @@
 				82D971B4233D60A500BFD322 /* ScheduleFlow */,
 				82D971B5233D60B000BFD322 /* RosterFlow */,
 				82170D12236FB349005FE89B /* ShopFlow */,
+				F093EA482385F3C40037FCA7 /* SettingsFlow */,
 				82F468EC237F4BD800573EE5 /* CartFlow */,
 				825092162361EF8E00D98DEA /* Extensions */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
@@ -318,6 +325,16 @@
 				82F79FBD235F428E0070F63D /* MenuOption.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F093EA482385F3C40037FCA7 /* SettingsFlow */ = {
+			isa = PBXGroup;
+			children = (
+				F093EA4B2385F4170037FCA7 /* SettingsTableViewController.swift */,
+				82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */,
+				82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */,
+			);
+			path = SettingsFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,6 +456,7 @@
 				8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */,
 				82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */,
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
+				82C0BC1E2387208500A134E7 /* SettingsTableViewCell.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */,
 				82B3A177237BD7CC00CD8F3D /* PillButton.swift in Sources */,
@@ -475,6 +493,7 @@
 				820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */,
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
+				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
 				82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
@@ -487,6 +506,7 @@
 				82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */,
 				82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */,
 				82F468F2237F611C00573EE5 /* CartItem.swift in Sources */,
+				82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +646,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
@@ -637,6 +658,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -648,6 +670,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
@@ -659,6 +682,7 @@
 				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
