@@ -54,8 +54,6 @@ class HomeCollectionViewCell: CardCollectionViewCell {
     }
 
     override func updateConstraints() {
-        super.updateConstraints()
-
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -74,6 +72,8 @@ class HomeCollectionViewCell: CardCollectionViewCell {
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0),
             subtitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
         ])
+
+        super.updateConstraints()
     }
 
     // MARK: Setter
