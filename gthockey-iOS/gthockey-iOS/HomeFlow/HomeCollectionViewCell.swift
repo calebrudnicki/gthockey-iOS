@@ -74,6 +74,7 @@ class HomeCollectionViewCell: CardCollectionViewCell {
             subtitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0),
             subtitleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
         ])
+        contentView.layoutSubviews()
     }
 
     // MARK: Setter
