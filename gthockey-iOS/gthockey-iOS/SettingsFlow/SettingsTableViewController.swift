@@ -15,6 +15,8 @@ class SettingsTableViewController: UITableViewController {
     private var userProperties: [String : String] = [:]
     private var firstName: String?
     private var lastName: String?
+    private var email: String?
+
     private var saveButton: UIBarButtonItem?
     public var delegate: HomeControllerDelegate?
 
@@ -66,7 +68,9 @@ class SettingsTableViewController: UITableViewController {
         authentificator.getUserProperties(completion: { propertiesDictionary in
             self.firstName = propertiesDictionary["firstName"] ?? ""
             self.lastName = propertiesDictionary["lastName"] ?? ""
+            self.email = propertiesDictionary["email"] ?? ""
             self.userProperties = propertiesDictionary
+
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -87,9 +91,13 @@ class SettingsTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell", for: indexPath) as! SettingsTableViewCell
         switch indexPath.row {
         case 0:
-            cell.set(with: "First Name", userProperties["firstName"] ?? "")
+            cell.set(with: "First Name", value: userProperties["firstName"] ?? "", isEditable: true)
+        case 1:
+            cell.set(with: "Last Name", value: userProperties["lastName"] ?? "", isEditable: true)
+        case 2:
+            cell.set(with: "Email", value: userProperties["email"] ?? "", isEditable: false)
         default:
-            cell.set(with: "Last Name", userProperties["lastName"] ?? "")
+            break
         }
         cell.delegate = self
         return cell
