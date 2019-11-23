@@ -31,8 +31,6 @@ class ShopDetailViewController: UIViewController {
         return backgroundView
     }()
 
-    private let closeButton = FloatingCloseButton()
-
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -95,6 +93,7 @@ class ShopDetailViewController: UIViewController {
     private let restrictedOptionsView = ShopRestrictedOptionsView()
     private let customOptionsView = ShopCustomOptionsView()
     private let addToCartButton = PillButton(title: "Add to cart", backgroundColor: .winGreen, borderColor: .winGreen, isEnabled: false)
+    private let closeButton = FloatingCloseButton()
 
     // MARK: Init
 
@@ -114,8 +113,8 @@ class ShopDetailViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
 
-        backgroundView.addSubviews([imageView, closeButton, headlineLabel, priceLabel, separatorView1, descriptionLabel,
-                                    separatorView2, restrictedOptionsStackView, customOptionsStackView, addToCartButton])
+        backgroundView.addSubviews([imageView, headlineLabel, priceLabel, separatorView1, descriptionLabel, separatorView2,
+                                    restrictedOptionsStackView, customOptionsStackView, addToCartButton, closeButton])
 
         updateViewConstraints()
     }
@@ -143,13 +142,6 @@ class ShopDetailViewController: UIViewController {
             imageView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             imageView.heightAnchor.constraint(equalTo: view.widthAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12.0),
-            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12.0),
-            closeButton.widthAnchor.constraint(equalToConstant: 32.0),
-            closeButton.heightAnchor.constraint(equalToConstant: 32.0)
         ])
 
         NSLayoutConstraint.activate([
@@ -202,6 +194,13 @@ class ShopDetailViewController: UIViewController {
             addToCartButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             addToCartButton.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0),
             addToCartButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.075)
+        ])
+
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12.0),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0),
+            closeButton.widthAnchor.constraint(equalToConstant: 32.0),
+            closeButton.heightAnchor.constraint(equalToConstant: 32.0)
         ])
     }
 

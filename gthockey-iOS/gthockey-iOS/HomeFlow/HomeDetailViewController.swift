@@ -25,8 +25,6 @@ class HomeDetailViewController: UIViewController {
         return backgroundView
     }()
 
-    private let closeButton = FloatingCloseButton()
-
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -60,6 +58,7 @@ class HomeDetailViewController: UIViewController {
     }()
 
     private let bodyTextView = HTMLTextView(frame: .zero)
+    private let closeButton = FloatingCloseButton()
 
     // MARK: Init
 
@@ -76,7 +75,7 @@ class HomeDetailViewController: UIViewController {
 
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
-        backgroundView.addSubviews([imageView, closeButton, headlineLabel, dateLabel, separatorView, bodyTextView])
+        backgroundView.addSubviews([imageView, headlineLabel, dateLabel, separatorView, bodyTextView, closeButton])
 
         updateViewConstraints()
     }
@@ -107,13 +106,6 @@ class HomeDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12.0),
-            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12.0),
-            closeButton.widthAnchor.constraint(equalToConstant: 32.0),
-            closeButton.heightAnchor.constraint(equalToConstant: 32.0)
-        ])
-
-        NSLayoutConstraint.activate([
             headlineLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8.0),
             headlineLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             headlineLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -24.0)
@@ -137,6 +129,13 @@ class HomeDetailViewController: UIViewController {
             bodyTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             bodyTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             bodyTextView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12.0),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0),
+            closeButton.widthAnchor.constraint(equalToConstant: 32.0),
+            closeButton.heightAnchor.constraint(equalToConstant: 32.0)
         ])
     }
 

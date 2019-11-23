@@ -22,16 +22,18 @@ class FloatingCloseButton: UIButton {
                 .withRenderingMode(.alwaysOriginal)
                 .withTintColor(.label)
                 .withConfiguration(UIImage.SymbolConfiguration(pointSize: 40.0, weight: .bold))
+            layer.shadowColor = UIColor.secondaryLabel.cgColor
         } else {
             closeButtonImage = UIImage(named: "CloseButtonBlack")?.withRenderingMode(.alwaysOriginal)
+            layer.shadowColor = UIColor.black.cgColor
         }
 
         setImage(closeButtonImage, for: .normal)
 
         translatesAutoresizingMaskIntoConstraints = false
 
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 7.0
+        layer.shadowOpacity = 0.8
+        layer.shadowRadius = 4.0
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -25,8 +25,6 @@ class RosterDetailViewController: UIViewController {
         return backgroundView
     }()
 
-    private let closeButton = FloatingCloseButton()
-
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -105,6 +103,8 @@ class RosterDetailViewController: UIViewController {
         return bioLabel
     }()
 
+    private let closeButton = FloatingCloseButton()
+
     // MARK: Init
 
     override func viewDidLoad() {
@@ -120,8 +120,8 @@ class RosterDetailViewController: UIViewController {
 
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
-        backgroundView.addSubviews([imageView, closeButton, firstNameLabel, lastNameLabel, numberLabel, separatorView,
-                                    positionLabel, hometownLabel, schoolLabel, bioLabel])
+        backgroundView.addSubviews([imageView, firstNameLabel, lastNameLabel, numberLabel, separatorView,
+                                    positionLabel, hometownLabel, schoolLabel, bioLabel, closeButton])
 
         updateViewConstraints()
     }
@@ -149,13 +149,6 @@ class RosterDetailViewController: UIViewController {
             imageView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor),
             imageView.heightAnchor.constraint(equalTo: view.widthAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12.0),
-            closeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12.0),
-            closeButton.widthAnchor.constraint(equalToConstant: 32.0),
-            closeButton.heightAnchor.constraint(equalToConstant: 32.0)
         ])
 
         NSLayoutConstraint.activate([
@@ -206,6 +199,13 @@ class RosterDetailViewController: UIViewController {
             bioLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             bioLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             bioLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 12.0),
+            closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0),
+            closeButton.widthAnchor.constraint(equalToConstant: 32.0),
+            closeButton.heightAnchor.constraint(equalToConstant: 32.0)
         ])
     }
 
