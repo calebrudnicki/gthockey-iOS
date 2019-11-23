@@ -63,7 +63,7 @@ enum MenuOption: Int, CustomStringConvertible, CaseIterable {
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "ShopIcon")! //TODO: Get a backup settings icon
+            return UIImage(named: "SettingsIcon")!
         }
     }
 

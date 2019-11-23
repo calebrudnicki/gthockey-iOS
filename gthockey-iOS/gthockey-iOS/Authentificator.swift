@@ -9,7 +9,6 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
-import FirebaseAnalytics
 
 class Authentificator {
 
@@ -44,7 +43,6 @@ class Authentificator {
                     if error != nil {
                         completion(false, error)
                     }
-
                     self.setUserDefaults(with: email, password: password)
                 }
                 completion(true, nil)

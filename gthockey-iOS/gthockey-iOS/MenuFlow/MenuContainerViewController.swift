@@ -36,7 +36,6 @@ class MenuContainerViewController: UIViewController {
     }()
     private let settingsTableViewController = SettingsTableViewController()
 
-
     private var homeNavigationController: UINavigationController?
     private var scheduleNavigationController: UINavigationController?
     private var rosterNavigationController: UINavigationController?
