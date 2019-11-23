@@ -61,19 +61,30 @@ class Authentificator {
         }
     }
 
-    public func getUserFirstName() -> String {
-//        if let user = Auth.auth().currentUser {
-//            let db = Firestore.firestore()
-//            db.collection("users").document(user.uid).getDocument { (document, error) in
-//            if let document = document, document.exists,
-//                let firstName = ((document.data()! as NSDictionary)["firstName"] as! String?) {
-//                return firstName
-//                }
-//            } else {
-//                print("Document does not exist")
-//            }
-//        }
-        return "Caleb"
+    public func getUserProperties(completion: @escaping ([String : String]) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).getDocument { (document, error) in
+                guard let document = document,
+                            document.exists
+                else { return }
+
+                if let firstName = ((document.data()! as NSDictionary)["firstName"] as! String?),
+                    let lastName = ((document.data()! as NSDictionary)["lastName"] as! String?),
+                    let email = ((document.data()! as NSDictionary)["email"] as! String?) {
+                    completion(["firstName": firstName, "lastName": lastName, "email": email])
+                }
+            }
+        }
+    }
+
+    public func updateUserProperties(with firstName: String, lastName: String, completion: @escaping (Bool) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).updateData(["firstName": firstName, "lastName": lastName])
+            completion(true)
+        }
+        completion(false)
     }
 
     // MARK: Private Functions

@@ -62,8 +62,6 @@ class RosterCollectionViewCell: CardCollectionViewCell {
     }
 
     override func updateConstraints() {
-        super.updateConstraints()
-
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -88,6 +86,8 @@ class RosterCollectionViewCell: CardCollectionViewCell {
             numberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0),
             numberLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4.0)
         ])
+        
+        super.updateConstraints()
     }
 
     // MARK: Setter

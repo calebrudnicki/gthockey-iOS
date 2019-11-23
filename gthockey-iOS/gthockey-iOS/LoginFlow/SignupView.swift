@@ -62,13 +62,13 @@ class SignupView: UIView {
         let passwordTextField = UITextField()
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textColor = .white
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password (7 letter minimum)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passwordTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         return passwordTextField
     }()
 
-    private let signupButton = PillButton(title: "Sign Up", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
+    private let signupButton = PillButton(title: "Sign up", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
 
     private let switchToLoginButton: UIButton = {
         let switchToLoginButton = UIButton()
