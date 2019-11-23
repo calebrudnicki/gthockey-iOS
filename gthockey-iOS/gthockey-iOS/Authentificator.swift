@@ -70,8 +70,9 @@ class Authentificator {
                 else { return }
 
                 if let firstName = ((document.data()! as NSDictionary)["firstName"] as! String?),
-                   let lastName = ((document.data()! as NSDictionary)["lastName"] as! String?) {
-                    completion(["firstName": firstName, "lastName": lastName])
+                    let lastName = ((document.data()! as NSDictionary)["lastName"] as! String?),
+                    let email = ((document.data()! as NSDictionary)["email"] as! String?) {
+                    completion(["firstName": firstName, "lastName": lastName, "email": email])
                 }
             }
         }
