@@ -46,27 +46,27 @@ class CartTableViewFooter: UIView {
 
     @objc private func paypalCheckoutButtonTapped() {
         print("Start checkout with paypal")
-        showDropIn(clientTokenOrTokenizationKey: <#T##String#>)
+//        showDropIn(clientTokenOrTokenizationKey: <#T##String#>)
     }
 
-    func showDropIn(clientTokenOrTokenizationKey: String) {
-        let request =  BTDropInRequest()
-        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
-        { (controller, result, error) in
-            if (error != nil) {
-                print("ERROR")
-            } else if (result?.isCancelled == true) {
-                print("CANCELLED")
-            } else if let result = result {
-                // Use the BTDropInResult properties to update your UI
-                // result.paymentOptionType
-                // result.paymentMethod
-                // result.paymentIcon
-                // result.paymentDescription
-            }
-            controller.dismiss(animated: true, completion: nil)
-        }
-        self.present(dropIn!, animated: true, completion: nil)
-    }
+//    func showDropIn(clientTokenOrTokenizationKey: String) {
+//        let request =  BTDropInRequest()
+//        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
+//        { (controller, result, error) in
+//            if (error != nil) {
+//                print("ERROR")
+//            } else if (result?.isCancelled == true) {
+//                print("CANCELLED")
+//            } else if let result = result {
+//                // Use the BTDropInResult properties to update your UI
+//                // result.paymentOptionType
+//                // result.paymentMethod
+//                // result.paymentIcon
+//                // result.paymentDescription
+//            }
+//            controller.dismiss(animated: true, completion: nil)
+//        }
+//        self.present(dropIn!, animated: true, completion: nil)
+//    }
 
 }

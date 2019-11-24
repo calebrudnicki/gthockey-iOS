@@ -81,7 +81,7 @@ class ShopCollectionViewCell: CardCollectionViewCell {
     public func set(with apparel: Apparel) {
         imageView.sd_setImage(with: apparel.getImageURL(), placeholderImage: nil)
         titleLabel.text = apparel.getName()
-        priceLabel.text = "$\(apparel.getPrice().description)"
+        priceLabel.text = apparel.getPriceString()
     }
 
 }

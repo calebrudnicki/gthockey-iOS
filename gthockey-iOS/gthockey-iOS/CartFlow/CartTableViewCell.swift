@@ -53,6 +53,7 @@ class CartTableViewCell: UITableViewCell {
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        isUserInteractionEnabled = false
         contentView.addSubviews([productImageView, nameLabel, attributesStack, priceLabel])
 
         updateConstraints()
@@ -109,7 +110,7 @@ class CartTableViewCell: UITableViewCell {
             attributesStack.addArrangedSubview(attributeLabel)
         }
 
-        priceLabel.text = "$\(cartItem.getPrice().description)"
+        priceLabel.text = cartItem.getPriceString()
 
         updateConstraints()
     }

@@ -44,6 +44,10 @@ class CartItem {
         return price
     }
 
+    func getPriceString() -> String {
+        return "$" + String(format: "%.2f", price)
+    }
+
     func getAttributes() -> [String: Any] {
         return attributes
     }

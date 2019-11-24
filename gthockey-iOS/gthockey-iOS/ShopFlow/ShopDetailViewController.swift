@@ -213,7 +213,7 @@ class ShopDetailViewController: UIViewController {
     public func set(with apparel: Apparel, _ restrictedOptions: [ApparelRestrictedItem], _ customOptions: [ApparelCustomItem]) {
         imageView.sd_setImage(with: apparel.getImageURL(), placeholderImage: nil)
         headlineLabel.text = apparel.getName()
-        priceLabel.text = "$\(apparel.getPrice().description)"
+        priceLabel.text = apparel.getPriceString()
         descriptionLabel.setText(with: apparel.getDescription())
 
         self.restrictedOptions = restrictedOptions
