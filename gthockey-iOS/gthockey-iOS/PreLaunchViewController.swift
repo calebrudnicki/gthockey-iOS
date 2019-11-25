@@ -46,7 +46,7 @@ class PreLaunchViewController: UIViewController {
         }
 
         let authentificator = Authentificator()
-        authentificator.login(with: email, password) { result, _ in
+        authentificator.login(with: email, password) { result, error in
             if result {
                 let menuContainerViewController = MenuContainerViewController()
                 menuContainerViewController.modalPresentationStyle = .fullScreen
@@ -54,6 +54,19 @@ class PreLaunchViewController: UIViewController {
                 self.revealingSplashView.startAnimation({
                     self.present(menuContainerViewController, animated: false, completion: nil)
                 })
+            } else {
+                let alert = UIAlertController(title: "No internet connection",
+                                              message: "\(error?.localizedDescription ?? "") Try restarting app when you have a connection.",
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                    let menuContainerViewController = MenuContainerViewController()
+                    menuContainerViewController.modalPresentationStyle = .fullScreen
+                    menuContainerViewController.modalTransitionStyle = .crossDissolve
+                    self.revealingSplashView.startAnimation({
+                        self.present(menuContainerViewController, animated: false, completion: nil)
+                    })
+                })
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
