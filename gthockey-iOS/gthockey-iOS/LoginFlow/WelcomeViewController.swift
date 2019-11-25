@@ -12,6 +12,15 @@ class WelcomeViewController: UIViewController {
 
     // MARK: Properties
 
+    private let logoImageView: UIImageView = {
+        let logoImage = UIImage(named: "BuzzOnlyLogo")
+        let logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFit
+        logoImageView.clipsToBounds = true
+        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        return logoImageView
+    }()
+
     private let welcomeButtonsView = WelcomeButtonsView()
     private let signupView = SignupView()
     private let loginView = LoginView()
@@ -33,12 +42,19 @@ class WelcomeViewController: UIViewController {
         loginView.isHidden = true
         loginView.alpha = 0.0
 
-        view.addSubviews([welcomeButtonsView, signupView, loginView])
+        view.addSubviews([logoImageView, welcomeButtonsView, signupView, loginView])
         updateViewConstraints()
     }
 
     override func updateViewConstraints() {
         super.updateViewConstraints()
+
+        NSLayoutConstraint.activate([
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 128.0),
+            logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor)
+        ])
 
         NSLayoutConstraint.activate([
             signupView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24.0),
