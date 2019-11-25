@@ -41,7 +41,7 @@ class CartTableViewController: UITableViewController {
                         var id: Int?
                         var name: String?
                         var imageURL: URL?
-                        var price: Float? = 99.0
+                        var price: Double?
                         var attributes: [String : Any]? = [:]
                         for (key, val) in item {
                             switch key {
@@ -52,7 +52,7 @@ class CartTableViewController: UITableViewController {
                             case "imageURL":
                                 imageURL = URL(string: val as? String ?? "")
                             case "price":
-                                price = val as? Float
+                                price = val as? Double
                             default:
                                 attributes?[key] = val
                             }

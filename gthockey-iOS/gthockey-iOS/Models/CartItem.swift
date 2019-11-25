@@ -13,12 +13,12 @@ class CartItem {
     private var id: Int
     private var name: String
     private var imageURL: URL
-    private var price: Float
+    private var price: Double
     private var attributes: [String : Any]
 
     // MARK: Init
 
-    init(id: Int, name: String, imageURL: URL, price: Float, attributes: [String : Any]) {
+    init(id: Int, name: String, imageURL: URL, price: Double, attributes: [String : Any]) {
         self.id = id
         self.name = name
         self.imageURL = imageURL
@@ -40,7 +40,7 @@ class CartItem {
         return imageURL
     }
 
-    func getPrice() -> Float {
+    func getPrice() -> Double {
         return price
     }
 

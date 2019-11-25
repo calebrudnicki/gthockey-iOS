@@ -209,7 +209,7 @@ class JSONParser {
                                                       displayName: item["display_name"].string!,
                                                       helpText: item["help_text"].string!,
                                                       isRequired: item["required"].bool!,
-                                                      extraCost: item["extra_cost"].int!,
+                                                      extraCost: item["extra_cost"].double!,
                                                       correspondingApparelID: item["shop_item"].int!)
             arr.append(apparelCustomItem)
         }
