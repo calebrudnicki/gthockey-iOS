@@ -16,36 +16,66 @@ class Authentificator {
 
     // MARK: Public Functions
 
-    public func login(with email: String, _ password: String, completion: @escaping (Bool, Error?) -> Void) {
+    public func login(with email: String, _ password: String, _ firstName: String?, _ lastName: String?, completion: @escaping (Bool, Error?) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password) { user, error in
             if let error = error, user == nil {
                 completion(false, error)
             } else {
-                self.setUserDefaults(with: email, password: password)
-                completion(true, nil)
+                if let user = user?.user, user.isEmailVerified {
+                    let db = Firestore.firestore()
+                    guard
+                        let firstName = firstName,
+                        let lastName = lastName
+                    else {
+                        self.getUserProperties(completion: { propertiesDictionary in
+                            let firstName = propertiesDictionary["firstName"] ?? ""
+                            let lastName = propertiesDictionary["lastName"] ?? ""
+
+                            db.collection("users").document(user.uid).setData(["firstName": firstName,
+                                                                               "lastName": lastName,
+                                                                               "email": email,
+                                                                               "uid": user.uid]) { (error) in
+                                if error != nil {
+                                    completion(false, error)
+                                }
+                                self.setUserDefaults(with: email, password: password)
+                                completion(true, nil)
+                            }
+                        })
+                        return
+                    }
+                    db.collection("users").document(user.uid).setData(["firstName": firstName,
+                                                                       "lastName": lastName,
+                                                                       "email": email,
+                                                                       "uid": user.uid]) { (error) in
+                        if error != nil {
+                            completion(false, error)
+                        }
+                    }
+                    self.setUserDefaults(with: email, password: password)
+                    completion(true, nil)
+                } else {
+                    completion(false, CustomError.emailVerification)
+                }
             }
         }
     }
 
-    public func signup(with firstName: String, _ lastName: String, _ email: String,
+    public func createUser(with firstName: String, _ lastName: String, _ email: String,
                        _ password: String, completion: @escaping (Bool, Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if error != nil {
                 completion(false, error)
             } else {
-                let db = Firestore.firestore()
                 guard let user = result?.user else { return }
-                db.collection("users").document(user.uid).setData(["firstName": firstName,
-                                                                   "lastName": lastName,
-                                                                   "email": email,
-                                                                   "uid": result?.user.uid ?? email,
-                                                                   "cart": []]) { (error) in
-                    if error != nil {
-                        completion(false, error)
-                    }
-                    self.setUserDefaults(with: email, password: password)
+                if !user.isEmailVerified {
+                    user.sendEmailVerification(completion: { error in
+                        // Notify the user that the mail has sent or couldn't because of an error
+                        completion(true, nil)
+                    })
+                } else {
+                    completion(false, error)
                 }
-                completion(true, nil)
             }
         }
     }

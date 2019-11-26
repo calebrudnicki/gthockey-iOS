@@ -17,6 +17,17 @@ class LoginView: UIView {
 
     public var delegate: LoginViewDelegate?
 
+    private let emailVerificationLabel: UILabel = {
+        let emailVerificationLabel = UILabel()
+        emailVerificationLabel.text = "Verify your email before logging in."
+        emailVerificationLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        emailVerificationLabel.textColor = .gray
+        emailVerificationLabel.textAlignment = .center
+        emailVerificationLabel.isHidden = true
+        emailVerificationLabel.translatesAutoresizingMaskIntoConstraints = false
+        return emailVerificationLabel
+    }()
+
     private let textFieldStackView: UIStackView = {
         let textFieldStackView = UIStackView()
         textFieldStackView.axis = .vertical
@@ -74,7 +85,7 @@ class LoginView: UIView {
         textFieldStackView.addArrangedSubview(emailTextField)
         textFieldStackView.addArrangedSubview(passwordTextField)
 
-        addSubviews([textFieldStackView, loginButton, switchToSignupButton])
+        addSubviews([emailVerificationLabel, textFieldStackView, loginButton, switchToSignupButton])
         updateConstraints()
     }
 
@@ -86,13 +97,19 @@ class LoginView: UIView {
         super.updateConstraints()
 
         NSLayoutConstraint.activate([
-            textFieldStackView.topAnchor.constraint(equalTo: topAnchor),
+            emailVerificationLabel.topAnchor.constraint(equalTo: topAnchor),
+            emailVerificationLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            emailVerificationLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            textFieldStackView.topAnchor.constraint(equalTo: emailVerificationLabel.bottomAnchor, constant: 12.0),
             textFieldStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textFieldStackView.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            loginButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 18.0),
+            loginButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 16.0),
             loginButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             loginButton.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -133,6 +150,15 @@ class LoginView: UIView {
 
     @objc private func switchToSignupButtonTapped() {
         delegate?.switchToSignup()
+    }
+
+    // MARK: Public Functions
+
+    public func setFields(with email: String, password: String) {
+        emailTextField.text = email
+        passwordTextField.text = password
+        loginButton.isEnabled = true
+        emailVerificationLabel.isHidden = false
     }
 
 }
