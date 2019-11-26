@@ -8,7 +8,9 @@
 
 import Foundation
 
-class CartItem {
+class CartItem: Equatable {
+
+    // MARK: Properties
 
     private var id: Int
     private var name: String
@@ -50,6 +52,23 @@ class CartItem {
 
     func getAttributes() -> [String: Any] {
         return attributes
+    }
+
+    //MARK: Equatable
+
+    static func == (lhs: CartItem, rhs: CartItem) -> Bool {
+        if lhs.id == rhs.id {
+            for (rhsKey, rhsVal) in rhs.attributes {
+                guard let lhsVal = lhs.attributes[rhsKey] else {
+                    return false
+                }
+                if (lhsVal as! String) != (rhsVal as? String) {
+                    return false
+                }
+            }
+            return true
+        }
+        return false
     }
 
 }

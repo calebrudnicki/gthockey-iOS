@@ -10,11 +10,16 @@ import UIKit
 import Braintree
 import BraintreeDropIn
 
+protocol CartTableViewFooterDelegate {
+    func checkoutButtonTapped()
+}
+
 class CartTableViewFooter: UIView {
 
     // MARK: Properties
 
-    let paypalCheckoutButton = PillButton(title: "Checkout", backgroundColor: .paypalBlue, borderColor: .paypalBlue, isEnabled: true)
+    private let paypalCheckoutButton = PillButton(title: "Checkout", backgroundColor: .paypalBlue, borderColor: .paypalBlue, isEnabled: true)
+    public var delegate: CartTableViewFooterDelegate!
 
     // MARK: Init
 
@@ -46,6 +51,7 @@ class CartTableViewFooter: UIView {
 
     @objc private func paypalCheckoutButtonTapped() {
         print("Start checkout with paypal")
+        delegate.checkoutButtonTapped()
 //        showDropIn(clientTokenOrTokenizationKey: <#T##String#>)
     }
 

@@ -243,14 +243,15 @@ class ShopDetailViewController: UIViewController {
 
     @objc private func addToCartButtonTapped() {
         var price = apparelItem?.getPrice()
-        var firestoreDict: [String : Any] = ["id": (apparelItem?.getID())!,
+        var firestoreDict: [String: Any] = ["id": (apparelItem?.getID())!,
                                              "name": (apparelItem?.getName())!,
                                              "imageURL": (apparelItem?.getImageURL())?.description]
+        var attributesDict: [String: Any] = [:]
 
         guard let restrictedOptions = restrictedOptions else { return }
         for restrictedOption in restrictedOptions {
             let key = restrictedOption.getDisplayName()
-            firestoreDict[key.lowercased()] = restrictedOption.getValue()
+            attributesDict[key.lowercased()] = restrictedOption.getValue()
         }
 
         guard let customOptions = customOptions else { return }
@@ -259,10 +260,11 @@ class ShopDetailViewController: UIViewController {
             if customOption.getValue() != nil {
                 price = (price ?? 0.0) + customOption.getExtraCost()
             }
-            firestoreDict[key.lowercased()] = customOption.getValue()
+            attributesDict[key.lowercased()] = customOption.getValue()
         }
 
         firestoreDict["price"] = price
+        firestoreDict["attributes"] = attributesDict
 
         let cartHelper = CartHelper()
         cartHelper.add(cartDict: firestoreDict, completion: { result in

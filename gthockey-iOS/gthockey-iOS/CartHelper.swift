@@ -33,12 +33,25 @@ class CartHelper {
                     let data = document.data()! as [String : Any]
                     let cart = data["cart"] as! [[String : Any]]
                     for item in cart {
-                        print(item)
-//                        if item["name"] as! String == cartItem.getName() {
-//                            db.collection("users").document(user.uid).
-//                        }
+                        let tempCartItem = CartItem(id: item["id"] as! Int,
+                                                    name: item["name"] as! String,
+                                                    imageURL: URL(fileURLWithPath: item["imageURL"] as! String),
+                                                    price: item["price"] as! Double,
+                                                    attributes: item["attributes"] as! [String: Any])
+
+                        if tempCartItem == cartItem {
+                            db.collection("users").document(user.uid).updateData([
+                                "cart": FieldValue.arrayRemove([item]),
+                            ]) { error in
+                                if let error = error {
+                                    print("Error updating document: \(error)")
+                                } else {
+                                    print("Document successfully updated")
+                                }
+                            }
+                            completion(true)
+                        }
                     }
-//                    print("Document data: \(dataDescription)")
                 } else {
                     print("Document does not exist")
                 }

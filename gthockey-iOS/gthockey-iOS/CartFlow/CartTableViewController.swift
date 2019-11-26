@@ -27,6 +27,7 @@ class CartTableViewController: UITableViewController {
         tableView.register(CartTableViewCell.self, forCellReuseIdentifier: "cartTableViewCell")
 
         let cartTableViewFooter = CartTableViewFooter()
+        cartTableViewFooter.delegate = self
         cartTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 75.0)
         tableView.tableFooterView = cartTableViewFooter
     }
@@ -42,7 +43,7 @@ class CartTableViewController: UITableViewController {
                         var name: String?
                         var imageURL: URL?
                         var price: Double?
-                        var attributes: [String : Any]? = [:]
+                        var attributes: [String : Any]?
                         for (key, val) in item {
                             switch key {
                             case "id":
@@ -53,8 +54,10 @@ class CartTableViewController: UITableViewController {
                                 imageURL = URL(string: val as? String ?? "")
                             case "price":
                                 price = val as? Double
+                            case "attributes":
+                                attributes = val as? [String: Any]
                             default:
-                                attributes?[key] = val
+                                break
                             }
                         }
                         let cartItem = CartItem(id: id ?? 0,
@@ -114,6 +117,18 @@ class CartTableViewController: UITableViewController {
             })
 //            cartItems.remove(at: indexPath.row)
         }
+    }
+
+}
+
+extension CartTableViewController: CartTableViewFooterDelegate {
+
+    func checkoutButtonTapped() {
+        var totalPrice = 0.0
+        for item in cartItems {
+            totalPrice += item.getPrice()
+        }
+        print(totalPrice)
     }
 
 }
