@@ -10,7 +10,7 @@ import UIKit
 
 protocol SignupViewDelegate {
     func didTapSignupButton(with firstName: String, _ lastName: String, _ email: String, _ password: String)
-    func switchToLogin()
+    func switchToLogin(with email: String?, password: String?)
 }
 
 class SignupView: UIView {
@@ -116,7 +116,7 @@ class SignupView: UIView {
         ])
 
         NSLayoutConstraint.activate([
-            signupButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 18.0),
+            signupButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 16.0),
             signupButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             signupButton.trailingAnchor.constraint(equalTo: trailingAnchor)
         ])
@@ -163,7 +163,7 @@ class SignupView: UIView {
     }
 
     @objc private func switchToLoginButtonTapped() {
-        delegate?.switchToLogin()
+        delegate?.switchToLogin(with: nil, password: nil)
     }
 
 }

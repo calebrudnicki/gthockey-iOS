@@ -20,6 +20,7 @@
 		8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC692360AC1900C7C9DF /* MenuTableViewCell.swift */; };
 		82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82918F312350B62F00723B4A /* RosterDetailViewController.swift */; };
 		8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */; };
+		82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F840238DBBA8001CA749 /* CustomError.swift */; };
 		82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */; };
 		82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */; };
 		82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */; };
@@ -85,6 +86,7 @@
 		8288FC692360AC1900C7C9DF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		82918F312350B62F00723B4A /* RosterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterDetailViewController.swift; sourceTree = "<group>"; };
 		8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		82A6F840238DBBA8001CA749 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewHeader.swift; sourceTree = "<group>"; };
 		82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				82F79FC4236004D70070F63D /* UIColorExtension.swift */,
 				825092172361EFB300D98DEA /* UIViewExtension.swift */,
 				82C8C1E92363333800C4D2C2 /* StringExtension.swift */,
+				82A6F840238DBBA8001CA749 /* CustomError.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
 				82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
+				82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */,
 				82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */,
 				82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */,
 				82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */,
