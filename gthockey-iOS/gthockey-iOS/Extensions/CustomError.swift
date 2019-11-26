@@ -9,6 +9,7 @@
 import Foundation
 
 public enum CustomError: Error, LocalizedError {
+
     case emailVerification
 
     public var errorDescription: String? {
@@ -18,4 +19,5 @@ public enum CustomError: Error, LocalizedError {
                                      comment: "This error is thrown when a user has signed up for an account, but has not yet verified their email address.")
         }
     }
+    
 }

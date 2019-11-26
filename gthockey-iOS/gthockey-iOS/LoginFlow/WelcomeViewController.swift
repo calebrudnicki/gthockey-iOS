@@ -111,12 +111,9 @@ extension WelcomeViewController: SignupViewDelegate {
         self.lastName = lastName
 
         let authentificator = Authentificator()
-        authentificator.signup(with: firstName, lastName, email, password) { result, error in
+        authentificator.createUser(with: firstName, lastName, email, password) { result, error in
             if result {
                 self.switchToLogin(with: email, password: password)
-//                let menuContainerViewController = MenuContainerViewController()
-//                menuContainerViewController.modalPresentationStyle = .fullScreen
-//                self.present(menuContainerViewController, animated: true, completion: nil)
             } else {
                 let alert = UIAlertController(title: "Sign Up Failed",
                                           message: error?.localizedDescription,

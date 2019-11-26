@@ -38,6 +38,7 @@ class Authentificator {
                                 if error != nil {
                                     completion(false, error)
                                 }
+                                self.setUserDefaults(with: email, password: password)
                                 completion(true, nil)
                             }
                         })
@@ -60,7 +61,7 @@ class Authentificator {
         }
     }
 
-    public func signup(with firstName: String, _ lastName: String, _ email: String,
+    public func createUser(with firstName: String, _ lastName: String, _ email: String,
                        _ password: String, completion: @escaping (Bool, Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
             if error != nil {
@@ -73,17 +74,7 @@ class Authentificator {
                         completion(true, nil)
                     })
                 } else {
-                    // Either the user is not available, or the user is already verified.
-//                    db.collection("users").document(user.uid).setData(["firstName": firstName,
-//                                                                       "lastName": lastName,
-//                                                                       "email": email,
-//                                                                       "uid": result?.user.uid ?? email { (error) in
-//                        if error != nil {
-//                            completion(false, error)
-//                        }
-//                        self.setUserDefaults(with: email, password: password)
-//                    }
-                    completion(true, nil)
+                    completion(false, error)
                 }
             }
         }
