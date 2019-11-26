@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import Braintree
-import BraintreeDropIn
 
 protocol CartTableViewFooterDelegate {
     func checkoutButtonTapped()

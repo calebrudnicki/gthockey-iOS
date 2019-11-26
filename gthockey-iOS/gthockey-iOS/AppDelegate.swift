@@ -12,6 +12,7 @@ import IQKeyboardManagerSwift
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
+import Braintree
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
         FirebaseApp.configure()
+        BTAppSwitch.setReturnURLScheme("com.calebrudnicki.gthockey-iOS.payments")
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
@@ -32,6 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = preLaunchViewController
         self.window?.makeKeyAndVisible()
         return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
+        if url.scheme?.localizedCaseInsensitiveCompare("com.calebrudnicki.gthockey-iOS.payments") == .orderedSame {
+            return BTAppSwitch.handleOpen(url, options: options)
+        }
+        return false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

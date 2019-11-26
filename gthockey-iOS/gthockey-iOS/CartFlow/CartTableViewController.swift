@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import Braintree
+import BraintreeDropIn
 
 class CartTableViewController: UITableViewController {
 
@@ -100,8 +102,6 @@ class CartTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("Deleted")
-
             let cartHelper = CartHelper()
             cartHelper.remove(with: cartItems[indexPath.row], completion: { result in
                 if result {
@@ -115,7 +115,6 @@ class CartTableViewController: UITableViewController {
                     self.present(alert, animated: true, completion: nil)
                 }
             })
-//            cartItems.remove(at: indexPath.row)
         }
     }
 
@@ -129,6 +128,45 @@ extension CartTableViewController: CartTableViewFooterDelegate {
             totalPrice += item.getPrice()
         }
         print(totalPrice)
+
+//        let clientToken = "access_token$sandbox$ffvwvc2qc28h5gph$ea1da4dd23940be0fad1bc1e2b859d2a"
+//
+//        let clientTokenURL = NSURL(string: "https://braintree-sample-merchant.herokuapp.com/client_token")!
+//        let clientTokenRequest = NSMutableURLRequest(url: clientTokenURL as URL)
+//        clientTokenRequest.setValue("text/plain", forHTTPHeaderField: "Accept")
+//
+//        URLSession.shared.dataTask(with: clientTokenRequest as URLRequest) { (data, response, error) -> Void in
+//            // TODO: Handle errors
+//            let clientToken = String(data: data!, encoding: String.Encoding.utf8)
+//
+//            // As an example, you may wish to present Drop-in at this point.
+//            // Continue to the next section to learn more...
+////            let apiClient = BTAPIClient(authorization: tokenizationKey)
+//
+//            }.resume()
+        BTUIKAppearance.darkTheme()
+        let apiClient = BTAPIClient(authorization: "sandbox_jy5zxxfm_ggjptv8jy69yxx4p")
+        showDropIn(clientTokenOrTokenizationKey: "sandbox_jy5zxxfm_ggjptv8jy69yxx4p")
     }
+
+    func showDropIn(clientTokenOrTokenizationKey: String) {
+        let request =  BTDropInRequest()
+        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request) { (controller, result, error) in
+            if error != nil {
+                print("ERROR")
+            } else if result?.isCancelled == true {
+                print("CANCELLED")
+            } else if let result = result {
+                // Use the BTDropInResult properties to update your UI
+                 print(result.paymentOptionType)
+                 print(result.paymentMethod)
+                 print(result.paymentIcon)
+                 print(result.paymentDescription)
+            }
+            controller.dismiss(animated: true, completion: nil)
+        }
+        self.present(dropIn!, animated: true, completion: nil)
+    }
+
 
 }

@@ -13,6 +13,8 @@ PODS:
     - Braintree/Core (= 4.30.0)
     - Braintree/PayPal (= 4.30.0)
     - Braintree/UI (= 4.30.0)
+  - Braintree/Apple-Pay (4.30.0):
+    - Braintree/Core
   - Braintree/Card (4.30.0):
     - Braintree/Core
   - Braintree/Core (4.30.0)
@@ -37,6 +39,9 @@ PODS:
   - Braintree/UnionPay (4.30.0):
     - Braintree/Card
     - Braintree/Core
+  - Braintree/Venmo (4.30.0):
+    - Braintree/Core
+    - Braintree/PayPalDataCollector
   - BraintreeDropIn (7.4.0):
     - BraintreeDropIn/DropIn (= 7.4.0)
   - BraintreeDropIn/DropIn (7.4.0):
@@ -171,6 +176,9 @@ DEPENDENCIES:
   - Alamofire
   - AlamofireImage
   - Braintree
+  - Braintree/Apple-Pay
+  - Braintree/PayPal
+  - Braintree/Venmo
   - BraintreeDropIn
   - Firebase/Analytics
   - Firebase/Auth
@@ -245,6 +253,6 @@ SPEC CHECKSUMS:
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 7972f45c6695b7a68e296de844d41743d16223fc
+PODFILE CHECKSUM: 4e09682645ff17f3ecf8a5e8cfd949930a36dd4b
 
 COCOAPODS: 1.7.5
