@@ -12,6 +12,9 @@ class WelcomeViewController: UIViewController {
 
     // MARK: Properties
 
+    private var firstName: String?
+    private var lastName: String?
+
     private let logoImageView: UIImageView = {
         let logoImage = UIImage(named: "BuzzOnlyLogo")
         let logoImageView = UIImageView(image: logoImage)
@@ -104,12 +107,16 @@ extension WelcomeViewController: WelcomeButtonsViewDelegate {
 extension WelcomeViewController: SignupViewDelegate {
 
     func didTapSignupButton(with firstName: String, _ lastName: String, _ email: String, _ password: String) {
+        self.firstName = firstName
+        self.lastName = lastName
+
         let authentificator = Authentificator()
         authentificator.signup(with: firstName, lastName, email, password) { result, error in
             if result {
-                let menuContainerViewController = MenuContainerViewController()
-                menuContainerViewController.modalPresentationStyle = .fullScreen
-                self.present(menuContainerViewController, animated: true, completion: nil)
+                self.switchToLogin(with: email, password: password)
+//                let menuContainerViewController = MenuContainerViewController()
+//                menuContainerViewController.modalPresentationStyle = .fullScreen
+//                self.present(menuContainerViewController, animated: true, completion: nil)
             } else {
                 let alert = UIAlertController(title: "Sign Up Failed",
                                           message: error?.localizedDescription,
@@ -120,7 +127,11 @@ extension WelcomeViewController: SignupViewDelegate {
         }
     }
 
-    func switchToLogin() {
+    func switchToLogin(with email: String?, password: String?) {
+        if let email = email, let password = password {
+            loginView.setFields(with: email, password: password)
+        }
+
         UIView.animate(withDuration: 0.5, animations: {
             self.signupView.alpha = 0.0
             self.loginView.alpha = 1.0
@@ -136,7 +147,7 @@ extension WelcomeViewController: LoginViewDelegate {
 
     func didTapLoginButton(with email: String, _ password: String) {
         let authentificator = Authentificator()
-        authentificator.login(with: email, password) { result, error in
+        authentificator.login(with: email, password, firstName, lastName) { result, error in
             if result {
                 let menuContainerViewController = MenuContainerViewController()
                 menuContainerViewController.modalPresentationStyle = .fullScreen
