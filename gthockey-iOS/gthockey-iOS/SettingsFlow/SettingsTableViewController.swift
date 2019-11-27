@@ -12,7 +12,7 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: Properties
 
-    private var userProperties: [String : String] = [:]
+    private var userProperties: [String : Any] = [:]
     private var firstName: String?
     private var lastName: String?
     private var email: String?
@@ -66,9 +66,9 @@ class SettingsTableViewController: UITableViewController {
     @objc private func fetchUserInfo() {
         let authentificator = Authentificator()
         authentificator.getUserProperties(completion: { propertiesDictionary in
-            self.firstName = propertiesDictionary["firstName"] ?? ""
-            self.lastName = propertiesDictionary["lastName"] ?? ""
-            self.email = propertiesDictionary["email"] ?? ""
+            self.firstName = propertiesDictionary["firstName"] as? String
+            self.lastName = propertiesDictionary["lastName"] as? String
+            self.email = propertiesDictionary["email"] as? String
             self.userProperties = propertiesDictionary
 
             DispatchQueue.main.async {
@@ -84,18 +84,18 @@ class SettingsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userProperties.keys.count
+        return userProperties.keys.count - 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell", for: indexPath) as! SettingsTableViewCell
         switch indexPath.row {
         case 0:
-            cell.set(with: "First Name", value: userProperties["firstName"] ?? "", isEditable: true)
+            cell.set(with: "First Name", value: userProperties["firstName"] as! String, isEditable: true)
         case 1:
-            cell.set(with: "Last Name", value: userProperties["lastName"] ?? "", isEditable: true)
+            cell.set(with: "Last Name", value: userProperties["lastName"] as! String, isEditable: true)
         case 2:
-            cell.set(with: "Email", value: userProperties["email"] ?? "", isEditable: false)
+            cell.set(with: "Email", value: userProperties["email"] as! String, isEditable: false)
         default:
             break
         }
@@ -115,7 +115,7 @@ class SettingsTableViewController: UITableViewController {
 
     @objc private func saveButtonTapped() {
         if let firstName = firstName, let lastName = lastName,
-            firstName != userProperties["firstName"] || lastName != userProperties["lastName"] {
+            firstName != userProperties["firstName"] as! String || lastName != userProperties["lastName"] as! String {
             let authentificator = Authentificator()
             authentificator.updateUserProperties(with: firstName, lastName: lastName, completion: { result in
                 if result {
