@@ -66,7 +66,7 @@ class ShopCustomOptionsView: UIView, UITextFieldDelegate {
         ])
     }
 
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         delegate?.didEnter(option: textField.text ?? "", for: displayLabel.text ?? "")
     }
 
