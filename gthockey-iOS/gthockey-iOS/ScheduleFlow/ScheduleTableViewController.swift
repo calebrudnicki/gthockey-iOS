@@ -20,11 +20,21 @@ class ScheduleTableViewController: UITableViewController {
     private let cellHeight = UIScreen.main.bounds.height * 0.8
     public var delegate: HomeControllerDelegate?
 
+    private let segmentedController = UISegmentedControl()
+
     // MARK: Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationController()
+        setupTableView()
+        fetchSchedule()
+    }
+
+    // MARK: Config
+
+    private func setupNavigationController() {
         navigationItem.title = "Schedule"
 
         let menuButtonImage: UIImage?
@@ -54,18 +64,18 @@ class ScheduleTableViewController: UITableViewController {
                                                            action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        setupTableView()
-        fetchSchedule()
+        segmentedController.insertSegment(withTitle: "Upcoming", at: 0, animated: true)
+        segmentedController.insertSegment(withTitle: "Completed", at: 1, animated: true)
+        segmentedController.selectedSegmentIndex = 0
+        segmentedController.addTarget(self, action: #selector(segmentedControllerChanged), for: .valueChanged)
+        navigationItem.titleView = segmentedController
     }
-
-    // MARK: Config
 
     private func setupTableView() {
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: "ScheduleTableViewCell")
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(fetchSchedule), for: .valueChanged)
         tableView.tableFooterView = UIView()
-        tableView.sectionHeaderHeight = 0.0
     }
 
     @objc private func fetchSchedule() {
@@ -100,26 +110,26 @@ class ScheduleTableViewController: UITableViewController {
     // MARK: UITableViewDelegate / UITableViewDataSource
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
+        switch segmentedController.selectedSegmentIndex {
         case 0:
-            return completedGameArray.count
-        default:
             return upcomingGameArray.count
+        default:
+            return completedGameArray.count
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScheduleTableViewCell", for: indexPath) as! ScheduleTableViewCell
 
-        switch indexPath.section {
+        switch segmentedController.selectedSegmentIndex {
         case 0:
-            cell.set(with: completedGameArray[indexPath.row])
-        default:
             cell.set(with: upcomingGameArray[indexPath.row])
+        default:
+            cell.set(with: completedGameArray[indexPath.row])
         }
 
         return cell
@@ -129,25 +139,16 @@ class ScheduleTableViewController: UITableViewController {
         return 72.0
     }
 
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Completed"
-        default:
-            return "Upcoming"
-        }
-    }
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert = UIAlertController(title: "Get Directions to the Rink", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            switch indexPath.section {
+            switch self.segmentedController.selectedSegmentIndex {
             case 0:
-                self.fetchGame(with: self.completedGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
+                self.fetchGame(with: self.upcomingGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
                     self.openMaps(with: rink)
                 })
             default:
-                self.fetchGame(with: self.upcomingGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
+                self.fetchGame(with: self.completedGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
                     self.openMaps(with: rink)
                 })
             }
@@ -166,6 +167,10 @@ class ScheduleTableViewController: UITableViewController {
     @objc private func cartButtonTapped() {
         let cartTableViewController = CartTableViewController()
         present(cartTableViewController, animated: true, completion: nil)
+    }
+
+    @objc private func segmentedControllerChanged() {
+        tableView.reloadData()
     }
 
     // MARK: Location
