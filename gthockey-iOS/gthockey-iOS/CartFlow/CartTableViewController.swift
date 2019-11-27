@@ -12,9 +12,31 @@ import FirebaseFirestore
 import Braintree
 import BraintreeDropIn
 
-class CartTableViewController: UITableViewController {
+class CartTableViewController: UITableViewController, BTAppSwitchDelegate, BTViewControllerPresentingDelegate {
+    func appSwitcherWillPerformAppSwitch(_ appSwitcher: Any) {
+        print("hhi")
+    }
+
+    func appSwitcher(_ appSwitcher: Any, didPerformSwitchTo target: BTAppSwitchTarget) {
+        print("hi")
+    }
+
+    func appSwitcherWillProcessPaymentInfo(_ appSwitcher: Any) {
+        print("bie")
+    }
+
+    func paymentDriver(_ driver: Any, requestsPresentationOf viewController: UIViewController) {
+        print("bie")
+    }
+
+    func paymentDriver(_ driver: Any, requestsDismissalOf viewController: UIViewController) {
+        print("jfienfiw")
+    }
+
 
     // MARK: Properties
+
+    var braintreeClient: BTAPIClient?
 
     private var cartItems: [CartItem] = []
 
@@ -127,46 +149,59 @@ extension CartTableViewController: CartTableViewFooterDelegate {
         for item in cartItems {
             totalPrice += item.getPrice()
         }
-        print(totalPrice)
-
-//        let clientToken = "access_token$sandbox$ffvwvc2qc28h5gph$ea1da4dd23940be0fad1bc1e2b859d2a"
-//
-//        let clientTokenURL = NSURL(string: "https://braintree-sample-merchant.herokuapp.com/client_token")!
-//        let clientTokenRequest = NSMutableURLRequest(url: clientTokenURL as URL)
-//        clientTokenRequest.setValue("text/plain", forHTTPHeaderField: "Accept")
-//
-//        URLSession.shared.dataTask(with: clientTokenRequest as URLRequest) { (data, response, error) -> Void in
-//            // TODO: Handle errors
-//            let clientToken = String(data: data!, encoding: String.Encoding.utf8)
-//
-//            // As an example, you may wish to present Drop-in at this point.
-//            // Continue to the next section to learn more...
-////            let apiClient = BTAPIClient(authorization: tokenizationKey)
-//
-//            }.resume()
-        BTUIKAppearance.darkTheme()
-        let apiClient = BTAPIClient(authorization: "sandbox_jy5zxxfm_ggjptv8jy69yxx4p")
-        showDropIn(clientTokenOrTokenizationKey: "sandbox_jy5zxxfm_ggjptv8jy69yxx4p")
+        startCheckout(with: totalPrice)
     }
 
-    func showDropIn(clientTokenOrTokenizationKey: String) {
-        let request =  BTDropInRequest()
-        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request) { (controller, result, error) in
-            if error != nil {
-                print("ERROR")
-            } else if result?.isCancelled == true {
-                print("CANCELLED")
-            } else if let result = result {
-                // Use the BTDropInResult properties to update your UI
-                 print(result.paymentOptionType)
-                 print(result.paymentMethod)
-                 print(result.paymentIcon)
-                 print(result.paymentDescription)
+    func startCheckout(with price: Double) {
+        // Example: Initialize BTAPIClient, if you haven't already
+        braintreeClient = BTAPIClient(authorization: "sandbox_jy5zxxfm_ggjptv8jy69yxx4p")!
+        let payPalDriver = BTPayPalDriver(apiClient: braintreeClient!)
+        payPalDriver.viewControllerPresentingDelegate = self
+        payPalDriver.appSwitchDelegate = self // Optional
+
+        let request = BTPayPalRequest(amount: "$" + String(format: "%.2f", price))
+        request.currencyCode = "USD"
+
+        payPalDriver.requestOneTimePayment(request) { (tokenizedPayPalAccount, error) in
+            if let tokenizedPayPalAccount = tokenizedPayPalAccount {
+                print("Got a nonce: \(tokenizedPayPalAccount.nonce)")
+
+                // Access additional information
+                let email = tokenizedPayPalAccount.email
+                let firstName = tokenizedPayPalAccount.firstName
+                let lastName = tokenizedPayPalAccount.lastName
+                let phone = tokenizedPayPalAccount.phone
+
+                // See BTPostalAddress.h for details
+                let billingAddress = tokenizedPayPalAccount.billingAddress
+                let shippingAddress = tokenizedPayPalAccount.shippingAddress
+                print("\(firstName) \(lastName) made an order")
+            } else if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Buyer cancelled payment")
             }
-            controller.dismiss(animated: true, completion: nil)
         }
-        self.present(dropIn!, animated: true, completion: nil)
     }
+
+//    func showDropIn(clientTokenOrTokenizationKey: String) {
+//        let request =  BTDropInRequest()
+//        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request) { (controller, result, error) in
+//            if error != nil {
+//                print("ERROR")
+//            } else if result?.isCancelled == true {
+//                print("CANCELLED")
+//            } else if let result = result {
+//                // Use the BTDropInResult properties to update your UI
+//                 print(result.paymentOptionType)
+//                 print(result.paymentMethod)
+//                 print(result.paymentIcon)
+//                 print(result.paymentDescription)
+//            }
+//            controller.dismiss(animated: true, completion: nil)
+//        }
+//        self.present(dropIn!, animated: true, completion: nil)
+//    }
 
 
 }
