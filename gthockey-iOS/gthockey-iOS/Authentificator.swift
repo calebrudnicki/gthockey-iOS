@@ -30,11 +30,13 @@ class Authentificator {
                         self.getUserProperties(completion: { propertiesDictionary in
                             let firstName = propertiesDictionary["firstName"] ?? ""
                             let lastName = propertiesDictionary["lastName"] ?? ""
+                            let cart = propertiesDictionary["cart"] ?? []
 
                             db.collection("users").document(user.uid).setData(["firstName": firstName,
                                                                                "lastName": lastName,
                                                                                "email": email,
-                                                                               "uid": user.uid]) { (error) in
+                                                                               "uid": user.uid,
+                                                                               "cart": cart]) { (error) in
                                 if error != nil {
                                     completion(false, error)
                                 }
@@ -47,7 +49,8 @@ class Authentificator {
                     db.collection("users").document(user.uid).setData(["firstName": firstName,
                                                                        "lastName": lastName,
                                                                        "email": email,
-                                                                       "uid": user.uid]) { (error) in
+                                                                       "uid": user.uid,
+                                                                       "cart": []]) { (error) in
                         if error != nil {
                             completion(false, error)
                         }
@@ -91,7 +94,7 @@ class Authentificator {
         }
     }
 
-    public func getUserProperties(completion: @escaping ([String : String]) -> Void) {
+    public func getUserProperties(completion: @escaping ([String : Any]) -> Void) {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
             db.collection("users").document(user.uid).getDocument { (document, error) in
@@ -101,8 +104,9 @@ class Authentificator {
 
                 if let firstName = ((document.data()! as NSDictionary)["firstName"] as! String?),
                     let lastName = ((document.data()! as NSDictionary)["lastName"] as! String?),
-                    let email = ((document.data()! as NSDictionary)["email"] as! String?) {
-                    completion(["firstName": firstName, "lastName": lastName, "email": email])
+                    let email = ((document.data()! as NSDictionary)["email"] as! String?),
+                    let cart = ((document.data()! as NSDictionary)["cart"]) {
+                    completion(["firstName": firstName, "lastName": lastName, "email": email, "cart": cart])
                 }
             }
         }
