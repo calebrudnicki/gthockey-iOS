@@ -27,6 +27,14 @@ class ScheduleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationController()
+        setupTableView()
+        fetchSchedule()
+    }
+
+    // MARK: Config
+
+    private func setupNavigationController() {
         navigationItem.title = "Schedule"
 
         let menuButtonImage: UIImage?
@@ -59,14 +67,9 @@ class ScheduleTableViewController: UITableViewController {
         segmentedController.insertSegment(withTitle: "Upcoming", at: 0, animated: true)
         segmentedController.insertSegment(withTitle: "Completed", at: 1, animated: true)
         segmentedController.selectedSegmentIndex = 0
-        segmentedController.addTarget(self, action: #selector(segmentedControllerTapped), for: .valueChanged)
+        segmentedController.addTarget(self, action: #selector(segmentedControllerChanged), for: .valueChanged)
         navigationItem.titleView = segmentedController
-
-        setupTableView()
-        fetchSchedule()
     }
-
-    // MARK: Config
 
     private func setupTableView() {
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: "ScheduleTableViewCell")
@@ -166,7 +169,7 @@ class ScheduleTableViewController: UITableViewController {
         present(cartTableViewController, animated: true, completion: nil)
     }
 
-    @objc private func segmentedControllerTapped() {
+    @objc private func segmentedControllerChanged() {
         tableView.reloadData()
     }
 
