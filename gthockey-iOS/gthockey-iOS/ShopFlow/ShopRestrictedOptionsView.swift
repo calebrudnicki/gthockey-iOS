@@ -30,14 +30,7 @@ class ShopRestrictedOptionsView: UIView, UIPickerViewDelegate, UIPickerViewDataS
         return displayLabel
     }()
 
-    private let optionsTextField: UITextField = {
-        let optionsTextField = UITextField()
-        optionsTextField.backgroundColor = .white
-        optionsTextField.textColor = .black
-        optionsTextField.font = UIFont(name:"HelveticaNeue-Light", size: 20.0)
-        optionsTextField.translatesAutoresizingMaskIntoConstraints = false
-        return optionsTextField
-    }()
+    private let optionsTextField = ShopOptionTextField()
 
     let optionsPickerView: UIPickerView = {
         let optionsPickerView = UIPickerView()
@@ -54,17 +47,8 @@ class ShopRestrictedOptionsView: UIView, UIPickerViewDelegate, UIPickerViewDataS
 
         optionsPickerView.delegate = self
         optionsPickerView.dataSource = self
-
-        let toolBar = UIToolbar()
-        toolBar.isTranslucent = true
-        toolBar.sizeToFit()
-        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(donePicker))
-        toolBar.setItems([doneButton], animated: true)
-        toolBar.isUserInteractionEnabled = true
-
         optionsTextField.delegate = self
         optionsTextField.inputView = optionsPickerView
-        optionsTextField.inputAccessoryView = toolBar
 
         addSubviews([displayLabel, optionsTextField])
 
@@ -127,4 +111,3 @@ class ShopRestrictedOptionsView: UIView, UIPickerViewDelegate, UIPickerViewDataS
     }
 
 }
-

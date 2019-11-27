@@ -21,6 +21,7 @@
 		82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82918F312350B62F00723B4A /* RosterDetailViewController.swift */; };
 		8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */; };
 		82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F840238DBBA8001CA749 /* CustomError.swift */; };
+		82A6F843238E1AE0001CA749 /* ShopOptionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */; };
 		82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */; };
 		82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */; };
 		82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */; };
@@ -87,6 +88,7 @@
 		82918F312350B62F00723B4A /* RosterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterDetailViewController.swift; sourceTree = "<group>"; };
 		8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		82A6F840238DBBA8001CA749 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
+		82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopOptionTextField.swift; sourceTree = "<group>"; };
 		82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewHeader.swift; sourceTree = "<group>"; };
 		82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 				82B3A176237BD7CC00CD8F3D /* PillButton.swift */,
 				82C24680238669E0003CB268 /* HTMLTextView.swift */,
 				82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */,
+				82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
 				82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */,
 				82EE57E32341B36200FCC181 /* Player.swift in Sources */,
+				82A6F843238E1AE0001CA749 /* ShopOptionTextField.swift in Sources */,
 				82B3A16F237BB44F00CD8F3D /* ShopCustomOptionsView.swift in Sources */,
 				82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */,
 				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,

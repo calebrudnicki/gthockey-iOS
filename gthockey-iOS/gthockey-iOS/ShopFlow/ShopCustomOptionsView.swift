@@ -29,15 +29,7 @@ class ShopCustomOptionsView: UIView, UITextFieldDelegate {
         return displayLabel
     }()
 
-    private let optionsTextField: UITextField = {
-        let optionsTextField = UITextField()
-        optionsTextField.backgroundColor = .white
-        optionsTextField.textColor = .black
-//        optionsTextField.placeholder = ""
-        optionsTextField.font = UIFont(name:"HelveticaNeue-Light", size: 20.0)
-        optionsTextField.translatesAutoresizingMaskIntoConstraints = false
-        return optionsTextField
-    }()
+    private let optionsTextField = ShopOptionTextField()
 
     // MARK: Init
 
@@ -46,9 +38,7 @@ class ShopCustomOptionsView: UIView, UITextFieldDelegate {
 
         translatesAutoresizingMaskIntoConstraints = false
 
-
         optionsTextField.delegate = self
-
 
         addSubviews([displayLabel, optionsTextField])
 
@@ -85,6 +75,21 @@ class ShopCustomOptionsView: UIView, UITextFieldDelegate {
     public func set(with customItem: ApparelCustomItem) {
         displayLabel.text = customItem.getDisplayName()
         optionsTextField.placeholder = customItem.getHelpText()
+
+        customizeTextField(for: customItem.getDisplayName())
+    }
+
+    // MARK: Private Functions
+
+    private func customizeTextField(for category: String) {
+        switch category {
+        case "Custom Number":
+            optionsTextField.keyboardType = .numberPad
+        case "Custom Name":
+            optionsTextField.autocapitalizationType = .allCharacters
+        default:
+            break
+        }
     }
 
 }

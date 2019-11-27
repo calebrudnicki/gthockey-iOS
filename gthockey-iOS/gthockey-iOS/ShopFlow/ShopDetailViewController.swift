@@ -250,6 +250,7 @@ class ShopDetailViewController: UIViewController {
 
         guard let restrictedOptions = restrictedOptions else { return }
         for restrictedOption in restrictedOptions {
+//            guard let value = restrictedOption.getValue(), value == "" else { return }
             let key = restrictedOption.getDisplayName()
             attributesDict[key.lowercased()] = restrictedOption.getValue()
         }
@@ -257,10 +258,10 @@ class ShopDetailViewController: UIViewController {
         guard let customOptions = customOptions else { return }
         for customOption in customOptions {
             let key = customOption.getDisplayName()
-            if customOption.getValue() != nil {
+            if customOption.getValue() != nil && customOption.getValue() != "" {
                 price = (price ?? 0.0) + customOption.getExtraCost()
+                attributesDict[key.lowercased()] = customOption.getValue()
             }
-            attributesDict[key.lowercased()] = customOption.getValue()
         }
 
         firestoreDict["price"] = price
