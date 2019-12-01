@@ -62,10 +62,20 @@ class SignupView: UIView {
         let passwordTextField = UITextField()
         passwordTextField.isSecureTextEntry = true
         passwordTextField.textColor = .white
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password (7 letter minimum)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password (7 character minimum)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passwordTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         return passwordTextField
+    }()
+
+    private let passwordConfirmTextField: UITextField = {
+        let passwordConfirmTextField = UITextField()
+        passwordConfirmTextField.isSecureTextEntry = true
+        passwordConfirmTextField.textColor = .white
+        passwordConfirmTextField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        passwordConfirmTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
+        passwordConfirmTextField.translatesAutoresizingMaskIntoConstraints = false
+        return passwordConfirmTextField
     }()
 
     private let signupButton = PillButton(title: "Sign up", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
@@ -90,6 +100,7 @@ class SignupView: UIView {
         lastNameTextField.addTarget(self, action: #selector(validateTextFields), for: .editingChanged)
         emailTextField.addTarget(self, action: #selector(validateTextFields), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(validateTextFields), for: .editingChanged)
+        passwordConfirmTextField.addTarget(self, action: #selector(validateTextFields), for: .editingChanged)
         signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
         switchToLoginButton.addTarget(self, action: #selector(switchToLoginButtonTapped), for: .touchUpInside)
 
@@ -97,6 +108,7 @@ class SignupView: UIView {
         textFieldStackView.addArrangedSubview(lastNameTextField)
         textFieldStackView.addArrangedSubview(emailTextField)
         textFieldStackView.addArrangedSubview(passwordTextField)
+        textFieldStackView.addArrangedSubview(passwordConfirmTextField)
 
         addSubviews([textFieldStackView, signupButton, switchToLoginButton])
         updateConstraints()
@@ -136,11 +148,13 @@ class SignupView: UIView {
             let firstNameText = firstNameTextField.text,
             let lastNameText = lastNameTextField.text,
             let emailText = emailTextField.text,
-            let passwordText = passwordTextField.text
+            let passwordText = passwordTextField.text,
+            let passwordConfirmText = passwordConfirmTextField.text
         else { return }
 
         if firstNameText.count > 1 && lastNameText.count > 1 &&
-            emailText.contains("@") && passwordText.count > 6 {
+            emailText.contains("@") && passwordText.count > 6
+            && passwordText == passwordConfirmText {
             signupButton.isEnabled = true
         } else {
             signupButton.isEnabled = false
