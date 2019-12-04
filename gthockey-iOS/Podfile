@@ -19,10 +19,6 @@ target 'gthockey-iOS' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
 
-  pod 'Braintree'
-  pod 'BraintreeDropIn'
-  pod 'Braintree/PayPal'
-  pod 'Braintree/Venmo'
-  pod 'Braintree/Apple-Pay'
+  pod 'Stripe'
 
 end

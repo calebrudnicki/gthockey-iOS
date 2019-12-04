@@ -8,50 +8,6 @@ PODS:
   - BoringSSL-GRPC/Implementation (0.0.3):
     - BoringSSL-GRPC/Interface (= 0.0.3)
   - BoringSSL-GRPC/Interface (0.0.3)
-  - Braintree (4.30.0):
-    - Braintree/Card (= 4.30.0)
-    - Braintree/Core (= 4.30.0)
-    - Braintree/PayPal (= 4.30.0)
-    - Braintree/UI (= 4.30.0)
-  - Braintree/Apple-Pay (4.30.0):
-    - Braintree/Core
-  - Braintree/Card (4.30.0):
-    - Braintree/Core
-  - Braintree/Core (4.30.0)
-  - Braintree/PaymentFlow (4.30.0):
-    - Braintree/Card
-    - Braintree/Core
-    - Braintree/PayPalOneTouch
-  - Braintree/PayPal (4.30.0):
-    - Braintree/Core
-    - Braintree/PayPalOneTouch
-  - Braintree/PayPalDataCollector (4.30.0):
-    - Braintree/Core
-    - Braintree/PayPalUtils
-  - Braintree/PayPalOneTouch (4.30.0):
-    - Braintree/Core
-    - Braintree/PayPalDataCollector
-    - Braintree/PayPalUtils
-  - Braintree/PayPalUtils (4.30.0)
-  - Braintree/UI (4.30.0):
-    - Braintree/Card
-    - Braintree/Core
-  - Braintree/UnionPay (4.30.0):
-    - Braintree/Card
-    - Braintree/Core
-  - Braintree/Venmo (4.30.0):
-    - Braintree/Core
-    - Braintree/PayPalDataCollector
-  - BraintreeDropIn (7.4.0):
-    - BraintreeDropIn/DropIn (= 7.4.0)
-  - BraintreeDropIn/DropIn (7.4.0):
-    - Braintree/Card (~> 4.27)
-    - Braintree/Core (~> 4.27)
-    - Braintree/PaymentFlow (~> 4.27)
-    - Braintree/PayPal (~> 4.27)
-    - Braintree/UnionPay (~> 4.27)
-    - BraintreeDropIn/UIKit
-  - BraintreeDropIn/UIKit (7.4.0)
   - Firebase/Analytics (6.11.0):
     - Firebase/Core
   - Firebase/Auth (6.11.0):
@@ -169,17 +125,13 @@ PODS:
   - SDWebImage (5.2.3):
     - SDWebImage/Core (= 5.2.3)
   - SDWebImage/Core (5.2.3)
+  - Stripe (18.2.0)
   - SwiftLint (0.35.0)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireImage
-  - Braintree
-  - Braintree/Apple-Pay
-  - Braintree/PayPal
-  - Braintree/Venmo
-  - BraintreeDropIn
   - Firebase/Analytics
   - Firebase/Auth
   - Firebase/Core
@@ -187,16 +139,15 @@ DEPENDENCIES:
   - IQKeyboardManagerSwift
   - RevealingSplashView
   - SDWebImage (~> 5.0)
+  - Stripe
   - SwiftLint
   - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireImage
     - BoringSSL-GRPC
-    - Braintree
-    - BraintreeDropIn
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
@@ -221,13 +172,13 @@ SPEC REPOS:
     - SDWebImage
     - SwiftLint
     - SwiftyJSON
+  trunk:
+    - Stripe
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   AlamofireImage: 63cfe3baf1370be6c498149687cf6db3e3b00999
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
-  Braintree: 6c7b531ed255701cc69666a2f02d1324a2d95c41
-  BraintreeDropIn: ee413ce4f94b86179e5ff3f98eb847219610bb96
   Firebase: bc9cfc7a96c73268656d5aaab453ff1b4b530e0e
   FirebaseAnalytics: 0e3ecff2c5d86070f7d4325e21f1edabfbd558dc
   FirebaseAuth: b401a012cc33b04df3b52bb308b04e8766f2693e
@@ -250,9 +201,10 @@ SPEC CHECKSUMS:
   Protobuf: a4dc852ad69c027ca2166ed287b856697814375b
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SDWebImage: 46a7f73228f84ce80990c786e4372cf4db5875ce
+  Stripe: a468d5f39703807e840fdfed39572ffad0aaf053
   SwiftLint: 5553187048b900c91aa03552807681bb6b027846
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 4e09682645ff17f3ecf8a5e8cfd949930a36dd4b
+PODFILE CHECKSUM: 2cbb838408a8a419fbcdf829bf94d04b90990610
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.8.4
