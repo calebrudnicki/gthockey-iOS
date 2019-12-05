@@ -59,4 +59,13 @@ class CartHelper {
         }
     }
 
+    public func clearCart(completion: @escaping (Bool) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).updateData(["cart": [:]])
+            completion(true)
+        }
+        completion(false)
+    }
+
 }

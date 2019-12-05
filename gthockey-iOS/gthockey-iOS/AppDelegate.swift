@@ -12,6 +12,7 @@ import IQKeyboardManagerSwift
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,19 +25,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
         FirebaseApp.configure()
+        STPPaymentConfiguration.shared().publishableKey = Constants.publishableKey
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
 
-//        let preLaunchViewController = PreLaunchViewController()
-//        self.window?.rootViewController = preLaunchViewController
-//        self.window?.makeKeyAndVisible()
-        let rootVC = BrowseProductsViewController()
-        let navigationController = UINavigationController(rootViewController: rootVC)
-        let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = navigationController;
-        window.makeKeyAndVisible()
-        self.window = window
+        let preLaunchViewController = PreLaunchViewController()
+        self.window?.rootViewController = preLaunchViewController
+        self.window?.makeKeyAndVisible()
         return true
     }
 

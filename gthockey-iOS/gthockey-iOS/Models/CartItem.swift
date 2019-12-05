@@ -43,7 +43,7 @@ class CartItem: Equatable {
     }
 
     func getPrice() -> Double {
-        return price
+        return price * 100.0
     }
 
     func getPriceString() -> String {

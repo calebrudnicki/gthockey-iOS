@@ -8,14 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
-#import "STPIntentActionRedirectToURL.h"
+#import "STPPaymentIntentActionRedirectToURL.h"
 
 /**
  The `STPPaymentIntentSourceAction` details when type is `STPPaymentIntentSourceActionTypeAuthorizeWithURL`.
  
  These are created & owned by the containing `STPPaymentIntent`.
  
- @deprecated Use `STPIntentActionRedirectToURL` instead.
+ @deprecated Use `STPPaymentIntentActionRedirectToURL` instead.
  */
-__attribute__((deprecated("Use STPIntentActionRedirectToURL instead", "STPIntentActionRedirectToURL")))
-typedef STPIntentActionRedirectToURL STPPaymentIntentSourceActionAuthorizeWithURL;
+__attribute__((deprecated("Use STPPaymentIntentActionRedirectToURL instead", "STPPaymentIntentActionRedirectToURL")))
+typedef STPPaymentIntentActionRedirectToURL STPPaymentIntentSourceActionAuthorizeWithURL;

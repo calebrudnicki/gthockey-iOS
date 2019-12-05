@@ -26,7 +26,8 @@
                         completion:^(NSString *__unused newString, NSRange tagRange) {
                             if (tagRange.location == NSNotFound) {
                                 tagsToRange[tag] = [NSValue valueWithRange:tagRange];
-                            } else {
+                            }
+                            else {
                                 NSRange interiorRange = NSMakeRange(tagRange.location + tag.length + 2, 
                                                             tagRange.length);
                                 interiorRangesToTags[[NSValue valueWithRange:interiorRange]] = tag;
@@ -41,9 +42,11 @@
         
         if (range1.location < range2.location) {
             return NSOrderedAscending;
-        } else if (range1.location > range2.location) {
+        }
+        else if (range1.location > range2.location) {
             return NSOrderedDescending;
-        } else {
+        }
+        else {
             return NSOrderedSame;
         }
     }];

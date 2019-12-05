@@ -76,9 +76,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-#if !(defined(TARGET_OS_MACCATALYST) && (TARGET_OS_MACCATALYST != 0))
     self.automaticallyAdjustsScrollViewInsets = YES;
-#endif
 
     [self createAndSetupViews];
     [self updateAppearance];

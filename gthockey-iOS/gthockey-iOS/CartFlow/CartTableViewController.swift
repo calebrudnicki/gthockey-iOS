@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import Stripe
 
 class CartTableViewController: UITableViewController {
 
@@ -121,10 +122,56 @@ class CartTableViewController: UITableViewController {
 extension CartTableViewController: CartTableViewFooterDelegate {
 
     func checkoutButtonTapped() {
+        let addCardViewController = STPAddCardViewController()
+        let addCardNavigationViewController = UINavigationController(rootViewController: addCardViewController)
+        addCardViewController.delegate = self
+        present(addCardNavigationViewController, animated: true, completion: nil)
+    }
+
+}
+
+extension CartTableViewController: STPAddCardViewControllerDelegate {
+
+    func addCardViewControllerDidCancel(_ addCardViewController: STPAddCardViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    func addCardViewController(_ addCardViewController: STPAddCardViewController, didCreateToken token: STPToken, completion: @escaping STPErrorBlock) {
+
         var totalPrice = 0.0
         for item in cartItems {
             totalPrice += item.getPrice()
         }
-    }
 
+        StripeClient.shared.completeCharge(with: token, amount: totalPrice) { result in
+            self.dismiss(animated: true, completion: nil)
+
+            switch result {
+            // 1
+            case .success:
+                completion(nil)
+
+                let cartHelper = CartHelper()
+                cartHelper.clearCart(completion: { result in
+                    if result {
+                        print("Successfully cleared cart")
+                        self.cartItems = []
+                        self.tableView.reloadData()
+                        self.dismiss(animated: true, completion: nil)
+                    } else {
+                        print("Could not clear cart")
+                    }
+                })
+
+                let alertController = UIAlertController(title: "Congrats", message: "Your payment was successful!", preferredStyle: .alert)
+                let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                alertController.addAction(alertAction)
+                self.present(alertController, animated: true)
+            // 2
+            case .failure(let error):
+                completion(error)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
 }

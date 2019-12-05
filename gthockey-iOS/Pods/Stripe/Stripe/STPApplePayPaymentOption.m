@@ -39,8 +39,4 @@
     return [NSStringFromClass(self.class) hash];
 }
 
-- (BOOL)isReusable {
-    return YES;
-}
-
 @end

@@ -39,13 +39,14 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _additionalPaymentOptions = STPPaymentOptionTypeDefault;
+        _additionalPaymentOptions = STPPaymentOptionTypeAll;
         _requiredBillingAddressFields = STPBillingAddressFieldsNone;
         _requiredShippingAddressFields = nil;
         _verifyPrefilledShippingAddress = YES;
         _shippingType = STPShippingTypeShipping;
         _companyName = [NSBundle stp_applicationName];
         _canDeletePaymentOptions = YES;
+        _createCardSources = NO;
     }
     return self;
 }
@@ -56,38 +57,24 @@
     [Stripe deviceSupportsApplePay];
 }
 
-- (NSSet<NSString *> *)availableCountries {
-    if (_availableCountries == nil) {
-        return [NSSet setWithArray:[NSLocale ISOCountryCodes]];
-    } else {
-        return _availableCountries;
-    }
-}
-
-- (NSSet<NSString *> *)_availableCountries {
-    return _availableCountries;
-}
-
 #pragma mark - Description
 
 - (NSString *)description {
     NSString *additionalPaymentOptionsDescription;
 
-    if (self.additionalPaymentOptions == STPPaymentOptionTypeDefault) {
-        additionalPaymentOptionsDescription = @"STPPaymentOptionTypeDefault";
-    } else if (self.additionalPaymentOptions == STPPaymentOptionTypeNone) {
+    if (self.additionalPaymentOptions == STPPaymentOptionTypeAll) {
+        additionalPaymentOptionsDescription = @"STPPaymentOptionTypeAll";
+    }
+    else if (self.additionalPaymentOptions == STPPaymentOptionTypeNone) {
         additionalPaymentOptionsDescription = @"STPPaymentOptionTypeNone";
-    } else {
+    }
+    else {
         NSMutableArray *paymentOptions = [[NSMutableArray alloc] init];
 
         if (self.additionalPaymentOptions & STPPaymentOptionTypeApplePay) {
             [paymentOptions addObject:@"STPPaymentOptionTypeApplePay"];
         }
 
-        if (self.additionalPaymentOptions & STPPaymentOptionTypeFPX) {
-            [paymentOptions addObject:@"STPPaymentOptionTypeFPX"];
-        }
-        
         additionalPaymentOptionsDescription = [paymentOptions componentsJoinedByString:@"|"];
     }
 
@@ -134,7 +121,6 @@
                        [NSString stringWithFormat:@"requiredShippingAddressFields = %@", requiredShippingAddressFieldsDescription],
                        [NSString stringWithFormat:@"verifyPrefilledShippingAddress = %@", (self.verifyPrefilledShippingAddress) ? @"YES" : @"NO"],
                        [NSString stringWithFormat:@"shippingType = %@", shippingTypeDescription],
-                       [NSString stringWithFormat:@"availableCountries = %@", _availableCountries],
 
                        // Additional configuration
                        [NSString stringWithFormat:@"companyName = %@", self.companyName],
@@ -158,7 +144,6 @@
     copy.companyName = self.companyName;
     copy.appleMerchantIdentifier = self.appleMerchantIdentifier;
     copy.canDeletePaymentOptions = self.canDeletePaymentOptions;
-    copy.availableCountries = _availableCountries;
     return copy;
 }
 

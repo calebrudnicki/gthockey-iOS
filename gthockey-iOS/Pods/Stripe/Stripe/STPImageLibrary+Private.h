@@ -14,7 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface STPImageLibrary (Private)
 
 + (UIImage *)addIcon;
-+ (UIImage *)bankIcon;
 + (UIImage *)checkmarkIcon;
 + (UIImage *)largeCardFrontImage;
 + (UIImage *)largeCardBackImage;

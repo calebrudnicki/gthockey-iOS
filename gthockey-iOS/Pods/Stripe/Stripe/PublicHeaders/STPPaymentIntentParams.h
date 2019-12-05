@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class STPMandateDataParams, STPSourceParams, STPPaymentMethodParams, STPPaymentResult;
+@class STPSourceParams, STPPaymentMethodParams;
 
 /**
  An object representing parameters used to confirm a PaymentIntent object.
@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @see https://stripe.com/docs/api#confirm_payment_intent
  */
-@interface STPPaymentIntentParams : NSObject <NSCopying, STPFormEncodable>
+@interface STPPaymentIntentParams : NSObject<STPFormEncodable>
 
 /**
  Initialize this `STPPaymentIntentParams` with a `clientSecret`, which is the only required
@@ -63,12 +63,6 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, nullable) NSString *paymentMethodId;
 
 /**
- Provide an STPPaymentResult from STPPaymentContext, and this will populate
- the proper field (either paymentMethodId or paymentMethodParams) for your PaymentMethod.
- */
-- (void)configureWithPaymentResult:(STPPaymentResult *)paymentResult;
-
-/**
  Provide a supported `STPSourceParams` object into here, and Stripe will create a Source
  during PaymentIntent confirmation.
 
@@ -102,34 +96,6 @@ NS_ASSUME_NONNULL_BEGIN
  This should probably be a URL that opens your iOS app.
  */
 @property (nonatomic, copy, nullable) NSString *returnURL;
-
-/**
- When provided, this property indicates how you intend to use the payment method that your customer provides after the current payment completes.
- 
- If applicable, additional authentication may be performed to comply with regional legislation or network rules required to enable the usage of the same payment method for additional payments.
- 
- @see STPPaymentIntentSetupFutureUsage for more details on what values you can provide.
- */
-@property (nonatomic, nullable) NSNumber *setupFutureUsage;
-
-/**
- A boolean number to indicate whether you intend to use the Stripe SDK's functionality to handle any PaymentIntent next actions.
- If set to false, STPPaymentIntent.nextAction will only ever contain a redirect url that can be opened in a webview or mobile browser.
- When set to true, the nextAction may contain information that the Stripe SDK can use to perform native authentication within your
- app.
- */
-@property (nonatomic, nullable) NSNumber *useStripeSDK;
-
-/**
- Details about the Mandate to create.
- @note If this value is null and the `self.paymentMethod.type == STPPaymentMethodTypeSEPADebit && self.mandate == nil`, the SDK will set this to an internal value indicating that the mandate data should be inferred from the current context.
- */
-@property (nonatomic, nullable) STPMandateDataParams *mandateData;
-
-/**
- The ID of the Mandate to be used for this payment.
- */
-@property (nonatomic, nullable) NSString *mandate;
 
 /**
  The URL to redirect your customer back to after they authenticate or cancel

@@ -9,7 +9,7 @@
 #import "STPCoreTableViewController.h"
 #import "STPBlocks.h"
 
-@class STPAddress, STPCustomerContext, STPPaymentConfiguration, STPPaymentOptionTuple, STPPaymentMethod, STPUserInformation;
+@class STPAddress, STPCustomerContext, STPPaymentConfiguration, STPPaymentOptionTuple, STPToken, STPUserInformation;
 
 @protocol STPPaymentOption;
 
@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)internalViewControllerDidSelectPaymentOption:(id<STPPaymentOption>)paymentOption;
 - (void)internalViewControllerDidDeletePaymentOption:(id<STPPaymentOption>)paymentOption;
-- (void)internalViewControllerDidCreatePaymentOption:(id<STPPaymentOption>)paymentOption completion:(STPErrorBlock)completion;
+- (void)internalViewControllerDidCreateSource:(id<STPSourceProtocol>)source completion:(STPErrorBlock)completion;
 - (void)internalViewControllerDidCancel;
 
 @end
@@ -37,7 +37,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)updateWithPaymentOptionTuple:(STPPaymentOptionTuple *)tuple;
 
 @property (nonatomic, strong, nullable) UIView *customFooterView;
-@property (nonatomic, strong, nullable) UIView *addCardViewControllerCustomFooterView;
+@property (nonatomic, assign) BOOL createsCardSources;
 
 
 @end

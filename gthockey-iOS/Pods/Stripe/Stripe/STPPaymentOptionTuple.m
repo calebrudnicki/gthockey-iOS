@@ -8,8 +8,7 @@
 
 #import "STPPaymentOptionTuple.h"
 #import "STPApplePayPaymentOption.h"
-#import "STPPaymentConfiguration+Private.h"
-#import "STPPaymentMethod.h"
+#import "STPCard.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -32,8 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)tupleWithPaymentOptions:(NSArray<id<STPPaymentOption>> *)paymentOptions
                   selectedPaymentOption:(nullable id<STPPaymentOption>)selectedPaymentOption
-                      addApplePayOption:(BOOL)applePayEnabled
-                      additionalOptions:(STPPaymentOptionType)additionalPaymentOptions {
+                      addApplePayOption:(BOOL)applePayEnabled {
     NSMutableArray *mutablePaymentOptions = paymentOptions.mutableCopy;
      id<STPPaymentOption> _Nullable selected = selectedPaymentOption;
 
@@ -46,34 +44,8 @@ NS_ASSUME_NONNULL_BEGIN
         }
     }
 
-    if (additionalPaymentOptions & STPPaymentOptionTypeFPX) {
-        STPPaymentMethodFPXParams *fpx = [[STPPaymentMethodFPXParams alloc] init];
-        STPPaymentMethodParams *fpxPaymentOption = [STPPaymentMethodParams paramsWithFPX:fpx billingDetails:nil metadata:nil];
-        [mutablePaymentOptions addObject:fpxPaymentOption];
-    }
-    
     return [self tupleWithPaymentOptions:mutablePaymentOptions.copy
                    selectedPaymentOption:selected];
-}
-
-+ (instancetype)tupleFilteredForUIWithPaymentMethods:(NSArray<STPPaymentMethod *> *)paymentMethods
-                               selectedPaymentMethod:(nullable NSString *)selectedPaymentMethodID
-                                       configuration:(STPPaymentConfiguration *)configuration {
-    NSMutableArray *paymentOptions = [NSMutableArray new];
-    STPPaymentMethod *selectedPaymentMethod = nil;
-    for (STPPaymentMethod *paymentMethod in paymentMethods) {
-        if (paymentMethod.type == STPPaymentMethodTypeCard) {
-            [paymentOptions addObject:paymentMethod];
-            if ([paymentMethod.stripeId isEqualToString:selectedPaymentMethodID]) {
-                selectedPaymentMethod = paymentMethod;
-            }
-        }
-    }
-
-    return [[self class] tupleWithPaymentOptions:paymentOptions
-                                    selectedPaymentOption:selectedPaymentMethod
-                                        addApplePayOption:configuration.applePayEnabled
-                                        additionalOptions:configuration.additionalPaymentOptions];
 }
 
 @end

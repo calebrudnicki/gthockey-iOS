@@ -91,13 +91,6 @@
                                                           [client setApiUsage:[client.apiUsage setByAddingObject:NSStringFromClass([STPPaymentOptionsViewController class])]];
                                                       } error:nil];
 
-        [STPBankSelectionViewController stp_aspect_hookSelector:@selector(initWithBankMethod:configuration:theme:)
-                                                     withOptions:STPAspectPositionAfter
-                                                      usingBlock:^{
-                                                          STPAnalyticsClient *client = [self sharedClient];
-                                                          [client setApiUsage:[client.apiUsage setByAddingObject:NSStringFromClass([STPBankSelectionViewController class])]];
-                                                      } error:nil];
-        
         [STPShippingAddressViewController stp_aspect_hookSelector:@selector(initWithConfiguration:theme:currency:shippingAddress:selectedShippingMethod:prefilledInformation:)
                                                       withOptions:STPAspectPositionAfter
                                                        usingBlock:^{
@@ -176,12 +169,15 @@
     NSString *uiUsageLevel = nil;
     if ([self.apiUsage containsObject:NSStringFromClass([STPPaymentContext class])]) {
         uiUsageLevel = @"full";
-    } else if (self.apiUsage.count == 1
+    }
+    else if (self.apiUsage.count == 1
              && [self.apiUsage containsObject:NSStringFromClass([STPPaymentCardTextField class])]) {
         uiUsageLevel = @"card_text_field";
-    } else if (self.apiUsage.count > 0) {
+    }
+    else if (self.apiUsage.count > 0) {
         uiUsageLevel = @"partial";
-    } else {
+    }
+    else {
         uiUsageLevel = @"none";
     }
     productUsage[@"ui_usage_level"] = uiUsageLevel;
@@ -218,20 +214,6 @@
     [self logPayload:payload];
 }
 
-- (void)logPaymentMethodCreationSucceededWithConfiguration:(STPPaymentConfiguration *)configuration
-                                           paymentMethodID:(NSString *)paymentMethodID {
-    NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
-    NSMutableDictionary *payload = [self.class commonPayload];
-    [payload addEntriesFromDictionary:@{
-                                        @"event": @"stripeios.payment_method_creation",
-                                        @"payment_method_id": paymentMethodID,
-                                        @"additional_info": [self additionalInfo],
-                                        }];
-    [payload addEntriesFromDictionary:[self productUsageDictionary]];
-    [payload addEntriesFromDictionary:configurationDictionary];
-    [self logPayload:payload];
-}
-
 - (void)logPaymentIntentConfirmationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
                                                   sourceType:(NSString *)sourceType {
     NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
@@ -245,146 +227,6 @@
     [payload addEntriesFromDictionary:configurationDictionary];
     [self logPayload:payload];
 }
-
-- (void)logSetupIntentConfirmationAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
-                                         paymentMethodType:(NSString *)paymentMethodType {
-    NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
-    NSMutableDictionary *payload = [self.class commonPayload];
-    [payload addEntriesFromDictionary:@{
-                                        @"event": @"stripeios.setup_intent_confirmation",
-                                        @"payment_method_type": paymentMethodType ?: @"unknown",
-                                        @"additional_info": [self additionalInfo],
-                                        }];
-    [payload addEntriesFromDictionary:[self productUsageDictionary]];
-    [payload addEntriesFromDictionary:configurationDictionary];
-    [self logPayload:payload];
-}
-
-- (void)log3DS2AuthenticateAttemptWithConfiguration:(STPPaymentConfiguration *)configuration
-                                           intentID:(NSString *)intentID {
-    NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
-    NSMutableDictionary *payload = [self.class commonPayload];
-    [payload addEntriesFromDictionary:@{
-                                        @"event": @"stripeios.3ds2_authenticate",
-                                        @"intent_id": intentID,
-                                        @"additional_info": [self additionalInfo],
-                                        }];
-    [payload addEntriesFromDictionary:[self productUsageDictionary]];
-    [payload addEntriesFromDictionary:configurationDictionary];
-    [self logPayload:payload];
-}
-
-- (void)log3DS2ChallengeFlowErroredWithConfiguration:(STPPaymentConfiguration *)configuration
-                                            intentID:(NSString *)intentID
-                                     errorDictionary:(NSDictionary *)errorDictionary {
-    NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
-    NSMutableDictionary *payload = [self.class commonPayload];
-    [payload addEntriesFromDictionary:@{
-                                        @"event": @"stripeios.3ds2_challenge_flow_errored",
-                                        @"intent_id": intentID,
-                                        @"additional_info": [self additionalInfo],
-                                        @"error_dictionary": errorDictionary,
-                                        }];
-    [payload addEntriesFromDictionary:[self productUsageDictionary]];
-    [payload addEntriesFromDictionary:configurationDictionary];
-    [self logPayload:payload];
-}
-
-- (void)log3DS2FrictionlessFlowWithConfiguration:(STPPaymentConfiguration *)configuration
-                                        intentID:(NSString *)intentID {
-    NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
-    NSMutableDictionary *payload = [self.class commonPayload];
-    [payload addEntriesFromDictionary:@{
-                                        @"event": @"stripeios.3ds2_frictionless_flow",
-                                        @"intent_id": intentID,
-                                        @"additional_info": [self additionalInfo],
-                                        }];
-    [payload addEntriesFromDictionary:[self productUsageDictionary]];
-    [payload addEntriesFromDictionary:configurationDictionary];
-    [self logPayload:payload];
-}
-
-- (void)logURLRedirectNextActionWithConfiguration:(STPPaymentConfiguration *)configuration
-                                         intentID:(NSString *)intentID {
-    NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
-    NSMutableDictionary *payload = [self.class commonPayload];
-    [payload addEntriesFromDictionary:@{
-                                        @"event": @"stripeios.url_redirect_next_action",
-                                        @"intent_id": intentID,
-                                        @"additional_info": [self additionalInfo],
-                                        }];
-    [payload addEntriesFromDictionary:[self productUsageDictionary]];
-    [payload addEntriesFromDictionary:configurationDictionary];
-    [self logPayload:payload];
-}
-
-
-- (void)log3DS2ChallengeFlowPresentedWithConfiguration:(STPPaymentConfiguration *)configuration
-                                              intentID:(NSString *)intentID
-                                                uiType:(NSString *)uiType {
-    NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
-    NSMutableDictionary *payload = [self.class commonPayload];
-    [payload addEntriesFromDictionary:@{
-                                        @"event": @"stripeios.3ds2_challenge_flow_presented",
-                                        @"intent_id": intentID,
-                                        @"3ds2_ui_type": uiType,
-                                        @"additional_info": [self additionalInfo],
-                                        }];
-    [payload addEntriesFromDictionary:[self productUsageDictionary]];
-    [payload addEntriesFromDictionary:configurationDictionary];
-    [self logPayload:payload];
-}
-
-
-- (void)log3DS2ChallengeFlowTimedOutWithConfiguration:(STPPaymentConfiguration *)configuration
-                                             intentID:(NSString *)intentID
-                                               uiType:(NSString *)uiType {
-    NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
-    NSMutableDictionary *payload = [self.class commonPayload];
-    [payload addEntriesFromDictionary:@{
-                                        @"event": @"stripeios.3ds2_challenge_flow_timed_out",
-                                        @"intent_id": intentID,
-                                        @"3ds2_ui_type": uiType,
-                                        @"additional_info": [self additionalInfo],
-                                        }];
-    [payload addEntriesFromDictionary:[self productUsageDictionary]];
-    [payload addEntriesFromDictionary:configurationDictionary];
-    [self logPayload:payload];
-}
-
-- (void)log3DS2ChallengeFlowUserCanceledWithConfiguration:(STPPaymentConfiguration *)configuration
-                                                 intentID:(NSString *)intentID
-                                                   uiType:(NSString *)uiType {
-    NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
-    NSMutableDictionary *payload = [self.class commonPayload];
-    [payload addEntriesFromDictionary:@{
-                                        @"event": @"stripeios.3ds2_challenge_flow_canceled",
-                                        @"intent_id": intentID,
-                                        @"3ds2_ui_type": uiType,
-                                        @"additional_info": [self additionalInfo],
-                                        }];
-    [payload addEntriesFromDictionary:[self productUsageDictionary]];
-    [payload addEntriesFromDictionary:configurationDictionary];
-    [self logPayload:payload];
-}
-
-- (void)log3DS2ChallengeFlowCompletedWithConfiguration:(STPPaymentConfiguration *)configuration
-                                              intentID:(NSString *)intentID
-                                                uiType:(NSString *)uiType {
-    NSDictionary *configurationDictionary = [self.class serializeConfiguration:configuration];
-    NSMutableDictionary *payload = [self.class commonPayload];
-    [payload addEntriesFromDictionary:@{
-                                        @"event": @"stripeios.3ds2_challenge_flow_completed",
-                                        @"intent_id": intentID,
-                                        @"3ds2_ui_type": uiType,
-                                        @"additional_info": [self additionalInfo],
-                                        }];
-    [payload addEntriesFromDictionary:[self productUsageDictionary]];
-    [payload addEntriesFromDictionary:configurationDictionary];
-    [self logPayload:payload];
-}
-
-#pragma mark - Helpers
 
 + (NSMutableDictionary *)commonPayload {
     NSMutableDictionary *payload = [NSMutableDictionary dictionary];
@@ -411,22 +253,11 @@
 + (NSDictionary *)serializeConfiguration:(STPPaymentConfiguration *)configuration {
     NSMutableDictionary *dictionary = [NSMutableDictionary dictionary];
     dictionary[@"publishable_key"] = configuration.publishableKey ?: @"unknown";
-    
-    if (configuration.additionalPaymentOptions == STPPaymentOptionTypeDefault) {
-        dictionary[@"additional_payment_methods"] = @"default";
-    }
-    else if (configuration.additionalPaymentOptions == STPPaymentOptionTypeNone) {
-        dictionary[@"additional_payment_methods"] = @"none";
-    }
-    else {
-        NSMutableArray *methods = [[NSMutableArray alloc] init];
-        if (configuration.additionalPaymentOptions & STPPaymentOptionTypeApplePay) {
-            [methods addObject:@"applepay"];
-        }
-        if (configuration.additionalPaymentOptions & STPPaymentOptionTypeFPX) {
-            [methods addObject:@"fpx"];
-        }
-        dictionary[@"additional_payment_methods"] = [methods componentsJoinedByString:@","];
+    switch (configuration.additionalPaymentOptions) {
+        case STPPaymentOptionTypeAll:
+            dictionary[@"additional_payment_methods"] = @"all";
+        case STPPaymentOptionTypeNone:
+            dictionary[@"additional_payment_methods"] = @"none";
     }
     switch (configuration.requiredBillingAddressFields) {
         case STPBillingAddressFieldsNone:
