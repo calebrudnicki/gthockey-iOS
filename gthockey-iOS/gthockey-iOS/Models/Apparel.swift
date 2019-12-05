@@ -14,13 +14,13 @@ class Apparel {
 
     private var id: Int
     private var name: String
-    private var price: Float
+    private var price: Double
     private var description: String
     private var imageURL: URL
 
     // MARK: Init
 
-    init(id: Int, name: String, price: Float, description: String, imageURL: URL) {
+    init(id: Int, name: String, price: Double, description: String, imageURL: URL) {
         self.id = id
         self.name = name
         self.price = price
@@ -38,8 +38,12 @@ class Apparel {
         return name
     }
 
-    func getPrice() -> Float {
+    func getPrice() -> Double {
         return price
+    }
+
+    func getPriceString() -> String {
+        return "$" + String(format: "%.2f", price)
     }
 
     func getDescription() -> String {

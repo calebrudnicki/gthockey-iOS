@@ -213,7 +213,7 @@ class ShopDetailViewController: UIViewController {
     public func set(with apparel: Apparel, _ restrictedOptions: [ApparelRestrictedItem], _ customOptions: [ApparelCustomItem]) {
         imageView.sd_setImage(with: apparel.getImageURL(), placeholderImage: nil)
         headlineLabel.text = apparel.getName()
-        priceLabel.text = "$\(apparel.getPrice().description)"
+        priceLabel.text = apparel.getPriceString()
         descriptionLabel.setText(with: apparel.getDescription())
 
         self.restrictedOptions = restrictedOptions
@@ -242,28 +242,43 @@ class ShopDetailViewController: UIViewController {
     }
 
     @objc private func addToCartButtonTapped() {
-        if let user = Auth.auth().currentUser {
-            let db = Firestore.firestore()
+        var price = apparelItem?.getPrice()
+        var firestoreDict: [String: Any] = ["id": (apparelItem?.getID())!,
+                                             "name": (apparelItem?.getName())!,
+                                             "imageURL": (apparelItem?.getImageURL())?.description]
+        var attributesDict: [String: Any] = [:]
 
-            var firestoreDict: [String : Any] = ["id": (apparelItem?.getID())!,
-                                                 "name": (apparelItem?.getName())!,
-                                                 "imageURL": (apparelItem?.getImageURL())?.description]
-
-            guard let restrictedOptions = restrictedOptions else { return }
-            for restrictedOption in restrictedOptions {
-                let key = restrictedOption.getDisplayName()
-                firestoreDict[key.lowercased()] = restrictedOption.getValue()
-            }
-
-            guard let customOptions = customOptions else { return }
-            for customOption in customOptions {
-                let key = customOption.getDisplayName()
-                firestoreDict[key.lowercased()] = customOption.getValue()
-            }
-
-            db.collection("users").document(user.uid).updateData(["cart": FieldValue.arrayUnion([firestoreDict])])
-            dismiss(animated: true, completion: nil)
+        guard let restrictedOptions = restrictedOptions else { return }
+        for restrictedOption in restrictedOptions {
+//            guard let value = restrictedOption.getValue(), value == "" else { return }
+            let key = restrictedOption.getDisplayName()
+            attributesDict[key.lowercased()] = restrictedOption.getValue()
         }
+
+        guard let customOptions = customOptions else { return }
+        for customOption in customOptions {
+            let key = customOption.getDisplayName()
+            if customOption.getValue() != nil && customOption.getValue() != "" {
+                price = (price ?? 0.0) + customOption.getExtraCost()
+                attributesDict[key.lowercased()] = customOption.getValue()
+            }
+        }
+
+        firestoreDict["price"] = price
+        firestoreDict["attributes"] = attributesDict
+
+        let cartHelper = CartHelper()
+        cartHelper.add(cartDict: firestoreDict, completion: { result in
+            if result {
+                self.dismiss(animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Add to Cart Failed",
+                                              message: nil,
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
     }
 
     // MARK: Helper Functions

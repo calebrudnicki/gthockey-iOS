@@ -183,7 +183,7 @@ class JSONParser {
     private func makeApparelObject(value: JSON) -> Apparel {
         let apparel = Apparel(id: value["id"].int!,
                               name: value["name"].string!,
-                              price: value["price"].float!,
+                              price: value["price"].double!,
                               description: value["description"].string!,
                               imageURL: URL(string: value["image"].string ?? "https://test.gthockey.com/media/players/caleb.jpg")!)
         return apparel
@@ -209,7 +209,7 @@ class JSONParser {
                                                       displayName: item["display_name"].string!,
                                                       helpText: item["help_text"].string!,
                                                       isRequired: item["required"].bool!,
-                                                      extraCost: item["extra_cost"].int!,
+                                                      extraCost: item["extra_cost"].double!,
                                                       correspondingApparelID: item["shop_item"].int!)
             arr.append(apparelCustomItem)
         }

@@ -16,13 +16,13 @@ class ApparelCustomItem {
     private var displayName: String
     private var helpText: String
     private var isRequired: Bool
-    private var extraCost: Int
+    private var extraCost: Double
     private var correspondingApparelID: Int
     private var value: String?
 
     // MARK: Init
 
-    init(id: Int, displayName: String, helpText: String, isRequired: Bool, extraCost: Int, correspondingApparelID: Int) {
+    init(id: Int, displayName: String, helpText: String, isRequired: Bool, extraCost: Double, correspondingApparelID: Int) {
         self.id = id
         self.displayName = displayName
         self.helpText = helpText
@@ -49,7 +49,7 @@ class ApparelCustomItem {
         return isRequired
     }
 
-    func getExtraCost() -> Int {
+    func getExtraCost() -> Double {
         return extraCost
     }
 
