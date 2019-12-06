@@ -34,49 +34,16 @@ class CartTableViewController: UITableViewController {
     }
 
     @objc private func fetchCart() {
-        if let user = Auth.auth().currentUser {
-            let db = Firestore.firestore()
-            db.collection("users").document(user.uid).getDocument { (document, error) in
-                if let document = document, document.exists,
-                    let cart = ((document.data()! as NSDictionary)["cart"] as! [[String : Any]]?) {
-                    for item in cart {
-                        var id: Int?
-                        var name: String?
-                        var imageURL: URL?
-                        var price: Double?
-                        var attributes: [String : Any]?
-                        for (key, val) in item {
-                            switch key {
-                            case "id":
-                                id = val as? Int
-                            case "name":
-                                name = val as? String
-                            case "imageURL":
-                                imageURL = URL(string: val as? String ?? "")
-                            case "price":
-                                price = val as? Double
-                            case "attributes":
-                                attributes = val as? [String: Any]
-                            default:
-                                break
-                            }
-                        }
-                        let cartItem = CartItem(id: id ?? 0,
-                                                name: name ?? "",
-                                                imageURL: imageURL ?? URL(string: "")!,
-                                                price: price ?? 0.0,
-                                                attributes: attributes ?? [:])
-                        self.cartItems.append(cartItem)
-                    }
-                } else {
-                    print("Document does not exist")
-                }
-
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+        let cartHelper = CartHelper()
+        cartHelper.retrieveCart(completion: { (retrievedItems, error) in
+            if let error = error as NSError? {
+                print(error.localizedDescription)
             }
-        }
+            self.cartItems = retrievedItems
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
     }
 
     // MARK: Table view data source
@@ -147,7 +114,6 @@ extension CartTableViewController: STPAddCardViewControllerDelegate {
             self.dismiss(animated: true, completion: nil)
 
             switch result {
-            // 1
             case .success:
                 completion(nil)
 
@@ -167,7 +133,6 @@ extension CartTableViewController: STPAddCardViewControllerDelegate {
                 let alertAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
                 alertController.addAction(alertAction)
                 self.present(alertController, animated: true)
-            // 2
             case .failure(let error):
                 completion(error)
                 self.dismiss(animated: true, completion: nil)
