@@ -150,10 +150,10 @@ extension WelcomeViewController: LoginViewDelegate {
                 menuContainerViewController.modalPresentationStyle = .fullScreen
                 self.present(menuContainerViewController, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "Log In Failed",
+                let alert = UIAlertController(title: "Log in failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                alert.addAction(UIAlertAction(title: "Ok", style: .default))
                 self.present(alert, animated: true, completion: nil)
             }
         }
@@ -167,6 +167,39 @@ extension WelcomeViewController: LoginViewDelegate {
             self.loginView.isHidden = true
             self.signupView.isHidden = false
         })
+    }
+
+    func forgotPassword(with email: String) {
+        let authentificator = Authentificator()
+        authentificator.resetPassword(with: email, completion: { error in
+            if error != nil {
+                let alert = UIAlertController(title: "Could not initiate password reset",
+                                              message: error?.localizedDescription,
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "Check your email",
+                                              message: "A password reset link shoukd be in your \(email) email",
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                alert.addAction(UIAlertAction(title: "Open email", style: .default, handler: { action in
+                    let mailURL = URL(string: "message://")!
+                    if UIApplication.shared.canOpenURL(mailURL) {
+                        UIApplication.shared.open(mailURL, options: [:], completionHandler: nil)
+                     }
+                }))
+                self.present(alert, animated: true, completion: nil)
+            }
+        })
+    }
+
+    func promptUserForValidEmail() {
+        let alert = UIAlertController(title: "Not a valid email address",
+                                      message: "Please enter a valid email address to reset your password",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        self.present(alert, animated: true, completion: nil)
     }
 
 }
