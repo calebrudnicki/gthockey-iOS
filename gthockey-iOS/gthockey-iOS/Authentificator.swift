@@ -83,6 +83,15 @@ class Authentificator {
         }
     }
 
+    public func resetPassword(with email: String, completion: @escaping (Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email, completion: { error in
+            if error != nil {
+                completion(error)
+            }
+            completion(nil)
+        })
+    }
+
     public func signOut(completion: @escaping (Bool, Error?) -> Void) {
         do {
             try Auth.auth().signOut()

@@ -11,6 +11,8 @@ import UIKit
 protocol LoginViewDelegate {
     func didTapLoginButton(with email: String, _ password: String)
     func switchToSignup()
+    func forgotPassword(with email: String)
+    func promptUserForValidEmail()
 }
 
 class LoginView: UIView {
@@ -70,6 +72,15 @@ class LoginView: UIView {
         return switchToSignupButton
     }()
 
+    private let forgotPasswordButton: UIButton = {
+        let forgotPasswordButton = UIButton()
+        forgotPasswordButton.setTitle("Forgot password?", for: .normal)
+        forgotPasswordButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 12.0)
+        forgotPasswordButton.titleLabel?.textColor = .gray
+        forgotPasswordButton.translatesAutoresizingMaskIntoConstraints = false
+        return forgotPasswordButton
+    }()
+
     // MARK: Init
 
     override init(frame: CGRect) {
@@ -81,11 +92,12 @@ class LoginView: UIView {
         passwordTextField.addTarget(self, action: #selector(validateTextFields), for: .editingChanged)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         switchToSignupButton.addTarget(self, action: #selector(switchToSignupButtonTapped), for: .touchUpInside)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPasswordButtonTapped), for: .touchUpInside)
 
         textFieldStackView.addArrangedSubview(emailTextField)
         textFieldStackView.addArrangedSubview(passwordTextField)
 
-        addSubviews([emailVerificationLabel, textFieldStackView, loginButton, switchToSignupButton])
+        addSubviews([emailVerificationLabel, textFieldStackView, loginButton, switchToSignupButton, forgotPasswordButton])
         updateConstraints()
     }
 
@@ -117,8 +129,14 @@ class LoginView: UIView {
         NSLayoutConstraint.activate([
             switchToSignupButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 8.0),
             switchToSignupButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            switchToSignupButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            switchToSignupButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+            switchToSignupButton.trailingAnchor.constraint(equalTo: trailingAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            forgotPasswordButton.topAnchor.constraint(equalTo: switchToSignupButton.bottomAnchor, constant: 4.0),
+            forgotPasswordButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            forgotPasswordButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            forgotPasswordButton.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
@@ -151,6 +169,19 @@ class LoginView: UIView {
 
     @objc private func switchToSignupButtonTapped() {
         delegate?.switchToSignup()
+    }
+
+    @objc private func forgotPasswordButtonTapped() {
+        guard
+            let email = emailTextField.text,
+            email.count > 0,
+            email.contains("@")
+        else {
+            delegate?.promptUserForValidEmail()
+            return
+        }
+
+        delegate?.forgotPassword(with: email)
     }
 
     // MARK: Public Functions
