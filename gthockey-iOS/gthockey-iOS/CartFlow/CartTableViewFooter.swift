@@ -10,6 +10,7 @@ import UIKit
 
 protocol CartTableViewFooterDelegate {
     func checkoutButtonTapped()
+    func shippingButtonTapped()
 }
 
 class CartTableViewFooter: UIView {
@@ -17,6 +18,7 @@ class CartTableViewFooter: UIView {
     // MARK: Properties
 
     private let paypalCheckoutButton = PillButton(title: "Checkout", backgroundColor: .paypalBlue, borderColor: .paypalBlue, isEnabled: true)
+    private let shippingButton = PillButton(title: "Shipping", backgroundColor: .gray, borderColor: .paypalBlue, isEnabled: true)
     public var delegate: CartTableViewFooterDelegate!
 
     // MARK: Init
@@ -25,8 +27,10 @@ class CartTableViewFooter: UIView {
         super.init(frame: frame)
 
         paypalCheckoutButton.addTarget(self, action: #selector(paypalCheckoutButtonTapped), for: .touchUpInside)
+        shippingButton.addTarget(self, action: #selector(shippingButtonTapped), for: .touchUpInside)
 
         addSubview(paypalCheckoutButton)
+        addSubview(shippingButton)
         updateConstraints()
     }
 
@@ -41,36 +45,24 @@ class CartTableViewFooter: UIView {
             paypalCheckoutButton.topAnchor.constraint(equalTo: topAnchor, constant: 12.0),
             paypalCheckoutButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.0),
             paypalCheckoutButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12.0),
-            paypalCheckoutButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            shippingButton.topAnchor.constraint(equalTo: paypalCheckoutButton.bottomAnchor, constant: 12.0),
+            shippingButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.0),
+            shippingButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12.0),
+            shippingButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12.0)
         ])
     }
 
     // MARK: Action
 
     @objc private func paypalCheckoutButtonTapped() {
-        print("Start checkout with paypal")
         delegate.checkoutButtonTapped()
-//        showDropIn(clientTokenOrTokenizationKey: <#T##String#>)
     }
 
-//    func showDropIn(clientTokenOrTokenizationKey: String) {
-//        let request =  BTDropInRequest()
-//        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
-//        { (controller, result, error) in
-//            if (error != nil) {
-//                print("ERROR")
-//            } else if (result?.isCancelled == true) {
-//                print("CANCELLED")
-//            } else if let result = result {
-//                // Use the BTDropInResult properties to update your UI
-//                // result.paymentOptionType
-//                // result.paymentMethod
-//                // result.paymentIcon
-//                // result.paymentDescription
-//            }
-//            controller.dismiss(animated: true, completion: nil)
-//        }
-//        self.present(dropIn!, animated: true, completion: nil)
-//    }
+    @objc private func shippingButtonTapped() {
+        delegate.shippingButtonTapped()
+    }
 
 }

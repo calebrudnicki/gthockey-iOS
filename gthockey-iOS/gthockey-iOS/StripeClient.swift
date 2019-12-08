@@ -18,6 +18,7 @@ enum Result {
 class StripeClient {
 
     static let shared = StripeClient()
+    private var address: STPAddress?
 
     private init() {}
 
@@ -28,13 +29,18 @@ class StripeClient {
         return url
     }()
 
+    func addAddress(with address: STPAddress) {
+        self.address = address
+    }
+
     func completeCharge(with token: STPToken, amount: Double, completion: @escaping (Result) -> Void) {
         let url = baseURL.appendingPathComponent("charge")
         let params: [String: Any] = [
             "token": token.tokenId,
             "amount": amount,
             "currency": Constants.defaultCurrency,
-            "description": Constants.defaultDescription
+            "description": Constants.defaultDescription,
+            "address": address
         ]
         Alamofire.request(url, method: .post, parameters: params)
             .validate(statusCode: 200..<300)

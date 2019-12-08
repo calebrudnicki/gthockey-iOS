@@ -15,6 +15,57 @@ class CartTableViewController: UITableViewController {
 
     // MARK: Properties
 
+    var stpTheme: STPTheme {
+        let theme = STPTheme.init()
+        theme.primaryBackgroundColor = UIColor(red:230.0/255.0, green:235.0/255.0, blue:241.0/255.0, alpha:255.0/255.0)
+        theme.secondaryBackgroundColor = UIColor.white
+        theme.primaryForegroundColor = UIColor(red:55.0/255.0, green:53.0/255.0, blue:100.0/255.0, alpha:255.0/255.0)
+        theme.secondaryForegroundColor = UIColor(red:148.0/255.0, green:163.0/255.0, blue:179.0/255.0, alpha:255.0/255.0)
+        theme.accentColor = UIColor(red:101.0/255.0, green:101.0/255.0, blue:232.0/255.0, alpha:255.0/255.0)
+        theme.errorColor = UIColor(red:240.0/255.0, green:2.0/255.0, blue:36.0/255.0, alpha:255.0/255.0)
+        #if canImport(CryptoKit)
+        if #available(iOS 13.0, *) {
+            theme.primaryBackgroundColor = UIColor.init(dynamicProvider: { (tc) -> UIColor in
+                return (tc.userInterfaceStyle == .light) ?
+                    UIColor(red:230.0/255.0, green:235.0/255.0, blue:241.0/255.0, alpha:255.0/255.0) :
+                    UIColor(red:66.0/255.0, green:69.0/255.0, blue:112.0/255.0, alpha:255.0/255.0)
+            })
+            theme.secondaryBackgroundColor = UIColor.init(dynamicProvider: { (tc) -> UIColor in
+                return (tc.userInterfaceStyle == .light) ?
+                    .white : theme.primaryBackgroundColor
+            })
+            theme.primaryForegroundColor = UIColor.init(dynamicProvider: { (tc) -> UIColor in
+                return (tc.userInterfaceStyle == .light) ?
+                    UIColor(red:55.0/255.0, green:53.0/255.0, blue:100.0/255.0, alpha:255.0/255.0) :
+                    .white
+            })
+            theme.secondaryForegroundColor = UIColor.init(dynamicProvider: { (tc) -> UIColor in
+                return (tc.userInterfaceStyle == .light) ?
+                    UIColor(red:148.0/255.0, green:163.0/255.0, blue:179.0/255.0, alpha:255.0/255.0) :
+                    UIColor(red:130.0/255.0, green:147.0/255.0, blue:168.0/255.0, alpha:255.0/255.0)
+            })
+            theme.accentColor = UIColor.init(dynamicProvider: { (tc) -> UIColor in
+                return (tc.userInterfaceStyle == .light) ?
+                    UIColor(red:101.0/255.0, green:101.0/255.0, blue:232.0/255.0, alpha:255.0/255.0) :
+                    UIColor(red:14.0/255.0, green:211.0/255.0, blue:140.0/255.0, alpha:255.0/255.0)
+            })
+            theme.errorColor = UIColor.init(dynamicProvider: { (tc) -> UIColor in
+                return (tc.userInterfaceStyle == .light) ?
+                    UIColor(red:240.0/255.0, green:2.0/255.0, blue:36.0/255.0, alpha:255.0/255.0) :
+                    UIColor(red:237.0/255.0, green:83.0/255.0, blue:69.0/255.0, alpha:255.0/255.0)
+            })
+        } else {
+            theme.primaryBackgroundColor = UIColor(red:230.0/255.0, green:235.0/255.0, blue:241.0/255.0, alpha:255.0/255.0)
+            theme.secondaryBackgroundColor = UIColor.white
+            theme.primaryForegroundColor = UIColor(red:55.0/255.0, green:53.0/255.0, blue:100.0/255.0, alpha:255.0/255.0)
+            theme.secondaryForegroundColor = UIColor(red:148.0/255.0, green:163.0/255.0, blue:179.0/255.0, alpha:255.0/255.0)
+            theme.accentColor = UIColor(red:101.0/255.0, green:101.0/255.0, blue:232.0/255.0, alpha:255.0/255.0)
+            theme.errorColor = UIColor(red:240.0/255.0, green:2.0/255.0, blue:36.0/255.0, alpha:255.0/255.0)
+        }
+        #endif
+        return theme
+    }
+
     private var cartItems: [CartItem] = []
 
     override func viewDidLoad() {
@@ -29,7 +80,7 @@ class CartTableViewController: UITableViewController {
 
         let cartTableViewFooter = CartTableViewFooter()
         cartTableViewFooter.delegate = self
-        cartTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 75.0)
+        cartTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 150.0)
         tableView.tableFooterView = cartTableViewFooter
     }
 
@@ -90,9 +141,27 @@ extension CartTableViewController: CartTableViewFooterDelegate {
 
     func checkoutButtonTapped() {
         let addCardViewController = STPAddCardViewController()
-        let addCardNavigationViewController = UINavigationController(rootViewController: addCardViewController)
+        let addCardNavigationController = UINavigationController(rootViewController: addCardViewController)
         addCardViewController.delegate = self
-        present(addCardNavigationViewController, animated: true, completion: nil)
+        present(addCardNavigationController, animated: true, completion: nil)
+    }
+
+    func shippingButtonTapped() {
+        let config = STPPaymentConfiguration()
+        config.requiredShippingAddressFields = [.postalAddress]
+        let viewController = STPShippingAddressViewController(configuration: config,
+                                                              theme: stpTheme,
+                                                              currency: "usd",
+                                                              shippingAddress: nil,
+                                                              selectedShippingMethod: nil,
+                                                              prefilledInformation: nil)
+        viewController.delegate = self
+        let navigationController = UINavigationController(rootViewController: viewController)
+        present(navigationController, animated: true, completion: nil)
+//        let shippingAddressViewController = STPShippingAddressViewController()
+//        let shippingAddressNavigationController = UINavigationController(rootViewController: shippingAddressViewController)
+//        shippingAddressViewController.delegate = self
+//        present(shippingAddressNavigationController, animated: true, completion: nil)
     }
 
 }
@@ -139,4 +208,21 @@ extension CartTableViewController: STPAddCardViewControllerDelegate {
             }
         }
     }
+}
+
+extension CartTableViewController: STPShippingAddressViewControllerDelegate {
+
+    func shippingAddressViewControllerDidCancel(_ addressViewController: STPShippingAddressViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+
+    func shippingAddressViewController(_ addressViewController: STPShippingAddressViewController, didEnter address: STPAddress, completion: @escaping STPShippingMethodsCompletionBlock) {
+        print("Giu")
+        StripeClient.shared.addAddress(with: address)
+    }
+
+    func shippingAddressViewController(_ addressViewController: STPShippingAddressViewController, didFinishWith address: STPAddress, shippingMethod method: PKShippingMethod?) {
+        print("Hwuef")
+    }
+
 }
