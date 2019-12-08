@@ -78,7 +78,7 @@ class SignupView: UIView {
         return passwordConfirmTextField
     }()
 
-    private let signupButton = PillButton(title: "Sign up", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
+    public let signupButton = PillButton(title: "Sign up", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
 
     private let switchToLoginButton: UIButton = {
         let switchToLoginButton = UIButton()
@@ -173,6 +173,7 @@ class SignupView: UIView {
             password.count > 0
         else { return }
 
+        signupButton.loading(true)
         delegate?.didTapSignupButton(with: firstName, lastName, email, password)
     }
 

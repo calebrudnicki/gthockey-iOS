@@ -67,10 +67,12 @@ class WelcomeButtonsView: UIView {
 
     @objc private func signupButtonTapped() {
         delegate?.didTapSignupButton()
+        signupButton.loading(true)
     }
 
     @objc private func loginButtonTapped() {
         delegate?.didTapLoginButton()
+        loginButton.loading(true)
     }
 
 }

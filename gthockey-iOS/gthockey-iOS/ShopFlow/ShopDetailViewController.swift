@@ -242,6 +242,7 @@ class ShopDetailViewController: UIViewController {
     }
 
     @objc private func addToCartButtonTapped() {
+        addToCartButton.loading(true)
         var price = apparelItem?.getPrice()
         var firestoreDict: [String: Any] = ["id": (apparelItem?.getID())!,
                                              "name": (apparelItem?.getName())!,

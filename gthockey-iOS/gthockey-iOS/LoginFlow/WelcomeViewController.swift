@@ -118,7 +118,7 @@ extension WelcomeViewController: SignupViewDelegate {
                 let alert = UIAlertController(title: "Sign Up Failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{_ in self.signupView.signupButton.loading(false)}))
                 self.present(alert, animated: true, completion: nil)
             }
         }
@@ -153,7 +153,7 @@ extension WelcomeViewController: LoginViewDelegate {
                 let alert = UIAlertController(title: "Log In Failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{_ in self.loginView.loginButton.loading(false)}))
                 self.present(alert, animated: true, completion: nil)
             }
         }

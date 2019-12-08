@@ -16,7 +16,7 @@ class SettingsTableViewFooter: UIView {
 
     // MARK: Properties
 
-    private let signoutButton = PillButton(title: "Sign out", backgroundColor: .lossRed, borderColor: .lossRed, isEnabled: true)
+    public let signoutButton = PillButton(title: "Sign out", backgroundColor: .lossRed, borderColor: .lossRed, isEnabled: true)
     public var delegate: SettingsTableViewFooterDelegate!
 
     // MARK: Init
@@ -49,6 +49,7 @@ class SettingsTableViewFooter: UIView {
 
     @objc private func signoutButtonTapped() {
         delegate.signoutButtonTapped()
+        signoutButton.loading(true)
     }
 
 }

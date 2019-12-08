@@ -47,6 +47,7 @@ class PillButton: UIButton {
         self.init()
 
         setTitle(title, for: .normal)
+        originalButtonText = title
         self.backgroundColor = backgroundColor
         self.layer.borderColor = borderColor.cgColor
         self.isEnabled = isEnabled
@@ -57,4 +58,36 @@ class PillButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: Loading Animation
+
+    private var originalButtonText: String?
+
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.color = .black
+        addSubview(activityIndicator)
+
+        NSLayoutConstraint.activate([
+            activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
+
+        return activityIndicator
+    }()
+
+    func loading(_ isLoading: Bool) {
+        isEnabled = !isLoading
+        if isLoading {
+            originalButtonText = titleLabel?.text
+            setTitle("", for: .normal)
+            activityIndicator.startAnimating()
+
+        } else {
+            setTitle(originalButtonText, for: .normal)
+            activityIndicator.stopAnimating()
+        }
+    }
+
+    
 }
