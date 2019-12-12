@@ -1,7 +1,39 @@
-# The Official Georgia Tech Ice Hockey iOS App
-This repository holds the code for the Georgia Tech club hockey iOS app.
+![GT Hockey Logo](https://i.imgur.com/ET1tpsi.png)
+
+# The Official Georgia Tech Club Hockey iOS App
+This repository holds the code for the Georgia Tech Club Hockey iOS app.
+
+This app is available for download on the <a href="https://apps.apple.com/us/app/gt-hockey/id1484814696">App Store</a>.
+
+## Features
+
+### Home
+Stay up to date with the latest news regarding the Yellow Jackets. Easily read up on game recaps, team events, and new promotional items.
+
+### Schedule
+Keep the team's schedule with you at all times, including both past game results and future game times and locations.
+
+### Roster
+Learn more about the players that make up the Jackets. From action shots to bio's, you can find out more about your favorite GT players.
+
+---
+
+## Developers
+Even though this app was created and is currently maintained by current and former players of the team, we are always open to contributions from the open-source community.
 
 ### How to contribute?
-1. Pick a task from the Issues page
+1. Pick a task from the <a href="https://github.com/calebrudnicki/gthockey-iOS/issues">Issues</a> page.
 2. Branch off of master with the naming convention `[yourFirstName]/your-task` (eg. `caleb/integrate-cocoapods`)
-3. When you are done with your task, submit a Pull Request into master
+3. When you are done with your task, submit a Pull Request into `master`
+
+### Current & Former GT Hockey Players to Contribute
+Caleb Rudnicki '19 | @calebrudnicki
+
+Zach Maciejewski '18 | @zmaciejewski
+
+Dylan Mace '23 | @dmace2
+
+Maksim Tochilkin '23 | @atlant04
+
+---
+📍Made in ATL
