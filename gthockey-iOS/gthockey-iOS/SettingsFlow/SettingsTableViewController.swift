@@ -147,7 +147,7 @@ extension SettingsTableViewController: SettingsTableViewCellDelegate {
 
 extension SettingsTableViewController: SettingsTableViewFooterDelegate {
 
-    func signoutButtonTapped() {
+    func signoutButtonTapped(with signoutButton: PillButton) {
         let alert = UIAlertController(title: "Are you sure you want to sign out?", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             let authentificator = Authentificator()
@@ -165,7 +165,8 @@ extension SettingsTableViewController: SettingsTableViewFooterDelegate {
                 }
             }
         }))
-        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: {_ in (self.tableView.tableFooterView as! SettingsTableViewFooter).signoutButton.loading(false)}))
+        alert.addAction(UIAlertAction(title: "No", style: .destructive,
+                                      handler: {_ in signoutButton.isLoading = false}))
         self.present(alert, animated: true, completion: nil)
     }
     

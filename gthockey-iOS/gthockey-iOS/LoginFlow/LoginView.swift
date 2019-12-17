@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LoginViewDelegate {
-    func didTapLoginButton(with email: String, _ password: String)
+    func didTapLoginButton(with email: String, _ password: String, _ loginButton: PillButton)
     func switchToSignup()
     func forgotPassword(with email: String)
     func promptUserForValidEmail()
@@ -61,7 +61,7 @@ class LoginView: UIView {
         return passwordTextField
     }()
 
-    public let loginButton = PillButton(title: "Log in", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
+    private let loginButton = PillButton(title: "Log in", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
 
     private let switchToSignupButton: UIButton = {
         let switchToSignupButton = UIButton()
@@ -163,8 +163,8 @@ class LoginView: UIView {
             password.count > 0
         else { return }
 
-        loginButton.loading(true)
-        delegate?.didTapLoginButton(with: email, password)
+        loginButton.isLoading = true
+        delegate?.didTapLoginButton(with: email, password, loginButton)
     }
 
     @objc private func switchToSignupButtonTapped() {

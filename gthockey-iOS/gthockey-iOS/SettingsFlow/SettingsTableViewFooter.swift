@@ -9,14 +9,14 @@
 import UIKit
 
 protocol SettingsTableViewFooterDelegate {
-    func signoutButtonTapped()
+    func signoutButtonTapped(with signoutButton: PillButton)
 }
 
 class SettingsTableViewFooter: UIView {
 
     // MARK: Properties
 
-    public let signoutButton = PillButton(title: "Sign out", backgroundColor: .lossRed, borderColor: .lossRed, isEnabled: true)
+    private let signoutButton = PillButton(title: "Sign out", backgroundColor: .lossRed, borderColor: .lossRed, isEnabled: true)
     public var delegate: SettingsTableViewFooterDelegate!
 
     // MARK: Init
@@ -48,8 +48,8 @@ class SettingsTableViewFooter: UIView {
     // MARK: Action
 
     @objc private func signoutButtonTapped() {
-        delegate.signoutButtonTapped()
-        signoutButton.loading(true)
+        delegate.signoutButtonTapped(with: signoutButton)
+        signoutButton.isLoading = true
     }
 
 }

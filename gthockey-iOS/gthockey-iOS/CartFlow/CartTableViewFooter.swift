@@ -48,7 +48,7 @@ class CartTableViewFooter: UIView {
     // MARK: Action
 
     @objc private func paypalCheckoutButtonTapped() {
-        paypalCheckoutButton.loading(true)
+        paypalCheckoutButton.isLoading = true
         print("Start checkout with paypal")
         delegate.checkoutButtonTapped()
 //        showDropIn(clientTokenOrTokenizationKey: <#T##String#>)
