@@ -165,8 +165,9 @@ extension SettingsTableViewController: SettingsTableViewFooterDelegate {
                 }
             }
         }))
-        alert.addAction(UIAlertAction(title: "No", style: .destructive,
-                                      handler: {_ in signoutButton.isLoading = false}))
+        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { _ in
+            signoutButton.isLoading = false
+        }))
         self.present(alert, animated: true, completion: nil)
     }
     

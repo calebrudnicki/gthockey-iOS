@@ -118,8 +118,9 @@ extension WelcomeViewController: SignupViewDelegate {
                 let alert = UIAlertController(title: "Sign Up Failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default,
-                                              handler:{ _ in signupButton.isLoading = false}))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    signupButton.isLoading = false
+                }))
                 self.present(alert, animated: true, completion: nil)
             }
         }

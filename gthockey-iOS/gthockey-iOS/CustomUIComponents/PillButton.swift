@@ -84,8 +84,7 @@ class PillButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func updateConstraints()
-    {
+    override func updateConstraints() {
         super.updateConstraints()
 
         NSLayoutConstraint.activate([
