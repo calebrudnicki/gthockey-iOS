@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SettingsTableViewFooterDelegate {
-    func signoutButtonTapped()
+    func signoutButtonTapped(with signoutButton: PillButton)
 }
 
 class SettingsTableViewFooter: UIView {
@@ -48,7 +48,8 @@ class SettingsTableViewFooter: UIView {
     // MARK: Action
 
     @objc private func signoutButtonTapped() {
-        delegate.signoutButtonTapped()
+        delegate.signoutButtonTapped(with: signoutButton)
+        signoutButton.isLoading = true
     }
 
 }

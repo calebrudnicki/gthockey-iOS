@@ -10,6 +10,15 @@ import UIKit
 
 class PillButton: UIButton {
 
+    private var originalButtonText: String?
+
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.color = .white
+        return activityIndicator
+    }()
+
     override var isEnabled: Bool {
         didSet{
             self.alpha = self.isEnabled ? 1.0 : 0.35
@@ -22,9 +31,24 @@ class PillButton: UIButton {
         }
     }
 
+    public var isLoading: Bool {
+        didSet{
+            isEnabled = !isLoading
+            if self.isLoading {
+                originalButtonText = titleLabel?.text
+                setTitle("", for: .normal)
+                activityIndicator.startAnimating()
+            } else {
+                setTitle(originalButtonText, for: .normal)
+                activityIndicator.stopAnimating()
+            }
+        }
+    }
+
     // MARK: Init
 
     override init(frame: CGRect) {
+        isLoading = false
         super.init(frame: frame)
 
         if #available(iOS 13.0, *) {
@@ -41,14 +65,17 @@ class PillButton: UIButton {
         clipsToBounds = true
         contentEdgeInsets = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 12.0, right: 0.0)
         translatesAutoresizingMaskIntoConstraints = false
+        addSubview(activityIndicator)
+        updateConstraints()
     }
 
     convenience init(title: String, backgroundColor: UIColor, borderColor: UIColor, isEnabled: Bool) {
         self.init()
 
         setTitle(title, for: .normal)
+        originalButtonText = title
         self.backgroundColor = backgroundColor
-        self.layer.borderColor = borderColor.cgColor
+        layer.borderColor = borderColor.cgColor
         self.isEnabled = isEnabled
     }
 
@@ -57,4 +84,13 @@ class PillButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
 
+    override func updateConstraints() {
+        super.updateConstraints()
+
+        NSLayoutConstraint.activate([
+            activityIndicator.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            activityIndicator.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+        ])
+    }
+    
 }

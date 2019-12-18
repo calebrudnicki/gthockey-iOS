@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SignupViewDelegate {
-    func didTapSignupButton(with firstName: String, _ lastName: String, _ email: String, _ password: String)
+    func didTapSignupButton(with firstName: String, _ lastName: String, _ email: String, _ password: String, _ signupButton: PillButton)
     func switchToLogin(with email: String?, password: String?)
 }
 
@@ -173,7 +173,8 @@ class SignupView: UIView {
             password.count > 0
         else { return }
 
-        delegate?.didTapSignupButton(with: firstName, lastName, email, password)
+        signupButton.isLoading = true
+        delegate?.didTapSignupButton(with: firstName, lastName, email, password, signupButton)
     }
 
     @objc private func switchToLoginButtonTapped() {

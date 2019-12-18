@@ -106,7 +106,7 @@ extension WelcomeViewController: WelcomeButtonsViewDelegate {
 
 extension WelcomeViewController: SignupViewDelegate {
 
-    func didTapSignupButton(with firstName: String, _ lastName: String, _ email: String, _ password: String) {
+    func didTapSignupButton(with firstName: String, _ lastName: String, _ email: String, _ password: String, _ signupButton: PillButton) {
         self.firstName = firstName
         self.lastName = lastName
 
@@ -118,7 +118,9 @@ extension WelcomeViewController: SignupViewDelegate {
                 let alert = UIAlertController(title: "Sign Up Failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                    signupButton.isLoading = false
+                }))
                 self.present(alert, animated: true, completion: nil)
             }
         }
@@ -142,7 +144,7 @@ extension WelcomeViewController: SignupViewDelegate {
 
 extension WelcomeViewController: LoginViewDelegate {
 
-    func didTapLoginButton(with email: String, _ password: String) {
+    func didTapLoginButton(with email: String, _ password: String, _ loginButton: PillButton) {
         let authentificator = Authentificator()
         authentificator.login(with: email, password, firstName, lastName) { result, error in
             if result {
@@ -153,7 +155,8 @@ extension WelcomeViewController: LoginViewDelegate {
                 let alert = UIAlertController(title: "Log in failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                alert.addAction(UIAlertAction(title: "OK", style: .default,
+                                              handler:{_ in loginButton.isLoading = false}))
                 self.present(alert, animated: true, completion: nil)
             }
         }
