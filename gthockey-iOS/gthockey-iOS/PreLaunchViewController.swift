@@ -45,8 +45,7 @@ class PreLaunchViewController: UIViewController {
             return
         }
 
-        let authentificator = Authentificator()
-        authentificator.login(with: email, password, nil, nil) { result, error in
+        AuthenticationHelper().login(with: email, password, nil, nil) { result, error in
             if result {
                 let menuContainerViewController = MenuContainerViewController()
                 menuContainerViewController.modalPresentationStyle = .fullScreen

@@ -17,6 +17,8 @@ protocol LoginViewDelegate {
 
 class LoginView: UIView {
 
+    // MARK: Properties
+
     public var delegate: LoginViewDelegate?
 
     private let emailVerificationLabel: UILabel = {
@@ -140,7 +142,7 @@ class LoginView: UIView {
         ])
     }
 
-    // MARK: Action Functions
+    // MARK: Actions
 
     @objc private func validateTextFields() {
         guard

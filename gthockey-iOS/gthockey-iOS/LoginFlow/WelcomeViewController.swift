@@ -77,10 +77,11 @@ class WelcomeViewController: UIViewController {
             welcomeButtonsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0)
         ])
     }
-
 }
 
 extension WelcomeViewController: WelcomeButtonsViewDelegate {
+
+    // MARK: WelcomeButtonsViewDelegate
 
     func didTapSignupButton() {
         UIView.animate(withDuration: 0.5, animations: {
@@ -106,12 +107,13 @@ extension WelcomeViewController: WelcomeButtonsViewDelegate {
 
 extension WelcomeViewController: SignupViewDelegate {
 
+    // MARK: SignUpViewDelegate
+
     func didTapSignupButton(with firstName: String, _ lastName: String, _ email: String, _ password: String, _ signupButton: PillButton) {
         self.firstName = firstName
         self.lastName = lastName
 
-        let authentificator = Authentificator()
-        authentificator.createUser(with: firstName, lastName, email, password) { result, error in
+        AuthenticationHelper().createUser(with: firstName, lastName, email, password) { result, error in
             if result {
                 self.switchToLogin(with: email, password: password)
             } else {
@@ -144,9 +146,10 @@ extension WelcomeViewController: SignupViewDelegate {
 
 extension WelcomeViewController: LoginViewDelegate {
 
+    // MARK: LoginViewDelegate
+
     func didTapLoginButton(with email: String, _ password: String, _ loginButton: PillButton) {
-        let authentificator = Authentificator()
-        authentificator.login(with: email, password, firstName, lastName) { result, error in
+        AuthenticationHelper().login(with: email, password, firstName, lastName) { result, error in
             if result {
                 let menuContainerViewController = MenuContainerViewController()
                 menuContainerViewController.modalPresentationStyle = .fullScreen
@@ -173,8 +176,7 @@ extension WelcomeViewController: LoginViewDelegate {
     }
 
     func forgotPassword(with email: String) {
-        let authentificator = Authentificator()
-        authentificator.resetPassword(with: email, completion: { error in
+        AuthenticationHelper().resetPassword(with: email, completion: { error in
             if error != nil {
                 let alert = UIAlertController(title: "Could not initiate password reset",
                                               message: error?.localizedDescription,

@@ -9,12 +9,14 @@
 import Foundation
 import UIKit
 
+// MARK: Under Construction
+
 enum MenuOption: Int, CustomStringConvertible, CaseIterable {
 
     case Home
     case Schedule
     case Roster
-    case Shop
+//    case Shop
     case Settings
 
     var description: String {
@@ -22,7 +24,7 @@ enum MenuOption: Int, CustomStringConvertible, CaseIterable {
         case .Home: return "Home"
         case .Schedule: return "Schedule"
         case .Roster: return "Roster"
-        case .Shop: return "Shop"
+//        case .Shop: return "Shop"
         case .Settings: return "Settings"
         }
     }
@@ -50,13 +52,13 @@ enum MenuOption: Int, CustomStringConvertible, CaseIterable {
                     .withTintColor(.white))!
             }
             return UIImage(named: "RosterIcon")!
-        case .Shop:
-            if #available(iOS 13.0, *){
-                return (UIImage(systemName: "bag.fill")?
-                    .withRenderingMode(.alwaysOriginal)
-                    .withTintColor(.white))!
-            }
-            return UIImage(named: "ShopIcon")!
+//        case .Shop:
+//            if #available(iOS 13.0, *){
+//                return (UIImage(systemName: "bag.fill")?
+//                    .withRenderingMode(.alwaysOriginal)
+//                    .withTintColor(.white))!
+//            }
+//            return UIImage(named: "ShopIcon")!
         case .Settings:
             if #available(iOS 13.0, *){
                 return (UIImage(systemName: "gear")?

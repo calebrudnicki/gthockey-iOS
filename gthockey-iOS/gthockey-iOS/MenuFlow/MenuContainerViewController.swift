@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: Under Construction
+
 class MenuContainerViewController: UIViewController {
 
     // MARK: Properties
@@ -54,7 +56,7 @@ class MenuContainerViewController: UIViewController {
     }
 
     // MARK: Config
-    
+
     private func configureHomeController() {
         homeNavigationController = UINavigationController(rootViewController: homeCollectionViewController)
         scheduleNavigationController = UINavigationController(rootViewController: scheduleTableViewController)
@@ -65,8 +67,8 @@ class MenuContainerViewController: UIViewController {
         homeCollectionViewController.delegate = self
         scheduleTableViewController.delegate = self
         rosterCollectionViewController.delegate = self
-        shopCollectionViewController.delegate = self
-        settingsTableViewController.delegate = self
+//        shopCollectionViewController.delegate = self
+//        settingsTableViewController.delegate = self
 
         //Set default screen to be Home
         currentNavigationController = homeNavigationController
@@ -104,7 +106,7 @@ class MenuContainerViewController: UIViewController {
                 self.currentNavigationController.view.frame.origin.x = 0
             }) { (_) in
                 self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = true
-                
+
                 guard let menuOption = menuOption,
                           menuOption.description != self.currentNavigationController.children[0].navigationItem.title!
                 else { return }
@@ -125,8 +127,9 @@ class MenuContainerViewController: UIViewController {
             currentNavigationController = scheduleNavigationController
         case .Roster:
             currentNavigationController = rosterNavigationController
-        case .Shop:
-            currentNavigationController = shopNavigationController
+            // MARK: Uncomment for shop
+//        case .Shop:
+//            currentNavigationController = shopNavigationController
         case .Settings:
             currentNavigationController = settingsNavigationController
         }

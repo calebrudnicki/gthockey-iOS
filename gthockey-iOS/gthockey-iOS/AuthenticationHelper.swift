@@ -1,8 +1,8 @@
 //
-//  Authentificator.swift
+//  AuthenticationHelper.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 11/6/19.
+//  Created by Caleb Rudnicki on 12/25/19.
 //  Copyright © 2019 Caleb Rudnicki. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class Authentificator {
+class AuthenticationHelper {
 
     init() {}
 
@@ -44,6 +44,7 @@ class Authentificator {
                                 completion(true, nil)
                             }
                         })
+                        
                         return
                     }
                     db.collection("users").document(user.uid).setData(["firstName": firstName,

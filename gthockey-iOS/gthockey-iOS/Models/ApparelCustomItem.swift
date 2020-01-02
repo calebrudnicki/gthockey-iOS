@@ -61,7 +61,7 @@ class ApparelCustomItem {
         return value
     }
 
-    // MARK: Setters
+    // MARK: Setter
 
     func setValue(with value: String) {
         self.value = value

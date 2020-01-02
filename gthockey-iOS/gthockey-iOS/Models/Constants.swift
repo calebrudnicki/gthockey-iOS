@@ -8,9 +8,11 @@
 
 import Foundation
 
-enum Constants {
-  static let publishableKey = "pk_test_OOB3XuDX8A4t0vjJcd5sx6Zb008F8f114e"
-  static let baseURLString = "http://localhost:4567"
-  static let defaultCurrency = "usd"
-  static let defaultDescription = "Purchase from GT Hockey iOS"
-}
+// MARK: Under Construction
+
+//enum Constants {
+//  static let publishableKey = "pk_test_OOB3XuDX8A4t0vjJcd5sx6Zb008F8f114e"
+//  static let baseURLString = "http://localhost:4567"
+//  static let defaultCurrency = "usd"
+//  static let defaultDescription = "Purchase from GT Hockey iOS"
+//}

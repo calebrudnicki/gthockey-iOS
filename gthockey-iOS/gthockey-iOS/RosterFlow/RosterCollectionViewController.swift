@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: Under Construction
+
 class RosterCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
@@ -49,10 +51,11 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(cartButtonTapped))
+        // MARK: Uncomment for cart
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
+//                                                           style: .plain,
+//                                                           target: self,
+//                                                           action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()
