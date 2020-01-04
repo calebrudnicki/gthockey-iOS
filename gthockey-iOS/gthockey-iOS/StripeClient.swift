@@ -8,14 +8,14 @@
 
 import Foundation
 import Alamofire
-import Stripe
+//import Stripe
 
 // MARK: Under Construction (not used)
 
-enum Result {
-  case success
-  case failure(Error)
-}
+//enum Result {
+//  case success
+//  case failure(Error)
+//}
 
 class StripeClient {
 

@@ -68,7 +68,7 @@ class MenuContainerViewController: UIViewController {
         scheduleTableViewController.delegate = self
         rosterCollectionViewController.delegate = self
 //        shopCollectionViewController.delegate = self
-//        settingsTableViewController.delegate = self
+        settingsTableViewController.delegate = self
 
         //Set default screen to be Home
         currentNavigationController = homeNavigationController
