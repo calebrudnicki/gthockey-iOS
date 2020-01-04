@@ -117,7 +117,7 @@ extension WelcomeViewController: SignupViewDelegate {
             if result {
                 self.switchToLogin(with: email, password: password)
             } else {
-                let alert = UIAlertController(title: "Sign Up Failed",
+                let alert = UIAlertController(title: "Sign up failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
@@ -139,6 +139,18 @@ extension WelcomeViewController: SignupViewDelegate {
         }, completion: { _ in
             self.signupView.isHidden = true
             self.loginView.isHidden = false
+
+            let alert = UIAlertController(title: "Check your email to verify your account before continuing",
+                                          message: "You should have recieved an email from firebase@gthockey-ios.firebase.com.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            alert.addAction(UIAlertAction(title: "Open email", style: .default, handler: { action in
+                let mailURL = URL(string: "message://")!
+                if UIApplication.shared.canOpenURL(mailURL) {
+                    UIApplication.shared.open(mailURL, options: [:], completionHandler: nil)
+                 }
+            }))
+            self.present(alert, animated: true, completion: nil)
         })
     }
 
