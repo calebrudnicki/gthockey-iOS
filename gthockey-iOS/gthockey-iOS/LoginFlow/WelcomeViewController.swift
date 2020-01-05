@@ -116,6 +116,7 @@ extension WelcomeViewController: SignupViewDelegate {
         AuthenticationHelper().createUser(with: firstName, lastName, email, password) { result, error in
             if result {
                 self.switchToLogin(with: email, password: password)
+                signupButton.isLoading = false
             } else {
                 let alert = UIAlertController(title: "Sign up failed",
                                           message: error?.localizedDescription,
