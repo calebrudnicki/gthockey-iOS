@@ -129,9 +129,6 @@ extension WelcomeViewController: SignupViewDelegate {
     }
 
     func switchToLogin(with email: String?, password: String?) {
-        if let email = email, let password = password {
-            loginView.setFields(with: email, password: password)
-        }
 
         UIView.animate(withDuration: 0.5, animations: {
             self.signupView.alpha = 0.0
@@ -139,6 +136,10 @@ extension WelcomeViewController: SignupViewDelegate {
         }, completion: { _ in
             self.signupView.isHidden = true
             self.loginView.isHidden = false
+        })
+
+        if let email = email, let password = password {
+            loginView.setFields(with: email, password: password)
 
             let alert = UIAlertController(title: "Check your email to verify your account before continuing",
                                           message: "You should have recieved an email from firebase@gthockey-ios.firebase.com.",
@@ -148,10 +149,10 @@ extension WelcomeViewController: SignupViewDelegate {
                 let mailURL = URL(string: "message://")!
                 if UIApplication.shared.canOpenURL(mailURL) {
                     UIApplication.shared.open(mailURL, options: [:], completionHandler: nil)
-                 }
+                }
             }))
             self.present(alert, animated: true, completion: nil)
-        })
+        }
     }
 
 }
