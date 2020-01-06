@@ -27,7 +27,7 @@ class HTMLTextView: UITextView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: Setters
+    // MARK: Setter
 
     public func setText(with textBody: String) {
         let contentString = textBody.replacingOccurrences(of: "\n", with: "<br>")

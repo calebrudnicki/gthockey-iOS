@@ -141,7 +141,7 @@ class SignupView: UIView {
         ])
     }
 
-    // MARK: Action Functions
+    // MARK: Actions
 
     @objc private func validateTextFields() {
         guard

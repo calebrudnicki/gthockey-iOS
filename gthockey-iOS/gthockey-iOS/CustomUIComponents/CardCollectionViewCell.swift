@@ -10,7 +10,7 @@ import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
 
-    // MARK: Init
+    // MARK: Properties
 
     override var isHighlighted: Bool {
         didSet {
@@ -26,6 +26,8 @@ class CardCollectionViewCell: UICollectionViewCell {
         }
     }
 
+    // MARK: Init
+
     override init(frame: CGRect) {
         super.init(frame: frame)
 
@@ -34,7 +36,7 @@ class CardCollectionViewCell: UICollectionViewCell {
             layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
             layer.shadowColor = UIColor.label.cgColor
         } else {
-            layer.backgroundColor = UIColor.cellBackgroundLight.cgColor
+//            layer.backgroundColor = UIColor.cellBackgroundLight.cgColor
             layer.shadowColor = UIColor.black.cgColor
         }
 

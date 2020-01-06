@@ -77,10 +77,11 @@ class WelcomeViewController: UIViewController {
             welcomeButtonsView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8.0)
         ])
     }
-
 }
 
 extension WelcomeViewController: WelcomeButtonsViewDelegate {
+
+    // MARK: WelcomeButtonsViewDelegate
 
     func didTapSignupButton() {
         UIView.animate(withDuration: 0.5, animations: {
@@ -106,19 +107,21 @@ extension WelcomeViewController: WelcomeButtonsViewDelegate {
 
 extension WelcomeViewController: SignupViewDelegate {
 
+    // MARK: SignUpViewDelegate
+
     func didTapSignupButton(with firstName: String, _ lastName: String, _ email: String, _ password: String, _ signupButton: PillButton) {
         self.firstName = firstName
         self.lastName = lastName
 
-        let authentificator = Authentificator()
-        authentificator.createUser(with: firstName, lastName, email, password) { result, error in
+        AuthenticationHelper().createUser(with: firstName, lastName, email, password) { result, error in
             if result {
                 self.switchToLogin(with: email, password: password)
+                signupButton.isLoading = false
             } else {
-                let alert = UIAlertController(title: "Sign Up Failed",
+                let alert = UIAlertController(title: "Sign up failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
                     signupButton.isLoading = false
                 }))
                 self.present(alert, animated: true, completion: nil)
@@ -127,9 +130,6 @@ extension WelcomeViewController: SignupViewDelegate {
     }
 
     func switchToLogin(with email: String?, password: String?) {
-        if let email = email, let password = password {
-            loginView.setFields(with: email, password: password)
-        }
 
         UIView.animate(withDuration: 0.5, animations: {
             self.signupView.alpha = 0.0
@@ -138,15 +138,32 @@ extension WelcomeViewController: SignupViewDelegate {
             self.signupView.isHidden = true
             self.loginView.isHidden = false
         })
+
+        if let email = email, let password = password {
+            loginView.setFields(with: email, password: password)
+
+            let alert = UIAlertController(title: "Check your email to verify your account before continuing",
+                                          message: "You should have received an email from firebase@gthockey-ios.firebase.com.",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            alert.addAction(UIAlertAction(title: "Open email", style: .default, handler: { action in
+                let mailURL = URL(string: "message://")!
+                if UIApplication.shared.canOpenURL(mailURL) {
+                    UIApplication.shared.open(mailURL, options: [:], completionHandler: nil)
+                }
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
 }
 
 extension WelcomeViewController: LoginViewDelegate {
 
+    // MARK: LoginViewDelegate
+
     func didTapLoginButton(with email: String, _ password: String, _ loginButton: PillButton) {
-        let authentificator = Authentificator()
-        authentificator.login(with: email, password, firstName, lastName) { result, error in
+        AuthenticationHelper().login(with: email, password, firstName, lastName) { result, error in
             if result {
                 let menuContainerViewController = MenuContainerViewController()
                 menuContainerViewController.modalPresentationStyle = .fullScreen
@@ -155,7 +172,7 @@ extension WelcomeViewController: LoginViewDelegate {
                 let alert = UIAlertController(title: "Log in failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default,
+                alert.addAction(UIAlertAction(title: "Ok", style: .default,
                                               handler:{_ in loginButton.isLoading = false}))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -173,8 +190,7 @@ extension WelcomeViewController: LoginViewDelegate {
     }
 
     func forgotPassword(with email: String) {
-        let authentificator = Authentificator()
-        authentificator.resetPassword(with: email, completion: { error in
+        AuthenticationHelper().resetPassword(with: email, completion: { error in
             if error != nil {
                 let alert = UIAlertController(title: "Could not initiate password reset",
                                               message: error?.localizedDescription,
@@ -183,7 +199,7 @@ extension WelcomeViewController: LoginViewDelegate {
                 self.present(alert, animated: true, completion: nil)
             } else {
                 let alert = UIAlertController(title: "Check your email",
-                                              message: "A password reset link shoukd be in your \(email) email",
+                                              message: "A password reset link should be in your \(email) email",
                                               preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default))
                 alert.addAction(UIAlertAction(title: "Open email", style: .default, handler: { action in

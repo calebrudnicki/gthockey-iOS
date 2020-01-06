@@ -10,8 +10,9 @@ import UIKit
 
 class PillButton: UIButton {
 
-    private var originalButtonText: String?
+    // MARK: Properties
 
+    private var originalButtonText: String?
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false

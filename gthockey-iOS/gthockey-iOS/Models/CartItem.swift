@@ -54,7 +54,7 @@ class CartItem: Equatable {
         return attributes
     }
 
-    //MARK: Equatable
+    // MARK: Equatable
 
     static func == (lhs: CartItem, rhs: CartItem) -> Bool {
         if lhs.id == rhs.id {

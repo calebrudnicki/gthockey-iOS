@@ -1,8 +1,8 @@
 //
-//  Authentificator.swift
+//  AuthenticationHelper.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 11/6/19.
+//  Created by Caleb Rudnicki on 12/25/19.
 //  Copyright © 2019 Caleb Rudnicki. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class Authentificator {
+class AuthenticationHelper {
 
     init() {}
 
@@ -23,40 +23,23 @@ class Authentificator {
             } else {
                 if let user = user?.user, user.isEmailVerified {
                     let db = Firestore.firestore()
-                    guard
-                        let firstName = firstName,
-                        let lastName = lastName
-                    else {
-                        self.getUserProperties(completion: { propertiesDictionary in
-                            let firstName = propertiesDictionary["firstName"] ?? ""
-                            let lastName = propertiesDictionary["lastName"] ?? ""
-                            let cart = propertiesDictionary["cart"] ?? []
+                    self.getUserProperties(completion: { propertiesDictionary in
+                        let firstName = propertiesDictionary["firstName"] ?? ""
+                        let lastName = propertiesDictionary["lastName"] ?? ""
+                        let cart = propertiesDictionary["cart"] ?? []
 
-                            db.collection("users").document(user.uid).setData(["firstName": firstName,
-                                                                               "lastName": lastName,
-                                                                               "email": email,
-                                                                               "uid": user.uid,
-                                                                               "cart": cart]) { (error) in
-                                if error != nil {
-                                    completion(false, error)
-                                }
-                                self.setUserDefaults(with: email, password: password)
-                                completion(true, nil)
+                        db.collection("users").document(user.uid).setData(["firstName": firstName,
+                                                                           "lastName": lastName,
+                                                                           "email": email,
+                                                                           "uid": user.uid,
+                                                                           "cart": cart]) { (error) in
+                            if error != nil {
+                                completion(false, error)
                             }
-                        })
-                        return
-                    }
-                    db.collection("users").document(user.uid).setData(["firstName": firstName,
-                                                                       "lastName": lastName,
-                                                                       "email": email,
-                                                                       "uid": user.uid,
-                                                                       "cart": []]) { (error) in
-                        if error != nil {
-                            completion(false, error)
+                            self.setUserDefaults(with: email, password: password)
+                            completion(true, nil)
                         }
-                    }
-                    self.setUserDefaults(with: email, password: password)
-                    completion(true, nil)
+                    })
                 } else {
                     completion(false, CustomError.emailVerification)
                 }
@@ -71,6 +54,17 @@ class Authentificator {
                 completion(false, error)
             } else {
                 guard let user = result?.user else { return }
+                let db = Firestore.firestore()
+                db.collection("users").document(user.uid).setData(["firstName": firstName,
+                                                                   "lastName": lastName,
+                                                                   "email": email,
+                                                                   "uid": user.uid,
+                                                                   "cart": []]) { (error) in
+                    if error != nil {
+                        completion(false, error)
+                    }
+                }
+
                 if !user.isEmailVerified {
                     user.sendEmailVerification(completion: { error in
                         // Notify the user that the mail has sent or couldn't because of an error

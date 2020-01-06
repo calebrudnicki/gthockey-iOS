@@ -17,13 +17,16 @@ protocol LoginViewDelegate {
 
 class LoginView: UIView {
 
+    // MARK: Properties
+
     public var delegate: LoginViewDelegate?
 
     private let emailVerificationLabel: UILabel = {
         let emailVerificationLabel = UILabel()
-        emailVerificationLabel.text = "Verify your email before logging in."
+        emailVerificationLabel.text = "Check your email to verify your account before continuing."
         emailVerificationLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         emailVerificationLabel.textColor = .gray
+        emailVerificationLabel.numberOfLines = 2
         emailVerificationLabel.textAlignment = .center
         emailVerificationLabel.isHidden = true
         emailVerificationLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -140,7 +143,7 @@ class LoginView: UIView {
         ])
     }
 
-    // MARK: Action Functions
+    // MARK: Actions
 
     @objc private func validateTextFields() {
         guard

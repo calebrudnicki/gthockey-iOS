@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: Under Construction (not used)
+
 class SettingsTableViewController: UITableViewController {
 
     // MARK: Properties
@@ -64,8 +66,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     @objc private func fetchUserInfo() {
-        let authentificator = Authentificator()
-        authentificator.getUserProperties(completion: { propertiesDictionary in
+        AuthenticationHelper().getUserProperties(completion: { propertiesDictionary in
             self.firstName = propertiesDictionary["firstName"] as? String
             self.lastName = propertiesDictionary["lastName"] as? String
             self.email = propertiesDictionary["email"] as? String
@@ -116,8 +117,7 @@ class SettingsTableViewController: UITableViewController {
     @objc private func saveButtonTapped() {
         if let firstName = firstName, let lastName = lastName,
             firstName != userProperties["firstName"] as! String || lastName != userProperties["lastName"] as! String {
-            let authentificator = Authentificator()
-            authentificator.updateUserProperties(with: firstName, lastName: lastName, completion: { result in
+            AuthenticationHelper().updateUserProperties(with: firstName, lastName: lastName, completion: { result in
                 if result {
                     self.userProperties["firstName"] = firstName
                     self.userProperties["lastName"] = lastName
@@ -150,17 +150,16 @@ extension SettingsTableViewController: SettingsTableViewFooterDelegate {
     func signoutButtonTapped(with signoutButton: PillButton) {
         let alert = UIAlertController(title: "Are you sure you want to sign out?", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            let authentificator = Authentificator()
-            authentificator.signOut { (result, error) in
+            AuthenticationHelper().signOut { (result, error) in
                 if result {
                     let welcomeViewController = WelcomeViewController()
                     welcomeViewController.modalPresentationStyle = .fullScreen
                     self.present(welcomeViewController, animated: true, completion: nil)
                 } else {
-                    let alert = UIAlertController(title: "Sign Out Failed",
+                    let alert = UIAlertController(title: "Sign out failed",
                                                   message: error?.localizedDescription,
                                                   preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default))
                     self.present(alert, animated: true, completion: nil)
                 }
             }

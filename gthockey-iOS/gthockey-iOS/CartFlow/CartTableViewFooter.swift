@@ -12,66 +12,46 @@ protocol CartTableViewFooterDelegate {
     func checkoutButtonTapped()
 }
 
+// MARK: Under Construction (not used)
+
 class CartTableViewFooter: UIView {
 
-    // MARK: Properties
-
-    private let paypalCheckoutButton = PillButton(title: "Checkout", backgroundColor: .paypalBlue, borderColor: .paypalBlue, isEnabled: true)
-    public var delegate: CartTableViewFooterDelegate!
-
-    // MARK: Init
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        paypalCheckoutButton.addTarget(self, action: #selector(paypalCheckoutButtonTapped), for: .touchUpInside)
-
-        addSubview(paypalCheckoutButton)
-        updateConstraints()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
-    override func updateConstraints() {
-        super.updateConstraints()
-
-        NSLayoutConstraint.activate([
-            paypalCheckoutButton.topAnchor.constraint(equalTo: topAnchor, constant: 12.0),
-            paypalCheckoutButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.0),
-            paypalCheckoutButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12.0),
-            paypalCheckoutButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12.0)
-        ])
-    }
-
-    // MARK: Action
-
-    @objc private func paypalCheckoutButtonTapped() {
-        paypalCheckoutButton.isLoading = true
-        print("Start checkout with paypal")
-        delegate.checkoutButtonTapped()
-//        showDropIn(clientTokenOrTokenizationKey: <#T##String#>)
-    }
-
-//    func showDropIn(clientTokenOrTokenizationKey: String) {
-//        let request =  BTDropInRequest()
-//        let dropIn = BTDropInController(authorization: clientTokenOrTokenizationKey, request: request)
-//        { (controller, result, error) in
-//            if (error != nil) {
-//                print("ERROR")
-//            } else if (result?.isCancelled == true) {
-//                print("CANCELLED")
-//            } else if let result = result {
-//                // Use the BTDropInResult properties to update your UI
-//                // result.paymentOptionType
-//                // result.paymentMethod
-//                // result.paymentIcon
-//                // result.paymentDescription
-//            }
-//            controller.dismiss(animated: true, completion: nil)
-//        }
-//        self.present(dropIn!, animated: true, completion: nil)
+//    // MARK: Properties
+//
+//    private let paypalCheckoutButton = PillButton(title: "Checkout", backgroundColor: .paypalBlue, borderColor: .paypalBlue, isEnabled: true)
+//    public var delegate: CartTableViewFooterDelegate!
+//
+//    // MARK: Init
+//
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//
+//        paypalCheckoutButton.addTarget(self, action: #selector(paypalCheckoutButtonTapped), for: .touchUpInside)
+//
+//        addSubview(paypalCheckoutButton)
+//        updateConstraints()
+//    }
+//
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
+//
+//    override func updateConstraints() {
+//        super.updateConstraints()
+//
+//        NSLayoutConstraint.activate([
+//            paypalCheckoutButton.topAnchor.constraint(equalTo: topAnchor, constant: 12.0),
+//            paypalCheckoutButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.0),
+//            paypalCheckoutButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12.0),
+//            paypalCheckoutButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12.0)
+//        ])
+//    }
+//
+//    // MARK: Action
+//
+//    @objc private func paypalCheckoutButtonTapped() {
+//        paypalCheckoutButton.isLoading = true
+//        delegate.checkoutButtonTapped()
 //    }
 
 }

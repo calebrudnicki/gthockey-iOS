@@ -12,7 +12,9 @@ import IQKeyboardManagerSwift
 import Firebase
 import FirebaseAuth
 import FirebaseFirestore
-import Stripe
+//import Stripe
+
+// MARK: Under Construction
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
         FirebaseApp.configure()
-        STPPaymentConfiguration.shared().publishableKey = Constants.publishableKey
+//        STPPaymentConfiguration.shared().publishableKey = Constants.publishableKey
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true

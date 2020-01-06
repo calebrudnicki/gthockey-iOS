@@ -11,6 +11,8 @@ import MapKit
 import FirebaseAuth
 import FirebaseFirestore
 
+// MARK: Under Construction
+
 class ScheduleTableViewController: UITableViewController {
 
     // MARK: Properties
@@ -19,7 +21,6 @@ class ScheduleTableViewController: UITableViewController {
     private var upcomingGameArray: [Game] = []
     private let cellHeight = UIScreen.main.bounds.height * 0.8
     public var delegate: HomeControllerDelegate?
-
     private let segmentedController = UISegmentedControl()
 
     // MARK: Init
@@ -58,10 +59,11 @@ class ScheduleTableViewController: UITableViewController {
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(cartButtonTapped))
+        // MARK: Uncomment for cart
+//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
+//                                                           style: .plain,
+//                                                           target: self,
+//                                                           action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         segmentedController.insertSegment(withTitle: "Upcoming", at: 0, animated: true)
@@ -141,6 +143,7 @@ class ScheduleTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let alert = UIAlertController(title: "Get Directions to the Rink", message: nil, preferredStyle: .alert)
+        
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
             switch self.segmentedController.selectedSegmentIndex {
             case 0:
@@ -153,6 +156,7 @@ class ScheduleTableViewController: UITableViewController {
                 })
             }
         }))
+
         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)

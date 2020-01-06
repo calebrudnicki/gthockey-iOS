@@ -19,6 +19,6 @@ target 'gthockey-iOS' do
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
 
-  pod 'Stripe', '15.0.0'
+#  pod 'Stripe', '15.0.0'
 
 end

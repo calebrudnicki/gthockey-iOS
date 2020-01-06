@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: Under Construction
+
 class MenuContainerViewController: UIViewController {
 
     // MARK: Properties
@@ -42,11 +44,26 @@ class MenuContainerViewController: UIViewController {
     private var shopNavigationController: UINavigationController?
     private var settingsNavigationController: UINavigationController?
 
+//    private let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+//    private let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+
     // MARK: Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHomeController()
+        configureGestures()
+    }
+
+    func configureGestures() {
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+
+        leftSwipe.direction = .left
+        rightSwipe.direction = .right
+
+        currentNavigationController.view.addGestureRecognizer(leftSwipe)
+        currentNavigationController.view.addGestureRecognizer(rightSwipe)
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -54,7 +71,7 @@ class MenuContainerViewController: UIViewController {
     }
 
     // MARK: Config
-    
+
     private func configureHomeController() {
         homeNavigationController = UINavigationController(rootViewController: homeCollectionViewController)
         scheduleNavigationController = UINavigationController(rootViewController: scheduleTableViewController)
@@ -65,7 +82,7 @@ class MenuContainerViewController: UIViewController {
         homeCollectionViewController.delegate = self
         scheduleTableViewController.delegate = self
         rosterCollectionViewController.delegate = self
-        shopCollectionViewController.delegate = self
+//        shopCollectionViewController.delegate = self
         settingsTableViewController.delegate = self
 
         //Set default screen to be Home
@@ -104,7 +121,7 @@ class MenuContainerViewController: UIViewController {
                 self.currentNavigationController.view.frame.origin.x = 0
             }) { (_) in
                 self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = true
-                
+
                 guard let menuOption = menuOption,
                           menuOption.description != self.currentNavigationController.children[0].navigationItem.title!
                 else { return }
@@ -125,14 +142,24 @@ class MenuContainerViewController: UIViewController {
             currentNavigationController = scheduleNavigationController
         case .Roster:
             currentNavigationController = rosterNavigationController
-        case .Shop:
-            currentNavigationController = shopNavigationController
+            // MARK: Uncomment for shop
+//        case .Shop:
+//            currentNavigationController = shopNavigationController
         case .Settings:
             currentNavigationController = settingsNavigationController
         }
+        configureGestures()
         view.addSubview(currentNavigationController.view)
         addChild(currentNavigationController)
         currentNavigationController.didMove(toParent: self)
+    }
+
+    // MARK: Actions
+
+    @objc func handleSwipes(_ sender: UISwipeGestureRecognizer) {
+        if (sender.direction == .right && !isExpanded) || (sender.direction == .left && isExpanded) {
+            handleMenuToggle(forMenuOption: nil)
+        }
     }
 
 }
