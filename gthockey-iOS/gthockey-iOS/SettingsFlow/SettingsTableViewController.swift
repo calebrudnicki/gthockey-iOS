@@ -156,10 +156,10 @@ extension SettingsTableViewController: SettingsTableViewFooterDelegate {
                     welcomeViewController.modalPresentationStyle = .fullScreen
                     self.present(welcomeViewController, animated: true, completion: nil)
                 } else {
-                    let alert = UIAlertController(title: "Sign Out Failed",
+                    let alert = UIAlertController(title: "Sign out failed",
                                                   message: error?.localizedDescription,
                                                   preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default))
                     self.present(alert, animated: true, completion: nil)
                 }
             }

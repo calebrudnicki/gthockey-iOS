@@ -668,7 +668,7 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -692,7 +692,7 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (

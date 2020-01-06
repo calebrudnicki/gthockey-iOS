@@ -57,7 +57,7 @@ class PreLaunchViewController: UIViewController {
                 let alert = UIAlertController(title: "No internet connection",
                                               message: "\(error?.localizedDescription ?? "") Try restarting app when you have a connection.",
                                               preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
                     let menuContainerViewController = MenuContainerViewController()
                     menuContainerViewController.modalPresentationStyle = .fullScreen
                     menuContainerViewController.modalTransitionStyle = .crossDissolve

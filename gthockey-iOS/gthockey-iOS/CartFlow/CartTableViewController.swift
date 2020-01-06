@@ -79,7 +79,7 @@ class CartTableViewController: UITableViewController {
 //                    let alert = UIAlertController(title: "Remove to Cart Failed",
 //                                                  message: nil,
 //                                                  preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+//                    alert.addAction(UIAlertAction(title: "Ok", style: .default))
 //                    self.present(alert, animated: true, completion: nil)
 //                }
 //            })

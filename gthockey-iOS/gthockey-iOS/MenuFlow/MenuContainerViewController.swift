@@ -44,11 +44,27 @@ class MenuContainerViewController: UIViewController {
     private var shopNavigationController: UINavigationController?
     private var settingsNavigationController: UINavigationController?
 
+//    private let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+//    private let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+
     // MARK: Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureHomeController()
+        configureGestures()
+    }
+
+    func configureGestures() {
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+
+        leftSwipe.direction = .left
+        rightSwipe.direction = .right
+
+        currentNavigationController.view.addGestureRecognizer(leftSwipe)
+        currentNavigationController.view.addGestureRecognizer(rightSwipe)
+        currentNavigationController.view.addGestureRecognizer(tap)
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -133,9 +149,18 @@ class MenuContainerViewController: UIViewController {
         case .Settings:
             currentNavigationController = settingsNavigationController
         }
+        configureGestures()
         view.addSubview(currentNavigationController.view)
         addChild(currentNavigationController)
         currentNavigationController.didMove(toParent: self)
+    }
+
+    // MARK: Actions
+
+    @objc func handleSwipes(_ sender: UISwipeGestureRecognizer) {
+        if (sender.direction == .right && !isExpanded) || (sender.direction == .left && isExpanded) {
+            handleMenuToggle(forMenuOption: nil)
+        }
     }
 
 }

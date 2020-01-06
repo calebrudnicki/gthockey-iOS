@@ -121,7 +121,7 @@ extension WelcomeViewController: SignupViewDelegate {
                 let alert = UIAlertController(title: "Sign up failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { _ in
                     signupButton.isLoading = false
                 }))
                 self.present(alert, animated: true, completion: nil)
@@ -143,7 +143,7 @@ extension WelcomeViewController: SignupViewDelegate {
             loginView.setFields(with: email, password: password)
 
             let alert = UIAlertController(title: "Check your email to verify your account before continuing",
-                                          message: "You should have recieved an email from firebase@gthockey-ios.firebase.com.",
+                                          message: "You should have received an email from firebase@gthockey-ios.firebase.com.",
                                           preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default))
             alert.addAction(UIAlertAction(title: "Open email", style: .default, handler: { action in
@@ -172,7 +172,7 @@ extension WelcomeViewController: LoginViewDelegate {
                 let alert = UIAlertController(title: "Log in failed",
                                           message: error?.localizedDescription,
                                           preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default,
+                alert.addAction(UIAlertAction(title: "Ok", style: .default,
                                               handler:{_ in loginButton.isLoading = false}))
                 self.present(alert, animated: true, completion: nil)
             }
@@ -199,7 +199,7 @@ extension WelcomeViewController: LoginViewDelegate {
                 self.present(alert, animated: true, completion: nil)
             } else {
                 let alert = UIAlertController(title: "Check your email",
-                                              message: "A password reset link shoukd be in your \(email) email",
+                                              message: "A password reset link should be in your \(email) email",
                                               preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Ok", style: .default))
                 alert.addAction(UIAlertAction(title: "Open email", style: .default, handler: { action in

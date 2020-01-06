@@ -278,7 +278,7 @@ class ShopDetailViewController: UIViewController {
 //                let alert = UIAlertController(title: "Add to Cart Failed",
 //                                              message: nil,
 //                                              preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "OK", style: .default))
+//                alert.addAction(UIAlertAction(title: "Ok", style: .default))
 //                self.present(alert, animated: true, completion: nil)
 //            }
 //        })
