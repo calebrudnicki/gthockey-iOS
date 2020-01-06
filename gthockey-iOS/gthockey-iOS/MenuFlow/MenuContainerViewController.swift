@@ -64,7 +64,6 @@ class MenuContainerViewController: UIViewController {
 
         currentNavigationController.view.addGestureRecognizer(leftSwipe)
         currentNavigationController.view.addGestureRecognizer(rightSwipe)
-        currentNavigationController.view.addGestureRecognizer(tap)
     }
 
     override var prefersStatusBarHidden: Bool {
