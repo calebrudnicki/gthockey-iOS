@@ -36,7 +36,7 @@ class RosterDetailViewController: UIViewController {
         let firstNameLabel = UILabel()
         firstNameLabel.numberOfLines = 0
         firstNameLabel.sizeToFit()
-        firstNameLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24)
+        firstNameLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         firstNameLabel.translatesAutoresizingMaskIntoConstraints = false
         return firstNameLabel
     }()
@@ -45,7 +45,7 @@ class RosterDetailViewController: UIViewController {
         let lastNameLabel = UILabel()
         lastNameLabel.numberOfLines = 0
         lastNameLabel.sizeToFit()
-        lastNameLabel.font = UIFont(name: "Helvetica Neue", size: 36)
+        lastNameLabel.font = UIFont(name: "Helvetica Neue", size: 36.0)
         lastNameLabel.translatesAutoresizingMaskIntoConstraints = false
         return lastNameLabel
     }()
@@ -55,7 +55,7 @@ class RosterDetailViewController: UIViewController {
         numberLabel.numberOfLines = 0
         numberLabel.textAlignment = .right
         numberLabel.sizeToFit()
-        numberLabel.font = UIFont(name: "Helvetica Neue", size: 36)
+        numberLabel.font = UIFont(name: "Helvetica Neue", size: 36.0)
         numberLabel.translatesAutoresizingMaskIntoConstraints = false
         return numberLabel
     }()
@@ -71,7 +71,7 @@ class RosterDetailViewController: UIViewController {
         let positionLabel = UILabel()
         positionLabel.numberOfLines = 0
         positionLabel.sizeToFit()
-        positionLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+        positionLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         positionLabel.translatesAutoresizingMaskIntoConstraints = false
         return positionLabel
     }()
@@ -80,7 +80,7 @@ class RosterDetailViewController: UIViewController {
         let hometownLabel = UILabel()
         hometownLabel.numberOfLines = 0
         hometownLabel.sizeToFit()
-        hometownLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+        hometownLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         hometownLabel.translatesAutoresizingMaskIntoConstraints = false
         return hometownLabel
     }()
@@ -89,17 +89,14 @@ class RosterDetailViewController: UIViewController {
         let schoolLabel = UILabel()
         schoolLabel.numberOfLines = 0
         schoolLabel.sizeToFit()
-        schoolLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20)
+        schoolLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
         schoolLabel.translatesAutoresizingMaskIntoConstraints = false
         return schoolLabel
     }()
 
-    private let bioLabel: UILabel = {
-        let bioLabel = UILabel()
-        bioLabel.numberOfLines = 0
-        bioLabel.sizeToFit()
-        bioLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20)
-        bioLabel.translatesAutoresizingMaskIntoConstraints = false
+    private let bioLabel: HTMLTextView = {
+        let bioLabel = HTMLTextView()
+        bioLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
         return bioLabel
     }()
 
@@ -195,9 +192,9 @@ class RosterDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            bioLabel.topAnchor.constraint(equalTo: schoolLabel.bottomAnchor, constant: 12.0),
-            bioLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            bioLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
+            bioLabel.topAnchor.constraint(equalTo: schoolLabel.bottomAnchor, constant: 9.0),
+            bioLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 9.0),
+            bioLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -9.0),
             bioLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
         ])
 

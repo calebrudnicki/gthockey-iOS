@@ -8,8 +8,6 @@
 
 import UIKit
 
-// MARK: Under Construction (not used)
-
 class SettingsTableViewController: UITableViewController {
 
     // MARK: Properties
