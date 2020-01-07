@@ -33,7 +33,7 @@ class HomeCollectionViewCell: CardCollectionViewCell {
 
     private let subtitleLabel: UILabel = {
         let subtitleLabel = UILabel()
-        subtitleLabel.font = UIFont(name: "Georgia", size: 16.0)
+        subtitleLabel.font = UIFont(name: "HelveticaNeue", size: 16.0)
         subtitleLabel.lineBreakMode = .byTruncatingTail
         subtitleLabel.numberOfLines = 2
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false

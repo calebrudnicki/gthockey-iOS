@@ -125,9 +125,9 @@ class HomeDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            bodyTextView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 12.0),
-            bodyTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            bodyTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
+            bodyTextView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 9.0),
+            bodyTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 9.0),
+            bodyTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -9.0),
             bodyTextView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
         ])
 

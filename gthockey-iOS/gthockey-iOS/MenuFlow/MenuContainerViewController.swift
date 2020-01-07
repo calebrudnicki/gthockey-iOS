@@ -8,8 +8,6 @@
 
 import UIKit
 
-// MARK: Under Construction
-
 class MenuContainerViewController: UIViewController {
 
     // MARK: Properties
@@ -43,9 +41,6 @@ class MenuContainerViewController: UIViewController {
     private var rosterNavigationController: UINavigationController?
     private var shopNavigationController: UINavigationController?
     private var settingsNavigationController: UINavigationController?
-
-//    private let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
-//    private let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
 
     // MARK: Init
 
@@ -82,7 +77,7 @@ class MenuContainerViewController: UIViewController {
         homeCollectionViewController.delegate = self
         scheduleTableViewController.delegate = self
         rosterCollectionViewController.delegate = self
-//        shopCollectionViewController.delegate = self
+        shopCollectionViewController.delegate = self
         settingsTableViewController.delegate = self
 
         //Set default screen to be Home
@@ -142,9 +137,8 @@ class MenuContainerViewController: UIViewController {
             currentNavigationController = scheduleNavigationController
         case .Roster:
             currentNavigationController = rosterNavigationController
-            // MARK: Uncomment for shop
-//        case .Shop:
-//            currentNavigationController = shopNavigationController
+        case .Shop:
+            currentNavigationController = shopNavigationController
         case .Settings:
             currentNavigationController = settingsNavigationController
         }
