@@ -23,11 +23,11 @@ enum AdminMenuOption: Int, CustomStringConvertible, CaseIterable {
         switch self {
         case .AdminUsers:
             if #available(iOS 13.0, *) {
-                return (UIImage(systemName: "calendar")?
+                return (UIImage(systemName: "person.2.fill")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "ScheduleIcon")!
+            return UIImage(named: "RosterIcon")!
         }
     }
 
