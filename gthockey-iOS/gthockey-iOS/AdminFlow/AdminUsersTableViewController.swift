@@ -13,9 +13,7 @@ class AdminUsersTableViewController: UITableViewController {
     // MARK: Properties
 
     private var adminUsers: [String] = []
-    private let cellHeight = UIScreen.main.bounds.height * 0.8
     public var delegate: HomeControllerDelegate?
-    private let segmentedController = UISegmentedControl()
 
     // MARK: Init
 
@@ -33,31 +31,20 @@ class AdminUsersTableViewController: UITableViewController {
         navigationItem.title = "Admin Users"
 
         let menuButtonImage: UIImage?
-        let cartButtonImage: UIImage?
 
         if #available(iOS 13.0, *){
             menuButtonImage = UIImage(systemName: "line.horizontal.3")?
                 .withRenderingMode(.alwaysOriginal)
                 .withTintColor(.label)
                 .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
-            cartButtonImage = UIImage(systemName: "cart.fill")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.label)
-                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
         } else {
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
-            cartButtonImage = UIImage(named: "CartIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
-        // MARK: Uncomment for cart
-        //        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
-        //                                                           style: .plain,
-        //                                                           target: self,
-        //                                                           action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
@@ -77,18 +64,12 @@ class AdminUsersTableViewController: UITableViewController {
             self.adminUsers = admins
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.tableView.sectionHeaderHeight = 32.0
-                self.tableView.reloadSections(NSIndexSet(index: 0) as IndexSet, with: .none)
                 self.tableView.refreshControl?.endRefreshing()
             }
         })
     }
 
     // MARK: UITableViewDelegate / UITableViewDataSource
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return adminUsers.count
@@ -145,7 +126,9 @@ extension AdminUsersTableViewController: AdminUsersTableViewFooterDelegate {
                 }
             }
         })
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: { _ in
+            addAdminUserButton.isLoading = false
+        })
 
         alertController.addAction(addAction)
         alertController.addAction(cancelAction)
