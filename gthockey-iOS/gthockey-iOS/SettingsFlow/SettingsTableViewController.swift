@@ -56,11 +56,7 @@ class SettingsTableViewController: UITableViewController {
     private func setupTableView() {
         tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: "SettingsTableViewCell")
         tableView.allowsSelection = false
-
-        let settingsTableViewFooter = SettingsTableViewFooter()
-        settingsTableViewFooter.delegate = self
-        settingsTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 75.0)
-        tableView.tableFooterView = settingsTableViewFooter
+        tableView.tableFooterView = UIView()
     }
 
     @objc private func fetchUserInfo() {
@@ -72,6 +68,10 @@ class SettingsTableViewController: UITableViewController {
 
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                let settingsTableViewFooter = SettingsTableViewFooter()
+                settingsTableViewFooter.delegate = self
+                settingsTableViewFooter.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 75.0)
+                self.tableView.tableFooterView = settingsTableViewFooter
             }
         })
     }
