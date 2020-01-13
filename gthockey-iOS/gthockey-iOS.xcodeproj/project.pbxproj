@@ -13,6 +13,9 @@
 		8206D3E423CBDA3F00863B3C /* AdminMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */; };
 		8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E523CBDF6200863B3C /* MainMenuOption.swift */; };
 		8206D3E823CCC40600863B3C /* AllUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E723CCC40600863B3C /* AllUsersTableViewController.swift */; };
+		8206D3EF23CD307E00863B3C /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3EE23CD307E00863B3C /* AppUser.swift */; };
+		8206D3F123CD310900863B3C /* AllUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3F023CD310900863B3C /* AllUsersTableViewCell.swift */; };
+		8206D3F323CD350900863B3C /* AllUsersTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3F223CD350900863B3C /* AllUsersTableViewFooter.swift */; };
 		820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */; };
 		82170D11236FB301005FE89B /* Apparel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D10236FB301005FE89B /* Apparel.swift */; };
 		82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D13236FB360005FE89B /* ShopCollectionViewController.swift */; };
@@ -87,6 +90,9 @@
 		8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuOption.swift; sourceTree = "<group>"; };
 		8206D3E523CBDF6200863B3C /* MainMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOption.swift; sourceTree = "<group>"; };
 		8206D3E723CCC40600863B3C /* AllUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewController.swift; sourceTree = "<group>"; };
+		8206D3EE23CD307E00863B3C /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		8206D3F023CD310900863B3C /* AllUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewCell.swift; sourceTree = "<group>"; };
+		8206D3F223CD350900863B3C /* AllUsersTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewFooter.swift; sourceTree = "<group>"; };
 		820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		82170D10236FB301005FE89B /* Apparel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apparel.swift; sourceTree = "<group>"; };
 		82170D13236FB360005FE89B /* ShopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				8206D3E723CCC40600863B3C /* AllUsersTableViewController.swift */,
+				8206D3F023CD310900863B3C /* AllUsersTableViewCell.swift */,
+				8206D3F223CD350900863B3C /* AllUsersTableViewFooter.swift */,
 			);
 			path = AllUsers;
 			sourceTree = "<group>";
@@ -374,6 +382,7 @@
 				82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */,
 				82B3A172237BB49700CD8F3D /* ApparelCustomItem.swift */,
 				82F468F1237F611C00573EE5 /* CartItem.swift */,
+				8206D3EE23CD307E00863B3C /* AppUser.swift */,
 				8206D3E523CBDF6200863B3C /* MainMenuOption.swift */,
 				8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */,
 				82378184239995CA00CBD399 /* Constants.swift */,
@@ -555,6 +564,7 @@
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */,
 				8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */,
+				8206D3F323CD350900863B3C /* AllUsersTableViewFooter.swift in Sources */,
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
 				82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */,
@@ -564,11 +574,13 @@
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
 				82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
+				8206D3EF23CD307E00863B3C /* AppUser.swift in Sources */,
 				82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */,
 				82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */,
 				82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */,
 				82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */,
 				82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */,
+				8206D3F123CD310900863B3C /* AllUsersTableViewCell.swift in Sources */,
 				82F468F2237F611C00573EE5 /* CartItem.swift in Sources */,
 				82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */,
 			);
