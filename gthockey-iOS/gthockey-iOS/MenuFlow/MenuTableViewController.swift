@@ -35,8 +35,7 @@ class MenuTableViewController: UITableViewController {
         let menuTableViewFooter = MenuTableViewFooter()
         menuTableViewFooter.delegate = self
         tableView.tableFooterView = menuTableViewFooter
-        let footerHeight = AdminHelper().isAdminUser(UserDefaults.standard.string(forKey: "email")!) ? 115.0 : 75.0
-        menuTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width - 80, height: CGFloat(footerHeight))
+        menuTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width - 80, height: 115.0)
 
         updateViewConstraints()
     }

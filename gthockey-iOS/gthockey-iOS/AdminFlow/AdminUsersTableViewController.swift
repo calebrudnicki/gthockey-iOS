@@ -106,19 +106,18 @@ class AdminUsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            print("Editing")
-//            AdminHelper.remove(adminUsers[indexPath.row], completion: { result in
-//                if result {
-//                    self.adminUsers.remove(at: indexPath.row)
-//                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
-//                } else {
-//                    let alert = UIAlertController(title: "Failed to remove admin user",
-//                                                  message: "We were unable to remove this user as an admin. For more help, you can complete this in the Firebase console online.
-//                                                  preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "Ok", style: .default))
-//                    self.present(alert, animated: true, completion: nil)
-//                }
-//            })
+            AdminHelper().remove(adminUsers[indexPath.row], completion: { result in
+                if result {
+                    self.adminUsers.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                } else {
+                    let alert = UIAlertController(title: "Failed to remove admin user",
+                                                  message: "We were unable to remove this user as an admin. For more help, you can complete this in the Firebase console online.",
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                    self.present(alert, animated: true, completion: nil)
+                }
+            })
         }
     }
 
@@ -133,36 +132,24 @@ class AdminUsersTableViewController: UITableViewController {
 extension AdminUsersTableViewController: AdminUsersTableViewFooterDelegate {
 
     func addAdminUserButtonTapped(with addAdminUserButton: PillButton) {
-        AdminHelper().add(email: "fakeemail@gmail.com") { (result) in
-            if result {
-                addAdminUserButton.isLoading = false
-                self.fetchAdminUsers()
-            }
+        let alertController = UIAlertController(title: "Add admin user", message: "", preferredStyle: .alert)
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Enter email"
         }
+        let addAction = UIAlertAction(title: "Add", style: .default, handler: { alert -> Void in
+            let firstTextField = alertController.textFields![0] as UITextField
+            AdminHelper().add(email: firstTextField.text ?? "georgiatechhockey@gmail.com") { (result) in
+                if result {
+                    addAdminUserButton.isLoading = false
+                    self.fetchAdminUsers()
+                }
+            }
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive)
+
+        alertController.addAction(addAction)
+        alertController.addAction(cancelAction)
+        self.present(alertController, animated: true, completion: nil)
     }
-
-
-//    func signoutButtonTapped(with signoutButton: PillButton) {
-//        let alert = UIAlertController(title: "What is the email that you want to add?", message: nil, preferredStyle: .alert)
-////        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-////            AuthenticationHelper().signOut { (result, error) in
-////                if result {
-////                    let welcomeViewController = WelcomeViewController()
-////                    welcomeViewController.modalPresentationStyle = .fullScreen
-////                    self.present(welcomeViewController, animated: true, completion: nil)
-////                } else {
-////                    let alert = UIAlertController(title: "Sign out failed",
-////                                                  message: error?.localizedDescription,
-////                                                  preferredStyle: .alert)
-////                    alert.addAction(UIAlertAction(title: "Ok", style: .default))
-////                    self.present(alert, animated: true, completion: nil)
-////                }
-////            }
-////        }))
-////        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { _ in
-////            signoutButton.isLoading = false
-////        }))
-//        self.present(alert, animated: true, completion: nil)
-//    }
 
 }

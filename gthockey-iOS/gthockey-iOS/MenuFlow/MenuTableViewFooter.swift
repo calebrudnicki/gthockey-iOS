@@ -125,11 +125,11 @@ class MenuTableViewFooter: UIView {
                 toggleAdminButton.centerXAnchor.constraint(equalTo: centerXAnchor),
                 toggleAdminButton.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 12.0),
                 toggleAdminButton.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -12.0),
-                toggleAdminButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+                toggleAdminButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
             ])
         } else {
             NSLayoutConstraint.activate([
-                versionLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+                versionLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
             ])
         }
     }
