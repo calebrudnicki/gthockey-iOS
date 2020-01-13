@@ -165,6 +165,15 @@ class MenuContainerViewController: UIViewController {
             currentNavigationController = scheduleNavigationController
         case .Roster:
             currentNavigationController = rosterNavigationController
+        case .Contact:
+            let email = "georgiatechhockey@gmail.com"
+            if let url = URL(string: "mailto:\(email)") {
+              if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url)
+              } else {
+                UIApplication.shared.openURL(url)
+              }
+            }
         case .Shop:
             currentNavigationController = shopNavigationController
         case .Settings:

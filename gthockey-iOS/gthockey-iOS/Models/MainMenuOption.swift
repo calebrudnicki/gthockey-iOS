@@ -14,6 +14,7 @@ enum MainMenuOption: Int, CustomStringConvertible, CaseIterable {
     case Home
     case Schedule
     case Roster
+    case Contact
     case Shop
     case Settings
 
@@ -22,6 +23,7 @@ enum MainMenuOption: Int, CustomStringConvertible, CaseIterable {
         case .Home: return "Home"
         case .Schedule: return "Schedule"
         case .Roster: return "Roster"
+        case .Contact: return "Contact"
         case .Shop: return "Shop"
         case .Settings: return "Settings"
         }
@@ -50,6 +52,13 @@ enum MainMenuOption: Int, CustomStringConvertible, CaseIterable {
                     .withTintColor(.white))!
             }
             return UIImage(named: "RosterIcon")!
+        case .Contact:
+            if #available(iOS 13.0, *) {
+                return (UIImage(systemName: "envelope.fill")?
+                    .withRenderingMode(.alwaysOriginal)
+                    .withTintColor(.white))!
+            }
+            return UIImage(named: "MailIcon")!
         case .Shop:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "bag.fill")?
