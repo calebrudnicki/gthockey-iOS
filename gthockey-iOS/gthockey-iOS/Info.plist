@@ -25,7 +25,7 @@
 			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.calebrudnicki.gthockey-iOS.payments</string>
+				<string>com.googleusercontent.apps.352332955971-4i8ppjhvs2onggued51eeha4df6dp4l3</string>
 			</array>
 		</dict>
 	</array>
@@ -44,6 +44,11 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
