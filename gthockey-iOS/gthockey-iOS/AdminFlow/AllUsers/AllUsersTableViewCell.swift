@@ -36,7 +36,6 @@ class AllUsersTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         contentView.addSubviews([nameLabel, emailLabel])
-
         updateConstraints()
     }
 
