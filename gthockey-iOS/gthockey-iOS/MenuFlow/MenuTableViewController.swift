@@ -13,6 +13,7 @@ class MenuTableViewController: UITableViewController {
     // MARK; Properties
 
     public var delegate: HomeControllerDelegate!
+    private var isShowingAdminMenu = false
 
     // MARK: Init
 
@@ -32,8 +33,9 @@ class MenuTableViewController: UITableViewController {
         menuTableViewHeader.frame = CGRect(x: 0, y: 0, width: view.frame.width - 80, height: 75.0)
 
         let menuTableViewFooter = MenuTableViewFooter()
+        menuTableViewFooter.delegate = self
         tableView.tableFooterView = menuTableViewFooter
-        menuTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width - 80, height: 75.0)
+        menuTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width - 80, height: 115.0)
 
         updateViewConstraints()
     }
@@ -52,19 +54,40 @@ class MenuTableViewController: UITableViewController {
     // MARK: UITableViewDelegate / UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MenuOption.Home.count()
+        return isShowingAdminMenu ? AdminMenuOption.AdminUsers.count() :
+                                    MainMenuOption.Home.count()
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuTableViewCell", for: indexPath) as! MenuTableViewCell
-        cell.set(with: MenuOption(rawValue: indexPath.row)!)
+        if isShowingAdminMenu {
+            cell.set(with: AdminMenuOption(rawValue: indexPath.row)!)
+        } else {
+            cell.set(with: MainMenuOption(rawValue: indexPath.row)!)
+        }
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let menuOption = MenuOption(rawValue: indexPath.row)
-        delegate?.handleMenuToggle(forMenuOption: menuOption)
+        if isShowingAdminMenu {
+            let adminMenuOption = AdminMenuOption(rawValue: indexPath.row)
+            delegate?.handleMenuToggle(forAdminMenuOption: adminMenuOption)
+        } else {
+            let mainMenuOption = MainMenuOption(rawValue: indexPath.row)
+            delegate?.handleMenuToggle(forMainMenuOption: mainMenuOption)
+        }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+}
+
+extension MenuTableViewController: MenuTableViewFooterDelegate {
+
+    func toggleAdminButtonTapped(with toggleAdminButton: UIButton) {
+        print("Switch to admin menu")
+        isShowingAdminMenu = !isShowingAdminMenu
+        toggleAdminButton.setTitle("Switch to main menu", for: .normal)
+        tableView.reloadData()
     }
 
 }

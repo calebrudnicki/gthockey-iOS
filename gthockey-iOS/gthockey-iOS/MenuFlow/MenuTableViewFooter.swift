@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol MenuTableViewFooterDelegate {
+    func toggleAdminButtonTapped(with toggleAdminButton: UIButton)
+}
+
 class MenuTableViewFooter: UIView {
 
     // MARK: Properties
+
+    public var delegate: MenuTableViewFooterDelegate!
 
     private let iconStack: UIStackView = {
         let iconStack = UIStackView()
@@ -59,6 +65,15 @@ class MenuTableViewFooter: UIView {
         return versionLabel
     }()
 
+    private let toggleAdminButton: UIButton = {
+        let toggleAdminButton = UIButton()
+        toggleAdminButton.setTitle("Switch to admin menu", for: .normal)
+        toggleAdminButton.setTitleColor(.techGold, for: .normal)
+        toggleAdminButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 12.0)
+        toggleAdminButton.translatesAutoresizingMaskIntoConstraints = false
+        return toggleAdminButton
+    }()
+
     // MARK: Init
 
     override init(frame: CGRect) {
@@ -71,12 +86,16 @@ class MenuTableViewFooter: UIView {
         instagramButton.addTarget(self, action: #selector(instagramButtonTapped), for: .touchUpInside)
         twitterButton.addTarget(self, action: #selector(twitterButtonTapped), for: .touchUpInside)
         facebookButton.addTarget(self, action: #selector(facebookButtonTapped), for: .touchUpInside)
+        toggleAdminButton.addTarget(self, action: #selector(toggleAdminButtonTapped), for: .touchUpInside)
 
         iconStack.addArrangedSubview(instagramButton)
         iconStack.addArrangedSubview(twitterButton)
         iconStack.addArrangedSubview(facebookButton)
-        
+
         addSubviews([iconStack, versionLabel])
+        if AdminHelper().isAdminUser(UserDefaults.standard.string(forKey: "email")!) {
+            addSubview(toggleAdminButton)
+        }
         updateConstraints()
     }
 
@@ -97,9 +116,22 @@ class MenuTableViewFooter: UIView {
             versionLabel.topAnchor.constraint(equalTo: iconStack.bottomAnchor, constant: 16.0),
             versionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             versionLabel.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 12.0),
-            versionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -12.0),
-            versionLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            versionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -12.0)
         ])
+
+        if AdminHelper().isAdminUser(UserDefaults.standard.string(forKey: "email")!) {
+            NSLayoutConstraint.activate([
+                toggleAdminButton.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 8.0),
+                toggleAdminButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+                toggleAdminButton.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 12.0),
+                toggleAdminButton.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -12.0),
+                toggleAdminButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                versionLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
+            ])
+        }
     }
 
     // MARK: Actions
@@ -114,6 +146,10 @@ class MenuTableViewFooter: UIView {
 
     @objc private func facebookButtonTapped() {
         openSocialMedia(with: NSURL(string: "fb://profile/85852244494")!, NSURL(string: "https://facebook.com/GeorgiaTechHockey")!)
+    }
+
+    @objc private func toggleAdminButtonTapped() {
+        delegate.toggleAdminButtonTapped(with: toggleAdminButton)
     }
 
     private func openSocialMedia(with appURL: NSURL, _ webURL: NSURL) {

@@ -17,34 +17,37 @@ class AuthenticationHelper {
     // MARK: Public Functions
 
     public func login(with email: String, _ password: String, _ firstName: String?, _ lastName: String?, completion: @escaping (Bool, Error?) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { user, error in
-            if let error = error, user == nil {
-                completion(false, error)
-            } else {
-                if let user = user?.user, user.isEmailVerified {
-                    let db = Firestore.firestore()
-                    self.getUserProperties(completion: { propertiesDictionary in
-                        let firstName = propertiesDictionary["firstName"] ?? ""
-                        let lastName = propertiesDictionary["lastName"] ?? ""
-                        let cart = propertiesDictionary["cart"] ?? []
-
-                        db.collection("users").document(user.uid).setData(["firstName": firstName,
-                                                                           "lastName": lastName,
-                                                                           "email": email,
-                                                                           "uid": user.uid,
-                                                                           "cart": cart]) { (error) in
-                            if error != nil {
-                                completion(false, error)
-                            }
-                            self.setUserDefaults(with: email, password: password)
-                            completion(true, nil)
-                        }
-                    })
+        AdminHelper().saveAdminUsersonLaunch(completion: { _ in
+            Auth.auth().signIn(withEmail: email, password: password) { user, error in
+                if let error = error, user == nil {
+                    completion(false, error)
                 } else {
-                    completion(false, CustomError.emailVerification)
+                    if let user = user?.user, user.isEmailVerified {
+                        let db = Firestore.firestore()
+                        self.getUserProperties(completion: { propertiesDictionary in
+                            let firstName = propertiesDictionary["firstName"] ?? ""
+                            let lastName = propertiesDictionary["lastName"] ?? ""
+                            let cart = propertiesDictionary["cart"] ?? []
+
+                            db.collection("users").document(user.uid).setData(["firstName": firstName,
+                                                                               "lastName": lastName,
+                                                                               "email": email,
+                                                                               "isAdmin:": AdminHelper().isAdminUser(email) ? true : false,
+                                                                               "uid": user.uid,
+                                                                               "cart": cart]) { (error) in
+                                if error != nil {
+                                    completion(false, error)
+                                }
+                                self.setUserDefaults(with: email, password: password, isAdmin: true)
+                                completion(true, nil)
+                            }
+                        })
+                    } else {
+                        completion(false, CustomError.emailVerification)
+                    }
                 }
             }
-        }
+        })
     }
 
     public func createUser(with firstName: String, _ lastName: String, _ email: String,
@@ -58,6 +61,7 @@ class AuthenticationHelper {
                 db.collection("users").document(user.uid).setData(["firstName": firstName,
                                                                    "lastName": lastName,
                                                                    "email": email,
+                                                                   "isAdmin:": AdminHelper().isAdminUser(email) ? true : false,
                                                                    "uid": user.uid,
                                                                    "cart": []]) { (error) in
                     if error != nil {
@@ -91,6 +95,7 @@ class AuthenticationHelper {
             try Auth.auth().signOut()
             UserDefaults.standard.removeObject(forKey: "email")
             UserDefaults.standard.removeObject(forKey: "password")
+            UserDefaults.standard.removeObject(forKey: "isAdmin")
             completion(true, nil)
         } catch let error as NSError {
             completion(false, error)
@@ -126,9 +131,10 @@ class AuthenticationHelper {
 
     // MARK: Private Functions
 
-    private func setUserDefaults(with email: String, password: String) {
+    private func setUserDefaults(with email: String, password: String, isAdmin: Bool) {
         UserDefaults.standard.set(email, forKey: "email")
         UserDefaults.standard.set(password, forKey: "password")
+        UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
     }
 
 }

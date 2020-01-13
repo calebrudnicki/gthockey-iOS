@@ -1,15 +1,15 @@
 //
-//  MenuOption.swift
+//  MainMenuOption.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 10/22/19.
-//  Copyright © 2019 Caleb Rudnicki. All rights reserved.
+//  Created by Caleb Rudnicki on 1/12/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-enum MenuOption: Int, CustomStringConvertible, CaseIterable {
+enum MainMenuOption: Int, CustomStringConvertible, CaseIterable {
 
     case Home
     case Schedule
@@ -30,35 +30,35 @@ enum MenuOption: Int, CustomStringConvertible, CaseIterable {
     var image: UIImage {
         switch self {
         case .Home:
-            if #available(iOS 13.0, *){
+            if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "house.fill")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
             return UIImage(named: "HomeIcon")!
         case .Schedule:
-            if #available(iOS 13.0, *){
+            if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "calendar")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
             return UIImage(named: "ScheduleIcon")!
         case .Roster:
-            if #available(iOS 13.0, *){
+            if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "person.3.fill")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
             return UIImage(named: "RosterIcon")!
         case .Shop:
-            if #available(iOS 13.0, *){
+            if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "bag.fill")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
             return UIImage(named: "ShopIcon")!
         case .Settings:
-            if #available(iOS 13.0, *){
+            if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "gear")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
@@ -68,7 +68,7 @@ enum MenuOption: Int, CustomStringConvertible, CaseIterable {
     }
 
     func count() -> Int {
-        return MenuOption.allCases.count
+        return MainMenuOption.allCases.count
     }
 
 }

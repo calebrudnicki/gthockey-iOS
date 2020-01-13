@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8206D3DB23CBBBEF00863B3C /* AdminHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3DA23CBBBEF00863B3C /* AdminHelper.swift */; };
+		8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */; };
+		8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */; };
+		8206D3E423CBDA3F00863B3C /* AdminMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */; };
+		8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E523CBDF6200863B3C /* MainMenuOption.swift */; };
 		820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */; };
 		82170D11236FB301005FE89B /* Apparel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D10236FB301005FE89B /* Apparel.swift */; };
 		82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D13236FB360005FE89B /* ShopCollectionViewController.swift */; };
@@ -62,7 +67,6 @@
 		82F468F0237F55EC00573EE5 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F468EF237F55EC00573EE5 /* CartTableViewCell.swift */; };
 		82F468F2237F611C00573EE5 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F468F1237F611C00573EE5 /* CartItem.swift */; };
 		82F468F62380659800573EE5 /* CartTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F468F52380659800573EE5 /* CartTableViewFooter.swift */; };
-		82F79FBE235F428E0070F63D /* MenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FBD235F428E0070F63D /* MenuOption.swift */; };
 		82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FC2235FF1890070F63D /* MenuControllerDelegate.swift */; };
 		82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F79FC4236004D70070F63D /* UIColorExtension.swift */; };
 		82F85586236C797600DE7AFD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 82F85585236C797600DE7AFD /* GoogleService-Info.plist */; };
@@ -76,6 +80,11 @@
 /* Begin PBXFileReference section */
 		0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.release.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.debug.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		8206D3DA23CBBBEF00863B3C /* AdminHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHelper.swift; sourceTree = "<group>"; };
+		8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersTableViewController.swift; sourceTree = "<group>"; };
+		8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersTableViewFooter.swift; sourceTree = "<group>"; };
+		8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuOption.swift; sourceTree = "<group>"; };
+		8206D3E523CBDF6200863B3C /* MainMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOption.swift; sourceTree = "<group>"; };
 		820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		82170D10236FB301005FE89B /* Apparel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apparel.swift; sourceTree = "<group>"; };
 		82170D13236FB360005FE89B /* ShopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewController.swift; sourceTree = "<group>"; };
@@ -133,7 +142,6 @@
 		82F468EF237F55EC00573EE5 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		82F468F1237F611C00573EE5 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
 		82F468F52380659800573EE5 /* CartTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewFooter.swift; sourceTree = "<group>"; };
-		82F79FBD235F428E0070F63D /* MenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOption.swift; sourceTree = "<group>"; };
 		82F79FC2235FF1890070F63D /* MenuControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuControllerDelegate.swift; sourceTree = "<group>"; };
 		82F79FC4236004D70070F63D /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		82F85585236C797600DE7AFD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -163,6 +171,15 @@
 				D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8206D3DC23CBC0E200863B3C /* AdminFlow */ = {
+			isa = PBXGroup;
+			children = (
+				8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */,
+				8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */,
+			);
+			path = AdminFlow;
 			sourceTree = "<group>";
 		};
 		82170D12236FB349005FE89B /* ShopFlow */ = {
@@ -264,10 +281,12 @@
 				82170D12236FB349005FE89B /* ShopFlow */,
 				F093EA482385F3C40037FCA7 /* SettingsFlow */,
 				82F468EC237F4BD800573EE5 /* CartFlow */,
+				8206D3DC23CBC0E200863B3C /* AdminFlow */,
 				825092162361EF8E00D98DEA /* Extensions */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
 				82ADF5D623440B6700114F84 /* JSONParser.swift */,
 				82C7349523B3F14800196D5D /* AuthenticationHelper.swift */,
+				8206D3DA23CBBBEF00863B3C /* AdminHelper.swift */,
 				82C2467E2384F4B7003CB268 /* CartHelper.swift */,
 				823781862399968100CBD399 /* StripeClient.swift */,
 				82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */,
@@ -336,7 +355,8 @@
 				82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */,
 				82B3A172237BB49700CD8F3D /* ApparelCustomItem.swift */,
 				82F468F1237F611C00573EE5 /* CartItem.swift */,
-				82F79FBD235F428E0070F63D /* MenuOption.swift */,
+				8206D3E523CBDF6200863B3C /* MainMenuOption.swift */,
+				8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */,
 				82378184239995CA00CBD399 /* Constants.swift */,
 			);
 			path = Models;
@@ -481,11 +501,11 @@
 				8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */,
 				82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */,
 				82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */,
+				8206D3DB23CBBBEF00863B3C /* AdminHelper.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
 				82F468F62380659800573EE5 /* CartTableViewFooter.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
-				82F79FBE235F428E0070F63D /* MenuOption.swift in Sources */,
 				82378185239995CA00CBD399 /* Constants.swift in Sources */,
 				82F468F0237F55EC00573EE5 /* CartTableViewCell.swift in Sources */,
 				8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */,
@@ -505,6 +525,7 @@
 				82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */,
 				82EE57E32341B36200FCC181 /* Player.swift in Sources */,
 				82A6F843238E1AE0001CA749 /* ShopOptionTextField.swift in Sources */,
+				8206D3E423CBDA3F00863B3C /* AdminMenuOption.swift in Sources */,
 				82B3A16F237BB44F00CD8F3D /* ShopCustomOptionsView.swift in Sources */,
 				82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */,
 				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,
@@ -512,10 +533,13 @@
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
 				823781872399968100CBD399 /* StripeClient.swift in Sources */,
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
+				8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */,
+				8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */,
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
 				82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
+				8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */,
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
 				82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */,

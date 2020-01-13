@@ -165,7 +165,7 @@ class ScheduleTableViewController: UITableViewController {
     // MARK: Action
 
     @objc private func menuButtonTapped() {
-        delegate?.handleMenuToggle(forMenuOption: nil)
+        delegate?.handleMenuToggle(forMainMenuOption: nil)
     }
 
     @objc private func cartButtonTapped() {

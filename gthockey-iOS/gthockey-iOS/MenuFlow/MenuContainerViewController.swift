@@ -35,12 +35,14 @@ class MenuContainerViewController: UIViewController {
         return shopCollectionViewController
     }()
     private let settingsTableViewController = SettingsTableViewController()
+    private let adminUsersTableViewController = AdminUsersTableViewController()
 
     private var homeNavigationController: UINavigationController?
     private var scheduleNavigationController: UINavigationController?
     private var rosterNavigationController: UINavigationController?
     private var shopNavigationController: UINavigationController?
     private var settingsNavigationController: UINavigationController?
+    private var adminUsersNavigationController: UINavigationController?
 
     // MARK: Init
 
@@ -73,12 +75,14 @@ class MenuContainerViewController: UIViewController {
         rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
         shopNavigationController = UINavigationController(rootViewController: shopCollectionViewController)
         settingsNavigationController = UINavigationController(rootViewController: settingsTableViewController)
+        adminUsersNavigationController = UINavigationController(rootViewController: adminUsersTableViewController)
 
         homeCollectionViewController.delegate = self
         scheduleTableViewController.delegate = self
         rosterCollectionViewController.delegate = self
         shopCollectionViewController.delegate = self
         settingsTableViewController.delegate = self
+        adminUsersTableViewController.delegate = self
 
         //Set default screen to be Home
         currentNavigationController = homeNavigationController
@@ -102,7 +106,7 @@ class MenuContainerViewController: UIViewController {
 
     // MARK: Menu Control Functions
 
-    private func animatePanel(shouldExpand: Bool, menuOption: MenuOption?) {
+    private func animatePanel(shouldExpand: Bool, mainMenuOption: MainMenuOption?) {
         if shouldExpand {
             //Animation to show menu
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
@@ -117,20 +121,44 @@ class MenuContainerViewController: UIViewController {
             }) { (_) in
                 self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = true
 
-                guard let menuOption = menuOption,
-                          menuOption.description != self.currentNavigationController.children[0].navigationItem.title!
+                guard let mainMenuOption = mainMenuOption,
+                          mainMenuOption.description != self.currentNavigationController.children[0].navigationItem.title!
                 else { return }
 
-                self.didSelectMenuOption(menuOption: menuOption)
+                self.didSelectMainMenuOption(mainMenuOption: mainMenuOption)
             }
         }
     }
 
-    private func didSelectMenuOption(menuOption: MenuOption) {
+    private func animatePanel(shouldExpand: Bool, adminMenuOption: AdminMenuOption?) {
+        if shouldExpand {
+            //Animation to show menu
+            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
+                self.currentNavigationController.view.frame.origin.x = self.currentNavigationController.view.frame.width - 80
+            }) { (_) in
+                self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = false
+            }
+        } else {
+            //Animation to hide menu
+            UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
+                self.currentNavigationController.view.frame.origin.x = 0
+            }) { (_) in
+                self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = true
+
+                guard let adminMenuOption = adminMenuOption,
+                          adminMenuOption.description != self.currentNavigationController.children[0].navigationItem.title!
+                else { return }
+
+                self.didSelectAdminMenuOption(adminMenuOption: adminMenuOption)
+            }
+        }
+    }
+
+    private func didSelectMainMenuOption(mainMenuOption: MainMenuOption) {
         currentNavigationController.view.removeFromSuperview()
         currentNavigationController.removeFromParent()
 
-        switch menuOption {
+        switch mainMenuOption {
         case .Home:
             currentNavigationController = homeNavigationController
         case .Schedule:
@@ -148,11 +176,25 @@ class MenuContainerViewController: UIViewController {
         currentNavigationController.didMove(toParent: self)
     }
 
+    private func didSelectAdminMenuOption(adminMenuOption: AdminMenuOption) {
+        currentNavigationController.view.removeFromSuperview()
+        currentNavigationController.removeFromParent()
+
+        switch adminMenuOption {
+        case .AdminUsers:
+            currentNavigationController = adminUsersNavigationController
+        }
+        configureGestures()
+        view.addSubview(currentNavigationController.view)
+        addChild(currentNavigationController)
+        currentNavigationController.didMove(toParent: self)
+    }
+
     // MARK: Actions
 
     @objc func handleSwipes(_ sender: UISwipeGestureRecognizer) {
         if (sender.direction == .right && !isExpanded) || (sender.direction == .left && isExpanded) {
-            handleMenuToggle(forMenuOption: nil)
+            handleMenuToggle(forMainMenuOption: nil)
         }
     }
 
@@ -162,13 +204,22 @@ extension MenuContainerViewController: HomeControllerDelegate {
 
     // MARK: HomeControllerDelegate
 
-    func handleMenuToggle(forMenuOption menuOption: MenuOption?) {
+    func handleMenuToggle(forMainMenuOption mainMenuOption: MainMenuOption?) {
         if !isExpanded {
             configureMenuController()
         }
 
         isExpanded = !isExpanded
-        animatePanel(shouldExpand: isExpanded, menuOption: menuOption)
+        animatePanel(shouldExpand: isExpanded, mainMenuOption: mainMenuOption)
+    }
+
+    func handleMenuToggle(forAdminMenuOption adminMenuOption: AdminMenuOption?) {
+        if !isExpanded {
+            configureMenuController()
+        }
+
+        isExpanded = !isExpanded
+        animatePanel(shouldExpand: isExpanded, adminMenuOption: adminMenuOption)
     }
 
 }
