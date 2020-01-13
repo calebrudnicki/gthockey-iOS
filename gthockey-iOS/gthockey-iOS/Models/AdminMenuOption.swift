@@ -11,16 +11,25 @@ import UIKit
 
 enum AdminMenuOption: Int, CustomStringConvertible, CaseIterable {
 
+    case AllUsers
     case AdminUsers
 
     var description: String {
         switch self {
+        case .AllUsers: return "All Users"
         case .AdminUsers: return "Admin Users"
         }
     }
 
     var image: UIImage {
         switch self {
+        case .AllUsers:
+            if #available(iOS 13.0, *) {
+                return (UIImage(systemName: "person.3.fill")?
+                    .withRenderingMode(.alwaysOriginal)
+                    .withTintColor(.white))!
+            }
+            return UIImage(named: "RosterIcon")!
         case .AdminUsers:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "person.2.fill")?

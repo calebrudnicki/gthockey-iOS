@@ -12,6 +12,7 @@
 		8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */; };
 		8206D3E423CBDA3F00863B3C /* AdminMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */; };
 		8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E523CBDF6200863B3C /* MainMenuOption.swift */; };
+		8206D3E823CCC40600863B3C /* AllUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E723CCC40600863B3C /* AllUsersTableViewController.swift */; };
 		820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */; };
 		82170D11236FB301005FE89B /* Apparel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D10236FB301005FE89B /* Apparel.swift */; };
 		82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D13236FB360005FE89B /* ShopCollectionViewController.swift */; };
@@ -85,6 +86,7 @@
 		8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersTableViewFooter.swift; sourceTree = "<group>"; };
 		8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuOption.swift; sourceTree = "<group>"; };
 		8206D3E523CBDF6200863B3C /* MainMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOption.swift; sourceTree = "<group>"; };
+		8206D3E723CCC40600863B3C /* AllUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewController.swift; sourceTree = "<group>"; };
 		820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		82170D10236FB301005FE89B /* Apparel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apparel.swift; sourceTree = "<group>"; };
 		82170D13236FB360005FE89B /* ShopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewController.swift; sourceTree = "<group>"; };
@@ -176,10 +178,27 @@
 		8206D3DC23CBC0E200863B3C /* AdminFlow */ = {
 			isa = PBXGroup;
 			children = (
+				8206D3E923CCC41E00863B3C /* AllUsers */,
+				8206D3EB23CCC43100863B3C /* AdminUsers */,
+			);
+			path = AdminFlow;
+			sourceTree = "<group>";
+		};
+		8206D3E923CCC41E00863B3C /* AllUsers */ = {
+			isa = PBXGroup;
+			children = (
+				8206D3E723CCC40600863B3C /* AllUsersTableViewController.swift */,
+			);
+			path = AllUsers;
+			sourceTree = "<group>";
+		};
+		8206D3EB23CCC43100863B3C /* AdminUsers */ = {
+			isa = PBXGroup;
+			children = (
 				8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */,
 				8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */,
 			);
-			path = AdminFlow;
+			path = AdminUsers;
 			sourceTree = "<group>";
 		};
 		82170D12236FB349005FE89B /* ShopFlow */ = {
@@ -509,6 +528,7 @@
 				82378185239995CA00CBD399 /* Constants.swift in Sources */,
 				82F468F0237F55EC00573EE5 /* CartTableViewCell.swift in Sources */,
 				8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */,
+				8206D3E823CCC40600863B3C /* AllUsersTableViewController.swift in Sources */,
 				82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
 				F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */,

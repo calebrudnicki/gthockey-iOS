@@ -77,6 +77,7 @@ class AdminUsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AdminUsersTableViewCell", for: indexPath) as! UITableViewCell
+        cell.selectionStyle = .none
         cell.textLabel?.text = adminUsers[indexPath.row]
         return cell
     }

@@ -35,6 +35,7 @@ class MenuContainerViewController: UIViewController {
         return shopCollectionViewController
     }()
     private let settingsTableViewController = SettingsTableViewController()
+    private let allUsersTableViewController = AllUsersTableViewController()
     private let adminUsersTableViewController = AdminUsersTableViewController()
 
     private var homeNavigationController: UINavigationController?
@@ -42,6 +43,7 @@ class MenuContainerViewController: UIViewController {
     private var rosterNavigationController: UINavigationController?
     private var shopNavigationController: UINavigationController?
     private var settingsNavigationController: UINavigationController?
+    private var allUsersNavigationController: UINavigationController?
     private var adminUsersNavigationController: UINavigationController?
 
     // MARK: Init
@@ -75,6 +77,7 @@ class MenuContainerViewController: UIViewController {
         rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
         shopNavigationController = UINavigationController(rootViewController: shopCollectionViewController)
         settingsNavigationController = UINavigationController(rootViewController: settingsTableViewController)
+        allUsersNavigationController = UINavigationController(rootViewController: allUsersTableViewController)
         adminUsersNavigationController = UINavigationController(rootViewController: adminUsersTableViewController)
 
         homeCollectionViewController.delegate = self
@@ -82,6 +85,7 @@ class MenuContainerViewController: UIViewController {
         rosterCollectionViewController.delegate = self
         shopCollectionViewController.delegate = self
         settingsTableViewController.delegate = self
+        allUsersTableViewController.delegate = self
         adminUsersTableViewController.delegate = self
 
         //Set default screen to be Home
@@ -190,6 +194,8 @@ class MenuContainerViewController: UIViewController {
         currentNavigationController.removeFromParent()
 
         switch adminMenuOption {
+        case .AllUsers:
+            currentNavigationController = allUsersNavigationController
         case .AdminUsers:
             currentNavigationController = adminUsersNavigationController
         }

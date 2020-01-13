@@ -20,6 +20,22 @@ class AdminHelper {
 
     // MARK: Public Functions
 
+    public func getAllUsers(completion: @escaping ([String], Error?) -> Void) {
+        let db = Firestore.firestore()
+
+        db.collection("users").getDocuments { (document, error) in
+            guard let documents = document?.documents else { return }
+
+            var emailArray: [String] = []
+            for document in documents {
+                if let email = ((document.data() as NSDictionary)["email"] as! String?) {
+                    emailArray.append(email)
+                }
+            }
+            completion(emailArray, nil)
+        }
+    }
+
     public func isAdminUser(_ email: String) -> Bool {
         return AdminHelper.adminUsersOnAppLaunch.contains(email)
     }
