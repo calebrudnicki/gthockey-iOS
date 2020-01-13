@@ -31,12 +31,13 @@ class AuthenticationHelper {
                         db.collection("users").document(user.uid).setData(["firstName": firstName,
                                                                            "lastName": lastName,
                                                                            "email": email,
+                                                                           "isAdmin:": AdminHelper().isAdminUser(email) ? true : false,
                                                                            "uid": user.uid,
                                                                            "cart": cart]) { (error) in
                             if error != nil {
                                 completion(false, error)
                             }
-                            self.setUserDefaults(with: email, password: password)
+                            self.setUserDefaults(with: email, password: password, isAdmin: true)
                             completion(true, nil)
                         }
                     })
@@ -58,6 +59,7 @@ class AuthenticationHelper {
                 db.collection("users").document(user.uid).setData(["firstName": firstName,
                                                                    "lastName": lastName,
                                                                    "email": email,
+                                                                   "isAdmin:": AdminHelper().isAdminUser(email) ? true : false,
                                                                    "uid": user.uid,
                                                                    "cart": []]) { (error) in
                     if error != nil {
@@ -91,6 +93,7 @@ class AuthenticationHelper {
             try Auth.auth().signOut()
             UserDefaults.standard.removeObject(forKey: "email")
             UserDefaults.standard.removeObject(forKey: "password")
+            UserDefaults.standard.removeObject(forKey: "isAdmin")
             completion(true, nil)
         } catch let error as NSError {
             completion(false, error)
@@ -126,9 +129,10 @@ class AuthenticationHelper {
 
     // MARK: Private Functions
 
-    private func setUserDefaults(with email: String, password: String) {
+    private func setUserDefaults(with email: String, password: String, isAdmin: Bool) {
         UserDefaults.standard.set(email, forKey: "email")
         UserDefaults.standard.set(password, forKey: "password")
+        UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
     }
 
 }

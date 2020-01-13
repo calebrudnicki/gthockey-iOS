@@ -61,9 +61,14 @@ class MenuTableViewCell: UITableViewCell {
 
     // MARK: Setter
 
-    public func set(with menuOption: MenuOption) {
-        iconImageView.image = menuOption.image
-        optionLabel.text = menuOption.description
+    public func set(with mainMenuOption: MainMenuOption) {
+        iconImageView.image = mainMenuOption.image
+        optionLabel.text = mainMenuOption.description
+    }
+
+    public func set(with adminMenuOption: AdminMenuOption) {
+        iconImageView.image = adminMenuOption.image
+        optionLabel.text = adminMenuOption.description
     }
 
 }
