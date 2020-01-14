@@ -16,7 +16,7 @@ class WelcomeViewController: UIViewController {
     private var lastName: String?
 
     private let logoImageView: UIImageView = {
-        let logoImage = UIImage(named: "BuzzOnlyLogo")
+        let logoImage = UIImage(named: "HeritageTLogo")
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit
         logoImageView.clipsToBounds = true
@@ -33,7 +33,7 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .techNavy
+        view.backgroundColor = .techCream
         
         welcomeButtonsView.delegate = self
 

@@ -38,14 +38,14 @@ class LoginView: UIView {
         textFieldStackView.axis = .vertical
         textFieldStackView.distribution = .fillEqually
         textFieldStackView.spacing = 12.0
-        textFieldStackView.backgroundColor = .techNavy
+        textFieldStackView.backgroundColor = .techCream
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         return textFieldStackView
     }()
 
     private let emailTextField: UITextField = {
         let emailTextField = UITextField()
-        emailTextField.textColor = .white
+        emailTextField.textColor = .techNavy
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
         emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
@@ -57,14 +57,14 @@ class LoginView: UIView {
     private let passwordTextField: UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.textColor = .white
+        passwordTextField.textColor = .techNavy
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passwordTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         return passwordTextField
     }()
 
-    private let loginButton = PillButton(title: "Log in", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
+    private let loginButton = PillButton(title: "Log in", backgroundColor: .techNavy, borderColor: .techNavy, isEnabled: false)
 
     private let switchToSignupButton: UIButton = {
         let switchToSignupButton = UIButton()

@@ -28,8 +28,8 @@ class WelcomeButtonsView: UIView {
         return buttonsStackView
     }()
 
-    private let signupButton = PillButton(title: "Sign Up", backgroundColor: .techNavy, borderColor: .techGold, isEnabled: true)
-    private let loginButton = PillButton(title: "Log In", backgroundColor: .techGold, borderColor: .techGold, isEnabled: true)
+    private let signupButton = PillButton(title: "Sign Up", backgroundColor: .techCream, borderColor: .techNavy, isEnabled: true)
+    private let loginButton = PillButton(title: "Log In", backgroundColor: .techNavy, borderColor: .techNavy, isEnabled: true)
 
     // MARK: Init
 
