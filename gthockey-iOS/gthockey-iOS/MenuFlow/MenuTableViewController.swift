@@ -20,10 +20,10 @@ class MenuTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .techNavy
+        view.backgroundColor = .techCream
         tableView.frame.size.width = view.frame.width - 80
         tableView.frame.size.height = view.frame.height
-        tableView.backgroundColor = .techNavy
+        tableView.backgroundColor = .techCream
         tableView.separatorStyle = .none
         tableView.rowHeight = 80
         tableView.register(MenuTableViewCell.self, forCellReuseIdentifier: "MenuTableViewCell")

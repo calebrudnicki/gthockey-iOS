@@ -24,14 +24,14 @@ class SignupView: UIView {
         textFieldStackView.axis = .vertical
         textFieldStackView.distribution = .fillEqually
         textFieldStackView.spacing = 12.0
-        textFieldStackView.backgroundColor = .techNavy
+        textFieldStackView.backgroundColor = .techCream
         textFieldStackView.translatesAutoresizingMaskIntoConstraints = false
         return textFieldStackView
     }()
 
     private let firstNameTextField: UITextField = {
         let firstNameTextField = UITextField()
-        firstNameTextField.textColor = .white
+        firstNameTextField.textColor = .techNavy
         firstNameTextField.attributedPlaceholder = NSAttributedString(string: "First name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         firstNameTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         firstNameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -40,7 +40,7 @@ class SignupView: UIView {
 
     private let lastNameTextField: UITextField = {
         let lastNameTextField = UITextField()
-        lastNameTextField.textColor = .white
+        lastNameTextField.textColor = .techNavy
         lastNameTextField.attributedPlaceholder = NSAttributedString(string: "Last name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         lastNameTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         lastNameTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +49,7 @@ class SignupView: UIView {
 
     private let emailTextField: UITextField = {
         let emailTextField = UITextField()
-        emailTextField.textColor = .white
+        emailTextField.textColor = .techNavy
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
         emailTextField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
@@ -61,7 +61,7 @@ class SignupView: UIView {
     private let passwordTextField: UITextField = {
         let passwordTextField = UITextField()
         passwordTextField.isSecureTextEntry = true
-        passwordTextField.textColor = .white
+        passwordTextField.textColor = .techNavy
         passwordTextField.attributedPlaceholder = NSAttributedString(string: "Password (7 character minimum)", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passwordTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -71,14 +71,14 @@ class SignupView: UIView {
     private let passwordConfirmTextField: UITextField = {
         let passwordConfirmTextField = UITextField()
         passwordConfirmTextField.isSecureTextEntry = true
-        passwordConfirmTextField.textColor = .white
+        passwordConfirmTextField.textColor = .techNavy
         passwordConfirmTextField.attributedPlaceholder = NSAttributedString(string: "Confirm Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         passwordConfirmTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         passwordConfirmTextField.translatesAutoresizingMaskIntoConstraints = false
         return passwordConfirmTextField
     }()
 
-    private let signupButton = PillButton(title: "Sign up", backgroundColor: .techGold, borderColor: .techGold, isEnabled: false)
+    private let signupButton = PillButton(title: "Sign up", backgroundColor: .techNavy, borderColor: .techNavy, isEnabled: false)
 
     private let switchToLoginButton: UIButton = {
         let switchToLoginButton = UIButton()
