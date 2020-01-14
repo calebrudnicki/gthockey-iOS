@@ -14,7 +14,7 @@ class RosterCollectionViewHeader: UICollectionReusableView {
 
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
-        titleLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
+        titleLabel.font = UIFont(name:"HelveticaNeue-Light", size: 24.0)
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .center
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -39,8 +39,8 @@ class RosterCollectionViewHeader: UICollectionReusableView {
         super.updateConstraints()
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12.0),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12.0)
+            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 12.0),
+            titleLabel.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor, constant: -12.0)
         ])
     }
 
@@ -48,6 +48,7 @@ class RosterCollectionViewHeader: UICollectionReusableView {
 
     public func set(with title: String) {
         titleLabel.text = title
+        titleLabel.textColor = .gray
     }
 
 }

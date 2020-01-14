@@ -43,7 +43,7 @@ enum AdminMenuOption: Int, CustomStringConvertible, CaseIterable {
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "paperplane.fill")?
                     .withRenderingMode(.alwaysOriginal)
-                    .withTintColor(.white))!
+                    .withTintColor(.techNavy))!
             }
             return UIImage(named: "RosterIcon")!
         }

@@ -1,20 +1,22 @@
 //
-//  SettingsTableViewCell.swift
+//  SettingsTextFieldTableViewCell.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 11/21/19.
-//  Copyright © 2019 Caleb Rudnicki. All rights reserved.
+//  Created by Caleb Rudnicki on 1/14/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import UIKit
 
-protocol SettingsTableViewCellDelegate {
+protocol SettingsTextFieldTableViewCellDelegate {
     func updatedValue(to newValue: String, for category: String)
 }
 
-class SettingsTableViewCell: UITableViewCell {
+class SettingsTextFieldTableViewCell: UITableViewCell {
 
     // MARK: Properties
+
+    public var delegate: SettingsTextFieldTableViewCellDelegate!
 
     private let categoryLabel: UILabel = {
         let categoryLabel = UILabel()
@@ -31,8 +33,6 @@ class SettingsTableViewCell: UITableViewCell {
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
-
-    public var delegate: SettingsTableViewCellDelegate!
 
     // MARK: Init
 
@@ -54,13 +54,13 @@ class SettingsTableViewCell: UITableViewCell {
 
         NSLayoutConstraint.activate([
             categoryLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12.0),
-            categoryLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+            categoryLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             categoryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
         ])
 
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 12.0),
-            textField.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+            textField.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
             textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
             textField.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12.0)
         ])
@@ -73,17 +73,17 @@ class SettingsTableViewCell: UITableViewCell {
         textField.text = value
         textField.isUserInteractionEnabled = isEditable
     }
-
+    
 }
 
-extension SettingsTableViewCell: UITextFieldDelegate {
+extension SettingsTextFieldTableViewCell: UITextFieldDelegate {
 
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard
             let category = categoryLabel.text,
             let text = textField.text,
             text.count > 0
-        else { return }
+            else { return }
 
         delegate.updatedValue(to: text, for: category)
     }

@@ -54,7 +54,8 @@ class SettingsTableViewController: UITableViewController {
     // MARK: Config
 
     private func setupTableView() {
-        tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: "SettingsTableViewCell")
+        tableView.register(SettingsTextFieldTableViewCell.self, forCellReuseIdentifier: "SettingsTextFieldTableViewCell")
+        tableView.register(SettingsSwitchControlTableViewCell.self, forCellReuseIdentifier: "SettingsSwitchControlTableViewCell")
         tableView.allowsSelection = false
         tableView.tableFooterView = UIView()
     }
@@ -79,31 +80,58 @@ class SettingsTableViewController: UITableViewController {
     // MARK: UITableViewDelegate / UITableViewDataSource
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userProperties.keys.count - 1
+        switch section {
+        case 0:
+            return userProperties.keys.count - 1
+        default:
+            return 1
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTableViewCell", for: indexPath) as! SettingsTableViewCell
-        switch indexPath.row {
+        switch indexPath.section{
         case 0:
-            cell.set(with: "First Name", value: userProperties["firstName"] as! String, isEditable: true)
-        case 1:
-            cell.set(with: "Last Name", value: userProperties["lastName"] as! String, isEditable: true)
-        case 2:
-            cell.set(with: "Email", value: userProperties["email"] as! String, isEditable: false)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTextFieldTableViewCell", for: indexPath) as! SettingsTextFieldTableViewCell
+            switch indexPath.row {
+            case 0:
+                cell.set(with: "First name", value: userProperties["firstName"] as! String, isEditable: true)
+            case 1:
+                cell.set(with: "Last name", value: userProperties["lastName"] as! String, isEditable: true)
+            case 2:
+                cell.set(with: "Email", value: userProperties["email"] as! String, isEditable: false)
+            default:
+                break
+            }
+            cell.delegate = self
+            return cell
         default:
-            break
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsSwitchControlTableViewCell", for: indexPath) as! SettingsSwitchControlTableViewCell
+            cell.set(with: "Go to settings")
+            cell.delegate = self
+            return cell
         }
-        cell.delegate = self
-        return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 76.0
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            title = "Profile"
+        default:
+            title = "Notifications"
+        }
+        return title
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40.0
     }
 
     // MARK: Action
@@ -127,7 +155,7 @@ class SettingsTableViewController: UITableViewController {
 
 }
 
-extension SettingsTableViewController: SettingsTableViewCellDelegate {
+extension SettingsTableViewController: SettingsTextFieldTableViewCellDelegate {
 
     func updatedValue(to newValue: String, for category: String) {
         saveButton?.isEnabled = true
@@ -138,6 +166,20 @@ extension SettingsTableViewController: SettingsTableViewCellDelegate {
             lastName = newValue
         default:
             break
+        }
+    }
+
+}
+
+extension SettingsTableViewController: SettingsSwitchControlTableViewCellDelegate {
+
+    func cellDidDetechTap() {
+        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+            return
+        }
+
+        if UIApplication.shared.canOpenURL(settingsUrl) {
+            UIApplication.shared.open(settingsUrl, completionHandler: nil)
         }
     }
 
