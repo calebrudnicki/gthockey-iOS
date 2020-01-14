@@ -52,11 +52,7 @@ class AdminUsersTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "AdminUsersTableViewCell")
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(fetchAdminUsers), for: .valueChanged)
-
-        let adminUsersTableViewFooter = AdminUsersTableViewFooter()
-        adminUsersTableViewFooter.delegate = self
-        adminUsersTableViewFooter.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 75.0)
-        tableView.tableFooterView = adminUsersTableViewFooter
+        tableView.tableFooterView = UIView()
     }
 
     @objc private func fetchAdminUsers() {
@@ -64,6 +60,10 @@ class AdminUsersTableViewController: UITableViewController {
             self.adminUsers = admins
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                let adminUsersTableViewFooter = AdminUsersTableViewFooter()
+                adminUsersTableViewFooter.delegate = self
+                adminUsersTableViewFooter.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 75.0)
+                self.tableView.tableFooterView = adminUsersTableViewFooter
                 self.tableView.refreshControl?.endRefreshing()
             }
         })
@@ -77,6 +77,7 @@ class AdminUsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AdminUsersTableViewCell", for: indexPath) as! UITableViewCell
+        cell.selectionStyle = .none
         cell.textLabel?.text = adminUsers[indexPath.row]
         return cell
     }

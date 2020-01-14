@@ -19,7 +19,7 @@ class MenuTableViewHeader: UIView {
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.numberOfLines = 2
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.textColor = .techGold
+        titleLabel.textColor = .techNavy
         return titleLabel
     }()
 

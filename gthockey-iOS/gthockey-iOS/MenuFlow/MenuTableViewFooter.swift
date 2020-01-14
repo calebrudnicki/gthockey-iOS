@@ -68,7 +68,7 @@ class MenuTableViewFooter: UIView {
     private let toggleAdminButton: UIButton = {
         let toggleAdminButton = UIButton()
         toggleAdminButton.setTitle("Switch to admin menu", for: .normal)
-        toggleAdminButton.setTitleColor(.techGold, for: .normal)
+        toggleAdminButton.setTitleColor(.techNavy, for: .normal)
         toggleAdminButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 12.0)
         toggleAdminButton.translatesAutoresizingMaskIntoConstraints = false
         return toggleAdminButton

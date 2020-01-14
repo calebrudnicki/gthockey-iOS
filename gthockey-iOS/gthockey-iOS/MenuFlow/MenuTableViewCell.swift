@@ -23,7 +23,7 @@ class MenuTableViewCell: UITableViewCell {
     private let optionLabel: UILabel = {
         let optionLabel = UILabel()
         optionLabel.font = UIFont(name:"HelveticaNeue-Light", size: 20.0)
-        optionLabel.textColor = .white
+        optionLabel.textColor = .techNavy
         optionLabel.translatesAutoresizingMaskIntoConstraints = false
         return optionLabel
     }()
@@ -33,7 +33,7 @@ class MenuTableViewCell: UITableViewCell {
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        backgroundColor = .techNavy
+        backgroundColor = .techCream
         contentView.addSubviews([iconImageView, optionLabel])
         updateConstraints()
     }
