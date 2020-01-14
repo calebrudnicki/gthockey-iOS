@@ -30,7 +30,7 @@ class MenuTableViewFooter: UIView {
 
     private let instagramButton: UIButton = {
         let instagramButton = UIButton(type: .custom)
-        let instagramImage = UIImage(named: "InstagramIcon")?.withRenderingMode(.alwaysOriginal)
+        let instagramImage = UIImage(named: "InstagramIconGray")?.withRenderingMode(.alwaysOriginal)
         instagramButton.setImage(instagramImage, for: .normal)
         instagramButton.translatesAutoresizingMaskIntoConstraints = false
         return instagramButton
@@ -38,7 +38,7 @@ class MenuTableViewFooter: UIView {
 
     private let twitterButton: UIButton = {
         let twitterButton = UIButton(type: .custom)
-        let twitterImage = UIImage(named: "TwitterIcon")?.withRenderingMode(.alwaysOriginal)
+        let twitterImage = UIImage(named: "TwitterIconGray")?.withRenderingMode(.alwaysOriginal)
         twitterButton.setImage(twitterImage, for: .normal)
         twitterButton.translatesAutoresizingMaskIntoConstraints = false
         return twitterButton
@@ -46,7 +46,7 @@ class MenuTableViewFooter: UIView {
 
     private let facebookButton: UIButton = {
         let facebookButton = UIButton(type: .custom)
-        let facebookImage = UIImage(named: "FacebookIcon")?.withRenderingMode(.alwaysOriginal)
+        let facebookImage = UIImage(named: "FacebookIconGray")?.withRenderingMode(.alwaysOriginal)
         facebookButton.setImage(facebookImage, for: .normal)
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
         return facebookButton

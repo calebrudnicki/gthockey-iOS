@@ -13,11 +13,13 @@ enum AdminMenuOption: Int, CustomStringConvertible, CaseIterable {
 
     case AllUsers
     case AdminUsers
+    case SendNotification
 
     var description: String {
         switch self {
         case .AllUsers: return "All Users"
         case .AdminUsers: return "Admin Users"
+        case .SendNotification: return "Send Notification"
         }
     }
 
@@ -33,6 +35,13 @@ enum AdminMenuOption: Int, CustomStringConvertible, CaseIterable {
         case .AdminUsers:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "person.2.fill")?
+                    .withRenderingMode(.alwaysOriginal)
+                    .withTintColor(.techNavy))!
+            }
+            return UIImage(named: "RosterIcon")!
+        case .SendNotification:
+            if #available(iOS 13.0, *) {
+                return (UIImage(systemName: "paperplane.fill")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.techNavy))!
             }

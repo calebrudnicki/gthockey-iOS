@@ -96,6 +96,7 @@ class AuthenticationHelper {
             UserDefaults.standard.removeObject(forKey: "email")
             UserDefaults.standard.removeObject(forKey: "password")
             UserDefaults.standard.removeObject(forKey: "isAdmin")
+            UIApplication.shared.unregisterForRemoteNotifications()
             completion(true, nil)
         } catch let error as NSError {
             completion(false, error)

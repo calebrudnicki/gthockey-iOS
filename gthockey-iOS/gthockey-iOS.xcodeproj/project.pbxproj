@@ -16,6 +16,8 @@
 		8206D3EF23CD307E00863B3C /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3EE23CD307E00863B3C /* AppUser.swift */; };
 		8206D3F123CD310900863B3C /* AllUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3F023CD310900863B3C /* AllUsersTableViewCell.swift */; };
 		8206D3F323CD350900863B3C /* AllUsersTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3F223CD350900863B3C /* AllUsersTableViewFooter.swift */; };
+		8206D3F923CE532200863B3C /* SettingsTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3F823CE532200863B3C /* SettingsTextFieldTableViewCell.swift */; };
+		8206D3FB23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3FA23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift */; };
 		820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */; };
 		82170D11236FB301005FE89B /* Apparel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D10236FB301005FE89B /* Apparel.swift */; };
 		82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D13236FB360005FE89B /* ShopCollectionViewController.swift */; };
@@ -51,7 +53,6 @@
 		82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17A237DA87600CD8F3D /* SignupView.swift */; };
 		82B3A17D237DBFAE00CD8F3D /* WelcomeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */; };
 		82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17E237DF95C00CD8F3D /* LoginView.swift */; };
-		82C0BC1E2387208500A134E7 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */; };
 		82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */; };
 		82C2467D2384BAC7003CB268 /* FloatingCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */; };
 		82C2467F2384F4B7003CB268 /* CartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2467E2384F4B7003CB268 /* CartHelper.swift */; };
@@ -93,6 +94,8 @@
 		8206D3EE23CD307E00863B3C /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		8206D3F023CD310900863B3C /* AllUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewCell.swift; sourceTree = "<group>"; };
 		8206D3F223CD350900863B3C /* AllUsersTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewFooter.swift; sourceTree = "<group>"; };
+		8206D3F823CE532200863B3C /* SettingsTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextFieldTableViewCell.swift; sourceTree = "<group>"; };
+		8206D3FA23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchControlTableViewCell.swift; sourceTree = "<group>"; };
 		820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		82170D10236FB301005FE89B /* Apparel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apparel.swift; sourceTree = "<group>"; };
 		82170D13236FB360005FE89B /* ShopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +131,6 @@
 		82B3A17A237DA87600CD8F3D /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
 		82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonsView.swift; sourceTree = "<group>"; };
 		82B3A17E237DF95C00CD8F3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewFooter.swift; sourceTree = "<group>"; };
 		82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCloseButton.swift; sourceTree = "<group>"; };
 		82C2467E2384F4B7003CB268 /* CartHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHelper.swift; sourceTree = "<group>"; };
@@ -394,7 +396,8 @@
 			isa = PBXGroup;
 			children = (
 				F093EA4B2385F4170037FCA7 /* SettingsTableViewController.swift */,
-				82C0BC1D2387208500A134E7 /* SettingsTableViewCell.swift */,
+				8206D3F823CE532200863B3C /* SettingsTextFieldTableViewCell.swift */,
+				8206D3FA23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift */,
 				82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */,
 			);
 			path = SettingsFlow;
@@ -517,10 +520,10 @@
 			files = (
 				82C7349623B3F14800196D5D /* AuthenticationHelper.swift in Sources */,
 				FA3570BA23502190008E83BC /* Team.swift in Sources */,
+				8206D3FB23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift in Sources */,
 				8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */,
 				82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */,
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
-				82C0BC1E2387208500A134E7 /* SettingsTableViewCell.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */,
 				82B3A177237BD7CC00CD8F3D /* PillButton.swift in Sources */,
@@ -570,6 +573,7 @@
 				82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
 				8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */,
+				8206D3F923CE532200863B3C /* SettingsTextFieldTableViewCell.swift in Sources */,
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
 				82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */,

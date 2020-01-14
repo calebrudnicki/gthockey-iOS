@@ -198,6 +198,8 @@ class MenuContainerViewController: UIViewController {
             currentNavigationController = allUsersNavigationController
         case .AdminUsers:
             currentNavigationController = adminUsersNavigationController
+        case .SendNotification:
+            UIApplication.shared.open(NSURL(string: "https://console.firebase.google.com/u/0/project/gthockey-ios/notification/compose")! as URL)
         }
         configureGestures()
         view.addSubview(currentNavigationController.view)
