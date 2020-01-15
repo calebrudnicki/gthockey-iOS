@@ -16,6 +16,14 @@ Keep the team's schedule with you at all times, including both past game results
 ### Roster
 Learn more about the players that make up the Jackets. From action shots to bio's, you can find out more about your favorite GT players.
 
+### Contact
+
+Get in touch with the people who make GT Hockey what it is. Whether you have a question, comment, or concern, this is the quickest way to make yourself heard.
+
+### Shop
+
+Represent your favorite school and sport at the same time. Have all of the newest team apparel and merchandise right at your fingertips.
+
 ---
 
 ## Developers
