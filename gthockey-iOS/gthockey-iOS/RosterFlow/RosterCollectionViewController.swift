@@ -195,7 +195,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
 
 extension RosterCollectionViewController: RosterCollectionViewCellDelegate {
 
-    func didEndAnimation() {
+    func didEndCellAnimation() {
         present(rosterDetailViewController, animated: true, completion: nil)
     }
 

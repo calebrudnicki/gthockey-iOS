@@ -129,7 +129,7 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
 
 extension ShopCollectionViewController: ShopCollectionViewCellDelegate {
 
-    func didEndAnimation() {
+    func didEndCellAnimation() {
         present(shopDetailViewController, animated: true, completion: nil)
     }
 

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CardCollectionViewCellDelegate {
-    func didEndAnimation()
+    func didEndCellAnimation()
 }
 
 class CardCollectionViewCell: UICollectionViewCell {
@@ -27,10 +27,8 @@ class CardCollectionViewCell: UICollectionViewCell {
                     UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
                         self.transform = CGAffineTransform(scaleX: 1, y: 1)
                     }, completion: nil)
-                    self.delegate?.didEndAnimation()
+                    self.delegate?.didEndCellAnimation()
                 })
-            } else {
-
             }
         }
     }
@@ -64,39 +62,6 @@ class CardCollectionViewCell: UICollectionViewCell {
         super.updateConstraints()
 
         contentView.layoutSubviews()
-    }
-
-    // MARK: Events
-
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesBegan(touches, with: event)
-//
-//        animate(isHighlighted: true, completion: nil)
-//    }
-
-//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesEnded(touches, with: event)
-//        animate(isHighlighted: false)
-//    }
-//
-//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        super.touchesCancelled(touches, with: event)
-//        animate(isHighlighted: false)
-//    }
-
-    // MARK: Animation
-
-    private func animate(isHighlighted: Bool, completion: ((Bool) -> Void)?=nil) {
-        if isHighlighted {
-            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-            }, completion: { _ in
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
-                }, completion: completion)
-            })
-        } else {
-        }
     }
 
 }

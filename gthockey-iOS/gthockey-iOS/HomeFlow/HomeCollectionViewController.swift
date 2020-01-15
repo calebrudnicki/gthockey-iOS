@@ -123,7 +123,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
 extension HomeCollectionViewController: HomeCollectionViewCellDelegate {
     
-    func didEndAnimation() {
+    func didEndCellAnimation() {
         present(homeDetailViewController, animated: true, completion: nil)
     }
 
