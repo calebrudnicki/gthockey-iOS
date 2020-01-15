@@ -8,6 +8,8 @@
 import UIKit
 import SDWebImage
 
+protocol ShopCollectionViewCellDelegate: CardCollectionViewCellDelegate {}
+
 class ShopCollectionViewCell: CardCollectionViewCell {
 
     // MARK: Properties

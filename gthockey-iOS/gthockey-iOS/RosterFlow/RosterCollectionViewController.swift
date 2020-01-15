@@ -19,6 +19,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     private var goalieArray: [Player] = []
     private var managerArray: [Player] = []
     private let cellWidth = UIScreen.main.bounds.width * 0.45
+    private let rosterDetailViewController = RosterDetailViewController()
     public var delegate: HomeControllerDelegate?
 
     // MARK: Init
@@ -133,6 +134,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
             cell.set(with: managerArray[indexPath.row])
         }
 
+        cell.delegate = self
         return cell
     }
 
@@ -156,7 +158,6 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let rosterDetailViewController = RosterDetailViewController()
         switch indexPath.section {
         case 0:
             rosterDetailViewController.set(with: forwardArray[indexPath.row])
@@ -167,7 +168,6 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         default:
             rosterDetailViewController.set(with: managerArray[indexPath.row])
         }
-        present(rosterDetailViewController, animated: true, completion: nil)
     }
 
     // MARK: UICollectionViewLayout
@@ -189,6 +189,14 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     @objc private func cartButtonTapped() {
         let cartTableViewController = CartTableViewController()
         present(cartTableViewController, animated: true, completion: nil)
+    }
+
+}
+
+extension RosterCollectionViewController: RosterCollectionViewCellDelegate {
+
+    func didEndAnimation() {
+        present(rosterDetailViewController, animated: true, completion: nil)
     }
 
 }

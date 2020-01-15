@@ -8,20 +8,29 @@
 
 import UIKit
 
+protocol CardCollectionViewCellDelegate {
+    func didEndAnimation()
+}
+
 class CardCollectionViewCell: UICollectionViewCell {
 
     // MARK: Properties
+
+    public var delegate: CardCollectionViewCellDelegate!
 
     override var isHighlighted: Bool {
         didSet {
             if isHighlighted {
                 UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                    self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-                }, completion: nil)
+                    self.transform = CGAffineTransform(scaleX: 0.90, y: 0.90)
+                }, completion: { _ in
+                    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                        self.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    }, completion: nil)
+                    self.delegate?.didEndAnimation()
+                })
             } else {
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
-                }, completion: nil)
+
             }
         }
     }
@@ -36,7 +45,6 @@ class CardCollectionViewCell: UICollectionViewCell {
             layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
             layer.shadowColor = UIColor.label.cgColor
         } else {
-//            layer.backgroundColor = UIColor.cellBackgroundLight.cgColor
             layer.shadowColor = UIColor.black.cgColor
         }
 
@@ -56,6 +64,39 @@ class CardCollectionViewCell: UICollectionViewCell {
         super.updateConstraints()
 
         contentView.layoutSubviews()
+    }
+
+    // MARK: Events
+
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesBegan(touches, with: event)
+//
+//        animate(isHighlighted: true, completion: nil)
+//    }
+
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesEnded(touches, with: event)
+//        animate(isHighlighted: false)
+//    }
+//
+//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        super.touchesCancelled(touches, with: event)
+//        animate(isHighlighted: false)
+//    }
+
+    // MARK: Animation
+
+    private func animate(isHighlighted: Bool, completion: ((Bool) -> Void)?=nil) {
+        if isHighlighted {
+            UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+            }, completion: { _ in
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
+                }, completion: completion)
+            })
+        } else {
+        }
     }
 
 }

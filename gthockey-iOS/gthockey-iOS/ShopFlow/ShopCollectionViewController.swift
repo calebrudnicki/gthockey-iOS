@@ -20,6 +20,7 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     private var shoppingCart: [[String : Any]] = []
     private let cellWidth = UIScreen.main.bounds.width * 0.9
     private let cellHeight = UIScreen.main.bounds.height * 0.3
+    private let shopDetailViewController = ShopDetailViewController()
     public var delegate: HomeControllerDelegate?
 
     // MARK: Init
@@ -90,14 +91,13 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopCollectionViewCell", for: indexPath) as! ShopCollectionViewCell
         cell.set(with: apparelArray[indexPath.row])
+        cell.delegate = self
         return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.fetchApparelDetails(with: self.apparelArray[indexPath.row].getID(), completion: { (apparelRestrictedItems, apparelCustomItems) in
-            let shopDetailViewController = ShopDetailViewController()
-            shopDetailViewController.set(with: self.apparelArray[indexPath.row], apparelRestrictedItems, apparelCustomItems)
-            self.present(shopDetailViewController, animated: true, completion: nil)
+            self.shopDetailViewController.set(with: self.apparelArray[indexPath.row], apparelRestrictedItems, apparelCustomItems)
         })
     }
 
@@ -123,6 +123,14 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
         parser.getApparel(with: id) { (apparelRestrictedItems, apparelCustomItems) in
             completion(apparelRestrictedItems, apparelCustomItems)
         }
+    }
+
+}
+
+extension ShopCollectionViewController: ShopCollectionViewCellDelegate {
+
+    func didEndAnimation() {
+        present(shopDetailViewController, animated: true, completion: nil)
     }
 
 }

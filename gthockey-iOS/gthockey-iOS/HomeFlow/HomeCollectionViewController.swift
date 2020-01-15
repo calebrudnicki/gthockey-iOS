@@ -17,6 +17,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     private var newsArray: [News] = []
     private let cellWidth = UIScreen.main.bounds.width * 0.9
     private let cellHeight = UIScreen.main.bounds.height * 0.45
+    private let homeDetailViewController = HomeDetailViewController()
     public var delegate: HomeControllerDelegate?
 
     // MARK: Init
@@ -89,13 +90,12 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
         cell.set(with: newsArray[indexPath.row])
+        cell.delegate = self
         return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let homeDetailViewController = HomeDetailViewController()
         homeDetailViewController.set(with: newsArray[indexPath.row])
-        present(homeDetailViewController, animated: true, completion: nil)
     }
 
     // MARK: UICollectionViewLayout
@@ -117,6 +117,14 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     @objc private func cartButtonTapped() {
         let cartTableViewController = CartTableViewController()
         present(cartTableViewController, animated: true, completion: nil)
+    }
+
+}
+
+extension HomeCollectionViewController: HomeCollectionViewCellDelegate {
+    
+    func didEndAnimation() {
+        present(homeDetailViewController, animated: true, completion: nil)
     }
 
 }

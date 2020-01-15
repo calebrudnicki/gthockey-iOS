@@ -65,10 +65,6 @@ class MenuContainerViewController: UIViewController {
         currentNavigationController.view.addGestureRecognizer(rightSwipe)
     }
 
-    override var prefersStatusBarHidden: Bool {
-        return isExpanded
-    }
-
     // MARK: Config
 
     private func configureHomeController() {
