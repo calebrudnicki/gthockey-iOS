@@ -130,7 +130,7 @@ class JSONParser {
     private func makeNewsObject(value: JSON) -> News {
         let article = News(id: value["id"].int!,
                            title: value["title"].string!,
-                           date: formatDate(from: value["date"].string!, withTime: false),
+                           date: DateHelper().formatDate(from: value["date"].string!, withTime: false),
                            imageURL: URL(string: value["image"].string!)!,
                            teaser: value["teaser"].string!,
                            content: value["content"].string!)
@@ -139,7 +139,7 @@ class JSONParser {
 
     private func makeGameObject(value: JSON) -> Game {
         let game = Game(id: value["id"].int!,
-                        dateTime: formatDate(from: value["datetime"].string!, withTime: true),
+                        dateTime: DateHelper().formatDate(from: value["datetime"].string!, withTime: true),
                         opponentName: value["opponent_name"].string!,
                         rinkName: value["rink_name"].string!,
                         venue: value["venue"].string!,
@@ -214,16 +214,6 @@ class JSONParser {
             arr.append(apparelCustomItem)
         }
         return arr
-    }
-
-    private func formatDate(from dateString: String, withTime: Bool) -> Date {
-        let formatter = DateFormatter()
-        if withTime {
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
-        } else {
-            formatter.dateFormat = "yyyy-MM-dd"
-        }
-        return formatter.date(from: dateString)!
     }
 
 }

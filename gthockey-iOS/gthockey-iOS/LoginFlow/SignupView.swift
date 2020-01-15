@@ -163,8 +163,8 @@ class SignupView: UIView {
 
     @objc private func signupButtonTapped() {
         guard
-            let firstName = firstNameTextField.text,
-            let lastName = lastNameTextField.text,
+            let firstName = firstNameTextField.text?.replacingOccurrences(of: " ", with: ""),
+            let lastName = lastNameTextField.text?.replacingOccurrences(of: " ", with: ""),
             let email = emailTextField.text,
             let password = passwordTextField.text,
             firstName.count > 0,
