@@ -29,10 +29,15 @@ class AuthenticationHelper {
                             let lastName = propertiesDictionary["lastName"] ?? ""
                             let cart = propertiesDictionary["cart"] ?? []
 
+                            let currentDate = Date()
+                            let dateStr = DateHelper().formatDate(from: currentDate)
+                            let timeStr = DateHelper().formatTime(from: currentDate)
+
                             db.collection("users").document(user.uid).setData(["firstName": firstName,
                                                                                "lastName": lastName,
                                                                                "email": email,
-                                                                               "isAdmin:": AdminHelper().isAdminUser(email) ? true : false,
+                                                                               "lastLogin": "\(dateStr) \(timeStr)",
+                                                                               "isAdmin": AdminHelper().isAdminUser(email) ? true : false,
                                                                                "uid": user.uid,
                                                                                "cart": cart]) { (error) in
                                 if error != nil {
@@ -61,7 +66,8 @@ class AuthenticationHelper {
                 db.collection("users").document(user.uid).setData(["firstName": firstName,
                                                                    "lastName": lastName,
                                                                    "email": email,
-                                                                   "isAdmin:": AdminHelper().isAdminUser(email) ? true : false,
+                                                                   "isAdmin": AdminHelper().isAdminUser(email) ? true : false,
+                                                                   "lastLogin": "",
                                                                    "uid": user.uid,
                                                                    "cart": []]) { (error) in
                     if error != nil {

@@ -72,22 +72,8 @@ class ScheduleDateTimeView: UIView {
     // MARK: Setter
 
     public func set(with date: Date) {
-        dateLabel.text = formatDate(from: date)
-        timeLabel.text = formatTime(from: date)
-    }
-
-    // MARK: Date & Time
-
-    private func formatDate(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "M/d/yy"
-        return formatter.string(from: date)
-    }
-
-    private func formatTime(from date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "h:mm a"
-        return formatter.string(from: date)
+        dateLabel.text = DateHelper().formatDate(from: date)
+        timeLabel.text = DateHelper().formatTime(from: date)
     }
 
 }
