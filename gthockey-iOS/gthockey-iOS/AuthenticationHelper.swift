@@ -67,7 +67,7 @@ class AuthenticationHelper {
                                                                    "lastName": lastName,
                                                                    "email": email,
                                                                    "isAdmin": AdminHelper().isAdminUser(email) ? true : false,
-                                                                   "lastLogin": "",
+                                                                   "lastLogin": "No login yet",
                                                                    "uid": user.uid,
                                                                    "cart": []]) { (error) in
                     if error != nil {

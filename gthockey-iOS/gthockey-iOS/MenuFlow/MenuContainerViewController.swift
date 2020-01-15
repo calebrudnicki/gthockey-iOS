@@ -111,14 +111,14 @@ class MenuContainerViewController: UIViewController {
             //Animation to show menu
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
                 self.currentNavigationController.view.frame.origin.x = self.currentNavigationController.view.frame.width - 80
-            }) { (_) in
+            }) { _ in
                 self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = false
             }
         } else {
             //Animation to hide menu
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
                 self.currentNavigationController.view.frame.origin.x = 0
-            }) { (_) in
+            }) { _ in
                 self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = true
 
                 guard let mainMenuOption = mainMenuOption,
@@ -135,14 +135,14 @@ class MenuContainerViewController: UIViewController {
             //Animation to show menu
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
                 self.currentNavigationController.view.frame.origin.x = self.currentNavigationController.view.frame.width - 80
-            }) { (_) in
+            }) { _ in
                 self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = false
             }
         } else {
             //Animation to hide menu
             UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .curveEaseInOut, animations: {
                 self.currentNavigationController.view.frame.origin.x = 0
-            }) { (_) in
+            }) { _ in
                 self.currentNavigationController.topViewController?.view.isUserInteractionEnabled = true
 
                 guard let adminMenuOption = adminMenuOption,
@@ -203,7 +203,7 @@ class MenuContainerViewController: UIViewController {
         currentNavigationController.didMove(toParent: self)
     }
 
-    // MARK: Actions
+    // MARK: Action
 
     @objc func handleSwipes(_ sender: UISwipeGestureRecognizer) {
         if (sender.direction == .right && !isExpanded) || (sender.direction == .left && isExpanded) {

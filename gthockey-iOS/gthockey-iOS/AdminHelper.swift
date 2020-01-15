@@ -20,22 +20,33 @@ class AdminHelper {
 
     // MARK: Public Functions
 
-    public func getAllUsers(completion: @escaping ([AppUser], Error?) -> Void) {
+    public func getAllUsers(completion: @escaping ([AppUser], [AppUser], Error?) -> Void) {
         let db = Firestore.firestore()
 
         db.collection("users").getDocuments { (document, error) in
             guard let documents = document?.documents else { return }
 
-            var appUserArray: [AppUser] = []
+            var appUserWithLastLoginArray: [AppUser] = []
+            var appUserWithoutLastLoginArray: [AppUser] = []
+
             for document in documents {
                 if let firstName = ((document.data() as NSDictionary)["firstName"] as! String?),
                     let lastName = ((document.data() as NSDictionary)["lastName"] as! String?),
-                    let email = ((document.data() as NSDictionary)["email"] as! String?) {
-                    let appUser = AppUser(firstName: firstName, lastName: lastName, email: email)
-                    appUserArray.append(appUser)
+                    let email = ((document.data() as NSDictionary)["email"] as! String?),
+                    let lastLogin = ((document.data() as NSDictionary)["lastLogin"] as! String?),
+                    let isAdmin = ((document.data() as NSDictionary)["isAdmin"] as! Bool?) {
+
+                    let appUser = AppUser(firstName: firstName, lastName: lastName, email: email,
+                                          lastLogin: lastLogin, isAdmin: isAdmin)
+
+                    if lastLogin == "No login yet" {
+                        appUserWithoutLastLoginArray.append(appUser)
+                    } else {
+                        appUserWithLastLoginArray.append(appUser)
+                    }
                 }
             }
-            completion(appUserArray, nil)
+            completion(appUserWithLastLoginArray, appUserWithoutLastLoginArray, nil)
         }
     }
 

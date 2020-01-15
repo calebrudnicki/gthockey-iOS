@@ -30,12 +30,21 @@ class AllUsersTableViewCell: UITableViewCell {
         return emailLabel
     }()
 
+    private let lastLoginLabel: UILabel = {
+        let lastLoginLabel = UILabel()
+        lastLoginLabel.font = UIFont(name:"HelveticaNeue-light", size: 16.0)
+        lastLoginLabel.adjustsFontSizeToFitWidth = true
+        lastLoginLabel.numberOfLines = 1
+        lastLoginLabel.translatesAutoresizingMaskIntoConstraints = false
+        return lastLoginLabel
+    }()
+
     // MARK: Init
 
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.addSubviews([nameLabel, emailLabel])
+        contentView.addSubviews([nameLabel, emailLabel, lastLoginLabel])
         updateConstraints()
     }
 
@@ -57,6 +66,12 @@ class AllUsersTableViewCell: UITableViewCell {
             emailLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
             emailLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
         ])
+
+        NSLayoutConstraint.activate([
+            lastLoginLabel.topAnchor.constraint(equalTo: emailLabel.bottomAnchor, constant: 8.0),
+            lastLoginLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+            lastLoginLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
+        ])
     }
 
     // MARK: Setter
@@ -64,6 +79,7 @@ class AllUsersTableViewCell: UITableViewCell {
     public func set(with appUser: AppUser) {
         nameLabel.text = appUser.getFirstName() + " " + appUser.getLastName()
         emailLabel.text = appUser.getEmail()
+        lastLoginLabel.text = appUser.getLastLogin()
     }
 
 }

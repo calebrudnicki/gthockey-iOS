@@ -84,9 +84,8 @@ class MenuTableViewController: UITableViewController {
 extension MenuTableViewController: MenuTableViewFooterDelegate {
 
     func toggleAdminButtonTapped(with toggleAdminButton: UIButton) {
-        print("Switch to admin menu")
         isShowingAdminMenu = !isShowingAdminMenu
-        toggleAdminButton.setTitle("Switch to main menu", for: .normal)
+        toggleAdminButton.setTitle(isShowingAdminMenu ? "Switch to main menu" : "Switch to admin menu", for: .normal)
         tableView.reloadData()
     }
 
