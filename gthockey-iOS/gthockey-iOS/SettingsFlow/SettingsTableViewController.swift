@@ -123,11 +123,10 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            title = "Profile"
+            return "Profile"
         default:
-            title = "Notifications"
+            return "Notifications"
         }
-        return title
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
