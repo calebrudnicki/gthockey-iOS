@@ -12,7 +12,9 @@ class AllUsersTableViewController: UITableViewController {
 
     // MARK: Properties
 
-    private var allUsers: [AppUser] = []
+    private var allUsersWithLastLogin: [AppUser] = []
+    private var allUsersWithoutLastLogin: [AppUser] = []
+    private let segmentedController = UISegmentedControl()
     public var delegate: HomeControllerDelegate?
 
     // MARK: Init
@@ -46,6 +48,12 @@ class AllUsersTableViewController: UITableViewController {
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
+
+        segmentedController.insertSegment(withTitle: "With Login", at: 0, animated: true)
+        segmentedController.insertSegment(withTitle: "Without Login", at: 1, animated: true)
+        segmentedController.selectedSegmentIndex = 0
+        segmentedController.addTarget(self, action: #selector(segmentedControllerChanged), for: .valueChanged)
+        navigationItem.titleView = segmentedController
     }
 
     private func setupTableView() {
@@ -56,13 +64,15 @@ class AllUsersTableViewController: UITableViewController {
     }
 
     @objc private func fetchAllUsers() {
-        AdminHelper().getAllUsers(completion: { (users, error) in
-            self.allUsers = users
+        AdminHelper().getAllUsers(completion: { (usersWithLastLogin, usersWithoutLastLogin, error) in
+            self.allUsersWithLastLogin = usersWithLastLogin
+            self.allUsersWithoutLastLogin = usersWithoutLastLogin
+
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 let allUsersTableViewFooter = AllUsersTableViewFooter()
                 allUsersTableViewFooter.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 50.0)
-                allUsersTableViewFooter.set(with: users.count)
+                allUsersTableViewFooter.set(with: usersWithLastLogin.count + usersWithoutLastLogin.count)
                 self.tableView.tableFooterView = allUsersTableViewFooter
                 self.tableView.refreshControl?.endRefreshing()
             }
@@ -72,24 +82,38 @@ class AllUsersTableViewController: UITableViewController {
     // MARK: UITableViewDelegate / UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return allUsers.count
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            return allUsersWithLastLogin.count
+        default:
+            return allUsersWithoutLastLogin.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllUsersTableViewCell", for: indexPath) as! AllUsersTableViewCell
         cell.selectionStyle = .none
-        cell.set(with: allUsers[indexPath.row])
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            cell.set(with: allUsersWithLastLogin[indexPath.row])
+        default:
+            cell.set(with: allUsersWithoutLastLogin[indexPath.row])
+        }
         return cell
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 72.0
+        return 100.0
     }
 
     // MARK: Action
 
     @objc private func menuButtonTapped() {
         delegate?.handleMenuToggle(forMainMenuOption: nil)
+    }
+
+    @objc private func segmentedControllerChanged() {
+        tableView.reloadData()
     }
 
 }

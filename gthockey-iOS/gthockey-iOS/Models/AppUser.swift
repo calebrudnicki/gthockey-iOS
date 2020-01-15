@@ -15,13 +15,17 @@ class AppUser {
     private var firstName: String
     private var lastName: String
     private var email: String
+    private var lastLogin: String
+    private var isAdmin: Bool
 
     // MARK: Init
 
-    init(firstName: String, lastName: String, email: String) {
+    init(firstName: String, lastName: String, email: String, lastLogin: String, isAdmin: Bool) {
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
+        self.lastLogin = lastLogin
+        self.isAdmin = isAdmin
     }
 
     // MARK: Getters
@@ -38,4 +42,11 @@ class AppUser {
         return email
     }
 
+    func getLastLogin() -> String {
+        return lastLogin
+    }
+
+    func getIsAdmin() -> Bool {
+        return isAdmin
+    }
 }
