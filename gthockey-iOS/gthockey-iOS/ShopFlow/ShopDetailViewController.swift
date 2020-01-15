@@ -223,10 +223,6 @@ class ShopDetailViewController: UIViewController {
         ])
     }
 
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-
     // MARK: Setter
 
     public func set(with apparel: Apparel, _ restrictedOptions: [ApparelRestrictedItem], _ customOptions: [ApparelCustomItem]) {

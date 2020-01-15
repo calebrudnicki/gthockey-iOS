@@ -139,10 +139,6 @@ class HomeDetailViewController: UIViewController {
         ])
     }
 
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-
     // MARK: Setter
 
     public func set(with news: News) {

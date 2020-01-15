@@ -206,10 +206,6 @@ class RosterDetailViewController: UIViewController {
         ])
     }
 
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-
     // MARK: Setter
 
     public func set(with player: Player) {

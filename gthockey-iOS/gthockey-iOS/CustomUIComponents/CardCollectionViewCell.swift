@@ -8,20 +8,27 @@
 
 import UIKit
 
+protocol CardCollectionViewCellDelegate {
+    func didEndCellAnimation()
+}
+
 class CardCollectionViewCell: UICollectionViewCell {
 
     // MARK: Properties
+
+    public var delegate: CardCollectionViewCellDelegate!
 
     override var isHighlighted: Bool {
         didSet {
             if isHighlighted {
                 UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                    self.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-                }, completion: nil)
-            } else {
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
-                }, completion: nil)
+                    self.transform = CGAffineTransform(scaleX: 0.90, y: 0.90)
+                }, completion: { _ in
+                    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+                        self.transform = CGAffineTransform(scaleX: 1, y: 1)
+                    }, completion: nil)
+                    self.delegate?.didEndCellAnimation()
+                })
             }
         }
     }
@@ -36,7 +43,6 @@ class CardCollectionViewCell: UICollectionViewCell {
             layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
             layer.shadowColor = UIColor.label.cgColor
         } else {
-//            layer.backgroundColor = UIColor.cellBackgroundLight.cgColor
             layer.shadowColor = UIColor.black.cgColor
         }
 
