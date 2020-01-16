@@ -13,6 +13,7 @@ target 'gthockey-iOS' do
   pod 'AlamofireImage'
   pod 'SDWebImage', '~> 5.0'
   pod 'IQKeyboardManagerSwift'
+  pod 'AppRating'
 
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
