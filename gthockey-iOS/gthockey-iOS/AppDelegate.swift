@@ -13,6 +13,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 import Messages
+import AppRating
 
 //import Stripe
 
@@ -53,6 +54,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
+
+        AppRating.appID("1484814696")
 
         let preLaunchViewController = PreLaunchViewController()
         self.window?.rootViewController = preLaunchViewController
