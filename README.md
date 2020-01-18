@@ -41,7 +41,5 @@ Zach Maciejewski '18 | @zmaciejewski
 
 Dylan Mace '23 | @dmace2
 
-Maksim Tochilkin '23 | @atlant04
-
 ---
 📍Made in ATL
