@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SettingsSwitchControlTableViewCellDelegate {
-    func cellDidDetechTap()
+    func switchControlToggled(to value: Bool)
 }
 
 class SettingsSwitchControlTableViewCell: UITableViewCell {
@@ -18,12 +18,38 @@ class SettingsSwitchControlTableViewCell: UITableViewCell {
 
     public var delegate: SettingsSwitchControlTableViewCellDelegate!
 
-    private let cellLabel: UILabel = {
-        let cellLabel = UILabel()
-        cellLabel.font = UIFont(name: "Helvetica Neue", size: 20.0)
-        cellLabel.numberOfLines = 1
-        cellLabel.translatesAutoresizingMaskIntoConstraints = false
-        return cellLabel
+    private let labelsStackView: UIStackView = {
+        let buttonsStackView = UIStackView()
+        buttonsStackView.axis = .vertical
+        buttonsStackView.distribution = .fillProportionally
+        buttonsStackView.spacing = 4.0
+        buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
+        return buttonsStackView
+    }()
+
+    private let cellTitle: UILabel = {
+        let cellTitle = UILabel()
+        cellTitle.font = UIFont(name: "Helvetica Neue", size: 20.0)
+        cellTitle.numberOfLines = 1
+        cellTitle.translatesAutoresizingMaskIntoConstraints = false
+        return cellTitle
+    }()
+
+    private let cellSubtitle: UILabel = {
+        let cellSubtitle = UILabel()
+        cellSubtitle.font = UIFont(name: "HelveticaNeue-Light", size: 12.0)
+        cellSubtitle.textColor = .gray
+        cellSubtitle.numberOfLines = 0
+        cellSubtitle.sizeToFit()
+        cellSubtitle.translatesAutoresizingMaskIntoConstraints = false
+        return cellSubtitle
+    }()
+
+    private let switchControl: UISwitch = {
+        let switchControl = UISwitch()
+        switchControl.onTintColor = .techNavy
+        switchControl.translatesAutoresizingMaskIntoConstraints = false
+        return switchControl
     }()
 
     // MARK: Init
@@ -31,10 +57,12 @@ class SettingsSwitchControlTableViewCell: UITableViewCell {
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        accessoryType = .disclosureIndicator
-        contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped)))
+        switchControl.addTarget(self, action: #selector(switchControlTapped), for: .valueChanged)
 
-        contentView.addSubviews([cellLabel])
+        labelsStackView.addArrangedSubview(cellTitle)
+        labelsStackView.addArrangedSubview(cellSubtitle)
+
+        contentView.addSubviews([labelsStackView, switchControl])
         updateConstraints()
     }
 
@@ -46,23 +74,31 @@ class SettingsSwitchControlTableViewCell: UITableViewCell {
         super.updateConstraints()
 
         NSLayoutConstraint.activate([
-            cellLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12.0),
-            cellLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-            cellLabel.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),
-            cellLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12.0)
+            labelsStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12.0),
+            labelsStackView.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
+            labelsStackView.trailingAnchor.constraint(equalTo: switchControl.leadingAnchor, constant: -12.0),
+            labelsStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            switchControl.centerYAnchor.constraint(equalTo: labelsStackView.centerYAnchor),
+            switchControl.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor)
         ])
     }
 
     // MARK: Action
 
-    @objc private func cellTapped() {
-        delegate?.cellDidDetechTap()
+    @objc private func switchControlTapped(sender: UISwitch) {
+        delegate?.switchControlToggled(to: sender.isOn)
     }
 
     // MARK: Setter
 
-    public func set(with title: String) {
-        cellLabel.text = title
+    public func set(with title: String, subtitle: String) {
+        cellTitle.text = title
+        cellSubtitle.text = subtitle
+        switchControl.isOn = UserDefaults.standard.bool(forKey: "isRegisteredForNotifications")
     }
 
 }
+

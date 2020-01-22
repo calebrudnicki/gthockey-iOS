@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseAnalytics
 
 class AuthenticationHelper {
 
@@ -102,6 +103,7 @@ class AuthenticationHelper {
             UserDefaults.standard.removeObject(forKey: "email")
             UserDefaults.standard.removeObject(forKey: "password")
             UserDefaults.standard.removeObject(forKey: "isAdmin")
+            UserDefaults.standard.removeObject(forKey: "isRegisteredForNotifications")
             UIApplication.shared.unregisterForRemoteNotifications()
             completion(true, nil)
         } catch let error as NSError {

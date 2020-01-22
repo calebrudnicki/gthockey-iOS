@@ -110,7 +110,8 @@ class SettingsTableViewController: UITableViewController {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsSwitchControlTableViewCell", for: indexPath) as! SettingsSwitchControlTableViewCell
-            cell.set(with: "Go to settings")
+            cell.set(with: "Allow notifications",
+                     subtitle: "Trouble? Visit GT Hockey in Apple's Settings app")
             cell.delegate = self
             return cell
         }
@@ -172,13 +173,12 @@ extension SettingsTableViewController: SettingsTextFieldTableViewCellDelegate {
 
 extension SettingsTableViewController: SettingsSwitchControlTableViewCellDelegate {
 
-    func cellDidDetechTap() {
-        guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
-            return
-        }
-
-        if UIApplication.shared.canOpenURL(settingsUrl) {
-            UIApplication.shared.open(settingsUrl, completionHandler: nil)
+    func switchControlToggled(to value: Bool) {
+        UserDefaults.standard.set(value, forKey: "isRegisteredForNotifications")
+        if value {
+            UIApplication.shared.registerForRemoteNotifications()
+        } else {
+            UIApplication.shared.unregisterForRemoteNotifications()
         }
     }
 
