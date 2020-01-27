@@ -16,6 +16,7 @@ class SettingsTableViewController: UITableViewController {
     private var firstName: String?
     private var lastName: String?
     private var email: String?
+    private var appIcon: String?
 
     private var saveButton: UIBarButtonItem?
     public var delegate: HomeControllerDelegate?
@@ -56,6 +57,7 @@ class SettingsTableViewController: UITableViewController {
     private func setupTableView() {
         tableView.register(SettingsTextFieldTableViewCell.self, forCellReuseIdentifier: "SettingsTextFieldTableViewCell")
         tableView.register(SettingsSwitchControlTableViewCell.self, forCellReuseIdentifier: "SettingsSwitchControlTableViewCell")
+        tableView.register(SettingsIconTableViewCell.self, forCellReuseIdentifier: "SettingsIconTableViewCell")
         tableView.allowsSelection = false
         tableView.tableFooterView = UIView()
     }
@@ -65,6 +67,7 @@ class SettingsTableViewController: UITableViewController {
             self.firstName = propertiesDictionary["firstName"] as? String
             self.lastName = propertiesDictionary["lastName"] as? String
             self.email = propertiesDictionary["email"] as? String
+            self.appIcon = propertiesDictionary["appIcon"] as? String
             self.userProperties = propertiesDictionary
 
             DispatchQueue.main.async {
@@ -80,20 +83,22 @@ class SettingsTableViewController: UITableViewController {
     // MARK: UITableViewDelegate / UITableViewDataSource
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return userProperties.keys.count - 1
-        default:
+            return userProperties.keys.count - 2
+        case 1:
             return 1
+        default:
+            return AppIcon.Buzz.count()
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section{
+        switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTextFieldTableViewCell", for: indexPath) as! SettingsTextFieldTableViewCell
             switch indexPath.row {
@@ -108,10 +113,22 @@ class SettingsTableViewController: UITableViewController {
             }
             cell.delegate = self
             return cell
-        default:
+        case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsSwitchControlTableViewCell", for: indexPath) as! SettingsSwitchControlTableViewCell
             cell.set(with: "Allow notifications",
                      subtitle: "Trouble? Visit GT Hockey in Apple's Settings app")
+            cell.delegate = self
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsIconTableViewCell", for: indexPath) as! SettingsIconTableViewCell
+            switch indexPath.row {
+            case 0:
+                cell.set(to: .Buzz, iconName: "Buzz", isSelected: appIcon == AppIcon.Buzz.description)
+            case 1:
+                cell.set(to: .HeritageT, iconName: "Heritage T", isSelected: appIcon == AppIcon.HeritageT.description)
+            default:
+                cell.set(to: .RamblinReck, iconName: "Ramblin' Reck", isSelected: appIcon == AppIcon.RamblinReck.description)
+            }
             cell.delegate = self
             return cell
         }
@@ -125,8 +142,10 @@ class SettingsTableViewController: UITableViewController {
         switch section {
         case 0:
             return "Profile"
-        default:
+        case 1:
             return "Notifications"
+        default:
+            return "App Icon"
         }
     }
 
@@ -180,6 +199,31 @@ extension SettingsTableViewController: SettingsSwitchControlTableViewCellDelegat
         } else {
             UIApplication.shared.unregisterForRemoteNotifications()
         }
+    }
+
+}
+
+extension SettingsTableViewController: SettingsIconTableViewCellDelegate {
+
+    func didSelectCell(with appIcon: AppIcon) {
+        AuthenticationHelper().updateUserProperties(with: appIcon.description, completion: { result in
+            if result {
+                self.appIcon = appIcon.description
+                self.tableView.reloadSections(IndexSet(integer: 2), with: UITableView.RowAnimation.none)
+
+                guard UIApplication.shared.supportsAlternateIcons else {
+                    return
+                }
+
+                UIApplication.shared.setAlternateIconName(appIcon.description, completionHandler: { (error) in
+                    if let error = error {
+                        print("App icon failed to change due to \(error.localizedDescription)")
+                    } else {
+                        print("App icon changed successfully")
+                    }
+                })
+            }
+        })
     }
 
 }

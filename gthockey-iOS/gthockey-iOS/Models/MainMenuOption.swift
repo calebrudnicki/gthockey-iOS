@@ -35,42 +35,42 @@ enum MainMenuOption: Int, CustomStringConvertible, CaseIterable {
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "house.fill")?
                     .withRenderingMode(.alwaysOriginal)
-                    .withTintColor(.techNavy))!
+                    .withTintColor(.white))!
             }
             return UIImage(named: "HomeIcon")!
         case .Schedule:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "calendar")?
                     .withRenderingMode(.alwaysOriginal)
-                    .withTintColor(.techNavy))!
+                    .withTintColor(.white))!
             }
             return UIImage(named: "ScheduleIcon")!
         case .Roster:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "person.3.fill")?
                     .withRenderingMode(.alwaysOriginal)
-                    .withTintColor(.techNavy))!
+                    .withTintColor(.white))!
             }
             return UIImage(named: "RosterIcon")!
         case .Contact:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "envelope.fill")?
                     .withRenderingMode(.alwaysOriginal)
-                    .withTintColor(.techNavy))!
+                    .withTintColor(.white))!
             }
             return UIImage(named: "MailIcon")!
         case .Shop:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "bag.fill")?
                     .withRenderingMode(.alwaysOriginal)
-                    .withTintColor(.techNavy))!
+                    .withTintColor(.white))!
             }
             return UIImage(named: "ShopIcon")!
         case .Settings:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "gear")?
                     .withRenderingMode(.alwaysOriginal)
-                    .withTintColor(.techNavy))!
+                    .withTintColor(.white))!
             }
             return UIImage(named: "SettingsIcon")!
         }

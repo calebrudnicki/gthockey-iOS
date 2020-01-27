@@ -32,6 +32,14 @@
 		8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC692360AC1900C7C9DF /* MenuTableViewCell.swift */; };
 		82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82918F312350B62F00723B4A /* RosterDetailViewController.swift */; };
 		8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */; };
+		82A4293923D8CE51002EF467 /* SettingsIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A4293823D8CE51002EF467 /* SettingsIconTableViewCell.swift */; };
+		82A4294B23D8EAE8002EF467 /* HeritageT@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A4294923D8EAE8002EF467 /* HeritageT@2x.png */; };
+		82A4294C23D8EAE8002EF467 /* HeritageT@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A4294A23D8EAE8002EF467 /* HeritageT@3x.png */; };
+		82A4294F23D8EAF1002EF467 /* Buzz@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A4294D23D8EAF0002EF467 /* Buzz@2x.png */; };
+		82A4295023D8EAF1002EF467 /* Buzz@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A4294E23D8EAF0002EF467 /* Buzz@3x.png */; };
+		82A4295223D8EC7D002EF467 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A4295123D8EC7D002EF467 /* AppIcon.swift */; };
+		82A4295523D8F708002EF467 /* RamblinReck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A4295323D8F707002EF467 /* RamblinReck@2x.png */; };
+		82A4295623D8F708002EF467 /* RamblinReck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A4295423D8F708002EF467 /* RamblinReck@3x.png */; };
 		82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F840238DBBA8001CA749 /* CustomError.swift */; };
 		82A6F843238E1AE0001CA749 /* ShopOptionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */; };
 		82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */; };
@@ -111,6 +119,14 @@
 		8288FC692360AC1900C7C9DF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		82918F312350B62F00723B4A /* RosterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterDetailViewController.swift; sourceTree = "<group>"; };
 		8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		82A4293823D8CE51002EF467 /* SettingsIconTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsIconTableViewCell.swift; sourceTree = "<group>"; };
+		82A4294923D8EAE8002EF467 /* HeritageT@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeritageT@2x.png"; sourceTree = "<group>"; };
+		82A4294A23D8EAE8002EF467 /* HeritageT@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HeritageT@3x.png"; sourceTree = "<group>"; };
+		82A4294D23D8EAF0002EF467 /* Buzz@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buzz@2x.png"; sourceTree = "<group>"; };
+		82A4294E23D8EAF0002EF467 /* Buzz@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buzz@3x.png"; sourceTree = "<group>"; };
+		82A4295123D8EC7D002EF467 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
+		82A4295323D8F707002EF467 /* RamblinReck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RamblinReck@2x.png"; sourceTree = "<group>"; };
+		82A4295423D8F708002EF467 /* RamblinReck@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RamblinReck@3x.png"; sourceTree = "<group>"; };
 		82A6F840238DBBA8001CA749 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopOptionTextField.swift; sourceTree = "<group>"; };
 		82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewHeader.swift; sourceTree = "<group>"; };
@@ -302,6 +318,12 @@
 		82DCB477233C402200BDE2FE /* gthockey-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				82A4294923D8EAE8002EF467 /* HeritageT@2x.png */,
+				82A4294A23D8EAE8002EF467 /* HeritageT@3x.png */,
+				82A4294D23D8EAF0002EF467 /* Buzz@2x.png */,
+				82A4294E23D8EAF0002EF467 /* Buzz@3x.png */,
+				82A4295323D8F707002EF467 /* RamblinReck@2x.png */,
+				82A4295423D8F708002EF467 /* RamblinReck@3x.png */,
 				F02585AD23412F68008E641C /* Models */,
 				8297AFE3236A357F0081B273 /* CustomUIComponents */,
 				82F85588236C7B9700DE7AFD /* LoginFlow */,
@@ -391,6 +413,7 @@
 				8206D3E523CBDF6200863B3C /* MainMenuOption.swift */,
 				8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */,
 				82378184239995CA00CBD399 /* Constants.swift */,
+				82A4295123D8EC7D002EF467 /* AppIcon.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -401,6 +424,7 @@
 				F093EA4B2385F4170037FCA7 /* SettingsTableViewController.swift */,
 				8206D3F823CE532200863B3C /* SettingsTextFieldTableViewCell.swift */,
 				8206D3FA23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift */,
+				82A4293823D8CE51002EF467 /* SettingsIconTableViewCell.swift */,
 				82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */,
 			);
 			path = SettingsFlow;
@@ -466,9 +490,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82A4294F23D8EAF1002EF467 /* Buzz@2x.png in Resources */,
 				82DCB486233C402300BDE2FE /* LaunchScreen.storyboard in Resources */,
+				82A4294C23D8EAE8002EF467 /* HeritageT@3x.png in Resources */,
+				82A4295523D8F708002EF467 /* RamblinReck@2x.png in Resources */,
+				82A4295623D8F708002EF467 /* RamblinReck@3x.png in Resources */,
 				82DCB483233C402300BDE2FE /* Assets.xcassets in Resources */,
 				82F85586236C797600DE7AFD /* GoogleService-Info.plist in Resources */,
+				82A4294B23D8EAE8002EF467 /* HeritageT@2x.png in Resources */,
+				82A4295023D8EAF1002EF467 /* Buzz@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,10 +553,12 @@
 			files = (
 				82C7349623B3F14800196D5D /* AuthenticationHelper.swift in Sources */,
 				FA3570BA23502190008E83BC /* Team.swift in Sources */,
+				82A4295223D8EC7D002EF467 /* AppIcon.swift in Sources */,
 				8206D3FB23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift in Sources */,
 				8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */,
 				82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */,
 				82E50BDC23CE9978009A3B92 /* DateHelper.swift in Sources */,
+				82A4293923D8CE51002EF467 /* SettingsIconTableViewCell.swift in Sources */,
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */,
@@ -732,14 +764,14 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -756,14 +788,14 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.3;
+				MARKETING_VERSION = 1.4;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				PROVISIONING_PROFILE_SPECIFIER = "";
