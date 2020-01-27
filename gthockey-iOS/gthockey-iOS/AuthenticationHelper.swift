@@ -28,6 +28,7 @@ class AuthenticationHelper {
                         self.getUserProperties(completion: { propertiesDictionary in
                             let firstName = propertiesDictionary["firstName"] ?? ""
                             let lastName = propertiesDictionary["lastName"] ?? ""
+                            let appIcon = propertiesDictionary["appIcon"] ?? "Buzz"
                             let cart = propertiesDictionary["cart"] ?? []
 
                             let currentDate = Date()
@@ -39,6 +40,7 @@ class AuthenticationHelper {
                                                                                "email": email,
                                                                                "lastLogin": "\(dateStr) \(timeStr)",
                                                                                "isAdmin": AdminHelper().isAdminUser(email) ? true : false,
+                                                                               "appIcon": appIcon,
                                                                                "uid": user.uid,
                                                                                "cart": cart]) { (error) in
                                 if error != nil {
@@ -69,6 +71,7 @@ class AuthenticationHelper {
                                                                    "email": email,
                                                                    "isAdmin": AdminHelper().isAdminUser(email) ? true : false,
                                                                    "lastLogin": "No login yet",
+                                                                   "appIcon": "Buzz",
                                                                    "uid": user.uid,
                                                                    "cart": []]) { (error) in
                     if error != nil {
@@ -123,7 +126,10 @@ class AuthenticationHelper {
                     let lastName = ((document.data()! as NSDictionary)["lastName"] as! String?),
                     let email = ((document.data()! as NSDictionary)["email"] as! String?),
                     let cart = ((document.data()! as NSDictionary)["cart"]) {
-                    completion(["firstName": firstName, "lastName": lastName, "email": email, "cart": cart])
+                    // V1.4
+                    let appIcon = ((document.data()! as NSDictionary)["appIcon"] as? String ?? "Buzz")
+                    completion(["firstName": firstName, "lastName": lastName,
+                                "email": email, "appIcon": appIcon, "cart": cart])
                 }
             }
         }
@@ -133,6 +139,15 @@ class AuthenticationHelper {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
             db.collection("users").document(user.uid).updateData(["firstName": firstName, "lastName": lastName])
+            completion(true)
+        }
+        completion(false)
+    }
+
+    public func updateUserProperties(with appIcon: String, completion: @escaping (Bool) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).updateData(["appIcon": appIcon])
             completion(true)
         }
         completion(false)

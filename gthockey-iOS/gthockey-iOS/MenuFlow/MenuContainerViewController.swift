@@ -87,7 +87,7 @@ class MenuContainerViewController: UIViewController {
         //Set default screen to be Home
         currentNavigationController = homeNavigationController
 
-        view.backgroundColor = .techCream
+        view.backgroundColor = .techNavy
 
         view.addSubview(currentNavigationController.view)
         addChild(currentNavigationController)

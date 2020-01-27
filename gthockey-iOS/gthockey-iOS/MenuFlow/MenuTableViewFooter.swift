@@ -30,7 +30,7 @@ class MenuTableViewFooter: UIView {
 
     private let instagramButton: UIButton = {
         let instagramButton = UIButton(type: .custom)
-        let instagramImage = UIImage(named: "InstagramIconGray")?.withRenderingMode(.alwaysOriginal)
+        let instagramImage = UIImage(named: "InstagramIcon")?.withRenderingMode(.alwaysOriginal)
         instagramButton.setImage(instagramImage, for: .normal)
         instagramButton.translatesAutoresizingMaskIntoConstraints = false
         return instagramButton
@@ -38,7 +38,7 @@ class MenuTableViewFooter: UIView {
 
     private let twitterButton: UIButton = {
         let twitterButton = UIButton(type: .custom)
-        let twitterImage = UIImage(named: "TwitterIconGray")?.withRenderingMode(.alwaysOriginal)
+        let twitterImage = UIImage(named: "TwitterIcon")?.withRenderingMode(.alwaysOriginal)
         twitterButton.setImage(twitterImage, for: .normal)
         twitterButton.translatesAutoresizingMaskIntoConstraints = false
         return twitterButton
@@ -46,7 +46,7 @@ class MenuTableViewFooter: UIView {
 
     private let facebookButton: UIButton = {
         let facebookButton = UIButton(type: .custom)
-        let facebookImage = UIImage(named: "FacebookIconGray")?.withRenderingMode(.alwaysOriginal)
+        let facebookImage = UIImage(named: "FacebookIcon")?.withRenderingMode(.alwaysOriginal)
         facebookButton.setImage(facebookImage, for: .normal)
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
         return facebookButton
@@ -68,7 +68,7 @@ class MenuTableViewFooter: UIView {
     private let toggleAdminButton: UIButton = {
         let toggleAdminButton = UIButton()
         toggleAdminButton.setTitle("Switch to admin menu", for: .normal)
-        toggleAdminButton.setTitleColor(.techNavy, for: .normal)
+        toggleAdminButton.setTitleColor(.techGold, for: .normal)
         toggleAdminButton.titleLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 12.0)
         toggleAdminButton.translatesAutoresizingMaskIntoConstraints = false
         return toggleAdminButton
