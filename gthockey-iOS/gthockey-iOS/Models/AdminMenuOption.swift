@@ -14,12 +14,14 @@ enum AdminMenuOption: Int, CustomStringConvertible, CaseIterable {
     case AllUsers
     case AdminUsers
     case SendNotification
+    case GameCenter
 
     var description: String {
         switch self {
         case .AllUsers: return "All Users"
         case .AdminUsers: return "Admin Users"
         case .SendNotification: return "Send Notification"
+        case .GameCenter: return "Game Center"
         }
     }
 
@@ -31,21 +33,28 @@ enum AdminMenuOption: Int, CustomStringConvertible, CaseIterable {
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "RosterIcon")!
+            return UIImage()
         case .AdminUsers:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "person.2.fill")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "RosterIcon")!
+            return UIImage()
         case .SendNotification:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "paperplane.fill")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "RosterIcon")!
+            return UIImage()
+        case .GameCenter:
+            if #available(iOS 13.0, *) {
+                return (UIImage(systemName: "sportscourt.fill")?
+                    .withRenderingMode(.alwaysOriginal)
+                    .withTintColor(.white))!
+            }
+            return UIImage()
         }
     }
 

@@ -37,6 +37,7 @@ class MenuContainerViewController: UIViewController {
     private let settingsTableViewController = SettingsTableViewController()
     private let allUsersTableViewController = AllUsersTableViewController()
     private let adminUsersTableViewController = AdminUsersTableViewController()
+    private let gameCenterViewController = GameCenterViewController()
 
     private var homeNavigationController: UINavigationController?
     private var scheduleNavigationController: UINavigationController?
@@ -45,6 +46,7 @@ class MenuContainerViewController: UIViewController {
     private var settingsNavigationController: UINavigationController?
     private var allUsersNavigationController: UINavigationController?
     private var adminUsersNavigationController: UINavigationController?
+    private var gameCenterNavigationController: UINavigationController?
 
     // MARK: Init
 
@@ -75,6 +77,7 @@ class MenuContainerViewController: UIViewController {
         settingsNavigationController = UINavigationController(rootViewController: settingsTableViewController)
         allUsersNavigationController = UINavigationController(rootViewController: allUsersTableViewController)
         adminUsersNavigationController = UINavigationController(rootViewController: adminUsersTableViewController)
+        gameCenterNavigationController = UINavigationController(rootViewController: gameCenterViewController)
 
         homeCollectionViewController.delegate = self
         scheduleTableViewController.delegate = self
@@ -83,6 +86,7 @@ class MenuContainerViewController: UIViewController {
         settingsTableViewController.delegate = self
         allUsersTableViewController.delegate = self
         adminUsersTableViewController.delegate = self
+        gameCenterViewController.delegate = self
 
         //Set default screen to be Home
         currentNavigationController = homeNavigationController
@@ -196,6 +200,9 @@ class MenuContainerViewController: UIViewController {
             currentNavigationController = adminUsersNavigationController
         case .SendNotification:
             UIApplication.shared.open(NSURL(string: "https://console.firebase.google.com/u/0/project/gthockey-ios/notification/compose")! as URL)
+        case .GameCenter:
+            gameCenterViewController.set()
+            currentNavigationController = gameCenterNavigationController
         }
         configureGestures()
         view.addSubview(currentNavigationController.view)

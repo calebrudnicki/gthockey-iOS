@@ -29,7 +29,7 @@ class ShopCustomOptionsView: UIView, UITextFieldDelegate {
         return displayLabel
     }()
 
-    private let optionsTextField = ShopOptionTextField()
+    private let optionsTextField = OptionsTextField()
 
     // MARK: Init
 

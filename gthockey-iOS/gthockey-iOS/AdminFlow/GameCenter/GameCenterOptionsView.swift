@@ -1,28 +1,27 @@
 //
-//  ShopRestrictedOptionsView.swift
+//  GameCenterOptionsView.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 11/8/19.
-//  Copyright © 2019 Caleb Rudnicki. All rights reserved.
+//  Created by Caleb Rudnicki on 1/30/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import UIKit
 
-protocol ShopRestrictedOptionsViewDelegate {
+protocol GameCenterOptionsViewDelegate {
     func didSelect(option: String, for category: String)
 }
 
-class ShopRestrictedOptionsView: UIView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class GameCenterOptionsView: UIView, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
     // MARK: Properties
 
     private var selectionList: [String]?
-    public var delegate: ShopRestrictedOptionsViewDelegate!
+    public var delegate: GameCenterOptionsViewDelegate!
 
     private let displayLabel: UILabel = {
         let displayLabel = UILabel()
         displayLabel.font = UIFont(name:"HelveticaNeue", size: 24.0)
-        displayLabel.text = "Size"
         displayLabel.adjustsFontSizeToFitWidth = true
         displayLabel.numberOfLines = 1
         displayLabel.textAlignment = .left
@@ -98,22 +97,20 @@ class ShopRestrictedOptionsView: UIView, UIPickerViewDelegate, UIPickerViewDataS
         delegate?.didSelect(option: textField.text ?? "", for: displayLabel.text ?? "")
     }
 
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print("begin")
+    }
+
     @objc func donePicker() {
         endEditing(true)
     }
 
     // MARK: Setter
 
-    public func set(with restrictedItem: ApparelRestrictedItem) {
-        displayLabel.text = restrictedItem.getDisplayName()
-        optionsTextField.placeholder = restrictedItem.getHelpText()
-        selectionList = restrictedItem.getOptionsList()
-    }
-
-    public func set() {
-        displayLabel.text = "Display Name"
-        optionsTextField.placeholder = "help Text"
-        selectionList = ["Georgia", "FLorida", "Texas"]
+    public func set(with title: String, optionsList: [String]) {
+        displayLabel.text = title
+        optionsTextField.placeholder = "Help text"
+        selectionList = optionsList
     }
 
 }

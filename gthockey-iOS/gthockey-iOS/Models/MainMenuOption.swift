@@ -37,42 +37,42 @@ enum MainMenuOption: Int, CustomStringConvertible, CaseIterable {
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "HomeIcon")!
+            return UIImage()
         case .Schedule:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "calendar")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "ScheduleIcon")!
+            return UIImage()
         case .Roster:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "person.3.fill")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "RosterIcon")!
+            return UIImage()
         case .Contact:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "envelope.fill")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "MailIcon")!
+            return UIImage()
         case .Shop:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "bag.fill")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "ShopIcon")!
+            return UIImage()
         case .Settings:
             if #available(iOS 13.0, *) {
                 return (UIImage(systemName: "gear")?
                     .withRenderingMode(.alwaysOriginal)
                     .withTintColor(.white))!
             }
-            return UIImage(named: "SettingsIcon")!
+            return UIImage()
         }
     }
 

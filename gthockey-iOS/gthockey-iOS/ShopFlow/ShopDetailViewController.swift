@@ -93,7 +93,7 @@ class ShopDetailViewController: UIViewController {
     }()
 
     // MARK: Uncomment for shop
-//    private let restrictedOptionsView = ShopRestrictedOptionsView()
+    private let restrictedOptionsView = ShopRestrictedOptionsView()
 //    private let customOptionsView = ShopCustomOptionsView()
 
     private let unavailableLabel: HTMLTextView = {
@@ -126,7 +126,7 @@ class ShopDetailViewController: UIViewController {
         scrollView.addSubview(backgroundView)
 
         backgroundView.addSubviews([imageView, headlineLabel, priceLabel, separatorView1, descriptionLabel, separatorView2,
-                                    /*restrictedOptionsStackView, customOptionsStackView,*/unavailableLabel, addToCartButton, closeButton])
+                                    restrictedOptionsStackView, /*customOptionsStackView,*/unavailableLabel, addToCartButton, closeButton])
 
         updateViewConstraints()
     }
@@ -195,11 +195,11 @@ class ShopDetailViewController: UIViewController {
         ])
 
         // MARK: Uncomment for shop
-//        NSLayoutConstraint.activate([
-//            restrictedOptionsStackView.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 12.0),
-//            restrictedOptionsStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-//            restrictedOptionsStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
-//        ])
+        NSLayoutConstraint.activate([
+            restrictedOptionsStackView.topAnchor.constraint(equalTo: unavailableLabel.bottomAnchor, constant: 12.0),
+            restrictedOptionsStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            restrictedOptionsStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
 //
 //        NSLayoutConstraint.activate([
 //            customOptionsStackView.topAnchor.constraint(equalTo: restrictedOptionsStackView.bottomAnchor, constant: 12.0),
@@ -208,7 +208,7 @@ class ShopDetailViewController: UIViewController {
 //        ])
 
         NSLayoutConstraint.activate([
-            addToCartButton.topAnchor.constraint(equalTo: unavailableLabel.bottomAnchor, constant: 24.0),
+            addToCartButton.topAnchor.constraint(equalTo: restrictedOptionsStackView.bottomAnchor, constant: 24.0),
             addToCartButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             addToCartButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             addToCartButton.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0),
@@ -232,13 +232,13 @@ class ShopDetailViewController: UIViewController {
         descriptionLabel.setText(with: apparel.getDescription())
 
         // MARK: Uncomment for shop
-//        self.restrictedOptions = restrictedOptions
-//        for restrictedOption in restrictedOptions {
-//            let shopRestrictedOptionsView = ShopRestrictedOptionsView()
-//            shopRestrictedOptionsView.set(with: restrictedOption)
-//            shopRestrictedOptionsView.delegate = self
-//            restrictedOptionsStackView.addArrangedSubview(shopRestrictedOptionsView)
-//        }
+        self.restrictedOptions = restrictedOptions
+        for restrictedOption in restrictedOptions {
+            let shopRestrictedOptionsView = ShopRestrictedOptionsView()
+            shopRestrictedOptionsView.set(with: restrictedOption)
+            shopRestrictedOptionsView.delegate = self
+            restrictedOptionsStackView.addArrangedSubview(shopRestrictedOptionsView)
+        }
 //
 //        self.customOptions = customOptions
 //        for customOption in customOptions {

@@ -1,14 +1,14 @@
 //
-//  ShopOptionTextField.swift
+//  OptionsTextField.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 11/26/19.
-//  Copyright © 2019 Caleb Rudnicki. All rights reserved.
+//  Created by Caleb Rudnicki on 1/30/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import UIKit
 
-class ShopOptionTextField: UITextField {
+class OptionsTextField: UITextField {
 
     // MARK: Properties
 
@@ -50,3 +50,4 @@ class ShopOptionTextField: UITextField {
     }
 
 }
+
