@@ -19,7 +19,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     private var goalieArray: [Player] = []
     private var managerArray: [Player] = []
     private let cellWidth = UIScreen.main.bounds.width * 0.45
-    private let rosterDetailViewController = RosterDetailViewController()
+    private var rosterDetailViewController = RosterDetailViewController()
     public var delegate: HomeControllerDelegate?
 
     // MARK: Init
@@ -158,6 +158,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        rosterDetailViewController = RosterDetailViewController()
         switch indexPath.section {
         case 0:
             rosterDetailViewController.set(with: forwardArray[indexPath.row])

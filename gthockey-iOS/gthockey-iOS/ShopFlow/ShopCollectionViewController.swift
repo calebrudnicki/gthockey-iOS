@@ -20,7 +20,7 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     private var shoppingCart: [[String : Any]] = []
     private let cellWidth = UIScreen.main.bounds.width * 0.9
     private let cellHeight = UIScreen.main.bounds.height * 0.3
-    private let shopDetailViewController = ShopDetailViewController()
+    private var shopDetailViewController = ShopDetailViewController()
     public var delegate: HomeControllerDelegate?
 
     // MARK: Init
@@ -97,6 +97,7 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.fetchApparelDetails(with: self.apparelArray[indexPath.row].getID(), completion: { (apparelRestrictedItems, apparelCustomItems) in
+            self.shopDetailViewController = ShopDetailViewController()
             self.shopDetailViewController.set(with: self.apparelArray[indexPath.row], apparelRestrictedItems, apparelCustomItems)
         })
     }

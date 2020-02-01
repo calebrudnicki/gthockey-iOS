@@ -17,7 +17,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     private var newsArray: [News] = []
     private let cellWidth = UIScreen.main.bounds.width * 0.9
     private let cellHeight = UIScreen.main.bounds.height * 0.45
-    private let homeDetailViewController = HomeDetailViewController()
+    private var homeDetailViewController = HomeDetailViewController()
     public var delegate: HomeControllerDelegate?
 
     // MARK: Init
@@ -95,6 +95,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        homeDetailViewController = HomeDetailViewController()
         homeDetailViewController.set(with: newsArray[indexPath.row])
     }
 
