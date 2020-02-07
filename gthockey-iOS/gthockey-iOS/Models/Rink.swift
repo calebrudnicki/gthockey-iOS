@@ -15,6 +15,8 @@ class Rink {
     private var id: Int
     private var name: String
     private var mapsURL: URL
+    private var longitude: Float
+    private var latitude: Float
 
     // MARK: Init
 
@@ -22,6 +24,10 @@ class Rink {
         self.id = id
         self.name = name
         self.mapsURL = mapsURL
+        self.longitude = 0
+        self.latitude = 0
+
+        findLocation(from: mapsURL)
     }
 
     // MARK: Getters
@@ -36,6 +42,26 @@ class Rink {
 
     func getMapsURL() -> URL {
         return mapsURL
+    }
+
+    func getLatitude() -> Float {
+        return latitude
+    }
+
+    func getLongitude() -> Float {
+        return longitude
+    }
+
+    // MARK: Helper Functions
+
+    private func findLocation(from url: URL) {
+        if let latitudeString = url.absoluteString.slice(from: "@", to: ",") {
+            self.latitude = Float(latitudeString)!
+        }
+
+        if let longitudeString = url.absoluteString.slice(from: ",", to: ",") {
+            self.longitude = Float(longitudeString)!
+        }
     }
 
 }

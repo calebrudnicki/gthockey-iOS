@@ -70,8 +70,8 @@ class ScheduleOpponentRinkView: UIView {
 
     // MARK: Setter
 
-    public func set(with opponent: String, _ rink: String, _ venue: String) {
-        if venue == "H" {
+    public func set(with opponent: String, _ rink: String, _ venue: Venue) {
+        if venue == .Home {
             opponentLabel.text = "vs \(opponent)"
         } else {
             opponentLabel.text = "at \(opponent)"
