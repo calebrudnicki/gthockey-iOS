@@ -16,7 +16,7 @@ class Game {
     private var dateTime: Date
     private var opponentName: String
     private var rinkName: String
-    private var venue: String
+    private var venue: Venue
     private var isReported: Bool
     private var shortResult: String
     private var gtScore: Int
@@ -30,7 +30,13 @@ class Game {
         self.dateTime = dateTime
         self.opponentName = opponentName
         self.rinkName = rinkName
-        self.venue = venue
+
+        switch venue {
+        case "H": self.venue = .Home
+        case "A": self.venue = .Away
+        default: self.venue = .Tournament
+        }
+
         self.isReported = isReported
         self.shortResult = shortResult
         self.gtScore = gtScore
@@ -55,7 +61,7 @@ class Game {
         return rinkName
     }
 
-    func getVenue() -> String {
+    func getVenue() -> Venue {
         return venue
     }
 

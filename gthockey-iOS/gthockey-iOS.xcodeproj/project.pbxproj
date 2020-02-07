@@ -26,10 +26,13 @@
 		82378185239995CA00CBD399 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82378184239995CA00CBD399 /* Constants.swift */; };
 		823781872399968100CBD399 /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823781862399968100CBD399 /* StripeClient.swift */; };
 		825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825092172361EFB300D98DEA /* UIViewExtension.swift */; };
+		826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */; };
+		826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */; };
 		8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */; };
 		8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC652360AB3E00C7C9DF /* MenuTableViewFooter.swift */; };
 		8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC672360AB9500C7C9DF /* MenuTableViewController.swift */; };
 		8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC692360AC1900C7C9DF /* MenuTableViewCell.swift */; };
+		828F812723ECF7F300ED6CBC /* Venue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828F812623ECF7F300ED6CBC /* Venue.swift */; };
 		82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82918F312350B62F00723B4A /* RosterDetailViewController.swift */; };
 		8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */; };
 		82A4293923D8CE51002EF467 /* SettingsIconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A4293823D8CE51002EF467 /* SettingsIconTableViewCell.swift */; };
@@ -113,10 +116,13 @@
 		82378184239995CA00CBD399 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		823781862399968100CBD399 /* StripeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
 		825092172361EFB300D98DEA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitAnnotation.swift; sourceTree = "<group>"; };
+		826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewHeader.swift; sourceTree = "<group>"; };
 		8288FC652360AB3E00C7C9DF /* MenuTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewFooter.swift; sourceTree = "<group>"; };
 		8288FC672360AB9500C7C9DF /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		8288FC692360AC1900C7C9DF /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		828F812623ECF7F300ED6CBC /* Venue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Venue.swift; sourceTree = "<group>"; };
 		82918F312350B62F00723B4A /* RosterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterDetailViewController.swift; sourceTree = "<group>"; };
 		8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		82A4293823D8CE51002EF467 /* SettingsIconTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsIconTableViewCell.swift; sourceTree = "<group>"; };
@@ -260,6 +266,7 @@
 				82C24680238669E0003CB268 /* HTMLTextView.swift */,
 				82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */,
 				82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */,
+				826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -282,6 +289,7 @@
 				82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */,
 				82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */,
 				82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */,
+				826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */,
 			);
 			path = ScheduleFlow;
 			sourceTree = "<group>";
@@ -414,6 +422,7 @@
 				8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */,
 				82378184239995CA00CBD399 /* Constants.swift */,
 				82A4295123D8EC7D002EF467 /* AppIcon.swift */,
+				828F812623ECF7F300ED6CBC /* Venue.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -567,6 +576,7 @@
 				82C2467D2384BAC7003CB268 /* FloatingCloseButton.swift in Sources */,
 				8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */,
 				82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */,
+				828F812723ECF7F300ED6CBC /* Venue.swift in Sources */,
 				82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */,
 				8206D3DB23CBBBEF00863B3C /* AdminHelper.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
@@ -577,6 +587,7 @@
 				82F468F0237F55EC00573EE5 /* CartTableViewCell.swift in Sources */,
 				8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */,
 				8206D3E823CCC40600863B3C /* AllUsersTableViewController.swift in Sources */,
+				826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */,
 				82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
 				F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */,
@@ -602,6 +613,7 @@
 				823781872399968100CBD399 /* StripeClient.swift in Sources */,
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */,
+				826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */,
 				8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */,
 				8206D3F323CD350900863B3C /* AllUsersTableViewFooter.swift in Sources */,
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,

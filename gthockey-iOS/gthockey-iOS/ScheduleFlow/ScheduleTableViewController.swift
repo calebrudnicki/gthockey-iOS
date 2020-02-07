@@ -142,23 +142,20 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let alert = UIAlertController(title: "Get Directions to the Rink", message: nil, preferredStyle: .alert)
+        let gameDetailViewController = ScheduleDetailViewController()
         
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            switch self.segmentedController.selectedSegmentIndex {
-            case 0:
-                self.fetchGame(with: self.upcomingGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
-                    self.openMaps(with: rink)
-                })
-            default:
-                self.fetchGame(with: self.completedGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
-                    self.openMaps(with: rink)
-                })
-            }
-        }))
+        switch segmentedController.selectedSegmentIndex {
+        case 0:
+            self.fetchGame(with: self.upcomingGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
+                gameDetailViewController.set(with: self.upcomingGameArray[indexPath.row], opponent, rink)
+            })
+        default:
+            self.fetchGame(with: self.completedGameArray[indexPath.row].getID(), completion: { (opponent, rink) in
+                gameDetailViewController.set(with: self.completedGameArray[indexPath.row], opponent, rink)
+            })
+        }
 
-        alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        present(gameDetailViewController, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
