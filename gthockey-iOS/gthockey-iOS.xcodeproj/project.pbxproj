@@ -76,6 +76,7 @@
 		82DCB483233C402300BDE2FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB482233C402300BDE2FE /* Assets.xcassets */; };
 		82DCB486233C402300BDE2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */; };
 		82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */; };
+		82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE66E223EE5DD5003E13E6 /* Season.swift */; };
 		82E50BDC23CE9978009A3B92 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E50BDB23CE9978009A3B92 /* DateHelper.swift */; };
 		82EE57E12341B2BC00FCC181 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E02341B2BC00FCC181 /* Game.swift */; };
 		82EE57E32341B36200FCC181 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E22341B36200FCC181 /* Player.swift */; };
@@ -168,6 +169,7 @@
 		82DCB485233C402300BDE2FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82DCB487233C402300BDE2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewCell.swift; sourceTree = "<group>"; };
+		82DE66E223EE5DD5003E13E6 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		82E50BDB23CE9978009A3B92 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		82EE57E02341B2BC00FCC181 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		82EE57E22341B36200FCC181 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -423,6 +425,7 @@
 				82378184239995CA00CBD399 /* Constants.swift */,
 				82A4295123D8EC7D002EF467 /* AppIcon.swift */,
 				828F812623ECF7F300ED6CBC /* Venue.swift */,
+				82DE66E223EE5DD5003E13E6 /* Season.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -620,6 +623,7 @@
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
 				82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
+				82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */,
 				8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */,
 				8206D3F923CE532200863B3C /* SettingsTextFieldTableViewCell.swift in Sources */,
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
