@@ -24,9 +24,9 @@ class ScheduleTableViewController: UITableViewController {
     private var seasonRecord: String = "0-0-0-0"
     private var currentSeasonIDSelected: Int = 8
     private let cellHeight = UIScreen.main.bounds.height * 0.8
+    private var menuView: BTNavigationDropdownMenu?
     public var delegate: HomeControllerDelegate?
 
-    private var menuView: BTNavigationDropdownMenu?
 
     // MARK: Init
 
@@ -138,15 +138,6 @@ class ScheduleTableViewController: UITableViewController {
             self.seasonArray = response.sorted { $0.getYear() < $1.getYear() }
 
             DispatchQueue.main.async {
-//                let menuView = BTNavigationDropdownMenu(navigationController: self.navigationController,
-//                                                        containerView: self.navigationController!.view,
-//                                                        title: self.seasonArray[self.seasonArray.count - 1].getName(),
-//                                                        items: self.seasonArray.map { $0.getName() })
-
-//                if #available(iOS 13.0, *) {
-//                    menuView.arrowImage = UIImage(systemName: "chevron.down")
-//                    menuView.arrowTintColor = .label
-//                }
                 self.menuView = BTNavigationDropdownMenu(navigationController: self.navigationController,
                                                          containerView: self.navigationController!.view,
                                                          title: self.seasonArray[self.seasonArray.count - 1].getName(),
