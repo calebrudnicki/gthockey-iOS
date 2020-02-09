@@ -26,6 +26,14 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupNavigationController()
+        setupTableView()
+        fetchUserInfo()
+    }
+
+    // MARK: Config
+
+    private func setupNavigationController() {
         navigationItem.title = "Settings"
 
         let menuButtonImage: UIImage?
@@ -47,12 +55,7 @@ class SettingsTableViewController: UITableViewController {
         saveButton?.isEnabled = false
         navigationItem.rightBarButtonItem = saveButton
         navigationController?.navigationBar.prefersLargeTitles = true
-
-        setupTableView()
-        fetchUserInfo()
     }
-
-    // MARK: Config
 
     private func setupTableView() {
         tableView.register(SettingsTextFieldTableViewCell.self, forCellReuseIdentifier: "SettingsTextFieldTableViewCell")

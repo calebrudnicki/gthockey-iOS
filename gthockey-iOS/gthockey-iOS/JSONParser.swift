@@ -53,10 +53,10 @@ class JSONParser {
         }
     }
 
-    public func getSchedule(completion: @escaping ([Game]) -> Void) {
+    public func getSchedule(with seasonID: Int, completion: @escaping ([Game]) -> Void) {
         var games: [Game] = []
 
-        Alamofire.request("https://gthockey.com/api/games/").validate().responseJSON { responseData  in
+        Alamofire.request("https://gthockey.com/api/games/?season=\(seasonID)").validate().responseJSON { responseData  in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -64,6 +64,24 @@ class JSONParser {
                     games.append(self.makeGameObject(value: value))
                 }
                 completion(games)
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+
+    public func getSeasons(completion: @escaping ([Season]) -> Void) {
+        var seasons: [Season] = []
+
+        Alamofire.request("https://gthockey.com/api/seasons/").validate().responseJSON { responseData  in
+            switch responseData.result {
+            case .success(let value):
+                let jsonResult = JSON(value)
+                for (_, value) in jsonResult {
+                    seasons.append(self.makeSeasonObject(value: value))
+                }
+                completion(seasons)
 
             case .failure(let error):
                 print(error)
@@ -148,6 +166,13 @@ class JSONParser {
                         gtScore: value["gt_score"].int ?? 0,
                         opponentScore: value["opp_score"].int ?? 0)
         return game
+    }
+
+    private func makeSeasonObject(value: JSON) -> Season {
+        let season = Season(id: value["id"].int!,
+                            name: value["name"].string!,
+                            year: value["year"].int!)
+        return season
     }
 
     private func makePlayerObject(value: JSON) -> Player {
