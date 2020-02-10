@@ -30,6 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
+//        let pushManager = PushNotificationManager(userID: "currently_logged_in_user_id")
+//        pushManager.registerForPushNotifications()
+
         FirebaseApp.configure()
 
         if #available(iOS 10.0, *) {

@@ -371,8 +371,11 @@ class ScheduleDetailViewController: UIViewController {
     }
 
     private func openInMaps(with location: Annotation) {
-        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]
-        location.mapItem().openInMaps(launchOptions: launchOptions)
+        PushNotificationSender().sendPushNotification(to: "d1UkeFyd8UG0pZASZra4e-:APA91bGfRFvEkgK-jTLVn_6Ch-gdm2tsXn1-xJDlfCGY2VjaiUdplteZpS98FtU3oaHvjsan5DcLlo6Ba9Ab7s3zE1NW7cLIDym9DiwEzDstUEbVYqXJI_h69w5cGYj1QoLvSkdxc_t4",
+                                                      title: "GT Hockey",
+                                                      body: "This is a test of the GT Hockey notification system")
+//        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]
+//        location.mapItem().openInMaps(launchOptions: launchOptions)
     }
 
 }
