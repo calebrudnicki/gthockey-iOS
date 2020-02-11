@@ -80,6 +80,8 @@
 		82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */; };
 		82DE670E23F459A2003E13E6 /* AppIconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670D23F459A2003E13E6 /* AppIconHelper.swift */; };
 		82DE670323F0BA6B003E13E6 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670223F0BA6B003E13E6 /* PushNotificationSender.swift */; };
+		82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */; };
+		82DE670A23F1E4CC003E13E6 /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670923F1E4CC003E13E6 /* PushNotificationHelper.swift */; };
 		82E50BDC23CE9978009A3B92 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E50BDB23CE9978009A3B92 /* DateHelper.swift */; };
 		82EE57E12341B2BC00FCC181 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E02341B2BC00FCC181 /* Game.swift */; };
 		82EE57E32341B36200FCC181 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E22341B36200FCC181 /* Player.swift */; };
@@ -176,6 +178,8 @@
 		82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		82DE670D23F459A2003E13E6 /* AppIconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconHelper.swift; sourceTree = "<group>"; };
 		82DE670223F0BA6B003E13E6 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
+		82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
+		82DE670923F1E4CC003E13E6 /* PushNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
 		82E50BDB23CE9978009A3B92 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		82EE57E02341B2BC00FCC181 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		82EE57E22341B36200FCC181 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 			children = (
 				8206D3E923CCC41E00863B3C /* AllUsers */,
 				8206D3EB23CCC43100863B3C /* AdminUsers */,
+				82DE670623F0DC14003E13E6 /* NotificationCenter */,
 			);
 			path = AdminFlow;
 			sourceTree = "<group>";
@@ -361,6 +366,7 @@
 				82E50BDB23CE9978009A3B92 /* DateHelper.swift */,
 				82DE670D23F459A2003E13E6 /* AppIconHelper.swift */,
 				823781862399968100CBD399 /* StripeClient.swift */,
+				82DE670923F1E4CC003E13E6 /* PushNotificationHelper.swift */,
 				82DE670223F0BA6B003E13E6 /* PushNotificationSender.swift */,
 				82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */,
 				82DCB482233C402300BDE2FE /* Assets.xcassets */,
@@ -371,6 +377,15 @@
 				82F85587236C7B4A00DE7AFD /* GT Hockey.entitlements */,
 			);
 			path = "gthockey-iOS";
+			sourceTree = "<group>";
+		};
+		82DE670623F0DC14003E13E6 /* NotificationCenter */ = {
+			isa = PBXGroup;
+			children = (
+				82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */,
+			);
+			name = NotificationCenter;
+			path = ../..;
 			sourceTree = "<group>";
 		};
 		82F468EC237F4BD800573EE5 /* CartFlow */ = {
@@ -626,6 +641,7 @@
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */,
 				826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */,
+				82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */,
 				8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */,
 				8206D3F323CD350900863B3C /* AllUsersTableViewFooter.swift in Sources */,
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
@@ -642,6 +658,7 @@
 				82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
 				8206D3EF23CD307E00863B3C /* AppUser.swift in Sources */,
+				82DE670A23F1E4CC003E13E6 /* PushNotificationHelper.swift in Sources */,
 				82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */,
 				82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */,
 				82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */,

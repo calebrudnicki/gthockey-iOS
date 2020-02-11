@@ -9,13 +9,19 @@
 import Foundation
 
 class PushNotificationSender {
-    func sendPushNotification(to token: String, title: String, body: String) {
+
+    init() {}
+
+    // MARK: Public Functions
+
+    public func sendPushNotification(to tokens: [String], title: String, body: String, completion: @escaping () -> Void) {
         let urlString = "https://fcm.googleapis.com/fcm/send"
         let url = NSURL(string: urlString)!
-        let paramString: [String : Any] = ["to" : token,
+        let paramString: [String : Any] = ["registration_ids" : tokens,
                                            "notification" : ["title" : title, "body" : body],
                                            "data" : ["user" : "test_id"]
         ]
+
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = "POST"
         request.httpBody = try? JSONSerialization.data(withJSONObject:paramString, options: [.prettyPrinted])
@@ -33,5 +39,9 @@ class PushNotificationSender {
             }
         }
         task.resume()
+        completion()
     }
+    
 }
+
+

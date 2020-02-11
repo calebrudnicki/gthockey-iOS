@@ -33,11 +33,12 @@ class AdminHelper {
                 if let firstName = ((document.data() as NSDictionary)["firstName"] as! String?),
                     let lastName = ((document.data() as NSDictionary)["lastName"] as! String?),
                     let email = ((document.data() as NSDictionary)["email"] as! String?),
+                    let fcmToken = ((document.data() as NSDictionary)["fcmToken"] as! String?),
                     let lastLogin = ((document.data() as NSDictionary)["lastLogin"] as! String?),
                     let isAdmin = ((document.data() as NSDictionary)["isAdmin"] as! Bool?) {
 
                     let appUser = AppUser(firstName: firstName, lastName: lastName, email: email,
-                                          lastLogin: lastLogin, isAdmin: isAdmin)
+                                          fcmToken: fcmToken, lastLogin: lastLogin, isAdmin: isAdmin)
 
                     if lastLogin == "No login yet" {
                         appUserWithoutLastLoginArray.append(appUser)
@@ -47,6 +48,33 @@ class AdminHelper {
                 }
             }
             completion(appUserWithLastLoginArray, appUserWithoutLastLoginArray, nil)
+        }
+    }
+
+    public func getAllUsersWithValidFCMToken(completion: @escaping ([AppUser], Error?) -> Void) {
+        let db = Firestore.firestore()
+
+        db.collection("users").getDocuments { (document, error) in
+            guard let documents = document?.documents else { return }
+
+            var appUsersWithValidFCMToken: [AppUser] = []
+
+            for document in documents {
+                if let firstName = ((document.data() as NSDictionary)["firstName"] as! String?),
+                    let lastName = ((document.data() as NSDictionary)["lastName"] as! String?),
+                    let email = ((document.data() as NSDictionary)["email"] as! String?),
+                    let fcmToken = ((document.data() as NSDictionary)["fcmToken"] as! String?),
+                    let lastLogin = ((document.data() as NSDictionary)["lastLogin"] as! String?),
+                    let isAdmin = ((document.data() as NSDictionary)["isAdmin"] as! Bool?) {
+
+                    if fcmToken != "" && fcmToken.lowercased() != "no fcm token" {
+                        let appUser = AppUser(firstName: firstName, lastName: lastName, email: email,
+                        fcmToken: fcmToken, lastLogin: lastLogin, isAdmin: isAdmin)
+                        appUsersWithValidFCMToken.append(appUser)
+                    }
+                }
+            }
+            completion(appUsersWithValidFCMToken, nil)
         }
     }
 
@@ -114,6 +142,20 @@ class AdminHelper {
                 }
             }
             completion(false)
+        }
+    }
+
+    public func setForAllUsers(category: String, value: String, nilValues: [String], completion: @escaping () -> Void) {
+        let db = Firestore.firestore()
+
+        db.collection("users").getDocuments { (document, error) in
+            guard let documents = document?.documents else { return }
+            for document in documents {
+                if document.data()[category] == nil || !nilValues.contains(document.data()[category] as? String ?? "") {
+                    document.reference.setData([category: value], merge: true)
+                }
+            }
+            completion()
         }
     }
 
