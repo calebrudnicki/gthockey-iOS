@@ -46,6 +46,8 @@ class AuthenticationHelper {
                                 if error != nil {
                                     completion(false, error)
                                 }
+                                let pushManager = PushNotificationHelper(userID: user.uid)
+                                pushManager.registerForPushNotifications()
                                 self.setUserDefaults(with: email, password: password, isAdmin: true)
                                 completion(true, nil)
                             }

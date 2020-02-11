@@ -15,15 +15,17 @@ class AppUser {
     private var firstName: String
     private var lastName: String
     private var email: String
+    private var fcmToken: String
     private var lastLogin: String
     private var isAdmin: Bool
 
     // MARK: Init
 
-    init(firstName: String, lastName: String, email: String, lastLogin: String, isAdmin: Bool) {
+    init(firstName: String, lastName: String, email: String, fcmToken: String, lastLogin: String, isAdmin: Bool) {
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
+        self.fcmToken = fcmToken
         self.lastLogin = lastLogin
         self.isAdmin = isAdmin
     }
@@ -40,6 +42,10 @@ class AppUser {
 
     func getEmail() -> String {
         return email
+    }
+
+    func getFCMToken() -> String {
+        return fcmToken
     }
 
     func getLastLogin() -> String {
