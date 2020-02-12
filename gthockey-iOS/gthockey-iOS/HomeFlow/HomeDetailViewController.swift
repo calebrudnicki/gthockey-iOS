@@ -28,6 +28,7 @@ class HomeDetailViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -71,6 +72,7 @@ class HomeDetailViewController: UIViewController {
             view.backgroundColor = .white
         }
 
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         view.addSubview(scrollView)
@@ -153,6 +155,13 @@ class HomeDetailViewController: UIViewController {
     }
 
     // MARK: Action
+
+    @IBAction func imageViewTapped() {
+        let fullScreenImageViewController = FullScreenImageViewController()
+        fullScreenImageViewController.set(with: imageView.image ?? UIImage())
+        fullScreenImageViewController.modalPresentationStyle = .overFullScreen
+        present(fullScreenImageViewController, animated: false, completion: nil)
+    }
 
     @objc private func closeButtonTapped() {
         dismiss(animated: true, completion: nil)
