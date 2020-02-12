@@ -77,11 +77,8 @@
 		82DCB486233C402300BDE2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */; };
 		82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */; };
 		82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE66E223EE5DD5003E13E6 /* Season.swift */; };
-<<<<<<< HEAD
 		82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */; };
 		82DE670E23F459A2003E13E6 /* AppIconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670D23F459A2003E13E6 /* AppIconHelper.swift */; };
-=======
->>>>>>> 2f9d6631ac5b9d8192d63670a4dec7b06d47c56f
 		82DE670323F0BA6B003E13E6 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670223F0BA6B003E13E6 /* PushNotificationSender.swift */; };
 		82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */; };
 		82DE670A23F1E4CC003E13E6 /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670923F1E4CC003E13E6 /* PushNotificationHelper.swift */; };
@@ -178,11 +175,8 @@
 		82DCB487233C402300BDE2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		82DE66E223EE5DD5003E13E6 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
 		82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
 		82DE670D23F459A2003E13E6 /* AppIconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconHelper.swift; sourceTree = "<group>"; };
-=======
->>>>>>> 2f9d6631ac5b9d8192d63670a4dec7b06d47c56f
 		82DE670223F0BA6B003E13E6 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
 		82DE670923F1E4CC003E13E6 /* PushNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
