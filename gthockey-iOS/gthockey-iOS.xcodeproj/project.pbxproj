@@ -78,6 +78,7 @@
 		82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */; };
 		82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE66E223EE5DD5003E13E6 /* Season.swift */; };
 		82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */; };
+		82DE670E23F459A2003E13E6 /* AppIconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670D23F459A2003E13E6 /* AppIconHelper.swift */; };
 		82E50BDC23CE9978009A3B92 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E50BDB23CE9978009A3B92 /* DateHelper.swift */; };
 		82EE57E12341B2BC00FCC181 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E02341B2BC00FCC181 /* Game.swift */; };
 		82EE57E32341B36200FCC181 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E22341B36200FCC181 /* Player.swift */; };
@@ -172,6 +173,7 @@
 		82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		82DE66E223EE5DD5003E13E6 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
+		82DE670D23F459A2003E13E6 /* AppIconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconHelper.swift; sourceTree = "<group>"; };
 		82E50BDB23CE9978009A3B92 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		82EE57E02341B2BC00FCC181 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		82EE57E22341B36200FCC181 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -355,6 +357,7 @@
 				8206D3DA23CBBBEF00863B3C /* AdminHelper.swift */,
 				82C2467E2384F4B7003CB268 /* CartHelper.swift */,
 				82E50BDB23CE9978009A3B92 /* DateHelper.swift */,
+				82DE670D23F459A2003E13E6 /* AppIconHelper.swift */,
 				823781862399968100CBD399 /* StripeClient.swift */,
 				82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */,
 				82DCB482233C402300BDE2FE /* Assets.xcassets */,
@@ -627,6 +630,7 @@
 				82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
 				82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */,
+				82DE670E23F459A2003E13E6 /* AppIconHelper.swift in Sources */,
 				8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */,
 				8206D3F923CE532200863B3C /* SettingsTextFieldTableViewCell.swift in Sources */,
 				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
@@ -784,14 +788,14 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -808,14 +812,14 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.4;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				PROVISIONING_PROFILE_SPECIFIER = "";
