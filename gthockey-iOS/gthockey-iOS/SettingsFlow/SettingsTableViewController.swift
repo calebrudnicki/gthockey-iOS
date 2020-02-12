@@ -211,18 +211,16 @@ extension SettingsTableViewController: SettingsIconTableViewCellDelegate {
     func didSelectCell(with appIcon: AppIcon) {
         AuthenticationHelper().updateUserProperties(with: appIcon.description, completion: { result in
             if result {
-                self.appIcon = appIcon.description
-                self.tableView.reloadSections(IndexSet(integer: 2), with: UITableView.RowAnimation.none)
-
-                guard UIApplication.shared.supportsAlternateIcons else {
-                    return
-                }
-
-                UIApplication.shared.setAlternateIconName(appIcon.description, completionHandler: { (error) in
-                    if let error = error {
-                        print("App icon failed to change due to \(error.localizedDescription)")
+                AppIconHelper().switchAppIcon(to: appIcon, completion: { error in
+                    if error != nil {
+                        let alert = UIAlertController(title: "App icon switch failed",
+                                                  message: error?.localizedDescription,
+                                                  preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
                     } else {
-                        print("App icon changed successfully")
+                        self.appIcon = appIcon.description
+                        self.tableView.reloadSections(IndexSet(integer: 2), with: UITableView.RowAnimation.none)
                     }
                 })
             }
