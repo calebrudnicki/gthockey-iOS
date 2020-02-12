@@ -12,6 +12,8 @@ class FullScreenImageViewController: UIViewController {
 
     // MARK: Properties
 
+    private var image = UIImage()
+
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
@@ -19,9 +21,6 @@ class FullScreenImageViewController: UIViewController {
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
-
-
-    private var image = UIImage()
 
     private let imageView: UIImageView = {
         let imageView = UIImageView()

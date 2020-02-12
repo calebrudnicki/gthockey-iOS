@@ -36,6 +36,7 @@ class ShopDetailViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -118,6 +119,7 @@ class ShopDetailViewController: UIViewController {
             view.backgroundColor = .white
         }
 
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         addToCartButton.addTarget(self, action: #selector(addToCartButtonTapped), for: .touchUpInside)
@@ -252,6 +254,13 @@ class ShopDetailViewController: UIViewController {
     }
 
     // MARK: Action
+
+    @objc func imageViewTapped() {
+        let fullScreenImageViewController = FullScreenImageViewController()
+        fullScreenImageViewController.set(with: imageView.image ?? UIImage())
+        fullScreenImageViewController.modalPresentationStyle = .overFullScreen
+        present(fullScreenImageViewController, animated: false, completion: nil)
+    }
 
     @objc private func closeButtonTapped() {
         dismiss(animated: true, completion: nil)

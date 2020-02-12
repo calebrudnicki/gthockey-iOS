@@ -28,6 +28,7 @@ class RosterDetailViewController: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -72,6 +73,7 @@ class RosterDetailViewController: UIViewController {
         positionLabel.numberOfLines = 0
         positionLabel.sizeToFit()
         positionLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        positionLabel.textColor = .gray
         positionLabel.translatesAutoresizingMaskIntoConstraints = false
         return positionLabel
     }()
@@ -81,6 +83,7 @@ class RosterDetailViewController: UIViewController {
         hometownLabel.numberOfLines = 0
         hometownLabel.sizeToFit()
         hometownLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        hometownLabel.textColor = .gray
         hometownLabel.translatesAutoresizingMaskIntoConstraints = false
         return hometownLabel
     }()
@@ -90,6 +93,7 @@ class RosterDetailViewController: UIViewController {
         schoolLabel.numberOfLines = 0
         schoolLabel.sizeToFit()
         schoolLabel.font = UIFont(name: "HelveticaNeue-Light", size: 16.0)
+        schoolLabel.textColor = .gray
         schoolLabel.translatesAutoresizingMaskIntoConstraints = false
         return schoolLabel
     }()
@@ -113,6 +117,7 @@ class RosterDetailViewController: UIViewController {
             view.backgroundColor = .white
         }
 
+        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
         view.addSubview(scrollView)
@@ -220,6 +225,13 @@ class RosterDetailViewController: UIViewController {
     }
 
     // MARK: Action
+
+    @objc func imageViewTapped() {
+        let fullScreenImageViewController = FullScreenImageViewController()
+        fullScreenImageViewController.set(with: imageView.image ?? UIImage())
+        fullScreenImageViewController.modalPresentationStyle = .overFullScreen
+        present(fullScreenImageViewController, animated: false, completion: nil)
+    }
 
     @objc private func closeButtonTapped() {
         dismiss(animated: true, completion: nil)

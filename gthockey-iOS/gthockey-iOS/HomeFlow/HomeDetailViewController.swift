@@ -156,7 +156,7 @@ class HomeDetailViewController: UIViewController {
 
     // MARK: Action
 
-    @IBAction func imageViewTapped() {
+    @objc func imageViewTapped() {
         let fullScreenImageViewController = FullScreenImageViewController()
         fullScreenImageViewController.set(with: imageView.image ?? UIImage())
         fullScreenImageViewController.modalPresentationStyle = .overFullScreen
