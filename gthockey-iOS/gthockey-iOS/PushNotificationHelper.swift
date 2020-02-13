@@ -16,7 +16,8 @@ class PushNotificationHelper: NSObject {
 
     // MARK: Properties
 
-    let userID: String
+    private let userID: String
+    private let gcmMessageIDKey = "gcm.message_id"
 
     // MARK: Init
 
@@ -68,10 +69,41 @@ extension PushNotificationHelper: MessagingDelegate {
 
 }
 
+@available(iOS 10, *)
 extension PushNotificationHelper: UNUserNotificationCenterDelegate {
 
-    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-        print(response)
+    // Receive displayed notifications for iOS 10 devices.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+
+        // Print full message.
+        print(userInfo)
+
+        // Change this to your preferred presentation option
+        completionHandler([.alert, .sound, .badge])
     }
 
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+
+        // Print full message.
+        print(userInfo)
+
+        completionHandler()
+    }
 }

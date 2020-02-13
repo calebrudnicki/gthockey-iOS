@@ -26,26 +26,48 @@ class NotificationCenterViewController: UIViewController {
         return backgroundView
     }()
 
+    private let titleLabel: UILabel = {
+        let titleLabel = UILabel()
+        titleLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
+        titleLabel.text = "Title"
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.numberOfLines = 1
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        return titleLabel
+    }()
+
     private let titleTextView: UITextView = {
         let titleTextView = UITextView()
         titleTextView.layer.borderWidth = 1.0
         titleTextView.layer.cornerRadius = 5.0
         titleTextView.font = UIFont(name: "HelveticaNeue", size: 24.0)
+        titleTextView.layer.borderColor = UIColor.techNavy.cgColor
         titleTextView.textContainer.maximumNumberOfLines = 2
         titleTextView.translatesAutoresizingMaskIntoConstraints = false
         return titleTextView
+    }()
+
+    private let bodyLabel: UILabel = {
+        let bodyLabel = UILabel()
+        bodyLabel.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
+        bodyLabel.text = "Body"
+        bodyLabel.adjustsFontSizeToFitWidth = true
+        bodyLabel.numberOfLines = 1
+        bodyLabel.translatesAutoresizingMaskIntoConstraints = false
+        return bodyLabel
     }()
 
     private let bodyTextView: UITextView = {
         let bodyTextView = UITextView()
         bodyTextView.layer.borderWidth = 1.0
         bodyTextView.layer.cornerRadius = 5.0
-        bodyTextView.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
+        bodyTextView.font = UIFont(name: "HelveticaNeue", size: 24.0)
+        bodyTextView.layer.borderColor = UIColor.techNavy.cgColor
         bodyTextView.translatesAutoresizingMaskIntoConstraints = false
         return bodyTextView
     }()
 
-    private let sendNotificationButton = PillButton(title: "Send notification", backgroundColor: .techNavy, borderColor: .techNavy, isEnabled: true)
+    private let sendNotificationButton = PillButton(title: "Send notification", backgroundColor: .techNavy, borderColor: .techNavy, isEnabled: false)
 
     // MARK: Init
 
@@ -83,21 +105,21 @@ class NotificationCenterViewController: UIViewController {
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemBackground
             titleTextView.textColor = .label
-            titleTextView.layer.borderColor = UIColor.label.cgColor
             bodyTextView.textColor = .label
-            bodyTextView.layer.borderColor = UIColor.label.cgColor
         } else {
             view.backgroundColor = .white
             titleTextView.textColor = .black
-            titleTextView.layer.borderColor = UIColor.black.cgColor
             bodyTextView.textColor = .black
-            bodyTextView.layer.borderColor = UIColor.black.cgColor
         }
+
+        titleTextView.delegate = self
+        bodyTextView.delegate = self
 
         sendNotificationButton.addTarget(self, action: #selector(sendNotificationButtonTapped), for: .touchUpInside)
 
         view.addSubview(scrollView)
-        scrollView.addSubviews([backgroundView, titleTextView, bodyTextView, sendNotificationButton])
+        scrollView.addSubviews([backgroundView, titleLabel, titleTextView,
+                                bodyLabel, bodyTextView, sendNotificationButton])
 
         updateViewConstraints()
     }
@@ -121,21 +143,33 @@ class NotificationCenterViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            titleTextView.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 16.0),
+            titleLabel.topAnchor.constraint(equalTo: backgroundView.topAnchor, constant: 16.0),
+            titleLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            titleLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            titleTextView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8.0),
             titleTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             titleTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             titleTextView.heightAnchor.constraint(equalToConstant: 80.0)
         ])
 
         NSLayoutConstraint.activate([
-            bodyTextView.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: 12.0),
+            bodyLabel.topAnchor.constraint(equalTo: titleTextView.bottomAnchor, constant: 16.0),
+            bodyLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            bodyLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            bodyTextView.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: 8.0),
             bodyTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             bodyTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             bodyTextView.heightAnchor.constraint(equalTo: titleTextView.heightAnchor, multiplier: 3.0)
         ])
 
         NSLayoutConstraint.activate([
-            sendNotificationButton.topAnchor.constraint(equalTo: bodyTextView.bottomAnchor, constant: 12.0),
+            sendNotificationButton.topAnchor.constraint(equalTo: bodyTextView.bottomAnchor, constant: 16.0),
             sendNotificationButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             sendNotificationButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
         ])
@@ -147,28 +181,60 @@ class NotificationCenterViewController: UIViewController {
         delegate?.handleMenuToggle(forMainMenuOption: nil)
     }
 
+    @objc private func validateTextFields() {
+        guard
+            let titleText = titleTextView.text,
+            let bodyText = bodyTextView.text
+        else { return }
+
+        if titleText.count > 1 && bodyText.count > 1 {
+            sendNotificationButton.isEnabled = true
+        } else {
+            sendNotificationButton.isEnabled = false
+        }
+    }
+
     @objc private func sendNotificationButtonTapped() {
-        AdminHelper().getAllUsersWithValidFCMToken(completion: { (usersWithValidFCMToken, error) in
+        guard
+            let titleText = titleTextView.text,
+            let bodyText = bodyTextView.text
+        else { return }
 
-            print(usersWithValidFCMToken.forEach { print($0.getFirstName(), $0.getFCMToken()) })
-            print(usersWithValidFCMToken.count)
+        sendNotificationButton.isLoading = true
 
-            var tokens: [String] = []
+        let alert = UIAlertController(title: titleText,
+                                      message: bodyText,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Don't send", style: .destructive, handler: { action in
+            self.sendNotificationButton.isLoading = false
+        }))
+        alert.addAction(UIAlertAction(title: "Send", style: .default, handler: { action in
+            AdminHelper().getAllUsersWithValidFCMToken(completion: { (usersWithValidFCMToken, error) in
+                var tokens: [String] = []
 
-            for user in usersWithValidFCMToken {
-                tokens.append(user.getFCMToken())
-            }
-//            let tokens = usersWithValidFCMToken.forEach { return $0.getFCMToken() }
+                for user in usersWithValidFCMToken {
+                    tokens.append(user.getFCMToken())
+                }
 
-            PushNotificationSender().sendPushNotification(to: tokens,
-                                                          title: self.titleTextView.text ?? "GT Hockey",
-                                                          body: self.bodyTextView.text ?? "This is a test of the GT Hockey notification system", completion: {
+                PushNotificationSender().sendPushNotification(to: tokens,
+                                                              title: titleText,
+                                                              body: bodyText,
+                                                              completion: {
+                                                                self.sendNotificationButton.isLoading = false
+                                                                self.titleTextView.text = ""
+                                                                self.bodyTextView.text = ""
+                })
             })
-        })
-
-//        AdminHelper().setForAllUsers(category: "appIcon", value: "Buzz", nilValues: ["RamblinReck", "HeritageT"], completion: {
-//            print("done")
-//        })
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
     
+}
+
+extension NotificationCenterViewController: UITextViewDelegate {
+
+    func textViewDidChange(_ textView: UITextView) {
+        validateTextFields()
+    }
+
 }
