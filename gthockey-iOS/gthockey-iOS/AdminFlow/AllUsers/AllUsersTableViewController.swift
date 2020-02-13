@@ -66,11 +66,6 @@ class AllUsersTableViewController: UITableViewController {
     @objc private func fetchAllUsers() {
         AdminHelper().getAllUsers(completion: { (usersWithLastLogin, usersWithoutLastLogin, error) in
             self.allUsersWithLastLogin = usersWithLastLogin
-
-//            self.allUsersWithLastLogin.sort {
-//                DateHelper().formatDate(from: $0.getLastLogin(), withTime: true) < DateHelper().formatDate(from: $1.getLastLogin(), withTime: true)
-//            }
-
             self.allUsersWithoutLastLogin = usersWithoutLastLogin
 
             DispatchQueue.main.async {
