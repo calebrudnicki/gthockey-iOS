@@ -103,7 +103,7 @@ class AllUsersTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100.0
+        return 136.0
     }
 
     // MARK: Action

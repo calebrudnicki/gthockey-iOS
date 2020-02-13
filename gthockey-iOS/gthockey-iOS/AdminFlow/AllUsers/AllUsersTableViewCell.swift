@@ -39,12 +39,21 @@ class AllUsersTableViewCell: UITableViewCell {
         return lastLoginLabel
     }()
 
+    private let fcmTokenLabel: UILabel = {
+        let fcmTokenLabel = UILabel()
+        fcmTokenLabel.font = UIFont(name:"HelveticaNeue-light", size: 16.0)
+        fcmTokenLabel.lineBreakMode = .byTruncatingTail
+        fcmTokenLabel.numberOfLines = 1
+        fcmTokenLabel.translatesAutoresizingMaskIntoConstraints = false
+        return fcmTokenLabel
+    }()
+
     // MARK: Init
 
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.addSubviews([nameLabel, emailLabel, lastLoginLabel])
+        contentView.addSubviews([nameLabel, emailLabel, lastLoginLabel, fcmTokenLabel])
         updateConstraints()
     }
 
@@ -72,6 +81,12 @@ class AllUsersTableViewCell: UITableViewCell {
             lastLoginLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
             lastLoginLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
         ])
+
+        NSLayoutConstraint.activate([
+            fcmTokenLabel.topAnchor.constraint(equalTo: lastLoginLabel.bottomAnchor, constant: 8.0),
+            fcmTokenLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+            fcmTokenLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
+        ])
     }
 
     // MARK: Setter
@@ -80,6 +95,7 @@ class AllUsersTableViewCell: UITableViewCell {
         nameLabel.text = appUser.getFirstName() + " " + appUser.getLastName()
         emailLabel.text = appUser.getEmail()
         lastLoginLabel.text = appUser.getLastLogin()
+        fcmTokenLabel.text = appUser.getFCMToken()
     }
 
 }
