@@ -79,9 +79,7 @@ class MenuTableViewFooter: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            versionLabel.text = "\(String(describing: versionLabel.text!)) | Version \(version)"
-        }
+        versionLabel.text = "\(String(describing: versionLabel.text!)) | Version \(AppVersionHelper().getCurrentVersion())"
 
         instagramButton.addTarget(self, action: #selector(instagramButtonTapped), for: .touchUpInside)
         twitterButton.addTarget(self, action: #selector(twitterButtonTapped), for: .touchUpInside)

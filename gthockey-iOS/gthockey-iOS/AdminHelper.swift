@@ -145,48 +145,4 @@ class AdminHelper {
         }
     }
 
-    public func setForAllUsers(category: String, value: String, nilValues: [String], completion: @escaping () -> Void) {
-        let db = Firestore.firestore()
-
-        db.collection("users").getDocuments { (document, error) in
-            guard let documents = document?.documents else { return }
-            for document in documents {
-                if document.data()[category] == nil || !nilValues.contains(document.data()[category] as? String ?? "") {
-                    document.reference.setData([category: value], merge: true)
-                }
-            }
-            completion()
-        }
-    }
-
-    public func setForOneUser(with uid: String, category: String, value: String, nilValues: [String], completion: @escaping () -> Void) {
-        let db = Firestore.firestore()
-
-        db.collection("users").document(uid).getDocument { (document, error) in
-            if let document = document, document.exists {
-                if document[category] == nil || nilValues.contains(document[category] as! String) {
-                    document.reference.setData([category: value], merge: true)
-                }
-            } else {
-                print("Document does not exist")
-            }
-            completion()
-        }
-    }
-
-    public func overrideForOneUser(with dict: [String: Any], for uid: String, completion: @escaping () -> Void) {
-        let db = Firestore.firestore()
-
-        db.collection("users").document(uid).getDocument { (document, error) in
-            if let document = document, document.exists {
-                for (key, val) in dict {
-                    document.reference.setData([key: val], merge: true)
-                }
-            } else {
-                print("Document does not exist")
-            }
-            completion()
-        }
-    }
-
 }

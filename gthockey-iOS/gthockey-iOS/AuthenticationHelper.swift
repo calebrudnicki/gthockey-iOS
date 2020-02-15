@@ -27,7 +27,7 @@ class AuthenticationHelper {
 
 
                         self.getUserPropertiesForLogin(completion: { _ in
-                            AdminHelper().overrideForOneUser(with: ["lastLogin": DateHelper().getTimestamp()], for: user.uid, completion: {
+                            UserPropertyHelper().overrideForOneUser(with: ["lastLogin": DateHelper().getTimestamp()], for: user.uid, completion: {
                                 let pushManager = PushNotificationHelper(userID: user.uid)
                                 pushManager.registerForPushNotifications()
 
@@ -111,7 +111,7 @@ class AuthenticationHelper {
 
                 let versionNumber = ((document.data()! as NSDictionary)["versionNumber"] as? String ?? "No Version Number")
 
-                if self.isFirstVersionUse(userVersion: versionNumber) {
+                if AppVersionHelper().isUpToDate(with: versionNumber) {
                     //Update for newest version
                     var dict: [String : Any] = [:]
 
@@ -119,13 +119,12 @@ class AuthenticationHelper {
                     let appIcon = document["appIcon"] as? String ?? "Buzz"
                     dict["appIcon"] = appIcon
                     //v1.5
-                    let versionNumber = self.getVersionNumber()
+                    let versionNumber = AppVersionHelper().getCurrentVersion()
                     dict["versionNumber"] = versionNumber
                     let fcmToken = document["fcmToken"] as? String ?? "No FCM Token"
                     dict["fcmToken"] = fcmToken
 
-                    AdminHelper().overrideForOneUser(with: dict, for: user.uid, completion: {
-                        print("updated user")
+                    UserPropertyHelper().overrideForOneUser(with: dict, for: user.uid, completion: {
                         completion(["firstName": document["firstName"] as? String ?? "",
                                     "lastName": document["lastName"] as? String ?? "",
                                     "email": document["email"] as? String ?? "",
@@ -193,20 +192,6 @@ class AuthenticationHelper {
         UserDefaults.standard.set(email, forKey: "email")
         UserDefaults.standard.set(password, forKey: "password")
         UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
-    }
-
-    private func getVersionNumber() -> String {
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            return version
-        }
-        return "No Version Number"
-    }
-
-    private func isFirstVersionUse(userVersion: String) -> Bool {
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-            return version != userVersion
-        }
-        return false
     }
 
 }
