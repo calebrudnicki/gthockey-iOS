@@ -66,7 +66,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     @objc private func fetchUserInfo() {
-        AuthenticationHelper().getUserProperties1(completion: { propertiesDictionary in
+        UserPropertyHelper().getAllUserProperties(completion: { propertiesDictionary in
             self.firstName = propertiesDictionary["firstName"] as? String
             self.lastName = propertiesDictionary["lastName"] as? String
             self.email = propertiesDictionary["email"] as? String
@@ -165,12 +165,10 @@ class SettingsTableViewController: UITableViewController {
     @objc private func saveButtonTapped() {
         if let firstName = firstName, let lastName = lastName,
             firstName != userProperties["firstName"] as! String || lastName != userProperties["lastName"] as! String {
-            AuthenticationHelper().updateUserProperties(with: firstName, lastName: lastName, completion: { result in
-                if result {
-                    self.userProperties["firstName"] = firstName
-                    self.userProperties["lastName"] = lastName
-                    self.saveButton?.isEnabled = false
-                }
+            UserPropertyHelper().overrideForCurrentUser(with: ["firstName": firstName, "lastName": lastName], completion: {
+                self.userProperties["firstName"] = firstName
+                self.userProperties["lastName"] = lastName
+                self.saveButton?.isEnabled = false
             })
         }
     }
@@ -209,21 +207,19 @@ extension SettingsTableViewController: SettingsSwitchControlTableViewCellDelegat
 extension SettingsTableViewController: SettingsIconTableViewCellDelegate {
 
     func didSelectCell(with appIcon: AppIcon) {
-        AuthenticationHelper().updateUserProperties(with: appIcon.description, completion: { result in
-            if result {
-                AppIconHelper().switchAppIcon(to: appIcon, completion: { error in
-                    if error != nil {
-                        let alert = UIAlertController(title: "App icon switch failed",
-                                                  message: error?.localizedDescription,
-                                                  preferredStyle: .alert)
-                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                    } else {
-                        self.appIcon = appIcon.description
-                        self.tableView.reloadSections(IndexSet(integer: 2), with: UITableView.RowAnimation.none)
-                    }
-                })
-            }
+        UserPropertyHelper().overrideForCurrentUser(with: ["appIcon": appIcon.description], completion: {
+            AppIconHelper().switchAppIcon(to: appIcon, completion: { error in
+                if error != nil {
+                    let alert = UIAlertController(title: "App icon switch failed",
+                                              message: error?.localizedDescription,
+                                              preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    self.appIcon = appIcon.description
+                    self.tableView.reloadSections(IndexSet(integer: 2), with: UITableView.RowAnimation.none)
+                }
+            })
         })
     }
 

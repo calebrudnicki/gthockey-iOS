@@ -101,6 +101,8 @@ class AuthenticationHelper {
         }
     }
 
+    // MARK: Private Functions
+
     private func getUserPropertiesForLogin(completion: @escaping ([String : Any]) -> Void) {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
@@ -135,58 +137,13 @@ class AuthenticationHelper {
                         ])
                     })
                 } else {
-                    completion(["firstName": document["firstName"] as? String ?? "",
-                                "lastName": document["lastName"] as? String ?? "",
-                                "email": document["email"] as? String ?? "",
-                                "appIcon": document["appIcon"] as? String ?? "",
-                                "fcmToken": document["fcmToken"] as? String ?? "",
-                                "versionNumber": versionNumber,
-                                "cart": document["cart"] as? String ?? []
-                    ])
+                    UserPropertyHelper().getAllUserProperties(completion: { userProperties in
+                        completion(userProperties)
+                    })
                 }
             }
         }
     }
-
-    public func getUserProperties1(completion: @escaping ([String : Any]) -> Void) {
-        if let user = Auth.auth().currentUser {
-            let db = Firestore.firestore()
-            db.collection("users").document(user.uid).getDocument { (document, error) in
-                guard let document = document,
-                    document.exists
-                    else { return }
-
-                completion(["firstName": document["firstName"] as? String ?? "",
-                            "lastName": document["lastName"] as? String ?? "",
-                            "email": document["email"] as? String ?? "",
-                            "appIcon": document["appIcon"] as? String ?? "",
-                            "fcmToken": document["fcmToken"] as? String ?? "",
-                            "versionNumber": document["versionNumber"] as? String ?? "",
-                            "cart": document["cart"] as? String ?? []
-                ])
-            }
-        }
-    }
-
-    public func updateUserProperties(with firstName: String, lastName: String, completion: @escaping (Bool) -> Void) {
-        if let user = Auth.auth().currentUser {
-            let db = Firestore.firestore()
-            db.collection("users").document(user.uid).updateData(["firstName": firstName, "lastName": lastName])
-            completion(true)
-        }
-        completion(false)
-    }
-
-    public func updateUserProperties(with appIcon: String, completion: @escaping (Bool) -> Void) {
-        if let user = Auth.auth().currentUser {
-            let db = Firestore.firestore()
-            db.collection("users").document(user.uid).updateData(["appIcon": appIcon])
-            completion(true)
-        }
-        completion(false)
-    }
-
-    // MARK: Private Functions
 
     private func setUserDefaults(with email: String, password: String, isAdmin: Bool) {
         UserDefaults.standard.set(email, forKey: "email")
