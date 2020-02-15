@@ -14,6 +14,13 @@ class DateHelper {
 
     // MARK: Public Functions
 
+    public func getTimestamp() -> String {
+        let currentDate = Date()
+        let dateStr = DateHelper().formatDate(from: currentDate)
+        let timeStr = DateHelper().formatTime(from: currentDate)
+        return "\(dateStr) \(timeStr)"
+    }
+
     public func formatDate(from date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "M/d/yy"

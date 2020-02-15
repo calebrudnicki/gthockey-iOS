@@ -24,36 +24,18 @@ class AuthenticationHelper {
                     completion(false, error)
                 } else {
                     if let user = user?.user, user.isEmailVerified {
-                        let db = Firestore.firestore()
-                        self.getUserProperties(completion: { propertiesDictionary in
-                            let firstName = propertiesDictionary["firstName"] ?? ""
-                            let lastName = propertiesDictionary["lastName"] ?? ""
-                            let appIcon = propertiesDictionary["appIcon"] ?? "Buzz"
-                            let cart = propertiesDictionary["cart"] ?? []
 
-                            let currentDate = Date()
-                            let dateStr = DateHelper().formatDate(from: currentDate)
-                            let timeStr = DateHelper().formatTime(from: currentDate)
 
-                            db.collection("users").document(user.uid).setData(["firstName": firstName,
-                                                                               "lastName": lastName,
-                                                                               "email": email,
-                                                                               "lastLogin": "\(dateStr) \(timeStr)",
-                                                                               "isAdmin": AdminHelper().isAdminUser(email) ? true : false,
-                                                                               "appIcon": appIcon,
-                                                                               "uid": user.uid,
-                                                                               "cart": cart]) { (error) in
-                                if error != nil {
-                                    completion(false, error)
-                                }
+                        self.getUserPropertiesForLogin(completion: { _ in
+                            AdminHelper().overrideForOneUser(with: ["lastLogin": DateHelper().getTimestamp()], for: user.uid, completion: {
                                 let pushManager = PushNotificationHelper(userID: user.uid)
                                 pushManager.registerForPushNotifications()
+
                                 self.setUserDefaults(with: email, password: password, isAdmin: true)
                                 completion(true, nil)
-                            }
+                            })
                         })
-                    } else {
-                        completion(false, CustomError.emailVerification)
+
                     }
                 }
             }
@@ -68,12 +50,15 @@ class AuthenticationHelper {
             } else {
                 guard let user = result?.user else { return }
                 let db = Firestore.firestore()
+
                 db.collection("users").document(user.uid).setData(["firstName": firstName,
                                                                    "lastName": lastName,
                                                                    "email": email,
                                                                    "isAdmin": AdminHelper().isAdminUser(email) ? true : false,
                                                                    "lastLogin": "No login yet",
                                                                    "appIcon": "Buzz",
+                                                                   "fcmToken": "No FCM Token",
+                                                                   "versionNumber": "No Version Number",
                                                                    "uid": user.uid,
                                                                    "cart": []]) { (error) in
                     if error != nil {
@@ -116,7 +101,7 @@ class AuthenticationHelper {
         }
     }
 
-    public func getUserProperties(completion: @escaping ([String : Any]) -> Void) {
+    private func getUserPropertiesForLogin(completion: @escaping ([String : Any]) -> Void) {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
             db.collection("users").document(user.uid).getDocument { (document, error) in
@@ -124,15 +109,62 @@ class AuthenticationHelper {
                             document.exists
                 else { return }
 
-                if let firstName = ((document.data()! as NSDictionary)["firstName"] as! String?),
-                    let lastName = ((document.data()! as NSDictionary)["lastName"] as! String?),
-                    let email = ((document.data()! as NSDictionary)["email"] as! String?),
-                    let cart = ((document.data()! as NSDictionary)["cart"]) {
-                    // V1.4
-                    let appIcon = ((document.data()! as NSDictionary)["appIcon"] as? String ?? "Buzz")
-                    completion(["firstName": firstName, "lastName": lastName,
-                                "email": email, "appIcon": appIcon, "cart": cart])
+                let versionNumber = ((document.data()! as NSDictionary)["versionNumber"] as? String ?? "No Version Number")
+
+                if self.isFirstVersionUse(userVersion: versionNumber) {
+                    //Update for newest version
+                    var dict: [String : Any] = [:]
+
+                    //v1.4
+                    let appIcon = document["appIcon"] as? String ?? "Buzz"
+                    dict["appIcon"] = appIcon
+                    //v1.5
+                    let versionNumber = self.getVersionNumber()
+                    dict["versionNumber"] = versionNumber
+                    let fcmToken = document["fcmToken"] as? String ?? "No FCM Token"
+                    dict["fcmToken"] = fcmToken
+
+                    AdminHelper().overrideForOneUser(with: dict, for: user.uid, completion: {
+                        print("updated user")
+                        completion(["firstName": document["firstName"] as? String ?? "",
+                                    "lastName": document["lastName"] as? String ?? "",
+                                    "email": document["email"] as? String ?? "",
+                                    "appIcon": appIcon,
+                                    "fcmToken": fcmToken,
+                                    "versionNumber": versionNumber,
+                                    "cart": document["cart"] as? String ?? []
+                        ])
+                    })
+                } else {
+                    completion(["firstName": document["firstName"] as? String ?? "",
+                                "lastName": document["lastName"] as? String ?? "",
+                                "email": document["email"] as? String ?? "",
+                                "appIcon": document["appIcon"] as? String ?? "",
+                                "fcmToken": document["fcmToken"] as? String ?? "",
+                                "versionNumber": versionNumber,
+                                "cart": document["cart"] as? String ?? []
+                    ])
                 }
+            }
+        }
+    }
+
+    public func getUserProperties1(completion: @escaping ([String : Any]) -> Void) {
+        if let user = Auth.auth().currentUser {
+            let db = Firestore.firestore()
+            db.collection("users").document(user.uid).getDocument { (document, error) in
+                guard let document = document,
+                    document.exists
+                    else { return }
+
+                completion(["firstName": document["firstName"] as? String ?? "",
+                            "lastName": document["lastName"] as? String ?? "",
+                            "email": document["email"] as? String ?? "",
+                            "appIcon": document["appIcon"] as? String ?? "",
+                            "fcmToken": document["fcmToken"] as? String ?? "",
+                            "versionNumber": document["versionNumber"] as? String ?? "",
+                            "cart": document["cart"] as? String ?? []
+                ])
             }
         }
     }
@@ -161,6 +193,20 @@ class AuthenticationHelper {
         UserDefaults.standard.set(email, forKey: "email")
         UserDefaults.standard.set(password, forKey: "password")
         UserDefaults.standard.set(isAdmin, forKey: "isAdmin")
+    }
+
+    private func getVersionNumber() -> String {
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return version
+        }
+        return "No Version Number"
+    }
+
+    private func isFirstVersionUse(userVersion: String) -> Bool {
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+            return version != userVersion
+        }
+        return false
     }
 
 }

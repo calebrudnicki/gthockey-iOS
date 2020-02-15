@@ -66,7 +66,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     @objc private func fetchUserInfo() {
-        AuthenticationHelper().getUserProperties(completion: { propertiesDictionary in
+        AuthenticationHelper().getUserProperties1(completion: { propertiesDictionary in
             self.firstName = propertiesDictionary["firstName"] as? String
             self.lastName = propertiesDictionary["lastName"] as? String
             self.email = propertiesDictionary["email"] as? String
@@ -92,7 +92,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return userProperties.keys.count - 2
+            return userProperties.keys.count - 4
         case 1:
             return 1
         default:

@@ -15,6 +15,7 @@ class MenuTableViewHeader: UIView {
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont(name: "HelveticaNeue", size: 32.0)
+        titleLabel.text = "Welcome to GT Hockey App"
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.numberOfLines = 2
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -26,8 +27,6 @@ class MenuTableViewHeader: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
-        setupTitleText()
 
         addSubview(titleLabel)
         updateConstraints()
@@ -46,16 +45,6 @@ class MenuTableViewHeader: UIView {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12.0),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
-    }
-
-    private func setupTitleText() {
-        AuthenticationHelper().getUserProperties(completion: { propertiesDictionary in
-            if let firstName = propertiesDictionary["firstName"] as? String {
-                DispatchQueue.main.async {
-                    self.titleLabel.text = "Hi \(String(describing: firstName)), Welcome to GT Hockey App"
-                }
-            }
-        })
     }
 
 }
