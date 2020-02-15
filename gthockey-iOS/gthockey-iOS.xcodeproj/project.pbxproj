@@ -23,6 +23,8 @@
 		82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D13236FB360005FE89B /* ShopCollectionViewController.swift */; };
 		82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */; };
 		8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */; };
+		8218875C23F89E2000F7179E /* UserPropertyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218875B23F89E2000F7179E /* UserPropertyHelper.swift */; };
+		8218875E23F8A6F500F7179E /* AppVersionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218875D23F8A6F500F7179E /* AppVersionHelper.swift */; };
 		82378185239995CA00CBD399 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82378184239995CA00CBD399 /* Constants.swift */; };
 		823781872399968100CBD399 /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823781862399968100CBD399 /* StripeClient.swift */; };
 		825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825092172361EFB300D98DEA /* UIViewExtension.swift */; };
@@ -77,11 +79,11 @@
 		82DCB486233C402300BDE2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */; };
 		82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */; };
 		82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE66E223EE5DD5003E13E6 /* Season.swift */; };
-		82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */; };
-		82DE670E23F459A2003E13E6 /* AppIconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670D23F459A2003E13E6 /* AppIconHelper.swift */; };
 		82DE670323F0BA6B003E13E6 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670223F0BA6B003E13E6 /* PushNotificationSender.swift */; };
 		82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */; };
 		82DE670A23F1E4CC003E13E6 /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670923F1E4CC003E13E6 /* PushNotificationHelper.swift */; };
+		82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */; };
+		82DE670E23F459A2003E13E6 /* AppIconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670D23F459A2003E13E6 /* AppIconHelper.swift */; };
 		82E50BDC23CE9978009A3B92 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E50BDB23CE9978009A3B92 /* DateHelper.swift */; };
 		82EE57E12341B2BC00FCC181 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E02341B2BC00FCC181 /* Game.swift */; };
 		82EE57E32341B36200FCC181 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E22341B36200FCC181 /* Player.swift */; };
@@ -119,6 +121,8 @@
 		82170D13236FB360005FE89B /* ShopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewController.swift; sourceTree = "<group>"; };
 		82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContainerViewController.swift; sourceTree = "<group>"; };
+		8218875B23F89E2000F7179E /* UserPropertyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPropertyHelper.swift; path = "/Users/calebrudnicki/Desktop/gthockey-iOS/gthockey-iOS/gthockey-iOS/UserPropertyHelper.swift"; sourceTree = "<absolute>"; };
+		8218875D23F8A6F500F7179E /* AppVersionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionHelper.swift; sourceTree = "<group>"; };
 		82378184239995CA00CBD399 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		823781862399968100CBD399 /* StripeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
 		825092172361EFB300D98DEA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -175,11 +179,11 @@
 		82DCB487233C402300BDE2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		82DE66E223EE5DD5003E13E6 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
-		82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
-		82DE670D23F459A2003E13E6 /* AppIconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconHelper.swift; sourceTree = "<group>"; };
 		82DE670223F0BA6B003E13E6 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
 		82DE670923F1E4CC003E13E6 /* PushNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
+		82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
+		82DE670D23F459A2003E13E6 /* AppIconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconHelper.swift; sourceTree = "<group>"; };
 		82E50BDB23CE9978009A3B92 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		82EE57E02341B2BC00FCC181 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		82EE57E22341B36200FCC181 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -360,7 +364,9 @@
 				825092162361EF8E00D98DEA /* Extensions */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
 				82ADF5D623440B6700114F84 /* JSONParser.swift */,
+				8218875B23F89E2000F7179E /* UserPropertyHelper.swift */,
 				82C7349523B3F14800196D5D /* AuthenticationHelper.swift */,
+				8218875D23F8A6F500F7179E /* AppVersionHelper.swift */,
 				8206D3DA23CBBBEF00863B3C /* AdminHelper.swift */,
 				82C2467E2384F4B7003CB268 /* CartHelper.swift */,
 				82E50BDB23CE9978009A3B92 /* DateHelper.swift */,
@@ -604,10 +610,12 @@
 				8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */,
 				82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */,
 				828F812723ECF7F300ED6CBC /* Venue.swift in Sources */,
+				8218875C23F89E2000F7179E /* UserPropertyHelper.swift in Sources */,
 				82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */,
 				8206D3DB23CBBBEF00863B3C /* AdminHelper.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
+				8218875E23F8A6F500F7179E /* AppVersionHelper.swift in Sources */,
 				82F468F62380659800573EE5 /* CartTableViewFooter.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
 				82378185239995CA00CBD399 /* Constants.swift in Sources */,

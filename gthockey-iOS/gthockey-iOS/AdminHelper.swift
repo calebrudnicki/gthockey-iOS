@@ -145,18 +145,4 @@ class AdminHelper {
         }
     }
 
-    public func setForAllUsers(category: String, value: String, nilValues: [String], completion: @escaping () -> Void) {
-        let db = Firestore.firestore()
-
-        db.collection("users").getDocuments { (document, error) in
-            guard let documents = document?.documents else { return }
-            for document in documents {
-                if document.data()[category] == nil || !nilValues.contains(document.data()[category] as? String ?? "") {
-                    document.reference.setData([category: value], merge: true)
-                }
-            }
-            completion()
-        }
-    }
-
 }
