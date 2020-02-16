@@ -20,64 +20,6 @@ class AdminHelper {
 
     // MARK: Public Functions
 
-    public func getAllUsers(completion: @escaping ([AppUser], [AppUser], Error?) -> Void) {
-        let db = Firestore.firestore()
-
-        db.collection("users").getDocuments { (document, error) in
-            guard let documents = document?.documents else { return }
-
-            var appUserWithLastLoginArray: [AppUser] = []
-            var appUserWithoutLastLoginArray: [AppUser] = []
-
-            for document in documents {
-                if let firstName = ((document.data() as NSDictionary)["firstName"] as! String?),
-                    let lastName = ((document.data() as NSDictionary)["lastName"] as! String?),
-                    let email = ((document.data() as NSDictionary)["email"] as! String?),
-                    let fcmToken = ((document.data() as NSDictionary)["fcmToken"] as! String?),
-                    let lastLogin = ((document.data() as NSDictionary)["lastLogin"] as! String?),
-                    let isAdmin = ((document.data() as NSDictionary)["isAdmin"] as! Bool?) {
-
-                    let appUser = AppUser(firstName: firstName, lastName: lastName, email: email,
-                                          fcmToken: fcmToken, lastLogin: lastLogin, isAdmin: isAdmin)
-
-                    if lastLogin == "No login yet" {
-                        appUserWithoutLastLoginArray.append(appUser)
-                    } else {
-                        appUserWithLastLoginArray.append(appUser)
-                    }
-                }
-            }
-            completion(appUserWithLastLoginArray, appUserWithoutLastLoginArray, nil)
-        }
-    }
-
-    public func getAllUsersWithValidFCMToken(completion: @escaping ([AppUser], Error?) -> Void) {
-        let db = Firestore.firestore()
-
-        db.collection("users").getDocuments { (document, error) in
-            guard let documents = document?.documents else { return }
-
-            var appUsersWithValidFCMToken: [AppUser] = []
-
-            for document in documents {
-                if let firstName = ((document.data() as NSDictionary)["firstName"] as! String?),
-                    let lastName = ((document.data() as NSDictionary)["lastName"] as! String?),
-                    let email = ((document.data() as NSDictionary)["email"] as! String?),
-                    let fcmToken = ((document.data() as NSDictionary)["fcmToken"] as! String?),
-                    let lastLogin = ((document.data() as NSDictionary)["lastLogin"] as! String?),
-                    let isAdmin = ((document.data() as NSDictionary)["isAdmin"] as! Bool?) {
-
-                    if fcmToken != "" && fcmToken.lowercased() != "no fcm token" {
-                        let appUser = AppUser(firstName: firstName, lastName: lastName, email: email,
-                        fcmToken: fcmToken, lastLogin: lastLogin, isAdmin: isAdmin)
-                        appUsersWithValidFCMToken.append(appUser)
-                    }
-                }
-            }
-            completion(appUsersWithValidFCMToken, nil)
-        }
-    }
-
     public func isAdminUser(_ email: String) -> Bool {
         return AdminHelper.adminUsersOnAppLaunch.contains(email)
     }

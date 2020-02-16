@@ -113,7 +113,7 @@ class AuthenticationHelper {
 
                 let versionNumber = ((document.data()! as NSDictionary)["versionNumber"] as? String ?? "No Version Number")
 
-                if AppVersionHelper().isUpToDate(with: versionNumber) {
+                if !AppVersionHelper().isUpToDate(with: versionNumber) {
                     //Update for newest version
                     var dict: [String : Any] = [:]
 

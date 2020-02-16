@@ -18,16 +18,21 @@ class AppUser {
     private var fcmToken: String
     private var lastLogin: String
     private var isAdmin: Bool
+    private var appVersion: String
+    private var uid: String
 
     // MARK: Init
 
-    init(firstName: String, lastName: String, email: String, fcmToken: String, lastLogin: String, isAdmin: Bool) {
+    init(firstName: String, lastName: String, email: String, fcmToken: String,
+         lastLogin: String, isAdmin: Bool, appVersion: String, uid: String) {
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.fcmToken = fcmToken
         self.lastLogin = lastLogin
         self.isAdmin = isAdmin
+        self.appVersion = appVersion
+        self.uid = uid
     }
 
     // MARK: Getters
@@ -55,4 +60,13 @@ class AppUser {
     func getIsAdmin() -> Bool {
         return isAdmin
     }
+
+    func getAppVersion() -> String {
+        return appVersion
+    }
+
+    func getUID() -> String {
+        return uid
+    }
+
 }

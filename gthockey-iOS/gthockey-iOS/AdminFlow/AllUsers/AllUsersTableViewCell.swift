@@ -48,12 +48,30 @@ class AllUsersTableViewCell: UITableViewCell {
         return fcmTokenLabel
     }()
 
+    private let versionLabel: UILabel = {
+        let versionLabel = UILabel()
+        versionLabel.font = UIFont(name:"HelveticaNeue-light", size: 16.0)
+        versionLabel.lineBreakMode = .byTruncatingTail
+        versionLabel.numberOfLines = 1
+        versionLabel.translatesAutoresizingMaskIntoConstraints = false
+        return versionLabel
+    }()
+
+    private let uidLabel: UILabel = {
+        let uidLabel = UILabel()
+        uidLabel.font = UIFont(name:"HelveticaNeue-light", size: 16.0)
+        uidLabel.lineBreakMode = .byTruncatingTail
+        uidLabel.numberOfLines = 1
+        uidLabel.translatesAutoresizingMaskIntoConstraints = false
+        return uidLabel
+    }()
+
     // MARK: Init
 
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.addSubviews([nameLabel, emailLabel, lastLoginLabel, fcmTokenLabel])
+        contentView.addSubviews([nameLabel, emailLabel, lastLoginLabel, fcmTokenLabel, versionLabel, uidLabel])
         updateConstraints()
     }
 
@@ -87,6 +105,18 @@ class AllUsersTableViewCell: UITableViewCell {
             fcmTokenLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
             fcmTokenLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
         ])
+
+        NSLayoutConstraint.activate([
+            versionLabel.topAnchor.constraint(equalTo: fcmTokenLabel.bottomAnchor, constant: 8.0),
+            versionLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+            versionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
+        ])
+
+        NSLayoutConstraint.activate([
+            uidLabel.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 8.0),
+            uidLabel.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
+            uidLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
+        ])
     }
 
     // MARK: Setter
@@ -94,8 +124,10 @@ class AllUsersTableViewCell: UITableViewCell {
     public func set(with appUser: AppUser) {
         nameLabel.text = appUser.getFirstName() + " " + appUser.getLastName()
         emailLabel.text = appUser.getEmail()
-        lastLoginLabel.text = appUser.getLastLogin()
-        fcmTokenLabel.text = appUser.getFCMToken()
+        lastLoginLabel.text = "Last login: \(appUser.getLastLogin())"
+        fcmTokenLabel.text = "FCM Token: \(appUser.getFCMToken())"
+        versionLabel.text = "App Version \(appUser.getAppVersion())"
+        uidLabel.text = "Unique ID: \(appUser.getUID())"
     }
 
 }
