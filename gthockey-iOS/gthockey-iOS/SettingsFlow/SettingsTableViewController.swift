@@ -66,7 +66,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     @objc private func fetchUserInfo() {
-        UserPropertyHelper().getAllUserProperties(completion: { propertiesDictionary in
+        UserPropertyHelper().getAllPropertiesForCurrentUser(completion: { propertiesDictionary in
             self.firstName = propertiesDictionary["firstName"] as? String
             self.lastName = propertiesDictionary["lastName"] as? String
             self.email = propertiesDictionary["email"] as? String

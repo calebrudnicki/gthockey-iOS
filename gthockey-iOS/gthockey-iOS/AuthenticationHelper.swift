@@ -137,7 +137,7 @@ class AuthenticationHelper {
                         ])
                     })
                 } else {
-                    UserPropertyHelper().getAllUserProperties(completion: { userProperties in
+                    UserPropertyHelper().getAllPropertiesForCurrentUser(completion: { userProperties in
                         completion(userProperties)
                     })
                 }

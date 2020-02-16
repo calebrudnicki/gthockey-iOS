@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/calebrudnicki/Desktop/gthockey-iOS/gthockey-iOS/gthockey-iOS/UserPropertyHelper.swift">
-   </FileRef>
-   <FileRef
       location = "group:gthockey-iOS.xcodeproj">
    </FileRef>
    <FileRef
