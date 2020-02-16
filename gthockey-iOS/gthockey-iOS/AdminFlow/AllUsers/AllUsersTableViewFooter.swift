@@ -50,7 +50,7 @@ class AllUsersTableViewFooter: UIView {
     // MARK: Setter
 
     public func set(with count: Int) {
-        totalUsersLabel.text = "Total app users: \(String(describing: count))"
+        totalUsersLabel.text = "Total users: \(String(describing: count))"
     }
 
 }

@@ -209,20 +209,20 @@ class NotificationCenterViewController: UIViewController {
             self.sendNotificationButton.isLoading = false
         }))
         alert.addAction(UIAlertAction(title: "Send", style: .default, handler: { action in
-            AdminHelper().getAllUsersWithValidFCMToken(completion: { (usersWithValidFCMToken, error) in
+            UserHelper().getAllUsersWithValidFCMToken(completion: { (usersWithValidFCMToken) in
                 var tokens: [String] = []
 
                 for user in usersWithValidFCMToken {
                     tokens.append(user.getFCMToken())
                 }
 
-                PushNotificationSender().sendPushNotification(to: tokens,
-                                                              title: titleText,
-                                                              body: bodyText,
-                                                              completion: {
-                                                                self.sendNotificationButton.isLoading = false
-                                                                self.titleTextView.text = ""
-                                                                self.bodyTextView.text = ""
+                PushNotificationSender().sendNotification(to: tokens,
+                                                          title: titleText,
+                                                          body: bodyText,
+                                                          completion: {
+                                                            self.sendNotificationButton.isLoading = false
+                                                            self.titleTextView.text = ""
+                                                            self.bodyTextView.text = ""
                 })
             })
         }))

@@ -151,8 +151,12 @@ class ScheduleTableViewController: UITableViewController {
                 self.menuView?.selectedCellTextLabelColor = .techNavy
                 self.menuView?.cellTextLabelFont = UIFont(name: "HelveticaNeue-Light", size: 16.0)
                 self.menuView?.arrowPadding = 15.0
-                self.menuView?.arrowTintColor = .black
                 self.menuView?.animationDuration = 0.5
+                if #available(iOS 13.0, *) {
+                    self.menuView?.arrowTintColor = .label
+                } else {
+                    self.menuView?.arrowTintColor = .black
+                }
 
                 self.menuView?.didSelectItemAtIndexHandler = { [weak self] (indexPath: Int) -> () in
                     self?.currentSeasonIDSelected = self?.seasonArray[indexPath].getID() ?? 3
