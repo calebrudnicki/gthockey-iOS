@@ -24,8 +24,8 @@
 		82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */; };
 		8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */; };
 		8218875E23F8A6F500F7179E /* AppVersionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218875D23F8A6F500F7179E /* AppVersionHelper.swift */; };
-		8218876023F8B48300F7179E /* UserPropertyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218875F23F8B48300F7179E /* UserPropertyHelper.swift */; };
 		8218876223F98C9A00F7179E /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218876123F98C9A00F7179E /* UserHelper.swift */; };
+		8218876423F9B33200F7179E /* UserPropertyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218876323F9B33100F7179E /* UserPropertyHelper.swift */; };
 		82378185239995CA00CBD399 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82378184239995CA00CBD399 /* Constants.swift */; };
 		823781872399968100CBD399 /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823781862399968100CBD399 /* StripeClient.swift */; };
 		825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825092172361EFB300D98DEA /* UIViewExtension.swift */; };
@@ -123,8 +123,8 @@
 		82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContainerViewController.swift; sourceTree = "<group>"; };
 		8218875D23F8A6F500F7179E /* AppVersionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionHelper.swift; sourceTree = "<group>"; };
-		8218875F23F8B48300F7179E /* UserPropertyHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserPropertyHelper.swift; path = ../../../../.Trash/UserPropertyHelper.swift; sourceTree = "<group>"; };
 		8218876123F98C9A00F7179E /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
+		8218876323F9B33100F7179E /* UserPropertyHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPropertyHelper.swift; sourceTree = "<group>"; };
 		82378184239995CA00CBD399 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		823781862399968100CBD399 /* StripeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
 		825092172361EFB300D98DEA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 				825092162361EF8E00D98DEA /* Extensions */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
 				82ADF5D623440B6700114F84 /* JSONParser.swift */,
-				8218875F23F8B48300F7179E /* UserPropertyHelper.swift */,
+				8218876323F9B33100F7179E /* UserPropertyHelper.swift */,
 				8218876123F98C9A00F7179E /* UserHelper.swift */,
 				82C7349523B3F14800196D5D /* AuthenticationHelper.swift */,
 				8218875D23F8A6F500F7179E /* AppVersionHelper.swift */,
@@ -659,9 +659,9 @@
 				82DE670323F0BA6B003E13E6 /* PushNotificationSender.swift in Sources */,
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
 				82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */,
-				8218876023F8B48300F7179E /* UserPropertyHelper.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
 				82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */,
+				8218876423F9B33200F7179E /* UserPropertyHelper.swift in Sources */,
 				82DE670E23F459A2003E13E6 /* AppIconHelper.swift in Sources */,
 				8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */,
 				8206D3F923CE532200863B3C /* SettingsTextFieldTableViewCell.swift in Sources */,
