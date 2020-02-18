@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ArticlePreviewViewDelegate {
-    func articlePreviewSelected(for article: News)
+    func previewSelected(for article: News)
 }
 
 class ArticlePreviewView: UIView {
@@ -112,7 +112,7 @@ class ArticlePreviewView: UIView {
             self.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: { _ in
             guard let article = self.article else { return }
-            self.delegate.articlePreviewSelected(for: article)
+            self.delegate.previewSelected(for: article)
         })
     }
 

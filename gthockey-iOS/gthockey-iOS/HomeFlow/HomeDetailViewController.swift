@@ -238,7 +238,7 @@ class HomeDetailViewController: UIViewController {
 
 extension HomeDetailViewController: ArticlePreviewViewDelegate {
 
-    func articlePreviewSelected(for article: News) {
+    func previewSelected(for article: News) {
         dismiss(animated: true, completion: {
             let homeDetailViewController = HomeDetailViewController()
             homeDetailViewController.set(with: article)
