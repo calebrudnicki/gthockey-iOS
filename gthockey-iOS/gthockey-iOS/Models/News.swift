@@ -18,16 +18,21 @@ class News {
     private let imageURL: URL
     private let teaser: String
     private let content: String
+    private var previousArticle: News?
+    private var nextArticle: News?
 
     // MARK: Init
 
-    init(id: Int, title: String, date: Date, imageURL: URL, teaser: String, content: String) {
+    init(id: Int, title: String, date: Date, imageURL: URL, teaser: String,
+         content: String) {
         self.id = id
         self.title = title
         self.date = date
         self.imageURL = imageURL
         self.teaser = teaser
         self.content = content
+        self.previousArticle = nil
+        self.nextArticle = nil
     }
 
     // MARK: Getters
@@ -54,6 +59,24 @@ class News {
     
     func getContent() -> String {
         return content
+    }
+
+    func getPreviousArticle() -> News? {
+        return previousArticle
+    }
+
+    func getNextArticle() -> News? {
+        return nextArticle
+    }
+
+    // MARK: Setters
+
+    func setPreviousArticle(to article: News) {
+        self.previousArticle = article
+    }
+
+    func setNextArticle(to article: News) {
+        self.nextArticle = article
     }
     
 }

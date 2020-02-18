@@ -13,6 +13,8 @@ class HomeDetailViewController: UIViewController {
 
     // MARK: Properties
 
+    private weak var presentingViewConroller: UIViewController?
+
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -51,7 +53,7 @@ class HomeDetailViewController: UIViewController {
         return dateLabel
     }()
 
-    private let separatorView: UIView = {
+    private let separatorView1: UIView = {
         let separatorView = UIView()
         separatorView.backgroundColor = .techGold
         separatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,12 +61,46 @@ class HomeDetailViewController: UIViewController {
     }()
 
     private let bodyTextView = HTMLTextView(frame: .zero)
+
+    private let separatorView2: UIView = {
+        let separatorView2 = UIView()
+        separatorView2.backgroundColor = .techGold
+        separatorView2.translatesAutoresizingMaskIntoConstraints = false
+        return separatorView2
+    }()
+
+    private let articlesLabel: UILabel = {
+        let otherArticlesLabel = UILabel()
+        otherArticlesLabel.numberOfLines = 0
+        otherArticlesLabel.sizeToFit()
+        otherArticlesLabel.font = UIFont(name: "HelveticaNeue", size: 24.0)
+        otherArticlesLabel.text = "Also read..."
+        otherArticlesLabel.translatesAutoresizingMaskIntoConstraints = false
+        return otherArticlesLabel
+    }()
+
+    private let articlesStackView: UIStackView = {
+        let articlesStackView = UIStackView()
+        articlesStackView.axis = .horizontal
+        articlesStackView.distribution = .fillEqually
+        articlesStackView.spacing = 12.0
+        articlesStackView.translatesAutoresizingMaskIntoConstraints = false
+        return articlesStackView
+    }()
+
+    private let previousArticlePreview = ArticlePreviewView()
+    private let nextArticlePreview = ArticlePreviewView()
     private let closeButton = FloatingCloseButton()
 
     // MARK: Init
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        presentingViewConroller = presentingViewController
+
+        previousArticlePreview.delegate = self
+        nextArticlePreview.delegate = self
 
         if #available(iOS 13.0, *) {
             view.backgroundColor = .systemBackground
@@ -75,9 +111,13 @@ class HomeDetailViewController: UIViewController {
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))
 
+        articlesStackView.addArrangedSubview(previousArticlePreview)
+        articlesStackView.addArrangedSubview(nextArticlePreview)
+
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
-        backgroundView.addSubviews([imageView, headlineLabel, dateLabel, separatorView, bodyTextView, closeButton])
+        backgroundView.addSubviews([imageView, headlineLabel, dateLabel, separatorView1, bodyTextView,
+                                    separatorView2, articlesLabel, articlesStackView, closeButton])
 
         updateViewConstraints()
     }
@@ -120,17 +160,36 @@ class HomeDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            separatorView.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 12.0),
-            separatorView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            separatorView.widthAnchor.constraint(equalTo: dateLabel.widthAnchor),
-            separatorView.heightAnchor.constraint(equalToConstant: 1.0)
+            separatorView1.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 12.0),
+            separatorView1.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            separatorView1.widthAnchor.constraint(equalTo: dateLabel.widthAnchor),
+            separatorView1.heightAnchor.constraint(equalToConstant: 1.0)
         ])
 
         NSLayoutConstraint.activate([
-            bodyTextView.topAnchor.constraint(equalTo: separatorView.bottomAnchor, constant: 9.0),
+            bodyTextView.topAnchor.constraint(equalTo: separatorView1.bottomAnchor, constant: 9.0),
             bodyTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 9.0),
             bodyTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -9.0),
-            bodyTextView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            separatorView2.topAnchor.constraint(equalTo: bodyTextView.bottomAnchor, constant: 9.0),
+            separatorView2.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            separatorView2.widthAnchor.constraint(equalTo: articlesLabel.widthAnchor),
+            separatorView2.heightAnchor.constraint(equalToConstant: 1.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            articlesLabel.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 12.0),
+            articlesLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            articlesLabel.trailingAnchor.constraint(lessThanOrEqualTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
+
+        NSLayoutConstraint.activate([
+            articlesStackView.topAnchor.constraint(equalTo: articlesLabel.bottomAnchor, constant: 12.0),
+            articlesStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            articlesStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
+            articlesStackView.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
         ])
 
         NSLayoutConstraint.activate([
@@ -152,6 +211,14 @@ class HomeDetailViewController: UIViewController {
         dateLabel.text = formatter.string(from: news.getDate())
 
         bodyTextView.setText(with: news.getContent())
+
+        if let previousArticle = news.getPreviousArticle() {
+            previousArticlePreview.set(with: previousArticle)
+        }
+
+        if let nextArticle = news.getNextArticle() {
+            nextArticlePreview.set(with: nextArticle)
+        }
     }
 
     // MARK: Action
@@ -165,6 +232,18 @@ class HomeDetailViewController: UIViewController {
 
     @objc private func closeButtonTapped() {
         dismiss(animated: true, completion: nil)
+    }
+
+}
+
+extension HomeDetailViewController: ArticlePreviewViewDelegate {
+
+    func previewSelected(for article: News) {
+        dismiss(animated: true, completion: {
+            let homeDetailViewController = HomeDetailViewController()
+            homeDetailViewController.set(with: article)
+            self.presentingViewConroller!.present(homeDetailViewController, animated: true, completion: nil)
+        })
     }
 
 }
