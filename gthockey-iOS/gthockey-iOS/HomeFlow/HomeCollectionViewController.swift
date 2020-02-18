@@ -72,8 +72,13 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     @objc private func fetchArticles() {
         let parser = JSONParser()
         parser.getArticles() { response in
-            self.newsArray = []
             self.newsArray = response
+
+            for i in 0..<self.newsArray.count {
+                self.newsArray[i].setPreviousArticle(to: self.newsArray[i != 0 ? i - 1 : self.newsArray.count - 1])
+                self.newsArray[i].setNextArticle(to: self.newsArray[i != self.newsArray.count - 1 ? i + 1 : 0])
+            }
+
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.collectionView.refreshControl?.endRefreshing()
