@@ -12,8 +12,6 @@ import FirebaseAuth
 import FirebaseFirestore
 import BTNavigationDropdownMenu
 
-// MARK: Under Construction
-
 class ScheduleTableViewController: UITableViewController {
 
     // MARK: Properties
@@ -72,11 +70,10 @@ class ScheduleTableViewController: UITableViewController {
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
         menuView?.arrowImage = arrowButtonImage
-        // MARK: Uncomment for cart
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
-//                                                           style: .plain,
-//                                                           target: self,
-//                                                           action: #selector(cartButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 

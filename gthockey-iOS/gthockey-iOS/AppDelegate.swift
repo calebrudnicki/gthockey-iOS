@@ -14,8 +14,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import Messages
 import AppRating
-
-//import Stripe
+import Stripe
 
 // MARK: Under Construction
 
@@ -33,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
 
         application.registerForRemoteNotifications()
+
+        Stripe.setDefaultPublishableKey("pk_test_OOB3XuDX8A4t0vjJcd5sx6Zb008F8f114e")
 
 //        STPPaymentConfiguration.shared().publishableKey = Constants.publishableKey
 

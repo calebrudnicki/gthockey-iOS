@@ -8,8 +8,6 @@
 
 import UIKit
 
-// MARK: Under Construction
-
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
@@ -50,11 +48,10 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
-        // MARK: Uncomment for cart
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
-//                                                           style: .plain,
-//                                                           target: self,
-//                                                           action: #selector(cartButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()

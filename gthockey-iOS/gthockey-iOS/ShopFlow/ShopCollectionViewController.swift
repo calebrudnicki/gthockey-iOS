@@ -10,8 +10,6 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-// MARK: Under Construction
-
 class ShopCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
@@ -53,11 +51,10 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
-        // MARK: Uncomment for cart
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
-//                                                           style: .plain,
-//                                                           target: self,
-//                                                           action: #selector(cartButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
+                                                           style: .plain,
+                                                           target: self,
+                                                           action: #selector(cartButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
 
         setupCollectionView()

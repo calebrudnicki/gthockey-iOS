@@ -11,8 +11,6 @@ import SDWebImage
 import FirebaseAuth
 import FirebaseFirestore
 
-// MARK: Under Construction
-
 class ShopDetailViewController: UIViewController {
 
     // MARK: Properties
@@ -93,9 +91,8 @@ class ShopDetailViewController: UIViewController {
         return customOptionsStackView
     }()
 
-    // MARK: Uncomment for shop
-//    private let restrictedOptionsView = ShopRestrictedOptionsView()
-//    private let customOptionsView = ShopCustomOptionsView()
+    private let restrictedOptionsView = ShopRestrictedOptionsView()
+    private let customOptionsView = ShopCustomOptionsView()
 
     private let unavailableLabel: HTMLTextView = {
         let unavailableLabel = HTMLTextView()
@@ -128,7 +125,7 @@ class ShopDetailViewController: UIViewController {
         scrollView.addSubview(backgroundView)
 
         backgroundView.addSubviews([imageView, headlineLabel, priceLabel, separatorView1, descriptionLabel, separatorView2,
-                                    /*restrictedOptionsStackView, customOptionsStackView,*/unavailableLabel, addToCartButton, closeButton])
+                                    restrictedOptionsStackView, customOptionsStackView, addToCartButton, closeButton])
 
         updateViewConstraints()
     }
@@ -190,27 +187,26 @@ class ShopDetailViewController: UIViewController {
             separatorView2.heightAnchor.constraint(equalToConstant: 1.0)
         ])
 
+//        NSLayoutConstraint.activate([
+//            unavailableLabel.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 9.0),
+//            unavailableLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 9.0),
+//            unavailableLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -9.0)
+//        ])
+
         NSLayoutConstraint.activate([
-            unavailableLabel.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 9.0),
-            unavailableLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 9.0),
-            unavailableLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -9.0)
+            restrictedOptionsStackView.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 12.0),
+            restrictedOptionsStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            restrictedOptionsStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
         ])
 
-        // MARK: Uncomment for shop
-//        NSLayoutConstraint.activate([
-//            restrictedOptionsStackView.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 12.0),
-//            restrictedOptionsStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-//            restrictedOptionsStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
-//        ])
-//
-//        NSLayoutConstraint.activate([
-//            customOptionsStackView.topAnchor.constraint(equalTo: restrictedOptionsStackView.bottomAnchor, constant: 12.0),
-//            customOptionsStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-//            customOptionsStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
-//        ])
+        NSLayoutConstraint.activate([
+            customOptionsStackView.topAnchor.constraint(equalTo: restrictedOptionsStackView.bottomAnchor, constant: 12.0),
+            customOptionsStackView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            customOptionsStackView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
+        ])
 
         NSLayoutConstraint.activate([
-            addToCartButton.topAnchor.constraint(equalTo: unavailableLabel.bottomAnchor, constant: 24.0),
+            addToCartButton.topAnchor.constraint(equalTo: customOptionsStackView.bottomAnchor, constant: 24.0),
             addToCartButton.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             addToCartButton.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             addToCartButton.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0),
@@ -233,22 +229,21 @@ class ShopDetailViewController: UIViewController {
         priceLabel.text = apparel.getPriceString()
         descriptionLabel.setText(with: apparel.getDescription())
 
-        // MARK: Uncomment for shop
-//        self.restrictedOptions = restrictedOptions
-//        for restrictedOption in restrictedOptions {
-//            let shopRestrictedOptionsView = ShopRestrictedOptionsView()
-//            shopRestrictedOptionsView.set(with: restrictedOption)
-//            shopRestrictedOptionsView.delegate = self
-//            restrictedOptionsStackView.addArrangedSubview(shopRestrictedOptionsView)
-//        }
-//
-//        self.customOptions = customOptions
-//        for customOption in customOptions {
-//            let shopCustomOptionsView = ShopCustomOptionsView()
-//            shopCustomOptionsView.set(with: customOption)
-//            shopCustomOptionsView.delegate = self
-//            restrictedOptionsStackView.addArrangedSubview(shopCustomOptionsView)
-//        }
+        self.restrictedOptions = restrictedOptions
+        for restrictedOption in restrictedOptions {
+            let shopRestrictedOptionsView = ShopRestrictedOptionsView()
+            shopRestrictedOptionsView.set(with: restrictedOption)
+            shopRestrictedOptionsView.delegate = self
+            restrictedOptionsStackView.addArrangedSubview(shopRestrictedOptionsView)
+        }
+
+        self.customOptions = customOptions
+        for customOption in customOptions {
+            let shopCustomOptionsView = ShopCustomOptionsView()
+            shopCustomOptionsView.set(with: customOption)
+            shopCustomOptionsView.delegate = self
+            restrictedOptionsStackView.addArrangedSubview(shopCustomOptionsView)
+        }
 
         apparelItem = apparel
     }
