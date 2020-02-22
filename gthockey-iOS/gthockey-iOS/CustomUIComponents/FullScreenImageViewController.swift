@@ -119,10 +119,11 @@ class FullScreenImageViewController: UIViewController {
     }
 
     @objc func shareButtonTapped() {
-        let activityItem = [self.imageView.image as AnyObject]
-        let activityViewController = UIActivityViewController(activityItems: activityItem as [AnyObject], applicationActivities: nil)
-        activityViewController.popoverPresentationController?.sourceView = view
-        self.present(activityViewController, animated: true, completion: nil)
+        if let image = self.imageView.image {
+            let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = view
+            self.present(activityViewController, animated: true, completion: nil)
+        }
     }
 
     // MARK: Helper Functions

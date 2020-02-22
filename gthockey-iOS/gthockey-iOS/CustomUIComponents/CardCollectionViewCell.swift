@@ -18,21 +18,6 @@ class CardCollectionViewCell: UICollectionViewCell {
 
     public var delegate: CardCollectionViewCellDelegate!
 
-    override var isHighlighted: Bool {
-        didSet {
-            if isHighlighted {
-                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                    self.transform = CGAffineTransform(scaleX: 0.90, y: 0.90)
-                }, completion: { _ in
-                    UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-                        self.transform = CGAffineTransform(scaleX: 1, y: 1)
-                    }, completion: nil)
-                    self.delegate?.didEndCellAnimation()
-                })
-            }
-        }
-    }
-
     // MARK: Init
 
     override init(frame: CGRect) {
@@ -62,6 +47,34 @@ class CardCollectionViewCell: UICollectionViewCell {
         super.updateConstraints()
 
         contentView.layoutSubviews()
+    }
+
+    // MARK: Action
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.transform = CGAffineTransform(scaleX: 0.90, y: 0.90)
+        }, completion: nil)
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+
+        UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseOut, animations: {
+            self.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: nil)
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+
+        UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseOut, animations: {
+            self.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: { _ in
+            self.delegate.didEndCellAnimation()
+        })
     }
 
 }
