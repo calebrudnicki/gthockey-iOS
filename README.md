@@ -1,7 +1,7 @@
 ![GT Hockey Logo](https://i.imgur.com/ET1tpsi.png)
 
 # The Official Georgia Tech Club Hockey iOS App
-This repository holds the code for the Georgia Tech Club Hockey iOS app.
+This repository holds the code for the Georgia Tech Club Hockey iOS application.
 
 This app is available for download on the <a href="https://apps.apple.com/us/app/gt-hockey/id1484814696">App Store</a>.
 
