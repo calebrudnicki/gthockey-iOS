@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Alamofire
-//import Stripe
+//import Alamofire
+import Stripe
 
 // MARK: Under Construction (not used)
 
@@ -17,37 +17,91 @@ import Alamofire
 //  case failure(Error)
 //}
 
-class StripeClient {
+class StripeClient: NSObject, STPCustomerEphemeralKeyProvider {
+    enum APIError: Error {
+        case unknown
 
-//    static let shared = StripeClient()
-//
-//    private init() {}
-//
-//    private lazy var baseURL: URL = {
-//        guard let url = URL(string: Constants.baseURLString) else {
-//            fatalError("Invalid URL")
-//        }
-//        return url
-//    }()
-//
-//    func completeCharge(with token: STPToken, amount: Double, completion: @escaping (Result) -> Void) {
-//        let url = baseURL.appendingPathComponent("charge")
-//        let params: [String: Any] = [
-//            "token": token.tokenId,
-//            "amount": amount,
-//            "currency": Constants.defaultCurrency,
-//            "description": Constants.defaultDescription
+        var localizedDescription: String {
+            switch self {
+            case .unknown:
+                return "Unknown error"
+            }
+        }
+    }
+
+    private let baseURL = "https://gthockey-ios.herokuapp.com/"
+
+    static let shared = StripeClient()
+
+    func createPaymentIntent(products: [CartItem], shippingMethod: PKShippingMethod?, country: String? = nil, completion: @escaping ((Result<String, Error>) -> Void)) {
+        let url = URL(string: baseURL)!.appendingPathComponent("create_payment_intent")
+//        var params: [String: Any] = [:]
+//            "metadata": [
+//                // example-ios-backend allows passing metadata through to Stripe
+//                "amount": 1000,
+//            ],
 //        ]
-//        Alamofire.request(url, method: .post, parameters: params)
-//            .validate(statusCode: 200..<300)
-//            .responseString { response in
-//                switch response.result {
-//                case .success:
-//                    completion(Result.success)
-//                case .failure(let error):
-//                    completion(Result.failure(error))
-//                }
-//        }
-//    }
+        var params: [String: Any] = [
+            "metadata": [
+                // example-ios-backend allows passing metadata through to Stripe
+                "payment_request_id": "B3E611D1-5FA1-4410-9CEC-00958A5126CB",
+            ],
+        ]
+        var total = 0.0
+        for product in products {
+            total += (100 * product.getPrice())
+        }
+
+        params["amount"] = total
+        if let shippingMethod = shippingMethod {
+            params["shipping"] = shippingMethod.identifier
+        }
+        params["country"] = country
+        let jsonData = try? JSONSerialization.data(withJSONObject: params)
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200,
+                let data = data,
+                let json = ((try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]) as [String : Any]??),
+                let secret = json?["secret"] as? String else {
+                    completion(.failure((error ?? nil)!))
+                    return
+            }
+            completion(.success(secret))
+        })
+        task.resume()
+    }
+
+    func createCustomerKey(withAPIVersion apiVersion: String, completion: @escaping STPJSONResponseCompletionBlock) {
+        let url = URL(string: baseURL)!.appendingPathComponent("ephemeral_keys")
+
+        var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)!
+
+        urlComponents.queryItems = [URLQueryItem(name: "api_version", value: apiVersion)]
+        let params: [String: Any] = ["description": "My cool user"]
+        let jsonData = try? JSONSerialization.data(withJSONObject: params)
+        var request = URLRequest(url: urlComponents.url!)
+
+//        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+//        request.httpMethod = "POST"
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            guard let response = response as? HTTPURLResponse,
+                response.statusCode == 200,
+                let data = data,
+                let json = ((try? JSONSerialization.jsonObject(with: data, options: []) as? [String : Any]) as [String : Any]??) else {
+                completion(nil, error)
+                return
+            }
+            completion(json, nil)
+        })
+        task.resume()
+    }
 
 }
