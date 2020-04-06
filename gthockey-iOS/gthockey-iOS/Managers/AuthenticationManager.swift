@@ -1,9 +1,9 @@
 //
-//  AuthenticationHelper.swift
+//  AuthenticationManager.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 12/25/19.
-//  Copyright © 2019 Caleb Rudnicki. All rights reserved.
+//  Created by Caleb Rudnicki on 4/5/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import Foundation
@@ -11,14 +11,26 @@ import FirebaseAuth
 import FirebaseFirestore
 import FirebaseAnalytics
 
-class AuthenticationHelper {
+class AuthenticationManager {
+
+    // MARK: Init
 
     init() {}
 
     // MARK: Public Functions
 
-    public func login(with email: String, _ password: String, _ firstName: String?, _ lastName: String?, completion: @escaping (Bool, Error?) -> Void) {
-        AdminHelper().saveAdminUsersonLaunch(completion: { _ in
+    /**
+     Logs a user into the application.
+
+     - Parameter email: A `String` representation of the user's email address.
+     - Parameter password: A `String` representation of the user's password.
+     - Parameter firstName: A `String` representation of the user's first name.
+     - Parameter lastName: A `String` representation of the user's last name.
+     - Parameter completion: A block to execute once the user's has been logged in.
+     */
+    public func login(with email: String, _ password: String, _ firstName: String?,
+                      _ lastName: String?, completion: @escaping (Bool, Error?) -> Void) {
+        AdminManager().saveAdminUsersOnLaunch(completion: { _ in
             Auth.auth().signIn(withEmail: email, password: password) { user, error in
                 if let error = error, user == nil {
                     completion(false, error)
@@ -27,8 +39,9 @@ class AuthenticationHelper {
 
 
                         self.getUserPropertiesForLogin(completion: { _ in
-                            UserPropertyHelper().overrideForOneUser(with: ["lastLogin": DateHelper().getTimestamp()], for: user.uid, completion: {
-                                let pushManager = PushNotificationHelper(userID: user.uid)
+                            UserPropertyManager().overrideForOneUser(with: ["lastLogin": Date().standardFormatted],
+                                                                     for: user.uid, completion: {
+                                let pushManager = PushNotificationManager(userID: user.uid)
                                 pushManager.registerForPushNotifications()
 
                                 self.setUserDefaults(with: email, password: password, isAdmin: true)
@@ -42,6 +55,15 @@ class AuthenticationHelper {
         })
     }
 
+    /**
+    Creates a brand new user.
+
+    - Parameter firstName: A `String` representation of the new user's first name.
+    - Parameter lastName: A `String` representation of the new user's last name.
+    - Parameter email: A `String` representation of the new user's email address.
+    - Parameter password: A `String` representation of the new user's password.
+    - Parameter completion: A block to execute once the user's has been created.
+    */
     public func createUser(with firstName: String, _ lastName: String, _ email: String,
                        _ password: String, completion: @escaping (Bool, Error?) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
@@ -54,7 +76,9 @@ class AuthenticationHelper {
                 db.collection("users").document(user.uid).setData(["firstName": firstName,
                                                                    "lastName": lastName,
                                                                    "email": email,
-                                                                   "isAdmin": AdminHelper().isAdminUser(email) ? true : false,
+                                                                   "isAdmin": AdminManager().isAdminUser(email) ?
+                                                                                                        true :
+                                                                                                        false,
                                                                    "lastLogin": "No login yet",
                                                                    "appIcon": "Buzz",
                                                                    "fcmToken": "No FCM Token",
@@ -78,6 +102,12 @@ class AuthenticationHelper {
         }
     }
 
+    /**
+     Send the password reset email to the specified user.
+
+     - Parameter email: A `String` representation of the email in question.
+     - Parameter completion: A block to execute once the password reset email has been sent.
+     */
     public func resetPassword(with email: String, completion: @escaping (Error?) -> Void) {
         Auth.auth().sendPasswordReset(withEmail: email, completion: { error in
             if error != nil {
@@ -87,6 +117,11 @@ class AuthenticationHelper {
         })
     }
 
+    /**
+     Signs the current user out of the application.
+
+     - Parameter completion: A block to execute once the user's is logged out.
+     */
     public func signOut(completion: @escaping (Bool, Error?) -> Void) {
         do {
             try Auth.auth().signOut()
@@ -111,9 +146,10 @@ class AuthenticationHelper {
                             document.exists
                 else { return }
 
-                let versionNumber = ((document.data()! as NSDictionary)["versionNumber"] as? String ?? "No Version Number")
+                let versionNumber = ((document.data()! as NSDictionary)["versionNumber"] as? String ??
+                                                                                    "No Version Number")
 
-                if !AppVersionHelper().isUpToDate(with: versionNumber) {
+                if !AppVersionManager().isUpToDate(with: versionNumber) {
                     //Update for newest version
                     var dict: [String : Any] = [:]
 
@@ -121,12 +157,12 @@ class AuthenticationHelper {
                     let appIcon = document["appIcon"] as? String ?? "Buzz"
                     dict["appIcon"] = appIcon
                     //v1.5
-                    let versionNumber = AppVersionHelper().getCurrentVersion()
+                    let versionNumber = AppVersionManager().getCurrentVersion()
                     dict["versionNumber"] = versionNumber
                     let fcmToken = document["fcmToken"] as? String ?? "No FCM Token"
                     dict["fcmToken"] = fcmToken
 
-                    UserPropertyHelper().overrideForOneUser(with: dict, for: user.uid, completion: {
+                    UserPropertyManager().overrideForOneUser(with: dict, for: user.uid, completion: {
                         completion(["firstName": document["firstName"] as? String ?? "",
                                     "lastName": document["lastName"] as? String ?? "",
                                     "email": document["email"] as? String ?? "",
@@ -137,7 +173,7 @@ class AuthenticationHelper {
                         ])
                     })
                 } else {
-                    UserPropertyHelper().getAllPropertiesForCurrentUser(completion: { userProperties in
+                    UserPropertyManager().getAllPropertiesForCurrentUser(completion: { userProperties in
                         completion(userProperties)
                     })
                 }

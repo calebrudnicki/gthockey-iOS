@@ -75,8 +75,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     @objc private func fetchRoster() {
-        let parser = JSONParser()
-        parser.getRoster() { response in
+        ContentManager().getRoster() { response in
             self.forwardArray = []
             self.defenseArray = []
             self.goalieArray = []

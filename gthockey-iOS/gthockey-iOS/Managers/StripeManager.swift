@@ -1,13 +1,13 @@
 //
-//  StripeClient.swift
+//  StripeManager.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 12/5/19.
-//  Copyright © 2019 Caleb Rudnicki. All rights reserved.
+//  Created by Caleb Rudnicki on 4/5/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import Foundation
-import Alamofire
+//import Alamofire
 //import Stripe
 
 // MARK: Under Construction (not used)
@@ -17,9 +17,9 @@ import Alamofire
 //  case failure(Error)
 //}
 
-class StripeClient {
+class StripeManager {
 
-//    static let shared = StripeClient()
+//    static let shared = StripeManager()
 //
 //    private init() {}
 //

@@ -112,7 +112,7 @@ class CartTableViewController: UITableViewController {
 //            totalPrice += item.getPrice()
 //        }
 //
-//        StripeClient.shared.completeCharge(with: token, amount: totalPrice) { result in
+//        StripeManager.shared.completeCharge(with: token, amount: totalPrice) { result in
 //            self.dismiss(animated: true, completion: nil)
 //
 //            switch result {

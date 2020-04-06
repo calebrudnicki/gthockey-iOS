@@ -1,20 +1,28 @@
 //
-//  AppIconHelper.swift
+//  AppIconManager.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 2/12/20.
+//  Created by Caleb Rudnicki on 4/5/20.
 //  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class AppIconHelper {
+class AppIconManager {
+
+    // MARK: Init
 
     init() {}
 
     // MARK: Public Functions
 
+    /**
+    Switches the app icon.
+
+    - Parameter icon: A `AppIcon` representation of the new icon that the user has selected as the default.
+    - Parameter completion: A block to execute once the icon has been assigned.
+    */
     public func switchAppIcon(to icon: AppIcon, completion: @escaping (Error?) -> Void) {
         guard UIApplication.shared.supportsAlternateIcons else {
             return
@@ -30,5 +38,5 @@ class AppIconHelper {
             }
         })
     }
-    
+
 }

@@ -66,7 +66,7 @@ class SettingsTableViewController: UITableViewController {
     }
 
     @objc private func fetchUserInfo() {
-        UserPropertyHelper().getAllPropertiesForCurrentUser(completion: { propertiesDictionary in
+        UserPropertyManager().getAllPropertiesForCurrentUser(completion: { propertiesDictionary in
             self.firstName = propertiesDictionary["firstName"] as? String
             self.lastName = propertiesDictionary["lastName"] as? String
             self.email = propertiesDictionary["email"] as? String
@@ -165,7 +165,7 @@ class SettingsTableViewController: UITableViewController {
     @objc private func saveButtonTapped() {
         if let firstName = firstName, let lastName = lastName,
             firstName != userProperties["firstName"] as! String || lastName != userProperties["lastName"] as! String {
-            UserPropertyHelper().overrideForCurrentUser(with: ["firstName": firstName, "lastName": lastName], completion: {
+            UserPropertyManager().overrideForCurrentUser(with: ["firstName": firstName, "lastName": lastName], completion: {
                 self.userProperties["firstName"] = firstName
                 self.userProperties["lastName"] = lastName
                 self.saveButton?.isEnabled = false
@@ -207,8 +207,8 @@ extension SettingsTableViewController: SettingsSwitchControlTableViewCellDelegat
 extension SettingsTableViewController: SettingsIconTableViewCellDelegate {
 
     func didSelectCell(with appIcon: AppIcon) {
-        UserPropertyHelper().overrideForCurrentUser(with: ["appIcon": appIcon.description], completion: {
-            AppIconHelper().switchAppIcon(to: appIcon, completion: { error in
+        UserPropertyManager().overrideForCurrentUser(with: ["appIcon": appIcon.description], completion: {
+            AppIconManager().switchAppIcon(to: appIcon, completion: { error in
                 if error != nil {
                     let alert = UIAlertController(title: "App icon switch failed",
                                               message: error?.localizedDescription,
@@ -230,7 +230,7 @@ extension SettingsTableViewController: SettingsTableViewFooterDelegate {
     func signoutButtonTapped(with signoutButton: PillButton) {
         let alert = UIAlertController(title: "Are you sure you want to sign out?", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            AuthenticationHelper().signOut { (result, error) in
+            AuthenticationManager().signOut { (result, error) in
                 if result {
                     let welcomeViewController = WelcomeViewController()
                     welcomeViewController.modalPresentationStyle = .fullScreen

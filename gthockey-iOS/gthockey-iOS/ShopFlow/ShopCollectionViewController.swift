@@ -71,8 +71,7 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     @objc private func fetchApparel() {
-       let parser = JSONParser()
-       parser.getShopItems() { response in
+       ContentManager().getShopItems() { response in
            self.apparelArray = []
            self.apparelArray = response
            DispatchQueue.main.async {
@@ -120,8 +119,7 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     private func fetchApparelDetails(with id: Int, completion: @escaping ([ApparelRestrictedItem], [ApparelCustomItem]) -> Void) {
-        let parser = JSONParser()
-        parser.getApparel(with: id) { (apparelRestrictedItems, apparelCustomItems) in
+        ContentManager().getApparel(with: id) { (apparelRestrictedItems, apparelCustomItems) in
             completion(apparelRestrictedItems, apparelCustomItems)
         }
     }

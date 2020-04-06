@@ -88,8 +88,7 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     @objc private func fetchSchedule() {
-        let parser = JSONParser()
-        parser.getSchedule(with: currentSeasonIDSelected) { response in
+        ContentManager().getSchedule(with: currentSeasonIDSelected) { response in
             self.completedGameArray = []
             self.upcomingGameArray = []
 
@@ -133,8 +132,7 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     @objc private func fetchSeasons() {
-        let parser = JSONParser()
-        parser.getSeasons() { response in
+        ContentManager().getSeasons() { response in
             self.seasonArray = response.sorted { $0.getYear() < $1.getYear() }
 
             DispatchQueue.main.async {
@@ -168,8 +166,7 @@ class ScheduleTableViewController: UITableViewController {
     }
 
     private func fetchGame(with id: Int, completion: @escaping (Team, Rink) -> Void) {
-        let parser = JSONParser()
-        parser.getGame(with: id) { (opponent, rink) in
+        ContentManager().getGame(with: id) { (opponent, rink) in
             completion(opponent, rink)
         }
     }

@@ -1,21 +1,28 @@
 //
-//  CartHelper.swift
+//  CartManager.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 11/19/19.
-//  Copyright © 2019 Caleb Rudnicki. All rights reserved.
+//  Created by Caleb Rudnicki on 4/5/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class CartHelper {
+class CartManager {
+
+    // MARK: Init
 
     init() {}
 
     // MARK: Public Functions
 
+    /**
+     Retrieves all of the items in the current user's cart.
+
+     - Parameter completion: A block to execute once the user's cart is retrieved.
+     */
     public func retrieveCart(completion: @escaping ([CartItem], Error?) -> Void) {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
@@ -62,6 +69,12 @@ class CartHelper {
         }
     }
 
+    /**
+     Adds a a merchandise item to a user's cart.
+
+     - Parameter cartDict: A `[String : Any]` representation of the merchandise item that is to be added to the cart.
+     - Parameter completion: A block to execute once the item is added.
+     */
     public func add(cartDict: [String: Any], completion: @escaping (Bool) -> Void) {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
@@ -71,6 +84,12 @@ class CartHelper {
         completion(false)
     }
 
+    /**
+     Removes a single item from the current user's cart.
+
+     - Parameter cartItem: A `CartItem` representation of merchandise item that is to be removed.
+     - Parameter completion: A block to execute once the item is removed from the cart.
+     */
     public func remove(with cartItem: CartItem, completion: @escaping (Bool) -> Void) {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()
@@ -105,6 +124,11 @@ class CartHelper {
         }
     }
 
+    /**
+     Clears all of the mercandise items within the current user's cart.
+
+     - Parameter completion: A block to execute once the admin user is cleared.
+     */
     public func clearCart(completion: @escaping (Bool) -> Void) {
         if let user = Auth.auth().currentUser {
             let db = Firestore.firestore()

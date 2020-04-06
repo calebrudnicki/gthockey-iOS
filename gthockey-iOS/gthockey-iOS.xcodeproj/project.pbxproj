@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8206D3DB23CBBBEF00863B3C /* AdminHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3DA23CBBBEF00863B3C /* AdminHelper.swift */; };
 		8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */; };
 		8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */; };
 		8206D3E423CBDA3F00863B3C /* AdminMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */; };
@@ -23,11 +22,19 @@
 		82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D13236FB360005FE89B /* ShopCollectionViewController.swift */; };
 		82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */; };
 		8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */; };
-		8218875E23F8A6F500F7179E /* AppVersionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218875D23F8A6F500F7179E /* AppVersionHelper.swift */; };
-		8218876223F98C9A00F7179E /* UserHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218876123F98C9A00F7179E /* UserHelper.swift */; };
-		8218876423F9B33200F7179E /* UserPropertyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8218876323F9B33100F7179E /* UserPropertyHelper.swift */; };
+		822D548C243AA7EE00B0776D /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D548B243AA7EE00B0776D /* DateExtension.swift */; };
+		822D5499243AA89B00B0776D /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D548E243AA89B00B0776D /* UserManager.swift */; };
+		822D549A243AA89B00B0776D /* ContentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D548F243AA89B00B0776D /* ContentManager.swift */; };
+		822D549B243AA89B00B0776D /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5490243AA89B00B0776D /* PushNotificationManager.swift */; };
+		822D549C243AA89B00B0776D /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5491243AA89B00B0776D /* AuthenticationManager.swift */; };
+		822D549D243AA89B00B0776D /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5492243AA89B00B0776D /* PushNotificationSender.swift */; };
+		822D549E243AA89B00B0776D /* AppIconManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5493243AA89B00B0776D /* AppIconManager.swift */; };
+		822D549F243AA89B00B0776D /* StripeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5494243AA89B00B0776D /* StripeManager.swift */; };
+		822D54A0243AA89B00B0776D /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5495243AA89B00B0776D /* CartManager.swift */; };
+		822D54A1243AA89B00B0776D /* UserPropertyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5496243AA89B00B0776D /* UserPropertyManager.swift */; };
+		822D54A2243AA89B00B0776D /* AdminManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5497243AA89B00B0776D /* AdminManager.swift */; };
+		822D54A3243AA89B00B0776D /* AppVersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5498243AA89B00B0776D /* AppVersionManager.swift */; };
 		82378185239995CA00CBD399 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82378184239995CA00CBD399 /* Constants.swift */; };
-		823781872399968100CBD399 /* StripeClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 823781862399968100CBD399 /* StripeClient.swift */; };
 		825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825092172361EFB300D98DEA /* UIViewExtension.swift */; };
 		826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */; };
 		826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */; };
@@ -52,7 +59,6 @@
 		82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */; };
 		82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */; };
 		82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */; };
-		82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5D623440B6700114F84 /* JSONParser.swift */; };
 		82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */; };
 		82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */; };
 		82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */; };
@@ -70,9 +76,7 @@
 		82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17E237DF95C00CD8F3D /* LoginView.swift */; };
 		82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */; };
 		82C2467D2384BAC7003CB268 /* FloatingCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */; };
-		82C2467F2384F4B7003CB268 /* CartHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2467E2384F4B7003CB268 /* CartHelper.swift */; };
 		82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C24680238669E0003CB268 /* HTMLTextView.swift */; };
-		82C7349623B3F14800196D5D /* AuthenticationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7349523B3F14800196D5D /* AuthenticationHelper.swift */; };
 		82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C8C1E92363333800C4D2C2 /* StringExtension.swift */; };
 		82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */; };
 		82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DCB478233C402200BDE2FE /* AppDelegate.swift */; };
@@ -81,12 +85,8 @@
 		82DCB486233C402300BDE2FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */; };
 		82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */; };
 		82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE66E223EE5DD5003E13E6 /* Season.swift */; };
-		82DE670323F0BA6B003E13E6 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670223F0BA6B003E13E6 /* PushNotificationSender.swift */; };
 		82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */; };
-		82DE670A23F1E4CC003E13E6 /* PushNotificationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670923F1E4CC003E13E6 /* PushNotificationHelper.swift */; };
 		82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */; };
-		82DE670E23F459A2003E13E6 /* AppIconHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670D23F459A2003E13E6 /* AppIconHelper.swift */; };
-		82E50BDC23CE9978009A3B92 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E50BDB23CE9978009A3B92 /* DateHelper.swift */; };
 		82EE57E12341B2BC00FCC181 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E02341B2BC00FCC181 /* Game.swift */; };
 		82EE57E32341B36200FCC181 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E22341B36200FCC181 /* Player.swift */; };
 		82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */; };
@@ -107,7 +107,6 @@
 /* Begin PBXFileReference section */
 		0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.release.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.release.xcconfig"; sourceTree = "<group>"; };
 		424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.debug.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		8206D3DA23CBBBEF00863B3C /* AdminHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminHelper.swift; sourceTree = "<group>"; };
 		8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersTableViewController.swift; sourceTree = "<group>"; };
 		8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersTableViewFooter.swift; sourceTree = "<group>"; };
 		8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuOption.swift; sourceTree = "<group>"; };
@@ -123,11 +122,19 @@
 		82170D13236FB360005FE89B /* ShopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewController.swift; sourceTree = "<group>"; };
 		82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		8217E0C6235CC3D1007144D0 /* MenuContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContainerViewController.swift; sourceTree = "<group>"; };
-		8218875D23F8A6F500F7179E /* AppVersionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppVersionHelper.swift; sourceTree = "<group>"; };
-		8218876123F98C9A00F7179E /* UserHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserHelper.swift; sourceTree = "<group>"; };
-		8218876323F9B33100F7179E /* UserPropertyHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPropertyHelper.swift; sourceTree = "<group>"; };
+		822D548B243AA7EE00B0776D /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		822D548E243AA89B00B0776D /* UserManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
+		822D548F243AA89B00B0776D /* ContentManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentManager.swift; sourceTree = "<group>"; };
+		822D5490243AA89B00B0776D /* PushNotificationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		822D5491243AA89B00B0776D /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		822D5492243AA89B00B0776D /* PushNotificationSender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
+		822D5493243AA89B00B0776D /* AppIconManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppIconManager.swift; sourceTree = "<group>"; };
+		822D5494243AA89B00B0776D /* StripeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StripeManager.swift; sourceTree = "<group>"; };
+		822D5495243AA89B00B0776D /* CartManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
+		822D5496243AA89B00B0776D /* UserPropertyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPropertyManager.swift; sourceTree = "<group>"; };
+		822D5497243AA89B00B0776D /* AdminManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminManager.swift; sourceTree = "<group>"; };
+		822D5498243AA89B00B0776D /* AppVersionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionManager.swift; sourceTree = "<group>"; };
 		82378184239995CA00CBD399 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		823781862399968100CBD399 /* StripeClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeClient.swift; sourceTree = "<group>"; };
 		825092172361EFB300D98DEA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitAnnotation.swift; sourceTree = "<group>"; };
 		826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +159,6 @@
 		82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewHeader.swift; sourceTree = "<group>"; };
 		82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
 		82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
-		82ADF5D623440B6700114F84 /* JSONParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParser.swift; sourceTree = "<group>"; };
 		82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDateTimeView.swift; sourceTree = "<group>"; };
 		82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultView.swift; sourceTree = "<group>"; };
 		82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleOpponentRinkView.swift; sourceTree = "<group>"; };
@@ -170,9 +176,7 @@
 		82B3A17E237DF95C00CD8F3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewFooter.swift; sourceTree = "<group>"; };
 		82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCloseButton.swift; sourceTree = "<group>"; };
-		82C2467E2384F4B7003CB268 /* CartHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartHelper.swift; sourceTree = "<group>"; };
 		82C24680238669E0003CB268 /* HTMLTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextView.swift; sourceTree = "<group>"; };
-		82C7349523B3F14800196D5D /* AuthenticationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationHelper.swift; sourceTree = "<group>"; };
 		82C8C1E92363333800C4D2C2 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewController.swift; sourceTree = "<group>"; };
 		82DCB475233C402200BDE2FE /* GT Hockey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GT Hockey.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -183,12 +187,8 @@
 		82DCB487233C402300BDE2FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		82DE66E223EE5DD5003E13E6 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
-		82DE670223F0BA6B003E13E6 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
-		82DE670923F1E4CC003E13E6 /* PushNotificationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationHelper.swift; sourceTree = "<group>"; };
 		82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
-		82DE670D23F459A2003E13E6 /* AppIconHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIconHelper.swift; sourceTree = "<group>"; };
-		82E50BDB23CE9978009A3B92 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		82EE57E02341B2BC00FCC181 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		82EE57E22341B36200FCC181 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -268,6 +268,37 @@
 			path = ShopFlow;
 			sourceTree = "<group>";
 		};
+		822D548A243AA74A00B0776D /* AppIconImages */ = {
+			isa = PBXGroup;
+			children = (
+				82A4294923D8EAE8002EF467 /* HeritageT@2x.png */,
+				82A4294A23D8EAE8002EF467 /* HeritageT@3x.png */,
+				82A4294D23D8EAF0002EF467 /* Buzz@2x.png */,
+				82A4294E23D8EAF0002EF467 /* Buzz@3x.png */,
+				82A4295323D8F707002EF467 /* RamblinReck@2x.png */,
+				82A4295423D8F708002EF467 /* RamblinReck@3x.png */,
+			);
+			path = AppIconImages;
+			sourceTree = "<group>";
+		};
+		822D548D243AA89B00B0776D /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				822D548E243AA89B00B0776D /* UserManager.swift */,
+				822D548F243AA89B00B0776D /* ContentManager.swift */,
+				822D5490243AA89B00B0776D /* PushNotificationManager.swift */,
+				822D5491243AA89B00B0776D /* AuthenticationManager.swift */,
+				822D5492243AA89B00B0776D /* PushNotificationSender.swift */,
+				822D5493243AA89B00B0776D /* AppIconManager.swift */,
+				822D5494243AA89B00B0776D /* StripeManager.swift */,
+				822D5495243AA89B00B0776D /* CartManager.swift */,
+				822D5496243AA89B00B0776D /* UserPropertyManager.swift */,
+				822D5497243AA89B00B0776D /* AdminManager.swift */,
+				822D5498243AA89B00B0776D /* AppVersionManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		825092162361EF8E00D98DEA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +306,7 @@
 				825092172361EFB300D98DEA /* UIViewExtension.swift */,
 				82C8C1E92363333800C4D2C2 /* StringExtension.swift */,
 				82A6F840238DBBA8001CA749 /* CustomError.swift */,
+				822D548B243AA7EE00B0776D /* DateExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -282,6 +314,7 @@
 		8297AFE3236A357F0081B273 /* CustomUIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */,
 				8297AFE1236A35780081B273 /* CardCollectionViewCell.swift */,
 				82B3A176237BD7CC00CD8F3D /* PillButton.swift */,
 				82C24680238669E0003CB268 /* HTMLTextView.swift */,
@@ -349,12 +382,7 @@
 		82DCB477233C402200BDE2FE /* gthockey-iOS */ = {
 			isa = PBXGroup;
 			children = (
-				82A4294923D8EAE8002EF467 /* HeritageT@2x.png */,
-				82A4294A23D8EAE8002EF467 /* HeritageT@3x.png */,
-				82A4294D23D8EAF0002EF467 /* Buzz@2x.png */,
-				82A4294E23D8EAF0002EF467 /* Buzz@3x.png */,
-				82A4295323D8F707002EF467 /* RamblinReck@2x.png */,
-				82A4295423D8F708002EF467 /* RamblinReck@3x.png */,
+				822D548A243AA74A00B0776D /* AppIconImages */,
 				F02585AD23412F68008E641C /* Models */,
 				8297AFE3236A357F0081B273 /* CustomUIComponents */,
 				82F85588236C7B9700DE7AFD /* LoginFlow */,
@@ -367,20 +395,8 @@
 				82F468EC237F4BD800573EE5 /* CartFlow */,
 				8206D3DC23CBC0E200863B3C /* AdminFlow */,
 				825092162361EF8E00D98DEA /* Extensions */,
+				822D548D243AA89B00B0776D /* Managers */,
 				82DCB478233C402200BDE2FE /* AppDelegate.swift */,
-				82ADF5D623440B6700114F84 /* JSONParser.swift */,
-				8218876323F9B33100F7179E /* UserPropertyHelper.swift */,
-				8218876123F98C9A00F7179E /* UserHelper.swift */,
-				82C7349523B3F14800196D5D /* AuthenticationHelper.swift */,
-				8218875D23F8A6F500F7179E /* AppVersionHelper.swift */,
-				8206D3DA23CBBBEF00863B3C /* AdminHelper.swift */,
-				82C2467E2384F4B7003CB268 /* CartHelper.swift */,
-				82E50BDB23CE9978009A3B92 /* DateHelper.swift */,
-				82DE670D23F459A2003E13E6 /* AppIconHelper.swift */,
-				823781862399968100CBD399 /* StripeClient.swift */,
-				82DE670923F1E4CC003E13E6 /* PushNotificationHelper.swift */,
-				82DE670223F0BA6B003E13E6 /* PushNotificationSender.swift */,
-				82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */,
 				82DCB482233C402300BDE2FE /* Assets.xcassets */,
 				82DCB484233C402300BDE2FE /* LaunchScreen.storyboard */,
 				82DCB487233C402300BDE2FE /* Info.plist */,
@@ -600,29 +616,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				827F55C923FC0F000080138A /* ArticlePreviewView.swift in Sources */,
-				82C7349623B3F14800196D5D /* AuthenticationHelper.swift in Sources */,
+				822D54A1243AA89B00B0776D /* UserPropertyManager.swift in Sources */,
 				FA3570BA23502190008E83BC /* Team.swift in Sources */,
-				8218876223F98C9A00F7179E /* UserHelper.swift in Sources */,
+				822D549C243AA89B00B0776D /* AuthenticationManager.swift in Sources */,
 				82A4295223D8EC7D002EF467 /* AppIcon.swift in Sources */,
 				8206D3FB23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift in Sources */,
+				822D549B243AA89B00B0776D /* PushNotificationManager.swift in Sources */,
 				8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */,
 				82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */,
-				82E50BDC23CE9978009A3B92 /* DateHelper.swift in Sources */,
 				82A4293923D8CE51002EF467 /* SettingsIconTableViewCell.swift in Sources */,
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */,
 				82B3A177237BD7CC00CD8F3D /* PillButton.swift in Sources */,
 				82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */,
+				822D54A0243AA89B00B0776D /* CartManager.swift in Sources */,
 				82C2467D2384BAC7003CB268 /* FloatingCloseButton.swift in Sources */,
 				8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */,
 				82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */,
 				828F812723ECF7F300ED6CBC /* Venue.swift in Sources */,
 				82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */,
-				8206D3DB23CBBBEF00863B3C /* AdminHelper.swift in Sources */,
+				822D549D243AA89B00B0776D /* PushNotificationSender.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
-				8218875E23F8A6F500F7179E /* AppVersionHelper.swift in Sources */,
 				82F468F62380659800573EE5 /* CartTableViewFooter.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
 				82378185239995CA00CBD399 /* Constants.swift in Sources */,
@@ -631,12 +647,14 @@
 				8206D3E823CCC40600863B3C /* AllUsersTableViewController.swift in Sources */,
 				826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */,
 				82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */,
+				822D549F243AA89B00B0776D /* StripeManager.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
 				F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */,
 				82170D11236FB301005FE89B /* Apparel.swift in Sources */,
 				82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */,
+				822D5499243AA89B00B0776D /* UserManager.swift in Sources */,
+				822D549A243AA89B00B0776D /* ContentManager.swift in Sources */,
 				82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */,
-				82C2467F2384F4B7003CB268 /* CartHelper.swift in Sources */,
 				82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */,
 				82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */,
 				82F468EE237F4C0E00573EE5 /* CartTableViewController.swift in Sources */,
@@ -652,7 +670,6 @@
 				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,
 				820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */,
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
-				823781872399968100CBD399 /* StripeClient.swift in Sources */,
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */,
 				826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */,
@@ -660,26 +677,25 @@
 				8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */,
 				8206D3F323CD350900863B3C /* AllUsersTableViewFooter.swift in Sources */,
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
-				82DE670323F0BA6B003E13E6 /* PushNotificationSender.swift in Sources */,
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
+				822D549E243AA89B00B0776D /* AppIconManager.swift in Sources */,
 				82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
 				82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */,
-				8218876423F9B33200F7179E /* UserPropertyHelper.swift in Sources */,
-				82DE670E23F459A2003E13E6 /* AppIconHelper.swift in Sources */,
 				8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */,
 				8206D3F923CE532200863B3C /* SettingsTextFieldTableViewCell.swift in Sources */,
-				82ADF5D723440B6700114F84 /* JSONParser.swift in Sources */,
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
+				822D54A3243AA89B00B0776D /* AppVersionManager.swift in Sources */,
+				822D54A2243AA89B00B0776D /* AdminManager.swift in Sources */,
 				82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
 				8206D3EF23CD307E00863B3C /* AppUser.swift in Sources */,
-				82DE670A23F1E4CC003E13E6 /* PushNotificationHelper.swift in Sources */,
 				82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */,
 				82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */,
 				82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */,
 				82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */,
 				82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */,
+				822D548C243AA7EE00B0776D /* DateExtension.swift in Sources */,
 				8206D3F123CD310900863B3C /* AllUsersTableViewCell.swift in Sources */,
 				82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */,
 				82F468F2237F611C00573EE5 /* CartItem.swift in Sources */,

@@ -293,8 +293,7 @@ class ShopDetailViewController: UIViewController {
         firestoreDict["price"] = price
         firestoreDict["attributes"] = attributesDict
 
-        let cartHelper = CartHelper()
-        cartHelper.add(cartDict: firestoreDict, completion: { result in
+        CartManager().add(cartDict: firestoreDict, completion: { result in
             if result {
                 self.dismiss(animated: true, completion: nil)
             } else {

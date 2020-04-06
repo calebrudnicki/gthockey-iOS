@@ -86,7 +86,7 @@ class AllUsersTableViewController: UITableViewController {
     }
 
     @objc private func fetchAllUsers() {
-        UserHelper().getAllUsers(completion: { users in
+        UserManager().getAllUsers(completion: { users in
             self.allUsers = self.filterAllUsers(for: self.currentFilterSelected, with: users)
 
             DispatchQueue.main.async {

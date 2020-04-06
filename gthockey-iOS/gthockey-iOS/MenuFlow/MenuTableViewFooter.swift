@@ -79,7 +79,7 @@ class MenuTableViewFooter: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        versionLabel.text = "\(String(describing: versionLabel.text!)) | Version \(AppVersionHelper().getCurrentVersion())"
+        versionLabel.text = "\(String(describing: versionLabel.text!)) | Version \(AppVersionManager().getCurrentVersion())"
 
         instagramButton.addTarget(self, action: #selector(instagramButtonTapped), for: .touchUpInside)
         twitterButton.addTarget(self, action: #selector(twitterButtonTapped), for: .touchUpInside)
@@ -91,7 +91,7 @@ class MenuTableViewFooter: UIView {
         iconStack.addArrangedSubview(facebookButton)
 
         addSubviews([iconStack, versionLabel])
-        if AdminHelper().isAdminUser(UserDefaults.standard.string(forKey: "email")!) {
+        if AdminManager().isAdminUser(UserDefaults.standard.string(forKey: "email")!) {
             addSubview(toggleAdminButton)
         }
         updateConstraints()
@@ -117,7 +117,7 @@ class MenuTableViewFooter: UIView {
             versionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -12.0)
         ])
 
-        if AdminHelper().isAdminUser(UserDefaults.standard.string(forKey: "email")!) {
+        if AdminManager().isAdminUser(UserDefaults.standard.string(forKey: "email")!) {
             NSLayoutConstraint.activate([
                 toggleAdminButton.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 8.0),
                 toggleAdminButton.centerXAnchor.constraint(equalTo: centerXAnchor),

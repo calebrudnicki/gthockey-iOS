@@ -70,8 +70,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     @objc private func fetchArticles() {
-        let parser = JSONParser()
-        parser.getArticles() { response in
+        ContentManager().getArticles() { response in
             self.newsArray = response
 
             for i in 0..<self.newsArray.count {

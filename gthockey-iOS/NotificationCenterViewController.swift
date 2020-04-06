@@ -209,7 +209,7 @@ class NotificationCenterViewController: UIViewController {
             self.sendNotificationButton.isLoading = false
         }))
         alert.addAction(UIAlertAction(title: "Send", style: .default, handler: { action in
-            UserHelper().getAllUsersWithValidFCMToken(completion: { (usersWithValidFCMToken) in
+            UserManager().getAllUsersWithValidFCMToken(completion: { (usersWithValidFCMToken) in
                 var tokens: [String] = []
 
                 for user in usersWithValidFCMToken {

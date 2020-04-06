@@ -113,7 +113,7 @@ extension WelcomeViewController: SignupViewDelegate {
         self.firstName = firstName
         self.lastName = lastName
 
-        AuthenticationHelper().createUser(with: firstName, lastName, email, password) { result, error in
+        AuthenticationManager().createUser(with: firstName, lastName, email, password) { result, error in
             if result {
                 self.switchToLogin(with: email, password: password)
                 signupButton.isLoading = false
@@ -163,7 +163,7 @@ extension WelcomeViewController: LoginViewDelegate {
     // MARK: LoginViewDelegate
 
     func didTapLoginButton(with email: String, _ password: String, _ loginButton: PillButton) {
-        AuthenticationHelper().login(with: email, password, firstName, lastName) { result, error in
+        AuthenticationManager().login(with: email, password, firstName, lastName) { result, error in
             if result {
                 let menuContainerViewController = MenuContainerViewController()
                 menuContainerViewController.modalPresentationStyle = .fullScreen
@@ -190,7 +190,7 @@ extension WelcomeViewController: LoginViewDelegate {
     }
 
     func forgotPassword(with email: String) {
-        AuthenticationHelper().resetPassword(with: email, completion: { error in
+        AuthenticationManager().resetPassword(with: email, completion: { error in
             if error != nil {
                 let alert = UIAlertController(title: "Could not initiate password reset",
                                               message: error?.localizedDescription,

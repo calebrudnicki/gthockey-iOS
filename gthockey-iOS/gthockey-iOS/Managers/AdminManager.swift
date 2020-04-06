@@ -1,8 +1,8 @@
 //
-//  AdminHelper.swift
+//  AdminManager.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 1/12/20.
+//  Created by Caleb Rudnicki on 4/5/20.
 //  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
@@ -10,37 +10,54 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class AdminHelper {
-
-    init() {}
+class AdminManager {
 
     // MARK: Properties
 
     private static var adminUsersOnAppLaunch: [String] = []
 
+    // MARK: Init
+
+    init() {}
+
     // MARK: Public Functions
 
+    /**
+     Determines if the user in question is an admin user.
+
+     - Returns: A `Bool` indication of if the user is an admin.
+     */
     public func isAdminUser(_ email: String) -> Bool {
-        return AdminHelper.adminUsersOnAppLaunch.contains(email)
+        return AdminManager.adminUsersOnAppLaunch.contains(email)
     }
 
-    public func saveAdminUsersonLaunch(completion: @escaping (Bool) -> Void) {
+    /**
+     Saves all of the admin app users when the application is launched.
+
+     - Parameter completion: A block to execute once the admin users are saved.
+     */
+    public func saveAdminUsersOnLaunch(completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
 
-        AdminHelper.self.adminUsersOnAppLaunch = []
+        AdminManager.self.adminUsersOnAppLaunch = []
 
         db.collection("adminUsers").getDocuments { (document, error) in
             guard let documents = document?.documents else { return }
 
             for document in documents {
                 if let email = ((document.data() as NSDictionary)["email"] as! String?) {
-                    AdminHelper.self.adminUsersOnAppLaunch.append(email)
+                    AdminManager.self.adminUsersOnAppLaunch.append(email)
                 }
             }
             completion(true)
         }
     }
 
+    /**
+     Retrieves the list of all admin users.
+
+     - Parameter completion: A block to execute once the admin users are retrieved.
+     */
     public func getAdminUsers(completion: @escaping ([String], Error?) -> Void) {
         let db = Firestore.firestore()
 
@@ -57,7 +74,13 @@ class AdminHelper {
         }
     }
 
-    public func add(email: String, completion: @escaping (Bool) -> Void) {
+    /**
+     Adds a user to the list of admin users.
+
+     - Parameter email: A `String` representation of the new admin user's email address.
+     - Parameter completion: A block to execute once the admin user is added.
+     */
+    public func add(_ email: String, completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
 
         db.collection("adminUsers").addDocument(data: ["email": email]) { (error) in
@@ -68,9 +91,15 @@ class AdminHelper {
         }
     }
 
+    /**
+     Removes a user from the list of admin users.
+
+     - Parameter adminEmail: A `String` representation of the admin user's email address.
+     - Parameter completion: A block to execute once the admin users is deleted.
+     */
     public func remove(_ adminEmail: String, completion: @escaping (Bool) -> Void) {
         let db = Firestore.firestore()
-        
+
         db.collection("adminUsers").getDocuments { (document, error) in
             guard let documents = document?.documents else { return }
 

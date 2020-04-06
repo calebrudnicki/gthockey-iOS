@@ -1,8 +1,8 @@
 //
-//  UserHelper.swift
+//  UserManager.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 2/16/20.
+//  Created by Caleb Rudnicki on 4/5/20.
 //  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
@@ -10,7 +10,9 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class UserHelper {
+class UserManager {
+
+    // MARK: Init
 
     init() {}
 
@@ -19,7 +21,7 @@ class UserHelper {
     /**
     Fetches and returns a list of all users registered for your application.
 
-    - Completion: A block to execute once the user's properties have been retrieved.
+    - Parameter completion: A block to execute once the user's properties have been retrieved.
     */
     public func getAllUsers(completion: @escaping ([AppUser]) -> Void) {
         Firestore.firestore().collection("users").getDocuments { (document, error) in
@@ -42,6 +44,11 @@ class UserHelper {
         }
     }
 
+    /**
+     Fetches and returns a list of all users registered for your application.
+
+     - Parameter completion: A block to execute once the user's properties have been retrieved.
+     */
     public func getAllUsersWithValidFCMToken(completion: @escaping ([AppUser]) -> Void) {
         Firestore.firestore().collection("users").getDocuments { (document, error) in
             guard let documents = document?.documents else { return }

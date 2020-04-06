@@ -1,26 +1,32 @@
 //
-//  JSONParser.swift
-//  GTHockey
+//  ContentManager.swift
+//  gthockey-iOS
 //
-//  Created by Dylan Mace on 9/29/19.
-//  Copyright © 2019 Dylan Mace. All rights reserved.
+//  Created by Caleb Rudnicki on 4/4/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import Foundation
 import Alamofire
-import AlamofireImage
 import SwiftyJSON
 
-class JSONParser {
+class ContentManager {
+
+    // MARK: Init
 
     init() {}
 
     // MARK: Public Functions
 
+    /**
+     Retrieves all articles from the GT Hockey admin page.
+
+     - Parameter completion: The block containing an array of `News` objects to execute after the get call finishes.
+     */
     public func getArticles(completion: @escaping ([News]) -> Void) {
         var articles: [News] = []
 
-        Alamofire.request("https://gthockey.com/api/articles/").validate().responseJSON { responseData  in
+        Alamofire.request("https://gthockey.com/api/articles/").validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -35,10 +41,15 @@ class JSONParser {
         }
     }
 
+    /**
+     Retrieves all rostered individuals from the GT Hockey admin page.
+
+     - Parameter completion: The block containing an array of `Player` objects to execute after the get call finishes.
+     */
     public func getRoster(completion: @escaping ([Player]) -> Void) {
         var players: [Player] = []
 
-        Alamofire.request("https://gthockey.com/api/players/").validate().responseJSON { responseData  in
+        Alamofire.request("https://gthockey.com/api/players/").validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -53,10 +64,16 @@ class JSONParser {
         }
     }
 
+    /**
+     Retrieves all games for a particular season from the GT Hockey admin page.
+
+     - Parameter seasonID: An `Int` representation for the season's unique ID value.
+     - Parameter completion: The block containing an array of `Game` objects to execute after the get call finishes.
+     */
     public func getSchedule(with seasonID: Int, completion: @escaping ([Game]) -> Void) {
         var games: [Game] = []
 
-        Alamofire.request("https://gthockey.com/api/games/?season=\(seasonID)").validate().responseJSON { responseData  in
+        Alamofire.request("https://gthockey.com/api/games/?season=\(seasonID)").validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -71,6 +88,11 @@ class JSONParser {
         }
     }
 
+    /**
+     Retrieves all seasons from the GT Hockey admin page.
+
+     - Parameter completion: The block containing an array of `Season` objects to execute after the get call finishes.
+     */
     public func getSeasons(completion: @escaping ([Season]) -> Void) {
         var seasons: [Season] = []
 
@@ -89,6 +111,12 @@ class JSONParser {
         }
     }
 
+    /**
+       Retrieves a game from the GT Hockey admin page.
+
+       - Parameter id: An `Int` representation for the game's unique ID value
+       - Parameter completion: The block containing a tuple of `(Team, Rink)` to execute after the get call finishes.
+       */
     public func getGame(with id: Int, completion: @escaping (Team, Rink) -> Void) {
         var opponent: Team?
         var rink: Rink?
@@ -107,6 +135,11 @@ class JSONParser {
         }
     }
 
+    /**
+     Retrieves all shop items from the GT Hockey admin page.
+
+     - Parameter completion: The block containing an array of `Apparel` objects to execute after the get call finishes.
+     */
     public func getShopItems(completion: @escaping ([Apparel]) -> Void) {
         var apparels: [Apparel] = []
 
@@ -125,6 +158,13 @@ class JSONParser {
         }
     }
 
+    /**
+       Retrieves a specific merchandise item from the GT Hockey admin page.
+
+       - Parameter id: An `Int` representation for the merchandise's unique ID value
+       - Parameter completion: The block containing a tuple of an array of `ApparelRestrictedItem` objects and
+                                `ApparelCustomItem` objects to execute after the get call finishes.
+       */
     public func getApparel(with id: Int, completion: @escaping ([ApparelRestrictedItem], [ApparelCustomItem]) -> Void) {
         var restrictedOptions: [ApparelRestrictedItem]?
         var customOptions: [ApparelCustomItem]?
@@ -148,7 +188,7 @@ class JSONParser {
     private func makeNewsObject(value: JSON) -> News {
         let article = News(id: value["id"].int!,
                            title: value["title"].string!,
-                           date: DateHelper().formatDate(from: value["date"].string!, withTime: false),
+                           date: value["date"].string!.shortDate,
                            imageURL: URL(string: value["image"].string!)!,
                            teaser: value["teaser"].string!,
                            content: value["content"].string!)
@@ -157,7 +197,7 @@ class JSONParser {
 
     private func makeGameObject(value: JSON) -> Game {
         let game = Game(id: value["id"].int!,
-                        dateTime: DateHelper().formatDate(from: value["datetime"].string!, withTime: true),
+                        dateTime: value["datetime"].string!.longDate,
                         opponentName: value["opponent_name"].string!,
                         rinkName: value["rink_name"].string!,
                         venue: value["venue"].string!,
@@ -183,8 +223,10 @@ class JSONParser {
                             number: value["number"].int ?? 0,
                             hometown: value["hometown"].string!,
                             school: value["school"].string!,
-                            imageURL: URL(string: value["image"].string ?? "https://test.gthockey.com/media/players/caleb.jpg")!,
-                            headshotURL: URL(string: value["headshot"].string ?? "https://test.gthockey.com/media/players/caleb.jpg")!,
+                            imageURL: URL(string: value["image"].string ??
+                                "https://test.gthockey.com/media/players/caleb.jpg")!,
+                            headshotURL: URL(string: value["headshot"].string ??
+                                "https://test.gthockey.com/media/players/caleb.jpg")!,
                             bio: value["bio"].string ?? "")
         return player
     }
@@ -193,15 +235,18 @@ class JSONParser {
         let team = Team(id: value["id"].int!,
                         schoolName: value["school_name"].string!,
                         mascotName: value["mascot_name"].string!,
-                        webURL: URL(string: value["web_url"].string!) ?? URL(string: "http://lynnclubhockey.pointstreaksites.com/view/fightingknights/")!,
-                        imageURL: URL(string: value["logo"].string!) ?? URL(string: "https://prod.gthockey.com/media/teamlogos/EpGmgBUN_400x400.png")!)
+                        webURL: URL(string: value["web_url"].string!) ??
+                            URL(string: "http://lynnclubhockey.pointstreaksites.com/view/fightingknights/")!,
+                        imageURL: URL(string: value["logo"].string!) ??
+                            URL(string: "https://prod.gthockey.com/media/teamlogos/EpGmgBUN_400x400.png")!)
         return team
     }
 
     private func makeRinkObject(value: JSON) -> Rink {
         let rink = Rink(id: value["id"].int ?? 12345,
                         name: value["rink_name"].string ?? "TBD",
-                        mapsURL: URL(string: value["maps_url"].string ?? "@0.00000,0.000000,15z/data=!4m2!3m1!1s0x0:")!)
+                        mapsURL: URL(string: value["maps_url"].string ??
+                            "@0.00000,0.000000,15z/data=!4m2!3m1!1s0x0:")!)
         return rink
     }
 
@@ -210,7 +255,8 @@ class JSONParser {
                               name: value["name"].string!,
                               price: value["price"].double!,
                               description: value["description"].string!,
-                              imageURL: URL(string: value["image"].string ?? "https://test.gthockey.com/media/players/caleb.jpg")!)
+                              imageURL: URL(string: value["image"].string ??
+                                "https://test.gthockey.com/media/players/caleb.jpg")!)
         return apparel
     }
 
@@ -220,7 +266,8 @@ class JSONParser {
             let apparelRestrictedItem = ApparelRestrictedItem(id: item["id"].int!,
                                                               displayName: item["display_name"].string!,
                                                               helpText: item["help_text"].string!,
-                                                              optionsList: (item["option_list"].string!).components(separatedBy: [","]),
+                                                              optionsList: (item["option_list"].string!)
+                                                                            .components(separatedBy: [","]),
                                                               correspondingApparelID: item["shop_item"].int!)
             arr.append(apparelRestrictedItem)
         }

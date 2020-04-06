@@ -1,15 +1,18 @@
 //
-//  UserPropertyHelper.swift
-//  
+//  UserPropertyManager.swift
+//  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 2/15/20.
+//  Created by Caleb Rudnicki on 4/5/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-class UserPropertyHelper {
+class UserPropertyManager {
+
+    // MARK: Init
 
     init() {}
 
@@ -19,8 +22,7 @@ class UserPropertyHelper {
      Fetches and returns a dictionary holding all properties for a particular user.
 
      - Parameter uid: The unique identifier to represent the targeted user.
-
-     - Completion: A block to execute once the user's properties have been retrieved.
+     - Parameter completion: A block to execute once the user's properties have been retrieved.
      */
     public func getAllPropertiesForUser(for uid: String, completion: @escaping ([String : Any]) -> Void) {
         Firestore.firestore().collection("users").document(uid).getDocument { (document, error) in
@@ -40,7 +42,7 @@ class UserPropertyHelper {
     /**
      Fetches and returns a dictionary holding all properties for the current user.
 
-     - Completion: A block to execute once the user's properties have been retrieved.
+     - Parameter completion: A block to execute once the user's properties have been retrieved.
      */
     public func getAllPropertiesForCurrentUser(completion: @escaping ([String : Any]) -> Void) {
         guard let user = Auth.auth().currentUser else { return }
@@ -66,8 +68,7 @@ class UserPropertyHelper {
      values to override them with (i.e. using `dict = ["firstName": "George"]` will make the selected user's `firstName`
      = "George".
      - Parameter uid: The unique identifier to represent the targeted user.
-
-     - Completion: A block to execute once the user property or properties have been overriden
+     - Parameter completion: A block to execute once the user property or properties have been overriden.
      */
     public func overrideForOneUser(with dict: [String: Any], for uid: String, completion: @escaping () -> Void) {
         Firestore.firestore().collection("users").document(uid).getDocument { (document, error) in
@@ -86,8 +87,7 @@ class UserPropertyHelper {
      - Parameter dict: A dictionary representation of the user property or properties to override and the corresponding
      values to override them with (i.e. using `dict = ["firstName": "George"]` will make the current user's `firstName`
      = "George".
-
-     - Completion: A block to execute once the user property or properties have been overriden
+     - Parameter completion: A block to execute once the user property or properties have been overriden.
      */
     public func overrideForCurrentUser(with dict: [String: Any], completion: @escaping () -> Void) {
         guard let user = Auth.auth().currentUser else { return }
@@ -102,8 +102,7 @@ class UserPropertyHelper {
      - Parameter dict: A dictionary representation of the user property or properties to override and the corresponding
      values to override them with (i.e. using `dict = ["firstName": "George"]` will make all user's `firstName`
      = "George".
-
-     - Completion: A block to execute once the user property or properties have been overriden
+     - Parameter completion: A block to execute once the user property or properties have been overriden.
      */
     public func overrideForAllUsers(with dict: [String: Any], completion: @escaping () -> Void) {
         Firestore.firestore().collection("users").getDocuments { (document, error) in

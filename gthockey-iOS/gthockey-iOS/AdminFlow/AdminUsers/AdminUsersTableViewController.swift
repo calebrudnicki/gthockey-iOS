@@ -56,7 +56,7 @@ class AdminUsersTableViewController: UITableViewController {
     }
 
     @objc private func fetchAdminUsers() {
-        AdminHelper().getAdminUsers(completion: { (admins, error) in
+        AdminManager().getAdminUsers(completion: { (admins, error) in
             self.adminUsers = admins
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -88,7 +88,7 @@ class AdminUsersTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            AdminHelper().remove(adminUsers[indexPath.row], completion: { result in
+            AdminManager().remove(adminUsers[indexPath.row], completion: { result in
                 if result {
                     self.adminUsers.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -120,7 +120,7 @@ extension AdminUsersTableViewController: AdminUsersTableViewFooterDelegate {
         }
         let addAction = UIAlertAction(title: "Add", style: .default, handler: { alert -> Void in
             let firstTextField = alertController.textFields![0] as UITextField
-            AdminHelper().add(email: firstTextField.text ?? "georgiatechhockey@gmail.com") { (result) in
+            AdminManager().add(firstTextField.text ?? "georgiatechhockey@gmail.com") { (result) in
                 if result {
                     addAdminUserButton.isLoading = false
                     self.fetchAdminUsers()

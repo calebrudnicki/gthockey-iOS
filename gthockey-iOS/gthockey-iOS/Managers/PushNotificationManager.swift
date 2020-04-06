@@ -1,18 +1,18 @@
 //
-//  PushNotificationHelper.swift
+//  PushNotificationManager.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 2/10/20.
+//  Created by Caleb Rudnicki on 4/5/20.
 //  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
-import Firebase
+import Foundation
 import FirebaseFirestore
 import FirebaseMessaging
 import UIKit
 import UserNotifications
 
-class PushNotificationHelper: NSObject {
+class PushNotificationManager: NSObject {
 
     // MARK: Properties
 
@@ -28,6 +28,9 @@ class PushNotificationHelper: NSObject {
 
     // MARK: Public Functions
 
+    /**
+    Registers the app for push notifications.
+    */
     public func registerForPushNotifications() {
 
         if #available(iOS 10.0, *) {
@@ -58,7 +61,7 @@ class PushNotificationHelper: NSObject {
 
 }
 
-extension PushNotificationHelper: MessagingDelegate {
+extension PushNotificationManager: MessagingDelegate {
 
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
         print(remoteMessage.appData)
@@ -70,7 +73,7 @@ extension PushNotificationHelper: MessagingDelegate {
 }
 
 @available(iOS 10, *)
-extension PushNotificationHelper: UNUserNotificationCenterDelegate {
+extension PushNotificationManager: UNUserNotificationCenterDelegate {
 
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
