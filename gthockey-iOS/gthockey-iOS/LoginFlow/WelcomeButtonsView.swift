@@ -28,6 +28,7 @@ class WelcomeButtonsView: UIView {
         return buttonsStackView
     }()
 
+    private let authorizationButton = PillButton(title: " Sign in with Apple", backgroundColor: .black, borderColor: .black, isEnabled: true)
     private let signupButton = PillButton(title: "Sign Up", backgroundColor: .techNavy, borderColor: .techGold, isEnabled: true)
     private let loginButton = PillButton(title: "Log In", backgroundColor: .techGold, borderColor: .techGold, isEnabled: true)
 
@@ -38,9 +39,11 @@ class WelcomeButtonsView: UIView {
 
         translatesAutoresizingMaskIntoConstraints = false
 
+        authorizationButton.addTarget(self, action: #selector(authorizationButtonTapped), for: .touchUpInside)
         signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
 
+        buttonsStackView.addArrangedSubview(authorizationButton)
         buttonsStackView.addArrangedSubview(signupButton)
         buttonsStackView.addArrangedSubview(loginButton)
 
@@ -64,6 +67,10 @@ class WelcomeButtonsView: UIView {
     }
 
     // MARK: Actions
+    
+    @objc private func authorizationButtonTapped() {
+        print("tap that")
+    }
 
     @objc private func signupButtonTapped() {
         delegate?.didTapSignupButton()
