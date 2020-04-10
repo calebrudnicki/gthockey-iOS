@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class WelcomeViewController: UIViewController {
 
@@ -163,20 +164,55 @@ extension WelcomeViewController: LoginViewDelegate {
     // MARK: LoginViewDelegate
 
     func didTapLoginButton(with email: String, _ password: String, _ loginButton: PillButton) {
-        AuthenticationManager().login(with: email, password, firstName, lastName) { result, error in
-            if result {
-                let menuContainerViewController = MenuContainerViewController()
-                menuContainerViewController.modalPresentationStyle = .fullScreen
-                self.present(menuContainerViewController, animated: true, completion: nil)
-            } else {
-                let alert = UIAlertController(title: "Log in failed",
-                                          message: error?.localizedDescription,
-                                          preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default,
-                                              handler:{_ in loginButton.isLoading = false}))
-                self.present(alert, animated: true, completion: nil)
+        let actionCodeSettings = ActionCodeSettings()
+        actionCodeSettings.url = URL(string: "https://gthockey.page.link/nYJz")
+        // The sign-in operation has to always be completed in the app.
+        actionCodeSettings.handleCodeInApp = true
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+
+        Auth.auth().sendSignInLink(toEmail:email,
+                                   actionCodeSettings: actionCodeSettings) { error in
+          // ...
+            if let error = error {
+              //self.showMessagePrompt(error.localizedDescription)
+              return
             }
+            // The link was successfully sent. Inform the user.
+            // Save the email locally so you don't need to ask the user for it again
+            // if they open the link on the same device.
+            UserDefaults.standard.set(email, forKey: "Email")
+//            let menuContainerViewController = MenuContainerViewController()
+//            menuContainerViewController.modalPresentationStyle = .fullScreen
+//            self.present(menuContainerViewController, animated: true, completion: nil)
+            let alert = UIAlertController(title: "Check your email",
+                                          message: "A password reset link should be in your \(email) email",
+                                          preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            alert.addAction(UIAlertAction(title: "Open email", style: .default, handler: { action in
+                let mailURL = URL(string: "message://")!
+                if UIApplication.shared.canOpenURL(mailURL) {
+                    UIApplication.shared.open(mailURL, options: [:], completionHandler: nil)
+                 }
+            }))
+            self.present(alert, animated: true, completion: nil)
+            //self.showMessagePrompt("Check your email for link")
+            // ...
         }
+
+//        AuthenticationManager().login(with: email, password, firstName, lastName) { result, error in
+//            if result {
+//                let menuContainerViewController = MenuContainerViewController()
+//                menuContainerViewController.modalPresentationStyle = .fullScreen
+//                self.present(menuContainerViewController, animated: true, completion: nil)
+//            } else {
+//                let alert = UIAlertController(title: "Log in failed",
+//                                          message: error?.localizedDescription,
+//                                          preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Ok", style: .default,
+//                                              handler:{_ in loginButton.isLoading = false}))
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//        }
     }
 
     func switchToSignup() {
