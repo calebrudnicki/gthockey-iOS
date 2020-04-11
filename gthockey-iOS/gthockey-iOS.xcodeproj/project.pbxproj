@@ -87,6 +87,8 @@
 		82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE66E223EE5DD5003E13E6 /* Season.swift */; };
 		82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */; };
 		82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */; };
+		82E13CE02442452E007EFE53 /* MainSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E13CDF24424511007EFE53 /* MainSignInViewController.swift */; };
+		82E13CE2244248CE007EFE53 /* VerifyEmailSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E13CE1244248CE007EFE53 /* VerifyEmailSignInViewController.swift */; };
 		82EE57E12341B2BC00FCC181 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E02341B2BC00FCC181 /* Game.swift */; };
 		82EE57E32341B36200FCC181 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E22341B36200FCC181 /* Player.swift */; };
 		82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */; };
@@ -189,6 +191,8 @@
 		82DE66E223EE5DD5003E13E6 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
 		82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
+		82E13CDF24424511007EFE53 /* MainSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSignInViewController.swift; sourceTree = "<group>"; };
+		82E13CE1244248CE007EFE53 /* VerifyEmailSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyEmailSignInViewController.swift; sourceTree = "<group>"; };
 		82EE57E02341B2BC00FCC181 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		82EE57E22341B36200FCC181 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -446,6 +450,8 @@
 				82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */,
 				82B3A17A237DA87600CD8F3D /* SignupView.swift */,
 				82B3A17E237DF95C00CD8F3D /* LoginView.swift */,
+				82E13CDF24424511007EFE53 /* MainSignInViewController.swift */,
+				82E13CE1244248CE007EFE53 /* VerifyEmailSignInViewController.swift */,
 			);
 			path = LoginFlow;
 			sourceTree = "<group>";
@@ -623,6 +629,7 @@
 				8206D3FB23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift in Sources */,
 				822D549B243AA89B00B0776D /* PushNotificationManager.swift in Sources */,
 				8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */,
+				82E13CE2244248CE007EFE53 /* VerifyEmailSignInViewController.swift in Sources */,
 				82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */,
 				82A4293923D8CE51002EF467 /* SettingsIconTableViewCell.swift in Sources */,
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
@@ -698,6 +705,7 @@
 				822D548C243AA7EE00B0776D /* DateExtension.swift in Sources */,
 				8206D3F123CD310900863B3C /* AllUsersTableViewCell.swift in Sources */,
 				82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */,
+				82E13CE02442452E007EFE53 /* MainSignInViewController.swift in Sources */,
 				82F468F2237F611C00573EE5 /* CartItem.swift in Sources */,
 				82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */,
 			);
@@ -842,7 +850,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_TEAM = G34A8MT6UX;
+				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -850,7 +858,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.5;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS.z";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -867,7 +875,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 8;
-				DEVELOPMENT_TEAM = G34A8MT6UX;
+				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -875,7 +883,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.5;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS.z";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

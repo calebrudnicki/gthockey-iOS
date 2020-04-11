@@ -47,6 +47,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if userActivity.webpageURL.flatMap(handlePasswordlessSignIn)! {
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            let verifyEmailSignInViewController = VerifyEmailSignInViewController()
+            self.window?.rootViewController = verifyEmailSignInViewController
+            self.window?.makeKeyAndVisible()
+            return true
+        }
+        return false
+    }
+
+    func handlePasswordlessSignIn(withURL url: URL) -> Bool {
+        let link = url.absoluteString
+        if Auth.auth().isSignIn(withEmailLink: link) {
+            UserDefaults.standard.set(link, forKey: "link")
+            return true
+        }
+        return false
+    }
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of
 		// temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the

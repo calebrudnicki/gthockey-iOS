@@ -17,6 +17,61 @@ class AuthenticationManager {
 
     init() {}
 
+    public func isUserSignedIn() -> Bool {
+        if let _ = Auth.auth().currentUser { return true }
+        return false
+    }
+
+    public func contructActionCodeSettings(for email: String) -> ActionCodeSettings {
+        let actionCodeSettings = ActionCodeSettings()
+        actionCodeSettings.handleCodeInApp = true
+        actionCodeSettings.url = URL(string: String(format: "https://gthockey-ios.firebaseapp.com/?email=%@", email))
+        actionCodeSettings.setIOSBundleID(Bundle.main.bundleIdentifier!)
+        return actionCodeSettings
+    }
+
+    public func sendSignInLink(to email: String, with settings: ActionCodeSettings, _ completion: @escaping (Error?) -> Void) {
+        Auth.auth().sendSignInLink(toEmail: email, actionCodeSettings: settings) { error in
+            if let error = error {
+                completion(error)
+                return
+            }
+            completion(nil)
+        }
+    }
+
+    public func signIn(with email: String, _ completion: @escaping (Error?) -> Void) {
+        guard let link = UserDefaults.standard.value(forKey: "link") as? String else {
+            completion(CustomError.failedSignIn)
+            return
+        }
+
+        Auth.auth().signIn(withEmail: email, link: link, completion: { result, error in
+            if let error = error {
+                completion(error)
+                return
+            }
+
+            if result != nil {
+                if (Auth.auth().currentUser?.isEmailVerified)! {
+                    completion(nil)
+                } else {
+                    completion(CustomError.unverifiedUser)
+                }
+            }
+        })
+    }
+
+    public func signOut(_ completion: @escaping (Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(nil)
+        } catch let error as NSError {
+            completion(error)
+        }
+    }
+    
+
     // MARK: Public Functions
 
     /**
