@@ -8,6 +8,7 @@
 
 import UIKit
 import RevealingSplashView
+import FirebaseAuth
 
 class PreLaunchViewController: UIViewController {
 
@@ -31,42 +32,20 @@ class PreLaunchViewController: UIViewController {
     // MARK: Status Functions
 
     private func checkLoginStatus() {
-        guard
-            let email = UserDefaults.standard.string(forKey: "email"),
-            let password = UserDefaults.standard.string(forKey: "password")
-        else {
-            // User has no defaults, open welcome screen
-            let welcomeViewController = WelcomeViewController()
-            welcomeViewController.modalPresentationStyle = .fullScreen
-            welcomeViewController.modalTransitionStyle = .crossDissolve
-            revealingSplashView.startAnimation({
-                self.present(welcomeViewController, animated: true, completion: nil)
+        if AuthenticationManager().isUserSignedIn {
+            let menuContainerViewController = MenuContainerViewController()
+            menuContainerViewController.modalPresentationStyle = .fullScreen
+            menuContainerViewController.modalTransitionStyle = .crossDissolve
+            self.revealingSplashView.startAnimation({
+                self.present(menuContainerViewController, animated: false, completion: nil)
             })
-            return
-        }
-
-        AuthenticationManager().login(with: email, password, nil, nil) { result, error in
-            if result {
-                let menuContainerViewController = MenuContainerViewController()
-                menuContainerViewController.modalPresentationStyle = .fullScreen
-                menuContainerViewController.modalTransitionStyle = .crossDissolve
-                self.revealingSplashView.startAnimation({
-                    self.present(menuContainerViewController, animated: false, completion: nil)
-                })
-            } else {
-                let alert = UIAlertController(title: "No internet connection",
-                                              message: "\(error?.localizedDescription ?? "") Try restarting app when you have a connection.",
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default) { _ in
-                    let menuContainerViewController = MenuContainerViewController()
-                    menuContainerViewController.modalPresentationStyle = .fullScreen
-                    menuContainerViewController.modalTransitionStyle = .crossDissolve
-                    self.revealingSplashView.startAnimation({
-                        self.present(menuContainerViewController, animated: false, completion: nil)
-                    })
-                })
-                self.present(alert, animated: true, completion: nil)
-            }
+        } else {
+            let mainSignInViewController = MainSignInViewController()
+            mainSignInViewController.modalPresentationStyle = .fullScreen
+            mainSignInViewController.modalTransitionStyle = .crossDissolve
+            revealingSplashView.startAnimation({
+                self.present(mainSignInViewController, animated: true, completion: nil)
+            })
         }
     }
 

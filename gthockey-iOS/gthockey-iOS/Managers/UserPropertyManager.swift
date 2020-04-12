@@ -18,6 +18,24 @@ class UserPropertyManager {
 
     // MARK: Public Functions
 
+    /// Returns the unique identifier of the current user
+    public var id: String? {
+        guard let user = Auth.auth().currentUser else { return nil }
+        return user.uid
+    }
+
+    /// Returns the name of the current user
+    public var displayName: String? {
+        guard let user = Auth.auth().currentUser else { return nil }
+        return user.displayName
+    }
+
+    /// Returns the email of the current user
+    public var email: String? {
+        guard let user = Auth.auth().currentUser else { return nil }
+        return user.email
+    }
+
     /**
      Fetches and returns a dictionary holding all properties for a particular user.
 

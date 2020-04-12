@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    var email: String = ""
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -41,9 +42,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         AppRating.appID("1484814696")
 
+        AdminManager().saveAdminUsersOnLaunch()
+
         let preLaunchViewController = PreLaunchViewController()
         self.window?.rootViewController = preLaunchViewController
         self.window?.makeKeyAndVisible()
+        return true
+    }
+
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if userActivity.webpageURL.flatMap(handlePasswordlessSignIn)! {
+
+            if Auth.auth().isSignIn(withEmailLink: userActivity.webpageURL!.absoluteString) {
+                AuthenticationManager().signIn(withEmail: self.email, userActivity.webpageURL!.absoluteString, { error in
+                    if let error = error {
+                        //Could not sign the user in
+                        print(error.localizedDescription)
+                        return
+                    }
+
+                    //Sign in was successful
+                    let menuContainerViewController = MenuContainerViewController()
+                    self.window?.rootViewController = menuContainerViewController
+                    self.window?.makeKeyAndVisible()
+                })
+                return true
+            }
+        }
+        return false
+    }
+
+    private func handlePasswordlessSignIn(withURL url: URL) -> Bool {
+        guard let outerComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            let outerQueryItems = outerComponents.queryItems,
+            let outerUrl = URL(string: (outerQueryItems.first { $0.name == "link" }?.value)!)
+            else { return false }
+
+        guard let middleComponents = URLComponents(url: outerUrl, resolvingAgainstBaseURL: false),
+            let middleQueryItems = middleComponents.queryItems,
+            let middleUrl = URL(string: (middleQueryItems.first { $0.name == "continueUrl" }?.value)!)
+            else { return false }
+
+        guard let innerComponents = URLComponents(url: middleUrl, resolvingAgainstBaseURL: false),
+            let innerQueryItems = innerComponents.queryItems
+            else { return false }
+
+        self.email = (innerQueryItems.first { $0.name == "email" }?.value)!
         return true
     }
 

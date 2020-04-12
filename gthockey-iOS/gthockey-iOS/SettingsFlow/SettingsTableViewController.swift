@@ -12,13 +12,6 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: Properties
 
-    private var userProperties: [String : Any] = [:]
-    private var firstName: String?
-    private var lastName: String?
-    private var email: String?
-    private var appIcon: String?
-
-    private var saveButton: UIBarButtonItem?
     public var delegate: HomeControllerDelegate?
 
     // MARK: Init
@@ -28,7 +21,6 @@ class SettingsTableViewController: UITableViewController {
 
         setupNavigationController()
         setupTableView()
-        fetchUserInfo()
     }
 
     // MARK: Config
@@ -51,9 +43,6 @@ class SettingsTableViewController: UITableViewController {
                                                            style: .plain,
                                                            target: self,
                                                            action: #selector(menuButtonTapped))
-        saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
-        saveButton?.isEnabled = false
-        navigationItem.rightBarButtonItem = saveButton
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
@@ -62,25 +51,11 @@ class SettingsTableViewController: UITableViewController {
         tableView.register(SettingsSwitchControlTableViewCell.self, forCellReuseIdentifier: "SettingsSwitchControlTableViewCell")
         tableView.register(SettingsIconTableViewCell.self, forCellReuseIdentifier: "SettingsIconTableViewCell")
         tableView.allowsSelection = false
-        tableView.tableFooterView = UIView()
-    }
 
-    @objc private func fetchUserInfo() {
-        UserPropertyManager().getAllPropertiesForCurrentUser(completion: { propertiesDictionary in
-            self.firstName = propertiesDictionary["firstName"] as? String
-            self.lastName = propertiesDictionary["lastName"] as? String
-            self.email = propertiesDictionary["email"] as? String
-            self.appIcon = propertiesDictionary["appIcon"] as? String
-            self.userProperties = propertiesDictionary
-
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                let settingsTableViewFooter = SettingsTableViewFooter()
-                settingsTableViewFooter.delegate = self
-                settingsTableViewFooter.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 75.0)
-                self.tableView.tableFooterView = settingsTableViewFooter
-            }
-        })
+        let settingsTableViewFooter = SettingsTableViewFooter()
+        settingsTableViewFooter.delegate = self
+        settingsTableViewFooter.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 75.0)
+        self.tableView.tableFooterView = settingsTableViewFooter
     }
 
     // MARK: UITableViewDelegate / UITableViewDataSource
@@ -92,7 +67,7 @@ class SettingsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return userProperties.keys.count - 4
+            return 3
         case 1:
             return 1
         default:
@@ -106,11 +81,11 @@ class SettingsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsTextFieldTableViewCell", for: indexPath) as! SettingsTextFieldTableViewCell
             switch indexPath.row {
             case 0:
-                cell.set(with: "First name", value: userProperties["firstName"] as! String, isEditable: true)
+                cell.set(with: "Name", value: UserPropertyManager().displayName, isEditable: false)
             case 1:
-                cell.set(with: "Last name", value: userProperties["lastName"] as! String, isEditable: true)
+                cell.set(with: "Email", value: UserPropertyManager().email, isEditable: false)
             case 2:
-                cell.set(with: "Email", value: userProperties["email"] as! String, isEditable: false)
+                cell.set(with: "User ID", value: UserPropertyManager().id, isEditable: false)
             default:
                 break
             }
@@ -126,11 +101,11 @@ class SettingsTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SettingsIconTableViewCell", for: indexPath) as! SettingsIconTableViewCell
             switch indexPath.row {
             case 0:
-                cell.set(to: .Buzz, iconName: "Buzz", isSelected: appIcon == AppIcon.Buzz.description)
+                cell.set(to: .Buzz, iconName: "Buzz", isSelected: AppIconManager().isDefaultIcon(.Buzz))
             case 1:
-                cell.set(to: .HeritageT, iconName: "Heritage T", isSelected: appIcon == AppIcon.HeritageT.description)
+                cell.set(to: .HeritageT, iconName: "Heritage T", isSelected: AppIconManager().isDefaultIcon(.HeritageT))
             default:
-                cell.set(to: .RamblinReck, iconName: "Ramblin' Reck", isSelected: appIcon == AppIcon.RamblinReck.description)
+                cell.set(to: .RamblinReck, iconName: "Ramblin' Reck", isSelected: AppIconManager().isDefaultIcon(.RamblinReck))
             }
             cell.delegate = self
             return cell
@@ -162,43 +137,21 @@ class SettingsTableViewController: UITableViewController {
         delegate?.handleMenuToggle(forMainMenuOption: nil)
     }
 
-    @objc private func saveButtonTapped() {
-        if let firstName = firstName, let lastName = lastName,
-            firstName != userProperties["firstName"] as! String || lastName != userProperties["lastName"] as! String {
-            UserPropertyManager().overrideForCurrentUser(with: ["firstName": firstName, "lastName": lastName], completion: {
-                self.userProperties["firstName"] = firstName
-                self.userProperties["lastName"] = lastName
-                self.saveButton?.isEnabled = false
-            })
-        }
-    }
-
 }
 
 extension SettingsTableViewController: SettingsTextFieldTableViewCellDelegate {
 
-    func updatedValue(to newValue: String, for category: String) {
-        saveButton?.isEnabled = true
-        switch category {
-        case "First Name":
-            firstName = newValue
-        case "Last Name":
-            lastName = newValue
-        default:
-            break
-        }
-    }
+    func updatedValue(to newValue: String, for category: String) {}
 
 }
 
 extension SettingsTableViewController: SettingsSwitchControlTableViewCellDelegate {
 
     func switchControlToggled(to value: Bool) {
-        UserDefaults.standard.set(value, forKey: "isRegisteredForNotifications")
         if value {
-            UIApplication.shared.registerForRemoteNotifications()
+            PushNotificationManager().registerForPushNotifications()
         } else {
-            UIApplication.shared.unregisterForRemoteNotifications()
+            PushNotificationManager().unregisterForPushNotifications()
         }
     }
 
@@ -207,19 +160,16 @@ extension SettingsTableViewController: SettingsSwitchControlTableViewCellDelegat
 extension SettingsTableViewController: SettingsIconTableViewCellDelegate {
 
     func didSelectCell(with appIcon: AppIcon) {
-        UserPropertyManager().overrideForCurrentUser(with: ["appIcon": appIcon.description], completion: {
-            AppIconManager().switchAppIcon(to: appIcon, completion: { error in
-                if error != nil {
-                    let alert = UIAlertController(title: "App icon switch failed",
-                                              message: error?.localizedDescription,
-                                              preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                } else {
-                    self.appIcon = appIcon.description
-                    self.tableView.reloadSections(IndexSet(integer: 2), with: UITableView.RowAnimation.none)
-                }
-            })
+        AppIconManager().switchAppIcon(to: appIcon, completion: { error in
+            if error != nil {
+                let alert = UIAlertController(title: "App icon switch failed",
+                                          message: error?.localizedDescription,
+                                          preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                self.tableView.reloadSections(IndexSet(integer: 2), with: UITableView.RowAnimation.none)
+            }
         })
     }
 
@@ -230,18 +180,20 @@ extension SettingsTableViewController: SettingsTableViewFooterDelegate {
     func signoutButtonTapped(with signoutButton: PillButton) {
         let alert = UIAlertController(title: "Are you sure you want to sign out?", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
-            AuthenticationManager().signOut { (result, error) in
-                if result {
-                    let welcomeViewController = WelcomeViewController()
-                    welcomeViewController.modalPresentationStyle = .fullScreen
-                    self.present(welcomeViewController, animated: true, completion: nil)
-                } else {
+            AuthenticationManager().signOut { error in
+                if let error = error {
+                    //Sign out failed
                     let alert = UIAlertController(title: "Sign out failed",
-                                                  message: error?.localizedDescription,
+                                                  message: error.localizedDescription,
                                                   preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default))
                     self.present(alert, animated: true, completion: nil)
                 }
+
+                //Sign out successful
+                let mainSignInViewController = MainSignInViewController()
+                mainSignInViewController.modalPresentationStyle = .fullScreen
+                self.present(mainSignInViewController, animated: true, completion: nil)
             }
         }))
         alert.addAction(UIAlertAction(title: "No", style: .destructive, handler: { _ in

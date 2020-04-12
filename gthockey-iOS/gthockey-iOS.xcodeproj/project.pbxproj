@@ -17,7 +17,6 @@
 		8206D3F323CD350900863B3C /* AllUsersTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3F223CD350900863B3C /* AllUsersTableViewFooter.swift */; };
 		8206D3F923CE532200863B3C /* SettingsTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3F823CE532200863B3C /* SettingsTextFieldTableViewCell.swift */; };
 		8206D3FB23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3FA23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift */; };
-		820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */; };
 		82170D11236FB301005FE89B /* Apparel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D10236FB301005FE89B /* Apparel.swift */; };
 		82170D14236FB360005FE89B /* ShopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D13236FB360005FE89B /* ShopCollectionViewController.swift */; };
 		82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */; };
@@ -71,9 +70,6 @@
 		82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */; };
 		82B3A177237BD7CC00CD8F3D /* PillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A176237BD7CC00CD8F3D /* PillButton.swift */; };
 		82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */; };
-		82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17A237DA87600CD8F3D /* SignupView.swift */; };
-		82B3A17D237DBFAE00CD8F3D /* WelcomeButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */; };
-		82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A17E237DF95C00CD8F3D /* LoginView.swift */; };
 		82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */; };
 		82C2467D2384BAC7003CB268 /* FloatingCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */; };
 		82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C24680238669E0003CB268 /* HTMLTextView.swift */; };
@@ -87,6 +83,8 @@
 		82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE66E223EE5DD5003E13E6 /* Season.swift */; };
 		82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */; };
 		82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */; };
+		82E13CE02442452E007EFE53 /* MainSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E13CDF24424511007EFE53 /* MainSignInViewController.swift */; };
+		82E13CE624425BDE007EFE53 /* NonceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E13CE524425BDE007EFE53 /* NonceManager.swift */; };
 		82EE57E12341B2BC00FCC181 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E02341B2BC00FCC181 /* Game.swift */; };
 		82EE57E32341B36200FCC181 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E22341B36200FCC181 /* Player.swift */; };
 		82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */; };
@@ -117,7 +115,6 @@
 		8206D3F223CD350900863B3C /* AllUsersTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewFooter.swift; sourceTree = "<group>"; };
 		8206D3F823CE532200863B3C /* SettingsTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		8206D3FA23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchControlTableViewCell.swift; sourceTree = "<group>"; };
-		820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		82170D10236FB301005FE89B /* Apparel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apparel.swift; sourceTree = "<group>"; };
 		82170D13236FB360005FE89B /* ShopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewController.swift; sourceTree = "<group>"; };
 		82170D15236FB39C005FE89B /* ShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -171,9 +168,6 @@
 		82B3A173237BB49700CD8F3D /* ApparelRestrictedItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApparelRestrictedItem.swift; sourceTree = "<group>"; };
 		82B3A176237BD7CC00CD8F3D /* PillButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillButton.swift; sourceTree = "<group>"; };
 		82B3A178237CB15C00CD8F3D /* PreLaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreLaunchViewController.swift; sourceTree = "<group>"; };
-		82B3A17A237DA87600CD8F3D /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
-		82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeButtonsView.swift; sourceTree = "<group>"; };
-		82B3A17E237DF95C00CD8F3D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		82C0BC212389747100A134E7 /* SettingsTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewFooter.swift; sourceTree = "<group>"; };
 		82C2467C2384BAC7003CB268 /* FloatingCloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingCloseButton.swift; sourceTree = "<group>"; };
 		82C24680238669E0003CB268 /* HTMLTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTMLTextView.swift; sourceTree = "<group>"; };
@@ -189,6 +183,8 @@
 		82DE66E223EE5DD5003E13E6 /* Season.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Season.swift; sourceTree = "<group>"; };
 		82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterViewController.swift; sourceTree = "<group>"; };
 		82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenImageViewController.swift; sourceTree = "<group>"; };
+		82E13CDF24424511007EFE53 /* MainSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSignInViewController.swift; sourceTree = "<group>"; };
+		82E13CE524425BDE007EFE53 /* NonceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonceManager.swift; sourceTree = "<group>"; };
 		82EE57E02341B2BC00FCC181 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		82EE57E22341B36200FCC181 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -295,6 +291,7 @@
 				822D5496243AA89B00B0776D /* UserPropertyManager.swift */,
 				822D5497243AA89B00B0776D /* AdminManager.swift */,
 				822D5498243AA89B00B0776D /* AppVersionManager.swift */,
+				82E13CE524425BDE007EFE53 /* NonceManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -442,10 +439,7 @@
 		82F85588236C7B9700DE7AFD /* LoginFlow */ = {
 			isa = PBXGroup;
 			children = (
-				820CB97F236F38BC00D36EFF /* WelcomeViewController.swift */,
-				82B3A17C237DBFAE00CD8F3D /* WelcomeButtonsView.swift */,
-				82B3A17A237DA87600CD8F3D /* SignupView.swift */,
-				82B3A17E237DF95C00CD8F3D /* LoginView.swift */,
+				82E13CDF24424511007EFE53 /* MainSignInViewController.swift */,
 			);
 			path = LoginFlow;
 			sourceTree = "<group>";
@@ -633,9 +627,9 @@
 				822D54A0243AA89B00B0776D /* CartManager.swift in Sources */,
 				82C2467D2384BAC7003CB268 /* FloatingCloseButton.swift in Sources */,
 				8297AFE2236A35780081B273 /* CardCollectionViewCell.swift in Sources */,
+				82E13CE624425BDE007EFE53 /* NonceManager.swift in Sources */,
 				82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */,
 				828F812723ECF7F300ED6CBC /* Venue.swift in Sources */,
-				82B3A17B237DA87600CD8F3D /* SignupView.swift in Sources */,
 				822D549D243AA89B00B0776D /* PushNotificationSender.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
@@ -659,7 +653,6 @@
 				82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */,
 				82F468EE237F4C0E00573EE5 /* CartTableViewController.swift in Sources */,
 				82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */,
-				82B3A17D237DBFAE00CD8F3D /* WelcomeButtonsView.swift in Sources */,
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
 				82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */,
 				82EE57E32341B36200FCC181 /* Player.swift in Sources */,
@@ -668,7 +661,6 @@
 				82B3A16F237BB44F00CD8F3D /* ShopCustomOptionsView.swift in Sources */,
 				82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */,
 				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,
-				820CB980236F38BC00D36EFF /* WelcomeViewController.swift in Sources */,
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
 				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */,
@@ -679,7 +671,6 @@
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
 				822D549E243AA89B00B0776D /* AppIconManager.swift in Sources */,
-				82B3A17F237DF95C00CD8F3D /* LoginView.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
 				82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */,
 				8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */,
@@ -698,6 +689,7 @@
 				822D548C243AA7EE00B0776D /* DateExtension.swift in Sources */,
 				8206D3F123CD310900863B3C /* AllUsersTableViewCell.swift in Sources */,
 				82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */,
+				82E13CE02442452E007EFE53 /* MainSignInViewController.swift in Sources */,
 				82F468F2237F611C00573EE5 /* CartItem.swift in Sources */,
 				82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */,
 			);
@@ -841,7 +833,7 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
@@ -849,7 +841,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -866,7 +858,7 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
@@ -874,7 +866,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				PROVISIONING_PROFILE_SPECIFIER = "";
