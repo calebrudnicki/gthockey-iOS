@@ -32,7 +32,7 @@ class PreLaunchViewController: UIViewController {
     // MARK: Status Functions
 
     private func checkLoginStatus() {
-        if AuthenticationManager().isUserSignedIn() {
+        if AuthenticationManager().isUserSignedIn {
             let menuContainerViewController = MenuContainerViewController()
             menuContainerViewController.modalPresentationStyle = .fullScreen
             menuContainerViewController.modalTransitionStyle = .crossDissolve

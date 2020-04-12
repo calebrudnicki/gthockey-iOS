@@ -91,7 +91,7 @@ class MenuTableViewFooter: UIView {
         iconStack.addArrangedSubview(facebookButton)
 
         addSubviews([iconStack, versionLabel])
-        if AdminManager().isAdminUser(UserDefaults.standard.string(forKey: "email")!) {
+        if let email = AuthenticationManager().currentUserEmail, AdminManager().isAdminUser(email) {
             addSubview(toggleAdminButton)
         }
         updateConstraints()
@@ -117,7 +117,7 @@ class MenuTableViewFooter: UIView {
             versionLabel.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -12.0)
         ])
 
-        if AdminManager().isAdminUser(UserDefaults.standard.string(forKey: "email")!) {
+        if let email = AuthenticationManager().currentUserEmail, AdminManager().isAdminUser(email) {
             NSLayoutConstraint.activate([
                 toggleAdminButton.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 8.0),
                 toggleAdminButton.centerXAnchor.constraint(equalTo: centerXAnchor),
