@@ -17,11 +17,25 @@ class AuthenticationManager {
 
     init() {}
 
-    public func isUserSignedIn() -> Bool {
+    // MARK: Public Variables
+
+    /// Returns a `Bool` value indicating whether there exists a current user stored in Firebase Auth
+    public var isUserSignedIn: Bool {
         if let _ = Auth.auth().currentUser { return true }
         return false
     }
 
+    /// Returns an optional `String` value of the current Firebase user's email address
+    public var currentUserEmail: String? {
+        if let user = Auth.auth().currentUser {
+            return user.email
+        }
+        return nil
+    }
+
+    // MARK: Public Functions
+
+    
     public func contructActionCodeSettings(for email: String) -> ActionCodeSettings {
         let actionCodeSettings = ActionCodeSettings()
         actionCodeSettings.handleCodeInApp = true
@@ -40,11 +54,11 @@ class AuthenticationManager {
         }
     }
 
-    public func signIn(with email: String, _ completion: @escaping (Error?) -> Void) {
-        guard let link = UserDefaults.standard.value(forKey: "link") as? String else {
-            completion(CustomError.failedSignIn)
-            return
-        }
+    public func signIn(withEmail email: String, _ link: String, _ completion: @escaping (Error?) -> Void) {
+//        guard let link = UserDefaults.standard.value(forKey: "link") as? String else {
+//            completion(CustomError.failedSignIn)
+//            return
+//        }
 
         Auth.auth().signIn(withEmail: email, link: link, completion: { result, error in
             if let error = error {
@@ -62,6 +76,19 @@ class AuthenticationManager {
         })
     }
 
+    public func signIn(withToken tokenString: String, _ nonce: String, _ completion: @escaping (Error?) -> Void) {
+        let credential = OAuthProvider.credential(withProviderID: "apple.com", idToken: tokenString, rawNonce: nonce)
+
+        Auth.auth().signIn(with: credential) { result, error in
+            if let error = error {
+                completion(error)
+                return
+            }
+
+            completion(nil)
+        }
+    }
+
     public func signOut(_ completion: @escaping (Error?) -> Void) {
         do {
             try Auth.auth().signOut()
@@ -70,9 +97,6 @@ class AuthenticationManager {
             completion(error)
         }
     }
-    
-
-    // MARK: Public Functions
 
     /**
      Logs a user into the application.
@@ -85,29 +109,29 @@ class AuthenticationManager {
      */
     public func login(with email: String, _ password: String, _ firstName: String?,
                       _ lastName: String?, completion: @escaping (Bool, Error?) -> Void) {
-        AdminManager().saveAdminUsersOnLaunch(completion: { _ in
-            Auth.auth().signIn(withEmail: email, password: password) { user, error in
-                if let error = error, user == nil {
-                    completion(false, error)
-                } else {
-                    if let user = user?.user, user.isEmailVerified {
-
-
-                        self.getUserPropertiesForLogin(completion: { _ in
-                            UserPropertyManager().overrideForOneUser(with: ["lastLogin": Date().standardFormatted],
-                                                                     for: user.uid, completion: {
-                                let pushManager = PushNotificationManager(userID: user.uid)
-                                pushManager.registerForPushNotifications()
-
-                                self.setUserDefaults(with: email, password: password, isAdmin: true)
-                                completion(true, nil)
-                            })
-                        })
-
-                    }
-                }
-            }
-        })
+//        AdminManager().saveAdminUsersOnLaunch(completion: { _ in
+//            Auth.auth().signIn(withEmail: email, password: password) { user, error in
+//                if let error = error, user == nil {
+//                    completion(false, error)
+//                } else {
+//                    if let user = user?.user, user.isEmailVerified {
+//
+//
+//                        self.getUserPropertiesForLogin(completion: { _ in
+//                            UserPropertyManager().overrideForOneUser(with: ["lastLogin": Date().standardFormatted],
+//                                                                     for: user.uid, completion: {
+//                                let pushManager = PushNotificationManager(userID: user.uid)
+//                                pushManager.registerForPushNotifications()
+//
+//                                self.setUserDefaults(with: email, password: password, isAdmin: true)
+//                                completion(true, nil)
+//                            })
+//                        })
+//
+//                    }
+//                }
+//            }
+//        })
     }
 
     /**

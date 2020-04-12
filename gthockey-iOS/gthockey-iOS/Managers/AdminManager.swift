@@ -33,15 +33,11 @@ class AdminManager {
 
     /**
      Saves all of the admin app users when the application is launched.
-
-     - Parameter completion: A block to execute once the admin users are saved.
      */
-    public func saveAdminUsersOnLaunch(completion: @escaping (Bool) -> Void) {
-        let db = Firestore.firestore()
-
+    public func saveAdminUsersOnLaunch() {
         AdminManager.self.adminUsersOnAppLaunch = []
 
-        db.collection("adminUsers").getDocuments { (document, error) in
+        Firestore.firestore().collection("adminUsers").getDocuments { (document, error) in
             guard let documents = document?.documents else { return }
 
             for document in documents {
@@ -49,7 +45,6 @@ class AdminManager {
                     AdminManager.self.adminUsersOnAppLaunch.append(email)
                 }
             }
-            completion(true)
         }
     }
 
@@ -59,9 +54,7 @@ class AdminManager {
      - Parameter completion: A block to execute once the admin users are retrieved.
      */
     public func getAdminUsers(completion: @escaping ([String], Error?) -> Void) {
-        let db = Firestore.firestore()
-
-        db.collection("adminUsers").getDocuments { (document, error) in
+        Firestore.firestore().collection("adminUsers").getDocuments { (document, error) in
             guard let documents = document?.documents else { return }
 
             var emailArray: [String] = []
@@ -81,9 +74,7 @@ class AdminManager {
      - Parameter completion: A block to execute once the admin user is added.
      */
     public func add(_ email: String, completion: @escaping (Bool) -> Void) {
-        let db = Firestore.firestore()
-
-        db.collection("adminUsers").addDocument(data: ["email": email]) { (error) in
+        Firestore.firestore().collection("adminUsers").addDocument(data: ["email": email]) { (error) in
             if error != nil {
                 completion(false)
             }
@@ -98,15 +89,13 @@ class AdminManager {
      - Parameter completion: A block to execute once the admin users is deleted.
      */
     public func remove(_ adminEmail: String, completion: @escaping (Bool) -> Void) {
-        let db = Firestore.firestore()
-
-        db.collection("adminUsers").getDocuments { (document, error) in
+        Firestore.firestore().collection("adminUsers").getDocuments { (document, error) in
             guard let documents = document?.documents else { return }
 
             for document in documents {
                 if let email = ((document.data() as NSDictionary)["email"] as! String?) {
                     if email == adminEmail {
-                        db.collection("adminUsers").document(document.documentID).delete()
+                        Firestore.firestore().collection("adminUsers").document(document.documentID).delete()
                         completion(true)
                         return
                     }

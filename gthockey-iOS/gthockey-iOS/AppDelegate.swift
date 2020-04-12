@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    var email: String = ""
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -41,6 +42,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         AppRating.appID("1484814696")
 
+        AdminManager().saveAdminUsersOnLaunch()
+
         let preLaunchViewController = PreLaunchViewController()
         self.window?.rootViewController = preLaunchViewController
         self.window?.makeKeyAndVisible()
@@ -49,20 +52,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         if userActivity.webpageURL.flatMap(handlePasswordlessSignIn)! {
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            let verifyEmailSignInViewController = VerifyEmailSignInViewController()
-            self.window?.rootViewController = verifyEmailSignInViewController
-            self.window?.makeKeyAndVisible()
-            return true
+
+            if Auth.auth().isSignIn(withEmailLink: userActivity.webpageURL!.absoluteString) {
+                AuthenticationManager().signIn(withEmail: self.email, userActivity.webpageURL!.absoluteString, { error in
+                    if let error = error {
+                        //Could not sign the user in
+                        print(error.localizedDescription)
+                        return
+                    }
+
+                    //Sign in was successful
+                    let menuContainerViewController = MenuContainerViewController()
+                    self.window?.rootViewController = menuContainerViewController
+                    self.window?.makeKeyAndVisible()
+                })
+                return true
+            }
         }
         return false
     }
 
     func handlePasswordlessSignIn(withURL url: URL) -> Bool {
-        let link = url.absoluteString
-        if Auth.auth().isSignIn(withEmailLink: link) {
-            UserDefaults.standard.set(link, forKey: "link")
-            return true
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return false }
+
+        if let queryItems = components.queryItems {
+            for item in queryItems {
+                if item.name == "link" {
+                    if let newUrl = URL(string: item.value!) {
+                        guard let components = URLComponents(url: newUrl, resolvingAgainstBaseURL: false) else { return false }
+                        if let queryItems = components.queryItems {
+                            for item in queryItems {
+                                if item.name == "continueUrl" {
+                                    if let newestUrl = URL(string: item.value!) {
+                                        guard let components = URLComponents(url: newestUrl, resolvingAgainstBaseURL: false) else { return false }
+                                        if let queryItems = components.queryItems {
+                                            for item in queryItems {
+                                                if item.name == "email" {
+                                                    self.email = item.value!
+                                                    return true
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         return false
     }
