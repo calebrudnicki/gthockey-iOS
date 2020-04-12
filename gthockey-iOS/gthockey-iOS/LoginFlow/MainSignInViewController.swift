@@ -26,12 +26,16 @@ class MainSignInViewController: UIViewController {
         return logoImageView
     }()
 
-    private var signInWithAppleButton = PillButton(title: "Sign in with Apple", backgroundColor: .black, borderColor: .black, isEnabled: true)
+    private var signInWithAppleButton = PillButton(title: "Sign in with Apple",
+                                                   backgroundColor: .black,
+                                                   borderColor: .black,
+                                                   isEnabled: true)
 
     private let orLabel: UILabel = {
         let orLabel = UILabel()
         orLabel.text = "OR"
         orLabel.font = UIFont.systemFont(ofSize: 12.0, weight: .light)
+        orLabel.textAlignment = .center
         orLabel.textColor = .gray
         orLabel.numberOfLines = 1
         orLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -50,7 +54,10 @@ class MainSignInViewController: UIViewController {
         return emailTextField
     }()
 
-    private var sendEmailButton = PillButton(title: "Send email", backgroundColor: .techGold, borderColor: .techGold, isEnabled: true)
+    private var sendEmailButton = PillButton(title: "Send email",
+                                             backgroundColor: .techGold,
+                                             borderColor: .techGold,
+                                             isEnabled: false)
 
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -72,6 +79,7 @@ class MainSignInViewController: UIViewController {
         if #available(iOS 13, *) {
             signInWithAppleButton.addTarget(self, action: #selector(signInWithAppleButtonTapped), for: .touchUpInside)
         }
+        emailTextField.addTarget(self, action: #selector(validateTextField), for: .editingChanged)
         sendEmailButton.addTarget(self, action: #selector(sendEmailButtonTapped), for: .touchUpInside)
 
         if #available(iOS 13, *) {
@@ -105,9 +113,20 @@ class MainSignInViewController: UIViewController {
 
     // MARK: Actions
 
-    @objc private func sendEmailButtonTapped() {
-        let settings = AuthenticationManager().contructActionCodeSettings(for: emailTextField.text!)
+    @objc private func validateTextField() {
+        guard let emailText = emailTextField.text else { return }
 
+        if emailText.contains("@") {
+            sendEmailButton.isEnabled = true
+        } else {
+            sendEmailButton.isEnabled = false
+        }
+    }
+
+    @objc private func sendEmailButtonTapped() {
+        sendEmailButton.isLoading = true
+
+        let settings = AuthenticationManager().contructActionCodeSettings(for: emailTextField.text!)
         AuthenticationManager().sendSignInLink(to: emailTextField.text!, with: settings, { error in
             if let error = error {
                 //Could not send sign in email
@@ -129,7 +148,9 @@ class MainSignInViewController: UIViewController {
                     UIApplication.shared.open(mailURL, options: [:], completionHandler: nil)
                 }
             }))
-            self.present(successAlert, animated: true, completion: nil)
+            self.present(successAlert, animated: true, completion: {
+                self.sendEmailButton.isLoading = false
+            })
         })
     }
 

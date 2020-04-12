@@ -224,25 +224,10 @@ class HomeDetailViewController: UIViewController {
     // MARK: Action
 
     @objc func imageViewTapped() {
-        AuthenticationManager().signOut { error in
-            if let error = error {
-                //Sign out failed
-                let alert = UIAlertController(title: "Sign out failed",
-                                              message: error.localizedDescription,
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default))
-                self.present(alert, animated: true, completion: nil)
-            }
-
-            //Sign out successful
-            let mainSignInViewController = MainSignInViewController()
-            mainSignInViewController.modalPresentationStyle = .fullScreen
-            self.present(mainSignInViewController, animated: true, completion: nil)
-        }
-//        let fullScreenImageViewController = FullScreenImageViewController()
-//        fullScreenImageViewController.set(with: imageView.image ?? UIImage())
-//        fullScreenImageViewController.modalPresentationStyle = .overFullScreen
-//        present(fullScreenImageViewController, animated: false, completion: nil)
+        let fullScreenImageViewController = FullScreenImageViewController()
+        fullScreenImageViewController.set(with: imageView.image ?? UIImage())
+        fullScreenImageViewController.modalPresentationStyle = .overFullScreen
+        present(fullScreenImageViewController, animated: false, completion: nil)
     }
 
     @objc private func closeButtonTapped() {

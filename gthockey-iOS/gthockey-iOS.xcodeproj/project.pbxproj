@@ -833,7 +833,7 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
@@ -841,7 +841,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -858,7 +858,7 @@
 				CODE_SIGN_ENTITLEMENTS = "gthockey-iOS/GT Hockey.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = 92DETN2MKQ;
 				INFOPLIST_FILE = "gthockey-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
@@ -866,7 +866,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.5;
+				MARKETING_VERSION = 1.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.calebrudnicki.gthockey-iOS";
 				PRODUCT_NAME = "GT Hockey";
 				PROVISIONING_PROFILE_SPECIFIER = "";

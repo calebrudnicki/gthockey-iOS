@@ -18,6 +18,11 @@ class NonceManager {
 
     // MARK: Public Functions
 
+    /**
+     Generates a cryptographically secure nonce.
+
+     - Parameter length: An `Int` of the number of bits desired.
+     */
     public func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: Array<Character> =
@@ -50,6 +55,11 @@ class NonceManager {
         return result
     }
 
+    /**
+     Finds the SHA256 hash of the nonce.
+
+     - Parameter input: A `String` of nonce that is to be hashed.
+     */
     public func sha256(_ input: String) -> String {
       let inputData = Data(input.utf8)
       let hashedData = SHA256.hash(data: inputData)

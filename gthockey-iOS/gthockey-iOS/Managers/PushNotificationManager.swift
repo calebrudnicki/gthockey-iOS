@@ -16,23 +16,18 @@ class PushNotificationManager: NSObject {
 
     // MARK: Properties
 
-    private let userID: String
     private let gcmMessageIDKey = "gcm.message_id"
 
     // MARK: Init
 
-    init(userID: String) {
-        self.userID = userID
-        super.init()
-    }
+    override init() {}
 
     // MARK: Public Functions
 
     /**
-    Registers the app for push notifications.
-    */
+     Registers the app for push notifications.
+     */
     public func registerForPushNotifications() {
-
         if #available(iOS 10.0, *) {
             UNUserNotificationCenter.current().delegate = self
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
@@ -46,17 +41,23 @@ class PushNotificationManager: NSObject {
             UIApplication.shared.registerUserNotificationSettings(settings)
         }
 
+        UserDefaults.standard.set(true, forKey: "isRegisteredForNotifications")
         UIApplication.shared.registerForRemoteNotifications()
-        updateFirestorePushTokenIfNeeded(with: userID)
     }
 
-    // MARK: Private Functions
+    /**
+     Unregisters the app for push notifications.
+     */
+    public func unregisterForPushNotifications() {
+        UserDefaults.standard.set(false, forKey: "isRegisteredForNotifications")
+        UIApplication.shared.unregisterForRemoteNotifications()
+    }
 
-    private func updateFirestorePushTokenIfNeeded(with uid: String? = nil) {
-        if let token = Messaging.messaging().fcmToken {
-            let usersRef = Firestore.firestore().collection("users").document(uid ?? "")
-            usersRef.setData(["fcmToken": token], merge: true)
-        }
+    /**
+     Removes the local default for the user's notification preference to be used on sign out.
+     */
+    public func clear() {
+        UserDefaults.standard.removeObject(forKey: "isRegisteredForNotifications")
     }
 
 }
@@ -67,7 +68,7 @@ extension PushNotificationManager: MessagingDelegate {
         print(remoteMessage.appData)
     }
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        updateFirestorePushTokenIfNeeded()
+//        updateFirestorePushTokenIfNeeded()
     }
 
 }

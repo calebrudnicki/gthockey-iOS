@@ -68,7 +68,7 @@ class SettingsTextFieldTableViewCell: UITableViewCell {
 
     // MARK: Setter
 
-    public func set(with category: String, value: String, isEditable: Bool) {
+    public func set(with category: String, value: String? = "", isEditable: Bool) {
         categoryLabel.text = category
         textField.text = value
         textField.isUserInteractionEnabled = isEditable
