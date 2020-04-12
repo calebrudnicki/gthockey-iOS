@@ -72,36 +72,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return false
     }
 
-    func handlePasswordlessSignIn(withURL url: URL) -> Bool {
-        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else { return false }
+    private func handlePasswordlessSignIn(withURL url: URL) -> Bool {
+        guard let outerComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            let outerQueryItems = outerComponents.queryItems,
+            let outerUrl = URL(string: (outerQueryItems.first { $0.name == "link" }?.value)!)
+            else { return false }
 
-        if let queryItems = components.queryItems {
-            for item in queryItems {
-                if item.name == "link" {
-                    if let newUrl = URL(string: item.value!) {
-                        guard let components = URLComponents(url: newUrl, resolvingAgainstBaseURL: false) else { return false }
-                        if let queryItems = components.queryItems {
-                            for item in queryItems {
-                                if item.name == "continueUrl" {
-                                    if let newestUrl = URL(string: item.value!) {
-                                        guard let components = URLComponents(url: newestUrl, resolvingAgainstBaseURL: false) else { return false }
-                                        if let queryItems = components.queryItems {
-                                            for item in queryItems {
-                                                if item.name == "email" {
-                                                    self.email = item.value!
-                                                    return true
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        return false
+        guard let middleComponents = URLComponents(url: outerUrl, resolvingAgainstBaseURL: false),
+            let middleQueryItems = middleComponents.queryItems,
+            let middleUrl = URL(string: (middleQueryItems.first { $0.name == "continueUrl" }?.value)!)
+            else { return false }
+
+        guard let innerComponents = URLComponents(url: middleUrl, resolvingAgainstBaseURL: false),
+            let innerQueryItems = innerComponents.queryItems
+            else { return false }
+
+        self.email = (innerQueryItems.first { $0.name == "email" }?.value)!
+        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

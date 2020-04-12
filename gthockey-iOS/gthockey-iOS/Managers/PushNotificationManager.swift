@@ -68,7 +68,7 @@ extension PushNotificationManager: MessagingDelegate {
         print(remoteMessage.appData)
     }
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-//        updateFirestorePushTokenIfNeeded()
+        print(fcmToken)
     }
 
 }

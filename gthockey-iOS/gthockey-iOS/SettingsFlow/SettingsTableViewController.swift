@@ -141,17 +141,7 @@ class SettingsTableViewController: UITableViewController {
 
 extension SettingsTableViewController: SettingsTextFieldTableViewCellDelegate {
 
-    func updatedValue(to newValue: String, for category: String) {
-//        saveButton?.isEnabled = true
-//        switch category {
-//        case "First Name":
-//            firstName = newValue
-//        case "Last Name":
-//            lastName = newValue
-//        default:
-//            break
-//        }
-    }
+    func updatedValue(to newValue: String, for category: String) {}
 
 }
 

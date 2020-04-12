@@ -9,7 +9,6 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
-import FirebaseAnalytics
 
 class AuthenticationManager {
 
@@ -119,7 +118,7 @@ class AuthenticationManager {
     }
 
     /**
-     Signs a user out using Firebase Authentication and unregisters the phone from remote notifications.
+     Signs a user out using Firebase Authentication and clears all of the locally saved data.
 
      - Parameter completion: A block to execute once the user has been signed in containing an optional `Error` object
      to indicate the sucess of the action.

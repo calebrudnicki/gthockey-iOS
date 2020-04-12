@@ -7,9 +7,7 @@
 //
 
 import UIKit
-import CryptoKit
 import AuthenticationServices
-import FirebaseAuth
 
 class MainSignInViewController: UIViewController {
 
@@ -47,7 +45,7 @@ class MainSignInViewController: UIViewController {
         emailTextField.textColor = .white
         emailTextField.keyboardType = .emailAddress
         emailTextField.autocapitalizationType = .none
-        emailTextField.attributedPlaceholder = NSAttributedString(string: "Email",
+        emailTextField.attributedPlaceholder = NSAttributedString(string: "Sign in with email",
                                                                   attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         emailTextField.font = UIFont(name: "HelveticaNeue-Light", size: 24.0)
         emailTextField.translatesAutoresizingMaskIntoConstraints = false
