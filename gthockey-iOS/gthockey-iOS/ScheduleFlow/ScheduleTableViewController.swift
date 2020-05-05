@@ -43,6 +43,7 @@ class ScheduleTableViewController: UITableViewController {
 
     private func setupNavigationController() {
         navigationItem.title = "Schedule"
+        self.view.backgroundColor = .GTBackgroundColor
 
         let menuButtonImage: UIImage?
         let arrowButtonImage: UIImage?

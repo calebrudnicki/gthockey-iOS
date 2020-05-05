@@ -18,4 +18,5 @@ extension UIColor {
     static let winGreen = UIColor(red: 34/255, green: 139/255, blue: 34/255, alpha: 1.0)
     static let lossRed = UIColor(red: 178/255, green: 34/255, blue: 34/255, alpha: 1.0)
 
+    static let GTBackgroundColor = UIColor.init(named: "GTBackgroundColor")
 }

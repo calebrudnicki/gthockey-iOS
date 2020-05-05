@@ -33,7 +33,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         let cartButtonImage: UIImage?
 
         if #available(iOS 13.0, *){
-            collectionView.backgroundColor = .systemBackground
+            collectionView.backgroundColor = .GTBackgroundColor
             menuButtonImage = UIImage(systemName: "line.horizontal.3")?
                 .withRenderingMode(.alwaysOriginal)
                 .withTintColor(.label)
