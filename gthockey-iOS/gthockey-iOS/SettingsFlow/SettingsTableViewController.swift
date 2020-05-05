@@ -27,6 +27,7 @@ class SettingsTableViewController: UITableViewController {
 
     private func setupNavigationController() {
         navigationItem.title = "Settings"
+        self.view.backgroundColor = .GTBackgroundColor
 
         let menuButtonImage: UIImage?
 
