@@ -42,11 +42,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         AppRating.appID("1484814696")
 
-        AdminManager().saveAdminUsersOnLaunch()
+        Auth.auth().signInAnonymously() { (authResult, error) in
+          // ...
+            guard let user = authResult?.user else { return }
+            let isAnonymous = user.isAnonymous  // true
+            let uid = user.uid
 
-        let preLaunchViewController = PreLaunchViewController()
-        self.window?.rootViewController = preLaunchViewController
-        self.window?.makeKeyAndVisible()
+            let homeCollectionViewController = HomeCollectionViewController()
+            self.window?.rootViewController = homeCollectionViewController
+            self.window?.makeKeyAndVisible()
+        }
+
+//        AdminManager().saveAdminUsersOnLaunch()
+//
+//        let preLaunchViewController = PreLaunchViewController()
+//        self.window?.rootViewController = preLaunchViewController
+//        self.window?.makeKeyAndVisible()
         return true
     }
 
