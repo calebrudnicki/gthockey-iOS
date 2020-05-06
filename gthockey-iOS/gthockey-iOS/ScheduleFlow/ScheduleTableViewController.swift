@@ -33,7 +33,6 @@ class ScheduleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNavigationController()
         setupTableView()
         fetchSchedule()
         fetchSeasons()
@@ -41,46 +40,8 @@ class ScheduleTableViewController: UITableViewController {
 
     // MARK: Config
 
-    private func setupNavigationController() {
-        navigationItem.title = "Schedule"
-
-        let menuButtonImage: UIImage?
-        let arrowButtonImage: UIImage?
-        let cartButtonImage: UIImage?
-
-        if #available(iOS 13.0, *){
-            menuButtonImage = UIImage(systemName: "line.horizontal.3")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.label)
-                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
-            arrowButtonImage = UIImage(systemName: "chevron.down")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.label)
-                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
-            cartButtonImage = UIImage(systemName: "cart.fill")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.label)
-                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
-        } else {
-            menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
-            arrowButtonImage = UIImage(named: "DownArrowBlack")?.withRenderingMode(.alwaysOriginal)
-            cartButtonImage = UIImage(named: "CartIconBlack")?.withRenderingMode(.alwaysOriginal)
-        }
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(menuButtonTapped))
-        menuView?.arrowImage = arrowButtonImage
-        // MARK: Uncomment for cart
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
-//                                                           style: .plain,
-//                                                           target: self,
-//                                                           action: #selector(cartButtonTapped))
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-
     private func setupTableView() {
+        tableView.backgroundColor = .GTBackgroundColor
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: "ScheduleTableViewCell")
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(fetchSchedule), for: .valueChanged)
