@@ -41,22 +41,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
 
         AppRating.appID("1484814696")
-//
-//        Auth.auth().signInAnonymously() { (authResult, error) in
-//          // ...
-//            guard let user = authResult?.user else { return }
-//            let isAnonymous = user.isAnonymous  // true
-//            let uid = user.uid
-//
-//            let homeCollectionViewController = HomeCollectionViewController()
-//            self.window?.rootViewController = homeCollectionViewController
-//            self.window?.makeKeyAndVisible()
-//        }
 
-        AdminManager().saveAdminUsersOnLaunch()
+//        AdminManager().saveAdminUsersOnLaunch()
 
-        let preLaunchViewController = PreLaunchViewController()
-        self.window?.rootViewController = preLaunchViewController
+        self.window?.rootViewController = PreLaunchViewController()
         self.window?.makeKeyAndVisible()
         return true
     }

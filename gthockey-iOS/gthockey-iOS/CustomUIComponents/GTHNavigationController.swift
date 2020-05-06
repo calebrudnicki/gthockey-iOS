@@ -18,11 +18,11 @@ class GTHNavigationController: UINavigationController {
         navigationBar.prefersLargeTitles = true
 
         navigationBar.largeTitleTextAttributes = [
-            .foregroundColor: UIColor.GTHNavigationControllerTextColor,
+            .foregroundColor: UIColor.GTHNavigationControllerTextColor as Any,
             .font: UIFont.DINCondensed.bold.font(size: 48.0)
         ]
         navigationBar.titleTextAttributes = [
-            .foregroundColor: UIColor.GTHNavigationControllerTextColor,
+            .foregroundColor: UIColor.GTHNavigationControllerTextColor as Any,
             .font: UIFont.DINCondensed.bold.font(size: 24.0)
         ]
 
