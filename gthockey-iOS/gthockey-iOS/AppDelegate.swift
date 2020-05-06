@@ -42,10 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         AppRating.appID("1484814696")
 
-        AdminManager().saveAdminUsersOnLaunch()
+//        AdminManager().saveAdminUsersOnLaunch()
 
-        let preLaunchViewController = PreLaunchViewController()
-        self.window?.rootViewController = preLaunchViewController
+        self.window?.rootViewController = PreLaunchViewController()
         self.window?.makeKeyAndVisible()
         return true
     }

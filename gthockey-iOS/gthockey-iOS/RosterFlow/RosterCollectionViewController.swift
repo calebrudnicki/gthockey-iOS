@@ -27,38 +27,6 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Roster"
-
-        let menuButtonImage: UIImage?
-        let cartButtonImage: UIImage?
-
-        if #available(iOS 13.0, *){
-            collectionView.backgroundColor = .GTBackgroundColor
-            menuButtonImage = UIImage(systemName: "line.horizontal.3")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.label)
-                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
-            cartButtonImage = UIImage(systemName: "cart.fill")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.label)
-                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
-        } else {
-            collectionView.backgroundColor = .white
-            menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
-            cartButtonImage = UIImage(named: "CartIconBlack")?.withRenderingMode(.alwaysOriginal)
-        }
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(menuButtonTapped))
-        // MARK: Uncomment for cart
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
-//                                                           style: .plain,
-//                                                           target: self,
-//                                                           action: #selector(cartButtonTapped))
-        navigationController?.navigationBar.prefersLargeTitles = true
-
         setupCollectionView()
         fetchRoster()
     }
@@ -66,6 +34,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     // MARK: Config
 
     private func setupCollectionView() {
+        collectionView.backgroundColor = .GTBackgroundColor
         collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: "RosterCollectionViewCell")
         collectionView.register(RosterCollectionViewHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,

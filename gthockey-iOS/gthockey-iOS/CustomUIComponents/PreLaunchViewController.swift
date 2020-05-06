@@ -32,19 +32,16 @@ class PreLaunchViewController: UIViewController {
     // MARK: Status Functions
 
     private func checkLoginStatus() {
-        if AuthenticationManager().isUserSignedIn {
+        Auth.auth().signInAnonymously() { authResult, error in
+            guard let user = authResult?.user else { return }
+            let isAnonymous = user.isAnonymous  // true
+            let uid = user.uid
+
             let menuContainerViewController = MenuContainerViewController()
             menuContainerViewController.modalPresentationStyle = .fullScreen
             menuContainerViewController.modalTransitionStyle = .crossDissolve
             self.revealingSplashView.startAnimation({
                 self.present(menuContainerViewController, animated: false, completion: nil)
-            })
-        } else {
-            let mainSignInViewController = MainSignInViewController()
-            mainSignInViewController.modalPresentationStyle = .fullScreen
-            mainSignInViewController.modalTransitionStyle = .crossDissolve
-            revealingSplashView.startAnimation({
-                self.present(mainSignInViewController, animated: true, completion: nil)
             })
         }
     }

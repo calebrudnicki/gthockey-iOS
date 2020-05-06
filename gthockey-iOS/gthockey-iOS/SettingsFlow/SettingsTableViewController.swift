@@ -19,35 +19,13 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupNavigationController()
         setupTableView()
     }
 
     // MARK: Config
 
-    private func setupNavigationController() {
-        navigationItem.title = "Settings"
-        self.view.backgroundColor = .GTBackgroundColor
-
-        let menuButtonImage: UIImage?
-
-        if #available(iOS 13.0, *){
-            menuButtonImage = UIImage(systemName: "line.horizontal.3")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.label)
-                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
-        } else {
-            menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
-        }
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(menuButtonTapped))
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-
     private func setupTableView() {
+        tableView.backgroundColor = .GTBackgroundColor
         tableView.register(SettingsTextFieldTableViewCell.self, forCellReuseIdentifier: "SettingsTextFieldTableViewCell")
         tableView.register(SettingsSwitchControlTableViewCell.self, forCellReuseIdentifier: "SettingsSwitchControlTableViewCell")
         tableView.register(SettingsIconTableViewCell.self, forCellReuseIdentifier: "SettingsIconTableViewCell")
