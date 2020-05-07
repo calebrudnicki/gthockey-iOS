@@ -38,6 +38,7 @@ class SettingsTextFieldTableViewCell: UITableViewCell {
 
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .gthBackgroundColor
 
         textField.delegate = self
         contentView.addSubviews([categoryLabel, textField])

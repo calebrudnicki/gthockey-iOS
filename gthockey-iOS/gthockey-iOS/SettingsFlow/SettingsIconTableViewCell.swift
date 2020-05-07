@@ -40,6 +40,7 @@ class SettingsIconTableViewCell: UITableViewCell {
 
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .gthBackgroundColor
 
         tintColor = .techNavy
         contentView.addGestureRecognizer(UITapGestureRecognizer(target: self, action:  #selector(cellTapped)))

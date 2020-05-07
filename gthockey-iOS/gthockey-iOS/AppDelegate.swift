@@ -22,26 +22,6 @@ import AppRating
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    private let homeCollectionViewController: HomeCollectionViewController = {
-        let homeLayout = UICollectionViewFlowLayout()
-        homeLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
-        let homeCollectionViewController = HomeCollectionViewController(collectionViewLayout: homeLayout)
-        return homeCollectionViewController
-    }()
-    private let scheduleTableViewController = ScheduleTableViewController()
-    private let rosterCollectionViewController: RosterCollectionViewController = {
-        let rosterLayout = UICollectionViewFlowLayout()
-        rosterLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
-        let rosterCollectionViewController = RosterCollectionViewController(collectionViewLayout: rosterLayout)
-        return rosterCollectionViewController
-    }()
-    private let shopCollectionViewController: ShopCollectionViewController = {
-        let shopLayout = UICollectionViewFlowLayout()
-        shopLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
-        let shopCollectionViewController = ShopCollectionViewController(collectionViewLayout: shopLayout)
-        return shopCollectionViewController
-    }()
-
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
     var email: String = ""
@@ -62,34 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         AppRating.appID("1484814696")
 
-        AdminManager().saveAdminUsersOnLaunch()
+//        AdminManager().saveAdminUsersOnLaunch()
 
-        let tabBarController = GTHTabBarController()
-
-        let newsNavigationController = UINavigationController(rootViewController: homeCollectionViewController)
-        newsNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house.fill"), tag: 0)
-
-        let scheduleNavigationController = UINavigationController(rootViewController: scheduleTableViewController)
-        scheduleNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "calendar"), tag: 1)
-
-        let rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
-        rosterNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person.2.fill"), tag: 2)
-
-        let shopNavigatinController = UINavigationController(rootViewController: shopCollectionViewController)
-        shopNavigatinController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "cart"), tag: 3)
-
-        let moreNavigationController = UINavigationController(rootViewController: UIViewController())
-        moreNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "line.horizontal.3"), tag: 4)
-
-        tabBarController.setViewControllers([
-            newsNavigationController,
-            scheduleNavigationController,
-            rosterNavigationController,
-            shopNavigatinController,
-            moreNavigationController
-        ], animated: true)
-
-        self.window?.rootViewController = tabBarController
+        self.window?.rootViewController = PreLaunchViewController()
         self.window?.makeKeyAndVisible()
         return true
     }

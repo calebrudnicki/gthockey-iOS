@@ -32,19 +32,16 @@ class PreLaunchViewController: UIViewController {
     // MARK: Status Functions
 
     private func checkLoginStatus() {
-        if AuthenticationManager().isUserSignedIn {
-            let menuContainerViewController = MenuContainerViewController()
-            menuContainerViewController.modalPresentationStyle = .fullScreen
-            menuContainerViewController.modalTransitionStyle = .crossDissolve
+        Auth.auth().signInAnonymously() { authResult, error in
+            guard let user = authResult?.user else { return }
+            let _ = user.isAnonymous
+            let _ = user.uid
+
+            let tabBarController = GTHTabBarController()
+            tabBarController.modalPresentationStyle = .fullScreen
+            tabBarController.modalTransitionStyle = .crossDissolve
             self.revealingSplashView.startAnimation({
-                self.present(menuContainerViewController, animated: false, completion: nil)
-            })
-        } else {
-            let mainSignInViewController = MainSignInViewController()
-            mainSignInViewController.modalPresentationStyle = .fullScreen
-            mainSignInViewController.modalTransitionStyle = .crossDissolve
-            revealingSplashView.startAnimation({
-                self.present(mainSignInViewController, animated: true, completion: nil)
+                self.present(tabBarController, animated: false, completion: nil)
             })
         }
     }

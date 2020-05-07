@@ -38,6 +38,8 @@
 		826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */; };
 		826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */; };
 		827F55C923FC0F000080138A /* ArticlePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827F55C823FC0F000080138A /* ArticlePreviewView.swift */; };
+		828295A02461A9560084AE7F /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282959F2461A9560084AE7F /* UIFontExtension.swift */; };
+		828295A42461ACF40084AE7F /* GTHNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828295A32461ACF40084AE7F /* GTHNavigationController.swift */; };
 		828295A62461B5820084AE7F /* GTHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828295A52461B5820084AE7F /* GTHTabBarController.swift */; };
 		8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */; };
 		8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC652360AB3E00C7C9DF /* MenuTableViewFooter.swift */; };
@@ -137,6 +139,8 @@
 		826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitAnnotation.swift; sourceTree = "<group>"; };
 		826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		827F55C823FC0F000080138A /* ArticlePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePreviewView.swift; sourceTree = "<group>"; };
+		8282959F2461A9560084AE7F /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
+		828295A32461ACF40084AE7F /* GTHNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHNavigationController.swift; sourceTree = "<group>"; };
 		828295A52461B5820084AE7F /* GTHTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHTabBarController.swift; sourceTree = "<group>"; };
 		8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewHeader.swift; sourceTree = "<group>"; };
 		8288FC652360AB3E00C7C9DF /* MenuTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewFooter.swift; sourceTree = "<group>"; };
@@ -306,6 +310,7 @@
 				82C8C1E92363333800C4D2C2 /* StringExtension.swift */,
 				82A6F840238DBBA8001CA749 /* CustomError.swift */,
 				822D548B243AA7EE00B0776D /* DateExtension.swift */,
+				8282959F2461A9560084AE7F /* UIFontExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 				826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */,
 				82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */,
 				827F55C823FC0F000080138A /* ArticlePreviewView.swift */,
+				828295A32461ACF40084AE7F /* GTHNavigationController.swift */,
 				828295A52461B5820084AE7F /* GTHTabBarController.swift */,
 			);
 			path = CustomUIComponents;
@@ -622,6 +628,7 @@
 				8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */,
 				82C8C1EA2363333800C4D2C2 /* StringExtension.swift in Sources */,
 				82A4293923D8CE51002EF467 /* SettingsIconTableViewCell.swift in Sources */,
+				828295A02461A9560084AE7F /* UIFontExtension.swift in Sources */,
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */,
@@ -658,6 +665,7 @@
 				82F468EE237F4C0E00573EE5 /* CartTableViewController.swift in Sources */,
 				82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */,
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
+				828295A42461ACF40084AE7F /* GTHNavigationController.swift in Sources */,
 				82918F322350B62F00723B4A /* RosterDetailViewController.swift in Sources */,
 				82EE57E32341B36200FCC181 /* Player.swift in Sources */,
 				82A6F843238E1AE0001CA749 /* ShopOptionTextField.swift in Sources */,

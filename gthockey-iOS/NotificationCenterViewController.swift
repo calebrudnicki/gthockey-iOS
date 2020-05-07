@@ -103,7 +103,7 @@ class NotificationCenterViewController: UIViewController {
 
     private func setupView() {
         if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemBackground
+            view.backgroundColor = .gthBackgroundColor
             titleTextView.textColor = .label
             bodyTextView.textColor = .label
         } else {

@@ -10,10 +10,62 @@ import UIKit
 
 class GTHTabBarController: UITabBarController {
 
+    // MARK: Properties
+
+    private let homeCollectionViewController: HomeCollectionViewController = {
+        let homeLayout = UICollectionViewFlowLayout()
+        homeLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
+        let homeCollectionViewController = HomeCollectionViewController(collectionViewLayout: homeLayout)
+        return homeCollectionViewController
+    }()
+
+    private let scheduleTableViewController = ScheduleTableViewController()
+
+    private let rosterCollectionViewController: RosterCollectionViewController = {
+        let rosterLayout = UICollectionViewFlowLayout()
+        rosterLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
+        let rosterCollectionViewController = RosterCollectionViewController(collectionViewLayout: rosterLayout)
+        return rosterCollectionViewController
+    }()
+
+    private let shopCollectionViewController: ShopCollectionViewController = {
+        let shopLayout = UICollectionViewFlowLayout()
+        shopLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
+        let shopCollectionViewController = ShopCollectionViewController(collectionViewLayout: shopLayout)
+        return shopCollectionViewController
+    }()
+
+    // MARK: Init
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tabBar.tintColor = .techNavy
+        let newsNavigationController = GTHNavigationController(rootViewController: homeCollectionViewController)
+        newsNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "doc.text"), tag: 0)
+
+        let scheduleNavigationController = GTHNavigationController(rootViewController: scheduleTableViewController)
+        scheduleNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "calendar"), tag: 1)
+
+        let rosterNavigationController = GTHNavigationController(rootViewController: rosterCollectionViewController)
+        rosterNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person.2"), tag: 2)
+
+        let shopNavigatinController = GTHNavigationController(rootViewController: shopCollectionViewController)
+        shopNavigatinController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "cart"), tag: 3)
+
+        let moreNavigationController = GTHNavigationController(rootViewController: UIViewController())
+        moreNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "line.horizontal.3"), tag: 4)
+
+        setViewControllers([
+            newsNavigationController,
+            scheduleNavigationController,
+            rosterNavigationController,
+            shopNavigatinController,
+            moreNavigationController
+        ], animated: true)
+
+        tabBar.barTintColor = UIColor.gthBackgroundColor
+        tabBar.tintColor = UIColor.gthTabBarControllerTintColor
+        tabBar.isTranslucent = false
     }
 
 }

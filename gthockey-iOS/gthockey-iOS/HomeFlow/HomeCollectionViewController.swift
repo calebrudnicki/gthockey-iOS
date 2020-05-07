@@ -25,38 +25,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Home"
-
-        let menuButtonImage: UIImage?
-        let cartButtonImage: UIImage?
-
-        if #available(iOS 13.0, *){
-            collectionView.backgroundColor = .systemBackground
-            menuButtonImage = UIImage(systemName: "line.horizontal.3")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.label)
-                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
-            cartButtonImage = UIImage(systemName: "cart.fill")?
-                .withRenderingMode(.alwaysOriginal)
-                .withTintColor(.label)
-                .withConfiguration(UIImage.SymbolConfiguration(weight: .bold))
-        } else {
-            collectionView.backgroundColor = .white
-            menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
-            cartButtonImage = UIImage(named: "CartIconBlack")?.withRenderingMode(.alwaysOriginal)
-        }
-
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(menuButtonTapped))
-        // MARK: Uncomment for cart
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartButtonImage,
-//                                                           style: .plain,
-//                                                           target: self,
-//                                                           action: #selector(cartButtonTapped))
-        navigationController?.navigationBar.prefersLargeTitles = true
-
         setupCollectionView()
         fetchArticles()
     }
@@ -64,6 +32,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: Config
 
     private func setupCollectionView() {
+        collectionView.backgroundColor = .gthBackgroundColor
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "HomeCollectionViewCell")
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchArticles), for: .valueChanged)

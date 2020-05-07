@@ -56,6 +56,7 @@ class SettingsSwitchControlTableViewCell: UITableViewCell {
 
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .gthBackgroundColor
 
         switchControl.addTarget(self, action: #selector(switchControlTapped), for: .valueChanged)
 
