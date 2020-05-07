@@ -25,7 +25,7 @@ class SettingsTableViewController: UITableViewController {
     // MARK: Config
 
     private func setupTableView() {
-        tableView.backgroundColor = .GTBackgroundColor
+        tableView.backgroundColor = .gthBackgroundColor
         tableView.register(SettingsTextFieldTableViewCell.self, forCellReuseIdentifier: "SettingsTextFieldTableViewCell")
         tableView.register(SettingsSwitchControlTableViewCell.self, forCellReuseIdentifier: "SettingsSwitchControlTableViewCell")
         tableView.register(SettingsIconTableViewCell.self, forCellReuseIdentifier: "SettingsIconTableViewCell")

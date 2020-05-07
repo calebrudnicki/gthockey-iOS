@@ -40,6 +40,7 @@
 		827F55C923FC0F000080138A /* ArticlePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827F55C823FC0F000080138A /* ArticlePreviewView.swift */; };
 		828295A02461A9560084AE7F /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282959F2461A9560084AE7F /* UIFontExtension.swift */; };
 		828295A42461ACF40084AE7F /* GTHNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828295A32461ACF40084AE7F /* GTHNavigationController.swift */; };
+		828295A62461B5820084AE7F /* GTHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828295A52461B5820084AE7F /* GTHTabBarController.swift */; };
 		8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */; };
 		8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC652360AB3E00C7C9DF /* MenuTableViewFooter.swift */; };
 		8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8288FC672360AB9500C7C9DF /* MenuTableViewController.swift */; };
@@ -140,6 +141,7 @@
 		827F55C823FC0F000080138A /* ArticlePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePreviewView.swift; sourceTree = "<group>"; };
 		8282959F2461A9560084AE7F /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		828295A32461ACF40084AE7F /* GTHNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHNavigationController.swift; sourceTree = "<group>"; };
+		828295A52461B5820084AE7F /* GTHTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHTabBarController.swift; sourceTree = "<group>"; };
 		8288FC632360AB2D00C7C9DF /* MenuTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewHeader.swift; sourceTree = "<group>"; };
 		8288FC652360AB3E00C7C9DF /* MenuTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewFooter.swift; sourceTree = "<group>"; };
 		8288FC672360AB9500C7C9DF /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */,
 				827F55C823FC0F000080138A /* ArticlePreviewView.swift */,
 				828295A32461ACF40084AE7F /* GTHNavigationController.swift */,
+				828295A52461B5820084AE7F /* GTHTabBarController.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -647,6 +650,7 @@
 				8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */,
 				8206D3E823CCC40600863B3C /* AllUsersTableViewController.swift in Sources */,
 				826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */,
+				828295A62461B5820084AE7F /* GTHTabBarController.swift in Sources */,
 				82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */,
 				822D549F243AA89B00B0776D /* StripeManager.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,

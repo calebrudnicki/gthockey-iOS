@@ -180,7 +180,7 @@ class ScheduleDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .GTBackgroundColor
+        view.backgroundColor = .gthBackgroundColor
 
         mapView.delegate = self
 

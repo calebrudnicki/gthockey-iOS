@@ -13,7 +13,7 @@ class MenuContainerViewController: UIViewController {
     // MARK: Properties
 
     private var menuTableViewController: MenuTableViewController!
-    private var currentNavigationController: GTHNavigationController!
+    private var currentNavigationController: UINavigationController!
     private var isExpanded = false
     private let homeCollectionViewController: HomeCollectionViewController = {
         let homeLayout = UICollectionViewFlowLayout()
@@ -39,14 +39,14 @@ class MenuContainerViewController: UIViewController {
     private let adminUsersTableViewController = AdminUsersTableViewController()
     private let notificationCenterViewController = NotificationCenterViewController()
 
-    private var homeNavigationController: GTHNavigationController?
-    private var scheduleNavigationController: GTHNavigationController?
-    private var rosterNavigationController: GTHNavigationController?
-    private var shopNavigationController: GTHNavigationController?
-    private var settingsNavigationController: GTHNavigationController?
-    private var allUsersNavigationController: GTHNavigationController?
-    private var adminUsersNavigationController: GTHNavigationController?
-    private var notificationCenterNavigationController: GTHNavigationController?
+    private var homeNavigationController: UINavigationController?
+    private var scheduleNavigationController: UINavigationController?
+    private var rosterNavigationController: UINavigationController?
+    private var shopNavigationController: UINavigationController?
+    private var settingsNavigationController: UINavigationController?
+    private var allUsersNavigationController: UINavigationController?
+    private var adminUsersNavigationController: UINavigationController?
+    private var notificationCenterNavigationController: UINavigationController?
 
     // MARK: Init
 
@@ -70,14 +70,14 @@ class MenuContainerViewController: UIViewController {
     // MARK: Config
 
     private func configureHomeController() {
-        homeNavigationController = GTHNavigationController(rootViewController: homeCollectionViewController)
-        scheduleNavigationController = GTHNavigationController(rootViewController: scheduleTableViewController)
-        rosterNavigationController = GTHNavigationController(rootViewController: rosterCollectionViewController)
-        shopNavigationController = GTHNavigationController(rootViewController: shopCollectionViewController)
-        settingsNavigationController = GTHNavigationController(rootViewController: settingsTableViewController)
-        allUsersNavigationController = GTHNavigationController(rootViewController: allUsersTableViewController)
-        adminUsersNavigationController = GTHNavigationController(rootViewController: adminUsersTableViewController)
-        notificationCenterNavigationController = GTHNavigationController(rootViewController: notificationCenterViewController)
+        homeNavigationController = UINavigationController(rootViewController: homeCollectionViewController)
+        scheduleNavigationController = UINavigationController(rootViewController: scheduleTableViewController)
+        rosterNavigationController = UINavigationController(rootViewController: rosterCollectionViewController)
+        shopNavigationController = UINavigationController(rootViewController: shopCollectionViewController)
+        settingsNavigationController = UINavigationController(rootViewController: settingsTableViewController)
+        allUsersNavigationController = UINavigationController(rootViewController: allUsersTableViewController)
+        adminUsersNavigationController = UINavigationController(rootViewController: adminUsersTableViewController)
+        notificationCenterNavigationController = UINavigationController(rootViewController: notificationCenterViewController)
 
         homeCollectionViewController.delegate = self
         scheduleTableViewController.delegate = self

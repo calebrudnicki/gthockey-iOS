@@ -34,7 +34,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     // MARK: Config
 
     private func setupCollectionView() {
-        collectionView.backgroundColor = .GTBackgroundColor
+        collectionView.backgroundColor = .gthBackgroundColor
         collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: "RosterCollectionViewCell")
         collectionView.register(RosterCollectionViewHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,

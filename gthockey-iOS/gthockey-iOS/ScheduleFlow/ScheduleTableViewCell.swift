@@ -21,7 +21,7 @@ class ScheduleTableViewCell: UITableViewCell {
 
     override init(style: CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .GTBackgroundColor
+        backgroundColor = .gthBackgroundColor
 
         contentView.addSubviews([scheduleOpponentRinkView, scheduleDateTimeView, scheduleResultView])
 

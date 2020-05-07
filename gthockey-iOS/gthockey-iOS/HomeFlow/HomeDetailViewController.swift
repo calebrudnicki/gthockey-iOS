@@ -102,7 +102,7 @@ class HomeDetailViewController: UIViewController {
         previousArticlePreview.delegate = self
         nextArticlePreview.delegate = self
 
-        view.backgroundColor = .GTBackgroundColor
+        view.backgroundColor = .gthBackgroundColor
 
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(closeButtonTapped)))

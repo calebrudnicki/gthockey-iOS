@@ -41,7 +41,7 @@ class ScheduleTableViewController: UITableViewController {
     // MARK: Config
 
     private func setupTableView() {
-        tableView.backgroundColor = .GTBackgroundColor
+        tableView.backgroundColor = .gthBackgroundColor
         tableView.register(ScheduleTableViewCell.self, forCellReuseIdentifier: "ScheduleTableViewCell")
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(fetchSchedule), for: .valueChanged)

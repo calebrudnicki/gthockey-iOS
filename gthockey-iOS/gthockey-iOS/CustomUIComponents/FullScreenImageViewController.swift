@@ -43,7 +43,7 @@ class FullScreenImageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .GTBackgroundColor
+        view.backgroundColor = .gthBackgroundColor
 
         scrollView.delegate = self
 

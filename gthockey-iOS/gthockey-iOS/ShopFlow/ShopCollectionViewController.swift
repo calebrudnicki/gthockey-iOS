@@ -33,7 +33,7 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     private func setupCollectionView() {
-        collectionView.backgroundColor = .GTBackgroundColor
+        collectionView.backgroundColor = .gthBackgroundColor
         collectionView.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "ShopCollectionViewCell")
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchApparel), for: .valueChanged)

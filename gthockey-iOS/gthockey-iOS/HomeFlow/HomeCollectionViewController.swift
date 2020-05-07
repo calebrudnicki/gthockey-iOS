@@ -32,7 +32,7 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: Config
 
     private func setupCollectionView() {
-        collectionView.backgroundColor = .GTBackgroundColor
+        collectionView.backgroundColor = .gthBackgroundColor
         collectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: "HomeCollectionViewCell")
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchArticles), for: .valueChanged)

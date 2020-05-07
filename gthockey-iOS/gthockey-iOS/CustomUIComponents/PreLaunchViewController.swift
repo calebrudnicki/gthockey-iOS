@@ -34,14 +34,14 @@ class PreLaunchViewController: UIViewController {
     private func checkLoginStatus() {
         Auth.auth().signInAnonymously() { authResult, error in
             guard let user = authResult?.user else { return }
-            let isAnonymous = user.isAnonymous  // true
-            let uid = user.uid
+            let _ = user.isAnonymous
+            let _ = user.uid
 
-            let menuContainerViewController = MenuContainerViewController()
-            menuContainerViewController.modalPresentationStyle = .fullScreen
-            menuContainerViewController.modalTransitionStyle = .crossDissolve
+            let tabBarController = GTHTabBarController()
+            tabBarController.modalPresentationStyle = .fullScreen
+            tabBarController.modalTransitionStyle = .crossDissolve
             self.revealingSplashView.startAnimation({
-                self.present(menuContainerViewController, animated: false, completion: nil)
+                self.present(tabBarController, animated: false, completion: nil)
             })
         }
     }
