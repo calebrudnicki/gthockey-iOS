@@ -15,8 +15,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: Properties
 
     private var newsArray: [News] = []
-    private let cellWidth = UIScreen.main.bounds.width * 0.9
-    private let cellHeight = UIScreen.main.bounds.height * 0.45
     private var homeDetailViewController = HomeDetailViewController()
     public var delegate: HomeControllerDelegate?
 
@@ -75,7 +73,8 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
     // MARK: UICollectionViewLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cellWidth, height: cellHeight)
+        let cellWidth = UIScreen.main.bounds.width - 48.0
+        return CGSize(width: cellWidth, height: cellWidth * 0.675)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

@@ -23,19 +23,9 @@ class CardCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        if #available(iOS 13.0, *) {
-            backgroundColor = .secondarySystemBackground
-            layer.backgroundColor = UIColor.secondarySystemBackground.cgColor
-            layer.shadowColor = UIColor.label.cgColor
-        } else {
-            layer.shadowColor = UIColor.black.cgColor
-        }
+        layer.applySketchShadow(color: .label, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
 
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 7.0
-        layer.cornerRadius = 6.0
-
-        contentView.layer.cornerRadius = 6.0
+        contentView.layer.cornerRadius = 14.0
         contentView.layer.masksToBounds = true
     }
 
