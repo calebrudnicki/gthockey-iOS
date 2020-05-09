@@ -17,7 +17,6 @@ class GTHNavigationController: UINavigationController {
     
         delegate = self
 
-        hidesBarsOnSwipe = true
         navigationBar.prefersLargeTitles = true
         navigationBar.barTintColor = UIColor.gthBackgroundColor
 
@@ -29,7 +28,6 @@ class GTHNavigationController: UINavigationController {
             .foregroundColor: UIColor.gthNavigationControllerTintColor as Any,
             .font: UIFont.DINCondensed.bold.font(size: 24.0)
         ]
-
     }
 
 }
