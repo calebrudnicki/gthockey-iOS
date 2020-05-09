@@ -77,7 +77,7 @@ class HomeCollectionViewCell: CardCollectionViewCell {
         NSLayoutConstraint.activate([
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
             dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
-            dateLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -4.0),
+            dateLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -4.0)
         ])
 
         NSLayoutConstraint.activate([
