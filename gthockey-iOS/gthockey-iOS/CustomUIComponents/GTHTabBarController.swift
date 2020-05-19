@@ -12,6 +12,8 @@ class GTHTabBarController: UITabBarController {
 
     // MARK: Properties
 
+    private let indicatorPlatform = UIView()
+
     private let homeCollectionViewController: HomeCollectionViewController = {
         let homeLayout = UICollectionViewFlowLayout()
         homeLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
@@ -41,7 +43,7 @@ class GTHTabBarController: UITabBarController {
         super.viewDidLoad()
 
         let newsNavigationController = GTHNavigationController(rootViewController: homeCollectionViewController)
-        newsNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "doc.text"), tag: 0)
+        newsNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 0)
 
         let scheduleNavigationController = GTHNavigationController(rootViewController: scheduleTableViewController)
         scheduleNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "calendar"), tag: 1)
@@ -63,9 +65,33 @@ class GTHTabBarController: UITabBarController {
             moreNavigationController
         ], animated: true)
 
+        setupIndicatorPlatform()
+
         tabBar.barTintColor = UIColor.gthBackgroundColor
         tabBar.tintColor = UIColor.gthTabBarControllerTintColor
         tabBar.isTranslucent = false
+    }
+
+    // MARK: UITabBarDelegate
+
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        let index = CGFloat(integerLiteral: tabBar.items!.firstIndex(of: item)!)
+        let itemWidth = indicatorPlatform.frame.width
+        let newCenterX = (itemWidth / 2.0) + (itemWidth * index)
+
+        UIView.animate(withDuration: 0.3) {
+            self.indicatorPlatform.center.x = newCenterX
+        }
+    }
+
+    // MARK: Private Functions
+
+    private func setupIndicatorPlatform() {
+        let tabBarItemSize = CGSize(width: tabBar.frame.width / CGFloat(tabBar.items!.count), height: tabBar.frame.height)
+        indicatorPlatform.backgroundColor = UIColor.gthTabBarControllerTintColor
+        indicatorPlatform.frame = CGRect(x: 0.0, y: 0.0, width: tabBarItemSize.width, height: 2.0)
+        indicatorPlatform.center.x = tabBar.frame.width / CGFloat(tabBar.items!.count) / 2.0
+        tabBar.addSubview(indicatorPlatform)
     }
 
 }
