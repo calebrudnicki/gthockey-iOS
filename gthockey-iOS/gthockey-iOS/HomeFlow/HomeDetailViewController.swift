@@ -34,30 +34,22 @@ class HomeDetailViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-
-    private let headlineLabel: UILabel = {
-        let headlineLabel = UILabel()
-        headlineLabel.numberOfLines = 0
-        headlineLabel.sizeToFit()
-        headlineLabel.font = UIFont(name: "HelveticaNeue-Light", size: 36.0)
-        headlineLabel.translatesAutoresizingMaskIntoConstraints = false
-        return headlineLabel
-    }()
-
+    
     private let dateLabel: UILabel = {
         let dateLabel = UILabel()
-        dateLabel.numberOfLines = 0
-        dateLabel.sizeToFit()
-        dateLabel.font = UIFont(name: "HelveticaNeue", size: 12.0)
+        dateLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
+        dateLabel.textColor = UIColor.newsDetailDateColor
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         return dateLabel
     }()
 
-    private let separatorView1: UIView = {
-        let separatorView = UIView()
-        separatorView.backgroundColor = .techGold
-        separatorView.translatesAutoresizingMaskIntoConstraints = false
-        return separatorView
+    private let headlineLabel: UILabel = {
+        let headlineLabel = UILabel()
+        headlineLabel.numberOfLines = 0
+        headlineLabel.font = UIFont.DINCondensed.bold.font(size: 36.0)
+        headlineLabel.textColor = UIColor.newsDetailTitleColor
+        headlineLabel.translatesAutoresizingMaskIntoConstraints = false
+        return headlineLabel
     }()
 
     private let bodyTextView = HTMLTextView(frame: .zero)
@@ -112,7 +104,7 @@ class HomeDetailViewController: UIViewController {
 
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
-        backgroundView.addSubviews([imageView, headlineLabel, dateLabel, separatorView1, bodyTextView,
+        backgroundView.addSubviews([imageView, headlineLabel, dateLabel, bodyTextView,
                                     separatorView2, articlesLabel, articlesStackView, closeButton])
 
         updateViewConstraints()
@@ -144,28 +136,21 @@ class HomeDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            headlineLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 8.0),
-            headlineLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            headlineLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -24.0)
+            dateLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16.0),
+            dateLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 24.0),
+            dateLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -24.0)
         ])
 
         NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: headlineLabel.bottomAnchor, constant: 8.0),
-            dateLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            dateLabel.trailingAnchor.constraint(lessThanOrEqualTo: backgroundView.trailingAnchor, constant: -12.0)
+            headlineLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 4.0),
+            headlineLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 24.0),
+            headlineLabel.trailingAnchor.constraint(lessThanOrEqualTo: backgroundView.trailingAnchor, constant: -24.0)
         ])
 
         NSLayoutConstraint.activate([
-            separatorView1.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 12.0),
-            separatorView1.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            separatorView1.widthAnchor.constraint(equalTo: dateLabel.widthAnchor),
-            separatorView1.heightAnchor.constraint(equalToConstant: 1.0)
-        ])
-
-        NSLayoutConstraint.activate([
-            bodyTextView.topAnchor.constraint(equalTo: separatorView1.bottomAnchor, constant: 9.0),
-            bodyTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 9.0),
-            bodyTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -9.0),
+            bodyTextView.topAnchor.constraint(equalTo: headlineLabel.bottomAnchor, constant: 17.0),
+            bodyTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 24.0),
+            bodyTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -24.0),
         ])
 
         NSLayoutConstraint.activate([

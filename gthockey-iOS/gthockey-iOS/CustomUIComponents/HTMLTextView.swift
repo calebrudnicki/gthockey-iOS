@@ -23,7 +23,7 @@ class HTMLTextView: UITextView {
         isEditable = false
         dataDetectorTypes = .link
         backgroundColor = .clear
-        font = UIFont(name: "HelveticaNeue", size: 20.0)
+        font = UIFont.DINCondensed.bold.font(size: 16.0)
         translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -36,10 +36,8 @@ class HTMLTextView: UITextView {
     public func setText(with textBody: String) {
         let contentString = textBody.replacingOccurrences(of: "\n", with: "<br>")
         let attributedString = contentString.htmlToAttributedString?.mutableCopy() as! NSMutableAttributedString
-        attributedString.addAttribute(.font, value: UIFont(name: "HelveticaNeue", size: 20.0)!, range: NSRange(location: 0, length: attributedString.length))
-        if #available(iOS 13.0, *) {
-            attributedString.addAttribute(.foregroundColor, value: UIColor.label, range: NSRange(location: 0, length: attributedString.length))
-        }
+        attributedString.addAttribute(.font, value: UIFont.DINCondensed.bold.font(size: 16.0), range: NSRange(location: 0, length: attributedString.length))
+//        attributedString.addAttribute(.foregroundColor, value: UIColor.newsDetailContentColor, range: NSRange(location: 0, length: attributedString.length))
         attributedText = attributedString
     }
 

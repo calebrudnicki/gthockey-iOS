@@ -20,4 +20,8 @@ extension UIColor {
     static let gthBackgroundColor = UIColor.init(named: "GTHBackgroundColor")
     static let gthNavigationControllerTintColor = UIColor.init(named: "GTHNavigationControllerTintColor")
     static let gthTabBarControllerTintColor = UIColor.init(named: "GTHTabBarControllerTintColor")
+    
+    static let newsDetailDateColor = UIColor.init(named: "NewsDetailDateColor")
+    static let newsDetailTitleColor = UIColor.init(named: "NewsDetailTitleColor")
+    static let newsDetailContentColor = UIColor.init(named: "NewsDetailContentColor")
 }

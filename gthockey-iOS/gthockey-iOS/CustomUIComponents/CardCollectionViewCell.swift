@@ -23,7 +23,7 @@ class CardCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        layer.applySketchShadow(color: .label, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
+        layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
 
         contentView.layer.cornerRadius = 14.0
         contentView.layer.masksToBounds = true
