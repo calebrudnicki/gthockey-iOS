@@ -102,7 +102,6 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
             cell.set(with: managerArray[indexPath.row])
         }
 
-        cell.delegate = self
         return cell
     }
 
@@ -158,14 +157,6 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     @objc private func cartButtonTapped() {
         let cartTableViewController = CartTableViewController()
         present(cartTableViewController, animated: true, completion: nil)
-    }
-
-}
-
-extension RosterCollectionViewController: RosterCollectionViewCellDelegate {
-
-    func didEndCellAnimation() {
-        present(rosterDetailViewController, animated: true, completion: nil)
     }
 
 }

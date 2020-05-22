@@ -213,7 +213,7 @@ class NotificationCenterViewController: UIViewController {
                 var tokens: [String] = []
 
                 for user in usersWithValidFCMToken {
-                    tokens.append(user.getFCMToken())
+                    tokens.append(user.fcmToken)
                 }
 
                 PushNotificationSender().sendNotification(to: tokens,

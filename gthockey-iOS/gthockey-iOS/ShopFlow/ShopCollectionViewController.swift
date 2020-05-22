@@ -59,7 +59,6 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopCollectionViewCell", for: indexPath) as! ShopCollectionViewCell
         cell.set(with: apparelArray[indexPath.row])
-        cell.delegate = self
         return cell
     }
 
@@ -91,14 +90,6 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
         ContentManager().getApparel(with: id) { (apparelRestrictedItems, apparelCustomItems) in
             completion(apparelRestrictedItems, apparelCustomItems)
         }
-    }
-
-}
-
-extension ShopCollectionViewController: ShopCollectionViewCellDelegate {
-
-    func didEndCellAnimation() {
-        present(shopDetailViewController, animated: true, completion: nil)
     }
 
 }

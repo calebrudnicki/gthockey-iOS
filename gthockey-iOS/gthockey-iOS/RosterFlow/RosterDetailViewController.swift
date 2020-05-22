@@ -193,9 +193,9 @@ class RosterDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            bioLabel.topAnchor.constraint(equalTo: schoolLabel.bottomAnchor, constant: 9.0),
-            bioLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 9.0),
-            bioLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -9.0),
+            bioLabel.topAnchor.constraint(equalTo: schoolLabel.bottomAnchor, constant: 12.0),
+            bioLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            bioLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
             bioLabel.bottomAnchor.constraint(equalTo: backgroundView.bottomAnchor, constant: -28.0)
         ])
 

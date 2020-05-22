@@ -9,8 +9,6 @@
 import UIKit
 import SDWebImage
 
-protocol RosterCollectionViewCellDelegate: CardCollectionViewCellDelegate {}
-
 class RosterCollectionViewCell: CardCollectionViewCell {
 
     // MARK: Properties

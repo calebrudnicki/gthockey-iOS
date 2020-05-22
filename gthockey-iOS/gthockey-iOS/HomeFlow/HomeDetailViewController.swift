@@ -54,18 +54,10 @@ class HomeDetailViewController: UIViewController {
 
     private let bodyTextView = HTMLTextView(frame: .zero)
 
-    private let separatorView2: UIView = {
-        let separatorView2 = UIView()
-        separatorView2.backgroundColor = .techGold
-        separatorView2.translatesAutoresizingMaskIntoConstraints = false
-        return separatorView2
-    }()
-
     private let articlesLabel: UILabel = {
         let otherArticlesLabel = UILabel()
-        otherArticlesLabel.numberOfLines = 0
-        otherArticlesLabel.sizeToFit()
-        otherArticlesLabel.font = UIFont(name: "HelveticaNeue", size: 24.0)
+        otherArticlesLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
+        otherArticlesLabel.textColor = UIColor.newsDetailDateColor
         otherArticlesLabel.text = "Also read..."
         otherArticlesLabel.translatesAutoresizingMaskIntoConstraints = false
         return otherArticlesLabel
@@ -80,7 +72,7 @@ class HomeDetailViewController: UIViewController {
         return articlesStackView
     }()
 
-    private let previousArticlePreview = ArticlePreviewView()
+    private var previousArticlePreview = ArticlePreviewView()
     private let nextArticlePreview = ArticlePreviewView()
     private let closeButton = FloatingCloseButton()
 
@@ -105,7 +97,7 @@ class HomeDetailViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(backgroundView)
         backgroundView.addSubviews([imageView, headlineLabel, dateLabel, bodyTextView,
-                                    separatorView2, articlesLabel, articlesStackView, closeButton])
+                                    articlesLabel, articlesStackView, closeButton])
 
         updateViewConstraints()
     }
@@ -137,31 +129,24 @@ class HomeDetailViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             dateLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16.0),
-            dateLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 24.0),
-            dateLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -24.0)
+            dateLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            dateLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
         ])
 
         NSLayoutConstraint.activate([
             headlineLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 4.0),
-            headlineLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 24.0),
-            headlineLabel.trailingAnchor.constraint(lessThanOrEqualTo: backgroundView.trailingAnchor, constant: -24.0)
+            headlineLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            headlineLabel.trailingAnchor.constraint(lessThanOrEqualTo: backgroundView.trailingAnchor, constant: -12.0)
         ])
 
         NSLayoutConstraint.activate([
-            bodyTextView.topAnchor.constraint(equalTo: headlineLabel.bottomAnchor, constant: 17.0),
-            bodyTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 24.0),
-            bodyTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -24.0),
+            bodyTextView.topAnchor.constraint(equalTo: headlineLabel.bottomAnchor, constant: 16.0),
+            bodyTextView.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            bodyTextView.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0),
         ])
 
         NSLayoutConstraint.activate([
-            separatorView2.topAnchor.constraint(equalTo: bodyTextView.bottomAnchor, constant: 9.0),
-            separatorView2.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
-            separatorView2.widthAnchor.constraint(equalTo: articlesLabel.widthAnchor),
-            separatorView2.heightAnchor.constraint(equalToConstant: 1.0)
-        ])
-
-        NSLayoutConstraint.activate([
-            articlesLabel.topAnchor.constraint(equalTo: separatorView2.bottomAnchor, constant: 12.0),
+            articlesLabel.topAnchor.constraint(equalTo: bodyTextView.bottomAnchor, constant: 19.0),
             articlesLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
             articlesLabel.trailingAnchor.constraint(lessThanOrEqualTo: backgroundView.trailingAnchor, constant: -12.0)
         ])

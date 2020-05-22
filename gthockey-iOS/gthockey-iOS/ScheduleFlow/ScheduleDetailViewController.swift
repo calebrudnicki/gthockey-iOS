@@ -310,10 +310,10 @@ class ScheduleDetailViewController: UIViewController {
 
     public func set(with game: Game, _ opponent: Team, _ rink: Rink) {
         if game.getVenue() == .Home {
-            awayTeamTitle.text = opponent.getSchoolName()
-            awayTeamMascot.text = opponent.getMascotName()
+            awayTeamTitle.text = opponent.schoolName
+            awayTeamMascot.text = opponent.mascotName
             awayTeamScore.text  = game.getIsReported() ? String(game.getOpponentScore()) : nil
-            awayTeamImageView.sd_setImage(with: opponent.getImageURL(), placeholderImage: nil)
+            awayTeamImageView.sd_setImage(with: opponent.imageURL, placeholderImage: nil)
 
             homeTeamTitle.text = "Georgia Tech"
             homeTeamMascot.text = "Yellow Jackets"
@@ -325,10 +325,10 @@ class ScheduleDetailViewController: UIViewController {
             awayTeamScore.text  = game.getIsReported() ? String(game.getGTScore()) : nil
             awayTeamImageView.image = UIImage(named: "BuzzOnlyLogo")
 
-            homeTeamTitle.text = opponent.getSchoolName()
-            homeTeamMascot.text = opponent.getMascotName()
+            homeTeamTitle.text = opponent.schoolName
+            homeTeamMascot.text = opponent.mascotName
             homeTeamScore.text  = game.getIsReported() ? String(game.getOpponentScore()) : nil
-            homeTeamImageView.sd_setImage(with: opponent.getImageURL(), placeholderImage: nil)
+            homeTeamImageView.sd_setImage(with: opponent.imageURL, placeholderImage: nil)
         }
 
         if game.getIsReported() {

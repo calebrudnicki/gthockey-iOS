@@ -94,13 +94,13 @@ class ScheduleTableViewController: UITableViewController {
 
     @objc private func fetchSeasons() {
         ContentManager().getSeasons() { response in
-            self.seasonArray = response.sorted { $0.getYear() < $1.getYear() }
+            self.seasonArray = response.sorted { $0.year < $1.year }
 
             DispatchQueue.main.async {
                 self.menuView = BTNavigationDropdownMenu(navigationController: self.navigationController,
                                                          containerView: self.navigationController!.view,
-                                                         title: self.seasonArray[self.seasonArray.count - 1].getName(),
-                                                         items: self.seasonArray.map { $0.getName() })
+                                                         title: self.seasonArray[self.seasonArray.count - 1].name,
+                                                         items: self.seasonArray.map { $0.name })
 
                 self.menuView?.cellHeight = 52.0
                 self.menuView?.cellSelectionColor = .techGold
@@ -118,7 +118,7 @@ class ScheduleTableViewController: UITableViewController {
                 }
 
                 self.menuView?.didSelectItemAtIndexHandler = { [weak self] (indexPath: Int) -> () in
-                    self?.currentSeasonIDSelected = self?.seasonArray[indexPath].getID() ?? 3
+                    self?.currentSeasonIDSelected = self?.seasonArray[indexPath].id ?? 3
                     self?.fetchSchedule()
                 }
                 self.navigationItem.titleView = self.menuView

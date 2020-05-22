@@ -8,34 +8,8 @@
 
 import Foundation
 
-class Season {
-
-    // MARK: Properties
-
-    private var id: Int
-    private var name: String
-    private var year: Int
-
-    // MARK: Init
-
-    init(id: Int, name: String, year: Int) {
-        self.id = id
-        self.name = name
-        self.year = year
-    }
-
-    // MARK: Getters
-
-    func getID() -> Int {
-        return id
-    }
-
-    func getName() -> String {
-        return name
-    }
-
-    func getYear() -> Int {
-        return year
-    }
-
+struct Season {
+    var id: Int
+    var name: String
+    var year: Int
 }

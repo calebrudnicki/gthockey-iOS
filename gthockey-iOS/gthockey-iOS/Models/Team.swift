@@ -8,46 +8,10 @@
 
 import Foundation
 
-class Team {
-
-    // MARK: Properties
-
-    private var id: Int
-    private var schoolName: String
-    private var mascotName: String
-    private var webURL: URL
-    private var imageURL: URL
-
-    // MARK: Init
-
-    init(id: Int, schoolName: String, mascotName: String, webURL: URL, imageURL: URL) {
-        self.id = id
-        self.schoolName = schoolName
-        self.mascotName = mascotName
-        self.webURL = webURL
-        self.imageURL = imageURL
-    }
-
-    // MARK: Getters
-
-    func getID() -> Int {
-        return self.id
-    }
-
-    func getSchoolName() -> String {
-        return self.schoolName
-    }
-
-    func getMascotName() -> String {
-        return self.mascotName
-    }
-
-    func getWebURL() -> URL {
-        return self.webURL
-    }
-
-    func getImageURL() -> URL {
-        return self.imageURL
-    }
-    
+struct Team {
+    var id: Int
+    var schoolName: String
+    var mascotName: String
+    var webURL: URL
+    var imageURL: URL
 }

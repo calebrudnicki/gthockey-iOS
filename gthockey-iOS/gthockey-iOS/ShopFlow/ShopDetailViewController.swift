@@ -174,9 +174,9 @@ class ShopDetailViewController: UIViewController {
         ])
 
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: separatorView1.bottomAnchor, constant: 9.0),
-            descriptionLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 9.0),
-            descriptionLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -9.0)
+            descriptionLabel.topAnchor.constraint(equalTo: separatorView1.bottomAnchor, constant: 12.0),
+            descriptionLabel.leadingAnchor.constraint(equalTo: backgroundView.leadingAnchor, constant: 12.0),
+            descriptionLabel.trailingAnchor.constraint(equalTo: backgroundView.trailingAnchor, constant: -12.0)
         ])
 
         NSLayoutConstraint.activate([

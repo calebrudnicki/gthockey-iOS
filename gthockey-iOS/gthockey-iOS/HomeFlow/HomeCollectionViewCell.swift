@@ -9,8 +9,6 @@
 import UIKit
 import SDWebImage
 
-protocol HomeCollectionViewCellDelegate: CardCollectionViewCellDelegate {}
-
 class HomeCollectionViewCell: CardCollectionViewCell {
 
     // MARK: Properties

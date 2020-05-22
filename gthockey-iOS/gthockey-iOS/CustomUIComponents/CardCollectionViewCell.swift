@@ -8,15 +8,7 @@
 
 import UIKit
 
-protocol CardCollectionViewCellDelegate {
-    func didEndCellAnimation()
-}
-
 class CardCollectionViewCell: UICollectionViewCell {
-
-    // MARK: Properties
-
-    public var delegate: CardCollectionViewCellDelegate!
 
     // MARK: Init
 
@@ -40,31 +32,40 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: Action
-
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
-            self.transform = CGAffineTransform(scaleX: 0.90, y: 0.90)
-        }, completion: nil)
+        animate(isHighlighted: true)
     }
-
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesCancelled(touches, with: event)
-
-        UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseOut, animations: {
-            self.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }, completion: nil)
-    }
-
+    
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
-
-        UIView.animate(withDuration: 0.2, delay: 0.2, options: .curveEaseOut, animations: {
-            self.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }, completion: { _ in
-            self.delegate.didEndCellAnimation()
-        })
+        animate(isHighlighted: false)
+    }
+    
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesCancelled(touches, with: event)
+        animate(isHighlighted: false)
+    }
+    
+    func animate(isHighlighted: Bool, completion: ((Bool) -> Void)?=nil) {
+        if isHighlighted {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: [.allowUserInteraction], animations: {
+                            self.transform = .init(scaleX: 0.96, y: 0.96)
+            }, completion: completion)
+        } else {
+            UIView.animate(withDuration: 0.5,
+                           delay: 0,
+                           usingSpringWithDamping: 1,
+                           initialSpringVelocity: 0,
+                           options: [.allowUserInteraction], animations: {
+                            self.transform = .identity
+            }, completion: completion)
+        }
     }
 
 }

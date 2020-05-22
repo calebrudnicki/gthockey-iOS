@@ -11,10 +11,7 @@
 		8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */; };
 		8206D3E423CBDA3F00863B3C /* AdminMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */; };
 		8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E523CBDF6200863B3C /* MainMenuOption.swift */; };
-		8206D3E823CCC40600863B3C /* AllUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E723CCC40600863B3C /* AllUsersTableViewController.swift */; };
 		8206D3EF23CD307E00863B3C /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3EE23CD307E00863B3C /* AppUser.swift */; };
-		8206D3F123CD310900863B3C /* AllUsersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3F023CD310900863B3C /* AllUsersTableViewCell.swift */; };
-		8206D3F323CD350900863B3C /* AllUsersTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3F223CD350900863B3C /* AllUsersTableViewFooter.swift */; };
 		8206D3F923CE532200863B3C /* SettingsTextFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3F823CE532200863B3C /* SettingsTextFieldTableViewCell.swift */; };
 		8206D3FB23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3FA23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift */; };
 		82170D11236FB301005FE89B /* Apparel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82170D10236FB301005FE89B /* Apparel.swift */; };
@@ -33,7 +30,6 @@
 		822D54A1243AA89B00B0776D /* UserPropertyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5496243AA89B00B0776D /* UserPropertyManager.swift */; };
 		822D54A2243AA89B00B0776D /* AdminManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5497243AA89B00B0776D /* AdminManager.swift */; };
 		822D54A3243AA89B00B0776D /* AppVersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5498243AA89B00B0776D /* AppVersionManager.swift */; };
-		82378185239995CA00CBD399 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82378184239995CA00CBD399 /* Constants.swift */; };
 		825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825092172361EFB300D98DEA /* UIViewExtension.swift */; };
 		826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */; };
 		826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */; };
@@ -113,10 +109,7 @@
 		8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersTableViewFooter.swift; sourceTree = "<group>"; };
 		8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminMenuOption.swift; sourceTree = "<group>"; };
 		8206D3E523CBDF6200863B3C /* MainMenuOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOption.swift; sourceTree = "<group>"; };
-		8206D3E723CCC40600863B3C /* AllUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewController.swift; sourceTree = "<group>"; };
 		8206D3EE23CD307E00863B3C /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
-		8206D3F023CD310900863B3C /* AllUsersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewCell.swift; sourceTree = "<group>"; };
-		8206D3F223CD350900863B3C /* AllUsersTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllUsersTableViewFooter.swift; sourceTree = "<group>"; };
 		8206D3F823CE532200863B3C /* SettingsTextFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTextFieldTableViewCell.swift; sourceTree = "<group>"; };
 		8206D3FA23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSwitchControlTableViewCell.swift; sourceTree = "<group>"; };
 		82170D10236FB301005FE89B /* Apparel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Apparel.swift; sourceTree = "<group>"; };
@@ -135,7 +128,6 @@
 		822D5496243AA89B00B0776D /* UserPropertyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserPropertyManager.swift; sourceTree = "<group>"; };
 		822D5497243AA89B00B0776D /* AdminManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdminManager.swift; sourceTree = "<group>"; };
 		822D5498243AA89B00B0776D /* AppVersionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionManager.swift; sourceTree = "<group>"; };
-		82378184239995CA00CBD399 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		825092172361EFB300D98DEA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitAnnotation.swift; sourceTree = "<group>"; };
 		826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
@@ -234,21 +226,10 @@
 		8206D3DC23CBC0E200863B3C /* AdminFlow */ = {
 			isa = PBXGroup;
 			children = (
-				8206D3E923CCC41E00863B3C /* AllUsers */,
 				8206D3EB23CCC43100863B3C /* AdminUsers */,
 				82DE670623F0DC14003E13E6 /* NotificationCenter */,
 			);
 			path = AdminFlow;
-			sourceTree = "<group>";
-		};
-		8206D3E923CCC41E00863B3C /* AllUsers */ = {
-			isa = PBXGroup;
-			children = (
-				8206D3E723CCC40600863B3C /* AllUsersTableViewController.swift */,
-				8206D3F023CD310900863B3C /* AllUsersTableViewCell.swift */,
-				8206D3F223CD350900863B3C /* AllUsersTableViewFooter.swift */,
-			);
-			path = AllUsers;
 			sourceTree = "<group>";
 		};
 		8206D3EB23CCC43100863B3C /* AdminUsers */ = {
@@ -480,7 +461,6 @@
 				8206D3EE23CD307E00863B3C /* AppUser.swift */,
 				8206D3E523CBDF6200863B3C /* MainMenuOption.swift */,
 				8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */,
-				82378184239995CA00CBD399 /* Constants.swift */,
 				82A4295123D8EC7D002EF467 /* AppIcon.swift */,
 				828F812623ECF7F300ED6CBC /* Venue.swift */,
 				82DE66E223EE5DD5003E13E6 /* Season.swift */,
@@ -648,10 +628,8 @@
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
 				82F468F62380659800573EE5 /* CartTableViewFooter.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
-				82378185239995CA00CBD399 /* Constants.swift in Sources */,
 				82F468F0237F55EC00573EE5 /* CartTableViewCell.swift in Sources */,
 				8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */,
-				8206D3E823CCC40600863B3C /* AllUsersTableViewController.swift in Sources */,
 				826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */,
 				828295A62461B5820084AE7F /* GTHTabBarController.swift in Sources */,
 				828295A824645D630084AE7F /* CALayerExtension.swift in Sources */,
@@ -683,7 +661,6 @@
 				826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */,
 				82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */,
 				8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */,
-				8206D3F323CD350900863B3C /* AllUsersTableViewFooter.swift in Sources */,
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
 				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
 				822D549E243AA89B00B0776D /* AppIconManager.swift in Sources */,
@@ -703,7 +680,6 @@
 				82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */,
 				82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */,
 				822D548C243AA7EE00B0776D /* DateExtension.swift in Sources */,
-				8206D3F123CD310900863B3C /* AllUsersTableViewCell.swift in Sources */,
 				82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */,
 				82E13CE02442452E007EFE53 /* MainSignInViewController.swift in Sources */,
 				82F468F2237F611C00573EE5 /* CartItem.swift in Sources */,

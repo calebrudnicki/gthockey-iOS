@@ -8,10 +8,6 @@
 
 import UIKit
 
-// MARK: Note
-// This attributed text view screws up the constraints by 3 p
-// For example, if you want to constrain a HTMLTextView 12 px away from something, it would need to be 9 px to line up
-
 class HTMLTextView: UITextView {
 
     // MARK: Init
@@ -24,6 +20,7 @@ class HTMLTextView: UITextView {
         dataDetectorTypes = .link
         backgroundColor = .clear
         font = UIFont.DINCondensed.bold.font(size: 16.0)
+        textContainerInset = UIEdgeInsets(top: 0, left: -3, bottom: 0, right: -3)
         translatesAutoresizingMaskIntoConstraints = false
     }
 
@@ -37,7 +34,7 @@ class HTMLTextView: UITextView {
         let contentString = textBody.replacingOccurrences(of: "\n", with: "<br>")
         let attributedString = contentString.htmlToAttributedString?.mutableCopy() as! NSMutableAttributedString
         attributedString.addAttribute(.font, value: UIFont.DINCondensed.bold.font(size: 16.0), range: NSRange(location: 0, length: attributedString.length))
-//        attributedString.addAttribute(.foregroundColor, value: UIColor.newsDetailContentColor, range: NSRange(location: 0, length: attributedString.length))
+        attributedString.addAttribute(.foregroundColor, value: UIColor.newsDetailContentColor as Any, range: NSRange(location: 0, length: attributedString.length))
         attributedText = attributedString
     }
 
