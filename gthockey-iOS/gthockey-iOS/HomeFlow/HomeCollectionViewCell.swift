@@ -25,7 +25,7 @@ class HomeCollectionViewCell: CardCollectionViewCell {
     private let dateLabel: UILabel = {
         let dateLabel = UILabel()
         dateLabel.font = UIFont.DINCondensed.bold.font(size: 16.0)
-        dateLabel.textColor = UIColor(red: 241/255, green: 242/255, blue: 235/255, alpha: 0.6)
+        dateLabel.textColor = UIColor.newsCellDateColor
         dateLabel.adjustsFontSizeToFitWidth = true
         dateLabel.numberOfLines = 1
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,7 @@ class HomeCollectionViewCell: CardCollectionViewCell {
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
-        titleLabel.textColor = .white
+        titleLabel.textColor = UIColor.newsCellTitleColor
         titleLabel.lineBreakMode = .byTruncatingTail
         titleLabel.numberOfLines = 2
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -65,6 +65,8 @@ class HomeCollectionViewCell: CardCollectionViewCell {
     }
 
     override func updateConstraints() {
+        super.updateConstraints()
+        
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -83,8 +85,6 @@ class HomeCollectionViewCell: CardCollectionViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
             titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
         ])
-
-        super.updateConstraints()
     }
 
     // MARK: Setter

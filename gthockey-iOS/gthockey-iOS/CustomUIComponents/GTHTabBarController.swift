@@ -20,8 +20,13 @@ class GTHTabBarController: UITabBarController {
         let homeCollectionViewController = HomeCollectionViewController(collectionViewLayout: homeLayout)
         return homeCollectionViewController
     }()
-
-    private let scheduleTableViewController = ScheduleTableViewController()
+    
+    private let scheduleCollectionViewController: ScheduleCollectionViewController = {
+        let scheduleLayout = UICollectionViewFlowLayout()
+        scheduleLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
+        let scheduleCollectionViewController = ScheduleCollectionViewController(collectionViewLayout: scheduleLayout)
+        return scheduleCollectionViewController
+    }()
 
     private let rosterCollectionViewController: RosterCollectionViewController = {
         let rosterLayout = UICollectionViewFlowLayout()
@@ -45,7 +50,7 @@ class GTHTabBarController: UITabBarController {
         let newsNavigationController = GTHNavigationController(rootViewController: homeCollectionViewController)
         newsNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 0)
 
-        let scheduleNavigationController = GTHNavigationController(rootViewController: scheduleTableViewController)
+        let scheduleNavigationController = GTHNavigationController(rootViewController: scheduleCollectionViewController)
         scheduleNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "calendar"), tag: 1)
 
         let rosterNavigationController = GTHNavigationController(rootViewController: rosterCollectionViewController)

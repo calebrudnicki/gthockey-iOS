@@ -37,7 +37,7 @@ extension GTHNavigationController: UINavigationControllerDelegate {
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
         if viewController as? HomeCollectionViewController != nil {
             navigationBar.topItem?.title = "News"
-        } else if viewController as? ScheduleTableViewController != nil {
+        } else if viewController as? ScheduleCollectionViewController != nil {
             navigationBar.topItem?.title = "Schedule"
         } else if viewController as? RosterCollectionViewController != nil {
             navigationBar.topItem?.title = "Roster"

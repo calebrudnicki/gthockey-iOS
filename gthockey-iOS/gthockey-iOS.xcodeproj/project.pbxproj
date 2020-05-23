@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31C791B1247885F7005CC1E0 /* ScheduleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B0247885F7005CC1E0 /* ScheduleCollectionViewController.swift */; };
+		31C791B32478871D005CC1E0 /* CompletedGameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B22478871D005CC1E0 /* CompletedGameCollectionViewCell.swift */; };
+		31C791B52478943A005CC1E0 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B42478943A005CC1E0 /* UIStackViewExtension.swift */; };
 		8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */; };
 		8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */; };
 		8206D3E423CBDA3F00863B3C /* AdminMenuOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E323CBDA3F00863B3C /* AdminMenuOption.swift */; };
@@ -104,6 +107,9 @@
 
 /* Begin PBXFileReference section */
 		0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.release.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		31C791B0247885F7005CC1E0 /* ScheduleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewController.swift; sourceTree = "<group>"; };
+		31C791B22478871D005CC1E0 /* CompletedGameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGameCollectionViewCell.swift; sourceTree = "<group>"; };
+		31C791B42478943A005CC1E0 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.debug.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersTableViewController.swift; sourceTree = "<group>"; };
 		8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersTableViewFooter.swift; sourceTree = "<group>"; };
@@ -295,6 +301,7 @@
 				822D548B243AA7EE00B0776D /* DateExtension.swift */,
 				8282959F2461A9560084AE7F /* UIFontExtension.swift */,
 				828295A724645D630084AE7F /* CALayerExtension.swift */,
+				31C791B42478943A005CC1E0 /* UIStackViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -336,6 +343,8 @@
 				82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */,
 				82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */,
 				826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */,
+				31C791B0247885F7005CC1E0 /* ScheduleCollectionViewController.swift */,
+				31C791B22478871D005CC1E0 /* CompletedGameCollectionViewCell.swift */,
 			);
 			path = ScheduleFlow;
 			sourceTree = "<group>";
@@ -602,6 +611,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				827F55C923FC0F000080138A /* ArticlePreviewView.swift in Sources */,
+				31C791B52478943A005CC1E0 /* UIStackViewExtension.swift in Sources */,
 				822D54A1243AA89B00B0776D /* UserPropertyManager.swift in Sources */,
 				FA3570BA23502190008E83BC /* Team.swift in Sources */,
 				822D549C243AA89B00B0776D /* AuthenticationManager.swift in Sources */,
@@ -634,6 +644,7 @@
 				828295A62461B5820084AE7F /* GTHTabBarController.swift in Sources */,
 				828295A824645D630084AE7F /* CALayerExtension.swift in Sources */,
 				82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */,
+				31C791B32478871D005CC1E0 /* CompletedGameCollectionViewCell.swift in Sources */,
 				822D549F243AA89B00B0776D /* StripeManager.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
 				F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */,
@@ -674,6 +685,7 @@
 				82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
 				8206D3EF23CD307E00863B3C /* AppUser.swift in Sources */,
+				31C791B1247885F7005CC1E0 /* ScheduleCollectionViewController.swift in Sources */,
 				82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */,
 				82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */,
 				82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */,

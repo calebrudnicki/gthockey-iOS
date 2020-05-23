@@ -8,15 +8,12 @@
 
 import UIKit
 
-// MARK: Under Construction
-
 class HomeCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
 
     private var newsArray: [News] = []
     private var homeDetailViewController = HomeDetailViewController()
-    public var delegate: HomeControllerDelegate?
 
     // MARK: Init
 
@@ -79,17 +76,6 @@ class HomeCollectionViewController: UICollectionViewController, UICollectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 24.0
-    }
-
-    // MARK: Action
-
-    @objc private func menuButtonTapped() {
-        delegate?.handleMenuToggle(forMainMenuOption: nil)
-    }
-
-    @objc private func cartButtonTapped() {
-        let cartTableViewController = CartTableViewController()
-        present(cartTableViewController, animated: true, completion: nil)
     }
 
 }

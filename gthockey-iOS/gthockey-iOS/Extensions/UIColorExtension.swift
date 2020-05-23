@@ -21,7 +21,13 @@ extension UIColor {
     static let gthNavigationControllerTintColor = UIColor.init(named: "GTHNavigationControllerTintColor")
     static let gthTabBarControllerTintColor = UIColor.init(named: "GTHTabBarControllerTintColor")
     
+    static let newsCellDateColor = UIColor.init(named: "NewsCellDateColor")
+    static let newsCellTitleColor = UIColor.init(named: "NewsCellTitleColor")
+    
     static let newsDetailDateColor = UIColor.init(named: "NewsDetailDateColor")
     static let newsDetailTitleColor = UIColor.init(named: "NewsDetailTitleColor")
     static let newsDetailContentColor = UIColor.init(named: "NewsDetailContentColor")
+    
+    static let scheduleCellTeamInfoColor = UIColor.init(named: "ScheduleCellTeamInfoColor")
+    static let scheduleCellGameInfoColor = UIColor.init(named: "ScheduleCellGameInfoColor")
 }
