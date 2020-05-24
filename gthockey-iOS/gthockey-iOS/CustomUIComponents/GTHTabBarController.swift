@@ -23,7 +23,7 @@ class GTHTabBarController: UITabBarController {
     
     private let scheduleCollectionViewController: ScheduleCollectionViewController = {
         let scheduleLayout = UICollectionViewFlowLayout()
-        scheduleLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
+        scheduleLayout.sectionInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 12.0, right: 0.0)
         let scheduleCollectionViewController = ScheduleCollectionViewController(collectionViewLayout: scheduleLayout)
         return scheduleCollectionViewController
     }()

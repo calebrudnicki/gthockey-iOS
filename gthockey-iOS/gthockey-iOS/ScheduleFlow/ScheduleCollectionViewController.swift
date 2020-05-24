@@ -31,7 +31,10 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
 
     private func setupCollectionView() {
         collectionView.backgroundColor = .gthBackgroundColor
-        collectionView.register(CompletedGameCollectionViewCell.self, forCellWithReuseIdentifier: "CompletedGameCollectionViewCell")
+        collectionView.register(ScheduleCollectionViewCell.self, forCellWithReuseIdentifier: "ScheduleCollectionViewCell")
+        collectionView.register(ScheduleCollectionViewSectionHeader.self,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                withReuseIdentifier: "ScheduleCollectionViewSectionHeader")
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchSchedule), for: .valueChanged)
     }
@@ -47,9 +50,9 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
             var ties = 0
 
             for game in response {
-                if game.getIsReported() {
+                if game.isReported {
                     self.completedGameArray.append(game)
-                    switch game.getShortResult() {
+                    switch game.shortResult {
                     case "W":
                         wins += 1
                     case "L":
@@ -67,9 +70,13 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
             self.seasonRecord = "\(wins)-\(losses)-\(otLosses)-\(ties)"
 
             DispatchQueue.main.async {
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                    self.collectionView.refreshControl?.endRefreshing()
+                self.collectionView.reloadData()
+                self.collectionView.refreshControl?.endRefreshing()
+                
+                if self.upcomingGameArray.count > 0 {
+                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 1), at: .top, animated: false)
+                } else {
+                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
                 }
             }
         }
@@ -110,15 +117,61 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
 //    }
 
     // MARK: UICollectionViewDataSource
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        if completedGameArray.count == 0 || upcomingGameArray.count == 0 {
+            return 1
+        }
+        return 2
+    }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return completedGameArray.count
+        if completedGameArray.count == 0 {
+            return upcomingGameArray.count
+        } else if upcomingGameArray.count == 0 {
+            return completedGameArray.count
+        } else {
+            switch section {
+            case 0:
+                return completedGameArray.count
+            default:
+                return upcomingGameArray.count
+            }
+        }
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CompletedGameCollectionViewCell", for: indexPath) as! CompletedGameCollectionViewCell
-        cell.set(with: completedGameArray[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ScheduleCollectionViewCell", for: indexPath) as! ScheduleCollectionViewCell
+        
+        if completedGameArray.count == 0 {
+            cell.set(with: upcomingGameArray[indexPath.row])
+        } else if upcomingGameArray.count == 0 {
+            cell.set(with: completedGameArray[indexPath.row])
+        } else {
+            switch indexPath.section {
+            case 0:
+                cell.set(with: completedGameArray[indexPath.row])
+            default:
+                cell.set(with: upcomingGameArray[indexPath.row])
+            }
+        }
+
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ScheduleCollectionViewSectionHeader", for: indexPath) as! ScheduleCollectionViewSectionHeader
+        switch indexPath.section {
+        case 0:
+            header.set(with: "Completed", seasonRecord)
+        default:
+            header.set(with: "Upcoming")
+        }
+        return header
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 64.0)
     }
 
     // MARK: UICollectionViewLayout

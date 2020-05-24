@@ -196,15 +196,27 @@ class ContentManager {
     }
 
     private func makeGameObject(value: JSON) -> Game {
+        let venue: Venue
+        if let venueString = value["venue"].string {
+            switch venueString {
+            case "H": venue = .Home
+            case "A": venue = .Away
+            case "T": venue = .Tournament
+            default: venue = .Unknown
+            }
+        } else {
+            venue = .Unknown
+        }
+        
         let game = Game(id: value["id"].int!,
                         dateTime: value["datetime"].string!.longDate,
                         opponentName: value["opponent_name"].string!,
                         rinkName: value["rink_name"].string!,
-                        venue: value["venue"].string!,
+                        venue: venue,
                         isReported: value["is_reported"].bool!,
                         shortResult: value["short_result"].string!,
-                        gtScore: value["gt_score"].int ?? 0,
-                        opponentScore: value["opp_score"].int ?? 0)
+                        gtScore: value["gt_score"].int,
+                        opponentScore: value["opp_score"].int)
         return game
     }
 

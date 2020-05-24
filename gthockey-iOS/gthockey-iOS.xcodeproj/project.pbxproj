@@ -12,8 +12,9 @@
 		318E2791247AEEC20091BA01 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2790247AEEC20091BA01 /* NewsCollectionViewCell.swift */; };
 		318E2793247AEEED0091BA01 /* NewsCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2792247AEEED0091BA01 /* NewsCellData.swift */; };
 		318E2795247AEF0F0091BA01 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2794247AEF0F0091BA01 /* NewsDetailViewController.swift */; };
+		318E2799247B08D10091BA01 /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2798247B08D10091BA01 /* ScheduleCollectionViewCell.swift */; };
+		318E279B247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E279A247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift */; };
 		31C791B1247885F7005CC1E0 /* ScheduleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B0247885F7005CC1E0 /* ScheduleCollectionViewController.swift */; };
-		31C791B32478871D005CC1E0 /* CompletedGameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B22478871D005CC1E0 /* CompletedGameCollectionViewCell.swift */; };
 		31C791B52478943A005CC1E0 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B42478943A005CC1E0 /* UIStackViewExtension.swift */; };
 		8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */; };
 		8206D3E223CBC6AE00863B3C /* AdminUsersTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */; };
@@ -40,7 +41,6 @@
 		822D54A3243AA89B00B0776D /* AppVersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5498243AA89B00B0776D /* AppVersionManager.swift */; };
 		825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825092172361EFB300D98DEA /* UIViewExtension.swift */; };
 		826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */; };
-		826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */; };
 		827F55C923FC0F000080138A /* ArticlePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827F55C823FC0F000080138A /* ArticlePreviewView.swift */; };
 		828295A02461A9560084AE7F /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282959F2461A9560084AE7F /* UIFontExtension.swift */; };
 		828295A42461ACF40084AE7F /* GTHNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828295A32461ACF40084AE7F /* GTHNavigationController.swift */; };
@@ -64,11 +64,6 @@
 		82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F840238DBBA8001CA749 /* CustomError.swift */; };
 		82A6F843238E1AE0001CA749 /* ShopOptionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */; };
 		82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */; };
-		82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */; };
-		82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */; };
-		82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */; };
-		82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E22346812400114F84 /* ScheduleTableViewController.swift */; };
-		82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E42346815300114F84 /* ScheduleTableViewCell.swift */; };
 		82B3A16F237BB44F00CD8F3D /* ShopCustomOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A16C237BB44E00CD8F3D /* ShopCustomOptionsView.swift */; };
 		82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A16D237BB44E00CD8F3D /* ShopDetailViewController.swift */; };
 		82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A16E237BB44E00CD8F3D /* ShopRestrictedOptionsView.swift */; };
@@ -114,8 +109,9 @@
 		318E2790247AEEC20091BA01 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
 		318E2792247AEEED0091BA01 /* NewsCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellData.swift; sourceTree = "<group>"; };
 		318E2794247AEF0F0091BA01 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
+		318E2798247B08D10091BA01 /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
+		318E279A247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
 		31C791B0247885F7005CC1E0 /* ScheduleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewController.swift; sourceTree = "<group>"; };
-		31C791B22478871D005CC1E0 /* CompletedGameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGameCollectionViewCell.swift; sourceTree = "<group>"; };
 		31C791B42478943A005CC1E0 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.debug.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminUsersTableViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +139,6 @@
 		822D5498243AA89B00B0776D /* AppVersionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionManager.swift; sourceTree = "<group>"; };
 		825092172361EFB300D98DEA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitAnnotation.swift; sourceTree = "<group>"; };
-		826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDetailViewController.swift; sourceTree = "<group>"; };
 		827F55C823FC0F000080138A /* ArticlePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePreviewView.swift; sourceTree = "<group>"; };
 		8282959F2461A9560084AE7F /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		828295A32461ACF40084AE7F /* GTHNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHNavigationController.swift; sourceTree = "<group>"; };
@@ -167,11 +162,6 @@
 		82A6F840238DBBA8001CA749 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopOptionTextField.swift; sourceTree = "<group>"; };
 		82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewHeader.swift; sourceTree = "<group>"; };
-		82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDateTimeView.swift; sourceTree = "<group>"; };
-		82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultView.swift; sourceTree = "<group>"; };
-		82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleOpponentRinkView.swift; sourceTree = "<group>"; };
-		82ADF5E22346812400114F84 /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
-		82ADF5E42346815300114F84 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		82B3A16C237BB44E00CD8F3D /* ShopCustomOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCustomOptionsView.swift; sourceTree = "<group>"; };
 		82B3A16D237BB44E00CD8F3D /* ShopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		82B3A16E237BB44E00CD8F3D /* ShopRestrictedOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopRestrictedOptionsView.swift; sourceTree = "<group>"; };
@@ -343,14 +333,9 @@
 		82D971B4233D60A500BFD322 /* ScheduleFlow */ = {
 			isa = PBXGroup;
 			children = (
-				82ADF5E22346812400114F84 /* ScheduleTableViewController.swift */,
-				82ADF5E42346815300114F84 /* ScheduleTableViewCell.swift */,
-				82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */,
-				82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */,
-				82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */,
-				826D01A523E60FD10094EEC6 /* ScheduleDetailViewController.swift */,
 				31C791B0247885F7005CC1E0 /* ScheduleCollectionViewController.swift */,
-				31C791B22478871D005CC1E0 /* CompletedGameCollectionViewCell.swift */,
+				318E2798247B08D10091BA01 /* ScheduleCollectionViewCell.swift */,
+				318E279A247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift */,
 			);
 			path = ScheduleFlow;
 			sourceTree = "<group>";
@@ -640,9 +625,9 @@
 				82E13CE624425BDE007EFE53 /* NonceManager.swift in Sources */,
 				82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */,
 				828F812723ECF7F300ED6CBC /* Venue.swift in Sources */,
+				318E279B247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift in Sources */,
 				822D549D243AA89B00B0776D /* PushNotificationSender.swift in Sources */,
 				318E2791247AEEC20091BA01 /* NewsCollectionViewCell.swift in Sources */,
-				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
 				82F468F62380659800573EE5 /* CartTableViewFooter.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
@@ -652,7 +637,6 @@
 				828295A62461B5820084AE7F /* GTHTabBarController.swift in Sources */,
 				828295A824645D630084AE7F /* CALayerExtension.swift in Sources */,
 				82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */,
-				31C791B32478871D005CC1E0 /* CompletedGameCollectionViewCell.swift in Sources */,
 				822D549F243AA89B00B0776D /* StripeManager.swift in Sources */,
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
 				F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */,
@@ -660,10 +644,7 @@
 				82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */,
 				822D5499243AA89B00B0776D /* UserManager.swift in Sources */,
 				822D549A243AA89B00B0776D /* ContentManager.swift in Sources */,
-				82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */,
 				318E2795247AEF0F0091BA01 /* NewsDetailViewController.swift in Sources */,
-				82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */,
-				82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */,
 				82F468EE237F4C0E00573EE5 /* CartTableViewController.swift in Sources */,
 				82170D16236FB39C005FE89B /* ShopCollectionViewCell.swift in Sources */,
 				82DCB479233C402200BDE2FE /* AppDelegate.swift in Sources */,
@@ -674,10 +655,8 @@
 				8206D3E423CBDA3F00863B3C /* AdminMenuOption.swift in Sources */,
 				82B3A16F237BB44F00CD8F3D /* ShopCustomOptionsView.swift in Sources */,
 				82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */,
-				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
 				8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */,
-				826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */,
 				82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */,
 				8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */,
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
@@ -690,6 +669,7 @@
 				82DCB481233C402200BDE2FE /* gthockey_iOS.xcdatamodeld in Sources */,
 				822D54A3243AA89B00B0776D /* AppVersionManager.swift in Sources */,
 				822D54A2243AA89B00B0776D /* AdminManager.swift in Sources */,
+				318E2799247B08D10091BA01 /* ScheduleCollectionViewCell.swift in Sources */,
 				82C24681238669E0003CB268 /* HTMLTextView.swift in Sources */,
 				82D971B2233D54C700BFD322 /* RosterCollectionViewController.swift in Sources */,
 				8206D3EF23CD307E00863B3C /* AppUser.swift in Sources */,

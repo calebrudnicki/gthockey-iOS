@@ -1,15 +1,15 @@
 //
-//  CompletedGameCollectionViewCell.swift
+//  ScheduleCollectionViewCell.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 5/22/20.
+//  Created by Caleb Rudnicki on 5/24/20.
 //  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import UIKit
 import SDWebImage
 
-class CompletedGameCollectionViewCell: CardCollectionViewCell {
+class ScheduleCollectionViewCell: CardCollectionViewCell {
 
     // MARK: Properties
 
@@ -121,6 +121,12 @@ class CompletedGameCollectionViewCell: CardCollectionViewCell {
         return teamsContentStack
     }()
     
+    private let topContentView: UIView = {
+        let topContentView = UIView()
+        topContentView.translatesAutoresizingMaskIntoConstraints = false
+        return topContentView
+    }()
+    
     private let dateLabel: UILabel = {
         let dateLabel = UILabel()
         dateLabel.font = UIFont.DINCondensed.bold.font(size: 14.0)
@@ -174,10 +180,11 @@ class CompletedGameCollectionViewCell: CardCollectionViewCell {
         awayStack.addArrangedSubviews([awaySchoolLabel, awayMascotLabel, awayScoreLabel])
         homeStack.addArrangedSubviews([homeSchoolLabel, homeMascotLabel, homeScoreLabel])
         teamsContentStack.addArrangedSubviews([awayStack, homeStack])
+        topContentView.addSubview(teamsContentStack)
         
         gameContentStack.addArrangedSubviews([dateLabel, rinkLabel])
 
-        contentView.addSubviews([awayImageView, homeImageView, view, blurEffectView, teamsContentStack, gameContentStack])
+        contentView.addSubviews([awayImageView, homeImageView, view, blurEffectView, topContentView, gameContentStack])
         updateConstraints()
     }
 
@@ -203,13 +210,19 @@ class CompletedGameCollectionViewCell: CardCollectionViewCell {
         ])
         
         NSLayoutConstraint.activate([
-            teamsContentStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8.0),
+            topContentView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            topContentView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            topContentView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            topContentView.bottomAnchor.constraint(equalTo: gameContentStack.topAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            teamsContentStack.centerYAnchor.constraint(equalTo: topContentView.centerYAnchor),
             teamsContentStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12.0),
             teamsContentStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12.0)
         ])
         
         NSLayoutConstraint.activate([
-            gameContentStack.topAnchor.constraint(greaterThanOrEqualTo: teamsContentStack.bottomAnchor, constant: 4.0),
             gameContentStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12.0),
             gameContentStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12.0),
             gameContentStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0),
@@ -219,20 +232,24 @@ class CompletedGameCollectionViewCell: CardCollectionViewCell {
     // MARK: Setter
 
     public func set(with game: Game) {
-        awayImageView.image = UIImage(named: "ZoomedUGA")
-        awaySchoolLabel.text = game.getOpponentName()
-        awayMascotLabel.text = "Away Mascot"
-        awayScoreLabel.text = String(describing: game.getOpponentScore())
+        awayImageView.image = game.venue == .Home ? UIImage(named: "ZoomedUGA") : UIImage(named: "ZoomedBuzz")
+        awaySchoolLabel.text = game.venue == .Home ? game.opponentName : "Georgia Tech"
+        awayMascotLabel.text = game.venue == .Home ? "Opp Mascot" : "Yellow Jackets"
         
-        homeImageView.image = UIImage(named: "ZoomedBuzz")
-        homeSchoolLabel.text = "Georgia Tech"
-        homeMascotLabel.text = "Home Mascot"
-        homeScoreLabel.text = String(describing: game.getGTScore())
+        homeImageView.image = game.venue == .Home ? UIImage(named: "ZoomedBuzz") : UIImage(named: "ZoomedUGA")
+        homeSchoolLabel.text = game.venue == .Home ? "Georgia Tech" : game.opponentName
+        homeMascotLabel.text = game.venue == .Home ? "Yellow Jackets" : "Opp Mascot"
+            
+        if let opponentScore = game.opponentScore, let gtScore = game.gtScore {
+            awayScoreLabel.text = game.venue == .Home ? String(describing: opponentScore) : String(describing: gtScore)
+            homeScoreLabel.text = game.venue == .Home ? String(describing: gtScore) : String(describing: opponentScore)
+        } else {
+            awayScoreLabel.text = ""
+            homeScoreLabel.text = ""
+        }
         
-        dateLabel.text = game.getDateTime().formatted
-        rinkLabel.text = game.getRinkName()
-        
-//        imageView.sd_setImagewith: game.getImageURL(), placeholderImage: nil)
+        dateLabel.text = game.dateTime.formatted
+        rinkLabel.text = game.rinkName
     }
 
 }

@@ -30,4 +30,9 @@ extension UIColor {
     
     static let scheduleCellTeamInfoColor = UIColor.init(named: "ScheduleCellTeamInfoColor")
     static let scheduleCellGameInfoColor = UIColor.init(named: "ScheduleCellGameInfoColor")
+    
+    static let scheduleHeaderTitleColor = UIColor.init(named: "ScheduleHeaderTitleColor")
+    static let scheduleHeaderRecordColor = UIColor.init(named: "ScheduleHeaderRecordColor")
+    
+    
 }
