@@ -1,19 +1,19 @@
 //
-//  HomeCollectionViewCell.swift
+//  NewsCollectionViewCell.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 9/30/19.
-//  Copyright © 2019 Caleb Rudnicki. All rights reserved.
+//  Created by Caleb Rudnicki on 5/24/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import UIKit
 import SDWebImage
 
-class HomeCollectionViewCell: CardCollectionViewCell {
+class NewsCollectionViewCell: CardCollectionViewCell {
 
     // MARK: Properties
 
-    private let imageView: UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
         imageView.clipsToBounds = true
@@ -22,7 +22,7 @@ class HomeCollectionViewCell: CardCollectionViewCell {
         return imageView
     }()
 
-    private let dateLabel: UILabel = {
+    let dateLabel: UILabel = {
         let dateLabel = UILabel()
         dateLabel.font = UIFont.DINCondensed.bold.font(size: 16.0)
         dateLabel.textColor = UIColor.newsCellDateColor
@@ -32,7 +32,7 @@ class HomeCollectionViewCell: CardCollectionViewCell {
         return dateLabel
     }()
 
-    private let titleLabel: UILabel = {
+    let titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
         titleLabel.textColor = UIColor.newsCellTitleColor

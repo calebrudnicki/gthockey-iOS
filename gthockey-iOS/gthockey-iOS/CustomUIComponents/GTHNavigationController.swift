@@ -35,7 +35,7 @@ class GTHNavigationController: UINavigationController {
 extension GTHNavigationController: UINavigationControllerDelegate {
 
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        if viewController as? HomeCollectionViewController != nil {
+        if viewController as? NewsCollectionViewController != nil {
             navigationBar.topItem?.title = "News"
         } else if viewController as? ScheduleCollectionViewController != nil {
             navigationBar.topItem?.title = "Schedule"

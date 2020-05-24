@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		318E278B2479ED100091BA01 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E278A2479ED100091BA01 /* Animator.swift */; };
+		318E278F247AEE730091BA01 /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E278E247AEE730091BA01 /* NewsCollectionViewController.swift */; };
+		318E2791247AEEC20091BA01 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2790247AEEC20091BA01 /* NewsCollectionViewCell.swift */; };
+		318E2793247AEEED0091BA01 /* NewsCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2792247AEEED0091BA01 /* NewsCellData.swift */; };
+		318E2795247AEF0F0091BA01 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2794247AEF0F0091BA01 /* NewsDetailViewController.swift */; };
 		31C791B1247885F7005CC1E0 /* ScheduleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B0247885F7005CC1E0 /* ScheduleCollectionViewController.swift */; };
 		31C791B32478871D005CC1E0 /* CompletedGameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B22478871D005CC1E0 /* CompletedGameCollectionViewCell.swift */; };
 		31C791B52478943A005CC1E0 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B42478943A005CC1E0 /* UIStackViewExtension.swift */; };
@@ -59,8 +64,6 @@
 		82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F840238DBBA8001CA749 /* CustomError.swift */; };
 		82A6F843238E1AE0001CA749 /* ShopOptionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */; };
 		82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */; };
-		82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */; };
-		82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */; };
 		82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */; };
 		82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */; };
 		82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */; };
@@ -90,7 +93,6 @@
 		82E13CE624425BDE007EFE53 /* NonceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E13CE524425BDE007EFE53 /* NonceManager.swift */; };
 		82EE57E12341B2BC00FCC181 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E02341B2BC00FCC181 /* Game.swift */; };
 		82EE57E32341B36200FCC181 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E22341B36200FCC181 /* Player.swift */; };
-		82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */; };
 		82F468EE237F4C0E00573EE5 /* CartTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F468ED237F4C0E00573EE5 /* CartTableViewController.swift */; };
 		82F468F0237F55EC00573EE5 /* CartTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F468EF237F55EC00573EE5 /* CartTableViewCell.swift */; };
 		82F468F2237F611C00573EE5 /* CartItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F468F1237F611C00573EE5 /* CartItem.swift */; };
@@ -107,6 +109,11 @@
 
 /* Begin PBXFileReference section */
 		0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.release.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		318E278A2479ED100091BA01 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
+		318E278E247AEE730091BA01 /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
+		318E2790247AEEC20091BA01 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		318E2792247AEEED0091BA01 /* NewsCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellData.swift; sourceTree = "<group>"; };
+		318E2794247AEF0F0091BA01 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		31C791B0247885F7005CC1E0 /* ScheduleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewController.swift; sourceTree = "<group>"; };
 		31C791B22478871D005CC1E0 /* CompletedGameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedGameCollectionViewCell.swift; sourceTree = "<group>"; };
 		31C791B42478943A005CC1E0 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
@@ -160,8 +167,6 @@
 		82A6F840238DBBA8001CA749 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopOptionTextField.swift; sourceTree = "<group>"; };
 		82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewHeader.swift; sourceTree = "<group>"; };
-		82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewController.swift; sourceTree = "<group>"; };
-		82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
 		82ADF5DC23463B1500114F84 /* ScheduleDateTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDateTimeView.swift; sourceTree = "<group>"; };
 		82ADF5DE23463B2600114F84 /* ScheduleResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleResultView.swift; sourceTree = "<group>"; };
 		82ADF5E023463F0300114F84 /* ScheduleOpponentRinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleOpponentRinkView.swift; sourceTree = "<group>"; };
@@ -193,7 +198,6 @@
 		82E13CE524425BDE007EFE53 /* NonceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonceManager.swift; sourceTree = "<group>"; };
 		82EE57E02341B2BC00FCC181 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		82EE57E22341B36200FCC181 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		82F468ED237F4C0E00573EE5 /* CartTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewController.swift; sourceTree = "<group>"; };
 		82F468EF237F55EC00573EE5 /* CartTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartTableViewCell.swift; sourceTree = "<group>"; };
 		82F468F1237F611C00573EE5 /* CartItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItem.swift; sourceTree = "<group>"; };
@@ -320,6 +324,7 @@
 				827F55C823FC0F000080138A /* ArticlePreviewView.swift */,
 				828295A32461ACF40084AE7F /* GTHNavigationController.swift */,
 				828295A52461B5820084AE7F /* GTHTabBarController.swift */,
+				318E278A2479ED100091BA01 /* Animator.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -327,9 +332,10 @@
 		82D971B3233D609E00BFD322 /* HomeFlow */ = {
 			isa = PBXGroup;
 			children = (
-				82AD6D27234D058D0035C183 /* HomeCollectionViewController.swift */,
-				82EE57E42341BCC200FCC181 /* HomeCollectionViewCell.swift */,
-				82AD6D2E234D0B840035C183 /* HomeDetailViewController.swift */,
+				318E278E247AEE730091BA01 /* NewsCollectionViewController.swift */,
+				318E2790247AEEC20091BA01 /* NewsCollectionViewCell.swift */,
+				318E2794247AEF0F0091BA01 /* NewsDetailViewController.swift */,
+				318E2792247AEEED0091BA01 /* NewsCellData.swift */,
 			);
 			path = HomeFlow;
 			sourceTree = "<group>";
@@ -616,6 +622,7 @@
 				FA3570BA23502190008E83BC /* Team.swift in Sources */,
 				822D549C243AA89B00B0776D /* AuthenticationManager.swift in Sources */,
 				82A4295223D8EC7D002EF467 /* AppIcon.swift in Sources */,
+				318E278B2479ED100091BA01 /* Animator.swift in Sources */,
 				8206D3FB23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift in Sources */,
 				822D549B243AA89B00B0776D /* PushNotificationManager.swift in Sources */,
 				8288FC642360AB2D00C7C9DF /* MenuTableViewHeader.swift in Sources */,
@@ -634,6 +641,7 @@
 				82B3A179237CB15C00CD8F3D /* PreLaunchViewController.swift in Sources */,
 				828F812723ECF7F300ED6CBC /* Venue.swift in Sources */,
 				822D549D243AA89B00B0776D /* PushNotificationSender.swift in Sources */,
+				318E2791247AEEC20091BA01 /* NewsCollectionViewCell.swift in Sources */,
 				82ADF5DD23463B1500114F84 /* ScheduleDateTimeView.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
 				82F468F62380659800573EE5 /* CartTableViewFooter.swift in Sources */,
@@ -653,6 +661,7 @@
 				822D5499243AA89B00B0776D /* UserManager.swift in Sources */,
 				822D549A243AA89B00B0776D /* ContentManager.swift in Sources */,
 				82ADF5E123463F0300114F84 /* ScheduleOpponentRinkView.swift in Sources */,
+				318E2795247AEF0F0091BA01 /* NewsDetailViewController.swift in Sources */,
 				82ADF5E52346815300114F84 /* ScheduleTableViewCell.swift in Sources */,
 				82ADF5E32346812400114F84 /* ScheduleTableViewController.swift in Sources */,
 				82F468EE237F4C0E00573EE5 /* CartTableViewController.swift in Sources */,
@@ -667,13 +676,12 @@
 				82DD1A282346FFAC001425B6 /* RosterCollectionViewCell.swift in Sources */,
 				82ADF5DF23463B2600114F84 /* ScheduleResultView.swift in Sources */,
 				82F79FC5236004D70070F63D /* UIColorExtension.swift in Sources */,
-				82EE57E52341BCC200FCC181 /* HomeCollectionViewCell.swift in Sources */,
 				8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */,
 				826D01A623E60FD10094EEC6 /* ScheduleDetailViewController.swift in Sources */,
 				82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */,
 				8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */,
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
-				82AD6D2F234D0B840035C183 /* HomeDetailViewController.swift in Sources */,
+				318E278F247AEE730091BA01 /* NewsCollectionViewController.swift in Sources */,
 				822D549E243AA89B00B0776D /* AppIconManager.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
 				82DE66E323EE5DD5003E13E6 /* Season.swift in Sources */,
@@ -687,8 +695,8 @@
 				8206D3EF23CD307E00863B3C /* AppUser.swift in Sources */,
 				31C791B1247885F7005CC1E0 /* ScheduleCollectionViewController.swift in Sources */,
 				82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */,
+				318E2793247AEEED0091BA01 /* NewsCellData.swift in Sources */,
 				82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */,
-				82AD6D28234D058D0035C183 /* HomeCollectionViewController.swift in Sources */,
 				82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */,
 				82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */,
 				822D548C243AA7EE00B0776D /* DateExtension.swift in Sources */,

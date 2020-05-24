@@ -14,11 +14,11 @@ class GTHTabBarController: UITabBarController {
 
     private let indicatorPlatform = UIView()
 
-    private let homeCollectionViewController: HomeCollectionViewController = {
-        let homeLayout = UICollectionViewFlowLayout()
-        homeLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
-        let homeCollectionViewController = HomeCollectionViewController(collectionViewLayout: homeLayout)
-        return homeCollectionViewController
+    private let newsCollectionViewController: NewsCollectionViewController = {
+        let newsLayout = UICollectionViewFlowLayout()
+        newsLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 12.0, right: 0.0)
+        let newsCollectionViewController = NewsCollectionViewController(collectionViewLayout: newsLayout)
+        return newsCollectionViewController
     }()
     
     private let scheduleCollectionViewController: ScheduleCollectionViewController = {
@@ -47,7 +47,7 @@ class GTHTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let newsNavigationController = GTHNavigationController(rootViewController: homeCollectionViewController)
+        let newsNavigationController = GTHNavigationController(rootViewController: newsCollectionViewController)
         newsNavigationController.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 0)
 
         let scheduleNavigationController = GTHNavigationController(rootViewController: scheduleCollectionViewController)
