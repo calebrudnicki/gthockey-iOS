@@ -10,10 +10,15 @@
 		318E278B2479ED100091BA01 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E278A2479ED100091BA01 /* Animator.swift */; };
 		318E278F247AEE730091BA01 /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E278E247AEE730091BA01 /* NewsCollectionViewController.swift */; };
 		318E2791247AEEC20091BA01 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2790247AEEC20091BA01 /* NewsCollectionViewCell.swift */; };
-		318E2793247AEEED0091BA01 /* NewsCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2792247AEEED0091BA01 /* NewsCellData.swift */; };
 		318E2795247AEF0F0091BA01 /* NewsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2794247AEF0F0091BA01 /* NewsDetailViewController.swift */; };
 		318E2799247B08D10091BA01 /* ScheduleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2798247B08D10091BA01 /* ScheduleCollectionViewCell.swift */; };
 		318E279B247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E279A247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift */; };
+		318E279D247B26960091BA01 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E279C247B26960091BA01 /* Position.swift */; };
+		318E279F247B29800091BA01 /* RosterCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E279E247B29800091BA01 /* RosterCollectionViewSectionHeader.swift */; };
+		318E27A1247B2EBE0091BA01 /* PositionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27A0247B2EBE0091BA01 /* PositionCollectionViewController.swift */; };
+		318E27A5247D60D60091BA01 /* GTHCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27A4247D60D60091BA01 /* GTHCollectionViewController.swift */; };
+		318E27A9247D61520091BA01 /* GTHCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27A8247D61520091BA01 /* GTHCellData.swift */; };
+		31A4E0BF247DD4FC008CCE07 /* GTHDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4E0BE247DD4FC008CCE07 /* GTHDetailViewController.swift */; };
 		31C791B1247885F7005CC1E0 /* ScheduleCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B0247885F7005CC1E0 /* ScheduleCollectionViewController.swift */; };
 		31C791B52478943A005CC1E0 /* UIStackViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C791B42478943A005CC1E0 /* UIStackViewExtension.swift */; };
 		8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */; };
@@ -41,7 +46,6 @@
 		822D54A3243AA89B00B0776D /* AppVersionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822D5498243AA89B00B0776D /* AppVersionManager.swift */; };
 		825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825092172361EFB300D98DEA /* UIViewExtension.swift */; };
 		826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */; };
-		827F55C923FC0F000080138A /* ArticlePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827F55C823FC0F000080138A /* ArticlePreviewView.swift */; };
 		828295A02461A9560084AE7F /* UIFontExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8282959F2461A9560084AE7F /* UIFontExtension.swift */; };
 		828295A42461ACF40084AE7F /* GTHNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828295A32461ACF40084AE7F /* GTHNavigationController.swift */; };
 		828295A62461B5820084AE7F /* GTHTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 828295A52461B5820084AE7F /* GTHTabBarController.swift */; };
@@ -63,7 +67,6 @@
 		82A4295623D8F708002EF467 /* RamblinReck@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82A4295423D8F708002EF467 /* RamblinReck@3x.png */; };
 		82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F840238DBBA8001CA749 /* CustomError.swift */; };
 		82A6F843238E1AE0001CA749 /* ShopOptionTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */; };
-		82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */; };
 		82B3A16F237BB44F00CD8F3D /* ShopCustomOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A16C237BB44E00CD8F3D /* ShopCustomOptionsView.swift */; };
 		82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A16D237BB44E00CD8F3D /* ShopDetailViewController.swift */; };
 		82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3A16E237BB44E00CD8F3D /* ShopRestrictedOptionsView.swift */; };
@@ -107,10 +110,15 @@
 		318E278A2479ED100091BA01 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		318E278E247AEE730091BA01 /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
 		318E2790247AEEC20091BA01 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
-		318E2792247AEEED0091BA01 /* NewsCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCellData.swift; sourceTree = "<group>"; };
 		318E2794247AEF0F0091BA01 /* NewsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailViewController.swift; sourceTree = "<group>"; };
 		318E2798247B08D10091BA01 /* ScheduleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewCell.swift; sourceTree = "<group>"; };
 		318E279A247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
+		318E279C247B26960091BA01 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		318E279E247B29800091BA01 /* RosterCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
+		318E27A0247B2EBE0091BA01 /* PositionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCollectionViewController.swift; sourceTree = "<group>"; };
+		318E27A4247D60D60091BA01 /* GTHCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHCollectionViewController.swift; sourceTree = "<group>"; };
+		318E27A8247D61520091BA01 /* GTHCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHCellData.swift; sourceTree = "<group>"; };
+		31A4E0BE247DD4FC008CCE07 /* GTHDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHDetailViewController.swift; sourceTree = "<group>"; };
 		31C791B0247885F7005CC1E0 /* ScheduleCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewController.swift; sourceTree = "<group>"; };
 		31C791B42478943A005CC1E0 /* UIStackViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackViewExtension.swift; sourceTree = "<group>"; };
 		424CA3587C83AF14493CFC34 /* Pods-gthockey-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.debug.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.debug.xcconfig"; sourceTree = "<group>"; };
@@ -139,7 +147,6 @@
 		822D5498243AA89B00B0776D /* AppVersionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppVersionManager.swift; sourceTree = "<group>"; };
 		825092172361EFB300D98DEA /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitAnnotation.swift; sourceTree = "<group>"; };
-		827F55C823FC0F000080138A /* ArticlePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlePreviewView.swift; sourceTree = "<group>"; };
 		8282959F2461A9560084AE7F /* UIFontExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontExtension.swift; sourceTree = "<group>"; };
 		828295A32461ACF40084AE7F /* GTHNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHNavigationController.swift; sourceTree = "<group>"; };
 		828295A52461B5820084AE7F /* GTHTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHTabBarController.swift; sourceTree = "<group>"; };
@@ -161,7 +168,6 @@
 		82A4295423D8F708002EF467 /* RamblinReck@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "RamblinReck@3x.png"; sourceTree = "<group>"; };
 		82A6F840238DBBA8001CA749 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopOptionTextField.swift; sourceTree = "<group>"; };
-		82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewHeader.swift; sourceTree = "<group>"; };
 		82B3A16C237BB44E00CD8F3D /* ShopCustomOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopCustomOptionsView.swift; sourceTree = "<group>"; };
 		82B3A16D237BB44E00CD8F3D /* ShopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		82B3A16E237BB44E00CD8F3D /* ShopRestrictedOptionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopRestrictedOptionsView.swift; sourceTree = "<group>"; };
@@ -311,10 +317,12 @@
 				82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */,
 				826D01A323E60F060094EEC6 /* MapKitAnnotation.swift */,
 				82DE670B23F3352F003E13E6 /* FullScreenImageViewController.swift */,
-				827F55C823FC0F000080138A /* ArticlePreviewView.swift */,
 				828295A32461ACF40084AE7F /* GTHNavigationController.swift */,
 				828295A52461B5820084AE7F /* GTHTabBarController.swift */,
 				318E278A2479ED100091BA01 /* Animator.swift */,
+				318E27A4247D60D60091BA01 /* GTHCollectionViewController.swift */,
+				318E27A8247D61520091BA01 /* GTHCellData.swift */,
+				31A4E0BE247DD4FC008CCE07 /* GTHDetailViewController.swift */,
 			);
 			path = CustomUIComponents;
 			sourceTree = "<group>";
@@ -325,7 +333,6 @@
 				318E278E247AEE730091BA01 /* NewsCollectionViewController.swift */,
 				318E2790247AEEC20091BA01 /* NewsCollectionViewCell.swift */,
 				318E2794247AEF0F0091BA01 /* NewsDetailViewController.swift */,
-				318E2792247AEEED0091BA01 /* NewsCellData.swift */,
 			);
 			path = HomeFlow;
 			sourceTree = "<group>";
@@ -345,7 +352,8 @@
 			children = (
 				82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */,
 				82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */,
-				82AD6D1F234BCF9F0035C183 /* RosterCollectionViewHeader.swift */,
+				318E279E247B29800091BA01 /* RosterCollectionViewSectionHeader.swift */,
+				318E27A0247B2EBE0091BA01 /* PositionCollectionViewController.swift */,
 				82918F312350B62F00723B4A /* RosterDetailViewController.swift */,
 			);
 			path = RosterFlow;
@@ -464,6 +472,7 @@
 				82A4295123D8EC7D002EF467 /* AppIcon.swift */,
 				828F812623ECF7F300ED6CBC /* Venue.swift */,
 				82DE66E223EE5DD5003E13E6 /* Season.swift */,
+				318E279C247B26960091BA01 /* Position.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -601,11 +610,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				827F55C923FC0F000080138A /* ArticlePreviewView.swift in Sources */,
 				31C791B52478943A005CC1E0 /* UIStackViewExtension.swift in Sources */,
 				822D54A1243AA89B00B0776D /* UserPropertyManager.swift in Sources */,
 				FA3570BA23502190008E83BC /* Team.swift in Sources */,
 				822D549C243AA89B00B0776D /* AuthenticationManager.swift in Sources */,
+				318E27A5247D60D60091BA01 /* GTHCollectionViewController.swift in Sources */,
 				82A4295223D8EC7D002EF467 /* AppIcon.swift in Sources */,
 				318E278B2479ED100091BA01 /* Animator.swift in Sources */,
 				8206D3FB23CE538F00863B3C /* SettingsSwitchControlTableViewCell.swift in Sources */,
@@ -615,6 +624,7 @@
 				82A4293923D8CE51002EF467 /* SettingsIconTableViewCell.swift in Sources */,
 				828295A02461A9560084AE7F /* UIFontExtension.swift in Sources */,
 				8288FC6A2360AC1900C7C9DF /* MenuTableViewCell.swift in Sources */,
+				318E279D247B26960091BA01 /* Position.swift in Sources */,
 				F02585AF23412F88008E641C /* News.swift in Sources */,
 				8288FC662360AB3E00C7C9DF /* MenuTableViewFooter.swift in Sources */,
 				82B3A177237BD7CC00CD8F3D /* PillButton.swift in Sources */,
@@ -628,6 +638,7 @@
 				318E279B247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift in Sources */,
 				822D549D243AA89B00B0776D /* PushNotificationSender.swift in Sources */,
 				318E2791247AEEC20091BA01 /* NewsCollectionViewCell.swift in Sources */,
+				31A4E0BF247DD4FC008CCE07 /* GTHDetailViewController.swift in Sources */,
 				82F79FC3235FF1890070F63D /* MenuControllerDelegate.swift in Sources */,
 				82F468F62380659800573EE5 /* CartTableViewFooter.swift in Sources */,
 				8217E0C7235CC3D1007144D0 /* MenuContainerViewController.swift in Sources */,
@@ -641,7 +652,6 @@
 				82EE57E12341B2BC00FCC181 /* Game.swift in Sources */,
 				F00C392C2354EA3E009E1F3A /* Rink.swift in Sources */,
 				82170D11236FB301005FE89B /* Apparel.swift in Sources */,
-				82AD6D20234BCF9F0035C183 /* RosterCollectionViewHeader.swift in Sources */,
 				822D5499243AA89B00B0776D /* UserManager.swift in Sources */,
 				822D549A243AA89B00B0776D /* ContentManager.swift in Sources */,
 				318E2795247AEF0F0091BA01 /* NewsDetailViewController.swift in Sources */,
@@ -659,7 +669,9 @@
 				8206D3E623CBDF6200863B3C /* MainMenuOption.swift in Sources */,
 				82DE670823F0DC59003E13E6 /* NotificationCenterViewController.swift in Sources */,
 				8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */,
+				318E27A9247D61520091BA01 /* GTHCellData.swift in Sources */,
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
+				318E27A1247B2EBE0091BA01 /* PositionCollectionViewController.swift in Sources */,
 				318E278F247AEE730091BA01 /* NewsCollectionViewController.swift in Sources */,
 				822D549E243AA89B00B0776D /* AppIconManager.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,
@@ -675,12 +687,12 @@
 				8206D3EF23CD307E00863B3C /* AppUser.swift in Sources */,
 				31C791B1247885F7005CC1E0 /* ScheduleCollectionViewController.swift in Sources */,
 				82A6F841238DBBA8001CA749 /* CustomError.swift in Sources */,
-				318E2793247AEEED0091BA01 /* NewsCellData.swift in Sources */,
 				82B3A174237BB49700CD8F3D /* ApparelCustomItem.swift in Sources */,
 				82B3A171237BB44F00CD8F3D /* ShopRestrictedOptionsView.swift in Sources */,
 				82B3A175237BB49700CD8F3D /* ApparelRestrictedItem.swift in Sources */,
 				822D548C243AA7EE00B0776D /* DateExtension.swift in Sources */,
 				82DE670C23F3352F003E13E6 /* FullScreenImageViewController.swift in Sources */,
+				318E279F247B29800091BA01 /* RosterCollectionViewSectionHeader.swift in Sources */,
 				82E13CE02442452E007EFE53 /* MainSignInViewController.swift in Sources */,
 				82F468F2237F611C00573EE5 /* CartItem.swift in Sources */,
 				82C0BC222389747100A134E7 /* SettingsTableViewFooter.swift in Sources */,

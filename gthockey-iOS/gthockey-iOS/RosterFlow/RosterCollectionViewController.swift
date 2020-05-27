@@ -8,8 +8,6 @@
 
 import UIKit
 
-// MARK: Under Construction
-
 class RosterCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
@@ -18,9 +16,8 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     private var defenseArray: [Player] = []
     private var goalieArray: [Player] = []
     private var managerArray: [Player] = []
-    private let cellWidth = UIScreen.main.bounds.width * 0.45
+//    private let cellWidth = UIScreen.main.bounds.width * 0.45
     private var rosterDetailViewController = RosterDetailViewController()
-    public var delegate: HomeControllerDelegate?
 
     // MARK: Init
 
@@ -36,9 +33,9 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     private func setupCollectionView() {
         collectionView.backgroundColor = .gthBackgroundColor
         collectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: "RosterCollectionViewCell")
-        collectionView.register(RosterCollectionViewHeader.self,
+        collectionView.register(RosterCollectionViewSectionHeader.self,
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                withReuseIdentifier: "RosterCollectionViewHeader")
+                                withReuseIdentifier: "RosterCollectionViewSectionHeader")
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchRoster), for: .valueChanged)
     }
@@ -51,14 +48,14 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
             self.managerArray = []
 
             for player in response {
-                switch player.getPosition() {
-                case "F":
+                switch player.position {
+                case .Forward:
                     self.forwardArray.append(player)
-                case "D":
+                case .Defense:
                     self.defenseArray.append(player)
-                case "G":
+                case .Goalie:
                     self.goalieArray.append(player)
-                default:
+                case .Manager:
                     self.managerArray.append(player)
                 }
             }
@@ -75,88 +72,74 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         return 4
     }
 
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return forwardArray.count
-        case 1:
-            return defenseArray.count
-        case 2:
-            return goalieArray.count
-        default:
-            return managerArray.count
-        }
-    }
+//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        switch section {
+//        case 0:
+//            return forwardArray.count
+//        case 1:
+//            return defenseArray.count
+//        case 2:
+//            return goalieArray.count
+//        default:
+//            return managerArray.count
+//        }
+//    }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RosterCollectionViewCell", for: indexPath) as! RosterCollectionViewCell
-
-        switch indexPath.section {
-        case 0:
-            cell.set(with: forwardArray[indexPath.row])
-        case 1:
-            cell.set(with: defenseArray[indexPath.row])
-        case 2:
-            cell.set(with: goalieArray[indexPath.row])
-        default:
-            cell.set(with: managerArray[indexPath.row])
-        }
-
-        return cell
-    }
+//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RosterCollectionViewCell", for: indexPath) as! RosterCollectionViewCell
+//
+//        switch indexPath.section {
+//        case 0:
+//            cell.set(with: forwardArray[indexPath.row])
+//        case 1:
+//            cell.set(with: defenseArray[indexPath.row])
+//        case 2:
+//            cell.set(with: goalieArray[indexPath.row])
+//        default:
+//            cell.set(with: managerArray[indexPath.row])
+//        }
+//
+//        return cell
+//    }
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "RosterCollectionViewHeader", for: indexPath) as! RosterCollectionViewHeader
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "RosterCollectionViewSectionHeader", for: indexPath) as! RosterCollectionViewSectionHeader
+        
         switch indexPath.section {
         case 0:
-            header.set(with: "Forwards")
+            header.set(with: .Forward)
         case 1:
-            header.set(with: "Defense")
+            header.set(with: .Defense)
         case 2:
-            header.set(with: "Goalies")
+            header.set(with: .Goalie)
         default:
-            header.set(with: "Managers")
+            header.set(with: .Manager)
         }
         return header
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: cellWidth / 3)
+        return CGSize(width: UIScreen.main.bounds.width, height: 200.0)
     }
 
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        rosterDetailViewController = RosterDetailViewController()
-        switch indexPath.section {
-        case 0:
-            rosterDetailViewController.set(with: forwardArray[indexPath.row])
-        case 1:
-            rosterDetailViewController.set(with: defenseArray[indexPath.row])
-        case 2:
-            rosterDetailViewController.set(with: goalieArray[indexPath.row])
-        default:
-            rosterDetailViewController.set(with: managerArray[indexPath.row])
-        }
-    }
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        rosterDetailViewController = RosterDetailViewController()
+//        switch indexPath.section {
+//        case 0:
+//            rosterDetailViewController.set(with: forwardArray[indexPath.row])
+//        case 1:
+//            rosterDetailViewController.set(with: defenseArray[indexPath.row])
+//        case 2:
+//            rosterDetailViewController.set(with: goalieArray[indexPath.row])
+//        default:
+//            rosterDetailViewController.set(with: managerArray[indexPath.row])
+//        }
+//    }
 
     // MARK: UICollectionViewLayout
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cellWidth, height: cellWidth)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 12.0, left: 12.0, bottom: 12.0, right: 12.0)
-    }
-
-    // MARK: Action
-
-    @objc private func menuButtonTapped() {
-        delegate?.handleMenuToggle(forMainMenuOption: nil)
-    }
-
-    @objc private func cartButtonTapped() {
-        let cartTableViewController = CartTableViewController()
-        present(cartTableViewController, animated: true, completion: nil)
-    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: cellWidth, height: cellWidth)
+//    }
 
 }

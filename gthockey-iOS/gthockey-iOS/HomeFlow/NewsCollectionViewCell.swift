@@ -11,42 +11,28 @@ import SDWebImage
 
 class NewsCollectionViewCell: CardCollectionViewCell {
 
-    // MARK: Properties
-
-    let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .gray
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
-    let dateLabel: UILabel = {
-        let dateLabel = UILabel()
-        dateLabel.font = UIFont.DINCondensed.bold.font(size: 16.0)
-        dateLabel.textColor = UIColor.newsCellDateColor
-        dateLabel.adjustsFontSizeToFitWidth = true
-        dateLabel.numberOfLines = 1
-        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-        return dateLabel
-    }()
-
-    let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
-        titleLabel.textColor = UIColor.newsCellTitleColor
-        titleLabel.lineBreakMode = .byTruncatingTail
-        titleLabel.numberOfLines = 2
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        return titleLabel
-    }()
-
     // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        imageView.backgroundColor = .gray
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        secondaryLabel.font = UIFont.DINCondensed.bold.font(size: 16.0)
+        secondaryLabel.textColor = UIColor.newsCellDateColor
+        secondaryLabel.adjustsFontSizeToFitWidth = true
+        secondaryLabel.numberOfLines = 1
+        secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        primaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
+        primaryLabel.textColor = UIColor.newsCellTitleColor
+        primaryLabel.lineBreakMode = .byTruncatingTail
+        primaryLabel.numberOfLines = 2
+        primaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
         let view = UIView(frame: contentView.frame)
         let gradient = CAGradientLayer()
         gradient.frame = view.frame
@@ -56,7 +42,7 @@ class NewsCollectionViewCell: CardCollectionViewCell {
         imageView.addSubview(view)
         imageView.bringSubviewToFront(view)
 
-        contentView.addSubviews([imageView, dateLabel, titleLabel])
+        contentView.addSubviews([imageView, secondaryLabel, primaryLabel])
         updateConstraints()
     }
 
@@ -75,24 +61,24 @@ class NewsCollectionViewCell: CardCollectionViewCell {
         ])
 
         NSLayoutConstraint.activate([
-            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
-            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
-            dateLabel.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -4.0)
+            secondaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
+            secondaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
+            secondaryLabel.bottomAnchor.constraint(equalTo: primaryLabel.topAnchor, constant: -4.0)
         ])
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
-            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
+            primaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
+            primaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
+            primaryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
         ])
     }
 
     // MARK: Setter
 
     public func set(with news: News) {
-        imageView.sd_setImage(with: news.getImageURL(), placeholderImage: nil)
-        dateLabel.text = news.getDate().formatted
-        titleLabel.text = news.getTitle()
+        imageView.sd_setImage(with: news.imageURL, placeholderImage: nil)
+        secondaryLabel.text = news.date.formatted
+        primaryLabel.text = news.title
     }
 
 }

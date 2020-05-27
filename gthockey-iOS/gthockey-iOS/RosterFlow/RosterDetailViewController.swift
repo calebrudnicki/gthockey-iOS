@@ -210,14 +210,14 @@ class RosterDetailViewController: UIViewController {
     // MARK: Setter
 
     public func set(with player: Player) {
-        imageView.sd_setImage(with: player.getImageURL(), placeholderImage: nil)
-        firstNameLabel.text = player.getFirstName()
-        lastNameLabel.text = player.getLastName()
-        numberLabel.text = "#\(player.getNumber())"
-        positionLabel.text = player.getPositionLong()
-        hometownLabel.text = player.getHometown()
-        schoolLabel.text = player.getSchool()
-        bioLabel.text = player.getBio()
+        imageView.sd_setImage(with: player.imageURL, placeholderImage: nil)
+        firstNameLabel.text = player.firstName
+        lastNameLabel.text = player.lastName
+        numberLabel.text = "#\(player.number)"
+        positionLabel.text = player.position.description
+        hometownLabel.text = player.hometown
+        schoolLabel.text = player.school
+        bioLabel.text = player.bio
     }
 
     // MARK: Action

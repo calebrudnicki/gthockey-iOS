@@ -9,6 +9,12 @@
 import UIKit
 
 class CardCollectionViewCell: UICollectionViewCell {
+    
+    // MARK: Properties
+    
+    public var imageView = UIImageView()
+    public var primaryLabel = UILabel()
+    public var secondaryLabel = UILabel()
 
     // MARK: Init
 
@@ -19,6 +25,14 @@ class CardCollectionViewCell: UICollectionViewCell {
 
         contentView.layer.cornerRadius = 14.0
         contentView.layer.masksToBounds = true
+    }
+    
+    convenience init(imageView: UIImageView, primaryLabel: UILabel, secondaryLabel: UILabel) {
+        self.init()
+        
+        self.imageView = imageView
+        self.primaryLabel = primaryLabel
+        self.secondaryLabel = secondaryLabel
     }
 
     required init?(coder aDecoder: NSCoder) {

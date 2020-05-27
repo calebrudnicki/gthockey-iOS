@@ -228,10 +228,22 @@ class ContentManager {
     }
 
     private func makePlayerObject(value: JSON) -> Player {
+        let position: Position
+        if let positionString = value["position"].string {
+            switch positionString {
+            case "F": position = .Forward
+            case "D": position = .Defense
+            case "G": position = .Goalie
+            default: position = .Manager
+            }
+        } else {
+            position = .Manager
+        }
+        
         let player = Player(id: value["id"].int!,
                             firstName: value["first_name"].string!,
                             lastName: value["last_name"].string!,
-                            position: value["position"].string!,
+                            position: position,
                             number: value["number"].int ?? 0,
                             hometown: value["hometown"].string!,
                             school: value["school"].string!,

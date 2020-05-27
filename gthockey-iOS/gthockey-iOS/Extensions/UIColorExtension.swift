@@ -34,5 +34,13 @@ extension UIColor {
     static let scheduleHeaderTitleColor = UIColor.init(named: "ScheduleHeaderTitleColor")
     static let scheduleHeaderRecordColor = UIColor.init(named: "ScheduleHeaderRecordColor")
     
+    static let rosterCellNameColor = UIColor.init(named: "RosterCellNameColor")
+    static let rosterCellNumberColor = UIColor.init(named: "RosterCellNumberColor")
+    
+    static let rosterHeaderTitleColor = UIColor.init(named: "RosterHeaderTitleColor")
+    
+    static let shopCellTitleColor = UIColor.init(named: "ShopCellTitleColor")
+    static let shopCellPriceColor = UIColor.init(named: "ShopCellPriceColor")
+    
     
 }

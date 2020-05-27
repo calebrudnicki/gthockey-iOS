@@ -8,12 +8,12 @@
 
 import UIKit
 
-class NewsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class NewsCollectionViewController: GTHCollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
     
     private var animator: Animator?
-    public var selectedCell: NewsCollectionViewCell?
+//    override var selectedCell: CardCollectionViewCell?
     private var selectedCellImageViewSnapshot: UIView?
     private var newsArray: [News] = []
     
@@ -39,11 +39,6 @@ class NewsCollectionViewController: UICollectionViewController, UICollectionView
         ContentManager().getArticles() { response in
             self.newsArray = response
             
-            for i in 0..<self.newsArray.count {
-                self.newsArray[i].setPreviousArticle(to: self.newsArray[i != 0 ? i - 1 : self.newsArray.count - 1])
-                self.newsArray[i].setNextArticle(to: self.newsArray[i != self.newsArray.count - 1 ? i + 1 : 0])
-            }
-            
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
                 self.collectionView.refreshControl?.endRefreshing()
@@ -64,11 +59,11 @@ class NewsCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedCell = collectionView.cellForItem(at: indexPath) as? NewsCollectionViewCell
+        selectedCell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
         selectedCellImageViewSnapshot = selectedCell?.imageView.snapshotView(afterScreenUpdates: false)
-        presentDetailViewController(for: indexPath, with: NewsCellData(image: (selectedCell?.imageView.image)!,
-                                                                       date: (selectedCell?.dateLabel.text)!,
-                                                                       title: (selectedCell?.titleLabel.text)!))
+        presentDetailViewController(for: indexPath, with: GTHCellData(image: (selectedCell?.imageView.image)!,
+                                                                      primaryLabel: (selectedCell?.primaryLabel.text)!,
+                                                                      secondaryLabel: (selectedCell?.secondaryLabel.text)!))
     }
     
     // MARK: UICollectionViewLayout
@@ -84,7 +79,7 @@ class NewsCollectionViewController: UICollectionViewController, UICollectionView
     
     // MARK: Private Functions
     
-    private func presentDetailViewController(for indexPath: IndexPath, with data: NewsCellData) {
+    private func presentDetailViewController(for indexPath: IndexPath, with data: GTHCellData) {
         let newsDetailViewController = NewsDetailViewController()
         newsDetailViewController.transitioningDelegate = self
         newsDetailViewController.modalPresentationStyle = .overFullScreen
@@ -108,8 +103,8 @@ extension NewsCollectionViewController: UIViewControllerTransitioningDelegate {
             else { return nil }
         
         return Animator(type: .present,
-                        firstViewController: firstViewController,
-                        secondViewController: secondViewController,
+                        fromViewController: firstViewController,
+                        toViewController: secondViewController,
                         selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
     }
     
@@ -120,8 +115,8 @@ extension NewsCollectionViewController: UIViewControllerTransitioningDelegate {
             else { return nil }
         
         return Animator(type: .dismiss,
-                        firstViewController: self,
-                        secondViewController: secondViewController,
+                        fromViewController: self,
+                        toViewController: secondViewController,
                         selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
     }
     

@@ -9,194 +9,156 @@
 import Foundation
 import UIKit
 
-final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
+enum PresentationType {
+    case present
+    case dismiss
 
-    // 9
+    var isPresenting: Bool { return self == .present }
+}
+
+final class Animator: NSObject, UIViewControllerAnimatedTransitioning {
 
     static let duration: TimeInterval = 0.5
 
     private let type: PresentationType
-    private let firstViewController: NewsCollectionViewController
-    private let secondViewController: NewsDetailViewController
+    private let fromViewController: GTHCollectionViewController
+    private let toViewController: GTHDetailViewController
     private var selectedCellImageViewSnapshot: UIView
 
     private let cellImageViewRect: CGRect
-    private let cellDateRect: CGRect
-    private let cellTitleRect: CGRect
+    private let cellPrimaryRect: CGRect
+    private let cellSecondaryRect: CGRect
 
-    // 10
-    init?(type: PresentationType, firstViewController: NewsCollectionViewController, secondViewController: NewsDetailViewController, selectedCellImageViewSnapshot: UIView) {
+    init?(type: PresentationType, fromViewController: GTHCollectionViewController, toViewController: GTHDetailViewController, selectedCellImageViewSnapshot: UIView) {
         self.type = type
-        self.firstViewController = firstViewController
-        self.secondViewController = secondViewController
+        self.fromViewController = fromViewController
+        self.toViewController = toViewController
         self.selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
 
-        guard let window = firstViewController.view.window ?? secondViewController.view.window,
-            let selectedCell = firstViewController.selectedCell
+        // If guard fails, the return will trigger a standard transition
+        guard let window = fromViewController.view.window ?? toViewController.view.window,
+            let selectedCell = fromViewController.selectedCell
             else { return nil }
 
-        // 11
         self.cellImageViewRect = selectedCell.imageView.convert(selectedCell.imageView.bounds, to: window)
-        self.cellDateRect = selectedCell.dateLabel.convert(selectedCell.dateLabel.bounds, to: window)
-        self.cellTitleRect = selectedCell.titleLabel.convert(selectedCell.titleLabel.bounds, to: window)
+        self.cellPrimaryRect = selectedCell.primaryLabel.convert(selectedCell.primaryLabel.bounds, to: window)
+        self.cellSecondaryRect = selectedCell.secondaryLabel.convert(selectedCell.secondaryLabel.bounds, to: window)
     }
 
-    // 12
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
         return Self.duration
     }
 
-    // 13
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        // 18
         let containerView = transitionContext.containerView
 
-        // 19
-        guard let toView = secondViewController.view
-            else {
-                transitionContext.completeTransition(false)
-                return
+        guard let toView = toViewController.view else {
+            transitionContext.completeTransition(false)
+            return
         }
 
         containerView.addSubview(toView)
 
-        // 21
         guard
-            let selectedCell = firstViewController.selectedCell,
-            let window = firstViewController.view.window ?? secondViewController.view.window,
+            let window = fromViewController.view.window ?? toViewController.view.window,
+            let selectedCell = fromViewController.selectedCell,
             let cellImageSnapshot = selectedCell.imageView.snapshotView(afterScreenUpdates: true),
-            let controllerImageSnapshot = secondViewController.imageView.snapshotView(afterScreenUpdates: true),
-            let cellDateSnapshot = selectedCell.dateLabel.snapshotView(afterScreenUpdates: true),
-            let cellLabelSnapshot = selectedCell.titleLabel.snapshotView(afterScreenUpdates: true), // 47
-            let closeButtonSnapshot = secondViewController.closeButton.snapshotView(afterScreenUpdates: true) // 53
+            let cellPrimaryLabelSnapshot = selectedCell.primaryLabel.snapshotView(afterScreenUpdates: true),
+            let cellSecondaryLabelSnapshot = selectedCell.secondaryLabel.snapshotView(afterScreenUpdates: true),
+            let controllerImageSnapshot = toViewController.imageView.snapshotView(afterScreenUpdates: true),
+            let controllerCloseButtonSnapshot = toViewController.closeButton.snapshotView(afterScreenUpdates: true)
             else {
                 transitionContext.completeTransition(true)
                 return
         }
 
         let isPresenting = type.isPresenting
-
-        // 40
+        
         let backgroundView: UIView
         let fadeView = UIView(frame: containerView.bounds)
-        fadeView.backgroundColor = secondViewController.view.backgroundColor
+        fadeView.backgroundColor = toViewController.view.backgroundColor
 
-        // 33
         if isPresenting {
             selectedCellImageViewSnapshot = cellImageSnapshot
             
             selectedCell.alpha = 0
 
-            // 41
             backgroundView = UIView(frame: containerView.bounds)
             backgroundView.addSubview(fadeView)
             fadeView.alpha = 0
         } else {
-            backgroundView = firstViewController.view.snapshotView(afterScreenUpdates: true) ?? fadeView
+            backgroundView = fromViewController.view.snapshotView(afterScreenUpdates: true) ?? fadeView
             backgroundView.addSubview(fadeView)
             selectedCell.alpha = 1
         }
 
-        // 23
         toView.alpha = 0
 
-        // 34
-        // 42
-        // 48
-        // 54
-        [backgroundView, selectedCellImageViewSnapshot, controllerImageSnapshot, cellDateSnapshot, cellLabelSnapshot, closeButtonSnapshot].forEach { containerView.addSubview($0) }
+        containerView.addSubviews([backgroundView,
+                                   selectedCellImageViewSnapshot,
+                                   cellPrimaryLabelSnapshot,
+                                   cellSecondaryLabelSnapshot,
+                                   controllerImageSnapshot,
+                                   controllerCloseButtonSnapshot
+        ])
 
-        // 25
-        let controllerImageViewRect = secondViewController.imageView.convert(secondViewController.imageView.bounds, to: window)
-        let controllerDateRect = secondViewController.dateLabel.convert(secondViewController.dateLabel.bounds, to: window)
-        // 49
-        let controllerTitleRect = secondViewController.headlineLabel.convert(secondViewController.headlineLabel.bounds, to: window)
-        // 55
-        let closeButtonRect = secondViewController.closeButton.convert(secondViewController.closeButton.bounds, to: window)
+        let controllerImageViewRect = toViewController.imageView.convert(toViewController.imageView.bounds, to: window)
+        let controllerPrimaryLabelRect = toViewController.primaryLabel.convert(toViewController.primaryLabel.bounds, to: window)
+        let controllerSecondaryLabelRect = toViewController.secondaryLabel.convert(toViewController.secondaryLabel.bounds, to: window)
+        let controllerCloseButtonRect = toViewController.closeButton.convert(toViewController.closeButton.bounds, to: window)
 
-        // 35
         [selectedCellImageViewSnapshot, controllerImageSnapshot].forEach {
             $0.frame = isPresenting ? cellImageViewRect : controllerImageViewRect
-
-            // 59
             $0.layer.cornerRadius = isPresenting ? 14 : 0
             $0.layer.masksToBounds = true
         }
 
-        // 36
         controllerImageSnapshot.alpha = isPresenting ? 0 : 1
-
-        // 37
         selectedCellImageViewSnapshot.alpha = isPresenting ? 1 : 0
 
-        // 50
-        cellDateSnapshot.frame = isPresenting ? cellDateRect : controllerDateRect
-        cellLabelSnapshot.frame = isPresenting ? cellTitleRect : controllerTitleRect
+        cellPrimaryLabelSnapshot.frame = isPresenting ? cellPrimaryRect : controllerPrimaryLabelRect
+        cellSecondaryLabelSnapshot.frame = isPresenting ? cellSecondaryRect : controllerSecondaryLabelRect
 
-        // 56
-        closeButtonSnapshot.frame = closeButtonRect
-        closeButtonSnapshot.alpha = isPresenting ? 0 : 1
+        controllerCloseButtonSnapshot.frame = controllerCloseButtonRect
+        controllerCloseButtonSnapshot.alpha = isPresenting ? 0 : 1
 
-        // 27
         UIView.animateKeyframes(withDuration: Self.duration, delay: 0, options: .calculationModeCubic, animations: {
-
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 1) {
-                // 38
+
                 self.selectedCellImageViewSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
                 controllerImageSnapshot.frame = isPresenting ? controllerImageViewRect : self.cellImageViewRect
 
-                // 43
                 fadeView.alpha = isPresenting ? 1 : 0
 
-                // 51
-                cellDateSnapshot.frame = isPresenting ? controllerDateRect : self.cellDateRect
-                cellLabelSnapshot.frame = isPresenting ? controllerTitleRect : self.cellTitleRect
+                cellPrimaryLabelSnapshot.frame = isPresenting ? controllerPrimaryLabelRect : self.cellPrimaryRect
+                cellSecondaryLabelSnapshot.frame = isPresenting ? controllerSecondaryLabelRect : self.cellSecondaryRect
 
-                // 60
                 [controllerImageSnapshot, self.selectedCellImageViewSnapshot].forEach {
-                    $0.layer.cornerRadius = isPresenting ? 0 : 12
+                    $0.layer.cornerRadius = isPresenting ? 0 : 14
                 }
+                
             }
 
-            // 39
             UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 0.6) {
                 self.selectedCellImageViewSnapshot.alpha = isPresenting ? 0 : 1
                 controllerImageSnapshot.alpha = isPresenting ? 1 : 0
             }
 
-            // 57
             UIView.addKeyframe(withRelativeStartTime: isPresenting ? 0.7 : 0, relativeDuration: 0.3) {
-                closeButtonSnapshot.alpha = isPresenting ? 1 : 0
+                controllerCloseButtonSnapshot.alpha = isPresenting ? 1 : 0
             }
+            
         }, completion: { _ in
-            // 29
             self.selectedCellImageViewSnapshot.removeFromSuperview()
             controllerImageSnapshot.removeFromSuperview()
-
-            // 44
             backgroundView.removeFromSuperview()
-            // 52
-            cellDateSnapshot.removeFromSuperview()
-            cellLabelSnapshot.removeFromSuperview()
-            // 58
-            closeButtonSnapshot.removeFromSuperview()
+            cellPrimaryLabelSnapshot.removeFromSuperview()
+            cellSecondaryLabelSnapshot.removeFromSuperview()
+            controllerCloseButtonSnapshot.removeFromSuperview()
 
-            // 30
             toView.alpha = 1
 
-            // 31
             transitionContext.completeTransition(true)
         })
-    }
-}
-
-// 14
-enum PresentationType {
-
-    case present
-    case dismiss
-
-    var isPresenting: Bool {
-        return self == .present
     }
 }

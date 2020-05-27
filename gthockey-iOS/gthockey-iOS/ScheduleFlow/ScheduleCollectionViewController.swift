@@ -40,7 +40,7 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
     }
     
     @objc private func fetchSchedule() {
-        ContentManager().getSchedule(with: 3) { response in
+        ContentManager().getSchedule(with: 8) { response in
             self.completedGameArray = []
             self.upcomingGameArray = []
 
@@ -76,7 +76,7 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
                 if self.upcomingGameArray.count > 0 {
                     self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 1), at: .top, animated: false)
                 } else {
-                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
                 }
             }
         }
