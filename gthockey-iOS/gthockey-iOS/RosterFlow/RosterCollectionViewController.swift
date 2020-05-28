@@ -119,7 +119,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 200.0)
+        return CGSize(width: UIScreen.main.bounds.width, height: 300)
     }
 
 //    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

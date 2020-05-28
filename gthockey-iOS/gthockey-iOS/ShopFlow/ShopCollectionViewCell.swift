@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class ShopCollectionViewCell: CardCollectionViewCell {
+class ShopCollectionViewCell: GTHCardCollectionViewCell {
 
     // MARK: Init
 

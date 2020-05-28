@@ -12,13 +12,8 @@ class ShopCollectionViewController: GTHCollectionViewController, UICollectionVie
 
     // MARK: Properties
 
-    private var animator: Animator?
-//    public var selectedCell: NewsCollectionViewCell?
-    private var selectedCellImageViewSnapshot: UIView?
     private var apparelArray: [Apparel] = []
-
     private var shoppingCart: [[String : Any]] = []
-//    private var shopDetailViewController = ShopDetailViewController()
 
     // MARK: Init
 
@@ -30,7 +25,6 @@ class ShopCollectionViewController: GTHCollectionViewController, UICollectionVie
     }
 
     private func setupCollectionView() {
-        collectionView.backgroundColor = .gthBackgroundColor
         collectionView.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "ShopCollectionViewCell")
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchApparel), for: .valueChanged)
@@ -61,7 +55,7 @@ class ShopCollectionViewController: GTHCollectionViewController, UICollectionVie
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.fetchApparelDetails(with: self.apparelArray[indexPath.row].getID(), completion: { (apparelRestrictedItems, apparelCustomItems) in
-            self.selectedCell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
+            self.selectedCell = collectionView.cellForItem(at: indexPath) as? GTHCardCollectionViewCell
             self.selectedCellImageViewSnapshot = self.selectedCell?.imageView.snapshotView(afterScreenUpdates: false)
             self.presentDetailViewController(for: indexPath,
                                              with: GTHCellData(image: (self.selectedCell?.imageView.image)!,
@@ -95,43 +89,10 @@ class ShopCollectionViewController: GTHCollectionViewController, UICollectionVie
         present(shopDetailViewController, animated: true)
     }
 
-    // MARK: Action
-
     private func fetchApparelDetails(with id: Int, completion: @escaping ([ApparelRestrictedItem], [ApparelCustomItem]) -> Void) {
         ContentManager().getApparel(with: id) { (apparelRestrictedItems, apparelCustomItems) in
             completion(apparelRestrictedItems, apparelCustomItems)
         }
-    }
-
-}
-
-extension ShopCollectionViewController: UIViewControllerTransitioningDelegate {
-
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-        guard let tabBarController = presenting as? GTHTabBarController,
-            let navigationController = tabBarController.selectedViewController as? GTHNavigationController,
-            let firstViewController = navigationController.topViewController as? ShopCollectionViewController,
-            let secondViewController = presented as? ShopDetailViewController,
-            let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
-            else { return nil }
-
-        return Animator(type: .present,
-                        fromViewController: firstViewController,
-                        toViewController: secondViewController,
-                        selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
-    }
-
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-
-        guard let secondViewController = dismissed as? ShopDetailViewController,
-            let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
-            else { return nil }
-
-        return Animator(type: .dismiss,
-                        fromViewController: self,
-                        toViewController: secondViewController,
-                        selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
     }
 
 }

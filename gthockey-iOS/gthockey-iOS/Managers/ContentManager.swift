@@ -67,13 +67,20 @@ class ContentManager {
     /**
      Retrieves all games for a particular season from the GT Hockey admin page.
 
-     - Parameter seasonID: An `Int` representation for the season's unique ID value.
+     - Parameter seasonID: An optional `Int` representation for the season's unique ID value. If there is no value, the current schedule will be reached.
      - Parameter completion: The block containing an array of `Game` objects to execute after the get call finishes.
      */
-    public func getSchedule(with seasonID: Int, completion: @escaping ([Game]) -> Void) {
+    public func getSchedule(with seasonID: Int?, completion: @escaping ([Game]) -> Void) {
         var games: [Game] = []
+        var endpoint: String
+        if let seasonID = seasonID {
+            endpoint = "https://gthockey.com/api/games/?season=\(seasonID)"
+        } else {
+            endpoint = "https://gthockey.com/api/games/"
+        }
+        
 
-        Alamofire.request("https://gthockey.com/api/games/?season=\(seasonID)").validate().responseJSON { responseData in
+        Alamofire.request(endpoint).validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)

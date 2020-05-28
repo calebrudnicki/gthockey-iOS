@@ -1,15 +1,15 @@
 //
-//  CardCollectionViewCell.swift
+//  GTHCardCollectionViewCell.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 10/30/19.
-//  Copyright © 2019 Caleb Rudnicki. All rights reserved.
+//  Created by Caleb Rudnicki on 5/27/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import UIKit
 
-class CardCollectionViewCell: UICollectionViewCell {
-    
+class GTHCardCollectionViewCell: UICollectionViewCell {
+
     // MARK: Properties
     
     public var imageView = UIImageView()
@@ -62,7 +62,9 @@ class CardCollectionViewCell: UICollectionViewCell {
         animate(isHighlighted: false)
     }
     
-    func animate(isHighlighted: Bool, completion: ((Bool) -> Void)?=nil) {
+    // MARK: Private Functions
+    
+    private func animate(isHighlighted: Bool, completion: ((Bool) -> Void)?=nil) {
         if isHighlighted {
             UIView.animate(withDuration: 0.5,
                            delay: 0,
@@ -81,5 +83,5 @@ class CardCollectionViewCell: UICollectionViewCell {
             }, completion: completion)
         }
     }
-
+    
 }

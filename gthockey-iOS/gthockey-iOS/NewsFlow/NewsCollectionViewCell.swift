@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class NewsCollectionViewCell: CardCollectionViewCell {
+class NewsCollectionViewCell: GTHCardCollectionViewCell {
 
     // MARK: Init
 

@@ -43,7 +43,7 @@ extension GTHNavigationController: UINavigationControllerDelegate {
             navigationBar.topItem?.title = "Roster"
         } else if viewController as? ShopCollectionViewController != nil {
             navigationBar.topItem?.title = "Shop"
-        } else {
+        } else if viewController as? MoreTableViewController != nil {
             navigationBar.topItem?.title = "More"
         }
     }

@@ -11,10 +11,7 @@ import UIKit
 class NewsCollectionViewController: GTHCollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
-    
-    private var animator: Animator?
-//    override var selectedCell: CardCollectionViewCell?
-    private var selectedCellImageViewSnapshot: UIView?
+
     private var newsArray: [News] = []
     
     // MARK: Init
@@ -29,7 +26,6 @@ class NewsCollectionViewController: GTHCollectionViewController, UICollectionVie
     // MARK: Config
     
     private func setupCollectionView() {
-        collectionView.backgroundColor = .gthBackgroundColor
         collectionView.register(NewsCollectionViewCell.self, forCellWithReuseIdentifier: "NewsCollectionViewCell")
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchArticles), for: .valueChanged)
@@ -59,7 +55,7 @@ class NewsCollectionViewController: GTHCollectionViewController, UICollectionVie
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedCell = collectionView.cellForItem(at: indexPath) as? CardCollectionViewCell
+        selectedCell = collectionView.cellForItem(at: indexPath) as? GTHCardCollectionViewCell
         selectedCellImageViewSnapshot = selectedCell?.imageView.snapshotView(afterScreenUpdates: false)
         presentDetailViewController(for: indexPath, with: GTHCellData(image: (selectedCell?.imageView.image)!,
                                                                       primaryLabel: (selectedCell?.primaryLabel.text)!,
@@ -87,37 +83,6 @@ class NewsCollectionViewController: GTHCollectionViewController, UICollectionVie
         newsDetailViewController.data = data
         newsDetailViewController.set(with: newsArray[indexPath.row])
         present(newsDetailViewController, animated: true)
-    }
-    
-}
-
-extension NewsCollectionViewController: UIViewControllerTransitioningDelegate {
-    
-    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        guard let tabBarController = presenting as? GTHTabBarController,
-            let navigationController = tabBarController.selectedViewController as? GTHNavigationController,
-            let firstViewController = navigationController.topViewController as? NewsCollectionViewController,
-            let secondViewController = presented as? NewsDetailViewController,
-            let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
-            else { return nil }
-        
-        return Animator(type: .present,
-                        fromViewController: firstViewController,
-                        toViewController: secondViewController,
-                        selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
-    }
-    
-    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        guard let secondViewController = dismissed as? NewsDetailViewController,
-            let selectedCellImageViewSnapshot = selectedCellImageViewSnapshot
-            else { return nil }
-        
-        return Animator(type: .dismiss,
-                        fromViewController: self,
-                        toViewController: secondViewController,
-                        selectedCellImageViewSnapshot: selectedCellImageViewSnapshot)
     }
     
 }

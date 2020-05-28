@@ -24,7 +24,7 @@ class RosterCollectionViewSectionHeader: UICollectionReusableView {
     private let positionCollectionView: PositionCollectionView = {
         let rosterLayout = UICollectionViewFlowLayout()
         rosterLayout.scrollDirection = .horizontal
-        rosterLayout.minimumInteritemSpacing = 24.0
+//        rosterLayout.minimumInteritemSpacing = 24.0
         rosterLayout.itemSize = CGSize(width: 128.0, height: 128.0)
         rosterLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 24.0, bottom: 0.0, right: 0.0)
         let positionCollectionView = PositionCollectionView(frame: .zero, collectionViewLayout: rosterLayout)

@@ -30,7 +30,15 @@ class FullScreenImageViewController: UIViewController {
         return imageView
     }()
     
-    private let closeButton = FloatingCloseButton()
+    private let closeButton: UIButton = {
+        let closeButton = UIButton()
+        closeButton.setImage(UIImage(systemName: "xmark.circle.fill",
+                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 32.0)),
+                             for: .normal)
+        closeButton.tintColor = .label
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        return closeButton
+    }()
 
     private let toolbar: UIToolbar = {
         let toolbar = UIToolbar()

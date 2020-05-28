@@ -31,43 +31,6 @@ class GTHDetailViewController: UIViewController {
     public var secondaryLabel = UILabel()
     public var closeButton = UIButton()
     
-//    let imageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.isUserInteractionEnabled = true
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        return imageView
-//    }()
-    
-//    let dateLabel: UILabel = {
-//        let dateLabel = UILabel()
-//        dateLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
-//        dateLabel.textColor = UIColor.newsDetailDateColor
-//        dateLabel.translatesAutoresizingMaskIntoConstraints = false
-//        return dateLabel
-//    }()
-    
-//    let headlineLabel: UILabel = {
-//        let headlineLabel = UILabel()
-//        headlineLabel.numberOfLines = 0
-//        headlineLabel.font = UIFont.DINCondensed.bold.font(size: 36.0)
-//        headlineLabel.textColor = UIColor.newsDetailTitleColor
-//        headlineLabel.translatesAutoresizingMaskIntoConstraints = false
-//        return headlineLabel
-//    }()
-    
-//    private let bodyTextView = HTMLTextView(frame: .zero)
-//
-//    let closeButton: UIButton = {
-//        let closeButton = UIButton()
-//        closeButton.setImage(UIImage(systemName: "xmark.circle.fill",
-//                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 32.0)),
-//                             for: .normal)
-//        closeButton.tintColor = .label
-//        closeButton.translatesAutoresizingMaskIntoConstraints = false
-//        return closeButton
-//    }()
-    
     // MARK: Init
     
     override func viewDidLoad() {
@@ -84,25 +47,14 @@ class GTHDetailViewController: UIViewController {
         
         imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
         closeButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(close)))
-//
-//        view.addSubview(scrollView)
-//        scrollView.addSubviews([imageView, headlineLabel, dateLabel, bodyTextView, closeButton])
-        
-//        updateViewConstraints()
     }
     
     override var prefersStatusBarHidden: Bool {
         return true
     }
+
+    // MARK: Action
     
-    // MARK: Setter
-    
-//    public func set(with news: News) {
-//        bodyTextView.setText(with: news.content)
-//    }
-//    
-//    // MARK: Action
-//    
     @objc func imageViewTapped() {
         let fullScreenImageViewController = FullScreenImageViewController()
         fullScreenImageViewController.set(with: imageView.image ?? UIImage())

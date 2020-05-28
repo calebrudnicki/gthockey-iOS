@@ -12,11 +12,15 @@ class NewsDetailViewController: GTHDetailViewController {
 
     // MARK: Properties
     
-//    private let scrollView: UIScrollView = {
-//        let scrollView = UIScrollView()
-//        scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        return scrollView
-//    }()
+    override var closeButton: UIButton {
+        didSet {
+            closeButton.setImage(UIImage(systemName: "xmark.circle.fill",
+                                         withConfiguration: UIImage.SymbolConfiguration(pointSize: 24.0)),
+                                 for: .normal)
+            closeButton.tintColor = .label
+            closeButton.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
 
     private let bodyTextView = HTMLTextView(frame: .zero)
 
@@ -38,14 +42,12 @@ class NewsDetailViewController: GTHDetailViewController {
         primaryLabel.textColor = UIColor.newsDetailTitleColor
         primaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        closeButton.setImage(UIImage(systemName: "xmark.circle.fill",
-                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 32.0)),
-                             for: .normal)
-        closeButton.tintColor = .label
-        closeButton.translatesAutoresizingMaskIntoConstraints = false
+//        closeButton.setImage(UIImage(systemName: "xmark.circle.fill",
+//                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 24.0)),
+//                             for: .normal)
+//        closeButton.tintColor = .label
+//        closeButton.translatesAutoresizingMaskIntoConstraints = false
         
-//        imageView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(imageViewTapped)))
-
         view.addSubview(scrollView)
         scrollView.addSubviews([imageView, primaryLabel, secondaryLabel, bodyTextView, closeButton])
 
@@ -89,7 +91,7 @@ class NewsDetailViewController: GTHDetailViewController {
         ])
 
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 32.0),
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 24.0),
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0)
         ])
     }
@@ -100,26 +102,4 @@ class NewsDetailViewController: GTHDetailViewController {
         bodyTextView.setText(with: news.content)
     }
 
-    // MARK: Action
-
-//    @objc func imageViewTapped() {
-//        let fullScreenImageViewController = FullScreenImageViewController()
-//        fullScreenImageViewController.set(with: imageView.image ?? UIImage())
-//        fullScreenImageViewController.modalPresentationStyle = .overFullScreen
-//        present(fullScreenImageViewController, animated: false, completion: nil)
-//    }
-
-//    @objc private func close() {
-//        dismiss(animated: true, completion: nil)
-//    }
-
 }
-//
-//extension NewsDetailViewController: UIScrollViewDelegate {
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let frame = imageView.convert(imageView.frame, from: view)
-//        if frame.minY <= -152.0 { close() }
-//    }
-//
-//}

@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class ScheduleCollectionViewCell: CardCollectionViewCell {
+class ScheduleCollectionViewCell: GTHCardCollectionViewCell {
 
     // MARK: Properties
 

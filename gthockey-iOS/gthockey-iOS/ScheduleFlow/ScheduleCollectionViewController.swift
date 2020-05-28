@@ -12,6 +12,8 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
 
     // MARK: Properties
 
+    public var seasonID: Int?
+    
     private var completedGameArray: [Game] = []
     private var upcomingGameArray: [Game] = []
     private var seasonArray: [Season] = []
@@ -40,7 +42,7 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
     }
     
     @objc private func fetchSchedule() {
-        ContentManager().getSchedule(with: 8) { response in
+        ContentManager().getSchedule(with: seasonID) { response in
             self.completedGameArray = []
             self.upcomingGameArray = []
 
@@ -76,10 +78,11 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
                 if self.upcomingGameArray.count > 0 {
                     self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 1), at: .top, animated: false)
                 } else {
-                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
                 }
             }
         }
+        
     }
 
 //    @objc private func fetchSeasons() {
@@ -161,12 +164,21 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ScheduleCollectionViewSectionHeader", for: indexPath) as! ScheduleCollectionViewSectionHeader
-        switch indexPath.section {
-        case 0:
-            header.set(with: "Completed", seasonRecord)
-        default:
+        
+        if completedGameArray.count == 0 {
             header.set(with: "Upcoming")
+        } else if upcomingGameArray.count == 0 {
+            header.set(with: "Completed", seasonRecord)
+        } else {
+            switch indexPath.section {
+            case 0:
+                header.set(with: "Completed", seasonRecord)
+            default:
+                header.set(with: "Upcoming")
+            }
+            return header
         }
+    
         return header
     }
     

@@ -9,18 +9,18 @@
 import UIKit
 import SDWebImage
 
-class RosterCollectionViewCell: UICollectionViewCell {
+class RosterCollectionViewCell: GTHCardCollectionViewCell {
 
     // MARK: Properties
 
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .gray
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+//    private let imageView: UIImageView = {
+//        let imageView = UIImageView()
+//        imageView.backgroundColor = .gray
+//        imageView.clipsToBounds = true
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.translatesAutoresizingMaskIntoConstraints = false
+//        return imageView
+//    }()
 
 //    private let firstNameLabel: UILabel = {
 //        let firstNameLabel = UILabel()
@@ -52,8 +52,18 @@ class RosterCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        imageView.backgroundColor = .gray
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        primaryLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
+        primaryLabel.allowsDefaultTighteningForTruncation = true
+        primaryLabel.numberOfLines = 1
+        primaryLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        contentView.addSubviews([imageView])
+        contentView.addSubviews([imageView, primaryLabel])
         updateConstraints()
     }
 
@@ -68,7 +78,15 @@ class RosterCollectionViewCell: UICollectionViewCell {
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
+//            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            primaryLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            primaryLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            primaryLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            primaryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
 
 //        NSLayoutConstraint.activate([
@@ -95,7 +113,7 @@ class RosterCollectionViewCell: UICollectionViewCell {
 
     public func set(with player: Player) {
         imageView.sd_setImage(with: player.headshotURL, placeholderImage: nil)
-//        firstNameLabel.text = player.firstName
+        primaryLabel.text = player.firstName
 //        lastNameLabel.text = player.lastName
 //        numberLabel.text = "#\(player.number)"
     }
