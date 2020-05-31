@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RosterCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class RosterCollectionViewController: GTHCollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
 
@@ -17,7 +17,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
     private var goalieArray: [Player] = []
     private var managerArray: [Player] = []
 //    private let cellWidth = UIScreen.main.bounds.width * 0.45
-    private var rosterDetailViewController = RosterDetailViewController()
+//    private var rosterDetailViewController = RosterDetailViewController()
 
     // MARK: Init
 
@@ -25,7 +25,7 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         super.viewDidLoad()
 
         setupCollectionView()
-        fetchRoster()
+//        fetchRoster()
     }
 
     // MARK: Config
@@ -37,32 +37,13 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
                                 forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: "RosterCollectionViewSectionHeader")
         collectionView.refreshControl = UIRefreshControl()
-        collectionView.refreshControl?.addTarget(self, action: #selector(fetchRoster), for: .valueChanged)
+        collectionView.refreshControl?.addTarget(self, action: #selector(refreshCollectionView), for: .valueChanged)
     }
 
-    @objc private func fetchRoster() {
-        ContentManager().getRoster() { response in
-            self.forwardArray = []
-            self.defenseArray = []
-            self.goalieArray = []
-            self.managerArray = []
-
-            for player in response {
-                switch player.position {
-                case .Forward:
-                    self.forwardArray.append(player)
-                case .Defense:
-                    self.defenseArray.append(player)
-                case .Goalie:
-                    self.goalieArray.append(player)
-                case .Manager:
-                    self.managerArray.append(player)
-                }
-            }
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-                self.collectionView.refreshControl?.endRefreshing()
-            }
+    @objc private func refreshCollectionView() {
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
+            self.collectionView.refreshControl?.endRefreshing()
         }
     }
 
@@ -72,38 +53,9 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
         return 4
     }
 
-//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        switch section {
-//        case 0:
-//            return forwardArray.count
-//        case 1:
-//            return defenseArray.count
-//        case 2:
-//            return goalieArray.count
-//        default:
-//            return managerArray.count
-//        }
-//    }
-
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RosterCollectionViewCell", for: indexPath) as! RosterCollectionViewCell
-//
-//        switch indexPath.section {
-//        case 0:
-//            cell.set(with: forwardArray[indexPath.row])
-//        case 1:
-//            cell.set(with: defenseArray[indexPath.row])
-//        case 2:
-//            cell.set(with: goalieArray[indexPath.row])
-//        default:
-//            cell.set(with: managerArray[indexPath.row])
-//        }
-//
-//        return cell
-//    }
-
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "RosterCollectionViewSectionHeader", for: indexPath) as! RosterCollectionViewSectionHeader
+        header.delegate = self
         
         switch indexPath.section {
         case 0:
@@ -112,34 +64,46 @@ class RosterCollectionViewController: UICollectionViewController, UICollectionVi
             header.set(with: .Defense)
         case 2:
             header.set(with: .Goalie)
-        default:
+        case 3:
             header.set(with: .Manager)
+        default: break
         }
+        
         return header
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 300)
+        return CGSize(width: UIScreen.main.bounds.width, height: 280.0)
+    }
+    
+    // MARK: Private Functions
+    
+    private func presentDetailViewController(with data: GTHCellData, for player: Player) {
+        let rosterDetailViewController = RosterDetailViewController()
+        rosterDetailViewController.transitioningDelegate = self
+        rosterDetailViewController.modalPresentationStyle = .overFullScreen
+        rosterDetailViewController.modalPresentationCapturesStatusBarAppearance = true
+        rosterDetailViewController.data = data
+        rosterDetailViewController.set(with: player.imageURL,
+                                       player.firstName,
+                                       player.position,
+                                       player.hometown,
+                                       player.school,
+                                       player.bio)
+        present(rosterDetailViewController, animated: true)
     }
 
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        rosterDetailViewController = RosterDetailViewController()
-//        switch indexPath.section {
-//        case 0:
-//            rosterDetailViewController.set(with: forwardArray[indexPath.row])
-//        case 1:
-//            rosterDetailViewController.set(with: defenseArray[indexPath.row])
-//        case 2:
-//            rosterDetailViewController.set(with: goalieArray[indexPath.row])
-//        default:
-//            rosterDetailViewController.set(with: managerArray[indexPath.row])
-//        }
-//    }
+}
 
-    // MARK: UICollectionViewLayout
-
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: cellWidth, height: cellWidth)
-//    }
-
+extension RosterCollectionViewController: RosterCollectionViewSectionHeaderDelegate {
+    
+    func didSelectItem(cell: GTHCardCollectionViewCell, for player: Player) {
+        selectedCell = cell
+        selectedCellImageViewSnapshot = cell.imageView.snapshotView(afterScreenUpdates: false)
+        presentDetailViewController(with: GTHCellData(image: (selectedCell?.imageView.image)!,
+                                                      primaryLabel: (selectedCell?.primaryLabel.text)!,
+                                                      secondaryLabel: (selectedCell?.secondaryLabel.text)!),
+                                    for: player)
+    }
+    
 }

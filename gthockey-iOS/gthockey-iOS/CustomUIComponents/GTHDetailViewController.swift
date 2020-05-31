@@ -12,7 +12,7 @@ class GTHDetailViewController: UIViewController {
 
     // MARK: Properties
     
-    var data: GTHCellData! {
+    public var data: GTHCellData! {
         didSet {
             imageView.image = data.image
             primaryLabel.text = data.primaryLabel
@@ -20,7 +20,7 @@ class GTHDetailViewController: UIViewController {
         }
     }
     
-    let scrollView: UIScrollView = {
+    internal let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView

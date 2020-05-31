@@ -15,7 +15,6 @@
 		318E279B247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E279A247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift */; };
 		318E279D247B26960091BA01 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E279C247B26960091BA01 /* Position.swift */; };
 		318E279F247B29800091BA01 /* RosterCollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E279E247B29800091BA01 /* RosterCollectionViewSectionHeader.swift */; };
-		318E27A1247B2EBE0091BA01 /* PositionCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27A0247B2EBE0091BA01 /* PositionCollectionViewController.swift */; };
 		318E27A5247D60D60091BA01 /* GTHCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27A4247D60D60091BA01 /* GTHCollectionViewController.swift */; };
 		318E27A9247D61520091BA01 /* GTHCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27A8247D61520091BA01 /* GTHCellData.swift */; };
 		31A4E0BF247DD4FC008CCE07 /* GTHDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4E0BE247DD4FC008CCE07 /* GTHDetailViewController.swift */; };
@@ -115,7 +114,6 @@
 		318E279A247B17C80091BA01 /* ScheduleCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
 		318E279C247B26960091BA01 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		318E279E247B29800091BA01 /* RosterCollectionViewSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RosterCollectionViewSectionHeader.swift; sourceTree = "<group>"; };
-		318E27A0247B2EBE0091BA01 /* PositionCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionCollectionViewController.swift; sourceTree = "<group>"; };
 		318E27A4247D60D60091BA01 /* GTHCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHCollectionViewController.swift; sourceTree = "<group>"; };
 		318E27A8247D61520091BA01 /* GTHCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHCellData.swift; sourceTree = "<group>"; };
 		31A4E0BE247DD4FC008CCE07 /* GTHDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHDetailViewController.swift; sourceTree = "<group>"; };
@@ -360,7 +358,6 @@
 				82D971B1233D54C700BFD322 /* RosterCollectionViewController.swift */,
 				82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */,
 				318E279E247B29800091BA01 /* RosterCollectionViewSectionHeader.swift */,
-				318E27A0247B2EBE0091BA01 /* PositionCollectionViewController.swift */,
 				82918F312350B62F00723B4A /* RosterDetailViewController.swift */,
 			);
 			path = RosterFlow;
@@ -678,7 +675,6 @@
 				8206D3E023CBC15500863B3C /* AdminUsersTableViewController.swift in Sources */,
 				318E27A9247D61520091BA01 /* GTHCellData.swift in Sources */,
 				F093EA4C2385F4170037FCA7 /* SettingsTableViewController.swift in Sources */,
-				318E27A1247B2EBE0091BA01 /* PositionCollectionViewController.swift in Sources */,
 				318E278F247AEE730091BA01 /* NewsCollectionViewController.swift in Sources */,
 				822D549E243AA89B00B0776D /* AppIconManager.swift in Sources */,
 				825092182361EFB300D98DEA /* UIViewExtension.swift in Sources */,

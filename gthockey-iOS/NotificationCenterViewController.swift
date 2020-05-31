@@ -12,7 +12,7 @@ class NotificationCenterViewController: UIViewController {
 
     // MARK: Properties
 
-    public var delegate: HomeControllerDelegate?
+//    public var delegate: HomeControllerDelegate?
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -94,10 +94,10 @@ class NotificationCenterViewController: UIViewController {
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(menuButtonTapped))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
+//                                                           style: .plain,
+//                                                           target: self,
+//                                                           action: #selector(menuButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
@@ -177,9 +177,9 @@ class NotificationCenterViewController: UIViewController {
 
     // MARK: Action
 
-    @objc private func menuButtonTapped() {
-        delegate?.handleMenuToggle(forMainMenuOption: nil)
-    }
+//    @objc private func menuButtonTapped() {
+//        delegate?.handleMenuToggle(forMainMenuOption: nil)
+//    }
 
     @objc private func validateTextFields() {
         guard

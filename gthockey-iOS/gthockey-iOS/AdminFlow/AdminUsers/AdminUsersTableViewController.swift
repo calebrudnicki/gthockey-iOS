@@ -13,7 +13,7 @@ class AdminUsersTableViewController: UITableViewController {
     // MARK: Properties
 
     private var adminUsers: [String] = []
-    public var delegate: HomeControllerDelegate?
+//    public var delegate: HomeControllerDelegate?
 
     // MARK: Init
 
@@ -41,10 +41,10 @@ class AdminUsersTableViewController: UITableViewController {
             menuButtonImage = UIImage(named: "MenuIconBlack")?.withRenderingMode(.alwaysOriginal)
         }
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
-                                                           style: .plain,
-                                                           target: self,
-                                                           action: #selector(menuButtonTapped))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: menuButtonImage,
+//                                                           style: .plain,
+//                                                           target: self,
+//                                                           action: #selector(menuButtonTapped))
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
@@ -105,9 +105,9 @@ class AdminUsersTableViewController: UITableViewController {
 
     // MARK: Action
 
-    @objc private func menuButtonTapped() {
-        delegate?.handleMenuToggle(forMainMenuOption: nil)
-    }
+//    @objc private func menuButtonTapped() {
+//        delegate?.handleMenuToggle(forMainMenuOption: nil)
+//    }
 
 }
 

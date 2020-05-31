@@ -119,7 +119,7 @@ class FullScreenImageViewController: UIViewController {
     }
 
     @objc private func closeButtonTapped() {
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: false, completion: nil)
     }
 
     @objc func shareButtonTapped() {

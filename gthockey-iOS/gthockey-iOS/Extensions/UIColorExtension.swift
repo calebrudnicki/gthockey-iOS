@@ -42,5 +42,12 @@ extension UIColor {
     static let shopCellTitleColor = UIColor.init(named: "ShopCellTitleColor")
     static let shopCellPriceColor = UIColor.init(named: "ShopCellPriceColor")
     
+    static let rosterDetailFirstNameColor = UIColor.init(named: "RosterDetailFirstNameColor")
+    static let rosterDetailLastNameColor = UIColor.init(named: "RosterDetailLastNameColor")
+    static let rosterDetailPositionColor = UIColor.init(named: "RosterDetailPositionColor")
+    static let rosterDetailNumberColor = UIColor.init(named: "RosterDetailNumberColor")
+    static let rosterDetailHometownColor = UIColor.init(named: "RosterDetailHometownColor")
+    static let rosterDetailSchoolColor = UIColor.init(named: "RosterDetailSchoolColor")
+    static let rosterDetailBioColor = UIColor.init(named: "RosterDetailBioColor")
     
 }

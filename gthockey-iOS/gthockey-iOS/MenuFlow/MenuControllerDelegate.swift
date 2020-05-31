@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol HomeControllerDelegate {
-    func handleMenuToggle(forMainMenuOption mainMenuOption: MainMenuOption?)
-    func handleMenuToggle(forAdminMenuOption adminMenuOption: AdminMenuOption?)
-}
+//protocol HomeControllerDelegate {
+//    func handleMenuToggle(forMainMenuOption mainMenuOption: MainMenuOption?)
+//    func handleMenuToggle(forAdminMenuOption adminMenuOption: AdminMenuOption?)
+//}

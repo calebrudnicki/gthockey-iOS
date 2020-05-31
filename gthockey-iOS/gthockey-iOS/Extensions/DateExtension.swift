@@ -21,7 +21,8 @@ extension Date {
     /// A standard format of the `Date` in question that is not region specific.
     var standardFormatted: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "M/d/yy HH:mm a"
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
         return formatter.string(from: self)
     }
 

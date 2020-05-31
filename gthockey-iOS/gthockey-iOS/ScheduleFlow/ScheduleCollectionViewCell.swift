@@ -177,6 +177,8 @@ class ScheduleCollectionViewCell: GTHCardCollectionViewCell {
         blurEffectView.frame = bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
+        layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
+        
         awayStack.addArrangedSubviews([awaySchoolLabel, awayMascotLabel, awayScoreLabel])
         homeStack.addArrangedSubviews([homeSchoolLabel, homeMascotLabel, homeScoreLabel])
         teamsContentStack.addArrangedSubviews([awayStack, homeStack])

@@ -40,6 +40,8 @@ class ShopCollectionViewCell: GTHCardCollectionViewCell {
         view.layer.insertSublayer(gradient, at: 0)
         imageView.addSubview(view)
         imageView.bringSubviewToFront(view)
+        
+        layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
 
         contentView.addSubviews([imageView, primaryLabel, secondaryLabel])
         updateConstraints()

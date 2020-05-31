@@ -11,43 +11,6 @@ import SDWebImage
 
 class RosterCollectionViewCell: GTHCardCollectionViewCell {
 
-    // MARK: Properties
-
-//    private let imageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.backgroundColor = .gray
-//        imageView.clipsToBounds = true
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        return imageView
-//    }()
-
-//    private let firstNameLabel: UILabel = {
-//        let firstNameLabel = UILabel()
-//        firstNameLabel.font = UIFont(name:"Helvetica-Neue Light", size: 16.0)
-//        firstNameLabel.numberOfLines = 1
-//        firstNameLabel.translatesAutoresizingMaskIntoConstraints = false
-//        return firstNameLabel
-//    }()
-//
-//    private let lastNameLabel: UILabel = {
-//        let lastNameLabel = UILabel()
-//        lastNameLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
-//        lastNameLabel.allowsDefaultTighteningForTruncation = true
-//        lastNameLabel.numberOfLines = 1
-//        lastNameLabel.translatesAutoresizingMaskIntoConstraints = false
-//        return lastNameLabel
-//    }()
-//
-//    private let numberLabel: UILabel = {
-//        let numberLabel = UILabel()
-//        numberLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
-//        numberLabel.textAlignment = .right
-//        numberLabel.numberOfLines = 1
-//        numberLabel.translatesAutoresizingMaskIntoConstraints = false
-//        return numberLabel
-//    }()
-
     // MARK: Init
 
     override init(frame: CGRect) {
@@ -57,13 +20,31 @@ class RosterCollectionViewCell: GTHCardCollectionViewCell {
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+//        imageView.layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
         
-        primaryLabel.font = UIFont(name:"Helvetica Neue", size: 24.0)
+        imageView.layer.shadowColor = UIColor.purple.cgColor
+        imageView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        imageView.layer.shadowOpacity = 1
+        imageView.layer.shadowRadius = 1.0
+        imageView.clipsToBounds = false
+        
+        imageView.layer.cornerRadius = 14.0
+        imageView.layer.masksToBounds = true
+        
+        primaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
         primaryLabel.allowsDefaultTighteningForTruncation = true
         primaryLabel.numberOfLines = 1
+        primaryLabel.sizeToFit()
         primaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        secondaryLabel.font = UIFont.DINCondensed.bold.font(size: 16.0)
+        secondaryLabel.textColor = .black
+        secondaryLabel.numberOfLines = 1
+        secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.layer.masksToBounds = false
 
-        contentView.addSubviews([imageView, primaryLabel])
+        contentView.addSubviews([imageView, primaryLabel, secondaryLabel])
         updateConstraints()
     }
 
@@ -79,43 +60,26 @@ class RosterCollectionViewCell: GTHCardCollectionViewCell {
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
-//            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            primaryLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor),
+            primaryLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16.0),
             primaryLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
             primaryLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            primaryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-
-//        NSLayoutConstraint.activate([
-//            firstNameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4.0),
-//            firstNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4.0),
-//            firstNameLabel.trailingAnchor.constraint(greaterThanOrEqualTo: contentView.trailingAnchor, constant: -4.0)
-//        ])
-//
-//        NSLayoutConstraint.activate([
-//            lastNameLabel.topAnchor.constraint(equalTo: firstNameLabel.bottomAnchor),
-//            lastNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4.0),
-//            lastNameLabel.trailingAnchor.constraint(equalTo: numberLabel.leadingAnchor, constant: 8.0),
-//            lastNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4.0)
-//        ])
-//
-//        NSLayoutConstraint.activate([
-//            numberLabel.topAnchor.constraint(equalTo: firstNameLabel.bottomAnchor),
-//            numberLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0),
-//            numberLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -4.0)
-//        ])
+        
+        NSLayoutConstraint.activate([
+            secondaryLabel.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 8.0),
+            secondaryLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -8.0)
+        ])
     }
 
     // MARK: Setter
 
     public func set(with player: Player) {
         imageView.sd_setImage(with: player.headshotURL, placeholderImage: nil)
-        primaryLabel.text = player.firstName
-//        lastNameLabel.text = player.lastName
-//        numberLabel.text = "#\(player.number)"
+        primaryLabel.text = player.lastName
+        secondaryLabel.text = "#\(player.number)"
     }
 
 }

@@ -26,7 +26,6 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
 
         setupCollectionView()
         fetchSchedule()
-//        fetchSeasons()
     }
 
     // MARK: Config
@@ -75,49 +74,13 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
                 self.collectionView.reloadData()
                 self.collectionView.refreshControl?.endRefreshing()
                 
-                if self.upcomingGameArray.count > 0 {
+                if self.completedGameArray.count != 0 && self.upcomingGameArray.count != 0 {
                     self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 1), at: .top, animated: false)
-                } else {
-                    self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .bottom, animated: false)
                 }
             }
         }
         
     }
-
-//    @objc private func fetchSeasons() {
-//        ContentManager().getSeasons() { response in
-//            self.seasonArray = response.sorted { $0.year < $1.year }
-//
-//            DispatchQueue.main.async {
-//                self.menuView = BTNavigationDropdownMenu(navigationController: self.navigationController,
-//                                                         containerView: self.navigationController!.view,
-//                                                         title: self.seasonArray[self.seasonArray.count - 1].name,
-//                                                         items: self.seasonArray.map { $0.name })
-//
-//                self.menuView?.cellHeight = 52.0
-//                self.menuView?.cellSelectionColor = .techGold
-//                self.menuView?.shouldKeepSelectedCellColor = true
-//                self.menuView?.cellBackgroundColor = .techNavy
-//                self.menuView?.cellTextLabelColor = .white
-//                self.menuView?.selectedCellTextLabelColor = .techNavy
-//                self.menuView?.cellTextLabelFont = UIFont(name: "HelveticaNeue-Light", size: 16.0)
-//                self.menuView?.arrowPadding = 15.0
-//                self.menuView?.animationDuration = 0.5
-//                if #available(iOS 13.0, *) {
-//                    self.menuView?.arrowTintColor = .label
-//                } else {
-//                    self.menuView?.arrowTintColor = .black
-//                }
-//
-//                self.menuView?.didSelectItemAtIndexHandler = { [weak self] (indexPath: Int) -> () in
-//                    self?.currentSeasonIDSelected = self?.seasonArray[indexPath].id ?? 3
-//                    self?.fetchSchedule()
-//                }
-//                self.navigationItem.titleView = self.menuView
-//            }
-//        }
-//    }
 
     // MARK: UICollectionViewDataSource
     

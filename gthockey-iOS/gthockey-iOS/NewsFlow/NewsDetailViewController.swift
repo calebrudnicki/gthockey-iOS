@@ -11,16 +11,6 @@ import UIKit
 class NewsDetailViewController: GTHDetailViewController {
 
     // MARK: Properties
-    
-    override var closeButton: UIButton {
-        didSet {
-            closeButton.setImage(UIImage(systemName: "xmark.circle.fill",
-                                         withConfiguration: UIImage.SymbolConfiguration(pointSize: 24.0)),
-                                 for: .normal)
-            closeButton.tintColor = .label
-            closeButton.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
 
     private let bodyTextView = HTMLTextView(frame: .zero)
 
@@ -42,11 +32,11 @@ class NewsDetailViewController: GTHDetailViewController {
         primaryLabel.textColor = UIColor.newsDetailTitleColor
         primaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
-//        closeButton.setImage(UIImage(systemName: "xmark.circle.fill",
-//                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 24.0)),
-//                             for: .normal)
-//        closeButton.tintColor = .label
-//        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.setImage(UIImage(systemName: "xmark.circle.fill",
+                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 24.0)),
+                             for: .normal)
+        closeButton.tintColor = .label
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(scrollView)
         scrollView.addSubviews([imageView, primaryLabel, secondaryLabel, bodyTextView, closeButton])

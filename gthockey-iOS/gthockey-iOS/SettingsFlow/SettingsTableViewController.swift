@@ -12,7 +12,7 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: Properties
 
-    public var delegate: HomeControllerDelegate?
+//    public var delegate: HomeControllerDelegate?
 
     // MARK: Init
 
@@ -112,9 +112,9 @@ class SettingsTableViewController: UITableViewController {
 
     // MARK: Action
 
-    @objc private func menuButtonTapped() {
-        delegate?.handleMenuToggle(forMainMenuOption: nil)
-    }
+//    @objc private func menuButtonTapped() {
+//        delegate?.handleMenuToggle(forMainMenuOption: nil)
+//    }
 
 }
 
