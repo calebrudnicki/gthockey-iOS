@@ -73,7 +73,7 @@ class RosterCollectionViewController: GTHCollectionViewController, UICollectionV
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 280.0)
+        return CGSize(width: UIScreen.main.bounds.width, height: 232.0)
     }
     
     // MARK: Private Functions

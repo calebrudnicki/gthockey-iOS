@@ -17,20 +17,8 @@ class RosterCollectionViewSectionHeader: UICollectionReusableView {
     // MARK: Properties
     
     public var delegate: RosterCollectionViewSectionHeaderDelegate?
-    
-//    public var positon: Position? {
-//        didSet {
-//            fetchRoster(for: positon!)
-//        }
-//    }
 
     private var playerArray: [Player] = []
-    
-//    public var position: Position? {
-//        didSet {
-//            titleLabel.text = position?.description
-//        }
-//    }
 
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
@@ -44,8 +32,7 @@ class RosterCollectionViewSectionHeader: UICollectionReusableView {
     private let positionCollectionView: UICollectionView = {
         let rosterLayout = UICollectionViewFlowLayout()
         rosterLayout.scrollDirection = .horizontal
-        rosterLayout.itemSize = CGSize(width: 128.0, height: 128.0)
-        rosterLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 24.0, bottom: 0.0, right: 0.0)
+        rosterLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 24.0, bottom: 24.0, right: 24.0)
         let positionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: rosterLayout)
         positionCollectionView.showsHorizontalScrollIndicator = false
         positionCollectionView.backgroundColor = UIColor.gthBackgroundColor
@@ -72,7 +59,7 @@ class RosterCollectionViewSectionHeader: UICollectionReusableView {
         super.updateConstraints()
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 32.0),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 24.0),
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24.0),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24.0),
         ])
@@ -132,6 +119,14 @@ extension RosterCollectionViewSectionHeader: UICollectionViewDelegate, UICollect
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.didSelectItem(cell: collectionView.cellForItem(at: indexPath) as! GTHCardCollectionViewCell, for: playerArray[indexPath.row])
+    }
+    
+}
+
+extension RosterCollectionViewSectionHeader: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 120.0, height: 120.0)
     }
     
 }

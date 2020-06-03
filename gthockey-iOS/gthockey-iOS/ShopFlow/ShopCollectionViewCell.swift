@@ -42,6 +42,8 @@ class ShopCollectionViewCell: GTHCardCollectionViewCell {
         imageView.bringSubviewToFront(view)
         
         layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
+        contentView.layer.cornerRadius = 14.0
+        contentView.layer.masksToBounds = true
 
         contentView.addSubviews([imageView, primaryLabel, secondaryLabel])
         updateConstraints()

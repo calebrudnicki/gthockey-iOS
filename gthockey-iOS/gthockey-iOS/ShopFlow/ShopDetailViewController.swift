@@ -57,12 +57,12 @@ class ShopDetailViewController: GTHDetailViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
     
         secondaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
-        secondaryLabel.textColor = .red
+        secondaryLabel.textColor = UIColor.shopDetailPriceColor
         secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
     
         primaryLabel.numberOfLines = 0
         primaryLabel.font = UIFont.DINCondensed.bold.font(size: 36.0)
-        primaryLabel.textColor = .blue
+        primaryLabel.textColor = UIColor.shopDetailTitleColor
         primaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
         closeButton.setImage(UIImage(systemName: "xmark.circle.fill",

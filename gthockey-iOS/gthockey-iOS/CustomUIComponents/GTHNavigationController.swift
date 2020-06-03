@@ -19,6 +19,7 @@ class GTHNavigationController: UINavigationController {
 
         navigationBar.prefersLargeTitles = true
         navigationBar.barTintColor = UIColor.gthBackgroundColor
+        navigationBar.tintColor = UIColor.gthNavigationControllerTintColor
 
         navigationBar.largeTitleTextAttributes = [
             .foregroundColor: UIColor.gthNavigationControllerTintColor as Any,
@@ -33,8 +34,11 @@ class GTHNavigationController: UINavigationController {
 }
 
 extension GTHNavigationController: UINavigationControllerDelegate {
-
+    
     func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        viewController.view.backgroundColor = UIColor.gthBackgroundColor
+        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
         if viewController as? NewsCollectionViewController != nil {
             navigationBar.topItem?.title = "News"
         } else if viewController as? ScheduleCollectionViewController != nil {
@@ -43,9 +47,24 @@ extension GTHNavigationController: UINavigationControllerDelegate {
             navigationBar.topItem?.title = "Roster"
         } else if viewController as? ShopCollectionViewController != nil {
             navigationBar.topItem?.title = "Shop"
-        } else if viewController as? MoreTableViewController != nil {
+        }
+
+//        if let viewController = viewController as? TestViewController {
+//            viewController.navigationItem.title = viewController.server?.name
+////            viewController.navigationItem.largeTitleDisplayMode = .never
+//        } else if let viewController = viewController as? ResultDetailViewController {
+//            viewController.navigationItem.title = viewController.test?.server
+////            viewController.navigationItem.largeTitleDisplayMode = .never
+//        }
+    }
+    
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+
+        if viewController as? MoreTableViewController != nil {
             navigationBar.topItem?.title = "More"
         }
     }
-
+    
 }
+

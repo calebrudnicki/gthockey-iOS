@@ -11,7 +11,7 @@ import Foundation
 struct Game {
     var id: Int
     var dateTime: Date
-    var opponentName: String
+    var opponent: Team
     var rinkName: String
     var venue: Venue
     var isReported: Bool

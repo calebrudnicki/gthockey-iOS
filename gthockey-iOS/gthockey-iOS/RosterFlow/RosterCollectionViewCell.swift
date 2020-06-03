@@ -9,7 +9,7 @@
 import UIKit
 import SDWebImage
 
-class RosterCollectionViewCell: GTHCardCollectionViewCell {
+class RosterCollectionViewCell: GTHCardPlusCollectionViewCell {
 
     // MARK: Init
 
@@ -19,17 +19,13 @@ class RosterCollectionViewCell: GTHCardCollectionViewCell {
         imageView.backgroundColor = .gray
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        imageView.layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
-        
-        imageView.layer.shadowColor = UIColor.purple.cgColor
-        imageView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        imageView.layer.shadowOpacity = 1
-        imageView.layer.shadowRadius = 1.0
         imageView.clipsToBounds = false
-        
         imageView.layer.cornerRadius = 14.0
         imageView.layer.masksToBounds = true
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        shadowView.layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
+        shadowView.translatesAutoresizingMaskIntoConstraints = false
         
         primaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
         primaryLabel.allowsDefaultTighteningForTruncation = true
@@ -44,7 +40,8 @@ class RosterCollectionViewCell: GTHCardCollectionViewCell {
         
         contentView.layer.masksToBounds = false
 
-        contentView.addSubviews([imageView, primaryLabel, secondaryLabel])
+        shadowView.addSubview(imageView)
+        contentView.addSubviews([shadowView, primaryLabel, secondaryLabel])
         updateConstraints()
     }
 
@@ -56,21 +53,29 @@ class RosterCollectionViewCell: GTHCardCollectionViewCell {
         super.updateConstraints()
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor)
+            imageView.topAnchor.constraint(equalTo: shadowView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: shadowView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: shadowView.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: shadowView.bottomAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            primaryLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16.0),
-            primaryLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
-            primaryLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+            shadowView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            shadowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            shadowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            shadowView.heightAnchor.constraint(equalToConstant: 120.0),
+            shadowView.widthAnchor.constraint(equalToConstant: 120.0)
         ])
         
         NSLayoutConstraint.activate([
-            secondaryLabel.topAnchor.constraint(equalTo: imageView.topAnchor, constant: 8.0),
-            secondaryLabel.trailingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -8.0)
+            primaryLabel.topAnchor.constraint(equalTo: shadowView.bottomAnchor, constant: 16.0),
+            primaryLabel.leadingAnchor.constraint(equalTo: shadowView.leadingAnchor),
+            primaryLabel.trailingAnchor.constraint(equalTo: shadowView.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            secondaryLabel.topAnchor.constraint(equalTo: shadowView.topAnchor, constant: 8.0),
+            secondaryLabel.trailingAnchor.constraint(equalTo: shadowView.trailingAnchor, constant: -8.0)
         ])
     }
 
@@ -79,7 +84,7 @@ class RosterCollectionViewCell: GTHCardCollectionViewCell {
     public func set(with player: Player) {
         imageView.sd_setImage(with: player.headshotURL, placeholderImage: nil)
         primaryLabel.text = player.lastName
-        secondaryLabel.text = "#\(player.number)"
+        secondaryLabel.text = player.position == .Manager ? "" : "#\(player.number)"
     }
 
 }

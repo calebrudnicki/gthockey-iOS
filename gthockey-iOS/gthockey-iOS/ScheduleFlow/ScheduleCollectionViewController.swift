@@ -14,6 +14,13 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
 
     public var seasonID: Int?
     
+    public var seasonString: String? {
+        didSet {
+            navigationItem.title = seasonString
+            navigationItem.backBarButtonItem?.title = "Back"
+        }
+    }
+    
     private var completedGameArray: [Game] = []
     private var upcomingGameArray: [Game] = []
     private var seasonArray: [Season] = []

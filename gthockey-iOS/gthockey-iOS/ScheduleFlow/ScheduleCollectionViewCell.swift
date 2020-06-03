@@ -178,6 +178,8 @@ class ScheduleCollectionViewCell: GTHCardCollectionViewCell {
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
+        contentView.layer.cornerRadius = 14.0
+        contentView.layer.masksToBounds = true
         
         awayStack.addArrangedSubviews([awaySchoolLabel, awayMascotLabel, awayScoreLabel])
         homeStack.addArrangedSubviews([homeSchoolLabel, homeMascotLabel, homeScoreLabel])
@@ -235,12 +237,12 @@ class ScheduleCollectionViewCell: GTHCardCollectionViewCell {
 
     public func set(with game: Game) {
         awayImageView.image = game.venue == .Home ? UIImage(named: "ZoomedUGA") : UIImage(named: "ZoomedBuzz")
-        awaySchoolLabel.text = game.venue == .Home ? game.opponentName : "Georgia Tech"
-        awayMascotLabel.text = game.venue == .Home ? "Opp Mascot" : "Yellow Jackets"
+        awaySchoolLabel.text = game.venue == .Home ? game.opponent.schoolName : "Georgia Tech"
+        awayMascotLabel.text = game.venue == .Home ? game.opponent.mascotName : "Yellow Jackets"
         
         homeImageView.image = game.venue == .Home ? UIImage(named: "ZoomedBuzz") : UIImage(named: "ZoomedUGA")
-        homeSchoolLabel.text = game.venue == .Home ? "Georgia Tech" : game.opponentName
-        homeMascotLabel.text = game.venue == .Home ? "Yellow Jackets" : "Opp Mascot"
+        homeSchoolLabel.text = game.venue == .Home ? "Georgia Tech" : game.opponent.schoolName
+        homeMascotLabel.text = game.venue == .Home ? "Yellow Jackets" : game.opponent.mascotName
             
         if let opponentScore = game.opponentScore, let gtScore = game.gtScore {
             awayScoreLabel.text = game.venue == .Home ? String(describing: opponentScore) : String(describing: gtScore)
