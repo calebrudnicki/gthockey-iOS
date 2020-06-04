@@ -236,11 +236,19 @@ class ScheduleCollectionViewCell: GTHCardCollectionViewCell {
     // MARK: Setter
 
     public func set(with game: Game) {
-        awayImageView.image = game.venue == .Home ? UIImage(named: "ZoomedUGA") : UIImage(named: "ZoomedBuzz")
+        if game.venue == .Home {
+            awayImageView.sd_setImage(with: game.opponent.backgroundImageURL, placeholderImage: nil)
+        } else {
+            awayImageView.image = UIImage(named: "ZoomedBuzz")
+        }
         awaySchoolLabel.text = game.venue == .Home ? game.opponent.schoolName : "Georgia Tech"
         awayMascotLabel.text = game.venue == .Home ? game.opponent.mascotName : "Yellow Jackets"
         
-        homeImageView.image = game.venue == .Home ? UIImage(named: "ZoomedBuzz") : UIImage(named: "ZoomedUGA")
+        if game.venue == .Home {
+            homeImageView.image = UIImage(named: "ZoomedBuzz")
+        } else {
+            homeImageView.sd_setImage(with: game.opponent.backgroundImageURL, placeholderImage: nil)
+        }
         homeSchoolLabel.text = game.venue == .Home ? "Georgia Tech" : game.opponent.schoolName
         homeMascotLabel.text = game.venue == .Home ? "Yellow Jackets" : game.opponent.mascotName
             
@@ -252,8 +260,8 @@ class ScheduleCollectionViewCell: GTHCardCollectionViewCell {
             homeScoreLabel.text = ""
         }
         
-        dateLabel.text = game.dateTime.formatted
-        rinkLabel.text = game.rinkName
+        dateLabel.text = game.timestamp.formatted
+        rinkLabel.text = game.rink.name
     }
 
 }

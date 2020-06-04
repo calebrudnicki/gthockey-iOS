@@ -12,7 +12,7 @@ struct Team {
     var id: Int
     var schoolName: String
     var mascotName: String
-    var webURL: URL
+    var webURL: URL?
     var logoImageURL: URL
     var backgroundImageURL: URL
 }

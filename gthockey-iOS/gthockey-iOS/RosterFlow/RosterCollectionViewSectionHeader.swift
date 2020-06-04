@@ -129,4 +129,8 @@ extension RosterCollectionViewSectionHeader: UICollectionViewDelegateFlowLayout 
         return CGSize(width: 120.0, height: 120.0)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 24.0
+    }
+    
 }

@@ -58,17 +58,18 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
             var ties = 0
 
             for game in response {
-                if game.isReported {
+                if game.shortResult != .Unknown {
                     self.completedGameArray.append(game)
                     switch game.shortResult {
-                    case "W":
+                    case .Win:
                         wins += 1
-                    case "L":
+                    case .Loss:
                         losses += 1
-                    case "OT":
-                        otLosses += 1
-                    default:
+                    case .Tie:
                         ties += 1
+                    case .OvertimeLoss:
+                        otLosses += 1
+                    default: break
                     }
                 } else {
                     self.upcomingGameArray.append(game)

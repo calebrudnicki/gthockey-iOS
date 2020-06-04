@@ -8,8 +8,17 @@
 
 import UIKit
 
-class CoachingStaffCollectionViewCell: GTHCardCollectionViewCell {
+class CoachingStaffCollectionViewCell: GTHCardPlusCollectionViewCell {
 
+    // MARK: Properties
+    
+    private let descriptionTextView: HTMLTextView = {
+        let descriptionTextView = HTMLTextView()
+        descriptionTextView.font = UIFont.DINAlternate.bold.font(size: 16.0)
+        descriptionTextView.textContainer.lineBreakMode = .byTruncatingTail
+        return descriptionTextView
+    }()
+    
     // MARK: Init
     
     override init(frame: CGRect) {
@@ -18,32 +27,27 @@ class CoachingStaffCollectionViewCell: GTHCardCollectionViewCell {
         imageView.backgroundColor = .gray
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = false
+        imageView.layer.cornerRadius = 14.0
+        imageView.layer.masksToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
-        secondaryLabel.font = UIFont.DINCondensed.bold.font(size: 16.0)
-        secondaryLabel.textColor = UIColor.newsCellDateColor
-        secondaryLabel.adjustsFontSizeToFitWidth = true
+        shadowView.layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
+        shadowView.translatesAutoresizingMaskIntoConstraints = false
+        
+        primaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
+        primaryLabel.numberOfLines = 1
+        primaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        secondaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
+        secondaryLabel.textColor = UIColor.coachingStaffCellNameColor
         secondaryLabel.numberOfLines = 1
         secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        primaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
-        primaryLabel.textColor = UIColor.newsCellTitleColor
-        primaryLabel.lineBreakMode = .byTruncatingTail
-        primaryLabel.numberOfLines = 2
-        primaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.layer.masksToBounds = false
         
-        let view = UIView(frame: contentView.frame)
-        let gradient = CAGradientLayer()
-        gradient.frame = view.frame
-        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
-        gradient.locations = [0.5, 1.0]
-        view.layer.insertSublayer(gradient, at: 0)
-        imageView.addSubview(view)
-        imageView.bringSubviewToFront(view)
-        
-        layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
-        
-        contentView.addSubviews([imageView, secondaryLabel, primaryLabel])
+        shadowView.addSubview(imageView)
+        contentView.addSubviews([primaryLabel, shadowView, secondaryLabel, descriptionTextView])
         updateConstraints()
     }
     
@@ -55,22 +59,36 @@ class CoachingStaffCollectionViewCell: GTHCardCollectionViewCell {
         super.updateConstraints()
         
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+            primaryLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            primaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            primaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
         
         NSLayoutConstraint.activate([
-            secondaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
-            secondaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
-            secondaryLabel.bottomAnchor.constraint(equalTo: primaryLabel.topAnchor, constant: -4.0)
+            imageView.topAnchor.constraint(equalTo: shadowView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: shadowView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: shadowView.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: shadowView.bottomAnchor),
         ])
         
         NSLayoutConstraint.activate([
-            primaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
-            primaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
-            primaryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
+            shadowView.topAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: 4.0),
+            shadowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            shadowView.heightAnchor.constraint(equalToConstant: 120.0),
+            shadowView.widthAnchor.constraint(equalToConstant: 120.0)
+        ])
+        
+        NSLayoutConstraint.activate([
+            secondaryLabel.topAnchor.constraint(equalTo: shadowView.topAnchor),
+            secondaryLabel.leadingAnchor.constraint(equalTo: shadowView.trailingAnchor, constant: 8.0),
+            secondaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            descriptionTextView.topAnchor.constraint(equalTo: secondaryLabel.bottomAnchor),
+            descriptionTextView.leadingAnchor.constraint(equalTo: shadowView.trailingAnchor, constant: 8.0),
+            descriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionTextView.bottomAnchor.constraint(lessThanOrEqualTo: shadowView.bottomAnchor)
         ])
     }
     
@@ -78,8 +96,9 @@ class CoachingStaffCollectionViewCell: GTHCardCollectionViewCell {
     
     public func set(with coach: Coach) {
         imageView.sd_setImage(with: coach.imageURL, placeholderImage: nil)
-        secondaryLabel.text = coach.firstName
-        primaryLabel.text = coach.lastName
+        primaryLabel.text = coach.position
+        secondaryLabel.text = "\(coach.firstName) \(coach.lastName)"
+        descriptionTextView.text = coach.bio
     }
     
 }

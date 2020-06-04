@@ -39,7 +39,7 @@ class MoreTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,13 +52,15 @@ class MoreTableViewController: UITableViewController {
             return 1
         case 3:
             return 3
+        case 4:
+            return 3
         default: break
         }
         return 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        var cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         cell.textLabel?.font = UIFont.DINAlternate.bold.font(size: 20.0)
         cell.backgroundColor = UIColor.gthBackgroundColor
         cell.accessoryType = .disclosureIndicator
@@ -86,6 +88,16 @@ class MoreTableViewController: UITableViewController {
                 cell.textLabel?.text = "Visit us on Facebook"
             default: break
             }
+        case 4:
+            switch indexPath.row {
+            case 0:
+                cell.textLabel?.text = "Buzz"
+            case 1:
+                cell.textLabel?.text = "Heritage T"
+            case 2:
+                cell.textLabel?.text = "Ramblin' Reck"
+            default: break
+            }
         default: break
         }
         return cell
@@ -101,6 +113,8 @@ class MoreTableViewController: UITableViewController {
             return "Contact"
         case 3:
             return "Social Media"
+        case 4:
+            return "App Icon"
         default: break
         }
         
@@ -148,6 +162,30 @@ class MoreTableViewController: UITableViewController {
                 openSocialMedia(with: NSURL(string: "fb://profile/85852244494")!, NSURL(string: "https://facebook.com/GeorgiaTechHockey")!)
             default: break
             }
+        case 4:
+            var appIcon: AppIcon?
+
+            switch indexPath.row {
+            case 0:
+                appIcon = .Buzz
+            case 1:
+                appIcon = .HeritageT
+            case 2:
+                appIcon = .RamblinReck
+            default: break
+            }
+            
+            AppIconManager().switchAppIcon(to: appIcon ?? .Buzz, completion: { error in
+                if error != nil {
+                    let alert = UIAlertController(title: "App icon switch failed",
+                                              message: error?.localizedDescription,
+                                              preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                } else {
+                    self.tableView.reloadSections(IndexSet(integer: 2), with: UITableView.RowAnimation.none)
+                }
+            })
         default: break
         }
     }

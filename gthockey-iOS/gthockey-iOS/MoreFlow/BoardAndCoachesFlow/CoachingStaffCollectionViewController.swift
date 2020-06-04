@@ -54,19 +54,11 @@ class CoachingStaffCollectionViewController: GTHCollectionViewController, UIColl
         return cell
     }
     
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        selectedCell = collectionView.cellForItem(at: indexPath) as? GTHCardCollectionViewCell
-//        selectedCellImageViewSnapshot = selectedCell?.imageView.snapshotView(afterScreenUpdates: false)
-//        presentDetailViewController(for: indexPath, with: GTHCellData(image: (selectedCell?.imageView.image)!,
-//                                                                      primaryLabel: (selectedCell?.primaryLabel.text)!,
-//                                                                      secondaryLabel: (selectedCell?.secondaryLabel.text)!))
-//    }
-    
     // MARK: UICollectionViewLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = UIScreen.main.bounds.width - 48.0
-        return CGSize(width: cellWidth, height: cellWidth * 0.675)
+        return CGSize(width: cellWidth, height: 152.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

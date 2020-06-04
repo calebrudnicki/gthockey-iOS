@@ -10,12 +10,12 @@ import Foundation
 
 struct Game {
     var id: Int
-    var dateTime: Date
+    var timestamp: Date
     var opponent: Team
-    var rinkName: String
     var venue: Venue
-    var isReported: Bool
-    var shortResult: String
+    var rink: Rink
+    var season: Season
     var gtScore: Int?
     var opponentScore: Int?
+    var shortResult: GameResult
 }

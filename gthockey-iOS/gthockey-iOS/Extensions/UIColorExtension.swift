@@ -54,4 +54,7 @@ extension UIColor {
     static let shopDetailPriceColor = UIColor.init(named: "ShopDetailPriceColor")
     static let shopDetailContentColor = UIColor.init(named: "ShopDetailContentColor")
     
+    static let boardMemberCellNameColor = UIColor.init(named: "BoardMemberCellNameColor")
+    static let coachingStaffCellNameColor = UIColor.init(named: "CoachingStaffCellNameColor")
+    
 }

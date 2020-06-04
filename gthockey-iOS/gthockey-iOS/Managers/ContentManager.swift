@@ -72,14 +72,12 @@ class ContentManager {
      */
     public func getSchedule(with seasonID: Int?, completion: @escaping ([Game]) -> Void) {
         var games: [Game] = []
-        var endpoint: String
+        var endpoint = "https://gthockey.com/api/games/?fulldata"
+
         if let seasonID = seasonID {
-            endpoint = "https://gthockey.com/api/games/?season=\(seasonID)"
-        } else {
-            endpoint = "https://gthockey.com/api/games/"
+            endpoint = endpoint + "&season=\(seasonID)"
         }
         
-
         Alamofire.request(endpoint).validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
@@ -260,21 +258,38 @@ class ContentManager {
         } else {
             venue = .Unknown
         }
+        
+        let result: GameResult
+        if let resultString = value["short_result"].string {
+            switch resultString {
+            case "W": result = .Win
+            case "L": result = .Loss
+            case "T": result = .Tie
+            case "OT": result = .OvertimeLoss
+            default: result = .Unknown
+            }
+        } else {
+            result = .Unknown
+        }
                 
         let game = Game(id: value["id"].int!,
-                        dateTime: value["datetime"].string!.longDate,
+                        timestamp: (value["date"].string! + " " + value["time"].string!).testDate,
                         opponent: Team(id: value["opponent"]["id"].int!,
                                        schoolName: value["opponent"]["school_name"].string!,
                                        mascotName: value["opponent"]["mascot_name"].string!,
-                                       webURL: URL(string: value["opponent"]["web_url"].string!)!,
+                                       webURL: URL(string: value["opponent"]["web_url"].string!),
                                        logoImageURL: URL(string: value["opponent"]["logo"].string!)!,
-                                       backgroundImageURL: URL(string: value["opponent"]["background"].string!)!),
-                        rinkName: value["rink_name"].string!,
+                                       backgroundImageURL: (URL(string: value["opponent"]["background"].string ?? "https://prod.gthockey.com/media/teambackgrounds/ACHAZoomed.png"))!),
                         venue: venue,
-                        isReported: value["is_reported"].bool!,
-                        shortResult: value["short_result"].string!,
-                        gtScore: value["gt_score"].int,
-                        opponentScore: value["opp_score"].int)
+                        rink: Rink(id: value["location"]["id"].int!,
+                                   name: value["location"]["rink_name"].string!,
+                                   mapsURL: URL(string: value["location"]["maps_url"].string!)),
+                        season: Season(id: value["season"]["id"].int!,
+                                       name: value["season"]["name"].string!,
+                                       year: value["season"]["year"].int!),
+                        gtScore: value["score_gt_final"].int,
+                        opponentScore: value["score_opp_final"].int,
+                        shortResult: result)
         return game
     }
 
@@ -319,15 +334,15 @@ class ContentManager {
                         mascotName: value["mascot_name"].string!,
                         webURL: URL(string: value["web_url"].string!)!,
                         logoImageURL: URL(string: value["logo"].string!)!,
-                        backgroundImageURL: URL(string: value["background"].string!)!)
+                        backgroundImageURL: URL(string: value["background"].string ??
+                            "https://prod.gthockey.com/media/teambackgrounds/ACHAZoomed.png")!)
         return team
     }
 
     private func makeRinkObject(value: JSON) -> Rink {
         let rink = Rink(id: value["id"].int ?? 12345,
                         name: value["rink_name"].string ?? "TBD",
-                        mapsURL: URL(string: value["maps_url"].string ??
-                            "@0.00000,0.000000,15z/data=!4m2!3m1!1s0x0:")!)
+                        mapsURL: URL(string: value["maps_url"].string!))
         return rink
     }
 

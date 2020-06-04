@@ -10,9 +10,14 @@ import UIKit
 
 class StudentBoardCollectionViewCell: GTHCardPlusCollectionViewCell {
     
-    private var isLeftSet: Bool = true
-    
-    private let descriptionTextView = HTMLTextView(frame: .zero)
+    // MARK: Properties
+        
+    private let descriptionTextView: HTMLTextView = {
+        let descriptionTextView = HTMLTextView()
+        descriptionTextView.font = UIFont.DINAlternate.bold.font(size: 16.0)
+        descriptionTextView.textContainer.lineBreakMode = .byTruncatingTail
+        return descriptionTextView
+    }()
 
     // MARK: Init
 
@@ -35,7 +40,7 @@ class StudentBoardCollectionViewCell: GTHCardPlusCollectionViewCell {
         primaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
         secondaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
-        secondaryLabel.textColor = .black
+        secondaryLabel.textColor = UIColor.boardMemberCellNameColor
         secondaryLabel.numberOfLines = 1
         secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
@@ -54,88 +59,46 @@ class StudentBoardCollectionViewCell: GTHCardPlusCollectionViewCell {
         super.updateConstraints()
         
         NSLayoutConstraint.activate([
+            primaryLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            primaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            primaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: shadowView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: shadowView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: shadowView.trailingAnchor),
             imageView.bottomAnchor.constraint(equalTo: shadowView.bottomAnchor),
         ])
         
-        if isLeftSet {
-            NSLayoutConstraint.activate([
-                shadowView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                shadowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                shadowView.heightAnchor.constraint(equalToConstant: 120.0),
-                shadowView.widthAnchor.constraint(equalToConstant: 120.0)
-            ])
-            
-            NSLayoutConstraint.activate([
-                primaryLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-                primaryLabel.leadingAnchor.constraint(equalTo: shadowView.trailingAnchor, constant: 8.0),
-                primaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-            ])
-            
-            NSLayoutConstraint.activate([
-                secondaryLabel.topAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: 8.0),
-                secondaryLabel.leadingAnchor.constraint(equalTo: shadowView.trailingAnchor, constant: 8.0),
-                secondaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-            ])
-            
-            NSLayoutConstraint.activate([
-                descriptionTextView.topAnchor.constraint(equalTo: secondaryLabel.bottomAnchor, constant: 8.0),
-                descriptionTextView.leadingAnchor.constraint(equalTo: shadowView.trailingAnchor, constant: 8.0),
-                descriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                descriptionTextView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                shadowView.topAnchor.constraint(equalTo: contentView.topAnchor),
-                shadowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-                shadowView.heightAnchor.constraint(equalToConstant: 120.0),
-                shadowView.widthAnchor.constraint(equalToConstant: 120.0)
-            ])
-            
-            NSLayoutConstraint.activate([
-                primaryLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-                primaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                primaryLabel.trailingAnchor.constraint(equalTo: shadowView.leadingAnchor, constant: -8.0)
-            ])
-            
-            NSLayoutConstraint.activate([
-                secondaryLabel.topAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: 8.0),
-                secondaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                secondaryLabel.trailingAnchor.constraint(equalTo: shadowView.leadingAnchor, constant: -8.0)
-            ])
-            
-            NSLayoutConstraint.activate([
-                descriptionTextView.topAnchor.constraint(equalTo: secondaryLabel.bottomAnchor, constant: 8.0),
-                descriptionTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-                descriptionTextView.trailingAnchor.constraint(equalTo: shadowView.leadingAnchor, constant: -8.0),
-                descriptionTextView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor)
-            ])
-        }
-
-//        NSLayoutConstraint.activate([
-//            descriptionTextView.topAnchor.constraint(equalTo: secondaryLabel.bottomAnchor, constant: 0.0),
-//            descriptionTextView.leadingAnchor.constraint(equalTo: shadowView.trailingAnchor, constant: 12.0),
-//            descriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            descriptionTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-//        ])
+        NSLayoutConstraint.activate([
+            shadowView.topAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: 4.0),
+            shadowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            shadowView.heightAnchor.constraint(equalToConstant: 120.0),
+            shadowView.widthAnchor.constraint(equalToConstant: 120.0)
+        ])
+        
+        NSLayoutConstraint.activate([
+            secondaryLabel.topAnchor.constraint(equalTo: shadowView.topAnchor),
+            secondaryLabel.leadingAnchor.constraint(equalTo: shadowView.trailingAnchor, constant: 8.0),
+            secondaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            descriptionTextView.topAnchor.constraint(equalTo: secondaryLabel.bottomAnchor),
+            descriptionTextView.leadingAnchor.constraint(equalTo: shadowView.trailingAnchor, constant: 8.0),
+            descriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionTextView.bottomAnchor.constraint(lessThanOrEqualTo: shadowView.bottomAnchor)
+        ])
     }
     
     // MARK: Setter
     
-    public func set(with boardMember: BoardMember, leftSet: Bool) {
+    public func set(with boardMember: BoardMember) {
         imageView.sd_setImage(with: boardMember.imageURL, placeholderImage: nil)
         primaryLabel.text = boardMember.position
         secondaryLabel.text = "\(boardMember.firstName) \(boardMember.lastName)"
-        descriptionTextView.text = boardMember.description
-        
-        isLeftSet = leftSet
-        primaryLabel.textAlignment = isLeftSet ? .left : .right
-        secondaryLabel.textAlignment = isLeftSet ? .left : .right
-        descriptionTextView.textAlignment = isLeftSet ? .left : .right
-        
-        updateConstraints()
+        descriptionTextView.text = boardMember.description        
     }
 
 }

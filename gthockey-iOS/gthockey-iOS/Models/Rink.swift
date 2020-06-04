@@ -11,5 +11,5 @@ import Foundation
 struct Rink {
     var id: Int
     var name: String
-    var mapsURL: URL
+    var mapsURL: URL?
 }
