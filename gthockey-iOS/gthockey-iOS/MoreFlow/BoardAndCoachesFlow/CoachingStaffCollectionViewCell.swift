@@ -16,6 +16,7 @@ class CoachingStaffCollectionViewCell: GTHCardPlusCollectionViewCell {
         let descriptionTextView = HTMLTextView()
         descriptionTextView.font = UIFont.DINAlternate.bold.font(size: 16.0)
         descriptionTextView.textContainer.lineBreakMode = .byTruncatingTail
+        descriptionTextView.isUserInteractionEnabled = false
         return descriptionTextView
     }()
     

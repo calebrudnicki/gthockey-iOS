@@ -79,18 +79,33 @@ class RosterCollectionViewController: GTHCollectionViewController, UICollectionV
     // MARK: Private Functions
     
     private func presentDetailViewController(with data: GTHCellData, for player: Player) {
-        let rosterDetailViewController = RosterDetailViewController()
-        rosterDetailViewController.transitioningDelegate = self
-        rosterDetailViewController.modalPresentationStyle = .overFullScreen
-        rosterDetailViewController.modalPresentationCapturesStatusBarAppearance = true
-        rosterDetailViewController.data = data
-        rosterDetailViewController.set(with: player.imageURL,
-                                       player.firstName,
-                                       player.position,
-                                       player.hometown,
-                                       player.school,
-                                       player.bio)
-        present(rosterDetailViewController, animated: true)
+        if player.position == .Manager {
+            let managerDetailViewController = ManagerDetailViewController()
+            managerDetailViewController.transitioningDelegate = self
+            managerDetailViewController.modalPresentationStyle = .overFullScreen
+            managerDetailViewController.modalPresentationCapturesStatusBarAppearance = true
+            managerDetailViewController.data = data
+            managerDetailViewController.set(with: player.imageURL,
+                                           player.lastName,
+                                           player.position,
+                                           player.hometown,
+                                           player.school,
+                                           player.bio)
+            present(managerDetailViewController, animated: true)
+        } else {
+            let rosterDetailViewController = RosterDetailViewController()
+            rosterDetailViewController.transitioningDelegate = self
+            rosterDetailViewController.modalPresentationStyle = .overFullScreen
+            rosterDetailViewController.modalPresentationCapturesStatusBarAppearance = true
+            rosterDetailViewController.data = data
+            rosterDetailViewController.set(with: player.imageURL,
+                                           player.firstName,
+                                           player.position,
+                                           player.hometown,
+                                           player.school,
+                                           player.bio)
+            present(rosterDetailViewController, animated: true)
+        }
     }
 
 }

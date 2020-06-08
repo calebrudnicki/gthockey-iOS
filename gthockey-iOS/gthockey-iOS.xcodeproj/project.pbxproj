@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31857BAA248EC43B0007BA22 /* ManagerDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31857BA9248EC43B0007BA22 /* ManagerDetailViewController.swift */; };
+		31857BAC248EC9740007BA22 /* CoachingStaffDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31857BAB248EC9740007BA22 /* CoachingStaffDetailViewController.swift */; };
 		318E278B2479ED100091BA01 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E278A2479ED100091BA01 /* Animator.swift */; };
 		318E278F247AEE730091BA01 /* NewsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E278E247AEE730091BA01 /* NewsCollectionViewController.swift */; };
 		318E2791247AEEC20091BA01 /* NewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E2790247AEEC20091BA01 /* NewsCollectionViewCell.swift */; };
@@ -18,6 +20,9 @@
 		318E27A5247D60D60091BA01 /* GTHCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27A4247D60D60091BA01 /* GTHCollectionViewController.swift */; };
 		318E27A9247D61520091BA01 /* GTHCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318E27A8247D61520091BA01 /* GTHCellData.swift */; };
 		31946DCE24893D2B0037E645 /* GameResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31946DCD24893D2B0037E645 /* GameResult.swift */; };
+		31946DD0248982150037E645 /* MoreTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31946DCF248982150037E645 /* MoreTableViewFooter.swift */; };
+		31946DD2248984EE0037E645 /* AdminTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31946DD1248984EE0037E645 /* AdminTableViewController.swift */; };
+		31946DD424898BD00037E645 /* StudentBoardDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31946DD324898BD00037E645 /* StudentBoardDetailViewController.swift */; };
 		31A4E0BF247DD4FC008CCE07 /* GTHDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4E0BE247DD4FC008CCE07 /* GTHDetailViewController.swift */; };
 		31A4E0C5247EFE6A008CCE07 /* GTHCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4E0C4247EFE6A008CCE07 /* GTHCardCollectionViewCell.swift */; };
 		31A4E0C8247F3C05008CCE07 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A4E0C7247F3C05008CCE07 /* MoreTableViewController.swift */; };
@@ -114,6 +119,8 @@
 
 /* Begin PBXFileReference section */
 		0A1A9452D4F9DE560A40A8A4 /* Pods-gthockey-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gthockey-iOS.release.xcconfig"; path = "Target Support Files/Pods-gthockey-iOS/Pods-gthockey-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		31857BA9248EC43B0007BA22 /* ManagerDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerDetailViewController.swift; sourceTree = "<group>"; };
+		31857BAB248EC9740007BA22 /* CoachingStaffDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoachingStaffDetailViewController.swift; sourceTree = "<group>"; };
 		318E278A2479ED100091BA01 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		318E278E247AEE730091BA01 /* NewsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewController.swift; sourceTree = "<group>"; };
 		318E2790247AEEC20091BA01 /* NewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -125,6 +132,9 @@
 		318E27A4247D60D60091BA01 /* GTHCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHCollectionViewController.swift; sourceTree = "<group>"; };
 		318E27A8247D61520091BA01 /* GTHCellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHCellData.swift; sourceTree = "<group>"; };
 		31946DCD24893D2B0037E645 /* GameResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResult.swift; sourceTree = "<group>"; };
+		31946DCF248982150037E645 /* MoreTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewFooter.swift; sourceTree = "<group>"; };
+		31946DD1248984EE0037E645 /* AdminTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTableViewController.swift; sourceTree = "<group>"; };
+		31946DD324898BD00037E645 /* StudentBoardDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentBoardDetailViewController.swift; sourceTree = "<group>"; };
 		31A4E0BE247DD4FC008CCE07 /* GTHDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHDetailViewController.swift; sourceTree = "<group>"; };
 		31A4E0C4247EFE6A008CCE07 /* GTHCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		31A4E0C7247F3C05008CCE07 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +250,8 @@
 			children = (
 				82A4293823D8CE51002EF467 /* SettingsIconTableViewCell.swift */,
 				31A4E0C7247F3C05008CCE07 /* MoreTableViewController.swift */,
+				31946DCF248982150037E645 /* MoreTableViewFooter.swift */,
+				31946DD1248984EE0037E645 /* AdminTableViewController.swift */,
 				31A5EB88248334F000B16A8A /* BoardAndCoachesFlow */,
 			);
 			path = MoreFlow;
@@ -250,8 +262,10 @@
 			children = (
 				31A5EB862483346000B16A8A /* StudentBoardCollectionViewController.swift */,
 				31A5EB9324833CD600B16A8A /* StudentBoardCollectionViewCell.swift */,
+				31946DD324898BD00037E645 /* StudentBoardDetailViewController.swift */,
 				31A5EB9124833C7A00B16A8A /* CoachingStaffCollectionViewController.swift */,
 				31A5EB9524833D2C00B16A8A /* CoachingStaffCollectionViewCell.swift */,
+				31857BAB248EC9740007BA22 /* CoachingStaffDetailViewController.swift */,
 			);
 			path = BoardAndCoachesFlow;
 			sourceTree = "<group>";
@@ -389,6 +403,7 @@
 				82DD1A272346FFAC001425B6 /* RosterCollectionViewCell.swift */,
 				318E279E247B29800091BA01 /* RosterCollectionViewSectionHeader.swift */,
 				82918F312350B62F00723B4A /* RosterDetailViewController.swift */,
+				31857BA9248EC43B0007BA22 /* ManagerDetailViewController.swift */,
 			);
 			path = RosterFlow;
 			sourceTree = "<group>";
@@ -649,11 +664,13 @@
 			files = (
 				31C791B52478943A005CC1E0 /* UIStackViewExtension.swift in Sources */,
 				822D54A1243AA89B00B0776D /* UserPropertyManager.swift in Sources */,
+				31946DD424898BD00037E645 /* StudentBoardDetailViewController.swift in Sources */,
 				FA3570BA23502190008E83BC /* Team.swift in Sources */,
 				822D549C243AA89B00B0776D /* AuthenticationManager.swift in Sources */,
 				318E27A5247D60D60091BA01 /* GTHCollectionViewController.swift in Sources */,
 				31A5EB872483346000B16A8A /* StudentBoardCollectionViewController.swift in Sources */,
 				31A5EB9624833D2C00B16A8A /* CoachingStaffCollectionViewCell.swift in Sources */,
+				31857BAC248EC9740007BA22 /* CoachingStaffDetailViewController.swift in Sources */,
 				82A4295223D8EC7D002EF467 /* AppIcon.swift in Sources */,
 				31A4E0C5247EFE6A008CCE07 /* GTHCardCollectionViewCell.swift in Sources */,
 				318E278B2479ED100091BA01 /* Animator.swift in Sources */,
@@ -684,8 +701,11 @@
 				82F468F0237F55EC00573EE5 /* CartTableViewCell.swift in Sources */,
 				31946DCE24893D2B0037E645 /* GameResult.swift in Sources */,
 				8288FC682360AB9500C7C9DF /* MenuTableViewController.swift in Sources */,
+				31946DD0248982150037E645 /* MoreTableViewFooter.swift in Sources */,
 				826D01A423E60F060094EEC6 /* MapKitAnnotation.swift in Sources */,
+				31857BAA248EC43B0007BA22 /* ManagerDetailViewController.swift in Sources */,
 				828295A62461B5820084AE7F /* GTHTabBarController.swift in Sources */,
+				31946DD2248984EE0037E645 /* AdminTableViewController.swift in Sources */,
 				828295A824645D630084AE7F /* CALayerExtension.swift in Sources */,
 				82B3A170237BB44F00CD8F3D /* ShopDetailViewController.swift in Sources */,
 				822D549F243AA89B00B0776D /* StripeManager.swift in Sources */,

@@ -1,15 +1,14 @@
 //
-//  RosterDetailViewController.swift
+//  ManagerDetailViewController.swift
 //  gthockey-iOS
 //
-//  Created by Caleb Rudnicki on 10/11/19.
-//  Copyright © 2019 Caleb Rudnicki. All rights reserved.
+//  Created by Caleb Rudnicki on 6/8/20.
+//  Copyright © 2020 Caleb Rudnicki. All rights reserved.
 //
 
 import UIKit
-import SDWebImage
 
-class RosterDetailViewController: GTHDetailViewController {
+class ManagerDetailViewController: GTHDetailViewController {
 
     // MARK: Properties
     
@@ -28,13 +27,13 @@ class RosterDetailViewController: GTHDetailViewController {
         return shadowContainerView
     }()
 
-    private let firstNameLabel: UILabel = {
-        let firstNameLabel = UILabel()
-        firstNameLabel.textColor = .label
-        firstNameLabel.textAlignment = .center
-        firstNameLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
-        firstNameLabel.translatesAutoresizingMaskIntoConstraints = false
-        return firstNameLabel
+    private let lastNameLabel: UILabel = {
+        let lastNameLabel = UILabel()
+        lastNameLabel.textAlignment = .center
+        lastNameLabel.font = UIFont.DINCondensed.bold.font(size: 36.0)
+        lastNameLabel.textColor = .label
+        lastNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        return lastNameLabel
     }()
 
     private let positionLabel: UILabel = {
@@ -94,9 +93,9 @@ class RosterDetailViewController: GTHDetailViewController {
         secondaryLabel.textColor = UIColor.rosterDetailNumberColor
         secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        primaryLabel.textAlignment = .center
-        primaryLabel.font = UIFont.DINCondensed.bold.font(size: 36.0)
         primaryLabel.textColor = .label
+        primaryLabel.textAlignment = .center
+        primaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
         primaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
         closeButton.setImage(UIImage(systemName: "xmark.circle.fill",
@@ -112,7 +111,7 @@ class RosterDetailViewController: GTHDetailViewController {
         detailsStackView.addArrangedSubview(hometownLabel)
         detailsStackView.addArrangedSubview(schoolLabel)
         
-        scrollView.addSubviews([actionImageView, imageView, firstNameLabel, primaryLabel, positionLabel, secondaryLabel, detailsStackView, bioLabel, closeButton])
+        scrollView.addSubviews([actionImageView, imageView, primaryLabel, lastNameLabel, positionLabel, secondaryLabel, detailsStackView, bioLabel, closeButton])
 
         updateViewConstraints()
     }
@@ -142,17 +141,17 @@ class RosterDetailViewController: GTHDetailViewController {
         ])
 
         NSLayoutConstraint.activate([
-            firstNameLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16.0),
-            firstNameLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 24.0),
-            firstNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -24.0),
-            firstNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-        ])
-
-        NSLayoutConstraint.activate([
-            primaryLabel.topAnchor.constraint(equalTo: firstNameLabel.bottomAnchor),
+            primaryLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16.0),
             primaryLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 24.0),
             primaryLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -24.0),
             primaryLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+
+        NSLayoutConstraint.activate([
+            lastNameLabel.topAnchor.constraint(equalTo: primaryLabel.bottomAnchor),
+            lastNameLabel.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 24.0),
+            lastNameLabel.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -24.0),
+            lastNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     
         NSLayoutConstraint.activate([
@@ -168,7 +167,7 @@ class RosterDetailViewController: GTHDetailViewController {
         ])
         
         NSLayoutConstraint.activate([
-            detailsStackView.topAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: 16.0),
+            detailsStackView.topAnchor.constraint(equalTo: lastNameLabel.bottomAnchor, constant: 16.0),
             detailsStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24.0),
             detailsStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24.0),
         ])
@@ -188,9 +187,9 @@ class RosterDetailViewController: GTHDetailViewController {
 
     // MARK: Setter
 
-    public func set(with actionImageURL: URL, _ firstName: String, _ position: Position, _ hometown: String, _ school: String, _ bio: String) {
+    public func set(with actionImageURL: URL, _ lastName: String, _ position: Position, _ hometown: String, _ school: String, _ bio: String) {
         actionImageView.sd_setImage(with: actionImageURL, placeholderImage: nil)
-        firstNameLabel.text = firstName
+        lastNameLabel.text = lastName
         positionLabel.text = position.shortDescription
         hometownLabel.text = hometown
         schoolLabel.text = school

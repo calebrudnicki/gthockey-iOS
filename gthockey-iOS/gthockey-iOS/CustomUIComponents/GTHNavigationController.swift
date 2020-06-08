@@ -48,19 +48,10 @@ extension GTHNavigationController: UINavigationControllerDelegate {
         } else if viewController as? ShopCollectionViewController != nil {
             navigationBar.topItem?.title = "Shop"
         }
-
-//        if let viewController = viewController as? TestViewController {
-//            viewController.navigationItem.title = viewController.server?.name
-////            viewController.navigationItem.largeTitleDisplayMode = .never
-//        } else if let viewController = viewController as? ResultDetailViewController {
-//            viewController.navigationItem.title = viewController.test?.server
-////            viewController.navigationItem.largeTitleDisplayMode = .never
-//        }
     }
     
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
-
         if viewController as? MoreTableViewController != nil {
             navigationBar.topItem?.title = "More"
         }

@@ -54,6 +54,14 @@ class CoachingStaffCollectionViewController: GTHCollectionViewController, UIColl
         return cell
     }
     
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedCell = collectionView.cellForItem(at: indexPath) as? GTHCardCollectionViewCell
+        selectedCellImageViewSnapshot = selectedCell?.imageView.snapshotView(afterScreenUpdates: false)
+        presentDetailViewController(for: indexPath, with: GTHCellData(image: (selectedCell?.imageView.image)!,
+                                                                      primaryLabel: (selectedCell?.primaryLabel.text)!,
+                                                                      secondaryLabel: (selectedCell?.secondaryLabel.text)!))
+    }
+    
     // MARK: UICollectionViewLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -67,14 +75,14 @@ class CoachingStaffCollectionViewController: GTHCollectionViewController, UIColl
     
     // MARK: Private Functions
     
-//    private func presentDetailViewController(for indexPath: IndexPath, with data: GTHCellData) {
-//        let newsDetailViewController = NewsDetailViewController()
-//        newsDetailViewController.transitioningDelegate = self
-//        newsDetailViewController.modalPresentationStyle = .overFullScreen
-//        newsDetailViewController.modalPresentationCapturesStatusBarAppearance = true
-//        newsDetailViewController.data = data
-//        newsDetailViewController.set(with: newsArray[indexPath.row])
-//        present(newsDetailViewController, animated: true)
-//    }
+    private func presentDetailViewController(for indexPath: IndexPath, with data: GTHCellData) {
+        let coachingStaffDetailViewController = CoachingStaffDetailViewController()
+        coachingStaffDetailViewController.transitioningDelegate = self
+        coachingStaffDetailViewController.modalPresentationStyle = .overFullScreen
+        coachingStaffDetailViewController.modalPresentationCapturesStatusBarAppearance = true
+        coachingStaffDetailViewController.data = data
+        coachingStaffDetailViewController.set(with: coachArray[indexPath.row])
+        present(coachingStaffDetailViewController, animated: true)
+    }
 
 }

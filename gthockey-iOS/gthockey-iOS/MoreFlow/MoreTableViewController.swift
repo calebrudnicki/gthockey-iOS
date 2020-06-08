@@ -19,7 +19,9 @@ class MoreTableViewController: UITableViewController {
         
         tableView.backgroundColor = UIColor.gthBackgroundColor
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
-        tableView.tableFooterView = UIView()
+        let moreTableViewFooter = MoreTableViewFooter()
+        tableView.tableFooterView = moreTableViewFooter
+        moreTableViewFooter.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 32.0)
         
         fetchSeasons()
     }
@@ -39,7 +41,7 @@ class MoreTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -54,13 +56,15 @@ class MoreTableViewController: UITableViewController {
             return 3
         case 4:
             return 3
+        case 5:
+            return 1
         default: break
         }
         return 0
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         cell.textLabel?.font = UIFont.DINAlternate.bold.font(size: 20.0)
         cell.backgroundColor = UIColor.gthBackgroundColor
         cell.accessoryType = .disclosureIndicator
@@ -98,6 +102,8 @@ class MoreTableViewController: UITableViewController {
                 cell.textLabel?.text = "Ramblin' Reck"
             default: break
             }
+        case 5:
+            cell.textLabel?.text = "Go to Admin Menu"
         default: break
         }
         return cell
@@ -115,6 +121,8 @@ class MoreTableViewController: UITableViewController {
             return "Social Media"
         case 4:
             return "App Icon"
+        case 5:
+            return "Admin"
         default: break
         }
         
@@ -186,6 +194,10 @@ class MoreTableViewController: UITableViewController {
                     self.tableView.reloadSections(IndexSet(integer: 2), with: UITableView.RowAnimation.none)
                 }
             })
+        case 5:
+            let adminTableViewController = AdminTableViewController()
+            adminTableViewController.navigationItem.title = "Admin"
+            navigationController?.pushViewController(adminTableViewController, animated: true)
         default: break
         }
     }

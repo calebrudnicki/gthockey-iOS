@@ -83,7 +83,7 @@ class RosterCollectionViewCell: GTHCardPlusCollectionViewCell {
 
     public func set(with player: Player) {
         imageView.sd_setImage(with: player.headshotURL, placeholderImage: nil)
-        primaryLabel.text = player.lastName
+        primaryLabel.text = player.position == .Manager ? player.firstName : player.lastName
         secondaryLabel.text = player.position == .Manager ? "" : "#\(player.number)"
     }
 

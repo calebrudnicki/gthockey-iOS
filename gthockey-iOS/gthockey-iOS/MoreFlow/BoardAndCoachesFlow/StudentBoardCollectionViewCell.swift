@@ -16,6 +16,7 @@ class StudentBoardCollectionViewCell: GTHCardPlusCollectionViewCell {
         let descriptionTextView = HTMLTextView()
         descriptionTextView.font = UIFont.DINAlternate.bold.font(size: 16.0)
         descriptionTextView.textContainer.lineBreakMode = .byTruncatingTail
+        descriptionTextView.isUserInteractionEnabled = false
         return descriptionTextView
     }()
 
@@ -36,11 +37,11 @@ class StudentBoardCollectionViewCell: GTHCardPlusCollectionViewCell {
         shadowView.translatesAutoresizingMaskIntoConstraints = false
         
         primaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
+        primaryLabel.textColor = UIColor.boardMemberCellNameColor
         primaryLabel.numberOfLines = 1
         primaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
         secondaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
-        secondaryLabel.textColor = UIColor.boardMemberCellNameColor
         secondaryLabel.numberOfLines = 1
         secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
