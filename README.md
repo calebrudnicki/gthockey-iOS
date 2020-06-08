@@ -42,4 +42,4 @@ Zach Maciejewski '18 | @zmaciejewski
 Dylan Mace '23 | @dmace2
 
 ---
-📍Made in ATL
+📍 Made in ATL | 🎶 🍑 🦅
