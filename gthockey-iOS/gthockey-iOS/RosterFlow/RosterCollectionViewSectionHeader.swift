@@ -16,6 +16,8 @@ class RosterCollectionViewSectionHeader: UICollectionReusableView {
         
     // MARK: Properties
     
+    public var leadingLayoutMargin: CGFloat = 24.0
+    
     public var delegate: RosterCollectionViewSectionHeaderDelegate?
 
     private var playerArray: [Player] = []
@@ -32,7 +34,7 @@ class RosterCollectionViewSectionHeader: UICollectionReusableView {
     private let positionCollectionView: UICollectionView = {
         let rosterLayout = UICollectionViewFlowLayout()
         rosterLayout.scrollDirection = .horizontal
-        rosterLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 24.0, bottom: 24.0, right: 24.0)
+        rosterLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 24.0, bottom: 0.0, right: 24.0)
         let positionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: rosterLayout)
         positionCollectionView.showsHorizontalScrollIndicator = false
         positionCollectionView.backgroundColor = UIColor.gthBackgroundColor
@@ -59,9 +61,9 @@ class RosterCollectionViewSectionHeader: UICollectionReusableView {
         super.updateConstraints()
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 24.0),
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24.0),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24.0),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: leadingLayoutMargin),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingLayoutMargin),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -leadingLayoutMargin),
         ])
         
         NSLayoutConstraint.activate([
@@ -130,7 +132,7 @@ extension RosterCollectionViewSectionHeader: UICollectionViewDelegateFlowLayout 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 24.0
+        return leadingLayoutMargin
     }
     
 }

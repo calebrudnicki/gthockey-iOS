@@ -14,8 +14,8 @@ extension UIColor {
     static let techGold = UIColor(red: 213/255, green: 193/255, blue: 104/255, alpha: 1.0)
     static let techCream = UIColor(red: 225/255, green: 212/255, blue: 159/255, alpha: 1.0)
 
-    static let winGreen = UIColor(red: 34/255, green: 139/255, blue: 34/255, alpha: 1.0)
-    static let lossRed = UIColor(red: 178/255, green: 34/255, blue: 34/255, alpha: 1.0)
+//    static let winGreen = UIColor(red: 34/255, green: 139/255, blue: 34/255, alpha: 1.0)
+//    static let lossRed = UIColor(red: 178/255, green: 34/255, blue: 34/255, alpha: 1.0)
 
     static let gthBackgroundColor = UIColor.init(named: "GTHBackgroundColor")
     static let gthNavigationControllerTintColor = UIColor.init(named: "GTHNavigationControllerTintColor")
@@ -56,5 +56,10 @@ extension UIColor {
     
     static let boardMemberCellNameColor = UIColor.init(named: "BoardMemberCellNameColor")
     static let coachingStaffCellNameColor = UIColor.init(named: "CoachingStaffCellNameColor")
+    
+    static let moreCellBackgroundColor = UIColor.init(named: "MoreCellBackgroundColor")
+    static let moreCellTitleColor = UIColor.init(named: "MoreCellTitleColor")
+    static let moreHeaderBackgroundColor = UIColor.init(named: "MoreHeaderBackgroundColor")
+    static let moreHeaderTitleColor = UIColor.init(named: "MoreHeaderTitleColor")
     
 }

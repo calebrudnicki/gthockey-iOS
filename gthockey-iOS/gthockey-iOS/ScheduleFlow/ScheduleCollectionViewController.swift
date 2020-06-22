@@ -135,6 +135,7 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "ScheduleCollectionViewSectionHeader", for: indexPath) as! ScheduleCollectionViewSectionHeader
+        header.leadingLayoutMargin = systemMinimumLayoutMargins.leading
         
         if completedGameArray.count == 0 {
             header.set(with: "Upcoming")
@@ -160,12 +161,12 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
     // MARK: UICollectionViewLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = UIScreen.main.bounds.width - 48.0
+        let cellWidth = UIScreen.main.bounds.width - (systemMinimumLayoutMargins.leading * 2)
         return CGSize(width: cellWidth, height: cellWidth * 0.35)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 24.0
+        return systemMinimumLayoutMargins.leading
     }
 
 }

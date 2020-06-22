@@ -54,7 +54,7 @@ class ShopCollectionViewController: GTHCollectionViewController, UICollectionVie
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.fetchApparelDetails(with: self.apparelArray[indexPath.row].getID(), completion: { (apparelRestrictedItems, apparelCustomItems) in
+        self.fetchApparelDetails(with: self.apparelArray[indexPath.row].id, completion: { (apparelRestrictedItems, apparelCustomItems) in
             self.selectedCell = collectionView.cellForItem(at: indexPath) as? GTHCardCollectionViewCell
             self.selectedCellImageViewSnapshot = self.selectedCell?.imageView.snapshotView(afterScreenUpdates: false)
             self.presentDetailViewController(for: indexPath,
@@ -69,17 +69,16 @@ class ShopCollectionViewController: GTHCollectionViewController, UICollectionVie
     // MARK: UICollectionViewLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = UIScreen.main.bounds.width - 48.0
+        let cellWidth = UIScreen.main.bounds.width - (systemMinimumLayoutMargins.leading * 2)
         return CGSize(width: cellWidth, height: cellWidth * 1.03)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 24.0
+        return systemMinimumLayoutMargins.leading
     }
-
     // MARK: Private Functions
 
-    private func presentDetailViewController(for indexPath: IndexPath, with data: GTHCellData, restrictedOptions: [ApparelRestrictedItem], customOptions: [ApparelCustomItem] ) {
+    private func presentDetailViewController(for indexPath: IndexPath, with data: GTHCellData, restrictedOptions: [ApparelRestrictedItem], customOptions: [ApparelCustomItem]) {
         let shopDetailViewController = ShopDetailViewController()
         shopDetailViewController.transitioningDelegate = self
         shopDetailViewController.modalPresentationStyle = .overFullScreen

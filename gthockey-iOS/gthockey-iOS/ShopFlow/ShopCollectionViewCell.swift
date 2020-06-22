@@ -78,9 +78,9 @@ class ShopCollectionViewCell: GTHCardCollectionViewCell {
     // MARK: Setter
 
     public func set(with apparel: Apparel) {
-        imageView.sd_setImage(with: apparel.getImageURL(), placeholderImage: nil)
-        primaryLabel.text = apparel.getName()
-        secondaryLabel.text = apparel.getPriceString()
+        imageView.sd_setImage(with: apparel.imageURL, placeholderImage: nil)
+        primaryLabel.text = apparel.name
+        secondaryLabel.text = "$" + String(format: "%.2f", apparel.price)
     }
 
 }

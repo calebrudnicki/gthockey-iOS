@@ -55,6 +55,7 @@ class RosterCollectionViewController: GTHCollectionViewController, UICollectionV
 
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "RosterCollectionViewSectionHeader", for: indexPath) as! RosterCollectionViewSectionHeader
+        header.leadingLayoutMargin = systemMinimumLayoutMargins.leading
         header.delegate = self
         
         switch indexPath.section {

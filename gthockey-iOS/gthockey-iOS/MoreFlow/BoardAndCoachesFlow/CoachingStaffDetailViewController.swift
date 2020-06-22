@@ -98,7 +98,7 @@ class CoachingStaffDetailViewController: GTHDetailViewController {
             emailButton.topAnchor.constraint(equalTo: bodyTextView.bottomAnchor, constant: 24.0),
             emailButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12.0),
             emailButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0),
-            emailButton.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor, constant: -32.0)
+            emailButton.bottomAnchor.constraint(lessThanOrEqualTo: scrollView.bottomAnchor, constant: -32.0)
         ])
 
         NSLayoutConstraint.activate([

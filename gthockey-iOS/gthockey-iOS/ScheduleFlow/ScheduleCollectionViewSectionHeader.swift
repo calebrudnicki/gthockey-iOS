@@ -11,6 +11,8 @@ import UIKit
 class ScheduleCollectionViewSectionHeader: UICollectionReusableView {
     
     // MARK: Properties
+    
+    public var leadingLayoutMargin: CGFloat = 24.0
 
     private let titleLabel: UILabel = {
         let titleLabel = UILabel()
@@ -36,7 +38,9 @@ class ScheduleCollectionViewSectionHeader: UICollectionReusableView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
+        backgroundColor = UIColor.gthBackgroundColor
+                
         addSubviews([titleLabel, recordLabel])
         updateConstraints()
     }
@@ -49,14 +53,14 @@ class ScheduleCollectionViewSectionHeader: UICollectionReusableView {
         super.updateConstraints()
 
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24.0),
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: leadingLayoutMargin),
             titleLabel.trailingAnchor.constraint(equalTo: recordLabel.leadingAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0)
         ])
         
         NSLayoutConstraint.activate([
-            recordLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24.0),
-            recordLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
+            recordLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -leadingLayoutMargin),
+            recordLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8.0)
         ])
     }
 

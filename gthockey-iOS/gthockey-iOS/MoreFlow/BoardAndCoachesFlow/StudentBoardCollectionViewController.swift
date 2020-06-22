@@ -67,12 +67,12 @@ class StudentBoardCollectionViewController: GTHCollectionViewController, UIColle
     // MARK: UICollectionViewLayout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = UIScreen.main.bounds.width - 48.0
+        let cellWidth = UIScreen.main.bounds.width - (systemMinimumLayoutMargins.leading * 2)
         return CGSize(width: cellWidth, height: 152.0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 24.0
+        return systemMinimumLayoutMargins.leading
     }
     
     // MARK: Private Functions

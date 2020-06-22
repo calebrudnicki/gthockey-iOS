@@ -14,6 +14,37 @@ class AppIconManager {
     // MARK: Init
 
     init() {}
+    
+    // MARK: Public Variables
+    
+    /// Returns the appropriate logo for the launch screen based on the user's app icon choice
+    public var launchLogo: String {
+        if let iconDescription = UserDefaults.standard.value(forKey: "appIcon") as? String {
+            switch iconDescription {
+            case "Buzz": return "BuzzOnlyLogo"
+            case "HeritageT": return "HeritageTOnlyLogo"
+            case "RamblinReck": return "WreckOnlyLogo"
+            default: break
+            }
+        }
+        
+        return "BuzzOnlyLogo"
+    }
+    
+    /// Returns the appropriate background color for the launch screen based on the user's app icon choice
+    public var launchBackground: UIColor {
+        if let iconDescription = UserDefaults.standard.value(forKey: "appIcon") as? String {
+            switch iconDescription {
+            case "Buzz": return .techNavy
+            case "HeritageT": return .techCream
+            case "RamblinReck": return .techGold
+            default: break
+            }
+        }
+        
+        return .techNavy
+    }
+    
 
     // MARK: Public Functions
 

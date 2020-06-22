@@ -6,7 +6,6 @@ target 'gthockey-iOS' do
   use_frameworks!
 
   # Pods for gthockey-iOS
-  pod 'SwiftLint'
   pod 'RevealingSplashView'
   pod 'SwiftyJSON'
   pod 'Alamofire'
@@ -14,14 +13,12 @@ target 'gthockey-iOS' do
   pod 'SDWebImage', '~> 5.0'
   pod 'IQKeyboardManagerSwift'
   pod 'AppRating'
-  pod 'BTNavigationDropdownMenu'
+  pod 'TOPasscodeViewController'
 
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
   pod 'Firebase/Firestore'
   pod 'Firebase/Messaging'
-
-#  pod 'Stripe', '15.0.0'
 
 end

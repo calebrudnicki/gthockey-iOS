@@ -38,6 +38,17 @@ class ShopDetailViewController: GTHDetailViewController {
     ////    private let restrictedOptionsView = ShopRestrictedOptionsView()
     ////    private let customOptionsView = ShopCustomOptionsView()
     
+    private let titleStackView: UIStackView = {
+        let titleStackView = UIStackView()
+        titleStackView.axis = .horizontal
+        titleStackView.distribution = .equalCentering
+        titleStackView.alignment = .bottom
+        titleStackView.spacing = 4.0
+        titleStackView.translatesAutoresizingMaskIntoConstraints = false
+        return titleStackView
+    }()
+    
+    
     private let descriptionLabel = HTMLTextView(frame: .zero)
     
     private let unavailableLabel: HTMLTextView = {
@@ -56,6 +67,7 @@ class ShopDetailViewController: GTHDetailViewController {
         imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
     
+        secondaryLabel.numberOfLines = 1
         secondaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
         secondaryLabel.textColor = UIColor.shopDetailPriceColor
         secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -66,13 +78,15 @@ class ShopDetailViewController: GTHDetailViewController {
         primaryLabel.translatesAutoresizingMaskIntoConstraints = false
         
         closeButton.setImage(UIImage(systemName: "xmark.circle.fill",
-                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 32.0)),
+                                     withConfiguration: UIImage.SymbolConfiguration(pointSize: 24.0)),
                              for: .normal)
         closeButton.tintColor = .label
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         
+        titleStackView.addArrangedSubviews([primaryLabel, secondaryLabel])
+        
         view.addSubview(scrollView)
-        scrollView.addSubviews([imageView, primaryLabel, secondaryLabel, descriptionLabel, unavailableLabel, closeButton])
+        scrollView.addSubviews([imageView, titleStackView, descriptionLabel, unavailableLabel, closeButton])
         
         updateViewConstraints()
     }
@@ -95,19 +109,13 @@ class ShopDetailViewController: GTHDetailViewController {
         ])
         
         NSLayoutConstraint.activate([
-            primaryLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16.0),
-            primaryLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12.0),
-            primaryLabel.trailingAnchor.constraint(lessThanOrEqualTo: secondaryLabel.leadingAnchor, constant: -12.0)
+            titleStackView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16.0),
+            titleStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12.0),
+            titleStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0)
         ])
         
         NSLayoutConstraint.activate([
-            secondaryLabel.topAnchor.constraint(greaterThanOrEqualTo: imageView.bottomAnchor, constant: 16.0),
-            secondaryLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0),
-            secondaryLabel.bottomAnchor.constraint(equalTo: primaryLabel.bottomAnchor)
-        ])
-        
-        NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: primaryLabel.bottomAnchor, constant: 12.0),
+            descriptionLabel.topAnchor.constraint(equalTo: titleStackView.bottomAnchor, constant: 12.0),
             descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12.0),
             descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0)
         ])
@@ -120,7 +128,7 @@ class ShopDetailViewController: GTHDetailViewController {
         ])
 
         NSLayoutConstraint.activate([
-            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 32.0),
+            closeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 24.0),
             closeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -12.0)
         ])
     }
@@ -128,7 +136,7 @@ class ShopDetailViewController: GTHDetailViewController {
     // MARK: Setter
 
     public func set(with apparel: Apparel, _ restrictedOptions: [ApparelRestrictedItem], _ customOptions: [ApparelCustomItem]) {
-        descriptionLabel.setText(with: apparel.getDescription())
+        descriptionLabel.setText(with: apparel.description)
         
         // MARK: Uncomment for shop
         //        self.restrictedOptions = restrictedOptions
@@ -152,96 +160,96 @@ class ShopDetailViewController: GTHDetailViewController {
     
     // MARK: Action
 
-    @objc private func addToCartButtonTapped() {
+//    @objc private func addToCartButtonTapped() {
 //        addToCartButton.isLoading = true
-        var price = apparelItem?.getPrice()
-        var firestoreDict: [String: Any] = ["id": (apparelItem?.getID())!,
-                                            "name": (apparelItem?.getName())!,
-                                            "imageURL": (apparelItem?.getImageURL())?.description]
-        var attributesDict: [String: Any] = [:]
-        
-        guard let restrictedOptions = restrictedOptions else { return }
-        for restrictedOption in restrictedOptions {
-            //            guard let value = restrictedOption.getValue(), value == "" else { return }
-            let key = restrictedOption.getDisplayName()
-            attributesDict[key.lowercased()] = restrictedOption.getValue()
-        }
-        
-        guard let customOptions = customOptions else { return }
-        for customOption in customOptions {
-            let key = customOption.getDisplayName()
-            if customOption.getValue() != nil && customOption.getValue() != "" {
-                price = (price ?? 0.0) + customOption.getExtraCost()
-                attributesDict[key.lowercased()] = customOption.getValue()
-            }
-        }
-        
-        firestoreDict["price"] = price
-        firestoreDict["attributes"] = attributesDict
-        
-        CartManager().add(cartDict: firestoreDict, completion: { result in
-            if result {
-                self.dismiss(animated: true, completion: nil)
-            } else {
-                let alert = UIAlertController(title: "Add to Cart Failed",
-                                              message: nil,
-                                              preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default))
-                self.present(alert, animated: true, completion: nil)
-            }
-        })
-    }
+//        var price = apparelItem?.price
+//        var firestoreDict: [String: Any] = ["id": (apparelItem?.id)!,
+//                                            "name": (apparelItem?.name)!,
+//                                            "imageURL": (apparelItem?.imageURL)?.description]
+//        var attributesDict: [String: Any] = [:]
+//        
+//        guard let restrictedOptions = restrictedOptions else { return }
+//        for restrictedOption in restrictedOptions {
+//            //            guard let value = restrictedOption.getValue(), value == "" else { return }
+//            let key = restrictedOption.displayName
+//            attributesDict[key.lowercased()] = restrictedOption.value
+//        }
+//        
+//        guard let customOptions = customOptions else { return }
+//        for customOption in customOptions {
+//            let key = customOption.displayName
+//            if customOption.value != nil && customOption.value != "" {
+//                price = (price ?? 0.0) + customOption.extraCost
+//                attributesDict[key.lowercased()] = customOption.value
+//            }
+//        }
+//        
+//        firestoreDict["price"] = price
+//        firestoreDict["attributes"] = attributesDict
+//        
+//        CartManager().add(cartDict: firestoreDict, completion: { result in
+//            if result {
+//                self.dismiss(animated: true, completion: nil)
+//            } else {
+//                let alert = UIAlertController(title: "Add to Cart Failed",
+//                                              message: nil,
+//                                              preferredStyle: .alert)
+//                alert.addAction(UIAlertAction(title: "Ok", style: .default))
+//                self.present(alert, animated: true, completion: nil)
+//            }
+//        })
+//    }
     
     // MARK: Helper Functions
     
-    private func shouldEnableAddToCartButton() -> Bool {
-        guard let restrictedOptions = restrictedOptions else { return false }
-        for restrictedOption in restrictedOptions {
-            if restrictedOption.getValue() == nil || restrictedOption.getValue() == "" {
-                return false
-            }
-        }
-        
-        guard let customOptions = customOptions else { return false }
-        for customOption in customOptions {
-            if customOption.getIsRequired() && (customOption.getValue() == nil || customOption.getValue() == "") {
-                return false
-            }
-        }
-        
-        return true
-    }
+//    private func shouldEnableAddToCartButton() -> Bool {
+//        guard let restrictedOptions = restrictedOptions else { return false }
+//        for restrictedOption in restrictedOptions {
+//            if restrictedOption.value == nil || restrictedOption.value == "" {
+//                return false
+//            }
+//        }
+//        
+//        guard let customOptions = customOptions else { return false }
+//        for customOption in customOptions {
+//            if customOption.isRequired && (customOption.value == nil || customOption.value == "") {
+//                return false
+//            }
+//        }
+//        
+//        return true
+//    }
     
 }
 
-extension ShopDetailViewController: ShopRestrictedOptionsViewDelegate {
-    
-    func didSelect(option: String, for category: String) {
-        guard let restrictedOptions = restrictedOptions else { return }
-        
-        for restrictedOption in restrictedOptions {
-            if restrictedOption.getDisplayName() == category {
-                restrictedOption.setValue(with: option)
-            }
-        }
-        
+//extension ShopDetailViewController: ShopRestrictedOptionsViewDelegate {
+//
+//    func didSelect(option: String, for category: String) {
+//        guard let restrictedOptions = restrictedOptions else { return }
+//
+//        for restrictedOption in restrictedOptions {
+//            if restrictedOption.displayName == category {
+//                restrictedOption.setValue(with: option)
+//            }
+//        }
+//
 //        addToCartButton.isEnabled = shouldEnableAddToCartButton()
-    }
-    
-}
+//    }
+//
+//}
 
-extension ShopDetailViewController: ShopCustomOptionsViewDelegate {
-    
-    func didEnter(option: String, for category: String) {
-        guard let customOptions = customOptions else { return }
-        
-        for customOption in customOptions {
-            if customOption.getDisplayName() == category {
-                customOption.setValue(with: option)
-            }
-        }
-        
+//extension ShopDetailViewController: ShopCustomOptionsViewDelegate {
+//
+//    func didEnter(option: String, for category: String) {
+//        guard let customOptions = customOptions else { return }
+//
+//        for customOption in customOptions {
+//            if customOption.displayName == category {
+//                customOption.setValue(with: option)
+//            }
+//        }
+//
 //        addToCartButton.isEnabled = shouldEnableAddToCartButton()
-    }
-    
-}
+//    }
+//
+//}

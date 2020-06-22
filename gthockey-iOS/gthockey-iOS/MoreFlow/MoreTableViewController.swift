@@ -7,21 +7,28 @@
 //
 
 import UIKit
+//import FirebaseAuth
+import TOPasscodeViewController
 
 class MoreTableViewController: UITableViewController {
     
     // MARK: Properties
     
     var seasonArray: [Season] = []
+    
+    private let appIconManager = AppIconManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.backgroundColor = UIColor.gthBackgroundColor
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")
+        
         let moreTableViewFooter = MoreTableViewFooter()
         tableView.tableFooterView = moreTableViewFooter
         moreTableViewFooter.frame = CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: 32.0)
+        
+        self.tableView.sectionHeaderHeight = 48
         
         fetchSeasons()
     }
@@ -64,11 +71,14 @@ class MoreTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        cell.textLabel?.font = UIFont.DINAlternate.bold.font(size: 20.0)
-        cell.backgroundColor = UIColor.gthBackgroundColor
-        cell.accessoryType = .disclosureIndicator
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath) 
+        cell.textLabel?.font = UIFont.DINAlternate.bold.font(size: 16.0)
+        cell.backgroundColor = UIColor.moreCellBackgroundColor
+        cell.textLabel?.textColor = UIColor.moreCellTitleColor
+        cell.imageView?.image = nil
+        cell.accessoryType = .none
+        cell.tintColor = UIColor.moreHeaderTitleColor
+
         switch indexPath.section {
         case 0:
             cell.textLabel?.text = seasonArray[indexPath.row].name
@@ -96,10 +106,16 @@ class MoreTableViewController: UITableViewController {
             switch indexPath.row {
             case 0:
                 cell.textLabel?.text = "Buzz"
+                cell.imageView?.image = UIImage(named: "Buzz")
+                cell.accessoryType = appIconManager.isDefaultIcon(.Buzz) ? .checkmark : .none
             case 1:
                 cell.textLabel?.text = "Heritage T"
+                cell.imageView?.image = UIImage(named: "HeritageT")
+                cell.accessoryType = appIconManager.isDefaultIcon(.HeritageT) ? .checkmark : .none
             case 2:
                 cell.textLabel?.text = "Ramblin' Reck"
+                cell.imageView?.image = UIImage(named: "RamblinReck")
+                cell.accessoryType = appIconManager.isDefaultIcon(.RamblinReck) ? .checkmark : .none
             default: break
             }
         case 5:
@@ -128,6 +144,29 @@ class MoreTableViewController: UITableViewController {
         
         return ""
     }
+
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let moreTableViewSectionHeader = MoreTableViewSectionHeader()
+        moreTableViewSectionHeader.leadingLayoutMargin = systemMinimumLayoutMargins.leading
+
+        switch section {
+        case 0:
+            moreTableViewSectionHeader.set(with: "All Seasons")
+        case 1:
+            moreTableViewSectionHeader.set(with: "Front Office")
+        case 2:
+            moreTableViewSectionHeader.set(with: "Contact")
+        case 3:
+            moreTableViewSectionHeader.set(with: "Social Media")
+        case 4:
+            moreTableViewSectionHeader.set(with: "App Icon")
+        case 5:
+            moreTableViewSectionHeader.set(with: "Admin")
+        default: break
+        }
+
+        return moreTableViewSectionHeader
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -135,14 +174,15 @@ class MoreTableViewController: UITableViewController {
         switch indexPath.section {
         case 0:
             let scheduleLayout = UICollectionViewFlowLayout()
-            scheduleLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 24.0, right: 0.0)
+            scheduleLayout.sectionHeadersPinToVisibleBounds = true
+            scheduleLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 24.0, right: 0.0)
             let scheduleCollectionViewController = ScheduleCollectionViewController(collectionViewLayout: scheduleLayout)
             scheduleCollectionViewController.seasonID = seasonArray[indexPath.row].id
             scheduleCollectionViewController.seasonString = seasonArray[indexPath.row].name
             navigationController?.pushViewController(scheduleCollectionViewController, animated: true)
         case 1:
             let boardAndCoachesLayout = UICollectionViewFlowLayout()
-            boardAndCoachesLayout.sectionInset = UIEdgeInsets(top: 24.0, left: 0.0, bottom: 24.0, right: 0.0)
+            boardAndCoachesLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 24.0, right: 0.0)
             
             switch indexPath.row {
             case 0:
@@ -191,13 +231,13 @@ class MoreTableViewController: UITableViewController {
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 } else {
-                    self.tableView.reloadSections(IndexSet(integer: 2), with: UITableView.RowAnimation.none)
+                    self.tableView.reloadSections(IndexSet(integer: 4), with: UITableView.RowAnimation.none)
                 }
             })
         case 5:
-            let adminTableViewController = AdminTableViewController()
-            adminTableViewController.navigationItem.title = "Admin"
-            navigationController?.pushViewController(adminTableViewController, animated: true)
+            let passcodeViewController = TOPasscodeViewController(style: .opaqueDark, passcodeType: .fourDigits)
+            passcodeViewController.delegate = self
+            present(passcodeViewController, animated: true, completion: nil)
         default: break
         }
     }
@@ -214,4 +254,22 @@ class MoreTableViewController: UITableViewController {
         }
     }
 
+}
+
+extension MoreTableViewController: TOPasscodeViewControllerDelegate {
+    
+    func didTapCancel(in passcodeViewController: TOPasscodeViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func passcodeViewController(_ passcodeViewController: TOPasscodeViewController, isCorrectCode code: String) -> Bool {
+        if code == "1973"{
+            let adminTableViewController = AdminTableViewController()
+            adminTableViewController.navigationItem.title = "Admin"
+            navigationController?.pushViewController(adminTableViewController, animated: true)
+            return true
+        }
+        return false
+    }
+    
 }
