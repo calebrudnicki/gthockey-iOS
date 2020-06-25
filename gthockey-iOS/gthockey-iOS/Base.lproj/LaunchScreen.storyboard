@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,20 +15,7 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BuzzOnlyLogo" translatesAutoresizingMaskIntoConstraints="NO" id="6EO-eK-W4p">
-                                <rect key="frame" x="125.66666666666669" y="344" width="124" height="124"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="124" id="ER6-C1-bLQ"/>
-                                    <constraint firstAttribute="height" constant="124" id="YJ2-ke-UxC"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" red="0.1469662488" green="0.18444180490000001" blue="0.33795866369999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="6EO-eK-W4p" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ahx-5O-2BN"/>
-                            <constraint firstItem="6EO-eK-W4p" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Rk8-wG-UxS"/>
-                        </constraints>
+                        <color key="backgroundColor" name="GTHBackgroundColor"/>
                         <viewLayoutGuide key="safeArea" id="UES-S7-Ldv"/>
                     </view>
                 </viewController>
@@ -38,6 +25,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BuzzOnlyLogo" width="400" height="400"/>
+        <namedColor name="GTHBackgroundColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

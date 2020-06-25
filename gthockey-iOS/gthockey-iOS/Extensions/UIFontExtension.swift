@@ -19,5 +19,14 @@ extension UIFont {
             return UIFont(name: self.rawValue, size: size)!
         }
     }
+    
+    public enum DINAlternate: String {
+
+        case bold = "DINAlternate-Bold"
+
+        public func font(size: CGFloat) -> UIFont {
+            return UIFont(name: self.rawValue, size: size)!
+        }
+    }
 
 }

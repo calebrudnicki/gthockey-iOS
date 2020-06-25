@@ -8,46 +8,44 @@
 import UIKit
 import SDWebImage
 
-protocol ShopCollectionViewCellDelegate: CardCollectionViewCellDelegate {}
-
-class ShopCollectionViewCell: CardCollectionViewCell {
-
-    // MARK: Properties
-
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = .gray
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
-
-    private let titleLabel: UILabel = {
-        let titleLabel = UILabel()
-        titleLabel.font = UIFont(name: "Helvetica Neue", size: 24.0)
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.numberOfLines = 1
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.sizeToFit()
-        return titleLabel
-    }()
-
-    private let priceLabel: UILabel = {
-        let priceLabel = UILabel()
-        priceLabel.font = UIFont(name: "HelveticaNeue-Light", size: 20.0)
-        priceLabel.adjustsFontSizeToFitWidth = true
-        priceLabel.numberOfLines = 1
-        priceLabel.translatesAutoresizingMaskIntoConstraints = false
-        return priceLabel
-    }()
+class ShopCollectionViewCell: GTHCardCollectionViewCell {
 
     // MARK: Init
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        imageView.backgroundColor = .gray
+        imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        primaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
+        primaryLabel.textColor = UIColor.shopCellTitleColor
+        primaryLabel.lineBreakMode = .byTruncatingTail
+        primaryLabel.numberOfLines = 2
+        primaryLabel.translatesAutoresizingMaskIntoConstraints = false
+                
+        secondaryLabel.font = UIFont.DINCondensed.bold.font(size: 24.0)
+        secondaryLabel.textColor = UIColor.shopCellPriceColor
+        secondaryLabel.numberOfLines = 1
+        secondaryLabel.sizeToFit()
+        secondaryLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let view = UIView(frame: contentView.frame)
+        let gradient = CAGradientLayer()
+        gradient.frame = view.frame
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor]
+        gradient.locations = [0.5, 1.0]
+        view.layer.insertSublayer(gradient, at: 0)
+        imageView.addSubview(view)
+        imageView.bringSubviewToFront(view)
+        
+        layer.applySketchShadow(color: .black, alpha: 0.5, x: 0.0, y: 16.0, blur: 16.0, spread: 0.0)
+        contentView.layer.cornerRadius = 14.0
+        contentView.layer.masksToBounds = true
 
-        contentView.addSubviews([imageView, titleLabel, priceLabel])
+        contentView.addSubviews([imageView, primaryLabel, secondaryLabel])
         updateConstraints()
     }
 
@@ -56,34 +54,33 @@ class ShopCollectionViewCell: CardCollectionViewCell {
     }
 
     override func updateConstraints() {
+        super.updateConstraints()
+        
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
 
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 4.0),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4.0),
-            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0)
+            primaryLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8.0),
+            primaryLabel.trailingAnchor.constraint(equalTo: secondaryLabel.leadingAnchor, constant: -4.0),
+            primaryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
         ])
 
         NSLayoutConstraint.activate([
-            priceLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4.0),
-            priceLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 4.0),
-            priceLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4.0),
-            priceLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
+            secondaryLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8.0),
+            secondaryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8.0)
         ])
-
-        super.updateConstraints()
     }
 
     // MARK: Setter
 
     public func set(with apparel: Apparel) {
-        imageView.sd_setImage(with: apparel.getImageURL(), placeholderImage: nil)
-        titleLabel.text = apparel.getName()
-        priceLabel.text = apparel.getPriceString()
+        imageView.sd_setImage(with: apparel.imageURL, placeholderImage: nil)
+        primaryLabel.text = apparel.name
+        secondaryLabel.text = "$" + String(format: "%.2f", apparel.price)
     }
 
 }

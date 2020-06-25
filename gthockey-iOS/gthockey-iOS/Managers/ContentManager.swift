@@ -67,13 +67,18 @@ class ContentManager {
     /**
      Retrieves all games for a particular season from the GT Hockey admin page.
 
-     - Parameter seasonID: An `Int` representation for the season's unique ID value.
+     - Parameter seasonID: An optional `Int` representation for the season's unique ID value. If there is no value, the current schedule will be reached.
      - Parameter completion: The block containing an array of `Game` objects to execute after the get call finishes.
      */
-    public func getSchedule(with seasonID: Int, completion: @escaping ([Game]) -> Void) {
+    public func getSchedule(with seasonID: Int?, completion: @escaping ([Game]) -> Void) {
         var games: [Game] = []
+        var endpoint = "https://gthockey.com/api/games/?fulldata"
 
-        Alamofire.request("https://gthockey.com/api/games/?season=\(seasonID)").validate().responseJSON { responseData in
+        if let seasonID = seasonID {
+            endpoint = endpoint + "&season=\(seasonID)"
+        }
+        
+        Alamofire.request(endpoint).validate().responseJSON { responseData in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -121,7 +126,7 @@ class ContentManager {
         var opponent: Team?
         var rink: Rink?
 
-        Alamofire.request("https://gthockey.com/api/games/\(id)").validate().responseJSON { responseData  in
+        Alamofire.request("https://gthockey.com/api/games/\(id)?fulldata").validate().responseJSON { responseData  in
             switch responseData.result {
             case .success(let value):
                 let jsonResult = JSON(value)
@@ -182,6 +187,52 @@ class ContentManager {
             }
         }
     }
+    
+    /**
+     Retrieves all board members from the GT Hockey admin page.
+
+     - Parameter completion: The block containing an array of `BoardMember` objects to execute after the get call finishes.
+     */
+    public func getBoardMembers(completion: @escaping ([BoardMember]) -> Void) {
+        var boardMembers: [BoardMember] = []
+
+        Alamofire.request("https://gthockey.com/api/board/").validate().responseJSON { responseData  in
+            switch responseData.result {
+            case .success(let value):
+                let jsonResult = JSON(value)
+                for (_, value) in jsonResult {
+                    boardMembers.append(self.makeBoardMemberObject(value: value))
+                }
+                completion(boardMembers)
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    /**
+     Retrieves all coaches from the GT Hockey admin page.
+
+     - Parameter completion: The block containing an array of `Coach` objects to execute after the get call finishes.
+     */
+    public func getCoaches(completion: @escaping ([Coach]) -> Void) {
+        var coaches: [Coach] = []
+
+        Alamofire.request("https://gthockey.com/api/coaches/").validate().responseJSON { responseData  in
+            switch responseData.result {
+            case .success(let value):
+                let jsonResult = JSON(value)
+                for (_, value) in jsonResult {
+                    coaches.append(self.makeCoachObject(value: value))
+                }
+                completion(coaches)
+
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 
     // MARK: Private Functions
 
@@ -196,15 +247,49 @@ class ContentManager {
     }
 
     private func makeGameObject(value: JSON) -> Game {
+        let venue: Venue
+        if let venueString = value["venue"].string {
+            switch venueString {
+            case "H": venue = .Home
+            case "A": venue = .Away
+            case "T": venue = .Tournament
+            default: venue = .Unknown
+            }
+        } else {
+            venue = .Unknown
+        }
+        
+        let result: GameResult
+        if let resultString = value["short_result"].string {
+            switch resultString {
+            case "W": result = .Win
+            case "L": result = .Loss
+            case "T": result = .Tie
+            case "OT": result = .OvertimeLoss
+            default: result = .Unknown
+            }
+        } else {
+            result = .Unknown
+        }
+                
         let game = Game(id: value["id"].int!,
-                        dateTime: value["datetime"].string!.longDate,
-                        opponentName: value["opponent_name"].string!,
-                        rinkName: value["rink_name"].string!,
-                        venue: value["venue"].string!,
-                        isReported: value["is_reported"].bool!,
-                        shortResult: value["short_result"].string!,
-                        gtScore: value["gt_score"].int ?? 0,
-                        opponentScore: value["opp_score"].int ?? 0)
+                        timestamp: (value["date"].string! + " " + value["time"].string!).testDate,
+                        opponent: Team(id: value["opponent"]["id"].int!,
+                                       schoolName: value["opponent"]["school_name"].string!,
+                                       mascotName: value["opponent"]["mascot_name"].string!,
+                                       webURL: URL(string: value["opponent"]["web_url"].string!),
+                                       logoImageURL: URL(string: value["opponent"]["logo"].string!)!,
+                                       backgroundImageURL: (URL(string: value["opponent"]["background"].string ?? "https://prod.gthockey.com/media/teambackgrounds/ACHAZoomed.png"))!),
+                        venue: venue,
+                        rink: Rink(id: value["location"]["id"].int!,
+                                   name: value["location"]["rink_name"].string!,
+                                   mapsURL: URL(string: value["location"]["maps_url"].string!)),
+                        season: Season(id: value["season"]["id"].int!,
+                                       name: value["season"]["name"].string!,
+                                       year: value["season"]["year"].int!),
+                        gtScore: value["score_gt_final"].int,
+                        opponentScore: value["score_opp_final"].int,
+                        shortResult: result)
         return game
     }
 
@@ -216,10 +301,22 @@ class ContentManager {
     }
 
     private func makePlayerObject(value: JSON) -> Player {
+        let position: Position
+        if let positionString = value["position"].string {
+            switch positionString {
+            case "F": position = .Forward
+            case "D": position = .Defense
+            case "G": position = .Goalie
+            default: position = .Manager
+            }
+        } else {
+            position = .Manager
+        }
+        
         let player = Player(id: value["id"].int!,
                             firstName: value["first_name"].string!,
                             lastName: value["last_name"].string!,
-                            position: value["position"].string!,
+                            position: position,
                             number: value["number"].int ?? 0,
                             hometown: value["hometown"].string!,
                             school: value["school"].string!,
@@ -235,18 +332,17 @@ class ContentManager {
         let team = Team(id: value["id"].int!,
                         schoolName: value["school_name"].string!,
                         mascotName: value["mascot_name"].string!,
-                        webURL: URL(string: value["web_url"].string!) ??
-                            URL(string: "http://lynnclubhockey.pointstreaksites.com/view/fightingknights/")!,
-                        imageURL: URL(string: value["logo"].string!) ??
-                            URL(string: "https://prod.gthockey.com/media/teamlogos/EpGmgBUN_400x400.png")!)
+                        webURL: URL(string: value["web_url"].string!)!,
+                        logoImageURL: URL(string: value["logo"].string!)!,
+                        backgroundImageURL: URL(string: value["background"].string ??
+                            "https://prod.gthockey.com/media/teambackgrounds/ACHAZoomed.png")!)
         return team
     }
 
     private func makeRinkObject(value: JSON) -> Rink {
         let rink = Rink(id: value["id"].int ?? 12345,
                         name: value["rink_name"].string ?? "TBD",
-                        mapsURL: URL(string: value["maps_url"].string ??
-                            "@0.00000,0.000000,15z/data=!4m2!3m1!1s0x0:")!)
+                        mapsURL: URL(string: value["maps_url"].string!))
         return rink
     }
 
@@ -286,6 +382,28 @@ class ContentManager {
             arr.append(apparelCustomItem)
         }
         return arr
+    }
+    
+    private func makeBoardMemberObject(value: JSON) -> BoardMember {
+        let boardMember = BoardMember(id: value["id"].int!,
+                                      firstName: value["first_name"].string!,
+                                      lastName: value["last_name"].string!,
+                                      position: value["position"].string!,
+                                      email: value["email"].string!,
+                                      imageURL: URL(string: value["image"].string ?? "https://test.gthockey.com/media/players/caleb.jpg")!,
+                                      description: value["description"].string!)
+        return boardMember
+    }
+    
+    private func makeCoachObject(value: JSON) -> Coach {
+        let coach = Coach(id: value["id"].int!,
+                          firstName: value["first_name"].string!,
+                          lastName: value["last_name"].string!,
+                          position: value["coach_position"].string!,
+                          email: value["email"].string!,
+                          imageURL: URL(string: value["image"].string ?? "https://test.gthockey.com/media/players/caleb.jpg")!,
+                          bio: value["bio"].string!)
+        return coach
     }
 
 }

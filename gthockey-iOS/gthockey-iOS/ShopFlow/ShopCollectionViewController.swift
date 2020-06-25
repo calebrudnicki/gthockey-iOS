@@ -7,21 +7,13 @@
 //
 
 import UIKit
-import FirebaseAuth
-import FirebaseFirestore
 
-// MARK: Under Construction
-
-class ShopCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class ShopCollectionViewController: GTHCollectionViewController, UICollectionViewDelegateFlowLayout {
 
     // MARK: Properties
 
     private var apparelArray: [Apparel] = []
     private var shoppingCart: [[String : Any]] = []
-    private let cellWidth = UIScreen.main.bounds.width * 0.9
-    private let cellHeight = UIScreen.main.bounds.height * 0.3
-    private var shopDetailViewController = ShopDetailViewController()
-    public var delegate: HomeControllerDelegate?
 
     // MARK: Init
 
@@ -33,7 +25,6 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     private func setupCollectionView() {
-        collectionView.backgroundColor = .gthBackgroundColor
         collectionView.register(ShopCollectionViewCell.self, forCellWithReuseIdentifier: "ShopCollectionViewCell")
         collectionView.refreshControl = UIRefreshControl()
         collectionView.refreshControl?.addTarget(self, action: #selector(fetchApparel), for: .valueChanged)
@@ -59,46 +50,48 @@ class ShopCollectionViewController: UICollectionViewController, UICollectionView
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShopCollectionViewCell", for: indexPath) as! ShopCollectionViewCell
         cell.set(with: apparelArray[indexPath.row])
-        cell.delegate = self
         return cell
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.fetchApparelDetails(with: self.apparelArray[indexPath.row].getID(), completion: { (apparelRestrictedItems, apparelCustomItems) in
-            self.shopDetailViewController = ShopDetailViewController()
-            self.shopDetailViewController.set(with: self.apparelArray[indexPath.row], apparelRestrictedItems, apparelCustomItems)
+        self.fetchApparelDetails(with: self.apparelArray[indexPath.row].id, completion: { (apparelRestrictedItems, apparelCustomItems) in
+            self.selectedCell = collectionView.cellForItem(at: indexPath) as? GTHCardCollectionViewCell
+            self.selectedCellImageViewSnapshot = self.selectedCell?.imageView.snapshotView(afterScreenUpdates: false)
+            self.presentDetailViewController(for: indexPath,
+                                             with: GTHCellData(image: (self.selectedCell?.imageView.image)!,
+                                                               primaryLabel: (self.selectedCell?.primaryLabel.text)!,
+                                                               secondaryLabel: (self.selectedCell?.secondaryLabel.text)!),
+                                             restrictedOptions: apparelRestrictedItems,
+                                             customOptions: apparelCustomItems)
         })
     }
 
     // MARK: UICollectionViewLayout
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: cellWidth, height: cellHeight)
+        let cellWidth = UIScreen.main.bounds.width - (systemMinimumLayoutMargins.leading * 2)
+        return CGSize(width: cellWidth, height: cellWidth * 1.03)
     }
-
-    // MARK: Action
-
-    @objc private func menuButtonTapped() {
-        delegate?.handleMenuToggle(forMainMenuOption: nil)
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return systemMinimumLayoutMargins.leading
     }
+    // MARK: Private Functions
 
-    @objc private func cartButtonTapped() {
-        let cartTableViewController = CartTableViewController()
-        present(cartTableViewController, animated: true, completion: nil)
+    private func presentDetailViewController(for indexPath: IndexPath, with data: GTHCellData, restrictedOptions: [ApparelRestrictedItem], customOptions: [ApparelCustomItem]) {
+        let shopDetailViewController = ShopDetailViewController()
+        shopDetailViewController.transitioningDelegate = self
+        shopDetailViewController.modalPresentationStyle = .overFullScreen
+        shopDetailViewController.modalPresentationCapturesStatusBarAppearance = true
+        shopDetailViewController.data = data
+        shopDetailViewController.set(with: apparelArray[indexPath.row], restrictedOptions, customOptions)
+        present(shopDetailViewController, animated: true)
     }
 
     private func fetchApparelDetails(with id: Int, completion: @escaping ([ApparelRestrictedItem], [ApparelCustomItem]) -> Void) {
         ContentManager().getApparel(with: id) { (apparelRestrictedItems, apparelCustomItems) in
             completion(apparelRestrictedItems, apparelCustomItems)
         }
-    }
-
-}
-
-extension ShopCollectionViewController: ShopCollectionViewCellDelegate {
-
-    func didEndCellAnimation() {
-        present(shopDetailViewController, animated: true, completion: nil)
     }
 
 }
