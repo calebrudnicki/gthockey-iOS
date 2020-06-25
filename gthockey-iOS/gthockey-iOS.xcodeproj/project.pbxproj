@@ -249,6 +249,12 @@
 				82A6F842238E1AE0001CA749 /* ShopOptionTextField.swift */,
 				828295A32461ACF40084AE7F /* GTHNavigationController.swift */,
 				828295A52461B5820084AE7F /* GTHTabBarController.swift */,
+				318E278A2479ED100091BA01 /* Animator.swift */,
+				318E27A4247D60D60091BA01 /* GTHCollectionViewController.swift */,
+				318E27A8247D61520091BA01 /* GTHCellData.swift */,
+				31A4E0BE247DD4FC008CCE07 /* GTHDetailViewController.swift */,
+				31A4E0C4247EFE6A008CCE07 /* GTHCardCollectionViewCell.swift */,
+				31A5EB99248429BB00B16A8A /* GTHCardPlusCollectionViewCell.swift */,
 			);
 			path = FinalElements;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 		317EFD0B249FFD790089AC55 /* UnusedCode */ = {
 			isa = PBXGroup;
 			children = (
+				31946DD1248984EE0037E645 /* AdminTableViewController.swift */,
 				822D5497243AA89B00B0776D /* AdminManager.swift */,
 				8206D3DF23CBC15500863B3C /* AdminUsersTableViewController.swift */,
 				8206D3E123CBC6AE00863B3C /* AdminUsersTableViewFooter.swift */,
@@ -272,8 +279,13 @@
 				82F468ED237F4C0E00573EE5 /* CartTableViewController.swift */,
 				82F468EF237F55EC00573EE5 /* CartTableViewCell.swift */,
 				82F468F52380659800573EE5 /* CartTableViewFooter.swift */,
+				82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */,
 				82B3A16E237BB44E00CD8F3D /* ShopRestrictedOptionsView.swift */,
 				82B3A16C237BB44E00CD8F3D /* ShopCustomOptionsView.swift */,
+				82B3A176237BD7CC00CD8F3D /* PillButton.swift */,
+				822D5490243AA89B00B0776D /* PushNotificationManager.swift */,
+				822D5492243AA89B00B0776D /* PushNotificationSender.swift */,
+				822D548E243AA89B00B0776D /* UserManager.swift */,
 				822D5496243AA89B00B0776D /* UserPropertyManager.swift */,
 			);
 			path = UnusedCode;
@@ -285,7 +297,6 @@
 				31A4E0C7247F3C05008CCE07 /* MoreTableViewController.swift */,
 				31857BAF249130580007BA22 /* MoreTableViewSectionHeader.swift */,
 				31946DCF248982150037E645 /* MoreTableViewFooter.swift */,
-				8206D3DC23CBC0E200863B3C /* AdminFlow */,
 				31A5EB88248334F000B16A8A /* BoardAndCoachesFlow */,
 			);
 			path = MoreFlow;
@@ -310,15 +321,6 @@
 				D589E52CCCF8BEB30BF9B372 /* Pods_gthockey_iOS.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		8206D3DC23CBC0E200863B3C /* AdminFlow */ = {
-			isa = PBXGroup;
-			children = (
-				31946DD1248984EE0037E645 /* AdminTableViewController.swift */,
-				82DE670723F0DC59003E13E6 /* NotificationCenterViewController.swift */,
-			);
-			path = AdminFlow;
 			sourceTree = "<group>";
 		};
 		82170D12236FB349005FE89B /* ShopFlow */ = {
@@ -347,11 +349,8 @@
 		822D548D243AA89B00B0776D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				822D548E243AA89B00B0776D /* UserManager.swift */,
 				822D548F243AA89B00B0776D /* ContentManager.swift */,
-				822D5490243AA89B00B0776D /* PushNotificationManager.swift */,
 				822D5491243AA89B00B0776D /* AuthenticationManager.swift */,
-				822D5492243AA89B00B0776D /* PushNotificationSender.swift */,
 				822D5493243AA89B00B0776D /* AppIconManager.swift */,
 			);
 			path = Managers;
@@ -377,13 +376,6 @@
 			children = (
 				317EFD0A249EC5D80089AC55 /* ViewControllers */,
 				317EFD09249EC5BA0089AC55 /* FinalElements */,
-				82B3A176237BD7CC00CD8F3D /* PillButton.swift */,
-				318E278A2479ED100091BA01 /* Animator.swift */,
-				318E27A4247D60D60091BA01 /* GTHCollectionViewController.swift */,
-				318E27A8247D61520091BA01 /* GTHCellData.swift */,
-				31A4E0BE247DD4FC008CCE07 /* GTHDetailViewController.swift */,
-				31A4E0C4247EFE6A008CCE07 /* GTHCardCollectionViewCell.swift */,
-				31A5EB99248429BB00B16A8A /* GTHCardPlusCollectionViewCell.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";

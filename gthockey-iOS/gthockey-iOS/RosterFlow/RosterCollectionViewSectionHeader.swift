@@ -34,7 +34,7 @@ class RosterCollectionViewSectionHeader: UICollectionReusableView {
     private let positionCollectionView: UICollectionView = {
         let rosterLayout = UICollectionViewFlowLayout()
         rosterLayout.scrollDirection = .horizontal
-        rosterLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 24.0, bottom: 0.0, right: 24.0)
+        rosterLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 24.0, bottom: 24.0, right: 24.0)
         let positionCollectionView = UICollectionView(frame: .zero, collectionViewLayout: rosterLayout)
         positionCollectionView.showsHorizontalScrollIndicator = false
         positionCollectionView.backgroundColor = UIColor.gthBackgroundColor
@@ -90,6 +90,10 @@ extension RosterCollectionViewSectionHeader: UICollectionViewDelegate, UICollect
     private func setupCollectionView() {
         positionCollectionView.delegate = self
         positionCollectionView.dataSource = self
+        let rosterLayout = UICollectionViewFlowLayout()
+        rosterLayout.scrollDirection = .horizontal
+        rosterLayout.sectionInset = UIEdgeInsets(top: 0.0, left: leadingLayoutMargin, bottom: leadingLayoutMargin, right: leadingLayoutMargin)
+        positionCollectionView.collectionViewLayout = rosterLayout
         positionCollectionView.register(RosterCollectionViewCell.self, forCellWithReuseIdentifier: "RosterCollectionViewCell")
     }
 

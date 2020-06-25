@@ -16,13 +16,14 @@ final class GTHTabBarController: UITabBarController {
 
     private let newsCollectionViewController: NewsCollectionViewController = {
         let newsLayout = UICollectionViewFlowLayout()
+        newsLayout.sectionInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 24.0, right: 0.0)
         let newsCollectionViewController = NewsCollectionViewController(collectionViewLayout: newsLayout)
         return newsCollectionViewController
     }()
     
     private let scheduleCollectionViewController: ScheduleCollectionViewController = {
         let scheduleLayout = UICollectionViewFlowLayout()
-        scheduleLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 24.0, right: 0.0)
+        scheduleLayout.sectionInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 24.0, right: 0.0)
         scheduleLayout.sectionHeadersPinToVisibleBounds = true
         let scheduleCollectionViewController = ScheduleCollectionViewController(collectionViewLayout: scheduleLayout)
         return scheduleCollectionViewController
@@ -30,14 +31,14 @@ final class GTHTabBarController: UITabBarController {
 
     private let rosterCollectionViewController: RosterCollectionViewController = {
         let rosterLayout = UICollectionViewFlowLayout()
-        rosterLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 24.0, right: 0.0)
+        rosterLayout.sectionInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 24.0, right: 0.0)
         let rosterCollectionViewController = RosterCollectionViewController(collectionViewLayout: rosterLayout)
         return rosterCollectionViewController
     }()
 
     private let shopCollectionViewController: ShopCollectionViewController = {
         let shopLayout = UICollectionViewFlowLayout()
-        shopLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 24.0, right: 0.0)
+        shopLayout.sectionInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 24.0, right: 0.0)
         let shopCollectionViewController = ShopCollectionViewController(collectionViewLayout: shopLayout)
         return shopCollectionViewController
     }()

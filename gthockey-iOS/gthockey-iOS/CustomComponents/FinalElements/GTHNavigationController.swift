@@ -16,27 +16,8 @@ final class GTHNavigationController: UINavigationController {
         super.viewDidLoad()
     
         delegate = self
-        hidesBarsOnSwipe = true
-        
-        let statusBarHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
-        
-        let statusbarView = UIView()
-        statusbarView.backgroundColor = UIColor.gthBackgroundColor
-        view.addSubview(statusbarView)
-      
-        statusbarView.translatesAutoresizingMaskIntoConstraints = false
-        statusbarView.heightAnchor
-            .constraint(equalToConstant: statusBarHeight).isActive = true
-        statusbarView.widthAnchor
-            .constraint(equalTo: view.widthAnchor, multiplier: 1.0).isActive = true
-        statusbarView.topAnchor
-            .constraint(equalTo: view.topAnchor).isActive = true
-        statusbarView.centerXAnchor
-            .constraint(equalTo: view.centerXAnchor).isActive = true
 
         navigationBar.prefersLargeTitles = true
-        navigationBar.isTranslucent = false
-        navigationBar.backgroundColor = UIColor.gthBackgroundColor
         navigationBar.barTintColor = UIColor.gthBackgroundColor
         navigationBar.tintColor = UIColor.gthNavigationControllerTintColor
 
@@ -76,7 +57,6 @@ extension GTHNavigationController: UINavigationControllerDelegate {
     
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         if viewController as? MoreTableViewController != nil {
-            hidesBarsOnSwipe = false
             navigationBar.topItem?.title = "More"
         }
     }

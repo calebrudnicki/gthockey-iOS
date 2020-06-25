@@ -19,7 +19,7 @@ class StudentBoardDetailViewController: GTHDetailViewController {
     private let emailButton: UIButton = {
         let emailButton = UIButton()
         emailButton.contentHorizontalAlignment = .left
-        emailButton.setTitleColor(.techNavy, for: .normal)
+        emailButton.setTitleColor(UIColor.boardAndCoachesEmailButtonColor, for: .normal)
         emailButton.titleLabel?.font = UIFont.DINCondensed.bold.font(size: 24.0)
         emailButton.translatesAutoresizingMaskIntoConstraints = false
         return emailButton

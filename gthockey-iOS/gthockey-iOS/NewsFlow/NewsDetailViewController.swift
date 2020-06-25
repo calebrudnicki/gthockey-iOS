@@ -12,7 +12,11 @@ class NewsDetailViewController: GTHDetailViewController {
 
     // MARK: Properties
 
-    private let bodyTextView = HTMLTextView(frame: .zero)
+    private let bodyTextView: HTMLTextView = {
+        let bodyTextView = HTMLTextView()
+        bodyTextView.textColor = UIColor.newsDetailContentColor
+        return bodyTextView
+    }()
 
     // MARK: Init
 

@@ -7,8 +7,6 @@
 //
 
 import UIKit
-//import FirebaseAuth
-import TOPasscodeViewController
 
 class MoreTableViewController: UITableViewController {
     
@@ -48,7 +46,7 @@ class MoreTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 6
+        return 5
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,8 +61,6 @@ class MoreTableViewController: UITableViewController {
             return 3
         case 4:
             return 3
-        case 5:
-            return 1
         default: break
         }
         return 0
@@ -118,8 +114,6 @@ class MoreTableViewController: UITableViewController {
                 cell.accessoryType = appIconManager.isDefaultIcon(.RamblinReck) ? .checkmark : .none
             default: break
             }
-        case 5:
-            cell.textLabel?.text = "Go to Admin Menu"
         default: break
         }
         return cell
@@ -137,8 +131,6 @@ class MoreTableViewController: UITableViewController {
             return "Social Media"
         case 4:
             return "App Icon"
-        case 5:
-            return "Admin"
         default: break
         }
         
@@ -160,8 +152,6 @@ class MoreTableViewController: UITableViewController {
             moreTableViewSectionHeader.set(with: "Social Media")
         case 4:
             moreTableViewSectionHeader.set(with: "App Icon")
-        case 5:
-            moreTableViewSectionHeader.set(with: "Admin")
         default: break
         }
 
@@ -175,14 +165,14 @@ class MoreTableViewController: UITableViewController {
         case 0:
             let scheduleLayout = UICollectionViewFlowLayout()
             scheduleLayout.sectionHeadersPinToVisibleBounds = true
-            scheduleLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 24.0, right: 0.0)
+            scheduleLayout.sectionInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 24.0, right: 0.0)
             let scheduleCollectionViewController = ScheduleCollectionViewController(collectionViewLayout: scheduleLayout)
             scheduleCollectionViewController.seasonID = seasonArray[indexPath.row].id
             scheduleCollectionViewController.seasonString = seasonArray[indexPath.row].name
             navigationController?.pushViewController(scheduleCollectionViewController, animated: true)
         case 1:
             let boardAndCoachesLayout = UICollectionViewFlowLayout()
-            boardAndCoachesLayout.sectionInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 24.0, right: 0.0)
+            boardAndCoachesLayout.sectionInset = UIEdgeInsets(top: 12.0, left: 0.0, bottom: 24.0, right: 0.0)
             
             switch indexPath.row {
             case 0:
@@ -234,10 +224,6 @@ class MoreTableViewController: UITableViewController {
                     self.tableView.reloadSections(IndexSet(integer: 4), with: UITableView.RowAnimation.none)
                 }
             })
-        case 5:
-            let passcodeViewController = TOPasscodeViewController(style: .opaqueDark, passcodeType: .fourDigits)
-            passcodeViewController.delegate = self
-            present(passcodeViewController, animated: true, completion: nil)
         default: break
         }
     }
@@ -254,22 +240,4 @@ class MoreTableViewController: UITableViewController {
         }
     }
 
-}
-
-extension MoreTableViewController: TOPasscodeViewControllerDelegate {
-    
-    func didTapCancel(in passcodeViewController: TOPasscodeViewController) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func passcodeViewController(_ passcodeViewController: TOPasscodeViewController, isCorrectCode code: String) -> Bool {
-        if code == "1973"{
-            let adminTableViewController = AdminTableViewController()
-            adminTableViewController.navigationItem.title = "Admin"
-            navigationController?.pushViewController(adminTableViewController, animated: true)
-            return true
-        }
-        return false
-    }
-    
 }

@@ -155,7 +155,7 @@ class ScheduleCollectionViewController: UICollectionViewController, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 64.0)
+        return CGSize(width: UIScreen.main.bounds.width, height: 52.0)
     }
 
     // MARK: UICollectionViewLayout

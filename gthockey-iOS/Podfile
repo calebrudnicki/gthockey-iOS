@@ -13,12 +13,11 @@ target 'gthockey-iOS' do
   pod 'SDWebImage', '~> 5.0'
   pod 'IQKeyboardManagerSwift'
   pod 'AppRating'
-  pod 'TOPasscodeViewController'
+#  pod 'TOPasscodeViewController'
 
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'Firebase/Core'
-  pod 'Firebase/Firestore'
-  pod 'Firebase/Messaging'
+#  pod 'Firebase/Messaging'
 
 end
